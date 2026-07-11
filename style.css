@@ -1,0 +1,78 @@
+/* Draco Labs Germany — Markenfarben aus dem Brand-Guide */
+:root {
+  --bg: #22282e; --panel: #2b343d; --line: #3a444f;
+  --ink: #e9ecef; --muted: #9aa3ab; --cyan: #2fb4cc; --red: #e23b33;
+}
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--ink);
+  font: 16px/1.65 "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+a { color: var(--cyan); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+
+/* Kopf */
+header.site {
+  border-bottom: 1px solid var(--line);
+  background: rgba(34, 40, 46, .92); backdrop-filter: blur(6px);
+  position: sticky; top: 0; z-index: 10;
+}
+header.site .wrap {
+  display: flex; align-items: center; gap: 14px; padding: 10px 20px;
+}
+header.site img { height: 44px; width: auto; }
+header.site .name {
+  font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+}
+header.site .name small { display: block; font-size: 10px; letter-spacing: .4em; color: var(--muted); }
+header.site nav { margin-left: auto; display: flex; gap: 18px; font-size: 14px; }
+
+/* Hero */
+.hero { text-align: center; padding: 72px 20px 56px; }
+.hero img { width: min(320px, 70vw); height: auto; }
+.hero h1 {
+  font-size: clamp(26px, 4.5vw, 40px); letter-spacing: .1em;
+  text-transform: uppercase; margin-top: 18px;
+}
+.hero p.tagline { color: var(--muted); font-size: 18px; margin-top: 10px; }
+.hero .accent { color: var(--cyan); }
+
+/* Leistungen */
+.cards {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px; padding: 8px 0 40px;
+}
+.card {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+  border-top: 3px solid var(--cyan); padding: 24px 22px;
+}
+.card:nth-child(2) { border-top-color: var(--red); }
+.card .icon { font-size: 30px; }
+.card h2 { font-size: 18px; margin: 10px 0 8px; letter-spacing: .04em; }
+.card p { color: var(--muted); font-size: 15px; }
+
+/* Abschnitte */
+section.block { padding: 36px 0; border-top: 1px solid var(--line); }
+section.block h2 {
+  font-size: 15px; text-transform: uppercase; letter-spacing: .14em;
+  color: var(--cyan); margin-bottom: 14px;
+}
+.contact-grid { display: flex; flex-wrap: wrap; gap: 28px; }
+.contact-grid div { min-width: 220px; }
+.contact-grid .label { color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: .08em; }
+
+/* Fuß */
+footer.site {
+  border-top: 1px solid var(--line); margin-top: 40px;
+  padding: 26px 0 34px; color: var(--muted); font-size: 14px;
+}
+footer.site .links { display: flex; flex-wrap: wrap; gap: 18px; margin-bottom: 10px; }
+
+/* Rechtstexte */
+main.legal { padding: 48px 0; }
+main.legal h1 { font-size: 26px; margin-bottom: 18px; }
+main.legal h2 { font-size: 17px; margin: 26px 0 8px; color: var(--cyan); }
+main.legal p, main.legal li { color: var(--ink); max-width: 75ch; }
+main.legal .muted { color: var(--muted); }
