@@ -39,6 +39,26 @@ header.site .name {
 }
 header.site .name small { display: block; font-size: 10px; letter-spacing: .4em; color: var(--muted); }
 header.site nav { margin-left: auto; display: flex; gap: 18px; font-size: 14px; }
+header.site nav a { color: var(--ink); padding: 4px 0; border-bottom: 2px solid transparent; }
+header.site nav a:hover { border-bottom-color: var(--cyan); text-decoration: none; }
+
+/* Shop-Button — bleibt auf JEDER Breite sichtbar, auch wenn das Menü zuklappt.
+   Er ist der einzige Weg von der Website in den Shop. */
+.shop-btn {
+  background: var(--cyan); color: #0d1418; font-weight: 700; font-size: 14px;
+  padding: 9px 16px; border-radius: 4px; letter-spacing: .03em; white-space: nowrap;
+}
+.shop-btn:hover { filter: brightness(1.1); text-decoration: none; }
+
+/* Burger — Zustand steckt in der Checkbox, kein JavaScript nötig. */
+.menu-toggle { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.burger { display: none; cursor: pointer; padding: 8px; }
+.burger span {
+  display: block; width: 22px; height: 2px; background: var(--ink);
+  border-radius: 2px; transition: transform .2s, opacity .2s;
+}
+.burger span + span { margin-top: 5px; }
+.menu-toggle:focus-visible + .burger { outline: 2px solid var(--cyan); outline-offset: 2px; }
 
 /* Hero — Lichtkegel wie im Shop, statt flachem Grund */
 .hero {
@@ -69,8 +89,7 @@ header.site nav { margin-left: auto; display: flex; gap: 18px; font-size: 14px; 
 .card:hover { transform: translateY(-3px); border-color: #4a5560; }
 .card:hover { border-top-color: var(--cyan); }
 .card:nth-child(2):hover { border-top-color: var(--red); }
-.card .icon { font-size: 30px; }
-.card h2 { font-size: 18px; margin: 10px 0 8px; letter-spacing: .04em; }
+.card h2 { font-size: 18px; margin: 0 0 8px; letter-spacing: .04em; }
 .card p { color: var(--muted); font-size: 15px; }
 @media (prefers-reduced-motion: reduce) { .card:hover { transform: none; } }
 
@@ -112,6 +131,54 @@ footer.site nav.social a.yt:hover { background: #ff0000; }
 footer.site nav.social a.ig:hover { background: linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7); }
 footer.site nav.social a.tt:hover { background: #000; }
 @media (prefers-reduced-motion: reduce) { footer.site nav.social a:hover { transform: none; } }
+
+/* ---- Mobil ----------------------------------------------------------------
+   Bis hierher hatte die Seite KEINE einzige Media Query: die Navigation lief
+   auf schmalen Displays schlicht über. Ab 760px klappt sie deshalb hinter den
+   Burger; Logo und Shop-Button bleiben immer stehen. */
+@media (max-width: 760px) {
+  .wrap { padding: 0 16px; }
+  header.site .wrap { flex-wrap: wrap; gap: 10px; }
+  header.site img { height: 36px; }
+  header.site .name { font-size: 14px; margin-right: auto; }
+  .shop-btn { order: 2; padding: 8px 13px; }
+  .burger { display: block; order: 3; }
+
+  /* Zugeklappt = Höhe 0. max-height statt grid-template-rows: 0fr — letzteres
+     definiert nur die ERSTE Zeile, die weiteren Links landen in impliziten
+     Zeilen und blieben sichtbar (genau der Fehler beim ersten Versuch).
+     Der max-height-Wert ist absichtlich großzügig; er begrenzt nur, er setzt
+     keine Höhe. */
+  header.site nav {
+    order: 4; flex-basis: 100%; margin-left: 0;
+    flex-direction: column; gap: 0;
+    max-height: 0; overflow: hidden;
+    transition: max-height .25s ease;
+  }
+  .menu-toggle:checked ~ nav { max-height: 320px; }
+  header.site nav a {
+    padding: 12px 2px; border-bottom: 1px solid var(--line); font-size: 15px;
+  }
+  header.site nav a:last-child { border-bottom: 0; }
+
+  /* Burger wird beim Öffnen zum Kreuz. */
+  .menu-toggle:checked + .burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .menu-toggle:checked + .burger span:nth-child(2) { opacity: 0; }
+  .menu-toggle:checked + .burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Der Hero lief rechts aus dem Bild: Sperrsatz (letter-spacing) plus clamp()
+     ergaben auf 390px eine Zeile, die breiter war als der Bildschirm. */
+  .hero { padding: 48px 16px 44px; }
+  .hero h1 { font-size: 22px; letter-spacing: .04em; }
+  .hero p.tagline { font-size: 16px; }
+  .hero img { width: min(240px, 62vw); }
+  section.block { padding: 40px 0; }
+  section.block h2 { font-size: 1.2rem; letter-spacing: .04em; }
+  .contact-grid { gap: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  header.site nav, .burger span { transition: none; }
+}
 
 /* Rechtstexte & Ratgeber */
 main.legal { padding: 48px 0; }

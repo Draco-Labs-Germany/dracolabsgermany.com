@@ -24,12 +24,22 @@
   <div class="wrap">
     <img src="assets/emblem.png" alt="Draco Labs Emblem">
     <div class="name">Draco Labs <small>Germany</small></div>
+
+    <!-- Burger ohne JavaScript: die Checkbox hält den Zustand, das Label ist der
+         Knopf. Die Checkbox selbst ist nur optisch versteckt (nicht display:none),
+         sonst wäre sie für die Tastatur nicht mehr erreichbar. -->
+    <input type="checkbox" id="menu-auf" class="menu-toggle">
+    <label for="menu-auf" class="burger" aria-label="Menü öffnen und schließen">
+      <span></span><span></span><span></span>
+    </label>
+
     <nav>
       <a href="#leistungen">Leistungen</a>
       <a href="#ratgeber">Ratgeber</a>
       <a href="#ueber">Über uns</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
+    <a class="shop-btn" href="https://shop.dracolabsgermany.com">Shop →</a>
   </div>
 </header>
 
@@ -43,21 +53,18 @@
 <div class="wrap">
   <div class="cards" id="leistungen">
     <div class="card">
-      <div class="icon">🛸</div>
       <h2>Drohnen &amp; UAS</h2>
       <p>Entwicklung ferngesteuerter Multicopter, Komponenten und Zubehör.
       Einsätze wie Luftaufnahmen und Inspektion — Betrieb nach EU-Drohnenrecht,
       LBA-registriert und versichert.</p>
     </div>
     <div class="card">
-      <div class="icon">🔧</div>
       <h2>Prototyping &amp; Fertigung</h2>
       <p>Vom Konzept zum funktionsfähigen Prototyp: Konstruktion, 3D-Druck,
       Elektronik-Integration und Kleinserien — schnell, iterativ und
       dokumentiert.</p>
     </div>
     <div class="card">
-      <div class="icon">💡</div>
       <h2>Technische Beratung</h2>
       <p>Produktdesign und technische Entwicklung: Machbarkeit, Komponentenwahl,
       Automatisierung — ehrliche Einschätzungen statt Buzzwords.</p>
