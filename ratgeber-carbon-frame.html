@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vom Erdöl zum FPV-Frame — wie Carbon entsteht | Draco Labs</title>
+<meta name="description" content="Wie aus Erdöl eine Carbonfaser wird, wie daraus Platten und Rohre entstehen, woran man gutes Material erkennt, wie man Carbon schneidet und warum der Staub gefährlich ist.">
+<meta name="keywords" content="Carbon Herstellung, CFK Platten, Carbonrohr Drohne, FPV Frame Carbon, Carbon fräsen, Carbonstaub Absaugung, T300 T700, Carbonfaser PAN">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Draco Labs Germany">
+<link rel="canonical" href="https://dracolabsgermany.com/ratgeber-carbon-frame.html">
+
+<!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vom Erdöl zum FPV-Frame — wie Carbon entsteht">
+<meta property="og:description" content="Von der Erdölfraktion über die Carbonfaser zur Platte, zum Rohr und zum fertigen Drohnen-Frame. Mit Prüftests für gutes Material und dem, was beim Fräsen wirklich gefährlich ist.">
+<meta property="og:url" content="https://dracolabsgermany.com/ratgeber-carbon-frame.html">
+<meta property="og:image" content="https://dracolabsgermany.com/assets/logo.png">
+<meta property="og:site_name" content="Draco Labs Germany">
+<meta property="og:locale" content="de_DE">
+
+<!-- Twitter/X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vom Erdöl zum FPV-Frame — wie Carbon entsteht">
+<meta name="twitter:description" content="Wie Carbon hergestellt wird, woran man gutes Material erkennt und warum Carbonstaub gefährlicher ist als die meisten denken.">
+<meta name="twitter:image" content="https://dracolabsgermany.com/assets/logo.png">
+
+<link rel="icon" type="image/png" href="assets/emblem.png">
+<link rel="stylesheet" href="style.css">
+
+<!-- Strukturierte Daten für Google (Article) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Vom Erdöl zum FPV-Frame: wie Carbon entsteht",
+  "description": "Von der Erdölfraktion über die Carbonfaser zur Platte, zum Rohr und zum fertigen Drohnen-Frame. Mit Prüftests für gutes Material und dem, was beim Fräsen wirklich gefährlich ist.",
+  "image": "https://dracolabsgermany.com/assets/logo.png",
+  "datePublished": "2026-07-14",
+  "dateModified": "2026-07-14",
+  "author": { "@type": "Organization", "name": "Draco Labs Germany" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Draco Labs Germany",
+    "logo": { "@type": "ImageObject", "url": "https://dracolabsgermany.com/assets/logo.png" }
+  },
+  "mainEntityOfPage": "https://dracolabsgermany.com/ratgeber-carbon-frame.html",
+  "inLanguage": "de-DE"
+}
+</script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <img src="assets/emblem.png" alt="Draco Labs Emblem">
+    <div class="name">Draco Labs <small>Germany</small></div>
+    <input type="checkbox" id="menu-auf" class="menu-toggle">
+    <label for="menu-auf" class="burger" aria-label="Menü öffnen und schließen">
+      <span></span><span></span><span></span>
+    </label>
+    <nav>
+      <a href="index.html#leistungen">Leistungen</a>
+      <a href="index.html#ratgeber">Ratgeber</a>
+      <a href="index.html#ueber">Über uns</a>
+      <a href="index.html#kontakt">Kontakt</a>
+    </nav>
+    <a class="shop-btn" href="https://shop.dracolabsgermany.com">Shop →</a>
+  </div>
+</header>
+
+<main class="legal">
+  <div class="wrap">
+
+    <h1>Vom Erdöl zum FPV-Frame</h1>
+    <p class="muted" style="font-size:17px; margin-top:-4px">Wie aus einem Erdölprodukt eine Carbonfaser wird, wie daraus Platten und Rohre entstehen, und woran du erkennst, ob dein Frame gutes Material ist.</p>
+    <p class="muted">Ratgeber · Werkstoffkunde &amp; Fertigung · Lesezeit ca. 15 Min · Stand: Juli 2026</p>
+
+    <div style="background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--cyan); border-radius:10px; padding:18px 20px; margin:22px 0">
+      <p style="margin:0 0 8px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; font-size:13px; color:var(--cyan)">Kurz gesagt</p>
+      <p style="margin:0">Carbon beginnt als <strong>Erdöl</strong>: Propylen wird zu Acrylnitril, daraus wird
+      <strong>Polyacrylnitril (PAN)</strong> gesponnen, das unter Zug oxidiert und bei bis zu 1.500&nbsp;°C
+      verkohlt wird.  Aus 2&nbsp;kg PAN wird dabei nur <strong>1&nbsp;kg Faser</strong>, der Rest entweicht als Gas.
+      Das ist der Grund für den Preis.  Für dein Frame gilt: <strong>„T700" sagt nichts über die Steifigkeit</strong>,
+      der <strong>Lagenaufbau</strong> entscheidet.  Eine echte Platte wiegt <strong>1,50 bis 1,60&nbsp;g/cm³</strong>,
+      alles darüber ist verdächtig.  Und beim Fräsen ist der Staub das eigentliche Risiko: er ist
+      <strong>lungengängig und elektrisch leitfähig</strong>, ein normaler Werkstattsauger verteilt ihn nur.</p>
+    </div>
+
+    <p>Jeder, der einen Copter baut, hält Carbon in der Hand.  Kaum jemand weiß, was er da eigentlich
+    hält.  Das ist keine akademische Frage: Wer nicht weiß, wie eine Platte entsteht, kann eine gute
+    nicht von einer schlechten unterscheiden, und genau das kostet bei großen Coptern am Ende Arme,
+    Motoren und im schlimmsten Fall den ganzen Copter.</p>
+    <p>Dieser Ratgeber geht den Weg vollständig: vom Rohstoff über die Faser zur Platte, zum Rohr,
+    zum Frame, zur Bearbeitung und bis zur Entsorgung.  Er nennt Zahlen und die Quellen dazu, und er
+    sagt ausdrücklich, wo die Datenlage dünn ist.  Der Markt ist voll von Ratgebern mit erfundenen
+    Zahlen; wir markieren lieber, was wir nicht wissen.</p>
+
+    <h2>1. Der Anfang: Carbon kommt aus dem Erdöl</h2>
+    <p>Die Kette beginnt in der Raffinerie.  Aus Erdöl wird <strong>Propylen</strong>, daraus im
+    sogenannten SOHIO-Prozess durch Ammoxidation (Propylen plus Ammoniak plus Luft, bei 400 bis
+    510&nbsp;°C über einem Bismut-Molybdat-Katalysator) das <strong>Acrylnitril</strong>.  Über
+    90&nbsp;Prozent der Weltproduktion laufen über dieses Verfahren, die Weltkapazität liegt in der
+    Größenordnung von 7 bis 9&nbsp;Millionen Tonnen im Jahr.</p>
+    <p>Acrylnitril wird polymerisiert zu <strong>Polyacrylnitril, kurz PAN</strong>.  Der technische
+    Präkursor ist kein reines PAN, sondern eine Rezeptur, typischerweise rund 96&nbsp;Prozent Acrylnitril,
+    3&nbsp;Prozent Methylacrylat und 1&nbsp;Prozent Itaconsäure.  Die beiden Zusätze klingen nach
+    Nebensache, sind aber der Grund, warum der nächste Schritt überhaupt kontrollierbar bleibt.</p>
+    <p><strong>Mindestens 90&nbsp;Prozent aller Carbonfasern weltweit entstehen aus PAN.</strong>  Die
+    Alternativen sind Nischen: Pech (Pitch) hätte die bessere Ausbeute, wird aber nur in
+    verschwindenden Mengen eingesetzt; Viskose spielt praktisch keine Rolle mehr.</p>
+    <p class="muted" style="font-size:14px">Der Titel dieses Artikels ist also wörtlich gemeint.  Der
+    schwarze, technisch anmutende Werkstoff, mit dem wir Gewicht sparen, ist am Anfang der Kette
+    schlicht ein Erdölprodukt.</p>
+
+    <h2>2. Die Prozesskette: dreimal Hitze, immer unter Zug</h2>
+    <p>Aus dem PAN wird eine weiße Faser gesponnen.  Diese Faser durchläuft dann drei Öfen.</p>
+    <table>
+      <tr><th>Schritt</th><th>Temperatur</th><th>Was passiert</th></tr>
+      <tr>
+        <td><strong>Stabilisierung</strong> (Oxidation)</td>
+        <td>ca. 225 bis 260&nbsp;°C an Luft</td>
+        <td>Die Kettenmoleküle vernetzen sich zu einer Leiterstruktur.  Die Faser wird schwarz und
+        schmelzunfähig.  Dieser Schritt frisst <strong>30 bis 40 Prozent der gesamten Prozessenergie</strong>,
+        weil die Reaktion exotherm ist und langsam laufen muss.  In der Referenzanlage dauert er
+        allein <strong>55 Minuten</strong>.</td>
+      </tr>
+      <tr>
+        <td><strong>Karbonisierung</strong></td>
+        <td>ca. 500 bis 1.500&nbsp;°C, unter Schutzgas</td>
+        <td>Alles, was nicht Kohlenstoff ist, entweicht als Gas.  Übrig bleibt eine Faser mit über
+        90&nbsp;Prozent Kohlenstoff (Toray T300: über 93&nbsp;Prozent, T800H: über 96&nbsp;Prozent).
+        Verweilzeit: <strong>rund 1,5 Minuten je Ofen</strong>.</td>
+      </tr>
+      <tr>
+        <td><strong>Graphitierung</strong> (nur für Hochmodulfasern)</td>
+        <td>2.000 bis 3.000&nbsp;°C</td>
+        <td>Die Graphenebenen ordnen sich weiter.  Für Fasern über 300&nbsp;GPa E-Modul braucht es
+        mindestens 2.500&nbsp;°C.  Standardfasern durchlaufen diesen Schritt nicht.</td>
+      </tr>
+    </table>
+    <p>Danach folgen eine elektrolytische Oberflächenbehandlung und die <strong>Schlichte</strong>
+    (Sizing), eine hauchdünne Beschichtung von <strong>0,6 bis 1,0 Gewichtsprozent</strong>.  Sie ist
+    entscheidend, weil sie bestimmt, wie gut die Faser später am Harz haftet.  Eine Faser mit der
+    falschen Schlichte ergibt trotz Top-Kennwerten ein schlechtes Laminat.</p>
+
+    <h3>Warum der Zug alles entscheidet</h3>
+    <p>Der wichtigste Parameter der ganzen Kette steht in keiner Produktbeschreibung: Die Faser wird
+    während der Hitzebehandlung <strong>unter Zug gehalten und verstreckt</strong>.  Ohne Zug schrumpft
+    sie, die Graphenebenen liegen ungeordnet, und der E-Modul bleibt niedrig.  Der Zug richtet die
+    Ebenen entlang der Faserachse aus.</p>
+    <p>Eine Studie an PAN-Fasern zeigt das quantitativ: bei 0, 5, 10 und 15&nbsp;Prozent Verstreckung
+    liegt das <strong>Optimum bei 10&nbsp;Prozent</strong> und ergibt rund 409&nbsp;GPa E-Modul.  Bei
+    15&nbsp;Prozent kippt es: Überstreckung erzeugt Defekte, die Eigenschaften fallen wieder ab.  Es
+    gibt also einen schmalen Korridor, und ihn zu treffen ist ein gutes Stück des Know-hows, das
+    Carbonfaser-Hersteller voneinander unterscheidet.</p>
+
+    <h2>3. Warum Carbon so teuer ist</h2>
+    <p>Die Antwort steckt in einer einzigen Zahl: <strong>aus 2&nbsp;kg PAN wird 1&nbsp;kg
+    Carbonfaser.</strong>  Die Ausbeute liegt bei etwa 50&nbsp;Prozent, Werte deutlich darüber sind
+    nicht berichtet.  Die andere Hälfte verlässt den Ofen als Blausäure, Ammoniak, Wasser, Kohlenmonoxid
+    und Stickstoff.  Man bezahlt also immer die doppelte Menge Rohstoff.</p>
+    <p>Chemisch ist das nicht überraschend: Das PAN-Monomer enthält rechnerisch nur rund 68&nbsp;Prozent
+    Kohlenstoff.  Mehr als 68&nbsp;Prozent Ausbeute sind theoretisch unmöglich, und die Realität liegt
+    deutlich darunter.</p>
+    <p>Dazu kommt der Energiebedarf.  Die Angaben schwanken stark: von etwa <strong>170&nbsp;MJ/kg</strong>
+    (aktuelle Erhebung mit Industriebeirat) bis <strong>280 bis 340&nbsp;MJ/kg</strong> (ältere Quelle).
+    Eine Meta-Analyse von 2025 kommt zu dem Schluss, dass die veröffentlichten Daten für belastbare
+    Umweltbewertungen schlicht nicht ausreichen.  <em>Wer dir eine exakte Zahl nennt, hat sie sich
+    ausgesucht.</em>  Ehrlich ist die Spanne.</p>
+    <p>In der Kostenrechnung einer Modellanlage (50k-Tow) liegen die Herstellkosten bei rund
+    <strong>10,87&nbsp;USD/kg</strong>, und davon entfallen <strong>53&nbsp;Prozent allein auf den
+    PAN-Präkursor</strong>.  Das US-Energieministerium nennt unabhängig davon ebenfalls rund
+    50&nbsp;Prozent.  Wer Carbon billiger machen will, muss beim Rohstoff ansetzen, nicht beim Ofen.</p>
+
+    <h3>Der Trick mit der Tow-Größe</h3>
+    <p>Die Zahl vor dem „K" (3K, 6K, 12K, 50K) ist die <strong>Anzahl der Einzelfilamente in einem
+    Faserbündel</strong>, dem Tow.  3K sind 3.000 Filamente, jedes rund 7&nbsp;µm dünn.  Mehr nicht.
+    <strong>Es ist keine Qualitätsangabe.</strong></p>
+    <p>Wirtschaftlich ist die Tow-Größe aber der größte Hebel überhaupt: Von 3K auf 100K sinkt der
+    Präkursor-Kostenanteil von rund 77 auf 50&nbsp;Prozent, weil eine Anlage in derselben Zeit viel
+    mehr Material durchsetzt.  Deshalb fliegen Windräder auf 50K-Fasern und Flugzeuge auf 12K.  Für
+    dünne, hochwertige Platten und schöne Gewebeoptik braucht man dagegen kleine Tows, und die sind
+    teurer.</p>
+
+    <h2>4. Fasertypen: warum „T700" als Verkaufsargument meistens leer ist</h2>
+    <p>Fast jede Frame-Produktseite wirbt mit „T700 Carbon".  Sieh dir an, was die Datenblätter
+    tatsächlich sagen:</p>
+    <table>
+      <tr><th>Faser</th><th>Klasse</th><th>Zugfestigkeit</th><th>E-Modul (Steifigkeit)</th><th>Bruchdehnung</th></tr>
+      <tr><td>Toray T300</td><td>Standard (HT)</td><td>3.530 MPa</td><td><strong>230 GPa</strong></td><td>1,5 %</td></tr>
+      <tr><td>Toray T700S</td><td>Standard (HT)</td><td>4.900 MPa</td><td><strong>230 GPa</strong></td><td>2,1 %</td></tr>
+      <tr><td>Toray T800H</td><td>Intermediate (IM)</td><td>5.490 MPa</td><td>294 GPa</td><td>1,9 %</td></tr>
+      <tr><td>Toray M55J</td><td>Hochmodul (HM)</td><td>4.020 MPa</td><td>540 GPa</td><td>0,7 %</td></tr>
+      <tr><td>Zoltek PX35 (50K)</td><td>Large Tow</td><td>4.137 MPa</td><td>242 GPa</td><td>1,7 %</td></tr>
+    </table>
+    <p><strong>T300 und T700 haben denselben E-Modul: 230&nbsp;GPa.</strong>  T700 ist nicht steifer,
+    sondern nur fester, also bruchzäher.  Ein Frame-Arm soll aber in erster Linie <em>steif</em> sein,
+    er soll sich unter Motorschub nicht durchbiegen.  Für diese Eigenschaft bringt T700 gegenüber T300
+    exakt nichts.  Was T700 bringt, ist mehr Reserve im Crash.</p>
+    <p>Dazu kommt: Ein Faserlogo auf einer Produktseite ist kein Nachweis.  Ohne Chargennummer oder
+    Prüfzeugnis eines autorisierten Distributors ist „T700" eine unbelegbare Behauptung.  Und selbst
+    wenn sie stimmt, sagt die Faser allein noch nichts über das fertige Bauteil, denn dazwischen liegt
+    das, was wirklich zählt: der Laminataufbau.</p>
+
+    <h2>5. Von der Faser zur Platte</h2>
+    <p>Die Faser kommt als Bündel.  Für eine Platte muss sie flächig werden, und dafür gibt es zwei
+    Wege.  <strong>Gewebe</strong> (meist Köper 2/2, das bekannte Schachbrettmuster) ist verwoben, also
+    in zwei Richtungen tragend, und lässt sich gut verarbeiten.  <strong>Gelege, unidirektional (UD)</strong>,
+    hat alle Fasern parallel: maximale Steifigkeit in Faserrichtung, quer dazu praktisch keine.</p>
+    <p>Der Streit „Köper oder Leinwand" ist übrigens überwiegend Optik.  Bei gleicher Faser und gleichem
+    Flächengewicht liegen beide mechanisch unter zehn Prozent auseinander.</p>
+    <p>Wie beide Lagen zusammenkommen, entscheidet über die Qualität:</p>
+    <table>
+      <tr><th>Verfahren</th><th>Faservolumengehalt</th><th>Porosität (Lufteinschlüsse)</th></tr>
+      <tr><td>Handlaminat ohne Vakuum</td><td>ca. 50 %</td><td>hoch</td></tr>
+      <tr><td>Vakuumsack, Infusion</td><td>60 bis 70 %</td><td>ca. 2 bis 4 %</td></tr>
+      <tr><td>Prepreg, gepresst oder Autoklav</td><td>hoch, real meist 55 bis 65 %</td><td>unter 1 %</td></tr>
+    </table>
+    <p>Die entscheidende Zahl steht in der letzten Spalte.  <strong>Bei hohem Porengehalt sinkt die
+    interlaminare Scherfestigkeit um bis zu 25&nbsp;Prozent.</strong>  Und genau die ist der Widerstand
+    gegen <em>Delamination</em>, also gegen das Aufblättern der Lagen.  Luft im Laminat ist damit kein
+    Schönheitsfehler, sondern der direkte Weg zum Armbruch.</p>
+    <p class="muted" style="font-size:14px">Nebenbei: Platten werden in der Praxis fast nie im Autoklaven
+    gefertigt, sondern <strong>im beheizten Pressverfahren</strong>.  Flache Geometrie, hoher Flächendruck,
+    deutlich günstiger.  Der Autoklav ist ein Argument für gekrümmte Bauteile, nicht für ein Frame.</p>
+
+    <h3>Das Harz, die Sonne und ein unterschätztes Problem</h3>
+    <p>Jedes Epoxidharz hat eine <strong>Glasübergangstemperatur (Tg)</strong>.  Oberhalb davon wird die
+    Matrix weich, und ein Laminat ohne feste Matrix verliert seine Steifigkeit.  Hier trennt sich gute
+    von schlechter Platte drastisch:</p>
+    <ul>
+      <li><strong>Kalt gehärtetes Nasslaminat:</strong> Wärmeformbeständigkeit rund <strong>65 bis
+      80&nbsp;°C</strong> (R&amp;G-Daten für gängige Systeme).</li>
+      <li><strong>Gepresste Prepreg-Platte:</strong> Tg <strong>121&nbsp;°C (Onset) bis 135&nbsp;°C</strong>,
+      maximale Einsatztemperatur 115&nbsp;°C (Datenblatt XPREG XC110).  Serien-Halbzeuge nennen 100 bis
+      140&nbsp;°C.</li>
+    </ul>
+    <p>Und jetzt die Praxis: Eine <strong>schwarze</strong> Oberfläche absorbiert bis zu 90&nbsp;Prozent
+    der Sonneneinstrahlung.  Gemessen erreicht eine schwarze Fahrzeugkarosserie in praller Sonne rund
+    <strong>70&nbsp;°C</strong> innerhalb von 20&nbsp;Minuten.  Ein schwarzes Carbon-Frame, das im
+    Hochsommer auf dem Autodach oder auf der Wiese liegt, landet realistisch bei 60 bis 75&nbsp;°C.</p>
+    <p class="muted" style="font-size:14px">Diese 60 bis 75&nbsp;°C sind eine <strong>Ableitung aus der
+    Karosseriemessung, keine Messung am Frame</strong>.  Wir kennzeichnen das ausdrücklich, weil wir
+    keine belastbare Messreihe an Copter-Frames gefunden haben.</p>
+    <p>Das Ergebnis ist trotzdem eindeutig: Ein billiges, kalt gehärtetes Laminat kommt seiner Tg in
+    der Sommersonne <strong>gefährlich nahe</strong>.  Eine gepresste Prepreg-Platte hat 50&nbsp;°C
+    Reserve.  Das ist einer der Gründe, warum ein günstiger Frame nach einem heißen Sommertag plötzlich
+    „schwammig" fliegt, und der Grund, warum wir bei Longrange-Buildern nicht am Frame sparen.</p>
+
+    <h2>6. Der Lagenaufbau: hier entscheidet sich alles</h2>
+    <p>Eine Platte ist kein Werkstoff, sie ist eine Konstruktion.  Ein dokumentierter Aufbau, wie ihn
+    R&amp;G für seine 3-mm-Platten angibt, sieht so aus: zwei Decklagen Gewebe (200&nbsp;g/m²) und
+    dazwischen ein <strong>UD-Kern in 0/90&nbsp;Grad</strong>.  Symmetrisch, bidirektional.</p>
+    <p>Warum Symmetrie? Weil ein unsymmetrischer Aufbau sich beim Aushärten verzieht und unter Last
+    verwindet.  Und warum zu jeder +45-Grad-Lage eine -45-Grad-Lage gehört: sonst koppeln Zug und
+    Schub, und die Platte verdreht sich, wenn man an ihr zieht.</p>
+    <p>Jetzt die Zahl, die den ganzen Abschnitt trägt.  Kennwerte einer realen CFK-Platte
+    (Haufler Composites):</p>
+    <table>
+      <tr><th>Aufbau</th><th>E-Modul 0°</th><th>E-Modul ±45°</th><th>Zugfestigkeit 0°</th><th>Zugfestigkeit ±45°</th></tr>
+      <tr><td>0/90° Gewebe (HT)</td><td>60 GPa</td><td><strong>15 GPa</strong></td><td>550 MPa</td><td><strong>120 MPa</strong></td></tr>
+      <tr><td>quasi-isotrop (0/-45/45/90)</td><td>35 GPa</td><td>35 GPa</td><td>320 MPa</td><td>320 MPa</td></tr>
+      <tr><td>UD (Hochmodul)</td><td>370 GPa</td><td>10 GPa</td><td>1.300 MPa</td><td>50 MPa</td></tr>
+    </table>
+    <p>Lies die erste Zeile noch einmal.  Eine 0/90-Platte ist unter <strong>45&nbsp;Grad nur ein Viertel
+    so steif</strong> und trägt nur rund ein Fünftel der Last.  Dasselbe Stück Carbon, andere Richtung,
+    ein Viertel der Leistung.</p>
+    <p>Für dein Frame heißt das: <strong>Die Faserrichtung relativ zur Armachse ist keine Feinheit,
+    sie ist die halbe Konstruktion.</strong>  Und ein Bohrloch, das in einem 45-Grad-Lastpfad sitzt,
+    liegt genau in der Richtung, in der das Material am schwächsten ist.</p>
+    <p>Echte Quasi-Isotropie (gleich steif in alle Richtungen) klingt verlockend, kostet aber rund
+    40&nbsp;Prozent Steifigkeit gegenüber 0/90.  Deshalb sind FPV-Platten in der Regel 0/90-dominiert
+    und eben nicht quasi-isotrop: Die Last läuft entlang der Arme, und dort soll das Material stehen.</p>
+
+    <h2>7. Gute Platte, schlechte Platte: vier Tests ohne Labor</h2>
+
+    <h3>Test 1: Wiegen und rechnen (der stärkste Test)</h3>
+    <p>Eine CFK-Platte hat eine <strong>Dichte von 1,50 bis 1,60&nbsp;g/cm³</strong>.  Das kannst du
+    nachrechnen: Gewicht in Gramm geteilt durch (Länge × Breite × Dicke in Zentimetern).</p>
+    <p>Beispiel: eine 350 × 150&nbsp;mm-Platte in 3&nbsp;mm hat 157,5&nbsp;cm³ und muss folglich
+    <strong>rund 236 bis 252&nbsp;g</strong> wiegen.  Wiegt sie 280&nbsp;g, stimmt etwas nicht.</p>
+    <p>Was dann meist nicht stimmt: <strong>Glasfaser im Kern</strong>.  Glasfaser hat eine Dichte von
+    2,54&nbsp;g/cm³, ein Bauteil daraus liegt bei 2,0 bis 2,6.  Ein Glasfaserteil mit einer
+    Carbon-Decklage kann <strong>bis zu 70&nbsp;Prozent schwerer</strong> sein als echtes Carbon.  Oder
+    es ist schlicht Harzüberschuss, also totes Gewicht ohne Festigkeitsgewinn.</p>
+
+    <h3>Test 2: die Schnittkante gegen das Licht</h3>
+    <p>Sieh dir eine Schnittkante oder ein Bohrloch unter heller Beleuchtung an.  Eine echte
+    Vollcarbon-Platte hat eine <strong>gleichmäßig schwarze Kante</strong> mit erkennbaren Lagen.
+    Ein <strong>heller oder weißlicher Streifen</strong> im Querschnitt ist Glasfaser, gern mit
+    schwarzem Stift übermalt.  Halte eine Taschenlampe hinter das Bohrloch: Wenn Licht durchscheint,
+    liegt unter der Carbon-Decklage kein Carbon.</p>
+
+    <h3>Test 3: die Rückseite</h3>
+    <p>Eine echte Platte sieht <strong>beidseitig</strong> nach Carbon aus.  Wechselnde Gewebeoptik,
+    glänzende und matte Flecken oder eine „tote" Rückseite deuten auf ein Nasslaminat mit einer
+    einzigen Carbon-Schauseite hin.</p>
+
+    <h3>Test 4: der Klopftest</h3>
+    <p>Das ist keine Bastelmethode, sondern ein etabliertes zerstörungsfreies Prüfverfahren aus der
+    Luftfahrt (Coin-Tap).  Mit einer Münze systematisch abklopfen: <strong>heller Klang = intakt,
+    dumpfer Klang = Delamination oder Lufteinschluss.</strong>  Das Verfahren funktioniert gut bei
+    dünnen Laminaten unter etwa 3&nbsp;mm, also genau in unserem Bereich.  Nutze es nach jedem harten
+    Crash an der Armwurzel.</p>
+
+    <h3>Der Fake, an den niemand denkt: abgelaufenes Prepreg</h3>
+    <p>Prepreg ist Gewebe, das bereits mit Harz getränkt ist, und es hat ein <strong>Ablaufdatum wie
+    Joghurt</strong>: typischerweise 30 Tage bei Raumtemperatur, 12 Monate bei -18&nbsp;°C im Froster.
+    Überlagertes und „off-spec" Prepreg wird stark verbilligt gehandelt.  Das Material ist echt, die
+    Faser stimmt, der Preis ist verlockend, und das Laminat ist trotzdem schlecht: unvollständige
+    Vernetzung (also <strong>niedrigere Tg</strong>), verlorene Klebrigkeit, dadurch Faserverschiebung
+    und Lufteinschlüsse, höhere Feuchteaufnahme, schlechtere Ermüdungsfestigkeit.</p>
+    <p>Das ist die unangenehmste Fälschung, weil sie mit keinem der vier Tests sicher auffällt.  Hier
+    hilft nur ein Lieferant, der sagt, woher sein Material kommt.</p>
+
+    <h2>8. Rohre: warum bei 13 Zoll die Bauart wechselt</h2>
+    <p>Bis etwa 10&nbsp;Zoll bestehen Arme aus flachen Platten.  Ab 13&nbsp;Zoll gehen praktisch alle
+    Hersteller auf <strong>Vierkantrohre</strong>.  Das ist kein Modetrend, das ist Statik.</p>
+    <p>Ein Rechenbeispiel: Ein Plattenarm von 6&nbsp;mm Dicke und 20&nbsp;mm Breite hat ein
+    Flächenträgheitsmoment von rund 360&nbsp;mm⁴ um die schwache Achse.  Ein Vierkantrohr 20 × 20&nbsp;mm
+    mit 1&nbsp;mm Wand kommt auf rund 4.585&nbsp;mm⁴.  Das Rohr ist bei vergleichbarer Materialmenge
+    <strong>etwa zwölfmal biegesteifer</strong> und rund fünfmal torsionssteifer.  Und Torsion ist am
+    Motorarm keine Nebensache: Die gesamte Gierbewegung des Copters läuft über das Reaktionsdrehmoment
+    der Motoren, also über Verdrehung der Arme.</p>
+    <p class="muted" style="font-size:14px">Diese beiden Werte sind unsere eigene Überschlagsrechnung
+    nach den Standardformeln der Festigkeitslehre, keine Herstellerangabe.</p>
+
+    <h3>Das Herstellungsverfahren entscheidet, nicht der Preis</h3>
+    <table>
+      <tr><th>Verfahren</th><th>Faserlage</th><th>Erkennbar an</th><th>Für Arme</th></tr>
+      <tr>
+        <td><strong>Roll-Wrapping</strong> (Prepreg um einen Dorn gewickelt)</td>
+        <td>frei wählbar: 0°, ±45°, 90°</td>
+        <td>Innenseite glatt und maßhaltig, außen oft Abdruck des Schrumpfbands oder geschliffen</td>
+        <td><strong>Die richtige Wahl</strong></td>
+      </tr>
+      <tr>
+        <td><strong>Filament Winding</strong></td>
+        <td>überwiegend Umfang, echte 0°-Lagen sind nicht möglich</td>
+        <td>sichtbares Rauten- oder Mosaikmuster</td>
+        <td>gut bei Innendruck, mäßig bei Biegung</td>
+      </tr>
+      <tr>
+        <td><strong>Pultrusion</strong> (durch eine Düse gezogen)</td>
+        <td>nahezu 100 % längs (0°)</td>
+        <td>innen und außen glatt, Fasern längs sichtbar, billigster Meterpreis</td>
+        <td><strong>Meist ungeeignet</strong></td>
+      </tr>
+    </table>
+    <p>Ein direkter Vergleichstest von Easy Composites (gleiche Geometrie, 10&nbsp;mm Außendurchmesser)
+    zeigt, was das bedeutet.  In der Drei-Punkt-Biegung trug das <strong>gewickelte Rohr rund 200&nbsp;kg,
+    das pultrudierte nur rund 140&nbsp;kg</strong>.  Das sind etwa <strong>43&nbsp;Prozent mehr Biegelast</strong>
+    für dasselbe Rohr aus demselben Material, nur anders gewickelt.  Der Grund: Den Pultrusionsrohren
+    fehlen die Umfangslagen, die das Einbeulen verhindern.</p>
+    <p>Bei Torsion und Klemmung ist es noch drastischer.  Ein reines 0-Grad-Laminat muss die
+    Torsionslast komplett über die Matrix tragen, weil die Hauptspannung bei Verdrehung unter
+    <strong>45&nbsp;Grad</strong> liegt und dort keine Faser sitzt.  Ergebnis: Das Rohr spaltet der
+    Länge nach auf, statt zu brechen.  Ein pultrudiertes Rohr ist billig, längs extrem stark, und für
+    einen Motorarm die falsche Entscheidung.</p>
+    <p class="muted" style="font-size:14px">Fairnesshalber: Die Easy-Composites-Tests sind nicht nach
+    Norm durchgeführt und mit 10&nbsp;mm Rohren gefahren.  Als Vergleich <em>zwischen</em> den Verfahren
+    sind sie aussagekräftig, als Absolutwert für dein 20-mm-Armrohr nicht übertragbar.</p>
+
+    <h3>Rund oder Vierkant?</h3>
+    <p>Physikalisch: Das runde Rohr ist torsionssteifer (geschlossener, gleichmäßiger Schubfluss), das
+    Vierkantrohr biegesteifer (mehr Material weit von der neutralen Achse).  Praktisch entscheidet
+    aber etwas anderes, nämlich die <strong>Verdrehsicherung des Motors</strong>.</p>
+    <p>Ein Vierkantrohr hat Planflächen: Die Motorplatte wird direkt aufgeschraubt, fertig.  Ein
+    Rundrohr braucht Klemmschellen und Motormounts, und die können sich verdrehen.  Eine Rechnung aus
+    der Praxis (vier Arme, je 27&nbsp;cm): 15 × 15&nbsp;mm Vierkant wiegt 82&nbsp;g inklusive direkt
+    aufgeschraubter Motoren.  Ein 16-mm-Rundrohr wiegt zwar nur 77&nbsp;g, braucht aber vier Motormounts
+    à 26&nbsp;g, macht zusammen <strong>180&nbsp;g, also mehr als das Doppelte</strong>.</p>
+    <p><strong>Und eine Warnung:</strong> Fräse niemals eine Fläche an ein Rundrohr, um dort etwas
+    aufzuschrauben.  Das durchtrennt die tragenden Fasern.  Ein Hersteller beziffert den Verlust auf
+    rund 40&nbsp;Prozent Torsionsfestigkeit (Herstellerangabe, nicht unabhängig geprüft).  Wenn du eine
+    ebene Fläche brauchst, nimm ein Vierkantrohr.</p>
+
+    <h3>Kleben statt bohren</h3>
+    <p>Jedes Bohrloch <strong>durchtrennt tragende Endlosfasern</strong>.  Die Kraft muss danach über
+    die Matrix um das Loch herum, dort entstehen Spannungsspitzen, und genau dort beginnt der Riss.
+    Ein Rohrhersteller formuliert es unmissverständlich: Bohren und Verschrauben von Rohren sei
+    <em>keine empfohlene Methode</em>, weil es die Rohrwand schwächt.</p>
+    <p>Wenn geklebt wird, dann richtig.  Die Zahlen aus der Praxis:</p>
+    <ul>
+      <li><strong>Klebespalt 0,13 bis 0,25&nbsp;mm</strong> pro Seite.  Zu eng heißt zu wenig Kleber,
+      zu weit heißt Festigkeitsverlust.</li>
+      <li><strong>Klebelänge mindestens das Zwei- bis Dreifache des Innendurchmessers.</strong>  Bei
+      16 bis 20&nbsp;mm Armen also 40 bis 75&nbsp;mm Überlappung, nicht 10&nbsp;mm.</li>
+      <li><strong>Oberflächenvorbereitung ist der eigentliche Festigkeitstreiber:</strong> anschleifen
+      (120er Korn, der Glanz muss vollständig weg), entfetten mit Aceton oder Isopropanol, mit
+      Handschuhen arbeiten.  Hautfett auf der Klebefläche ruiniert die Verbindung.</li>
+      <li><strong>Galvanische Korrosion beachten:</strong> Carbon und blankes Aluminium bilden ein
+      galvanisches Element.  Eloxiertes Alu verwenden, oder die Epoxidschicht als Isolator, oder eine
+      Glasfaserlage dazwischen.</li>
+      <li><strong>Kein Gewinde direkt ins Carbon.</strong>  Immer einen Metalleinsatz einkleben und das
+      Gewinde ins Metall schneiden.</li>
+    </ul>
+    <p>Und falls doch geklemmt wird: breite Schellen statt schmaler, gleichmäßig anziehen, und lieber
+    ein gewickeltes Rohr mit Umfangslagen verwenden, das die Klemmkraft aushält.  Ein Nm-Wert dafür
+    kursiert in Foren, aber <strong>wir haben keine belastbare Quelle dafür gefunden und nennen deshalb
+    keine Zahl</strong>.</p>
+
+    <h2>9. Warum große Copter ein Vibrationsproblem haben, das man nicht wegfiltern kann</h2>
+    <p>Das ist der wichtigste Abschnitt dieses Ratgebers, und er wird selten erklärt.</p>
+    <p>Das offizielle Betaflight-Wiki beschreibt den Mechanismus so: Ein flexibler Arm hat eine
+    Resonanzfrequenz.  <strong>Masse am Armende (also ein schwerer Motor) senkt diese Frequenz und
+    verstärkt die Resonanz.  Ein steiferer Arm schiebt sie nach oben und dämpft sie.</strong></p>
+    <p>Bei großen Coptern wirken beide Effekte gegen dich: Der Motor ist viel schwerer (rund 250&nbsp;g
+    statt 32&nbsp;g), und der Arm ist viel länger (rund 294&nbsp;mm statt 110&nbsp;mm).</p>
+    <p>Rechnet man die erste Biegeeigenfrequenz überschlägig als Kragbalken mit Endmasse, landet man
+    bei rund <strong>54&nbsp;Hz für einen 13-Zoll-Arm</strong> gegenüber rund <strong>108&nbsp;Hz beim
+    5-Zöller</strong>.  Und damit liegt die Armresonanz des großen Copters <strong>mitten in der
+    Regelbandbreite des Flight Controllers</strong>.</p>
+    <p>Die Konsequenz ist hart: Ein Notch-Filter genau dort würde die eigentliche Flugdynamik
+    mitfiltern und den Regelkreis zerstören.  Das Betaflight-Wiki sagt zu genau diesem Fall, das
+    Problem lasse sich <em>nicht durch Filtern der Gyro-Daten beseitigen</em>, weil die
+    Schwingungsfrequenz in dem Bereich liegt, den man zum Fliegen braucht.</p>
+    <p><strong>Bei großen Coptern ist Armsteifigkeit deshalb kein Komfortthema, sondern die einzige
+    Stellschraube, die es gibt.  Software kann dieses Problem prinzipiell nicht lösen.</strong></p>
+    <p class="muted" style="font-size:14px">Die 54 und 108&nbsp;Hz sind unsere eigene Abschätzung mit
+    einem vereinfachten Modell (starre Einspannung, Motor als Punktmasse, geschätzter E-Modul).  Es
+    sind Größenordnungen, keine Messwerte.  Kein Hersteller im 13-Zoll-Bereich veröffentlicht
+    Steifigkeits- oder Eigenfrequenzdaten; wer belastbare Zahlen will, muss messen.</p>
+
+    <h3>Die Kausalkette, die dein Tuning ruiniert</h3>
+    <p>Armflex führt dazu, dass sich der Propeller relativ zum Gyro bewegt.  Der Gyro misst diese
+    Bewegung als Lageänderung, obwohl der Copter gar nicht abweicht.  Der Regler korrigiert also
+    einen Fehler, den es nicht gibt.  Das erzeugt eine Schwingung.  Man legt Filter darüber, Filter
+    kosten Latenz, Latenz macht das Tuning schlechter.  <strong>Am Ende steht ein weich fliegender
+    Copter, dessen Ursache im Frame sitzt und nicht in den PID-Werten.</strong></p>
+
+    <h3>Die Dicken, die in der Praxis verbaut werden</h3>
+    <table>
+      <tr><th>Klasse</th><th>Arm</th><th>Beispiel</th></tr>
+      <tr><td>5 Zoll Freestyle</td><td>5 bis 6 mm Platte</td><td>STEELE 5: 5 mm; AOS HS5: 6 mm</td></tr>
+      <tr><td>7 bis 7,5 Zoll Longrange</td><td>5 bis 6 mm Platte</td><td>iFlight Chimera7 Pro V2: 6 mm, Rahmen 175 g</td></tr>
+      <tr><td>10 Zoll</td><td>6 mm Platte</td><td>iFlight Chimera CX10: 6 mm, Radstand 452 mm</td></tr>
+      <tr><td><strong>13 Zoll</strong></td><td><strong>Vierkantrohr</strong></td><td>Axisflying Manta 13: 20 × 20 mm, Armlänge 294 mm · DarwinFPV Toruk13: 22 × 22 mm</td></tr>
+      <tr><td>15 Zoll</td><td>Rohr oder sehr dicke Platte</td><td>iFlight iXC15: Rohr 20 × 20 × 1 mm, Radstand 950 mm, Rahmen 643 g · RJX APEXEVO: 8 mm Platte plus 4 mm Streben</td></tr>
+    </table>
+    <p>Ein Detail, das die Kräfte greifbar macht: Ein 5-Zoll-Frame wird mit M3 verschraubt, der
+    Toruk13 mit <strong>M6 und Sicherungsmuttern</strong>.  Das ist kein Übermut, das ist die Antwort
+    auf die Klemmlast.</p>
+    <p>Und die Regel, die man sich merken sollte: <strong>Die Biegesteifigkeit einer Platte wächst mit
+    der dritten Potenz der Dicke.</strong>  Von 3 auf 4&nbsp;mm sind das <strong>2,37-mal steifer</strong>
+    bei nur 33&nbsp;Prozent mehr Gewicht.  Am Arm ist zusätzliche Dicke fast immer besser investiert
+    als anderswo gespartes Gewicht.</p>
+
+    <h2>10. Carbon oder Aluminium?</h2>
+    <table>
+      <tr><th></th><th>Carbon (quasi-isotropes Laminat)</th><th>Aluminium</th></tr>
+      <tr><td>E-Modul</td><td>70 GPa</td><td>68,9 GPa</td></tr>
+      <tr><td>Zugfestigkeit</td><td>1.035 MPa</td><td>450 MPa</td></tr>
+      <tr><td>Dichte</td><td>1,6 g/cm³</td><td>2,7 g/cm³</td></tr>
+      <tr><td>Spezifische Steifigkeit</td><td><strong>43,8</strong></td><td>25,6</td></tr>
+      <tr><td>Versagen</td><td>schlagartiger Bruch, kein Fließen</td><td>verbiegt sich</td></tr>
+    </table>
+    <p>Der Merksatz, der fast jeden überrascht: <strong>Carbon ist nicht steifer als Aluminium.  Es ist
+    genauso steif, bei 60&nbsp;Prozent des Gewichts.</strong>  Bei gleicher Plattendicke gewinnst du
+    also kein bisschen Steifigkeit, sondern Gewicht.  Die Steifigkeit holst du über die Dicke zurück,
+    und weil die dritte Potenz für dich arbeitet, geht die Rechnung trotzdem klar zugunsten von Carbon
+    auf.</p>
+    <p>Der zweite Unterschied ist der, den man im Crash spürt: Aluminium verbiegt sich, Carbon bricht.
+    Carbon hat keinen Fließbereich.  Es hält, hält, hält, und dann ist es durch.</p>
+
+    <h2>11. Carbon bearbeiten: was funktioniert und was nicht</h2>
+    <table>
+      <tr><th>Verfahren</th><th>Eignung</th><th>Warum</th></tr>
+      <tr><td><strong>CNC-Fräsen</strong></td><td><strong>Der Standard</strong></td><td>Saubere Kanten, enge Bohrbilder, wenig Verschnitt.  Braucht Diamantwerkzeug und Absaugung.</td></tr>
+      <tr><td><strong>Wasserstrahl</strong> (abrasiv)</td><td>Gut, mit Einschränkung</td><td>Kalt, keine Wärmeeinflusszone, <strong>kein Staub</strong>.  Kritisch ist das Anstechen: Der Strahl läuft zwischen die Lagen und delaminiert.  Vorbohren oder angepasste Anschnitt-Technik nötig.</td></tr>
+      <tr><td><strong>Laser</strong> (CO₂, der typische Werkstattlaser)</td><td><strong>Ungeeignet</strong></td><td>Die Faser ist hitzefest, das Harz nicht.  Das Harz verbrennt weit über die Schnittfuge hinaus: Wärmeeinflusszone, Delamination, herausgezogene Fasern.</td></tr>
+      <tr><td>Säge, Dremel, Feile</td><td>Für Zuschnitt und Nacharbeit</td><td>Hartmetall- oder Diamantwerkzeug, feine Zahnung.  Nass schleifen.</td></tr>
+    </table>
+    <p class="muted" style="font-size:14px">Fairnesshalber: Ultrakurzpuls-Laser (Piko- und Femtosekunde)
+    erzielen in der Forschung sehr gute Kanten.  Für Werkstatt und Hobby sind sie wirtschaftlich
+    irrelevant.  Gemeint ist hier der übliche CO₂-Laser.</p>
+
+    <h3>Werkzeug und Verschleiß</h3>
+    <p>Beim Fräsen von Carbon entsteht <strong>kein Span</strong>.  Die Schneide zertrümmert Fasern und
+    Matrix.  Deshalb braucht es extrem scharfe Schneiden mit hohem positivem Spanwinkel, und deshalb
+    verschleißen die Werkzeuge brutal:</p>
+    <ul>
+      <li><strong>Polykristalliner Diamant (PCD)</strong> ist der Referenzschneidstoff: bis zu dreimal
+      schneller und bis zu 25-mal längere Standzeit als Hartmetall.</li>
+      <li>Ein Hartmetallfräser, der in Aluminium über 100 Stunden hält, ist in Carbon nach
+      <strong>60 bis 90 Minuten</strong> hinüber (Erfahrungswert aus der Praxis, kein Laborwert).</li>
+      <li>Richtwerte aus der Praxis: hohe Drehzahl (15.000 bis 30.000&nbsp;min⁻¹), <strong>geringe
+      Zustellung</strong> (etwa 0,5&nbsp;mm), moderater Vorschub (600 bis 900&nbsp;mm/min).  Aggressiv
+      schneiden heißt splitternde Kanten und ruinierte Fräser.</li>
+    </ul>
+    <p>Ein sauber belegter Zusammenhang, den man kennen sollte: <strong>Die Delamination am
+    Werkzeugaustritt korreliert mit der Axialkraft, und die steigt mit dem Werkzeugverschleiß.</strong>
+    Ein stumpfer Fräser produziert also nicht nur hässliche Kanten, er delaminiert das Bauteil.
+    Fräser sind Verbrauchsmaterial, kein Investitionsgut.</p>
+    <p>Woran du eine stumpfe Schneide ohne Messtechnik erkennst: Der Staub wird gröber und fusseliger,
+    und das Schnittgeräusch wird höher, weil das Werkzeug reibt statt zu schneiden.</p>
+
+    <h2>12. Der Staub: das eigentliche Risiko</h2>
+    <p>Hier wird viel Unsinn erzählt, in beide Richtungen.  Deshalb der Reihe nach.</p>
+
+    <h3>Nein, Carbon ist nicht das neue Asbest</h3>
+    <p>Eine Carbonfaser hat einen Durchmesser von <strong>rund 7&nbsp;µm</strong>.  Lungengängig nach
+    WHO-Definition ist eine Faser aber erst, wenn sie <strong>dünner als 3&nbsp;µm</strong> ist (bei
+    über 5&nbsp;µm Länge und einem Verhältnis über 3:1).  Die intakte Carbonfaser erfüllt dieses
+    Kriterium <strong>nicht</strong>.  Die DGUV-Orientierungshilfe formuliert es so: Die Entstehung
+    lungengängiger Carbonfaserpartikel nach WHO-Definition aus diesem Material sei „wenig
+    wahrscheinlich".  Untersuchungen fanden zudem keine erkennbare Zytotoxizität im relevanten
+    Konzentrationsbereich.  Der Vergleich mit Asbest ist fachlich nicht haltbar.</p>
+
+    <h3>Ja, beim Bearbeiten wird es trotzdem gefährlich</h3>
+    <p>Denn: <strong>Beim Fräsen, Schleifen und Sägen entstehen Faserbruchstücke, die die
+    WHO-Definition sehr wohl erfüllen.</strong>  Diese Bruchstücke sind steif und biobeständig, die
+    Lunge bekommt sie also nicht wieder heraus.  Die Berufsgenossenschaft schreibt klar, dass bei der
+    Bearbeitung Fasern entstehen, die bis tief in die Lunge gelangen können.  Dazu kommen mechanisch
+    reizende Wirkungen auf Haut und Augen.</p>
+    <p>Die ehrliche Einordnung lautet also: <strong>kein Asbest, aber Vorsorgeprinzip.</strong>  Die
+    Datenlage zur Langzeitwirkung ist unvollständig, und das ist ein Grund für Vorsicht, keiner für
+    Entwarnung.</p>
+
+    <h3>Der zweite Risikopfad, den fast alle übersehen: Carbonstaub leitet Strom</h3>
+    <p>Die DGUV nennt neben Einatmen und Hautkontakt ausdrücklich die <strong>elektrische
+    Gefährdung</strong>.  Und das Umweltbundesamt liefert das drastischste Argument dafür: In
+    Müllverbrennungsanlagen verursachen Carbonfasern <strong>in den Filteranlagen Kurzschlüsse</strong>,
+    weil sie elektrisch leitfähig sind.</p>
+    <p>Wenn der Staub Industriefilteranlagen lahmlegt, dann legt er auch deinen Lötplatz lahm.  Für die
+    Werkstatt heißt das ganz praktisch: <strong>Carbonarbeiten räumlich getrennt von Elektronik,
+    Lagerbestand und Flugakkus.</strong>  Der Staub setzt sich in Spindeln, Motoren und Platinen fest,
+    und er ist der Grund, warum Maschinen in Carbon-Werkstätten früher sterben.</p>
+
+    <h3>Warum ein normaler Werkstattsauger gefährlich ist</h3>
+    <p>Das ist der Satz, der in diesem Artikel am ehesten jemandem die Lunge rettet.  Die Staubklassen
+    nach DIN EN 60335-2-69:</p>
+    <table>
+      <tr><th>Klasse</th><th>Maximaler Durchlass</th><th>Abscheidegrad</th><th>Wofür</th></tr>
+      <tr><td>L</td><td>1 %</td><td>ab 99 %</td><td>Hausstaub, Sand, Gips</td></tr>
+      <tr><td>M</td><td>0,1 %</td><td>ab 99,9 %</td><td>Holz-, Metall-, Betonstaub</td></tr>
+      <tr><td><strong>H</strong></td><td><strong>0,005 %</strong></td><td>ab 99,995 %</td><td>krebsverdächtige Stäube, Mineralfasern, Asbest</td></tr>
+    </table>
+    <p>Ein Sauger mit zu niedriger Klasse <strong>filtert den Feinstaub nicht, er bläst ihn über die
+    Abluft zurück in die Atemluft</strong>.  Der Baumarktsauger ist damit kein halber Schutz, sondern
+    ein <strong>Staubverteiler</strong>: Er saugt den groben Dreck auf und pustet dir genau die
+    Fraktion ins Gesicht, die in die Lunge geht.  Die Anforderung an das Filtermaterial ist bei Klasse
+    H rund <strong>200-mal höher</strong> als beim Haushaltssauger.</p>
+
+    <h3>Was du wirklich brauchst</h3>
+    <p>In der Rangfolge des Arbeitsschutzes (erst Verfahren, dann Technik, dann Organisation, dann
+    persönliche Schutzausrüstung):</p>
+    <ul>
+      <li><strong>Verfahren:</strong> Wasserstrahl erzeugt gar keinen Staub.  <strong>Nassschnitt</strong>
+      oder Fräsen unter Sprühnebel bindet ihn an der Quelle.  Für Composites ist reines Wasser das
+      bevorzugte Kühlmittel, <strong>kein Öl</strong>: Die poröse Oberfläche saugt es auf, und dann
+      klebt und lackiert später nichts mehr.</li>
+      <li><strong>Technik:</strong> Absaugung an der Quelle mit <strong>Staubklasse H</strong>,
+      Einhausung der Maschine.</li>
+      <li><strong>Organisation:</strong> Carbon getrennt von Elektronik.  Getrennte Werkzeuge.  Nach
+      der Arbeit <strong>feucht wischen, niemals trocken kehren oder ausblasen</strong>.</li>
+      <li><strong>Schutzausrüstung:</strong> <strong>FFP3</strong> (99&nbsp;Prozent Filterleistung) als
+      Zielgröße, FFP2 (94&nbsp;Prozent) als absolutes Minimum.  Dazu dichtschließende Schutzbrille
+      (Carbonsplitter im Auge sind extrem schmerzhaft) und Nitrilhandschuhe.</li>
+    </ul>
+    <p class="muted" style="font-size:14px">Zur FFP-Frage gibt es widersprüchliche Empfehlungen: Ein
+    Industrieverband nennt „mindestens FFP2", die Praxisquellen tendieren zu FFP3.  Da es sich um einen
+    Verdacht auf krebserzeugende Wirkung handelt, halten wir FFP3 für die richtige Vorgabe.</p>
+
+    <h3>Die Rechtslage in Deutschland, kurz und ehrlich</h3>
+    <p>Es gibt <strong>keinen stoffspezifischen Grenzwert für CFK-Staub</strong>.  Geregelt wird über
+    den allgemeinen Staubgrenzwert nach TRGS 900: <strong>1,25&nbsp;mg/m³ für A-Staub</strong>
+    (alveolengängig) und <strong>10&nbsp;mg/m³ für E-Staub</strong> (einatembar).  Die zentrale
+    Handreichung ist die <strong>DGUV-Information FBHM-074 „Bearbeitung von CFK-Materialien"</strong>
+    (Ausgabe 03/2024); sie greift bei Tätigkeiten oberhalb von <strong>250.000 Fasern/m³</strong> oder
+    bei Überschreitung des allgemeinen Staubgrenzwerts.</p>
+    <p>Diese Regeln gelten für <strong>Beschäftigte</strong>, also sobald jemand für dich arbeitet, auch
+    ein Aushilfe oder Azubi.  Der reine Privatbastler ist rechtlich nicht gebunden.  <strong>Seine
+    Lunge schon.</strong></p>
+
+    <h2>13. Entsorgung: die unbequeme Wahrheit</h2>
+    <p>Hier hat der Werkstoff sein hässlichstes Kapitel, und es wird in Ratgebern praktisch nie
+    erwähnt.</p>
+    <p>Das Umweltbundesamt schreibt: CFK eignet sich <strong>nicht für die Verbrennung</strong>.  Die
+    Fasern bleiben als Knäuel weitgehend unverbrannt zurück und verursachen in den Filteranlagen
+    Kurzschlüsse.  Müllverbrennungsanlagen nehmen entsprechende Chargen berechtigterweise nicht an.
+    Auch die <strong>Deponierung ist nach der Deponieverordnung grundsätzlich nicht zulässig</strong>.
+    Das Fazit des UBA im Originalton: <em>„die Entsorgung bleibt eine ungelöste Aufgabe."</em></p>
+    <p>Recycling gibt es, aber nur über <strong>Pyrolyse</strong>, industriell in Europa an sehr wenigen
+    Standorten, und die Fasern überstehen nur ein bis zwei Kreisläufe, bevor sie zu kurz sind.  In
+    Deutschland fallen rund <strong>3.000 Tonnen CFK-Abfall pro Jahr</strong> an.</p>
+    <p>Und was macht der Copter-Bauer mit 200&nbsp;g Verschnitt und dem Staub im Sauger?  <strong>Wir
+    haben dazu keine geltende Regelung gefunden.</strong>  Restmüll ist gängige Praxis, aber nicht der
+    vom UBA vorgesehene Weg; für die kommunale Handhabung von Kleinmengen ist der örtliche Entsorger
+    der richtige Ansprechpartner.  Wir stellen das hier bewusst nicht als geklärt dar, weil es das
+    nicht ist.</p>
+
+    <h2>14. Was das für deinen nächsten Build heißt</h2>
+    <ul>
+      <li><strong>Ignoriere „T700" als Steifigkeitsargument.</strong>  T300 und T700 sind gleich steif.
+      Frag stattdessen nach dem Lagenaufbau, der Plattendicke und dem Fertigungsverfahren.</li>
+      <li><strong>Wiege deine Platte.</strong>  1,50 bis 1,60&nbsp;g/cm³.  Alles darüber ist Glasfaser
+      oder Harz, und beides bezahlst du mit Gewicht ohne Gegenleistung.</li>
+      <li><strong>Bei 13 Zoll gehören Rohre an die Arme</strong>, und zwar gewickelte, keine
+      pultrudierten.  Der Preisunterschied ist real, der Festigkeitsunterschied auch.</li>
+      <li><strong>Steifigkeit ist bei großen Coptern ein Flugproblem, kein Crash-Problem.</strong>  Ein
+      weicher Arm ruiniert das Tuning, und kein Filter der Welt holt das zurück.</li>
+      <li><strong>Bohre so wenig wie möglich.</strong>  Jedes Loch schneidet die Fasern durch, die die
+      Last tragen sollen.  Kleben ist die bessere Verbindung, wenn Spalt, Länge und Vorbereitung
+      stimmen.</li>
+      <li><strong>Fräs nicht ohne H-Klasse-Absaugung und FFP3.</strong>  Der Staub ist lungengängig,
+      sobald du ihn erzeugst, und leitfähig genug, um deine Elektronik mitzunehmen.</li>
+    </ul>
+
+    <p style="margin-top:16px">Wir bauen 13-Zoll-Copter und beraten herstellerneutral zu Frame,
+    Antrieb und Aufbau.  Wenn du unsicher bist, welche Bauart zu deinem Vorhaben passt, sprich uns an,
+    bevor du bestellst.</p>
+    <p style="margin-top:14px">
+      <a href="https://shop.dracolabsgermany.com">➜ Frames und Komponenten ab 13 Zoll im Shop</a><br>
+      <a href="index.html#kontakt">➜ Persönliche Beratung zu deinem Build anfragen</a>
+    </p>
+
+    <p class="muted" style="margin-top:34px; font-size:14px">
+      Dieser Ratgeber ersetzt keine individuelle technische Prüfung und keine
+      Gefährdungsbeurteilung nach Gefahrstoffrecht.  Alle Angaben ohne Gewähr.  Wo wir gerechnet statt
+      gemessen haben, steht es ausdrücklich dabei.
+    </p>
+
+    <h2>Quellenangaben</h2>
+    <ol class="muted" style="font-size:14px; line-height:1.9; padding-left:20px">
+      <li>Nunna et al., „A review of the structural factors which control compression in carbon fibres",
+        Heliyon 5(10), 2019 (Prozesskette, Ausbeute, Kostenstruktur):
+        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6820247/" rel="noopener" target="_blank">pmc.ncbi.nlm.nih.gov/articles/PMC6820247</a></li>
+      <li>Yu et al., Nanomaterials 15(17), 2025 (Verstreckung, Graphitierung, E-Modul):
+        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12430672/" rel="noopener" target="_blank">pmc.ncbi.nlm.nih.gov/articles/PMC12430672</a></li>
+      <li>Wuppertal Institut, Paper Nr. 90 (Ausbeute, Energiebedarf, Materialintensität):
+        <a href="https://epub.wupperinst.org/files/926/WP90.pdf" rel="noopener" target="_blank">epub.wupperinst.org: WP90 (PDF)</a></li>
+      <li>Prenzel et al., Polymers 16(1), 2024 (Energiebedarf, aktuellere Erhebung):
+        <a href="https://www.mdpi.com/2073-4360/16/1/12" rel="noopener" target="_blank">mdpi.com/2073-4360/16/1/12</a></li>
+      <li>Toray, TORAYCA Typical Fiber Properties (Faserkennwerte T300 bis M60J):
+        <a href="https://toray-cfe.com/wp-content/uploads/2025/02/Torayca-Typical-Fibers-Properties.pdf" rel="noopener" target="_blank">toray-cfe.com: Typical Fibers Properties (PDF)</a></li>
+      <li>Easy Composites, Technisches Datenblatt XPREG XC110 (Prepreg, Tg, Laminatkennwerte):
+        <a href="https://www.easycomposites.co.uk/xc110-210g-22-twill-3k-prepreg-carbon-fibre" rel="noopener" target="_blank">easycomposites.co.uk: XC110</a></li>
+      <li>Easy Composites, „Carbon Fibre Tubes Explained" (Vergleichstest Roll-Wrapping, Pultrusion, Metall):
+        <a href="https://www.easycomposites.co.uk/learning/carbon-fibre-tubes-explained" rel="noopener" target="_blank">easycomposites.co.uk/learning/carbon-fibre-tubes-explained</a></li>
+      <li>R&amp;G Faserverbundwerkstoffe, Vergleichsdaten Epoxidharzsysteme (Tg, Wärmeformbeständigkeit):
+        <a href="https://www.r-g.de/wiki/Vergleichsdaten_Epoxidharzsysteme" rel="noopener" target="_blank">r-g.de/wiki/Vergleichsdaten_Epoxidharzsysteme</a></li>
+      <li>Haufler Composites, CFK-Platten (Kennwerte 0/90, quasi-isotrop, UD):
+        <a href="https://www.cfk-platten.de/CFK-Platten.html" rel="noopener" target="_blank">cfk-platten.de</a></li>
+      <li>DragonPlate, „How to Spot the Difference Between Good and Poor Quality Carbon Fiber" und
+        „Beware of Low Quality Suppliers Using Expired Prepreg":
+        <a href="https://dragonplate.com/how-to-spot-the-difference-between-good-quality-and-poor-quality-carbon-fiber" rel="noopener" target="_blank">dragonplate.com: Qualität erkennen</a></li>
+      <li>Betaflight-Wiki, „Soft Mounting and Noise Reduction" (Armresonanz, Grenzen der Filterung):
+        <a href="https://betaflight.com/docs/wiki/guides/current/Soft-Mounting-and-Noise-Reduction" rel="noopener" target="_blank">betaflight.com: Soft Mounting and Noise Reduction</a></li>
+      <li>Rock West Composites, „How Fiber Direction Influences Tube and Plate Properties":
+        <a href="https://www.rockwestcomposites.com/how-fiber-direction-influences-tube-and-plate-properties.html" rel="noopener" target="_blank">rockwestcomposites.com: Faserrichtung</a></li>
+      <li>Clearwater Composites, „How to Bond Carbon Fiber Tubes" (Klebespalt, Klebelänge, Vorbereitung):
+        <a href="https://www.clearwatercomposites.com/resources/how-to-guides/bond-carbon-fiber-tubes/" rel="noopener" target="_blank">clearwatercomposites.com: Rohre kleben</a></li>
+      <li>CNCCookbook, „Machining Carbon Fiber Composites" (PCD-Werkzeuge, Kühlung, Kantenqualität):
+        <a href="https://www.cnccookbook.com/machining-carbon-fiber-composites-drilling-cnc-tools/" rel="noopener" target="_blank">cnccookbook.com: Carbon zerspanen</a></li>
+      <li>DGUV, FBHM-074 „Bearbeitung von CFK-Materialien: Orientierungshilfe für Schutzmaßnahmen",
+        Ausgabe 03/2024:
+        <a href="https://publikationen.dguv.de/regelwerk/publikationen-nach-fachbereich/holz-und-metall/fahrzeugbau-antriebssysteme-instandhaltung/4944/" rel="noopener" target="_blank">publikationen.dguv.de: FBHM-074</a></li>
+      <li>DGUV, Allgemeiner Staubgrenzwert (A-Staub 1,25 mg/m³, E-Staub 10 mg/m³) und WHO-Faserdefinition:
+        <a href="https://www.dguv.de/staub-info/rechtsgrundlagen/grenzwerte/asgw/index.jsp" rel="noopener" target="_blank">dguv.de: Allgemeiner Staubgrenzwert</a></li>
+      <li>BG ETEM, „Faserverstärkte Kunststoffe (CFK und GFK): Gefährdungen":
+        <a href="https://www.bgetem.de/" rel="noopener" target="_blank">bgetem.de</a></li>
+      <li>Umweltbundesamt, „Faserverbundwerkstoffe: Zukunftsmaterial mit offener Entsorgungsfrage":
+        <a href="https://www.umweltbundesamt.de/faserverbundwerkstoffe-zukunftsmaterial-offener" rel="noopener" target="_blank">umweltbundesamt.de: Faserverbundwerkstoffe</a></li>
+      <li>Herstellerangaben zu den genannten Frames: Axisflying Manta 13 X Lite, DarwinFPV Toruk13,
+        iFlight iXC15 und Chimera-Serie (Geometrie, Materialstärken, Gewichte), abgerufen Juli 2026.</li>
+    </ol>
+
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <nav class="social" aria-label="Draco Labs in sozialen Netzwerken">
+      <a href="https://www.youtube.com/@DracoLabsGermany" rel="noopener" class="yt" aria-label="Draco Labs auf YouTube">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/draco.labs.germany" rel="noopener" class="ig" aria-label="Draco Labs auf Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c0-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 3.1A6.7 6.7 0 1 0 18.7 12 6.7 6.7 0 0 0 12 5.3Zm0 11a4.3 4.3 0 1 1 4.3-4.3 4.3 4.3 0 0 1-4.3 4.3ZM19 5a1.6 1.6 0 1 1-1.6-1.6A1.6 1.6 0 0 1 19 5Z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@dracolabsgermany" rel="noopener" class="tt" aria-label="Draco Labs auf TikTok">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16.6 2h-3.1v13.1a2.7 2.7 0 1 1-2.7-2.7c.2 0 .4 0 .6.1V9.3a6 6 0 0 0-.6 0 5.8 5.8 0 1 0 5.8 5.8V8.6a7 7 0 0 0 4.1 1.3V6.8a3.9 3.9 0 0 1-4.1-3.9V2Z"/></svg>
+      </a>
+    </nav>
+    <div class="links">
+      <a href="index.html">Startseite</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </div>
+    <div>© 2026 Draco Labs Germany · Kleinunternehmer gem. § 19 UStG</div>
+  </div>
+</footer>
+</body>
+</html>

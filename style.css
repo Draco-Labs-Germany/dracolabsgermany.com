@@ -30,16 +30,20 @@ header.site {
   background: rgba(23, 27, 32, .94); backdrop-filter: blur(8px);
   position: sticky; top: 0; z-index: 10;
 }
+/* Typografie des Kopfes 1:1 aus dem Shop-Theme (header.shop/.brand/nav.main),
+   sonst wirkt die Navi trotz gleicher Schriftfamilie „anders" als im Shop. */
 header.site .wrap {
-  display: flex; align-items: center; gap: 14px; padding: 10px 20px;
+  display: flex; align-items: center; gap: 12px; height: 68px; padding: 0 24px;
 }
-header.site img { height: 44px; width: auto; }
+header.site img { height: 44px; width: 44px; object-fit: contain; }
 header.site .name {
-  font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  font-weight: 800; font-size: 1.02rem; letter-spacing: .10em; text-transform: uppercase;
 }
-header.site .name small { display: block; font-size: 10px; letter-spacing: .4em; color: var(--muted); }
-header.site nav { margin-left: auto; display: flex; gap: 18px; font-size: 14px; }
-header.site nav a { color: var(--ink); padding: 4px 0; border-bottom: 2px solid transparent; }
+header.site .name small {
+  display: block; font-size: .58rem; font-weight: 600; letter-spacing: .34em; color: var(--muted);
+}
+header.site nav { margin-left: auto; display: flex; gap: 22px; font-size: .9rem; }
+header.site nav a { color: var(--ink); font-weight: 500; padding: 4px 0; border-bottom: 2px solid transparent; }
 header.site nav a:hover { border-bottom-color: var(--cyan); text-decoration: none; }
 
 /* Shop-Button — bleibt auf JEDER Breite sichtbar, auch wenn das Menü zuklappt.
@@ -138,8 +142,10 @@ footer.site nav.social a.tt:hover { background: #000; }
    Burger; Logo und Shop-Button bleiben immer stehen. */
 @media (max-width: 760px) {
   .wrap { padding: 0 16px; }
-  header.site .wrap { flex-wrap: wrap; gap: 10px; }
-  header.site img { height: 36px; }
+  /* height: auto — die feste Kopfhöhe der Desktop-Regel würde das aufgeklappte
+     Burger-Menü abschneiden, das hier in eine zweite Zeile umbricht. */
+  header.site .wrap { flex-wrap: wrap; gap: 10px; height: auto; padding: 10px 16px; }
+  header.site img { height: 36px; width: 36px; }
   header.site .name { font-size: 14px; margin-right: auto; }
   .shop-btn { order: 2; padding: 8px 13px; }
   .burger { display: block; order: 3; }
