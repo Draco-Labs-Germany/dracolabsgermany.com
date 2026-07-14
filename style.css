@@ -224,3 +224,23 @@ main.legal td:last-child { border-right: 0; }
 main.legal tr:last-child td { border-bottom: 0; }
 main.legal tbody tr:nth-child(even),
 main.legal tr:nth-child(even) { background: rgba(255, 255, 255, .025); }
+
+/* Tabellen auf dem Handy — der alte Word-Trick: die Spaltenköpfe stehen hochkant,
+   dadurch dürfen die Spalten schmal werden. Der Fließtext in den Zellen wird
+   kleiner, und falls es trotzdem nicht passt, scrollt die Tabelle für sich. */
+@media (max-width: 760px) {
+  main.legal table { display: block; overflow-x: auto; font-size: 13px; }
+  main.legal td { padding: 8px 10px; }
+  main.legal th {
+    padding: 10px 6px; font-size: 12px; line-height: 1.25;
+    writing-mode: vertical-rl; transform: rotate(180deg);
+    white-space: nowrap; text-align: left; vertical-align: bottom;
+  }
+  main.legal th br { display: none; }
+  main.legal th .muted { display: none; }
+  /* Erste Spalte ist die Zeilenbeschriftung — die bleibt waagerecht lesbar. */
+  main.legal th:first-child {
+    writing-mode: horizontal-tb; transform: none;
+    padding: 10px 12px; vertical-align: middle;
+  }
+}
