@@ -24,6 +24,10 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-
 h1, h2, h3 { text-wrap: balance; }
 .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
 
+/* Sprungziele der Kopf-Navi: der sticky Header (68px) wuerde sonst den
+   Abschnittsanfang verdecken und z. B. #leistungen wie #ratgeber aussehen lassen. */
+[id] { scroll-margin-top: 88px; }
+
 /* Kopf */
 header.site {
   border-bottom: 1px solid var(--line);
