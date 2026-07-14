@@ -70,6 +70,23 @@ footer.site {
 }
 footer.site .links { display: flex; flex-wrap: wrap; gap: 18px; margin-bottom: 10px; }
 
+/* Social-Leiste — identisch zum Shop-Theme (shop/design/theme/assets/base.css).
+   Monochrom, Markenfarbe erst beim Hover; Inline-SVG, damit keine Grafiken von
+   Meta/ByteDance beim Seitenaufruf nachgeladen werden (Drittanbieter-Request). */
+footer.site nav.social { display: flex; gap: 12px; margin-bottom: 22px; }
+footer.site nav.social a {
+  width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--panel); border: 1px solid var(--line);
+  transition: background .15s, border-color .15s, transform .15s;
+}
+footer.site nav.social svg { width: 19px; height: 19px; fill: var(--muted); transition: fill .15s; }
+footer.site nav.social a:hover { transform: translateY(-2px); border-color: transparent; }
+footer.site nav.social a:hover svg { fill: #fff; }
+footer.site nav.social a.yt:hover { background: #ff0000; }
+footer.site nav.social a.ig:hover { background: linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7); }
+footer.site nav.social a.tt:hover { background: #000; }
+@media (prefers-reduced-motion: reduce) { footer.site nav.social a:hover { transform: none; } }
+
 /* Rechtstexte & Ratgeber */
 main.legal { padding: 48px 0; }
 main.legal .wrap { max-width: 900px; }
