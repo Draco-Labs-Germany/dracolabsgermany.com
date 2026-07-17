@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TikTok-Verbindung — Draco Labs Germany</title>
+<link rel="icon" type="image/png" href="assets/emblem.png">
+<link rel="stylesheet" href="style.css">
+<style>
+  .cb { max-width: 640px; margin: 8vh auto; padding: 0 20px; }
+  .code-box { display:flex; gap:8px; margin:12px 0 4px; }
+  .code-box input { flex:1; font-family:ui-monospace,monospace; font-size:15px;
+    padding:12px; border:1px solid #4a5763; border-radius:8px; background:#1f272e; color:#e8eef2; }
+  .code-box button { padding:12px 18px; border:0; border-radius:8px; cursor:pointer;
+    background:#c8863b; color:#1a1f24; font-weight:600; }
+  .hint { color:#9aa7b2; font-size:14px; }
+  .err { color:#e57373; }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a href="index.html"><img src="assets/emblem.png" alt="Draco Labs Emblem"></a>
+    <div class="name">Draco Labs <small>Germany</small></div>
+  </div>
+</header>
+
+<main class="cb">
+  <h1>TikTok-Verbindung</h1>
+  <p id="status">Verarbeite Antwort von TikTok …</p>
+
+  <div id="ok" style="display:none">
+    <p>Login erfolgreich. Kopiere diesen Code und füge ihn im Tool ein:</p>
+    <div class="code-box">
+      <input id="code" readonly>
+      <button onclick="copyCode()">Kopieren</button>
+    </div>
+    <p class="hint">Dieses Fenster kannst du danach schließen.</p>
+  </div>
+
+  <div id="fail" style="display:none">
+    <p class="err" id="failmsg"></p>
+    <p class="hint">Bitte den <code>auth</code>-Befehl im Tool erneut starten.</p>
+  </div>
+</main>
+
+<script>
+  var p = new URLSearchParams(window.location.search);
+  var code = p.get("code");
+  var err  = p.get("error");
+  if (code) {
+    document.getElementById("status").style.display = "none";
+    document.getElementById("ok").style.display = "block";
+    document.getElementById("code").value = code;
+  } else {
+    document.getElementById("status").style.display = "none";
+    document.getElementById("fail").style.display = "block";
+    document.getElementById("failmsg").textContent =
+      "Kein Code erhalten" + (err ? (": " + err) : ".");
+  }
+  function copyCode() {
+    var el = document.getElementById("code");
+    el.select();
+    navigator.clipboard.writeText(el.value);
+  }
+</script>
+
+</body>
+</html>
