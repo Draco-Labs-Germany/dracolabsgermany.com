@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Was dein Copter dir zeigt — FPV-Video-Systeme | Draco Labs</title>
+<meta name="description" content="FPV-Videoübertragung erklärt: Analog, DJI O4, Walksnail und HDZero im Vergleich, Latenz, Reichweite, Antennen und die Rechtslage in Deutschland.">
+<meta name="keywords" content="FPV Videoübertragung, DJI O4 Air Unit, Walksnail Avatar, Caddx, HDZero, analog VTX 5,8 GHz, FPV Latenz, FPV Reichweite, Patch Antenne FPV, 25 mW EIRP, VLOS 120 m">
+<!-- Noch in Pruefung: beim Freischalten auf "index, follow" stellen -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="author" content="Draco Labs Germany">
+<link rel="canonical" href="https://dracolabsgermany.com/ratgeber-videouebertragung.html">
+
+<!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Was dein Copter dir zeigt — FPV-Videoübertragung von analog bis digital">
+<meta property="og:description" content="Analog, DJI O4, Walksnail Avatar und HDZero im Vergleich: Latenz, Reichweite, Antennen, Rekorde und die Rechtslage in Deutschland. Jede Zahl mit Quelle.">
+<meta property="og:url" content="https://dracolabsgermany.com/ratgeber-videouebertragung.html">
+<meta property="og:image" content="https://dracolabsgermany.com/assets/logo.png">
+<meta property="og:site_name" content="Draco Labs Germany">
+<meta property="og:locale" content="de_DE">
+
+<!-- Twitter/X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Was dein Copter dir zeigt — FPV-Videoübertragung von analog bis digital">
+<meta name="twitter:description" content="Analog, DJI O4, Walksnail Avatar und HDZero im Vergleich: Latenz, Reichweite, Antennen und die Rechtslage in Deutschland. Jede Zahl mit Quelle.">
+<meta name="twitter:image" content="https://dracolabsgermany.com/assets/logo.png">
+
+<link rel="icon" type="image/png" href="assets/emblem.png">
+<link rel="stylesheet" href="style.css">
+
+<!-- Strukturierte Daten für Google (Article) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Was dein Copter dir zeigt: FPV-Videoübertragung von analog bis digital",
+  "description": "FPV-Videoübertragung erklärt: Analog, DJI O4, Walksnail Avatar und HDZero im Vergleich, Latenz und Reichweite, Antennen, Rekorde und die Rechtslage in Deutschland.",
+  "image": "https://dracolabsgermany.com/assets/logo.png",
+  "datePublished": "2026-07-18",
+  "dateModified": "2026-07-18",
+  "author": { "@type": "Organization", "name": "Draco Labs Germany" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Draco Labs Germany",
+    "logo": { "@type": "ImageObject", "url": "https://dracolabsgermany.com/assets/logo.png" }
+  },
+  "mainEntityOfPage": "https://dracolabsgermany.com/ratgeber-videouebertragung.html",
+  "inLanguage": "de-DE"
+}
+</script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a href="index.html"><img src="assets/emblem.png" alt="Draco Labs Emblem"></a>
+    <div class="name">Draco Labs <small>Germany</small></div>
+    <input type="checkbox" id="menu-auf" class="menu-toggle">
+    <label for="menu-auf" class="burger" aria-label="Menü öffnen und schließen">
+      <span></span><span></span><span></span>
+    </label>
+    <nav>
+      <a href="index.html#leistungen">Leistungen</a>
+      <a href="index.html#ratgeber">Ratgeber</a>
+      <a href="index.html#ueber">Über uns</a>
+      <a href="index.html#kontakt">Kontakt</a>
+    </nav>
+    <a class="shop-btn" href="https://shop.dracolabsgermany.com">Shop →</a>
+  </div>
+</header>
+
+<main class="legal">
+  <div class="wrap">
+
+    <h1>Was dein Copter dir zeigt</h1>
+    <p class="muted" style="font-size:17px; margin-top:-4px">Die Videostrecke von analog bis digital: DJI O4, Walksnail Avatar und HDZero im Vergleich, was Latenz und Bitrate wirklich bedeuten, wie man Reichweite legal verlängert und was die Rechtslage in Deutschland erlaubt.</p>
+    <p class="muted">Ratgeber · Videotechnik &amp; FPV · Lesezeit ca. 22 Min · Stand: Juli 2026</p>
+
+    <div style="background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--cyan); border-radius:10px; padding:18px 20px; margin:22px 0">
+      <p style="margin:0 0 8px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; font-size:13px; color:var(--cyan)">Kurz gesagt</p>
+      <p style="margin:0">Dein Videobild ist eine eigene Funkstrecke, getrennt vom Steuersignal.  Analog
+      überträgt Fernsehtechnik aus den Fünfzigern: grob aufgelöst, aber ohne Kompressionslatenz,
+      und das Bild rauscht, statt einzufrieren.  Digital (DJI, Walksnail, HDZero) liefert HD, kauft
+      das aber je nach System mit Latenz und hartem Bildabriss.  In Deutschland gilt auf
+      5,8&nbsp;GHz die Grenze von <strong>25&nbsp;mW (EIRP)</strong>; die kilometerweiten
+      Hersteller-Reichweiten sind FCC-Werte und hierzulande nicht zulässig.  Interessant:
+      DJIs zweites Band 5.170 bis 5.250&nbsp;MHz ist in Deutschland für unbemannte Luftfahrzeuge
+      ausdrücklich vorgesehen, mit <strong>200&nbsp;mW mittlerer EIRP</strong>.  Der legale Hebel
+      für Reichweite sitzt ohnehin auf der Empfangsseite: eine Richtantenne an der Brille.  Und
+      rechtlich bleibt es dabei: Flug in direkter Sicht, mit FPV-Brille nur mit Beobachter,
+      maximal 120&nbsp;m über Grund.</p>
+    </div>
+
+    <p>Im <a href="ratgeber-funk-kommunikation.html">Funk-Ratgeber</a> haben wir die Steuerstrecke
+    zerlegt und die Videoübertragung ausdrücklich ausgeklammert.  Hier ist nun der versprochene
+    eigene Ratgeber.  Es geht um die Strecke zwischen der Kamera an deinem Copter und dem Bild vor
+    deinen Augen: wie das analoge Urgestein funktioniert, was DJI, Walksnail (die FPV-Marke des
+    Kameraherstellers Caddx) und HDZero technisch unterscheidet, warum Latenz die wichtigste und am
+    schlechtesten vergleichbare Zahl des Themas ist, was die Bundesnetzagentur erlaubt und wo die
+    physikalischen Grenzen liegen.</p>
+    <p><strong>Hinweis:</strong> Jede Zahl in diesem Text hat eine Fußnote, die auf eine nachprüfbare
+    Quelle zeigt.  Wo wir gerechnet statt gemessen haben, steht es ausdrücklich dabei.  Für den Fall,
+    dass wir einen Fehler gemacht haben, kontaktiert uns gerne jederzeit.</p>
+    <p class="muted" style="font-size:14px"><strong>Transparenz:</strong> Einige Produktlinks in diesem
+    Artikel führen zum deutschen Fachhändler FPV24 und sind Affiliate-Links (Anzeige).  Kaufst du
+    darüber, erhalten wir eine kleine Vergütung, für dich ändert sich am Preis nichts.  Empfohlen
+    wird nur, was wir fachlich begründen können, und die Begründung steht immer im Text.</p>
+
+    <h2 id="k1">1. Die zweite Funkstrecke: warum Video eigene Physik hat</h2>
+    <p>Steuerung und Video sind auf einem FPV-Copter zwei getrennte Funksysteme, und sie könnten
+    unterschiedlicher nicht sein.  Der RC-Link überträgt ein paar Flightstick-Werte, also winzige
+    Datenmengen, und darf dafür extrem robust sein.  Die Videostrecke muss das Gegenteil leisten:
+    Sie schaufelt kontinuierlich einen ganzen Bildstrom durch die Luft, viele Millionen Bit pro
+    Sekunde, und zwar so schnell, dass deine Augen dem Copter nicht hinterherhängen.</p>
+    <p>Aus diesem Unterschied folgt fast alles in diesem Artikel.  Wer viele Daten übertragen will,
+    braucht viel Bandbreite, und viel Bandbreite gibt es nur in hohen Frequenzbändern, in denen die
+    Reichweite physikalisch teurer ist.  Wer Latenz sparen will, darf nicht viel puffern und
+    komprimieren, verschenkt damit aber Effizienz.  Und wer Reichweite will, stößt schnell an
+    rechtliche Grenzen, denn die Sendeleistung ist reguliert.  Jedes Videosystem am Markt ist eine
+    andere Antwort auf dieses Dreieck aus Bildqualität, Latenz und Reichweite.</p>
+
+    <h2 id="k2">2. Analog: Fernsehtechnik am Copter</h2>
+    <p>Das klassische FPV-Bild ist technisch ein Fernsehsignal.  Die analoge Kamera erzeugt ein
+    zusammengesetztes Videosignal nach den alten TV-Normen: In Europa sind das 625 Zeilen pro Bild
+    bei 50 Halbbildern pro Sekunde (die Systemfamilie B/G, auf der PAL aufsetzt), in Amerika 525
+    Zeilen bei 60 Halbbildern (System M, die NTSC-Basis).  Übertragen wird im Zeilensprungverfahren
+    (Interlacing 2:1) mit einem Seitenverhältnis von 4:3.<sup><a href="#q1">1</a></sup>  Diese
+    Normen stammen aus der Frühzeit des Fernsehens, und genau das ist der Punkt: Das Signal ist
+    kontinuierlich, es gibt keine Digitalisierung, keine Kompression und keinen Puffer zwischen
+    Kamera und Sender.</p>
+    <p>Der Videosender (VTX) legt dieses Signal direkt auf einen Träger im 5,8-GHz-Bereich.  Die
+    Kanallandschaft ist über die Jahre gewachsen: Ein moderner Sender wie der TBS Unify Pro32
+    beherrscht 40 Kanäle in fünf Bändern (A, B, E, Airwave und das Raceband) zwischen 5.658 und
+    5.945&nbsp;MHz, mit Leistungsstufen von 25 über 100 und 400 bis über 1.000&nbsp;mW.  Ab Werk
+    sind 25&nbsp;mW eingestellt; die höheren Stufen verlangen ein bewusstes Entsperren, das der
+    Hersteller an eine Amateurfunklizenz knüpft.<sup><a href="#q2">2</a></sup>  Dazu kommen
+    Komfortfunktionen, die im Rennbetrieb entstanden sind: ein Flüstermodus mit minimaler Leistung
+    für Arbeiten an der Strecke (PIT Mode), Konfiguration über den Flight Controller (SmartAudio
+    beziehungsweise CRSF) und ein sauberes Umschalten der Kanäle ohne Störfeuer für andere Piloten
+    (CleanSwitch).<sup><a href="#q2">2</a></sup></p>
+    <p>Warum fliegt dieses Museum noch?  Weil seine Schwächen ehrlich und seine Stärken real sind.
+    Das Bild ist grob, verrauscht und meilenweit von HD entfernt.  Aber die Kette aus Kamera, Sender
+    und Brille kommt ohne Rechenzeit aus: Die Latenz liegt typisch bei 10 bis 20&nbsp;ms von Glas zu
+    Glas.<sup><a href="#q3">3</a></sup>  Ein Nano-Sender wiegt ein einziges Gramm.<sup><a href="#q2">2</a></sup>
+    Und, für viele das wichtigste Argument: Analog degradiert graziös.  Wird das Signal schwächer,
+    rauscht das Bild zunehmend, aber es bleibt ein Bild; digitale Systeme zeigen stattdessen
+    Klötzchen und frieren im schlimmsten Fall ein.<sup><a href="#q3">3</a></sup>  Ein verrauschtes
+    Bild kann man nach Hause fliegen, ein eingefrorenes nicht.</p>
+    <p style="margin-top:14px">
+      <a href="https://www.fpv24.com/de/team-blacksheep/tbs-unify-pro-32hv-mmcx-video-transmitter?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ TBS Unify Pro32 HV Analog-VTX bei FPV24 ansehen (Anzeige)</a>
+    </p>
+
+    <h2 id="k3">3. Digital: aus Bildern werden Pakete</h2>
+    <p>Ein digitales System zerlegt die Aufgabe komplett anders.  Die Kamera liefert einen
+    Datenstrom, ein Encoder komprimiert ihn (bei DJI und Walksnail mit dem Videocodec H.265, der
+    aus der Streaming-Welt stammt<sup><a href="#q4">4</a></sup>), und die komprimierten Daten
+    werden in Paketen gefunkt, ähnlich wie in einem WLAN.  Der Empfänger puffert, dekodiert und
+    zeigt das Bild an.  Jeder dieser Schritte kostet Zeit, und die Summe dieser Zeiten ist die
+    Latenz, um die sich im Digitallager alles dreht.</p>
+    <p>Die Kompression ist dabei Fluch und Segen zugleich.  Segen, weil sie aus einem rohen
+    HD-Bildstrom einen funkbaren macht: Erst dadurch passt 1080p-Video in einen Funkkanal.  Fluch,
+    weil sie das Verhalten bei schwachem Signal verändert.  Ein digitales System kann fehlende
+    Pakete neu anfordern oder die Bitrate absenken, aber wenn das nicht mehr reicht, fehlt dem
+    Decoder die Grundlage, und das Bild wird blockig oder bleibt stehen.<sup><a href="#q3">3</a></sup>
+    Der Übergang von „perfekt" zu „weg" ist deutlich schärfer als bei analog.  Moderne Systeme
+    stecken deshalb viel Aufwand in diesen Grenzbereich, mit zwei Empfangszügen, adaptiver Bitrate
+    und Warnanzeigen in der Brille.</p>
+    <p>Grundsätzlich gilt: Je mehr Bild pro Sekunde durch die Luft soll, desto breiter muss der
+    Funkkanal sein.  DJIs aktuelles System belegt bis zu 60&nbsp;MHz Kanalbreite<sup><a href="#q6">6</a></sup>,
+    das sind 40&nbsp;Prozent des gesamten deutschen 5,8-GHz-Bereichs für Kurzstreckenfunk
+    (gerechnet aus 60 von 150&nbsp;MHz, siehe <a href="#k8">Kapitel&nbsp;8</a>).  Auch daran sieht
+    man: Videoübertragung ist die bandbreitenhungrigste Funkanwendung am Copter.</p>
+
+    <h2 id="k4">4. DJI: der Konzern, der das Hobby digitalisiert hat</h2>
+    <p>Den Umbruch datiert man auf den 31.&nbsp;Juli 2019.  An diesem Tag stellte DJI sein
+    „Digital FPV System" vor: Brille, Sendeeinheit (Air Unit), Kamera und Fernsteuerung aus einer
+    Hand, mit 720p-Übertragung bei 120&nbsp;fps, einer Ende-zu-Ende-Latenz von 28&nbsp;ms und acht
+    Kanälen im 5,8-GHz-Band.<sup><a href="#q5">5</a></sup>  Vorher galt: HD-Video und FPV-Fliegen
+    schlossen sich praktisch aus.  Seitdem hat DJI in mehreren Generationen nachgelegt, und die
+    aktuelle heißt O4.</p>
+    <p>Die <strong>O4 Air Unit Pro</strong> überträgt 1080p mit bis zu 100&nbsp;fps bei einer
+    Videobitrate von 130&nbsp;MBit/s und erreicht mit der Goggles&nbsp;3 im Renn-Modus eine
+    Latenz von 15&nbsp;ms.  Als maximale Reichweite nennt DJI 15&nbsp;km nach FCC-Standard und
+    8&nbsp;km nach CE; im Gerät stecken zwei Antennen, zwei Sender und zwei Empfänger, der
+    Funkkanal ist bis zu 60&nbsp;MHz breit.  Nebenbei ist die Pro-Einheit eine vollwertige
+    Action-Kamera: 4K-Aufnahme mit bis zu 120&nbsp;fps auf einem 1/1,3-Zoll-Sensor, bei rund
+    32&nbsp;g Gesamtgewicht.<sup><a href="#q6">6</a></sup>  Die kleinere <strong>O4 Air Unit</strong>
+    wiegt nur etwa 8,2&nbsp;g, überträgt ebenfalls 1080p bis 100&nbsp;fps (100&nbsp;MBit/s,
+    ein Sender, eine Antenne) und kommt auf 10&nbsp;km FCC beziehungsweise 6&nbsp;km CE bei
+    20&nbsp;ms Latenz.<sup><a href="#q6">6</a></sup></p>
+    <p>Bemerkenswert ist die Frequenzstrategie: Die O4-Serie funkt nicht nur bei
+    5.725 bis 5.850&nbsp;MHz, sondern zusätzlich bei 5.170 bis 5.250&nbsp;MHz, und die
+    CE-Leistungsangaben unterscheiden sich drastisch: unter 14&nbsp;dBm auf 5,8&nbsp;GHz, aber
+    unter 23&nbsp;dBm auf 5,1&nbsp;GHz.<sup><a href="#q6">6</a></sup>  Was hinter diesen Zahlen
+    steckt, ist der spannendste Teil der deutschen Rechtslage und bekommt in
+    <a href="#k8">Kapitel&nbsp;8</a> seinen Auftritt.</p>
+    <p style="margin-top:14px">
+      <a href="https://www.fpv24.com/de/dji/dji-o4-air-unit-fpv-lufteinheit-pro?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ DJI O4 Air Unit Pro bei FPV24 ansehen (Anzeige)</a><br>
+      <a href="https://www.fpv24.com/de/dji/dji-o4-air-unit-lite-fpv-air-unit?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ DJI O4 Air Unit (die leichte Variante) bei FPV24 ansehen (Anzeige)</a>
+    </p>
+
+    <h2 id="k5">5. Walksnail Avatar: die Antwort von Caddx</h2>
+    <p>Hinter der Marke Walksnail steht der Kamerahersteller Caddx, und das Avatar-System ist der
+    direkteste Konkurrent zur DJI-Welt: gleiche Grundidee (H.265-komprimiertes HD-Video in
+    Paketen), aber ein offeneres Ökosystem mit Sendern und Brillen in vielen Bauformen.  Das
+    aktuelle Spitzenmodell, das <strong>Avatar HD Pro Kit</strong>, überträgt 1080p mit
+    60&nbsp;fps oder 720p mit bis zu 120&nbsp;fps im Band 5.725 bis 5.850&nbsp;MHz und gibt die
+    mittlere Latenz mit 22&nbsp;ms an, im 50-MBit/s-Modus mit 18&nbsp;ms.<sup><a href="#q7">7</a></sup><sup><a href="#q4">4</a></sup>
+    Die Kamera sitzt auf einem 1/1,8-Zoll-Sensor der Sony-Starvis-II-Familie, der auf
+    Restlichtempfindlichkeit gezüchtet ist; die Sendeeinheit wiegt 17,6&nbsp;g, die Kamera
+    9,5&nbsp;g.<sup><a href="#q7">7</a></sup></p>
+    <p>Bei den Leistungsangaben nennt Caddx unter 30&nbsp;dBm für FCC und unter 14&nbsp;dBm für
+    CE, als Reichweite 4&nbsp;km.<sup><a href="#q7">7</a></sup>  Die 14&nbsp;dBm sind dieselbe
+    CE-Grenze, die auch DJI auf 5,8&nbsp;GHz einhält, und wir werden ihr in
+    <a href="#k8">Kapitel&nbsp;8</a> wieder begegnen: Sie ist kein Zufall, sondern deutsches
+    beziehungsweise europäisches Recht in Firmware gegossen.</p>
+    <p style="margin-top:14px">
+      <a href="https://www.fpv24.com/de/walksnail/walksnail-avatar-hd-digital-fpv-camera-pro-kit?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ Walksnail Avatar HD Pro Kit bei FPV24 ansehen (Anzeige)</a>
+    </p>
+
+    <h2 id="k6">6. HDZero: digital, aber ohne Kompression</h2>
+    <p><strong>HDZero</strong> (entwickelt von der Firma Divimath) ist der technische
+    Gegenentwurf zu DJI und Walksnail.  Das System überträgt den Videostrom unkomprimiert und
+    verzichtet damit genau auf den Schritt, der anderswo die Latenz erzeugt: Zwischen Videoeingang
+    und Videoausgang liegt weniger als 1&nbsp;ms, von Glas zu Glas sind es ab
+    14,1&nbsp;ms.<sup><a href="#q8">8</a></sup><sup><a href="#q9">9</a></sup>  Entscheidend ist
+    dabei weniger der Absolutwert als seine Konstanz: Die Latenz ist fest und unabhängig von der
+    Empfangsqualität; mit der Entfernung wächst sie nur um die Signallaufzeit von etwa
+    3&nbsp;µs pro Kilometer.<sup><a href="#q9">9</a></sup>  Bei DJI und Walksnail kann die Latenz
+    dagegen schwanken, wenn das System bei schwachem Signal nacharbeitet.</p>
+    <p>Auch beim Fehlerverhalten geht HDZero den Analog-Weg: Übertragungsfehler bleiben auf
+    einzelne Pixel beschränkt, statt ganze Bildblöcke zu zerlegen.<sup><a href="#q8">8</a></sup>
+    Das Bild wird bei schwachem Empfang also körnig wie ein Analogbild, nur eben in HD-Auflösung.
+    Der Preis dafür ist die Datenrate: Ohne Kompression ist bei moderater Auflösung Schluss.
+    Ein aktueller Sender wie der Race&nbsp;V3 überträgt 540p mit 90&nbsp;fps, 720p mit
+    60&nbsp;fps oder 1080p mit 30&nbsp;fps bei 25 oder 200&nbsp;mW Sendeleistung und wiegt
+    5,5&nbsp;g.<sup><a href="#q10">10</a></sup>  Als Reichweite in Sichtlinie nennt der Hersteller
+    bis zu 7,3&nbsp;km.<sup><a href="#q8">8</a></sup>  Die Zielgruppe ist klar: Racing und alle,
+    für die eine konstante, niedrige Latenz wichtiger ist als das schönste Bild.</p>
+    <p style="margin-top:14px">
+      <a href="https://www.fpv24.com/de/hdzero/hdzero-race-v3-vtx?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ HDZero Race V3 VTX bei FPV24 ansehen (Anzeige)</a>
+    </p>
+
+    <h2 id="k7">7. Latenz: die wichtigste und die am schlechtesten vergleichbare Zahl</h2>
+    <p>Latenz ist die Zeit zwischen dem Moment, in dem etwas vor der Linse passiert, und dem
+    Moment, in dem du es siehst.  Bei 100&nbsp;km/h legt ein Copter in 20&nbsp;ms gut einen halben
+    Meter zurück (gerechnet: 27,8&nbsp;m/s mal 0,02&nbsp;s); wer eng an Hindernissen fliegt, spürt
+    jede dieser Millisekunden in den Fingern.</p>
+    <p>Bevor man Zahlen vergleicht, muss man wissen, was gemessen wurde.  <strong>Glas zu Glas</strong>
+    heißt: von der Kameralinse bis zum leuchtenden Display, also die ganze Kette inklusive Kamera,
+    Verarbeitung und Bildschirm.  Herstellerangaben zur <strong>Übertragungslatenz</strong> messen
+    dagegen oft nur einen Teil dieser Kette, unter Idealbedingungen und im jeweils schnellsten
+    Modus.  Die folgenden Werte stammen aus den angegebenen Quellen und sind deshalb nur bedingt
+    gegeneinander vergleichbar:</p>
+    <table>
+      <thead>
+        <tr><th>System</th><th>Latenz laut Quelle</th><th>Art der Angabe</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Analog</td>
+          <td>typisch 10 – 20 ms</td>
+          <td>Glas zu Glas, Erfahrungswert Fachblog<sup><a href="#q3">3</a></sup></td>
+        </tr>
+        <tr>
+          <td>HDZero</td>
+          <td>ab 14,1 ms, fest</td>
+          <td>Glas zu Glas, Herstellerangabe<sup><a href="#q9">9</a></sup></td>
+        </tr>
+        <tr>
+          <td>DJI O4 Pro</td>
+          <td>15 ms (O4: 20 ms)</td>
+          <td>Übertragung, Renn-Modus mit Goggles 3, Herstellerangabe<sup><a href="#q6">6</a></sup></td>
+        </tr>
+        <tr>
+          <td>Walksnail Avatar Pro</td>
+          <td>im Mittel 22 ms, 18 ms bei 50 MBit/s</td>
+          <td>Mittelwert, Herstellerangabe<sup><a href="#q7">7</a></sup><sup><a href="#q4">4</a></sup></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Die ehrliche Zusammenfassung: Alle aktuellen Systeme liegen in einem Bereich, mit dem sich
+    präzise fliegen lässt, und die Unterschiede zwischen den Digitallagern sind kleiner geworden.
+    Der strukturelle Unterschied bleibt aber bestehen: Analog und HDZero haben eine feste Latenz,
+    DJI und Walksnail eine variable, die unter Druck steigen kann.<sup><a href="#q9">9</a></sup><sup><a href="#q3">3</a></sup>
+    Für Rennen ist Konstanz das härtere Kriterium als der Bestwert auf dem Datenblatt.</p>
+
+    <h2 id="k8">8. Was in Deutschland erlaubt ist</h2>
+    <p>Für die Videostrecke gelten dieselben Allgemeinzuteilungen der Bundesnetzagentur, die wir
+    im Funk-Ratgeber für den RC-Link zitiert haben, nur eben andere Zeilen der Tabelle.  Maßgeblich
+    für 5,8&nbsp;GHz ist die Verfügung 91/2025: Im Band&nbsp;61, also 5.725 bis 5.875&nbsp;MHz,
+    sind für Geräte mit geringer Reichweite und nicht näher spezifizierte Anwendungen
+    <strong>25&nbsp;mW Strahlungsleistung (EIRP)</strong> zugeteilt.<sup><a href="#q11">11</a></sup>
+    EIRP heißt: Der Gewinn der Antenne zählt mit; wer eine Richtantenne an den Sender schraubt,
+    überschreitet die Grenze schon mit kleiner Modulleistung.</p>
+    <p>An dieser Zahl hängen drei unbequeme Wahrheiten.  <strong>Erstens:</strong> Die
+    FCC-Reichweiten aus den Datenblättern (15&nbsp;km bei DJI, Sendeleistungen bis 1&nbsp;W und
+    mehr) gehören zu Leistungsstufen, die hier nicht zugeteilt sind.  Die CE-Firmware der
+    Digitalsysteme hält sich exakt an die Grenze: Die Angabe „unter 14&nbsp;dBm" bei DJI und
+    Walksnail entspricht rund 25&nbsp;mW (gerechnet über die dBm-Definition aus dem
+    Funk-Ratgeber).<sup><a href="#q6">6</a></sup><sup><a href="#q7">7</a></sup>  Auch beim
+    Analog-VTX ist die Werkseinstellung von 25&nbsp;mW kein Zufall; die höheren Stufen sperrt der
+    Hersteller hinter einem Amateurfunk-Hinweis weg.<sup><a href="#q2">2</a></sup>
+    <strong>Zweitens:</strong> Die Zuteilung beginnt bei 5.725&nbsp;MHz.  Ein Blick in die
+    analoge Kanaltabelle zeigt, dass etliche Kanäle darunter liegen, etwa die unteren
+    Raceband- und E-Band-Kanäle bis hinab zu 5.658&nbsp;MHz.<sup><a href="#q2">2</a></sup>  Diese
+    Frequenzen sind von der Allgemeinzuteilung schlicht nicht abgedeckt.  Wer analog fliegt, wählt
+    seine Kanäle also nicht nur nach Störabstand, sondern auch nach Rechtslage.
+    <strong>Drittens:</strong> Auch das obere Bandende ist real: 5.875&nbsp;MHz ist Schluss, die
+    obersten Analogkanäle (bis 5.945&nbsp;MHz) liegen ebenfalls außerhalb.<sup><a href="#q2">2</a></sup></p>
+    <p>Und dann ist da DJIs zweites Band.  Für 5.150 bis 5.250&nbsp;MHz gilt die
+    WLAN-Allgemeinzuteilung Vfg.&nbsp;136/2022, und die enthält einen Satz, den man im
+    FPV-Kontext zweimal liest: <em>„Die Nutzung durch unbemannte Luftfahrzeugsysteme (UAS) ist auf
+    das Frequenzband 5170 – 5250&nbsp;MHz beschränkt."</em>  Erlaubt sind dort
+    <strong>200&nbsp;mW mittlere EIRP</strong> (bei höchstens 10&nbsp;mW/MHz), und die Ausrüstung
+    darf beim Einsatz im Außenbereich nicht an ortsfesten Außenantennen oder ortsfester
+    Infrastruktur befestigt sein, was auf einen fliegenden Copter und eine Brille in der Hand
+    naturgemäß zutrifft.<sup><a href="#q12">12</a></sup>  Genau dazu passt DJIs CE-Angabe von
+    unter 23&nbsp;dBm im 5,1-GHz-Band, das sind rund 200&nbsp;mW (gerechnet), auf dem exakt
+    zugelassenen Bereich 5.170 bis 5.250&nbsp;MHz.<sup><a href="#q6">6</a></sup>  Das
+    benachbarte Band 5.250 bis 5.350&nbsp;MHz bleibt dagegen ausdrücklich den Innenräumen
+    vorbehalten.<sup><a href="#q12">12</a></sup>  Praktisch heißt das: Ein CE-konformes
+    DJI-System darf im 5,1-GHz-Band mit der achtfachen Strahlungsleistung des 5,8-GHz-Bands
+    senden.  Das ist der leise, legale Reichweitenvorteil des Systems, über den kaum jemand
+    spricht.</p>
+    <p class="muted" style="font-size:14px">Hinweis: Wir geben die Verfügungen verkürzt auf die
+    für FPV-Video relevanten Zeilen wieder.  Verbindlich ist immer der Originaltext der
+    Bundesnetzagentur, siehe Quellenangaben.  Dieser Ratgeber ist keine Rechtsberatung.</p>
+
+    <h2 id="k9">9. Sichtlinie, Höhe und Horizont</h2>
+    <p>Bevor die Physik drankommt, die Rechtslage, denn sie ist strenger.  Die europäische
+    Drohnenverordnung verlangt in der offenen Kategorie, dass der Fernpilot das Luftfahrzeug
+    <em>„zu jedem Zeitpunkt in VLOS-Betrieb"</em> hält, also in direkter Sicht mit den eigenen
+    Augen.  Es sei denn, <em>„es fliegt im Follow-me-Modus oder es wird ein Beobachter
+    [&#8230;] hinzugezogen."</em><sup><a href="#q13">13</a></sup>  Für FPV heißt das: Mit der
+    Brille auf dem Kopf fliegst du legal nur, wenn neben dir ein Beobachter steht, der den Copter
+    mit bloßem Auge verfolgt und den Luftraum im Blick behält.  Dazu kommt die Höhengrenze: Das
+    unbemannte Luftfahrzeug ist in einem Abstand von höchstens <strong>120&nbsp;m vom
+    nächstgelegenen Punkt der Erdoberfläche</strong> zu halten.<sup><a href="#q13">13</a></sup></p>
+    <p>Und nun die Physik, die zeigt, wie wenig der Funkhorizont in diesem Rahmen begrenzt.  Rein
+    geometrisch reicht die Sichtlinie von einem 120&nbsp;m hohen Punkt etwa 39&nbsp;km weit, bis
+    die Erdkrümmung sie abschneidet; die Antennenhöhe des Piloten legt noch einige Kilometer drauf
+    (gerechnet über den geometrischen Horizont, Wurzel aus zwei mal Erdradius mal Höhe, ohne
+    atmosphärische Effekte).  Kein legales FPV-Szenario in Deutschland kommt auch nur in die Nähe
+    dieser Distanz.  Was die Verbindung tatsächlich begrenzt, sind die 25&nbsp;mW aus
+    <a href="#k8">Kapitel&nbsp;8</a>, die Antennen und vor allem Hindernisse in der
+    Funkstrecke.</p>
+    <p>Denn „freie Sicht" genügt einer Funkwelle nicht.  Sie braucht um die direkte Linie herum
+    einen ellipsenförmigen Freiraum, die sogenannte Fresnel-Zone.  Bei 5,8&nbsp;GHz (Wellenlänge
+    rund 5,2&nbsp;cm, gerechnet aus Lichtgeschwindigkeit durch Frequenz) hat diese Zone auf einem
+    Kilometer Strecke in der Mitte einen Radius von etwa 3,6&nbsp;m (gerechnet über die
+    Fresnel-Formel, halbe Wurzel aus Wellenlänge mal Distanz).  Wer knapp über einer Wiese steht
+    und knapp über Baumkronen fliegt, füllt diese Zone mit Boden und Blattwerk, und genau deshalb
+    bricht das Bild in Bodennähe zuerst ab.  Die wirksamste „Reichweitenverlängerung" ist oft
+    banal: höher stehen, freier stehen, und die Strecke von Hindernissen freihalten.</p>
+
+    <h2 id="k10">10. Reichweite legal verlängern: die Empfangsseite</h2>
+    <p>Die Sendeleistung ist gedeckelt, und zwar als Strahlungsleistung inklusive Antennengewinn
+    (<a href="#k8">Kapitel&nbsp;8</a>).  Am Sender ist also legal nichts zu holen; Verstärker
+    oder Richtantennen am Copter sprengen die EIRP-Grenze sofort.  Die gute Nachricht: Auf der
+    Empfangsseite gibt es keine solche Grenze, denn Empfangen ist passiv.  Jedes dB
+    Antennengewinn an der Brille wirkt auf die Verbindung wie mehr Sendeleistung am Copter, nur
+    eben legal.</p>
+    <p>Dafür muss man die Polarisation verstehen.  FPV-Videoantennen sind fast immer zirkular
+    polarisiert: Die Welle rotiert, rechtsdrehend (RHCP) oder linksdrehend (LHCP).  Das hat einen
+    handfesten Grund: Wird eine zirkular polarisierte Welle an einer Oberfläche reflektiert, kehrt
+    sich ihr Drehsinn um, aus RHCP wird LHCP.<sup><a href="#q14">14</a></sup>  Die
+    Empfangsantenne mit festem Drehsinn blendet solche Reflexionen dadurch teilweise aus, und
+    genau diese Reflexionen (Mehrwegempfang) sind es, die Videobilder zerreißen.  Zwei Regeln
+    folgen daraus: Sender- und Empfängerantenne müssen denselben Drehsinn haben, sonst verschenkt
+    man massiv Signal.  Und eine linear polarisierte Antenne an einem zirkularen System kostet
+    pauschal die Hälfte der Leistung, also 3&nbsp;dB, egal wie man sie dreht.<sup><a href="#q14">14</a></sup></p>
+    <p>Die Werkzeuge der Empfangsseite, aufsteigend nach Aufwand:</p>
+    <p><strong>Bessere Rundstrahler:</strong> Die Standardantennen vieler Brillen sind
+    Kompromisse.  Hochwertige zirkulare Pilzantennen mit sauberem Drehsinn sind der günstigste
+    erste Schritt.</p>
+    <p><strong>Richtantennen (Patch):</strong> Eine flache Patch-Antenne bündelt den Empfang in
+    die Richtung, in die sie zeigt, mit mehreren dB Gewinn gegenüber dem Rundstrahler.  Auf
+    Brillen mit zwei Anschlüssen kombiniert man klassisch einen Rundstrahler (für die Nähe, in
+    alle Richtungen) mit einer Patch (für die Ferne, in Flugrichtung).  Das funktioniert bei
+    analogen Brillen genauso wie bei DJI- und Walksnail-Brillen, für die es passende
+    Aufsteck-Patches gibt.</p>
+    <p><strong>Diversity-Empfänger:</strong> Analoge Brillenmodule wie das ImmersionRC rapidFIRE
+    empfangen auf zwei Antennen gleichzeitig und setzen das Bild aus dem jeweils besseren Signal
+    zusammen.<sup><a href="#q15">15</a></sup>  Das Prinzip entspricht dem Diversity-Gedanken, den
+    wir vom RC-Link kennen: Zwei unterschiedlich ausgerichtete Antennen haben selten gleichzeitig
+    ein Loch.  Die Digitalsysteme haben Diversity von Haus aus eingebaut, die O4 Pro etwa mit
+    zwei kompletten Empfangszügen.<sup><a href="#q6">6</a></sup></p>
+    <p style="margin-top:14px">
+      <a href="https://www.fpv24.com/de/lumenier/lumenier-axii-hd-58ghz-fpv-patch-antenna-rhcp?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ Lumenier AXII HD Patch-Antenne (RHCP) bei FPV24 ansehen (Anzeige)</a><br>
+      <a href="https://www.fpv24.com/de/truerc/truerc-x-air-mk-ii-58-fpv-antenne-fuer-dji-fpv-lhcp?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ TrueRC X-Air MK II für DJI-Brillen bei FPV24 ansehen (Anzeige)</a><br>
+      <a href="https://www.fpv24.com/de/immersionrc/immersionrc-rapidfire-analog-plus-fpv-glasses-receiver-module?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ ImmersionRC rapidFIRE Diversity-Modul bei FPV24 ansehen (Anzeige)</a>
+    </p>
+
+    <h2 id="k11">11. Rekorde, ehrlich eingeordnet</h2>
+    <p>Reichweiten-Rekorde sind das Schaufenster der Szene, und man muss sie sauber sortieren,
+    denn die wenigsten „Rekord"-Videos im Netz sind nachprüfbar.  Drei Kategorien halten der
+    Prüfung stand.</p>
+    <p><strong>Herstellerangaben unter Idealbedingungen:</strong> Die 15&nbsp;km der O4 Air Unit
+    Pro gelten für den FCC-Modus in offener, störungsfreier Umgebung; nach CE-Standard nennt
+    DJI 8&nbsp;km.<sup><a href="#q6">6</a></sup>  Das sind Laborgrenzen des Machbaren, keine
+    Empfehlung und in Deutschland keine erlaubte Betriebsart (<a href="#k8">Kapitel&nbsp;8</a>).</p>
+    <p><strong>Dokumentierte Community-Rekorde:</strong> Die Rekordliste des
+    ExpressLRS-Projekts, die wir im Funk-Ratgeber zitiert haben, verlangt für jeden Eintrag ein
+    DVR-Video als Beleg; der weiteste Eintrag steht bei 101,3&nbsp;km.<sup><a href="#q16">16</a></sup>
+    Das DVR-Video belegt, dass auf diesen Flügen auch die Videostrecke über solche Distanzen
+    funktioniert hat; welches Videosystem im Einzelnen flog, dokumentiert die Liste allerdings
+    nicht.<sup><a href="#q16">16</a></sup>  Solche Flüge finden außerhalb des europäischen
+    Rechtsrahmens statt.</p>
+    <p><strong>Offiziell verifizierte Weltrekorde:</strong> Den Guinness-Weltrekord für den
+    weitesten Flug eines wasserstoffbetriebenen Multicopters hält seit dem 16.&nbsp;November 2025
+    die Tianmushan-1 der Universität Beihang mit <strong>188,605&nbsp;km</strong> in über vier
+    Stunden.<sup><a href="#q17">17</a></sup>  Das ist kein FPV-Flug, aber er zeigt, wohin sich
+    die Plattform-Reichweiten entwickeln, und damit auch, warum die Frage nach der
+    Videoübertragung über solche Distanzen (jenseits klassischer FPV-Funkstrecken) gerade so
+    intensiv bearbeitet wird.</p>
+
+    <h2 id="k12">12. Welches System für wen</h2>
+    <table>
+      <thead>
+        <tr><th>Du willst&nbsp;&#8230;</th><th>Unsere Einordnung</th><th>Warum</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Racing, Bandos, enge Gaps</td>
+          <td>HDZero oder Analog</td>
+          <td>feste, niedrige Latenz; Bild degradiert graziös statt einzufrieren<sup><a href="#q9">9</a></sup><sup><a href="#q3">3</a></sup></td>
+        </tr>
+        <tr>
+          <td>bestes Bild, Cinematic, eine Kamera für alles</td>
+          <td>DJI O4 Pro</td>
+          <td>1080p/100-Übertragung, 4K120-Aufnahme, zwei Empfangszüge<sup><a href="#q6">6</a></sup></td>
+        </tr>
+        <tr>
+          <td>HD im leichten Build</td>
+          <td>DJI O4 (8,2&nbsp;g) oder Walksnail-Sender</td>
+          <td>geringes Gewicht bei voller Übertragungsqualität<sup><a href="#q6">6</a></sup><sup><a href="#q7">7</a></sup></td>
+        </tr>
+        <tr>
+          <td>HD außerhalb des DJI-Ökosystems</td>
+          <td>Walksnail Avatar</td>
+          <td>H.265-HD mit vielen Hardware-Optionen, Starvis-II-Nachtsicht<sup><a href="#q7">7</a></sup></td>
+        </tr>
+        <tr>
+          <td>maximal günstig einsteigen oder Whoop-Flotte betreiben</td>
+          <td>Analog</td>
+          <td>Sender ab einem Gramm, Brillen und Ersatzteile spottbillig<sup><a href="#q2">2</a></sup><sup><a href="#q3">3</a></sup></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Diese Einordnung deckt sich mit dem Stand der Fachdiskussion<sup><a href="#q3">3</a></sup>
+    und mit den Datenblättern der Hersteller.  Sie ist bewusst herstellerneutral: Es gibt kein
+    „bestes" System, nur das passende für deinen Einsatz.</p>
+
+    <h2 id="k13">13. Was das für deinen nächsten Build heißt</h2>
+    <ul>
+      <li><strong>Wähle zuerst das Ökosystem, nicht den Sender.</strong>  Brille, Sender und
+      Kamera müssen zum selben System gehören; der teuerste Fehlkauf ist die falsche Brille.</li>
+      <li><strong>Nimm Latenz als Konstanz-Frage, nicht als Datenblatt-Wettrennen.</strong>
+      Feste 14 bis 20&nbsp;ms fliegen sich besser als variable Bestwerte.</li>
+      <li><strong>Bleib auf 5,8&nbsp;GHz bei 25&nbsp;mW EIRP</strong> und lass FCC-Modi und
+      Verstärker weg.  Bei analogen Sendern zusätzlich: keine Kanäle unterhalb von
+      5.725&nbsp;MHz.</li>
+      <li><strong>Wenn CE-DJI, dann mit dem 5,1-GHz-Band arbeiten:</strong> Dort sind für
+      unbemannte Luftfahrzeuge 200&nbsp;mW mittlere EIRP zugeteilt, achtmal mehr als auf
+      5,8&nbsp;GHz.</li>
+      <li><strong>Investiere in die Empfangsseite.</strong>  Eine Patch-Antenne plus sauberer
+      Rundstrahler an der Brille ist die einzige legale und zugleich wirksamste
+      Reichweitenmaßnahme.</li>
+      <li><strong>Polarisation ist ein System:</strong> gleicher Drehsinn auf beiden Seiten,
+      niemals linear und zirkular mischen (kostet pauschal 3&nbsp;dB).</li>
+      <li><strong>Flieg hoch genug und halte die Fresnel-Zone frei.</strong>  Bodennähe frisst
+      Reichweite schneller als jedes schwache Sendemodul.</li>
+      <li><strong>Rechtlich gilt: Sichtflug mit Beobachter, maximal 120&nbsp;m über Grund.</strong>
+      Die Reichweite deiner Videostrecke ist nie die Grenze, die zuerst greift.</li>
+    </ul>
+
+    <p style="margin-top:16px">Wir bauen 13-Zoll-Copter und beraten herstellerneutral zu Video,
+    Funk und Aufbau.  Wenn du unsicher bist, welches Videosystem und welche Antennenanordnung zu
+    deinem Vorhaben passen, sprich uns an, bevor du bestellst.</p>
+    <p style="margin-top:14px">
+      <a href="https://shop.dracolabsgermany.com">➜ Frames und Komponenten ab 13 Zoll im Shop</a><br>
+      <a href="ratgeber-funk-kommunikation.html">➜ Passend dazu: Wie dein Copter mit dir spricht (RC-Link, GPS und Antennen)</a><br>
+      <a href="ratgeber-carbon-frame.html">➜ Ebenfalls passend: Vom Erdöl zum FPV-Frame (warum Carbon funkt wie ein Blech)</a><br><br>
+      <a href="index.html#kontakt">➜ Persönliche Beratung zu deinem Build anfragen</a>
+    </p>
+
+    <p class="muted" style="margin-top:34px; font-size:14px">
+      Dieser Ratgeber ersetzt keine individuelle technische Prüfung und keine Rechtsberatung.
+      Alle Angaben ohne Gewähr.  Wo wir gerechnet statt gemessen haben, steht es ausdrücklich
+      dabei.  Alle Quellen wurden im Juli 2026 abgerufen und geprüft.
+    </p>
+
+    <h2>Quellenangaben</h2>
+    <ol class="muted" style="font-size:14px; line-height:1.9; padding-left:20px">
+      <li id="q1">ITU-R, Recommendation BT.470-6 „Conventional television systems" — 625 Zeilen /
+        50 Halbbilder (Systeme B, G), 525 Zeilen / 60 Halbbilder (System M), Zeilensprung 2:1,
+        Seitenverhältnis 4:3:
+        <a href="https://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.470-6-199811-S!!PDF-E.pdf" rel="noopener" target="_blank">itu.int: BT.470-6 (PDF)</a></li>
+      <li id="q2">Team BlackSheep, TBS Unify Pro32 Manual (Revision 2024-08-15) — Kanaltabelle
+        Bänder A/B/E/Airwave/Raceband (5.658–5.945 MHz), Leistungsstufen 25/100/400/1000+ mW
+        (ab Werk 25 mW, höhere Stufen laut Hersteller nur mit Amateurfunklizenz), PIT Mode,
+        SmartAudio 2.1/CRSF, CleanSwitch, Gewicht Nano-Version 1 g:
+        <a href="https://www.team-blacksheep.com/tbs-unify-pro32-manual.pdf" rel="noopener" target="_blank">team-blacksheep.com: Unify Pro32 Manual (PDF)</a></li>
+      <li id="q3">Oscar Liang, „Which FPV System Should You Buy?" — Latenz-Einordnung (Analog und
+        HDZero typisch 10–20 ms Glas zu Glas, DJI und Walksnail 20–50 ms je nach Bildrate),
+        Degradationsverhalten (Rauschen gegenüber Einfrieren), Marktüberblick und
+        Einsatzempfehlungen:
+        <a href="https://oscarliang.com/fpv-system/" rel="noopener" target="_blank">oscarliang.com/fpv-system</a></li>
+      <li id="q4">Caddx, „Walksnail Avatar System: A Complete Guide" — H.265-Codierung, mittlere
+        Latenz 22 ms bzw. 18 ms im 50-MBit/s-Modus, Übertragung 1080p/60 und 720p/100:
+        <a href="https://www.caddxfpv.com/blogs/news/walksnail-avatar-system-a-complete-guide" rel="noopener" target="_blank">caddxfpv.com: Avatar Complete Guide</a></li>
+      <li id="q5">DJI-Pressemitteilung vom 31.07.2019 (PRNewswire) — Vorstellung des DJI Digital
+        FPV Systems: Brille, Air Unit, Kamera und Fernsteuerung, 720p/120 fps, 28 ms
+        Ende-zu-Ende-Latenz, acht 5,8-GHz-Kanäle:
+        <a href="https://www.prnewswire.com/news-releases/take-drone-racing-to-the-next-level-with-the-dji-digital-fpv-ecosystem-the-first-low-latency-hd-video-transmission-signal-300893992.html" rel="noopener" target="_blank">prnewswire.com: DJI Digital FPV Ecosystem</a></li>
+      <li id="q6">DJI, „O4 Air Unit Series – Technische Daten" — Frequenzen 5,170–5,250 GHz und
+        5,725–5,850 GHz, EIRP je Region (5,8 GHz: &lt;33 dBm FCC / &lt;14 dBm CE; 5,1 GHz:
+        &lt;23 dBm CE), Reichweite O4 Pro 15 km FCC / 8 km CE (O4: 10/6 km), Latenz 15 ms bzw.
+        20 ms, Bitrate 130 bzw. 100 MBit/s, Kanalbreite max. 60 MHz, 2 Antennen/2 Sender/
+        2 Empfänger (O4 Pro), Gewichte und Sensorgrößen:
+        <a href="https://www.dji.com/o4-air-unit/specs" rel="noopener" target="_blank">dji.com: O4 Air Unit Specs</a></li>
+      <li id="q7">Caddx, Produktseite Walksnail Avatar HD Pro Kit — Band 5,725–5,850 GHz, EIRP
+        FCC &lt;30 dBm / CE &lt;14 dBm, mittlere Latenz 22 ms, Übertragungsmodi 1080p/60 und
+        720p/120, 4-km-Reichweitenangabe, Sensor 1/1,8 Zoll Sony Starvis II, Gewichte
+        (VTX 17,6 g, Kamera 9,5 g):
+        <a href="https://www.caddxfpv.com/products/walksnail-avatar-hd-pro-kit" rel="noopener" target="_blank">caddxfpv.com: Avatar HD Pro Kit</a></li>
+      <li id="q8">HDZero (Divimath), „Technology" — unkomprimierte Videoübertragung,
+        Übertragungsfehler auf Pixel begrenzt, Reichweitenangabe bis 7,3 km in Sichtlinie,
+        Entwickler Divimath Inc.:
+        <a href="https://www.hd-zero.com/technology" rel="noopener" target="_blank">hd-zero.com/technology</a></li>
+      <li id="q9">HDZero, „Fixed Low Latency" — Eingang-zu-Ausgang-Latenz unter 1 ms, Glas zu
+        Glas ab 14,1 ms, Anstieg um ca. 3 µs pro km Distanz, Latenz fest und unabhängig von der
+        Empfangsqualität:
+        <a href="https://www.hd-zero.com/fixed-low-latency" rel="noopener" target="_blank">hd-zero.com/fixed-low-latency</a></li>
+      <li id="q10">FPV24, Produktdatenblatt HDZero Race V3 VTX — Auflösungsmodi 540p90/720p60/
+        1080p30, Sendeleistung 25/200 mW, Band 5,725–5,850 GHz, Gewicht 5,5 g:
+        <a href="https://www.fpv24.com/de/hdzero/hdzero-race-v3-vtx" rel="noopener" target="_blank">fpv24.com: HDZero Race V3</a></li>
+      <li id="q11">Bundesnetzagentur, Allgemeinzuteilung Vfg. 91/2025 „Geräte mit geringer
+        Reichweite (SRD)" — Band 61: 5.725–5.875 MHz, Geräte mit geringer Reichweite für nicht
+        näher spezifizierte Anwendungen, 25 mW (EIRP):
+        <a href="https://www.bundesnetzagentur.de/DE/Fachthemen/Telekommunikation/Frequenzen/Allgemeinzuteilungen/_DL/vfg91_2025.pdf?__blob=publicationFile&amp;v=3" rel="noopener" target="_blank">bundesnetzagentur.de: Vfg. 91/2025 (PDF)</a></li>
+      <li id="q12">Bundesnetzagentur, Allgemeinzuteilung Vfg. 136/2022 (geändert durch
+        Vfg. 49/2023) für WAS/Funk-LANs im 5-GHz-Band — 5150–5250 MHz: 200 mW mittlere EIRP,
+        max. 10 mW/MHz, Innenraumeinsatz sowie beschränkter Außeneinsatz ohne ortsfeste
+        Außenantennen; UAS-Nutzung auf 5170–5250 MHz beschränkt; 5250–5350 MHz: nur Innenraum:
+        <a href="https://www.bundesnetzagentur.de/DE/Fachthemen/Telekommunikation/Frequenzen/Allgemeinzuteilungen/_DL/MobilfunkDectWlanCBFunk/vfg136_2022.pdf?__blob=publicationFile&amp;v=2" rel="noopener" target="_blank">bundesnetzagentur.de: Vfg. 136/2022 (PDF)</a></li>
+      <li id="q13">Durchführungsverordnung (EU) 2019/947 (konsolidierte Fassung) — Art. 4 Abs. 1
+        Buchst. d (VLOS-Pflicht, Ausnahmen Follow-me-Modus und Beobachter), UAS.OPEN.060 Nr. 2
+        Buchst. b (Sichtverbindung und Luftraumbeobachtung), UAS.OPEN.010 Nr. 2 (120-m-Grenze):
+        <a href="https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:02019R0947-20220404" rel="noopener" target="_blank">eur-lex.europa.eu: VO (EU) 2019/947</a></li>
+      <li id="q14">Antenna-Theory.com, „Antenna Polarization" — zirkulare Polarisation
+        (RHCP/LHCP), Umkehr des Drehsinns bei Reflexion, Verlust von 3 dB (Faktor 0,5) zwischen
+        linearer und zirkularer Polarisation unabhängig vom Drehwinkel:
+        <a href="https://www.antenna-theory.com/basics/polarization.php" rel="noopener" target="_blank">antenna-theory.com: polarization</a></li>
+      <li id="q15">FPV24, Produktseite ImmersionRC rapidFIRE — analoges Brillen-Empfangsmodul
+        mit zwei Empfängern, Signalauswahl aus beiden Antennen für das bestmögliche Bild:
+        <a href="https://www.fpv24.com/de/immersionrc/immersionrc-rapidfire-analog-plus-fpv-glasses-receiver-module" rel="noopener" target="_blank">fpv24.com: rapidFIRE</a></li>
+      <li id="q16">ExpressLRS-Dokumentation, „Long Range Competition" — Rekordliste mit
+        DVR-Video-Pflicht als Beleg, weitester Eintrag 101,3 km; das verwendete Videosystem wird
+        in der Liste nicht dokumentiert:
+        <a href="https://www.expresslrs.org/info/long-range/" rel="noopener" target="_blank">expresslrs.org/info/long-range</a></li>
+      <li id="q17">Xinhua, „Chinese hydrogen-powered drone sets longest distance flight record"
+        (11.12.2025) — Tianmushan-1 (Universität Beihang), 188,605 km am 16.11.2025 in Hangzhou,
+        von Guinness World Records verifiziert, Flugdauer über vier Stunden:
+        <a href="https://english.news.cn/20251211/596efb3f79994ecf8d3b0d10682e1d34/c.html" rel="noopener" target="_blank">english.news.cn: hydrogen drone record</a></li>
+    </ol>
+
+
+<!-- partner:start -->
+    <h2>Partner &amp; Empfehlungen</h2>
+    <p class="muted"><strong>Anzeige:</strong> Ausrüstung, die wir selbst nutzen und
+    empfehlen können.  Die folgenden Links sind Affiliate-Links; kaufst du darüber,
+    erhalten wir eine Provision, für dich ändert sich am Preis nichts.  Empfohlen
+    wird nur, was uns fachlich überzeugt.</p>
+    <div class="partner-grid">
+      <a class="partner-card" href="https://www.sunlu.com/?sca_ref=11859027.qxuEVmIDy7"
+         target="_blank" rel="sponsored noopener">
+        <img src="assets/partner/sunlu-logo.png" alt="SUNLU" width="72" height="72" loading="lazy">
+        <div>
+          <div class="partner-name">SUNLU</div>
+          <div class="partner-desc">3D-Druck-Filament (PLA, PETG, TPU), Filament-Trockner und Zubehör; damit
+          drucken wir Prototypen und Halterungen.</div>
+          <div class="partner-coupon">Gutscheincode beim Checkout: <code>dracolabs</code></div>
+        </div>
+      </a>
+      <a class="partner-card" href="https://www.fpv24.com/de/?aid=U-THvRXn"
+         target="_blank" rel="sponsored noopener">
+        <img src="assets/partner/fpv24-logo.svg" alt="FPV24" width="134" height="44" loading="lazy">
+        <div>
+          <div class="partner-name">FPV24</div>
+          <div class="partner-desc">Deutscher FPV-Fachhandel mit schnellem Versand und Support; Akkus,
+          Ladegeräte (u.&nbsp;a. ISDT) und FPV-Komponenten, die wir im Aufbau verwenden.</div>
+        </div>
+      </a>
+    </div>
+<!-- partner:ende -->
+
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <nav class="social" aria-label="Draco Labs in sozialen Netzwerken">
+      <a href="https://www.youtube.com/@DracoLabsGermany" rel="noopener" class="yt" aria-label="Draco Labs auf YouTube">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/draco.labs.germany" rel="noopener" class="ig" aria-label="Draco Labs auf Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c0-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 3.1A6.7 6.7 0 1 0 18.7 12 6.7 6.7 0 0 0 12 5.3Zm0 11a4.3 4.3 0 1 1 4.3-4.3 4.3 4.3 0 0 1-4.3 4.3ZM19 5a1.6 1.6 0 1 1-1.6-1.6A1.6 1.6 0 0 1 19 5Z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@dracolabsgermany" rel="noopener" class="tt" aria-label="Draco Labs auf TikTok">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16.6 2h-3.1v13.1a2.7 2.7 0 1 1-2.7-2.7c.2 0 .4 0 .6.1V9.3a6 6 0 0 0-.6 0 5.8 5.8 0 1 0 5.8 5.8V8.6a7 7 0 0 0 4.1 1.3V6.8a3.9 3.9 0 0 1-4.1-3.9V2Z"/></svg>
+      </a>
+    </nav>
+    <div class="links">
+      <a href="index.html">Startseite</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </div>
+    <div>© 2026 Draco Labs Germany · Kleinunternehmer gem. § 19 UStG</div>
+  </div>
+</footer>
+</body>
+</html>

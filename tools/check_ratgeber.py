@@ -197,7 +197,29 @@ def _carbon_rechnungen():
     ]
 
 
-RECHNUNGEN = {"ratgeber-carbon-frame.html": _carbon_rechnungen}
+def _video_rechnungen():
+    import math
+    v_ms = 100 / 3.6                              # m/s bei 100 km/h
+    weg_20ms = v_ms * 0.02                        # m in 20 ms
+    laenge = 299792458 / 5.8e9                    # m, Wellenlaenge 5,8 GHz
+    horizont_120 = math.sqrt(2 * 6_371_000 * 120) / 1000   # km, geometrisch
+    fresnel = 0.5 * math.sqrt(laenge * 1000)      # m, Radius Mitte bei 1 km
+    return [
+        ("100 km/h = 27,8 m/s", v_ms, 27.7 <= v_ms <= 27.9),
+        ("'gut einen halben Meter' in 20 ms", weg_20ms, 0.5 <= weg_20ms <= 0.6),
+        ("60 von 150 MHz = '40 Prozent'", 60 / 150, 60 / 150 == 0.4),
+        ("14 dBm = 'rund 25 mW'", 10 ** 1.4, 24 <= 10 ** 1.4 <= 26),
+        ("23 dBm = 'rund 200 mW'", 10 ** 2.3, 190 <= 10 ** 2.3 <= 210),
+        ("5,1-GHz-Band 'achtfache' Leistung (200/25)", 200 / 25, 200 / 25 == 8),
+        ("Horizont 'etwa 39 km' bei 120 m", horizont_120, 38.5 <= horizont_120 <= 39.6),
+        ("Wellenlaenge 'rund 5,2 cm'", laenge * 100, 5.1 <= laenge * 100 <= 5.3),
+        ("Fresnel-Radius 'etwa 3,6 m' auf 1 km", fresnel, 3.4 <= fresnel <= 3.8),
+        ("linear/zirkular '3 dB' = Haelfte", 10 ** -0.3, 0.49 <= 10 ** -0.3 <= 0.52),
+    ]
+
+
+RECHNUNGEN = {"ratgeber-carbon-frame.html": _carbon_rechnungen,
+              "ratgeber-videouebertragung.html": _video_rechnungen}
 
 
 def pruefe_rechnungen(name: str):
