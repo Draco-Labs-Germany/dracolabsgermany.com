@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wie dein Copter mit dir spricht — Funk, GPS und Antennen | Draco Labs</title>
+<meta name="description" content="Wie ein RC-Link wirklich funktioniert: ExpressLRS, TBS Crossfire und Tracer im Vergleich, was RSSI und LQ bedeuten, was die Bundesnetzagentur erlaubt, wie GPS eine Position bestimmt und warum die Antenne der wichtigste Zentimeter deines Copters ist.">
+<meta name="keywords" content="ExpressLRS ELRS, TBS Crossfire, TBS Tracer, RC Link FPV, Diversity Empfänger, CRSF Protokoll, GPS Drohne M10, Pixhawk Holybro, FPV Antenne Dipol, 868 MHz 2,4 GHz, LQ RSSI">
+<!-- Noch in Pruefung: beim Freischalten wieder auf "index, follow" stellen -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="author" content="Draco Labs Germany">
+<link rel="canonical" href="https://dracolabsgermany.com/ratgeber-funk-kommunikation.html">
+
+<!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Wie dein Copter mit dir spricht — Funk, GPS und Antennen">
+<meta property="og:description" content="ExpressLRS, Crossfire und Tracer im Vergleich, RSSI und LQ erklärt, die Rechtslage der Bundesnetzagentur, das GPS-Prinzip und der Antennen-Deep-Dive. Jede Zahl mit Quelle.">
+<meta property="og:url" content="https://dracolabsgermany.com/ratgeber-funk-kommunikation.html">
+<meta property="og:image" content="https://dracolabsgermany.com/assets/logo.png">
+<meta property="og:site_name" content="Draco Labs Germany">
+<meta property="og:locale" content="de_DE">
+
+<!-- Twitter/X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Wie dein Copter mit dir spricht — Funk, GPS und Antennen">
+<meta name="twitter:description" content="Wie ein RC-Link funktioniert, was RSSI und LQ wirklich bedeuten, was erlaubt ist und wie GPS deine Position findet. Jede Zahl mit Quelle.">
+<meta name="twitter:image" content="https://dracolabsgermany.com/assets/logo.png">
+
+<link rel="icon" type="image/png" href="assets/emblem.png">
+<link rel="stylesheet" href="style.css">
+
+<!-- Strukturierte Daten für Google (Article) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Wie dein Copter mit dir spricht: Funk, GPS und Antennen",
+  "description": "Wie ein RC-Link wirklich funktioniert: ExpressLRS, TBS Crossfire und Tracer im Vergleich, RSSI und LQ erklärt, die Rechtslage in Deutschland, das GPS-Prinzip und ein Antennen-Deep-Dive.",
+  "image": "https://dracolabsgermany.com/assets/logo.png",
+  "datePublished": "2026-07-18",
+  "dateModified": "2026-07-18",
+  "author": { "@type": "Organization", "name": "Draco Labs Germany" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Draco Labs Germany",
+    "logo": { "@type": "ImageObject", "url": "https://dracolabsgermany.com/assets/logo.png" }
+  },
+  "mainEntityOfPage": "https://dracolabsgermany.com/ratgeber-funk-kommunikation.html",
+  "inLanguage": "de-DE"
+}
+</script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <img src="assets/emblem.png" alt="Draco Labs Emblem">
+    <div class="name">Draco Labs <small>Germany</small></div>
+    <input type="checkbox" id="menu-auf" class="menu-toggle">
+    <label for="menu-auf" class="burger" aria-label="Menü öffnen und schließen">
+      <span></span><span></span><span></span>
+    </label>
+    <nav>
+      <a href="index.html#leistungen">Leistungen</a>
+      <a href="index.html#ratgeber">Ratgeber</a>
+      <a href="index.html#ueber">Über uns</a>
+      <a href="index.html#kontakt">Kontakt</a>
+    </nav>
+    <a class="shop-btn" href="https://shop.dracolabsgermany.com">Shop →</a>
+  </div>
+</header>
+
+<main class="legal">
+  <div class="wrap">
+
+    <h1>Wie dein Copter mit dir spricht</h1>
+    <p class="muted" style="font-size:17px; margin-top:-4px">Was zwischen deinen Daumen und den Motoren wirklich passiert: der RC-Link von ExpressLRS bis Crossfire, die Zahlen RSSI und LQ, das GPS-Prinzip und die Antenne als wichtigstes Bauteil.</p>
+    <p class="muted">Ratgeber · Funktechnik &amp; Navigation · Lesezeit ca. 20 Min · Stand: Juli 2026</p>
+
+    <div style="background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--cyan); border-radius:10px; padding:18px 20px; margin:22px 0">
+      <p style="margin:0 0 8px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; font-size:13px; color:var(--cyan)">Kurz gesagt</p>
+      <p style="margin:0">Dein Steuersignal ist eine eigene Funkstrecke, getrennt vom Videobild.  Die
+      wichtigste Zahl im Flug ist nicht RSSI, sondern <strong>LQ</strong> (der Anteil verstandener
+      Pakete).  <strong>Je langsamer die Paketrate, desto weiter reicht der Link</strong>: bei
+      ExpressLRS auf 2,4&nbsp;GHz liegen zwischen 500&nbsp;Hz und 50&nbsp;Hz genau
+      10&nbsp;dB Empfindlichkeit, das ist grob der Unterschied zwischen Stadtpark und
+      Berggipfel.  In Deutschland gilt auf 2,4&nbsp;GHz die Grenze von <strong>100&nbsp;mW
+      (EIRP)</strong>.  GPS funktioniert mit mindestens <strong>vier sichtbaren Satelliten</strong> aus
+      gut 20.000&nbsp;km Höhe, und das Signal ist so leise, dass dein Carbon-Frame es
+      komplett abschirmt: GPS gehört auf den Mast.  Unsere Wahl für Long Range:
+      <strong>ExpressLRS auf 2,4&nbsp;GHz mit True-Diversity-Empfänger</strong>.</p>
+    </div>
+
+    <p>Wer einen Copter baut, redet viel über Motoren, Propeller und Frames.  Über die Funkstrecke
+    redet kaum jemand, dabei ist sie das einzige, was dich im Flug mit dem Gerät verbindet.  Wenn sie
+    abreißt, ist alles andere egal.  Dieser Ratgeber erklärt, wie die Verbindung zwischen
+    Fernsteuerung und Copter wirklich funktioniert, was die Systeme von TBS und ExpressLRS
+    unterscheidet, was die Bundesnetzagentur erlaubt, wie dein Copter per Satellit seine Position
+    findet und warum am Ende fast immer die Antenne entscheidet.</p>
+    <p><strong>Was dieser Artikel nicht behandelt:</strong> die Videoübertragung.  Analog, DJI,
+    HDZero und Walksnail sind ein eigenes Thema mit eigener Physik und bekommen einen eigenen
+    Ratgeber.  Hier geht es um die Steuerung (den RC-Link), die Rückmeldungen des Copters (die
+    Telemetrie) und die Satellitennavigation (GPS).</p>
+    <p><strong>Hinweis:</strong> Jede Zahl in diesem Text hat eine Fußnote, die auf eine nachprüfbare
+    Quelle zeigt.  Wo wir gerechnet statt gemessen haben, steht es ausdrücklich dabei.  Für den Fall,
+    dass wir einen Fehler gemacht haben, kontaktiert uns gerne jederzeit.</p>
+    <p class="muted" style="font-size:14px"><strong>Transparenz:</strong> Einige Produktlinks in diesem
+    Artikel führen zum deutschen Fachhändler FPV24 und sind Affiliate-Links (Anzeige).  Kaufst du
+    darüber, erhalten wir eine kleine Vergütung, für dich ändert sich am Preis nichts.  Empfohlen
+    wird nur, was wir fachlich begründen können, und die Begründung steht immer im Text.</p>
+
+    <h2>1. Zwei Funkstrecken und ein Ortungssystem</h2>
+    <p>Auf einem FPV-Copter laufen im Normalfall drei Funksysteme gleichzeitig.  Die
+    <strong>Steuerstrecke</strong> bringt deine Knüppelbewegungen zum Copter und die Telemetrie
+    zurück.  Die <strong>Videostrecke</strong> bringt das Kamerabild in deine Brille.  Und der
+    <strong>GPS-Empfänger</strong> hört passiv auf Satellitensignale, er sendet selbst nichts.
+    Diese drei Systeme sind technisch unabhängig: Sie nutzen verschiedene Frequenzen, verschiedene
+    Verfahren und fallen unabhängig voneinander aus.</p>
+    <p>Das ist eine bewusste Architektur.  Die Steuerstrecke braucht vor allem Zuverlässigkeit bei
+    winziger Datenmenge (ein paar Knüppelwerte, ein paar Schalter).  Die Videostrecke braucht das
+    Gegenteil: enorme Datenmengen, darf dafür aber auch mal ein Bild verlieren.  Deshalb überlebt
+    ein guter RC-Link Situationen, in denen das Videobild längst schwarz ist.  Wer schon einmal
+    blind per Return-to-Home zurückgekommen ist, weiß, warum man an der Steuerstrecke nicht
+    spart.</p>
+
+    <h2>2. Wie ein RC-Link funktioniert: Sender, Empfänger, Modulation</h2>
+    <p>Die Grundlage ist immer gleich.  In deiner Fernsteuerung sitzt ein Sendemodul
+    (TX, von <em>transmitter</em>), im Copter ein Empfänger (RX, von <em>receiver</em>).  Der Sender
+    erzeugt eine hochfrequente Trägerwelle und prägt ihr die Steuerdaten auf; dieses Aufprägen
+    heißt Modulation.  Der Empfänger macht das Gegenteil: Er filtert die Trägerwelle aus dem
+    Äther, entfernt sie und gibt die Daten an den Flight Controller weiter.</p>
+    <p>Moderne RC-Systeme senden nicht kontinuierlich, sondern in kleinen Paketen mit fester
+    Wiederholrate (der Paketrate).  Ein Paket enthält die aktuellen Kanalwerte, eine Prüfsumme
+    und je nach System ein Zeitfenster für die Antwort des Copters.  Der Link ist also keine
+    Einbahnstraße: Empfänger moderner Systeme senden Telemetrie zurück, von der Akkuspannung bis
+    zur GPS-Position.</p>
+    <p>Bei der Modulation unterscheiden sich die Lager.  ExpressLRS nutzt für die Reichweite
+    ein Verfahren namens <strong>LoRa</strong> (von <em>long range</em>), eine
+    Spreizband-Modulation, die auf der sogenannten Chirp-Technik basiert (Fachwort: Chirp Spread
+    Spectrum, CSS).<sup><a href="#q2">2</a></sup>  Dabei wird das Signal über ein breiteres
+    Frequenzband „verschmiert" als nötig.  Das klingt verschwenderisch, hat aber einen gewaltigen
+    Vorteil: Der Empfänger kann das charakteristische Chirp-Muster noch aus Signalen herausrechnen,
+    die leiser sind als das Hintergrundrauschen.  Genau daher kommt die Reichweite moderner
+    RC-Links.</p>
+    <p>Damit sich mehrere Piloten nicht gegenseitig stören, springen die Systeme viele Male pro
+    Sekunde nach einem festen Muster durch das Frequenzband (Fachwort: Frequency Hopping Spread
+    Spectrum, FHSS).  Bei ExpressLRS wird dieses Sprungmuster aus der Bindphrase berechnet: Die
+    Phrase wird durch eine Einwegfunktion geschickt (gehasht) und füttert einen Zufallsgenerator,
+    der die Sprungfolge festlegt.  Wichtig zu wissen: <strong>Die Bindphrase ist keine
+    Verschlüsselung</strong>, sie verhindert nur, dass zwei Piloten mit derselben Folge
+    kollidieren.<sup><a href="#q3">3</a></sup></p>
+
+    <h2>3. Frequenz und Reichweite: die Physik dahinter</h2>
+    <p>RC-Links leben in zwei Frequenzbereichen: dem 2,4-GHz-Band (weltweit gleich) und dem
+    Bereich um 900&nbsp;MHz, der regional verschieden ist (in Europa 868&nbsp;MHz, in den USA
+    915&nbsp;MHz).  Physikalisch gilt: Je niedriger die Frequenz, desto geringer die
+    Ausbreitungsdämpfung auf gleicher Strecke und desto besser schmiegt sich die Welle um
+    Hindernisse.  Deshalb galt der 868er-Bereich lange als das Long-Range-Band schlechthin.</p>
+    <p>Leistungen und Empfangspegel gibt man in der Funktechnik nicht in Watt an, sondern
+    logarithmisch in <strong>dBm</strong> (Dezibel bezogen auf 1&nbsp;Milliwatt).  Die Skala ist
+    gewöhnungsbedürftig, aber praktisch: Plus 3&nbsp;dB bedeutet doppelte Leistung, plus
+    10&nbsp;dB bedeutet zehnfache Leistung.  100&nbsp;mW Sendeleistung entsprechen 20&nbsp;dBm,
+    25&nbsp;mW sind 14&nbsp;dBm (gerechnet über die Definition, nicht gemessen).  Empfangspegel
+    sind winzig und daher negativ: -100&nbsp;dBm sind 0,0000000001&nbsp;Milliwatt.</p>
+    <p>Die entscheidende Eigenschaft eines Empfängers ist seine
+    <strong>Empfindlichkeit</strong>: der leiseste Pegel, bei dem er ein Paket noch versteht.  Und
+    hier kommt der wichtigste Zusammenhang dieses Kapitels: <strong>Die Empfindlichkeit hängt an
+    der Paketrate.</strong>  Je langsamer gesendet wird, desto länger ist jedes Paket in der Luft
+    und desto tiefer kann der Empfänger ins Rauschen hineinhören.  Bei ExpressLRS auf 2,4&nbsp;GHz
+    reicht die Spanne von -105&nbsp;dBm bei 500&nbsp;Hz über -108&nbsp;dBm bei 250&nbsp;Hz und
+    -112&nbsp;dBm bei 150&nbsp;Hz bis -115&nbsp;dBm bei 50&nbsp;Hz.  Auf 900&nbsp;MHz geht es noch
+    tiefer: -111&nbsp;dBm bei 250&nbsp;Hz, -117&nbsp;dBm bei 100&nbsp;Hz und -123&nbsp;dBm bei
+    25&nbsp;Hz.<sup><a href="#q4">4</a></sup></p>
+    <p>Diese Zahlen sind der Grund, warum „mehr Sendeleistung" die falsche erste Antwort auf
+    Reichweitenprobleme ist.  Von 500&nbsp;Hz auf 50&nbsp;Hz zu schalten bringt 10&nbsp;dB, das
+    entspräche einer Verzehnfachung der Sendeleistung, kostet aber nichts außer Latenz.  Die
+    Rekordliste des ExpressLRS-Projekts zeigt, was mit langsamen Raten möglich ist: Der weiteste
+    dokumentierte Flug auf 2,4&nbsp;GHz liegt bei 101,3&nbsp;km, geflogen mit 50&nbsp;Hz
+    Paketrate und 2.000&nbsp;mW Sendeleistung (eine Leistung, die in Europa nicht zulässig ist,
+    dazu Kapitel&nbsp;5).  Auf 900&nbsp;MHz stehen 50,1&nbsp;km mit 500&nbsp;mW und 25&nbsp;Hz in
+    der Liste.  Bemerkenswert: Viele dieser Flüge endeten nicht mit Verbindungsabriss, die Piloten
+    sind schlicht umgekehrt.<sup><a href="#q5">5</a></sup></p>
+    <p>Dass 2,4&nbsp;GHz trotz höherer Dämpfung solche Reichweiten erreicht, liegt an der
+    Systemauslegung: mehr nutzbare Bandbreite, effiziente Chips und die Chirp-Modulation.  Für
+    die Praxis in Deutschland heißt das: <strong>Das 2,4-GHz-Band ist für Long Range nicht die
+    Notlösung, sondern eine vollwertige Option</strong>, und wegen der Rechtslage (Kapitel&nbsp;5)
+    oft sogar die bessere.</p>
+
+    <h2>4. RSSI, LQ und SNR: die Zahlen, die dich vor dem Absturz warnen</h2>
+    <p>Dein OSD zeigt drei Werte für die Verbindungsqualität, und sie werden notorisch
+    verwechselt.<sup><a href="#q4">4</a></sup></p>
+    <p><strong>RSSI</strong> (Received Signal Strength Indicator) ist die Lautstärke des
+    ankommenden Signals in dBm, typisch zwischen 0 und etwa -130.  RSSI sagt dir, wie viel
+    Reserve du zur Empfindlichkeitsgrenze hast, aber nicht, ob die Pakete auch verstanden
+    werden.</p>
+    <p><strong>LQ</strong> (Link Quality) ist der Anteil der Pakete, die tatsächlich korrekt
+    ankommen, in Prozent.  Das ist die Zahl, die zählt: Ein Link mit leisem RSSI und
+    100&nbsp;% LQ fliegt sich perfekt; ein Link mit lautem RSSI und 60&nbsp;% LQ stottert.  Die
+    ExpressLRS-Entwickler bringen es auf den Punkt: Auf die LQ kommt es an.<sup><a href="#q4">4</a></sup></p>
+    <p><strong>SNR</strong> (Signal-to-Noise Ratio) vergleicht das Signal mit dem
+    Hintergrundrauschen und steuert unter anderem die dynamische Leistungsregelung.  Eine
+    Besonderheit der schnellen FLRC-Modi (dazu Kapitel&nbsp;8): Dort zeigt SNR konstant null, das
+    ist kein Fehler.<sup><a href="#q4">4</a></sup></p>
+    <p>Für die Warnschwelle empfiehlt das Projekt, den RSSI-Alarm 5 bis 10&nbsp;dB über der
+    Empfindlichkeitsgrenze der gewählten Paketrate zu setzen.<sup><a href="#q4">4</a></sup>  Bei
+    250&nbsp;Hz auf 2,4&nbsp;GHz (Grenze -108&nbsp;dBm) wäre der Alarm also bei etwa -103 bis
+    -98&nbsp;dBm sinnvoll.  Wer den Alarm hört, dreht um oder reduziert die Paketrate, bevor der
+    Notfallmodus (Failsafe) übernimmt.</p>
+
+    <h2>5. Was in Deutschland erlaubt ist</h2>
+    <p>Funkanwendungen mit geringer Reichweite laufen in Deutschland über sogenannte
+    Allgemeinzuteilungen der Bundesnetzagentur: Du brauchst keine eigene Lizenz, musst dich aber
+    an die Parameter halten.  Maßgeblich ist die Verfügung 91/2025.<sup><a href="#q6">6</a></sup>
+    Die Leistungsangaben dort sind Strahlungsleistungen, also das, was die Antenne tatsächlich
+    abgibt (EIRP bzw. ERP), nicht das, was das Modul erzeugt.  Ein Gewinn der Antenne zählt
+    mit.</p>
+    <p>Die für RC-Links relevanten Einträge:<sup><a href="#q6">6</a></sup></p>
+    <table>
+      <thead>
+        <tr><th>Band</th><th>Kategorie</th><th>Erlaubt</th><th>Auflagen</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2.400 – 2.483,5 MHz</td>
+          <td>Breitband-Datenübertragung</td>
+          <td><strong>100 mW (EIRP)</strong></td>
+          <td>bei Frequenzsprung zusätzlich 100 mW je 100 kHz; Techniken zur Störungsminderung</td>
+        </tr>
+        <tr>
+          <td>2.400 – 2.483,5 MHz</td>
+          <td>unspezifische Kurzstreckenfunk-Anwendung</td>
+          <td>10 mW (EIRP)</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>868 – 868,6 MHz</td>
+          <td>unspezifische Kurzstreckenfunk-Anwendung</td>
+          <td>25 mW (ERP)</td>
+          <td>Arbeitszyklus ≤ 1 % oder Frequenzzugangs- und Störungsminderungstechniken</td>
+        </tr>
+        <tr>
+          <td>869,4 – 869,65 MHz</td>
+          <td>unspezifische Kurzstreckenfunk-Anwendung</td>
+          <td>500 mW (ERP)</td>
+          <td>Arbeitszyklus ≤ 10 % oder Frequenzzugangs- und Störungsminderungstechniken</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Drei Dinge sollte man daraus mitnehmen.  <strong>Erstens:</strong> Auf 2,4&nbsp;GHz sind
+    100&nbsp;mW EIRP die Obergrenze für frequenzspringende Breitbandsysteme, zu denen moderne
+    RC-Links gehören.  Die 250-mW- oder 1-W-Stufen, die sich in vielen Sendemodulen einstellen
+    lassen, sind eine Hardware-Fähigkeit, keine Erlaubnis.  <strong>Zweitens:</strong> Im
+    868er-Bereich ist die Lage komplizierter: kleine Leistung oder strenge Begrenzung der
+    Sendezeit (der Arbeitszyklus sagt, wie viel Prozent der Zeit gesendet werden darf), sofern
+    das Gerät nicht mit höflichen Zugriffstechniken arbeitet, etwa erst lauschen, dann senden
+    (Fachwort: Listen Before Talk).  Ein RC-Link sendet aber praktisch dauernd, das verträgt
+    sich schlecht mit Arbeitszyklus-Grenzen.  <strong>Drittens:</strong> Das in US-Foren
+    allgegenwärtige 915-MHz-Band taucht in der deutschen Tabelle schlicht nicht auf.
+    <strong>915-MHz-Hardware ist hier nicht zulässig</strong>, auch wenn sie problemlos zu kaufen
+    ist.  Beim Kauf also immer die EU-Variante (868&nbsp;MHz) wählen, oder gleich
+    2,4&nbsp;GHz.</p>
+    <p class="muted" style="font-size:14px">Hinweis: Wir geben hier den Stand der Verfügung
+    91/2025 wieder, verkürzt auf die für RC-Links relevanten Zeilen.  Verbindlich ist immer der
+    Originaltext der Bundesnetzagentur, siehe Quellenangaben.  Dieser Ratgeber ist keine
+    Rechtsberatung.</p>
+
+    <h2>6. TBS Crossfire: der Long-Range-Klassiker auf 868 MHz</h2>
+    <p>Team BlackSheep hat mit dem Crossfire das System gebaut, das Long Range im FPV-Bereich
+    populär gemacht hat.  Es arbeitet in Europa im Bereich 860 bis 885&nbsp;MHz, die Sendeleistung
+    ist am Modul von 10&nbsp;mW bis 2.000&nbsp;mW einstellbar (was davon in Europa zulässig ist,
+    regelt nicht das Modul, sondern Kapitel&nbsp;5).  Der Link arbeitet bidirektional mit
+    Telemetrie, springt über die Frequenzen (FHSS mit Spreizverfahren) und repariert sich bei
+    Störungen selbst; die Update-Rate liegt bei 150&nbsp;Hz.<sup><a href="#q7">7</a></sup></p>
+    <p>Zwei Dinge haben das System über die Jahre getragen.  Erstens die schiere Reife: Es fliegt
+    seit fast einem Jahrzehnt in allem vom 5-Zoll-Racer bis zum Berg-Wing.  Zweitens hat TBS mit
+    dem Crossfire das Übertragungsprotokoll <strong>CRSF</strong> eingeführt, das heute der
+    Quasi-Standard zwischen Empfänger und Flight Controller ist, auch bei der Konkurrenz
+    (Kapitel&nbsp;10).  Der Hersteller wirbt mit einer Empfindlichkeit von bis zu
+    -130&nbsp;dB<sup><a href="#q7">7</a></sup>, das ist eine Herstellerangabe für die langsamste
+    Betriebsart und passt zur Physik aus Kapitel&nbsp;3: niedrige Frequenz plus niedrige Rate
+    gleich maximale Empfindlichkeit.</p>
+    <p>Die ehrliche Einordnung für Deutschland: Das 868er-Band ist eng (Kapitel&nbsp;5), und der
+    Leistungsvorsprung, den Crossfire auf dem Papier hat, lässt sich hier legal kaum ausfahren.
+    Wer das System aus dem Bestand fliegt oder die enorme Marktdurchdringung schätzt, macht
+    nichts falsch.  Wer neu kauft, sollte den Vergleich mit ExpressLRS auf 2,4&nbsp;GHz führen
+    (Kapitel&nbsp;8).</p>
+    <p style="margin-top:14px">
+      <a href="https://www.fpv24.com/de/team-blacksheep/tbs-crossfire-micro-tx?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ TBS Crossfire Micro TX V2 bei FPV24 ansehen (Anzeige)</a>
+    </p>
+
+    <h2>7. TBS Tracer: 2,4 GHz mit konstanten 250 Hz</h2>
+    <p>Der Tracer ist die 2,4-GHz-Antwort von TBS und technisch der Gegenentwurf zur eigenen
+    Crossfire-Philosophie: Statt maximaler Reichweite bei niedriger Rate liefert er eine
+    <strong>konstante Paketrate von 250&nbsp;Hz</strong> in beide Richtungen, ohne
+    Moduswahl und ohne Umschalten.  Das Handbuch nennt eine wählbare Sendeleistung von 25 bis
+    100&nbsp;mW, eine TBS-eigene Modulation und am Empfänger zwei flexible Antennen in
+    T-Bauform; bis zu 12 Kanäle werden übertragen.<sup><a href="#q8">8</a></sup></p>
+    <p>Die Zielgruppe ist klar: Piloten, die eine reaktionsschnelle, konstante Verbindung wollen
+    und dafür auf das letzte Quäntchen Reichweite verzichten.  Die 100-mW-Obergrenze der
+    EU-Firmware passt zudem sauber zur 100-mW-Grenze aus Kapitel&nbsp;5.  Dass der Hersteller
+    das System auf dem Crossfire-Unterbau aufgebaut hat, merkt man an der Integration:
+    gleiches Protokoll, gleiche Konfigurationswelt.</p>
+    <p style="margin-top:14px">
+      <a href="https://www.fpv24.com/de/team-blacksheep/tbs-tracer-nano-rx-empfaenger?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ TBS Tracer Nano RX bei FPV24 ansehen (Anzeige)</a>
+    </p>
+
+    <h2>8. ExpressLRS: Open Source und unsere Wahl</h2>
+    <p><strong>ExpressLRS</strong> (kurz ELRS) ist kein Hersteller, sondern ein
+    Open-Source-Projekt: Firmware und Protokoll sind offen, die Hardware bauen viele Firmen, von
+    Radiomaster über BetaFPV bis GEPRC.<sup><a href="#q1">1</a></sup>  Technisch basiert das
+    System auf Funkchips von Semtech (SX12xx-Serie beziehungsweise dem neueren LR1121), also
+    genau den Bausteinen, die auch die LoRa-Welt antreiben.<sup><a href="#q3">3</a></sup>  Diese
+    Offenheit hat in wenigen Jahren zu einem Ökosystem geführt, in dem ein Empfänger unter zehn
+    Gramm wiegt und unter 30&nbsp;Euro kostet, ohne dass man an Reichweite spart.</p>
+    <p>Die Paketrate ist bei ELRS frei wählbar und das zentrale Werkzeug: Auf 2,4&nbsp;GHz stehen
+    LoRa-Modi mit 50, 150, 250 und 500&nbsp;Hz zur Verfügung, dazu besonders schnelle Modi
+    (F500 und F1000) mit einer anderen Modulation (FLRC), die Latenz gegen Empfindlichkeit
+    tauschen.<sup><a href="#q4">4</a></sup>  Die Faustregel aus Kapitel&nbsp;3 gilt hier direkt:
+    Racing nimmt die schnellen Modi, Long Range nimmt 150&nbsp;Hz oder weniger.</p>
+    <p>Auch die Telemetrie ist einstellbar: Das Verhältnis (Fachwort: Telemetry Ratio) legt fest,
+    jedes wievielte Paket dem Rückkanal gehört, von 1:2 bis 1:64.<sup><a href="#q9">9</a></sup>
+    Für Long Range mit GPS-Rückmeldung lohnt ein dichterer Rückkanal; wer nur Akkuspannung
+    braucht, spart Sendezeit.  Zwei Eigenheiten sollte man kennen: Der Schalter zum Scharfstellen
+    (Arm) gehört zwingend auf den Kanal AUX1, der mit jedem Paket übertragen wird<sup><a href="#q9">9</a></sup>,
+    und die Bindphrase ersetzt das klassische Binden per Knopfdruck (Kapitel&nbsp;2).</p>
+    <p>Warum es unsere Wahl ist: Das System kombiniert die 100-mW-Rechtslage des 2,4-GHz-Bands
+    mit einstellbarer Empfindlichkeit bis -115&nbsp;dBm<sup><a href="#q4">4</a></sup>, offener
+    Firmware und einem Hardware-Markt, der vom Ein-Gramm-Empfänger bis zum
+    True-Diversity-Empfänger (Kapitel&nbsp;9) alles liefert.  Wir fliegen unsere Long-Range-Builds
+    mit ELRS auf 2,4&nbsp;GHz, und die Rekordliste des Projekts zeigt, dass die Reichweite dabei
+    nicht der begrenzende Faktor ist.<sup><a href="#q5">5</a></sup></p>
+    <p style="margin-top:14px">
+      <a href="https://www.fpv24.com/de/radiomaster/radiomaster-tx16s-mkii-24-ghz-hall-gimbals-v40-elrs-fpv-fernsteuerung?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ RadioMaster TX16S MKII mit internem ELRS bei FPV24 ansehen (Anzeige)</a>
+    </p>
+
+    <h2>9. Diversity: zwei Antennen sind besser als eine</h2>
+    <p>Jede Antenne hat blinde Winkel (Kapitel&nbsp;13), und auf einem Copter kommt der eigene
+    Rahmen als Hindernis dazu: Carbon schirmt Funk ab wie ein Blech, das haben wir im
+    <a href="ratgeber-carbon-frame.html">Carbon-Ratgeber</a> ausführlich belegt.  In bestimmten
+    Fluglagen zeigt also entweder die Nullstelle der Antenne zum Piloten, oder der Rahmen steht
+    schlicht im Weg.  Die Antwort darauf heißt Diversity, und es gibt sie in zwei sehr
+    verschiedenen Ausbaustufen.<sup><a href="#q10">10</a></sup></p>
+    <p><strong>Antennen-Diversity:</strong> Der Empfänger hat zwei Antennen, aber nur einen
+    Funkchip, und schaltet per Umschalter auf die Antenne mit dem besseren Signal.  Das kostet
+    fast nichts und hilft schon deutlich.  Typische Vertreter sind der Radiomaster RP3 oder der
+    Matek R24-D.<sup><a href="#q10">10</a></sup></p>
+    <p><strong>True Diversity:</strong> Der Empfänger hat zwei komplette Empfangszüge, also zwei
+    Funkchips, jeder fest mit einer eigenen Antenne verbunden.  Beide hören immer gleichzeitig,
+    verwendet wird das bessere Paket.  Es gibt kein Umschalten und damit keine falsche
+    Entscheidung.  Typische Vertreter sind der BetaFPV SuperD oder der Happymodel EP1
+    Dual.<sup><a href="#q10">10</a></sup>  Für Long Range ist das aus unserer Sicht die richtige
+    Ausbaustufe: Die beiden Antennen lassen sich so am Frame verteilen, dass nie beide
+    gleichzeitig im Carbon-Schatten liegen.</p>
+    <p>ExpressLRS setzt darauf noch eine Stufe: <strong>Gemini</strong>.  Dabei sendet das
+    TX-Modul dasselbe Paket gleichzeitig auf zwei Frequenzen, die auf 2,4&nbsp;GHz 40&nbsp;MHz
+    auseinander liegen, und ein True-Diversity-Empfänger hört beide ab.  Das erhöht nicht die
+    Reichweite, aber die Wahrscheinlichkeit, dass jedes einzelne Paket durchkommt, die LQ wird
+    stabiler, gerade in gestörter Umgebung.<sup><a href="#q11">11</a></sup>  Dafür braucht es
+    Gemini-fähige Hardware auf beiden Seiten.</p>
+    <p style="margin-top:14px">
+      <a href="https://www.fpv24.com/de/betafpv/betafpv-superd-elrs-diversity-receiver?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ BetaFPV SuperD True-Diversity-Empfänger bei FPV24 ansehen (Anzeige)</a><br>
+      <a href="https://www.fpv24.com/de/radiomaster/radiomaster-rp4td-elrs-24ghz-nano-receiver?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ Radiomaster RP4TD True-Diversity-Empfänger bei FPV24 ansehen (Anzeige)</a><br>
+      <a href="https://www.fpv24.com/de/geprc/geprc-elrs-nano-dual-24g-c3-true-diversity-receiver?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ GEPRC ELRS Nano DUAL True-Diversity-Empfänger bei FPV24 ansehen (Anzeige)</a><br>
+      <a href="https://www.fpv24.com/de/radiomaster/radiomaster-rp3-elrs-24ghz-nano-receiver?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ Radiomaster RP3 (Antennen-Diversity, günstiger Einstieg) bei FPV24 ansehen (Anzeige)</a>
+    </p>
+
+    <h2>10. CRSF, SBUS und MAVLink: vom Empfänger zum Flight Controller</h2>
+    <p>Zwischen Empfänger und Flight Controller läuft ein eigenes, drahtgebundenes Protokoll,
+    und auch hier gab es einen Generationswechsel.</p>
+    <p>Das ältere <strong>SBUS</strong> überträgt nur in eine Richtung (Empfänger zu Flight
+    Controller) und arbeitet mit invertiertem Signalpegel, was auf manchen Boards zusätzliche
+    Hardware braucht.  Das noch ältere PPM verschwindet gerade ganz aus den
+    Autopiloten.<sup><a href="#q12">12</a></sup></p>
+    <p>Der heutige Standard ist <strong>CRSF</strong> (Crossfire Serial Protocol, eingeführt von
+    TBS, übernommen von ExpressLRS und anderen).  Es ist bidirektional: Über ein einziges Paar
+    serieller Leitungen (UART) laufen die Steuerkanäle zum Flight Controller und die Telemetrie
+    zurück.<sup><a href="#q12">12</a></sup>  Die Verkabelung ist immer gekreuzt: Der TX-Pin des
+    Empfängers an den RX-Pin des Flight Controllers und umgekehrt, dazu 5&nbsp;V und
+    Masse.<sup><a href="#q14">14</a></sup>  Die serielle Geschwindigkeit liegt standardmäßig bei
+    420.000&nbsp;Baud (nur KISS-Flight-Controller erwarten 400.000).<sup><a href="#q13">13</a></sup></p>
+    <p>Bei größeren Coptern mit ArduPilot kommt eine dritte Ebene dazu:
+    <strong>MAVLink</strong>, das Telemetrie-Protokoll der Autopilot-Welt, über das
+    Bodenstationen komplette Missionsdaten austauschen.  ArduPilot kann CRSF-Telemetrie direkt
+    verarbeiten und erlaubt sogar das Ändern von Parametern über den
+    RC-Link.<sup><a href="#q15">15</a></sup>  Crossfire-Hardware kann MAVLink nativ
+    transportieren.<sup><a href="#q7">7</a></sup>  Für den Praktiker heißt das: ein Kabelpaar,
+    volle Kontrolle, keine separate Telemetrie-Funke nötig.</p>
+
+    <h2>11. GPS: dreißig Satelliten für eine Position</h2>
+    <p>GPS ist die dritte Funkstrecke an Bord, und die einzige, bei der dein Copter nur zuhört.
+    Das amerikanische System besteht aus einer Grundordnung von 24 Satellitenplätzen, verteilt
+    auf sechs Bahnebenen; tatsächlich betrieben werden seit Jahren rund 31 Satelliten, seit einer
+    Erweiterung im Jahr 2011 effektiv in einer 27-Plätze-Anordnung.  Die Satelliten fliegen in
+    etwa 20.200&nbsp;km Höhe und umrunden die Erde zweimal pro Tag.<sup><a href="#q16">16</a></sup>
+    Genauer: Ein Umlauf dauert 11&nbsp;Stunden und 58&nbsp;Minuten, die Bahnen sind um 55&nbsp;Grad
+    gegen den Äquator geneigt.<sup><a href="#q17">17</a></sup></p>
+    <p>Das Prinzip ist Laufzeitmessung.  Jeder Satellit funkt permanent seine Position und die
+    exakte Uhrzeit einer Atomuhr.  Der Empfänger misst, wie lange die Signale unterwegs waren,
+    und errechnet daraus seine Entfernung zu jedem Satelliten.  Drei Entfernungen würden für
+    einen Punkt im Raum reichen, aber die billige Quarzuhr im Empfänger geht für diese Messung
+    viel zu ungenau.  Deshalb wird die Empfängeruhr als vierte Unbekannte mitgeschätzt, und dafür
+    braucht es die Messung zu einem vierten Satelliten.  Die Konstellation ist genau darauf
+    ausgelegt: Von praktisch jedem Punkt der Erde sind mindestens vier Satelliten
+    sichtbar.<sup><a href="#q16">16</a></sup></p>
+    <p>Wie leise diese Signale sind, macht eine Zahl klar: Die GPS-Schnittstellenspezifikation
+    garantiert am Boden eine minimale Empfangsleistung von gerade einmal
+    -128,5&nbsp;dBm.<sup><a href="#q18">18</a></sup>  Das ist um Größenordnungen leiser als alles,
+    was dein RC-Link verarbeitet.  Deshalb gilt kompromisslos, was wir im
+    <a href="ratgeber-carbon-frame.html">Carbon-Ratgeber</a> hergeleitet haben: <strong>Ein
+    GPS-Empfänger gehört auf einen Mast über den Rahmen</strong>, nicht zwischen zwei
+    Carbonplatten.  Der Frame schirmt wie ein Blech, und ein Signal an der Hörbarkeitsgrenze
+    verzeiht keine Abschirmung.</p>
+    <p>Moderne Module empfangen längst nicht mehr nur GPS.  Der verbreitete Empfängerchip u-blox
+    M10 verarbeitet die vier großen Systeme GPS, Galileo (Europa), GLONASS (Russland) und BeiDou
+    (China) gleichzeitig, liefert bis zu 10 Positionslösungen pro Sekunde bei drei oder mehr
+    aktiven Systemen (bis 25 bei einem einzelnen), erreicht eine horizontale Genauigkeit von
+    1,5&nbsp;m (CEP, also der Radius, in dem die Hälfte der Messungen liegt), braucht aus dem
+    Kaltstart 28&nbsp;Sekunden bis zur ersten Position und hält Signale bis etwa -165&nbsp;dBm
+    im Empfang, bei weniger als 25&nbsp;mW Stromaufnahme.<sup><a href="#q19">19</a></sup>  Mehr
+    sichtbare Satelliten bedeuten bessere Geometrie und damit stabilere Positionen, gerade
+    zwischen Hindernissen.</p>
+    <p>Auf den üblichen FPV-Modulen sitzt neben dem GNSS-Chip fast immer ein Magnetfeldsensor
+    (Kompass), denn ein GNSS-Empfänger kennt zwar seine Position und aus der Bewegung seine
+    Richtung, aber im Stand keine Blickrichtung.  Für Positionshaltung und Return-to-Home gehört
+    der Kompass, wie das GPS selbst, so weit weg von Stromleitern wie möglich: auf den Mast.</p>
+    <p style="margin-top:14px">
+      <a href="https://www.fpv24.com/de/holybro/holybro-m10-gps-gnss-u-blox-modul-mit-kompass?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ Holybro M10 GPS mit Kompass bei FPV24 ansehen (Anzeige)</a><br>
+      <a href="https://www.fpv24.com/de/team-blacksheep/tbs-m10-gps-fpv-glonass?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ TBS M10 GPS bei FPV24 ansehen (Anzeige)</a>
+    </p>
+
+    <h2>12. Holybro und Pixhawk: wo alles zusammenläuft</h2>
+    <p>Bei großen Coptern ab 13&nbsp;Zoll wandert die Elektronik weg vom Racing-Stack hin zur
+    Autopilot-Welt, und dort ist <strong>Pixhawk</strong> der offene Hardware-Standard.
+    Ein verbreiteter Vertreter ist der Pixhawk 6C von Holybro: Hauptprozessor ist ein STM32H743
+    (32-Bit-ARM, 480&nbsp;MHz, 2&nbsp;MB Flash, 1&nbsp;MB RAM), daneben arbeitet ein separater
+    Ein-/Ausgabe-Prozessor (STM32F103).  Die Lageerfassung ist doppelt ausgeführt: zwei
+    unabhängige Beschleunigungs- und Drehratensensoren (ICM-42688-P und BMI088), dazu ein
+    Magnetometer (IST8310) und ein Barometer (MS5611), mechanisch vibrationsentkoppelt
+    montiert.<sup><a href="#q20">20</a></sup></p>
+    <p>Softwareseitig laufen darauf die beiden großen offenen Autopiloten: PX4 (ab Werk
+    installiert) und ArduPilot (unterstützt ab Version 4.3).  GPS-Module wie das M10 aus
+    Kapitel&nbsp;11 werden per Standardstecker angeschlossen.<sup><a href="#q20">20</a></sup>
+    Der RC-Link aus den Kapiteln 6 bis 9 landet per CRSF auf einem der seriellen Anschlüsse,
+    die Telemetrie zur Bodenstation läuft als MAVLink (Kapitel&nbsp;10).  Damit schließt sich
+    der Kreis: Knüppel, Funkstrecke, Empfänger, Flight Controller, Satellitennavigation, alles
+    spricht über offene, dokumentierte Schnittstellen.</p>
+
+    <h2>13. Antennen: der wichtigste Zentimeter deines Copters</h2>
+    <p>Man kann an jedem Glied der Funkkette Geld ausgeben, aber kein Bauteil verändert die
+    Verbindung so stark wie die Antenne und ihre Montage.  Dabei ist die Standardantenne am
+    RC-Empfänger unspektakulär: ein Stück Koaxkabel, dessen Ende als Strahler freigelegt ist,
+    meist als T-Form ausgeführt.  Elektrisch ist das ein Halbwellendipol, die Urform der
+    Antenne.</p>
+    <p>Für den Halbwellendipol liefert die Antennentheorie klare Kennwerte: Seine Richtwirkung
+    beträgt das 1,64-fache eines idealen Rundumstrahlers (2,15&nbsp;dB), seine Impedanz liegt
+    bei 73&nbsp;Ohm mit einem Blindanteil, der verschwindet, wenn man die Antenne auf etwa
+    0,48 Wellenlängen kürzt, und seine Halbwertsbreite beträgt 78&nbsp;Grad.<sup><a href="#q21">21</a></sup>
+    Übersetzt: Die Antenne strahlt quer zu ihrer Achse am stärksten, in Richtung der Achse
+    entstehen Einzüge (Nullstellen).  Das Abstrahlbild sieht aus wie ein Donut, dessen Loch die
+    Antenne durchstößt.  Deshalb montiert man Diversity-Antennen in unterschiedlicher
+    Ausrichtung: Wo die eine ihre Nullstelle hat, hat die andere Empfang (Kapitel&nbsp;9).</p>
+    <p>Die Länge der Antenne folgt aus der Wellenlänge, und die aus der Frequenz (Wellenlänge
+    gleich Lichtgeschwindigkeit geteilt durch Frequenz, gerechnet, nicht gemessen): Bei
+    2,4&nbsp;GHz ist die Welle rund 12,5&nbsp;cm lang, der Halbwellendipol also gut 6&nbsp;cm.
+    Bei 868&nbsp;MHz sind es rund 34,5&nbsp;cm Wellenlänge und gut 17&nbsp;cm Antenne.  Das
+    erklärt zwei Dinge auf einen Schlag: warum 868er-Antennen so unhandlich lang sind, und warum
+    man eine Antenne niemals kürzen oder knicken darf.  Eine falsche Länge verstimmt die
+    Antenne, die Sendeleistung wird dann zum Teil reflektiert statt abgestrahlt.</p>
+    <p>Der Antennengewinn wird in <strong>dBi</strong> angegeben, dem Vergleich zum gedachten
+    idealen Rundumstrahler (Fachwort: Isotropstrahler).  Wichtig zum Verständnis: Gewinn
+    entsteht nie aus dem Nichts, sondern immer durch Bündelung.  Eine Antenne mit hohem Gewinn
+    strahlt in eine Richtung lauter, dafür in andere leiser.  Am Copter, der sich frei im Raum
+    dreht, ist deshalb wenig Gewinn und gleichmäßige Abstrahlung richtig; hoher Gewinn gehört
+    auf die Bodenseite, wo eine Richtantenne dem Copter nachgeführt werden kann.</p>
+    <p>Zur Polarisation: Ein Dipol strahlt linear polarisiert, die Welle schwingt in einer
+    Ebene.  Stehen Sende- und Empfangsantenne gekreuzt zueinander, kommt deutlich weniger an,
+    deshalb die Grundregel, Antennen parallel zueinander auszurichten (beim Copter praktisch:
+    senkrecht nach oben oder unten, denn auch die Senderantenne hält man aufrecht).  Die im
+    FPV-Videobereich üblichen zirkular polarisierten Pilzantennen spielen beim RC-Link kaum eine
+    Rolle; sie gehören zum Videothema und damit in den Folgeartikel.</p>
+    <p>Bleibt die Montage, und hier zahlt sich das Wissen aus dem
+    <a href="ratgeber-carbon-frame.html">Carbon-Ratgeber</a> aus: Der Rahmen ist für Funk ein
+    Blech.  Antennen gehören mit dem strahlenden Ende frei aus dem Rahmenschatten heraus, nicht
+    am Arm entlang gespannt und nicht zwischen die Platten gelegt.  Kabelbinder-Röhrchen an den
+    Standoffs, die die Antennenenden schräg nach oben oder unten aus dem Frame führen, sind die
+    einfachste gute Lösung.  Und Stecker sind Verschleißteile: Die winzigen Aufsteckverbinder
+    (U.FL) an Nano-Empfängern sind für wenige Steckzyklen gebaut, wer häufig wechselt, plant
+    besser Empfänger mit Schraubanschluss (SMA) ein.</p>
+    <p style="margin-top:14px">
+      <a href="https://www.fpv24.com/de/team-blacksheep/tbs-crossfire-immortal-t-antenna-v2-extended?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ TBS Immortal T V2 Extended Empfänger-Antenne bei FPV24 ansehen (Anzeige)</a><br>
+      <a href="https://www.fpv24.com/de/geprc/geprc-915m24g-dual-band-fpv-t-antenne?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ GEPRC Dual-Band T-Antenne (868/915 + 2,4 GHz) bei FPV24 ansehen (Anzeige)</a><br>
+      <a href="https://www.fpv24.com/de/geprc/geprc-868mhz915mhz-24g-tri-band-stick-antenne?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ GEPRC Tri-Band Stick-Antenne bei FPV24 ansehen (Anzeige)</a>
+    </p>
+
+    <h2>14. Was das für deinen nächsten Build heißt</h2>
+    <ul>
+      <li><strong>Achte im Flug auf LQ, nicht auf RSSI.</strong>  Die LQ sagt dir, wie viele
+      Pakete ankommen; setz den RSSI-Alarm 5 bis 10&nbsp;dB über die Empfindlichkeitsgrenze
+      deiner Paketrate.</li>
+      <li><strong>Reichweite kauft man mit Paketrate, nicht mit Watt.</strong>  Der Schritt von
+      500 auf 50&nbsp;Hz bringt 10&nbsp;dB, so viel wie eine Verzehnfachung der Sendeleistung,
+      und ist legal.</li>
+      <li><strong>Bleib in Deutschland bei 100&nbsp;mW EIRP auf 2,4&nbsp;GHz</strong> und kauf
+      niemals 915-MHz-Hardware; das Band existiert hierzulande nicht.</li>
+      <li><strong>Für Long Range: ExpressLRS auf 2,4&nbsp;GHz mit True-Diversity-Empfänger.</strong>
+      Zwei komplette Empfangszüge, Antennen unterschiedlich ausgerichtet und aus dem
+      Carbon-Schatten geführt.  Das ist die Kombination, die wir selbst fliegen.</li>
+      <li><strong>Crossfire und Tracer bleiben solide Systeme</strong>, gerade im Bestand;
+      beim Neukauf sollte der Vergleich mit ELRS aber gewonnen werden müssen, nicht
+      andersherum.</li>
+      <li><strong>Verkable den Empfänger per CRSF</strong> (gekreuzt, TX an RX), dann hast du
+      Steuerung und Telemetrie über ein einziges Leitungspaar.</li>
+      <li><strong>GPS und Kompass gehören auf den Mast.</strong>  Das Satellitensignal kommt mit
+      etwa -128,5&nbsp;dBm an; gegen ein abschirmendes Carbon-Sandwich hat es keine Chance.</li>
+      <li><strong>Antennen niemals kürzen, knicken oder im Frame verstecken.</strong>  Die Länge
+      ist Physik, nicht Design.</li>
+    </ul>
+
+    <p style="margin-top:16px">Wir bauen 13-Zoll-Copter und beraten herstellerneutral zu Funk,
+    Navigation und Aufbau.  Wenn du unsicher bist, welcher Link und welche Antennenanordnung zu
+    deinem Vorhaben passen, sprich uns an, bevor du bestellst.</p>
+    <p style="margin-top:14px">
+      <a href="https://shop.dracolabsgermany.com">➜ Frames und Komponenten ab 13 Zoll im Shop</a><br>
+      <a href="ratgeber-carbon-frame.html">➜ Passend dazu: Vom Erdöl zum FPV-Frame (warum Carbon funkt wie ein Blech)</a><br>
+      <a href="index.html#kontakt">➜ Persönliche Beratung zu deinem Build anfragen</a>
+    </p>
+
+    <p class="muted" style="margin-top:34px; font-size:14px">
+      Dieser Ratgeber ersetzt keine individuelle technische Prüfung und keine Rechtsberatung.
+      Alle Angaben ohne Gewähr.  Wo wir gerechnet statt gemessen haben, steht es ausdrücklich
+      dabei.  Alle Quellen wurden im Juli 2026 abgerufen und geprüft.
+    </p>
+
+    <h2>Quellenangaben</h2>
+    <ol class="muted" style="font-size:14px; line-height:1.9; padding-left:20px">
+      <li id="q1">ExpressLRS-Projekt — „High Performance Open Source Radio Control Link":
+        <a href="https://www.expresslrs.org/" rel="noopener" target="_blank">expresslrs.org</a></li>
+      <li id="q2">Semtech, „What is LoRa?" — LoRa als Spreizband-Modulation auf Basis von
+        Chirp Spread Spectrum (CSS):
+        <a href="https://www.semtech.com/lora/what-is-lora" rel="noopener" target="_blank">semtech.com/lora/what-is-lora</a></li>
+      <li id="q3">ExpressLRS-Dokumentation, FAQ — Bindphrase (gehasht, erzeugt das
+        Frequenzsprungmuster, keine Sicherheitsfunktion), Semtech-Funkchips SX12xx/LR1121:
+        <a href="https://www.expresslrs.org/faq/" rel="noopener" target="_blank">expresslrs.org/faq</a></li>
+      <li id="q4">ExpressLRS-Dokumentation, „Signal Health" — RSSI, LQ, SNR, Empfindlichkeitsgrenzen
+        je Paketrate (2,4 GHz: -105 bis -115 dBm; 900 MHz: -111 bis -123 dBm), Empfehlung zur
+        Warnschwelle, SNR-Verhalten der FLRC-Modi:
+        <a href="https://www.expresslrs.org/info/signal-health/" rel="noopener" target="_blank">expresslrs.org/info/signal-health</a></li>
+      <li id="q5">ExpressLRS-Dokumentation, „Long Range Competition" — dokumentierte
+        Reichweitenflüge, u. a. 101,3 km auf 2,4 GHz (50 Hz, 2.000 mW) und 50,1 km auf 900 MHz
+        (25 Hz, 500 mW):
+        <a href="https://www.expresslrs.org/info/long-range/" rel="noopener" target="_blank">expresslrs.org/info/long-range</a></li>
+      <li id="q6">Bundesnetzagentur, Allgemeinzuteilung Vfg. 91/2025 „Geräte mit geringer
+        Reichweite (SRD)" — Frequenznutzungsparameter u. a. für 2.400–2.483,5 MHz (100 mW EIRP
+        Breitband-Datenübertragung, 10 mW unspezifisch) und 863–870 MHz (25 mW ERP mit
+        Arbeitszyklus ≤ 1 % bzw. 500 mW ERP mit ≤ 10 % in 869,4–869,65 MHz):
+        <a href="https://www.bundesnetzagentur.de/DE/Fachthemen/Telekommunikation/Frequenzen/Allgemeinzuteilungen/_DL/vfg91_2025.pdf?__blob=publicationFile&amp;v=3" rel="noopener" target="_blank">bundesnetzagentur.de: Vfg. 91/2025 (PDF)</a></li>
+      <li id="q7">Team BlackSheep, Produktseite TBS Crossfire TX — Frequenzbereich EU 860–885 MHz,
+        Sendeleistung 10 mW bis 2 W einstellbar, DSSS/FHSS, 150 Hz Update-Rate,
+        Empfindlichkeitsangabe -130 dB, CRSF- und MAVLink-Unterstützung:
+        <a href="https://www.team-blacksheep.com/products/prod:crossfire_tx" rel="noopener" target="_blank">team-blacksheep.com: Crossfire TX</a></li>
+      <li id="q8">Team BlackSheep, TBS Tracer Manual (Revision 2022-08-08) — 2,4-GHz-Band,
+        Sendeleistung 25–100 mW wählbar, TBS-eigene Modulation, konstante 250 Hz in beiden
+        Richtungen, bis 12 Kanäle, zwei T-Antennen am Empfänger:
+        <a href="https://www.team-blacksheep.com/tbs-tracer-manual.pdf" rel="noopener" target="_blank">team-blacksheep.com: Tracer Manual (PDF)</a></li>
+      <li id="q9">ExpressLRS-Dokumentation, „Before First Flight" — Telemetrie-Verhältnis 1:2 bis
+        1:64, Schaltermodi, Arm-Schalter zwingend auf AUX1 (wird mit jedem Paket übertragen):
+        <a href="https://www.expresslrs.org/quick-start/pre-1stflight/" rel="noopener" target="_blank">expresslrs.org/quick-start/pre-1stflight</a></li>
+      <li id="q10">ExpressLRS-Dokumentation, „Hardware Selection" — Antennen-Diversity (zwei
+        Antennen, ein Umschalter; z. B. Radiomaster RP3, Matek R24-D) gegenüber True Diversity
+        (zwei Funkchips; z. B. Happymodel EP1 Dual, BetaFPV SuperD), Nutzen gegen
+        Carbon-Abschattung und Antennen-Nullstellen, Leistungsklassen der TX-Module:
+        <a href="https://www.expresslrs.org/hardware/hardware-selection/" rel="noopener" target="_blank">expresslrs.org/hardware/hardware-selection</a></li>
+      <li id="q11">ExpressLRS-Dokumentation, „Gemini" — gleichzeitiges Senden auf zwei Frequenzen
+        (40 MHz Abstand bei 2,4 GHz), erfordert True-Diversity-Empfänger, verbessert die LQ,
+        nicht die Reichweite:
+        <a href="https://www.expresslrs.org/software/gemini/" rel="noopener" target="_blank">expresslrs.org/software/gemini</a></li>
+      <li id="q12">ArduPilot-Dokumentation, „RC Systems" — CRSF bidirektional (RC + Telemetrie über
+        ein UART-Paar), SBUS invertiert und unidirektional, PPM auslaufend:
+        <a href="https://ardupilot.org/copter/docs/common-rc-systems.html" rel="noopener" target="_blank">ardupilot.org: common-rc-systems</a></li>
+      <li id="q13">ExpressLRS-Dokumentation, „The Web UI" — Standard-Baudrate 420.000, Ausnahme
+        KISS mit 400.000:
+        <a href="https://www.expresslrs.org/quick-start/webui/" rel="noopener" target="_blank">expresslrs.org/quick-start/webui</a></li>
+      <li id="q14">ExpressLRS-Dokumentation, „Receiver Wiring" — gekreuzte UART-Verkabelung
+        (RX-TX an FC-RX, RX-RX an FC-TX), Versorgung 5 V:
+        <a href="https://www.expresslrs.org/quick-start/receivers/wiring-up/" rel="noopener" target="_blank">expresslrs.org/quick-start/receivers/wiring-up</a></li>
+      <li id="q15">ArduPilot-Dokumentation, „CRSF Telemetry" — CRSF-Telemetrie inklusive
+        Parameterzugriff über den RC-Link; ELRS nutzt dasselbe Protokoll:
+        <a href="https://ardupilot.org/copter/docs/common-crsf-telemetry.html" rel="noopener" target="_blank">ardupilot.org: common-crsf-telemetry</a></li>
+      <li id="q16">GPS.gov (U.S. Space Force), „Space Segment" — 24-Plätze-Basiskonstellation in
+        sechs Bahnebenen, 31 operationelle Satelliten, ca. 20.200 km Bahnhöhe, zwei Erdumläufe
+        pro Tag, mindestens vier sichtbare Satelliten, „Expandable 24"-Erweiterung 2011:
+        <a href="https://www.gps.gov/space-segment" rel="noopener" target="_blank">gps.gov/space-segment</a></li>
+      <li id="q17">ESA Navipedia, „GPS Space Segment" — Umlaufzeit 11 h 58 min (halber Sterntag),
+        Bahnneigung 55 Grad, große Halbachse 26.560 km:
+        <a href="https://gssc.esa.int/navipedia/index.php/GPS_Space_Segment" rel="noopener" target="_blank">gssc.esa.int/navipedia: GPS Space Segment</a></li>
+      <li id="q18">US Space Force, Interface Specification IS-GPS-200N — minimale Empfangsleistung
+        des GPS-L1-Signals von -128,5 dBm:
+        <a href="https://navcen.uscg.gov/sites/default/files/pdf/gps/IS-GPS-200N.pdf" rel="noopener" target="_blank">navcen.uscg.gov (PDF)</a></li>
+      <li id="q19">u-blox, MAX-M10 Product Summary (UBX-20017987) — gleichzeitiger Empfang von
+        GPS, Galileo, GLONASS und BeiDou (+ QZSS/SBAS), bis 10 Hz bei ≥ 3 Systemen (25 Hz bei
+        einem), 1,5 m CEP, Kaltstart 28 s, Tracking-Empfindlichkeit bis -167 dBm, unter 25 mW
+        Leistungsaufnahme:
+        <a href="https://content.u-blox.com/sites/default/files/MAX-M10_ProductSummary_UBX-20017987.pdf" rel="noopener" target="_blank">u-blox.com: MAX-M10 (PDF)</a></li>
+      <li id="q20">Holybro, Produktseite Pixhawk 6C — STM32H743 (480 MHz, 2 MB Flash, 1 MB RAM),
+        IO-Prozessor STM32F103, redundante IMUs ICM-42688-P und BMI088, Magnetometer IST8310,
+        Barometer MS5611, PX4 vorinstalliert, ArduPilot ab 4.3, M9N/M10-GPS-Anschluss:
+        <a href="https://holybro.com/products/pixhawk-6c" rel="noopener" target="_blank">holybro.com: Pixhawk 6C</a></li>
+      <li id="q21">Antenna-Theory.com, „Half-Wave Dipole Antenna" — Richtwirkung 1,64 (2,15 dB),
+        Eingangsimpedanz 73 + j42,5 Ohm, Resonanz bei ca. 0,48 Wellenlängen (dann ca. 70 Ohm),
+        Halbwertsbreite 78 Grad:
+        <a href="https://www.antenna-theory.com/antennas/halfwave.php" rel="noopener" target="_blank">antenna-theory.com: halfwave</a></li>
+    </ol>
+
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <nav class="social" aria-label="Draco Labs in sozialen Netzwerken">
+      <a href="https://www.youtube.com/@DracoLabsGermany" rel="noopener" class="yt" aria-label="Draco Labs auf YouTube">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/draco.labs.germany" rel="noopener" class="ig" aria-label="Draco Labs auf Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c0-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 3.1A6.7 6.7 0 1 0 18.7 12 6.7 6.7 0 0 0 12 5.3Zm0 11a4.3 4.3 0 1 1 4.3-4.3 4.3 4.3 0 0 1-4.3 4.3ZM19 5a1.6 1.6 0 1 1-1.6-1.6A1.6 1.6 0 0 1 19 5Z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@dracolabsgermany" rel="noopener" class="tt" aria-label="Draco Labs auf TikTok">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16.6 2h-3.1v13.1a2.7 2.7 0 1 1-2.7-2.7c.2 0 .4 0 .6.1V9.3a6 6 0 0 0-.6 0 5.8 5.8 0 1 0 5.8 5.8V8.6a7 7 0 0 0 4.1 1.3V6.8a3.9 3.9 0 0 1-4.1-3.9V2Z"/></svg>
+      </a>
+    </nav>
+    <div class="links">
+      <a href="index.html">Startseite</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </div>
+    <div>© 2026 Draco Labs Germany · Kleinunternehmer gem. § 19 UStG</div>
+  </div>
+</footer>
+</body>
+</html>
