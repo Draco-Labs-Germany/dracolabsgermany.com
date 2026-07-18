@@ -93,7 +93,8 @@
 
     <p>Wer einen Copter baut, redet viel über Motoren, Propeller und Frames.  Über die Funkstrecke
     redet kaum jemand, dabei ist sie das einzige, was dich im Flug mit dem Gerät verbindet.  Wenn sie
-    abreißt, ist alles andere egal.  Dieser Ratgeber erklärt, wie die Verbindung zwischen
+    abreißt, ist alles andere egal, dann rettet dich hoffentlich noch der GPS-Rescue-Modus
+    deines Flight Controllers.  Dieser Ratgeber erklärt, wie die Verbindung zwischen
     Fernsteuerung und Copter wirklich funktioniert, was die Systeme von TBS und ExpressLRS
     unterscheidet, was die Bundesnetzagentur erlaubt, wie dein Copter per Satellit seine Position
     findet und warum am Ende fast immer die Antenne entscheidet.</p>
@@ -109,21 +110,21 @@
     darüber, erhalten wir eine kleine Vergütung, für dich ändert sich am Preis nichts.  Empfohlen
     wird nur, was wir fachlich begründen können, und die Begründung steht immer im Text.</p>
 
-    <h2>1. Zwei Funkstrecken und ein Ortungssystem</h2>
+    <h2 id="k1">1. Zwei Funkstrecken und ein Ortungssystem</h2>
     <p>Auf einem FPV-Copter laufen im Normalfall drei Funksysteme gleichzeitig.  Die
-    <strong>Steuerstrecke</strong> bringt deine Knüppelbewegungen zum Copter und die Telemetrie
+    <strong>Steuerstrecke</strong> bringt deine Flightstick-Bewegungen zum Copter und die Telemetrie
     zurück.  Die <strong>Videostrecke</strong> bringt das Kamerabild in deine Brille.  Und der
     <strong>GPS-Empfänger</strong> hört passiv auf Satellitensignale, er sendet selbst nichts.
     Diese drei Systeme sind technisch unabhängig: Sie nutzen verschiedene Frequenzen, verschiedene
     Verfahren und fallen unabhängig voneinander aus.</p>
     <p>Das ist eine bewusste Architektur.  Die Steuerstrecke braucht vor allem Zuverlässigkeit bei
-    winziger Datenmenge (ein paar Knüppelwerte, ein paar Schalter).  Die Videostrecke braucht das
+    winziger Datenmenge (ein paar Flightstick-Werte, ein paar Schalter).  Die Videostrecke braucht das
     Gegenteil: enorme Datenmengen, darf dafür aber auch mal ein Bild verlieren.  Deshalb überlebt
     ein guter RC-Link Situationen, in denen das Videobild längst schwarz ist.  Wer schon einmal
     blind per Return-to-Home zurückgekommen ist, weiß, warum man an der Steuerstrecke nicht
     spart.</p>
 
-    <h2>2. Wie ein RC-Link funktioniert: Sender, Empfänger, Modulation</h2>
+    <h2 id="k2">2. Wie ein RC-Link funktioniert: Sender, Empfänger, Modulation</h2>
     <p>Die Grundlage ist immer gleich.  In deiner Fernsteuerung sitzt ein Sendemodul
     (TX, von <em>transmitter</em>), im Copter ein Empfänger (RX, von <em>receiver</em>).  Der Sender
     erzeugt eine hochfrequente Trägerwelle und prägt ihr die Steuerdaten auf; dieses Aufprägen
@@ -137,7 +138,11 @@
     <p>Bei der Modulation unterscheiden sich die Lager.  ExpressLRS nutzt für die Reichweite
     ein Verfahren namens <strong>LoRa</strong> (von <em>long range</em>), eine
     Spreizband-Modulation, die auf der sogenannten Chirp-Technik basiert (Fachwort: Chirp Spread
-    Spectrum, CSS).<sup><a href="#q2">2</a></sup>  Dabei wird das Signal über ein breiteres
+    Spectrum, CSS).<sup><a href="#q2">2</a></sup>  Die Begriffe lohnen eine Übersetzung: Ein
+    <em>Chirp</em> ist im Englischen das Zwitschern eines Vogels, und genau so klingt das
+    Signal, wenn man es hörbar macht: ein Ton, dessen Frequenz beim Senden kontinuierlich
+    von unten nach oben gleitet (oder umgekehrt).  <em>Chirp Spread Spectrum</em> heißt also
+    wörtlich „Frequenzspreizung mit Zwitschertönen".  Dabei wird das Signal über ein breiteres
     Frequenzband „verschmiert" als nötig.  Das klingt verschwenderisch, hat aber einen gewaltigen
     Vorteil: Der Empfänger kann das charakteristische Chirp-Muster noch aus Signalen herausrechnen,
     die leiser sind als das Hintergrundrauschen.  Genau daher kommt die Reichweite moderner
@@ -150,7 +155,7 @@
     Verschlüsselung</strong>, sie verhindert nur, dass zwei Piloten mit derselben Folge
     kollidieren.<sup><a href="#q3">3</a></sup></p>
 
-    <h2>3. Frequenz und Reichweite: die Physik dahinter</h2>
+    <h2 id="k3">3. Frequenz und Reichweite: die Physik dahinter</h2>
     <p>RC-Links leben in zwei Frequenzbereichen: dem 2,4-GHz-Band (weltweit gleich) und dem
     Bereich um 900&nbsp;MHz, der regional verschieden ist (in Europa 868&nbsp;MHz, in den USA
     915&nbsp;MHz).  Physikalisch gilt: Je niedriger die Frequenz, desto geringer die
@@ -177,16 +182,16 @@
     Rekordliste des ExpressLRS-Projekts zeigt, was mit langsamen Raten möglich ist: Der weiteste
     dokumentierte Flug auf 2,4&nbsp;GHz liegt bei 101,3&nbsp;km, geflogen mit 50&nbsp;Hz
     Paketrate und 2.000&nbsp;mW Sendeleistung (eine Leistung, die in Europa nicht zulässig ist,
-    dazu Kapitel&nbsp;5).  Auf 900&nbsp;MHz stehen 50,1&nbsp;km mit 500&nbsp;mW und 25&nbsp;Hz in
+    dazu <a href="#k5">Kapitel&nbsp;5</a>).  Auf 900&nbsp;MHz stehen 50,1&nbsp;km mit 500&nbsp;mW und 25&nbsp;Hz in
     der Liste.  Bemerkenswert: Viele dieser Flüge endeten nicht mit Verbindungsabriss, die Piloten
     sind schlicht umgekehrt.<sup><a href="#q5">5</a></sup></p>
     <p>Dass 2,4&nbsp;GHz trotz höherer Dämpfung solche Reichweiten erreicht, liegt an der
     Systemauslegung: mehr nutzbare Bandbreite, effiziente Chips und die Chirp-Modulation.  Für
     die Praxis in Deutschland heißt das: <strong>Das 2,4-GHz-Band ist für Long Range nicht die
-    Notlösung, sondern eine vollwertige Option</strong>, und wegen der Rechtslage (Kapitel&nbsp;5)
+    Notlösung, sondern eine vollwertige Option</strong>, und wegen der Rechtslage (<a href="#k5">Kapitel&nbsp;5</a>)
     oft sogar die bessere.</p>
 
-    <h2>4. RSSI, LQ und SNR: die Zahlen, die dich vor dem Absturz warnen</h2>
+    <h2 id="k4">4. RSSI, LQ und SNR: die Zahlen, die dich vor dem Absturz warnen</h2>
     <p>Dein OSD zeigt drei Werte für die Verbindungsqualität, und sie werden notorisch
     verwechselt.<sup><a href="#q4">4</a></sup></p>
     <p><strong>RSSI</strong> (Received Signal Strength Indicator) ist die Lautstärke des
@@ -199,7 +204,7 @@
     ExpressLRS-Entwickler bringen es auf den Punkt: Auf die LQ kommt es an.<sup><a href="#q4">4</a></sup></p>
     <p><strong>SNR</strong> (Signal-to-Noise Ratio) vergleicht das Signal mit dem
     Hintergrundrauschen und steuert unter anderem die dynamische Leistungsregelung.  Eine
-    Besonderheit der schnellen FLRC-Modi (dazu Kapitel&nbsp;8): Dort zeigt SNR konstant null, das
+    Besonderheit der schnellen FLRC-Modi (dazu <a href="#k8">Kapitel&nbsp;8</a>): Dort zeigt SNR konstant null, das
     ist kein Fehler.<sup><a href="#q4">4</a></sup></p>
     <p>Für die Warnschwelle empfiehlt das Projekt, den RSSI-Alarm 5 bis 10&nbsp;dB über der
     Empfindlichkeitsgrenze der gewählten Paketrate zu setzen.<sup><a href="#q4">4</a></sup>  Bei
@@ -207,7 +212,7 @@
     -98&nbsp;dBm sinnvoll.  Wer den Alarm hört, dreht um oder reduziert die Paketrate, bevor der
     Notfallmodus (Failsafe) übernimmt.</p>
 
-    <h2>5. Was in Deutschland erlaubt ist</h2>
+    <h2 id="k5">5. Was in Deutschland erlaubt ist</h2>
     <p>Funkanwendungen mit geringer Reichweite laufen in Deutschland über sogenannte
     Allgemeinzuteilungen der Bundesnetzagentur: Du brauchst keine eigene Lizenz, musst dich aber
     an die Parameter halten.  Maßgeblich ist die Verfügung 91/2025.<sup><a href="#q6">6</a></sup>
@@ -249,7 +254,10 @@
     <p>Drei Dinge sollte man daraus mitnehmen.  <strong>Erstens:</strong> Auf 2,4&nbsp;GHz sind
     100&nbsp;mW EIRP die Obergrenze für frequenzspringende Breitbandsysteme, zu denen moderne
     RC-Links gehören.  Die 250-mW- oder 1-W-Stufen, die sich in vielen Sendemodulen einstellen
-    lassen, sind eine Hardware-Fähigkeit, keine Erlaubnis.  <strong>Zweitens:</strong> Im
+    lassen, sind eine Hardware-Fähigkeit, keine Erlaubnis.  Und die oft zitierten
+    25&nbsp;mW sind ebenfalls keine RC-Link-Grenze: Das ist der Wert für den Bereich
+    5.725 bis 5.875&nbsp;MHz, in dem die 5,8-GHz-Videosender funken, festgelegt in
+    derselben Verfügung.<sup><a href="#q6">6</a></sup>  <strong>Zweitens:</strong> Im
     868er-Bereich ist die Lage komplizierter: kleine Leistung oder strenge Begrenzung der
     Sendezeit (der Arbeitszyklus sagt, wie viel Prozent der Zeit gesendet werden darf), sofern
     das Gerät nicht mit höflichen Zugriffstechniken arbeitet, etwa erst lauschen, dann senden
@@ -264,31 +272,31 @@
     Originaltext der Bundesnetzagentur, siehe Quellenangaben.  Dieser Ratgeber ist keine
     Rechtsberatung.</p>
 
-    <h2>6. TBS Crossfire: der Long-Range-Klassiker auf 868 MHz</h2>
+    <h2 id="k6">6. TBS Crossfire: der Long-Range-Klassiker auf 868 MHz</h2>
     <p>Team BlackSheep hat mit dem Crossfire das System gebaut, das Long Range im FPV-Bereich
     populär gemacht hat.  Es arbeitet in Europa im Bereich 860 bis 885&nbsp;MHz, die Sendeleistung
     ist am Modul von 10&nbsp;mW bis 2.000&nbsp;mW einstellbar (was davon in Europa zulässig ist,
-    regelt nicht das Modul, sondern Kapitel&nbsp;5).  Der Link arbeitet bidirektional mit
+    regelt nicht das Modul, sondern <a href="#k5">Kapitel&nbsp;5</a>).  Der Link arbeitet bidirektional mit
     Telemetrie, springt über die Frequenzen (FHSS mit Spreizverfahren) und repariert sich bei
     Störungen selbst; die Update-Rate liegt bei 150&nbsp;Hz.<sup><a href="#q7">7</a></sup></p>
     <p>Zwei Dinge haben das System über die Jahre getragen.  Erstens die schiere Reife: Es fliegt
     seit über einem Jahrzehnt in allem vom 5-Zoll-Racer bis zum Berg-Wing.  Zweitens hat TBS mit
     dem Crossfire das Übertragungsprotokoll <strong>CRSF</strong> eingeführt, das heute der
     Quasi-Standard zwischen Empfänger und Flight Controller ist, auch bei der Konkurrenz
-    (Kapitel&nbsp;10).  Der Hersteller wirbt mit einer Empfindlichkeit von bis zu
+    (<a href="#k10">Kapitel&nbsp;10</a>).  Der Hersteller wirbt mit einer Empfindlichkeit von bis zu
     -130&nbsp;dB<sup><a href="#q7">7</a></sup>, das ist eine Herstellerangabe für die langsamste
-    Betriebsart und passt zur Physik aus Kapitel&nbsp;3: niedrige Frequenz plus niedrige Rate
+    Betriebsart und passt zur Physik aus <a href="#k3">Kapitel&nbsp;3</a>: niedrige Frequenz plus niedrige Rate
     gleich maximale Empfindlichkeit.</p>
-    <p>Die ehrliche Einordnung für Deutschland: Das 868er-Band ist eng (Kapitel&nbsp;5), und der
+    <p>Die ehrliche Einordnung für Deutschland: Das 868er-Band ist eng (<a href="#k5">Kapitel&nbsp;5</a>), und der
     Leistungsvorsprung, den Crossfire auf dem Papier hat, lässt sich hier legal kaum ausfahren.
     Wer das System aus dem Bestand fliegt oder die enorme Marktdurchdringung schätzt, macht
     nichts falsch.  Wer neu kauft, sollte den Vergleich mit ExpressLRS auf 2,4&nbsp;GHz führen
-    (Kapitel&nbsp;8).</p>
+    (<a href="#k8">Kapitel&nbsp;8</a>).</p>
     <p style="margin-top:14px">
       <a href="https://www.fpv24.com/de/team-blacksheep/tbs-crossfire-micro-tx?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ TBS Crossfire Micro TX V2 bei FPV24 ansehen (Anzeige)</a>
     </p>
 
-    <h2>7. TBS Tracer: 2,4 GHz mit konstanten 250 Hz</h2>
+    <h2 id="k7">7. TBS Tracer: 2,4 GHz mit konstanten 250 Hz</h2>
     <p>Der Tracer ist die 2,4-GHz-Antwort von TBS und technisch der Gegenentwurf zur eigenen
     Crossfire-Philosophie: Statt maximaler Reichweite bei niedriger Rate liefert er eine
     <strong>konstante Paketrate von 250&nbsp;Hz</strong> in beide Richtungen, ohne
@@ -297,44 +305,46 @@
     T-Bauform; bis zu 12 Kanäle werden übertragen.<sup><a href="#q8">8</a></sup></p>
     <p>Die Zielgruppe ist klar: Piloten, die eine reaktionsschnelle, konstante Verbindung wollen
     und dafür auf das letzte Quäntchen Reichweite verzichten.  Die 100-mW-Obergrenze der
-    EU-Firmware passt zudem sauber zur 100-mW-Grenze aus Kapitel&nbsp;5.  Dass der Hersteller
+    EU-Firmware passt zudem sauber zur 100-mW-Grenze aus <a href="#k5">Kapitel&nbsp;5</a>.  Dass der Hersteller
     das System auf dem Crossfire-Unterbau aufgebaut hat, merkt man an der Integration:
     gleiches Protokoll, gleiche Konfigurationswelt.</p>
     <p style="margin-top:14px">
       <a href="https://www.fpv24.com/de/team-blacksheep/tbs-tracer-nano-rx-empfaenger?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ TBS Tracer Nano RX bei FPV24 ansehen (Anzeige)</a>
     </p>
 
-    <h2>8. ExpressLRS: Open Source und unsere Wahl</h2>
+    <h2 id="k8">8. ExpressLRS: Open Source und unsere Wahl</h2>
     <p><strong>ExpressLRS</strong> (kurz ELRS) ist kein Hersteller, sondern ein
     Open-Source-Projekt: Firmware und Protokoll sind offen, die Hardware bauen viele Firmen, von
     Radiomaster über BetaFPV bis GEPRC.<sup><a href="#q1">1</a></sup>  Technisch basiert das
     System auf Funkchips von Semtech (SX12xx-Serie beziehungsweise dem neueren LR1121), also
-    genau den Bausteinen, die auch die LoRa-Welt antreiben.<sup><a href="#q3">3</a></sup>  Diese
+    genau den Bausteinen, die auch die LoRa-Welt antreiben (LoRa steht für <em>long
+    range</em>, <a href="#k2">Kapitel&nbsp;2</a>): die weltweiten Funknetze, über die Sensoren
+    und Zähler im Internet der Dinge ihre Daten schicken.<sup><a href="#q3">3</a></sup>  Diese
     Offenheit hat in wenigen Jahren zu einem Ökosystem geführt, in dem ein Empfänger unter zehn
     Gramm wiegt und unter 30&nbsp;Euro kostet, ohne dass man an Reichweite spart.</p>
     <p>Die Paketrate ist bei ELRS frei wählbar und das zentrale Werkzeug: Auf 2,4&nbsp;GHz stehen
     LoRa-Modi mit 50, 150, 250 und 500&nbsp;Hz zur Verfügung, dazu besonders schnelle Modi
     (F500 und F1000) mit einer anderen Modulation (FLRC), die Latenz gegen Empfindlichkeit
-    tauschen.<sup><a href="#q4">4</a></sup>  Die Faustregel aus Kapitel&nbsp;3 gilt hier direkt:
+    tauschen.<sup><a href="#q4">4</a></sup>  Die Faustregel aus <a href="#k3">Kapitel&nbsp;3</a> gilt hier direkt:
     Racing nimmt die schnellen Modi, Long Range nimmt 150&nbsp;Hz oder weniger.</p>
     <p>Auch die Telemetrie ist einstellbar: Das Verhältnis (Fachwort: Telemetry Ratio) legt fest,
     jedes wievielte Paket dem Rückkanal gehört, von 1:2 bis 1:64.<sup><a href="#q9">9</a></sup>
     Für Long Range mit GPS-Rückmeldung lohnt ein dichterer Rückkanal; wer nur Akkuspannung
     braucht, spart Sendezeit.  Zwei Eigenheiten sollte man kennen: Der Schalter zum Scharfstellen
     (Arm) gehört zwingend auf den Kanal AUX1, der mit jedem Paket übertragen wird<sup><a href="#q9">9</a></sup>,
-    und die Bindphrase ersetzt das klassische Binden per Knopfdruck (Kapitel&nbsp;2).</p>
+    und die Bindphrase ersetzt das klassische Binden per Knopfdruck (<a href="#k2">Kapitel&nbsp;2</a>).</p>
     <p>Warum es unsere Wahl ist: Das System kombiniert die 100-mW-Rechtslage des 2,4-GHz-Bands
     mit einstellbarer Empfindlichkeit bis -115&nbsp;dBm<sup><a href="#q4">4</a></sup>, offener
     Firmware und einem Hardware-Markt, der vom Ein-Gramm-Empfänger bis zum
-    True-Diversity-Empfänger (Kapitel&nbsp;9) alles liefert.  Wir fliegen unsere Long-Range-Builds
+    True-Diversity-Empfänger (<a href="#k9">Kapitel&nbsp;9</a>) alles liefert.  Wir fliegen unsere Long-Range-Builds
     mit ELRS auf 2,4&nbsp;GHz, und die Rekordliste des Projekts zeigt, dass die Reichweite dabei
     nicht der begrenzende Faktor ist.<sup><a href="#q5">5</a></sup></p>
     <p style="margin-top:14px">
       <a href="https://www.fpv24.com/de/radiomaster/radiomaster-tx16s-mkii-24-ghz-hall-gimbals-v40-elrs-fpv-fernsteuerung?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ RadioMaster TX16S MKII mit internem ELRS bei FPV24 ansehen (Anzeige)</a>
     </p>
 
-    <h2>9. Diversity: zwei Antennen sind besser als eine</h2>
-    <p>Jede Antenne hat blinde Winkel (Kapitel&nbsp;13), und auf einem Copter kommt der eigene
+    <h2 id="k9">9. Diversity: zwei Antennen sind besser als eine</h2>
+    <p>Jede Antenne hat blinde Winkel (<a href="#k13">Kapitel&nbsp;13</a>), und auf einem Copter kommt der eigene
     Rahmen als Hindernis dazu: Carbon schirmt Funk ab wie ein Blech, das haben wir im
     <a href="ratgeber-carbon-frame.html">Carbon-Ratgeber</a> ausführlich belegt.  In bestimmten
     Fluglagen zeigt also entweder die Nullstelle der Antenne zum Piloten, oder der Rahmen steht
@@ -358,13 +368,12 @@
     stabiler, gerade in gestörter Umgebung.<sup><a href="#q11">11</a></sup>  Dafür braucht es
     Gemini-fähige Hardware auf beiden Seiten.</p>
     <p style="margin-top:14px">
-      <a href="https://www.fpv24.com/de/betafpv/betafpv-superd-elrs-diversity-receiver?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ BetaFPV SuperD True-Diversity-Empfänger bei FPV24 ansehen (Anzeige)</a><br>
       <a href="https://www.fpv24.com/de/radiomaster/radiomaster-rp4td-elrs-24ghz-nano-receiver?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ Radiomaster RP4TD True-Diversity-Empfänger bei FPV24 ansehen (Anzeige)</a><br>
       <a href="https://www.fpv24.com/de/geprc/geprc-elrs-nano-dual-24g-c3-true-diversity-receiver?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ GEPRC ELRS Nano DUAL True-Diversity-Empfänger bei FPV24 ansehen (Anzeige)</a><br>
       <a href="https://www.fpv24.com/de/radiomaster/radiomaster-rp3-elrs-24ghz-nano-receiver?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ Radiomaster RP3 (Antennen-Diversity, günstiger Einstieg) bei FPV24 ansehen (Anzeige)</a>
     </p>
 
-    <h2>10. CRSF, SBUS und MAVLink: vom Empfänger zum Flight Controller</h2>
+    <h2 id="k10">10. CRSF, SBUS und MAVLink: vom Empfänger zum Flight Controller</h2>
     <p>Zwischen Empfänger und Flight Controller läuft ein eigenes, drahtgebundenes Protokoll,
     und auch hier gab es einen Generationswechsel.</p>
     <p>Das ältere <strong>SBUS</strong> überträgt nur in eine Richtung (Empfänger zu Flight
@@ -386,7 +395,7 @@
     transportieren.<sup><a href="#q7">7</a></sup>  Für den Praktiker heißt das: ein Kabelpaar,
     volle Kontrolle, keine separate Telemetrie-Funke nötig.</p>
 
-    <h2>11. GPS: dreißig Satelliten für eine Position</h2>
+    <h2 id="k11">11. GPS: dreißig Satelliten für eine Position</h2>
     <p>GPS ist die dritte Funkstrecke an Bord, und die einzige, bei der dein Copter nur zuhört.
     Das amerikanische System besteht aus einer Grundordnung von 24 Satellitenplätzen, verteilt
     auf sechs Bahnebenen; tatsächlich betrieben werden seit Jahren rund 31 Satelliten, seit einer
@@ -428,7 +437,7 @@
       <a href="https://www.fpv24.com/de/team-blacksheep/tbs-m10-gps-fpv-glonass?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ TBS M10 GPS bei FPV24 ansehen (Anzeige)</a>
     </p>
 
-    <h2>12. Holybro und Pixhawk: wo alles zusammenläuft</h2>
+    <h2 id="k12">12. Holybro und Pixhawk: wo alles zusammenläuft</h2>
     <p>Bei großen Coptern ab 13&nbsp;Zoll wandert die Elektronik weg vom Racing-Stack hin zur
     Autopilot-Welt, und dort ist <strong>Pixhawk</strong> der offene Hardware-Standard.
     Ein verbreiteter Vertreter ist der Pixhawk 6C von Holybro: Hauptprozessor ist ein STM32H743
@@ -439,13 +448,38 @@
     montiert.<sup><a href="#q20">20</a></sup></p>
     <p>Softwareseitig laufen darauf die beiden großen offenen Autopiloten: PX4 (ab Werk
     installiert) und ArduPilot (unterstützt ab Version 4.3).  GPS-Module wie das M10 aus
-    Kapitel&nbsp;11 werden per Standardstecker angeschlossen.<sup><a href="#q20">20</a></sup>
-    Der RC-Link aus den Kapiteln 6 bis 9 landet per CRSF auf einem der seriellen Anschlüsse,
-    die Telemetrie zur Bodenstation läuft als MAVLink (Kapitel&nbsp;10).  Damit schließt sich
-    der Kreis: Knüppel, Funkstrecke, Empfänger, Flight Controller, Satellitennavigation, alles
+    <a href="#k11">Kapitel&nbsp;11</a> werden per Standardstecker angeschlossen.<sup><a href="#q20">20</a></sup>
+    Der RC-Link aus den Kapiteln <a href="#k6">6</a> bis <a href="#k9">9</a> landet per CRSF auf einem der seriellen Anschlüsse,
+    die Telemetrie zur Bodenstation läuft als MAVLink (<a href="#k10">Kapitel&nbsp;10</a>).  Damit schließt sich
+    der Kreis: Flightstick, Funkstrecke, Empfänger, Flight Controller, Satellitennavigation, alles
     spricht über offene, dokumentierte Schnittstellen.</p>
+    <p>Wer zum ersten Mal ein Autopilot-GPS neben ein FPV-Modul legt, bemerkt sofort den
+    Größenunterschied, und der hat einen Grund: die Antenne.  Das Satellitensignal kommt an
+    der Hörbarkeitsgrenze an (<a href="#k11">Kapitel&nbsp;11</a>), und eine Antenne kann nur
+    die Signalenergie verwerten, die ihre Fläche einfängt.  Die großen Module tragen deshalb
+    eine keramische Flächenantenne (Patch) mit einer durchgehenden Massefläche darunter, die
+    den Empfang zum Himmel bündelt und Störungen aus der Elektronik darunter abschirmt.  Die
+    daumennagelkleinen FPV-Module funktionieren, verschenken aber genau dort Empfindlichkeit,
+    wo es darauf ankommt: bei wenigen sichtbaren Satelliten, zwischen Hindernissen, beim
+    Start unter Bäumen.  Ein 13-Zöller hat Platz und Traglast für das große Modul, also
+    gehört es auch drauf, und zwar auf den Mast (<a href="#k11">Kapitel&nbsp;11</a>).</p>
+    <p>Wer mehr Anschlüsse oder mehr Redundanz braucht, findet eine Stufe über dem 6C den
+    <strong>Pixhawk 6X</strong>, und an dem zeigt sich, wohin die Autopilot-Welt baulich
+    läuft: Rechner und Anschlussplatine sind getrennt.  Das eigentliche
+    Flight-Controller-Modul (gleiche 480-MHz-Prozessorklasse, aber dreifach ausgeführte
+    Lageerfassung mit aktiver Temperaturregelung und zwei Barometern) wird auf ein
+    Trägerboard gesteckt, das sogenannte Baseboard.<sup><a href="#q22">22</a></sup>  Das
+    Standard-Baseboard V2A führt heraus, was bei einem großen Build zusammenkommt: zwei
+    GPS-Anschlüsse, zwei CAN-Busse, drei Telemetrie-Ports und sogar
+    Ethernet.<sup><a href="#q23">23</a></sup>  Wichtig beim Bestellen: Das Baseboard allein
+    ist noch keine Flugsteuerung, das 6X-Modul kommt separat dazu.  Für den Einstieg in die
+    13-Zoll-Klasse bleibt der 6C unsere Empfehlung; der 6X lohnt sich, wenn viele
+    Anbauteile, ein zweites GPS oder eine Ethernet-Anbindung geplant sind.</p>
+    <p style="margin-top:14px">
+      <a href="https://www.fpv24.com/de/holybro/holybro-pixhawk-6x-baseboard-v2a-carrier-board-fuer-autopilot?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ Holybro Pixhawk 6X Baseboard V2A bei FPV24 ansehen (Anzeige)</a>
+    </p>
 
-    <h2>13. Antennen: der wichtigste Zentimeter deines Copters</h2>
+    <h2 id="k13">13. Antennen: der wichtigste Zentimeter deines Copters</h2>
     <p>Man kann an jedem Glied der Funkkette Geld ausgeben, aber kein Bauteil verändert die
     Verbindung so stark wie die Antenne und ihre Montage.  Dabei ist die Standardantenne am
     RC-Empfänger unspektakulär: ein Stück Koaxkabel, dessen Ende als Strahler freigelegt ist,
@@ -458,7 +492,7 @@
     Übersetzt: Die Antenne strahlt quer zu ihrer Achse am stärksten, in Richtung der Achse
     entstehen Einzüge (Nullstellen).  Das Abstrahlbild sieht aus wie ein Donut, dessen Loch die
     Antenne durchstößt.  Deshalb montiert man Diversity-Antennen in unterschiedlicher
-    Ausrichtung: Wo die eine ihre Nullstelle hat, hat die andere Empfang (Kapitel&nbsp;9).</p>
+    Ausrichtung: Wo die eine ihre Nullstelle hat, hat die andere Empfang (<a href="#k9">Kapitel&nbsp;9</a>).</p>
     <p>Die Länge der Antenne folgt aus der Wellenlänge, und die aus der Frequenz (Wellenlänge
     gleich Lichtgeschwindigkeit geteilt durch Frequenz, gerechnet, nicht gemessen): Bei
     2,4&nbsp;GHz ist die Welle rund 12,5&nbsp;cm lang, der Halbwellendipol also gut 6&nbsp;cm.
@@ -492,7 +526,7 @@
       <a href="https://www.fpv24.com/de/geprc/geprc-868mhz915mhz-24g-tri-band-stick-antenne?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ GEPRC Tri-Band Stick-Antenne bei FPV24 ansehen (Anzeige)</a>
     </p>
 
-    <h2>14. Was das für deinen nächsten Build heißt</h2>
+    <h2 id="k14">14. Was das für deinen nächsten Build heißt</h2>
     <ul>
       <li><strong>Achte im Flug auf LQ, nicht auf RSSI.</strong>  Die LQ sagt dir, wie viele
       Pakete ankommen; setz den RSSI-Alarm 5 bis 10&nbsp;dB über die Empfindlichkeitsgrenze
@@ -551,8 +585,9 @@
         <a href="https://www.expresslrs.org/info/long-range/" rel="noopener" target="_blank">expresslrs.org/info/long-range</a></li>
       <li id="q6">Bundesnetzagentur, Allgemeinzuteilung Vfg. 91/2025 „Geräte mit geringer
         Reichweite (SRD)" — Frequenznutzungsparameter u. a. für 2.400–2.483,5 MHz (100 mW EIRP
-        Breitband-Datenübertragung, 10 mW unspezifisch) und 863–870 MHz (25 mW ERP mit
-        Arbeitszyklus ≤ 1 % bzw. 500 mW ERP mit ≤ 10 % in 869,4–869,65 MHz):
+        Breitband-Datenübertragung, 10 mW unspezifisch), 863–870 MHz (25 mW ERP mit
+        Arbeitszyklus ≤ 1 % bzw. 500 mW ERP mit ≤ 10 % in 869,4–869,65 MHz) und
+        5.725–5.875 MHz (25 mW EIRP, unspezifische Kurzstreckenfunk-Anwendungen, Band 61):
         <a href="https://www.bundesnetzagentur.de/DE/Fachthemen/Telekommunikation/Frequenzen/Allgemeinzuteilungen/_DL/vfg91_2025.pdf?__blob=publicationFile&amp;v=3" rel="noopener" target="_blank">bundesnetzagentur.de: Vfg. 91/2025 (PDF)</a></li>
       <li id="q7">Team BlackSheep, Produktseite TBS Crossfire TX — Frequenzbereich EU 860–885 MHz,
         Sendeleistung 10 mW bis 2 W einstellbar, DSSS/FHSS, 150 Hz Update-Rate,
@@ -609,6 +644,15 @@
         Eingangsimpedanz 73 + j42,5 Ohm, Resonanz bei ca. 0,48 Wellenlängen (dann ca. 70 Ohm),
         Halbwertsbreite 78 Grad:
         <a href="https://www.antenna-theory.com/antennas/halfwave.php" rel="noopener" target="_blank">antenna-theory.com: halfwave</a></li>
+      <li id="q22">Holybro, Produktseite Pixhawk 6X — modularer Aufbau (FMU-, IMU- und
+        Baseboard-Ebene, verbunden über Pixhawk-Bus-Steckverbinder), STM32H753 mit 480 MHz,
+        dreifache IMU-Bestückung (ICM-45686, Rev 8) mit Temperaturregelung und
+        Vibrationsentkopplung, zwei Barometer, Baseboard-Varianten Standard v2A/v2B und Mini:
+        <a href="https://holybro.com/products/pixhawk-6x" rel="noopener" target="_blank">holybro.com: Pixhawk 6X</a></li>
+      <li id="q23">Holybro-Dokumentation, „Pixhawk Baseboard v2 Ports" — Anschlüsse des
+        Standard-Baseboards (kompatibel mit Pixhawk 5X und 6X): zwei GPS-Ports, CAN1/CAN2,
+        Telem1 bis Telem3, Ethernet-Port:
+        <a href="https://docs.holybro.com/autopilot/pixhawk-baseboards/pixhawk-baseboard-v2-ports" rel="noopener" target="_blank">docs.holybro.com: Baseboard v2 Ports</a></li>
     </ol>
 
 
