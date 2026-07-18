@@ -75,7 +75,7 @@
 
     <h1>Was dein Copter dir zeigt</h1>
     <p class="muted" style="font-size:17px; margin-top:-4px">Die Videostrecke von analog bis digital: DJI O4, Walksnail Avatar und HDZero im Vergleich, was Latenz und Bitrate wirklich bedeuten, wie man Reichweite legal verlängert und was die Rechtslage in Deutschland erlaubt.</p>
-    <p class="muted">Ratgeber · Videotechnik &amp; FPV · Lesezeit ca. 24 Min · Stand: Juli 2026</p>
+    <p class="muted">Ratgeber · Videotechnik &amp; FPV · Lesezeit ca. 25 Min · Stand: Juli 2026</p>
 
     <div style="background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--cyan); border-radius:10px; padding:18px 20px; margin:22px 0">
       <p style="margin:0 0 8px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; font-size:13px; color:var(--cyan)">Kurz gesagt</p>
@@ -251,19 +251,47 @@
     ersetzt.<sup><a href="#q18">11</a></sup>  Der FPV-Zweig des Projekts kombiniert diese
     Firmware mit <em>wfb-ng</em>, einem Übertragungsverfahren, das gewöhnliche WLAN-Chips als
     reine Videosender missbraucht: Auf dem Copter sitzt ein Kameramodul mit SigmaStar-Prozessor
-    und einem RTL8812-WLAN-Chip, am Boden empfängt ein USB-WLAN-Adapter (RTL8812AU) an einem
-    Einplatinenrechner, oder gleich ein Android-Gerät mit der App PixelPilot.<sup><a href="#q19">12</a></sup>
-    Damit ist erstmals die komplette digitale Videokette quelloffen: Wer will, kann jede
-    Komponente tauschen, jeden Parameter ändern und ist an keinen Hersteller gebunden.</p>
+    und einem RTL8812-WLAN-Chip.<sup><a href="#q19">12</a></sup>  Damit ist erstmals die
+    komplette digitale Videokette quelloffen: Wer will, kann jede Komponente tauschen, jeden
+    Parameter ändern und ist an keinen Hersteller gebunden.</p>
+    <p>Der Trick von wfb-ng ist es wert, verstanden zu werden.  Normales WLAN ist für Video vom
+    Copter denkbar ungeeignet: Es baut Verbindungen auf, wartet auf Empfangsbestätigungen und
+    wiederholt verlorene Pakete so lange, bis alles korrekt angekommen ist.  Genau das will man
+    am Rand der Reichweite nicht, dort zählt ein schnelles Bild mehr als ein vollständiges.
+    wfb-ng schaltet die WLAN-Chips deshalb in den Monitor-Modus und sendet rohe Pakete ohne
+    Anmeldung und ohne Bestätigungen, als reinen Einweg-Broadcast; verlorene Pakete gleicht eine
+    Vorwärtsfehlerkorrektur aus, die in der Standardeinstellung vier verlorene von zwölf
+    Paketen rekonstruiert.<sup><a href="#q22">22</a></sup>  Die Idee stammt aus dem
+    wifibroadcast-Projekt, das die Maker-Szene schon 2015 beschäftigte, weil es WLAN-Hardware
+    gezielt so umbaut, dass sie sich wie ein Analogsender verhält: lieber sofort ein gestörtes
+    Bild als später ein perfektes.<sup><a href="#q23">23</a></sup></p>
+    <p>Auch die Bodenstation ist offen: ein Einplatinenrechner mit einem USB-WLAN-Adapter
+    (RTL8812AU), oder gleich ein Android-Gerät mit der App
+    PixelPilot.<sup><a href="#q19">12</a></sup>  PixelPilot dekodiert den H.265-Strom von
+    wfb-ng direkt auf dem Handy, zeigt Link-Statistiken in Echtzeit, zeichnet als DVR auf und
+    passt die Fehlerkorrektur adaptiv an die Verbindungsqualität an; ein Smartphone plus
+    USB-WLAN-Adapter ersetzt damit den fertigen Empfänger.<sup><a href="#q24">24</a></sup></p>
     <p>Dass daraus mehr als ein Bastelprojekt wird, zeigt fertige Hardware wie der RunCam
     WiFiLink&nbsp;2: SigmaStar SSC338Q, IMX415-Sensor mit 160-Grad-Optik, WLAN im 5-GHz-Bereich
     mit wählbarer Kanalbreite von 5, 10 oder 20&nbsp;MHz, Sendeleistung 630&nbsp;mW nach FCC
     beziehungsweise 100&nbsp;mW nach CE, bei 25 bis 30&nbsp;g Gewicht.<sup><a href="#q20">13</a></sup>
-    Die ehrliche Einordnung: Das System ist jung, es gibt keine fertige Brille aus einem Guss,
-    und die Fachdiskussion stuft es als vielversprechenden, aber noch reifenden Kandidaten
-    ein.<sup><a href="#q3">3</a></sup>  Rechtlich bewegt sich ein WLAN-basiertes System in
-    derselben 5-GHz-Landschaft wie alle anderen (<a href="#k9">Kapitel&nbsp;9</a>); welcher
-    Kanal mit welcher Leistung zulässig ist, hängt vom gewählten Band ab.</p>
+    Bei der Latenz ist das Projekt selbst erfreulich ehrlich: Die offizielle FAQ nennt 80 bis
+    100&nbsp;ms bei 60&nbsp;fps und empfiehlt für weniger Latenz den Betrieb mit
+    120&nbsp;fps.<sup><a href="#q25">25</a></sup>  Ein unabhängiger Test sah unter
+    Idealbedingungen Werte bis hinab zu etwa 25&nbsp;ms, stark abhängig von der verwendeten
+    Hardware.<sup><a href="#q26">26</a></sup>  In der Latenzliga von DJI oder HDZero
+    (<a href="#k8">Kapitel&nbsp;8</a>) spielt OpenIPC damit derzeit nicht.  Derselbe Test
+    stuft die fertige Hardware als Alpha-Stadium ein, mit Bildaussetzern auf größere Distanz,
+    und es gibt keine fertige Brille aus einem Guss; empfohlen wird das System Nutzern, die
+    gerne selbst Hand anlegen.<sup><a href="#q26">26</a></sup>  Rechtlich bewegt sich ein
+    WLAN-basiertes System in derselben 5-GHz-Landschaft wie alle anderen
+    (<a href="#k9">Kapitel&nbsp;9</a>); welcher Kanal mit welcher Leistung zulässig ist, hängt
+    vom gewählten Band ab.</p>
+    <p>Wie ernst man den Ansatz nehmen muss, zeigt ein Blick über den Hobbyrand hinaus: Nach
+    einem Bericht des Branchendienstes UAS Vision setzen russische Glasfaser-Drohnen in der
+    Ukraine digitale IP-Kameras ein, deren Software auf dem quelloffenen OpenIPC-Code
+    basiert.<sup><a href="#q27">27</a></sup>  Quelloffene Videoketten sind also längst keine
+    reine Spielwiese mehr.</p>
     <p><strong>Ascent</strong> ist der zweite Trend, und er kommt ebenfalls aus dem
     Caddx-Haus: eine Budget-Linie unterhalb des Avatar-Systems.  Der zugehörige Empfänger
     (VRX) kostet 99&nbsp;US-Dollar, hat einen HDMI-Ausgang und macht damit vorhandene analoge
@@ -620,6 +648,33 @@
         (11.12.2025) — Tianmushan-1 (Universität Beihang), 188,605 km am 16.11.2025 in Hangzhou,
         von Guinness World Records verifiziert, Flugdauer über vier Stunden:
         <a href="https://english.news.cn/20251211/596efb3f79994ecf8d3b0d10682e1d34/c.html" rel="noopener" target="_blank">english.news.cn: hydrogen drone record</a></li>
+      <li id="q22">svpcom, wfb-ng (GitHub-README) — Raw-WiFi-Funkstrecke: WLAN-Karten im
+        Monitor-Modus, Senden ohne Assoziierung und ohne ACK-Pakete, Einweg-Broadcast,
+        Vorwärtsfehlerkorrektur rekonstruiert in Standardeinstellung 4 verlorene von
+        12 Paketen; Lizenz GPLv3:
+        <a href="https://github.com/svpcom/wfb-ng" rel="noopener" target="_blank">github.com/svpcom/wfb-ng</a></li>
+      <li id="q23">Hackaday, „Wifibroadcast Makes WiFi FPV Video More Like Analog"
+        (13.06.2015) — Grundidee: normales WLAN (zweiseitig, 100 % korrekt) ist für FPV
+        ungeeignet, am Rand der Reichweite zählt ein rechtzeitiges Bild mehr als ein
+        vollständiges; wifibroadcast lässt WLAN-Hardware sich wie ein Analogsender verhalten:
+        <a href="https://hackaday.com/2015/06/13/wifibroadcast-makes-wifi-fpv-video-more-like-analog/" rel="noopener" target="_blank">hackaday.com: wifibroadcast</a></li>
+      <li id="q24">OpenIPC-Projekt, PixelPilot (GitHub) — Android-App dekodiert den per
+        wfb-ng gefunkten H.264/H.265-Videostrom, Echtzeit-Link-Statistiken, adaptive
+        Fehlerkorrektur, DVR-Aufzeichnung, RTL8812AU/EU-USB-Adapter; Lizenz GPLv3:
+        <a href="https://github.com/OpenIPC/PixelPilot" rel="noopener" target="_blank">github.com/OpenIPC/PixelPilot</a></li>
+      <li id="q25">OpenIPC-Dokumentation, FAQ — Latenz „generally around 80–100 ms at 60fps",
+        Empfehlung: 120-fps-Kodierung mit 120-Hz-Monitor für niedrigere Latenz:
+        <a href="https://docs.openipc.org/resources/faq/" rel="noopener" target="_blank">docs.openipc.org/resources/faq</a></li>
+      <li id="q26">UnmannedTech-Blog (DroneTrest), „Exploring Open Source HD FPV Video Link"
+        (2024) — Test von RunCam WiFiLink und Emax Wyvern Link: Einstufung als Alpha-Stadium
+        („NOT finished hardware"), Bildaussetzer bei größerer Distanz, Latenz-Bestwerte um
+        25 ms unter Idealbedingungen und stark hardwareabhängig, Zielgruppe technikaffine
+        Bastler:
+        <a href="https://blog.unmanned.tech/exploring_open_source_hd_fpv_video_link/" rel="noopener" target="_blank">blog.unmanned.tech: Open Source HD FPV</a></li>
+      <li id="q27">UAS Vision, „Accuracy Comparison of Ukrainian and Russian Fiber Optic
+        Drones" (29.04.2025, nach Militarnyi) — russische Glasfaser-Drohnen nutzen digitale
+        IP-Kameras mit Medienkonverter und Software auf Basis des quelloffenen OpenIPC-Codes:
+        <a href="https://www.uasvision.com/2025/04/29/accuracy-comparison-of-ukrainian-and-russian-fiber-optic-drones/" rel="noopener" target="_blank">uasvision.com: fiber optic drones</a></li>
     </ol>
 
 
