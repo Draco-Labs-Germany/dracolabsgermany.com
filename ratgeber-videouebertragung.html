@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Was dein Copter dir zeigt — FPV-Video-Systeme | Draco Labs</title>
-<meta name="description" content="FPV-Videoübertragung erklärt: Analog, DJI O4, Walksnail und HDZero im Vergleich, Latenz, Reichweite, Antennen und die Rechtslage in Deutschland.">
-<meta name="keywords" content="FPV Videoübertragung, DJI O4 Air Unit, Walksnail Avatar, Caddx, HDZero, analog VTX 5,8 GHz, FPV Latenz, FPV Reichweite, Patch Antenne FPV, 25 mW EIRP, VLOS 120 m">
+<meta name="description" content="FPV-Videoübertragung erklärt: Analog, DJI O4, Walksnail, HDZero und OpenIPC im Vergleich, Latenz, Reichweite, Antennen und die Rechtslage in Deutschland.">
+<meta name="keywords" content="FPV Videoübertragung, DJI O4 Air Unit, Walksnail Avatar, Caddx, HDZero, analog VTX 5,8 GHz, FPV Latenz, FPV Reichweite, OpenIPC wfb-ng, Walksnail Ascent, Patch Antenne FPV, 25 mW EIRP, VLOS 120 m">
 <!-- Noch in Pruefung: beim Freischalten auf "index, follow" stellen -->
 <meta name="robots" content="noindex, nofollow">
 <meta name="author" content="Draco Labs Germany">
@@ -75,7 +75,7 @@
 
     <h1>Was dein Copter dir zeigt</h1>
     <p class="muted" style="font-size:17px; margin-top:-4px">Die Videostrecke von analog bis digital: DJI O4, Walksnail Avatar und HDZero im Vergleich, was Latenz und Bitrate wirklich bedeuten, wie man Reichweite legal verlängert und was die Rechtslage in Deutschland erlaubt.</p>
-    <p class="muted">Ratgeber · Videotechnik &amp; FPV · Lesezeit ca. 22 Min · Stand: Juli 2026</p>
+    <p class="muted">Ratgeber · Videotechnik &amp; FPV · Lesezeit ca. 24 Min · Stand: Juli 2026</p>
 
     <div style="background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--cyan); border-radius:10px; padding:18px 20px; margin:22px 0">
       <p style="margin:0 0 8px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; font-size:13px; color:var(--cyan)">Kurz gesagt</p>
@@ -169,7 +169,7 @@
     <p>Grundsätzlich gilt: Je mehr Bild pro Sekunde durch die Luft soll, desto breiter muss der
     Funkkanal sein.  DJIs aktuelles System belegt bis zu 60&nbsp;MHz Kanalbreite<sup><a href="#q6">6</a></sup>,
     das sind 40&nbsp;Prozent des gesamten deutschen 5,8-GHz-Bereichs für Kurzstreckenfunk
-    (gerechnet aus 60 von 150&nbsp;MHz, siehe <a href="#k8">Kapitel&nbsp;8</a>).  Auch daran sieht
+    (gerechnet aus 60 von 150&nbsp;MHz, siehe <a href="#k9">Kapitel&nbsp;9</a>).  Auch daran sieht
     man: Videoübertragung ist die bandbreitenhungrigste Funkanwendung am Copter.</p>
 
     <h2 id="k4">4. DJI: der Konzern, der das Hobby digitalisiert hat</h2>
@@ -194,7 +194,7 @@
     CE-Leistungsangaben unterscheiden sich drastisch: unter 14&nbsp;dBm auf 5,8&nbsp;GHz, aber
     unter 23&nbsp;dBm auf 5,1&nbsp;GHz.<sup><a href="#q6">6</a></sup>  Was hinter diesen Zahlen
     steckt, ist der spannendste Teil der deutschen Rechtslage und bekommt in
-    <a href="#k8">Kapitel&nbsp;8</a> seinen Auftritt.</p>
+    <a href="#k9">Kapitel&nbsp;9</a> seinen Auftritt.</p>
     <p style="margin-top:14px">
       <a href="https://www.fpv24.com/de/dji/dji-o4-air-unit-fpv-lufteinheit-pro?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ DJI O4 Air Unit Pro bei FPV24 ansehen (Anzeige)</a><br>
       <a href="https://www.fpv24.com/de/dji/dji-o4-air-unit-lite-fpv-air-unit?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ DJI O4 Air Unit (die leichte Variante) bei FPV24 ansehen (Anzeige)</a>
@@ -213,7 +213,7 @@
     <p>Bei den Leistungsangaben nennt Caddx unter 30&nbsp;dBm für FCC und unter 14&nbsp;dBm für
     CE, als Reichweite 4&nbsp;km.<sup><a href="#q7">7</a></sup>  Die 14&nbsp;dBm sind dieselbe
     CE-Grenze, die auch DJI auf 5,8&nbsp;GHz einhält, und wir werden ihr in
-    <a href="#k8">Kapitel&nbsp;8</a> wieder begegnen: Sie ist kein Zufall, sondern deutsches
+    <a href="#k9">Kapitel&nbsp;9</a> wieder begegnen: Sie ist kein Zufall, sondern deutsches
     beziehungsweise europäisches Recht in Firmware gegossen.</p>
     <p style="margin-top:14px">
       <a href="https://www.fpv24.com/de/walksnail/walksnail-avatar-hd-digital-fpv-camera-pro-kit?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ Walksnail Avatar HD Pro Kit bei FPV24 ansehen (Anzeige)</a>
@@ -242,7 +242,47 @@
       <a href="https://www.fpv24.com/de/hdzero/hdzero-race-v3-vtx?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ HDZero Race V3 VTX bei FPV24 ansehen (Anzeige)</a>
     </p>
 
-    <h2 id="k7">7. Latenz: die wichtigste und die am schlechtesten vergleichbare Zahl</h2>
+    <h2 id="k7">7. OpenIPC und Ascent: der aktuelle Stand der Entwicklung</h2>
+    <p>Der Markt ist nicht fertig sortiert, und zwei jüngere Entwicklungen zeigen, in welche
+    Richtungen er sich gerade bewegt: radikal offen und radikal günstig.</p>
+    <p><strong>OpenIPC</strong> ist kein Produkt, sondern ein Open-Source-Projekt: eine
+    alternative, quelloffene Firmware für IP-Kameras (Kernkomponenten unter MIT-Lizenz), die von
+    einer Community entwickelt wird und die geschlossene Hersteller-Firmware solcher Kameras
+    ersetzt.<sup><a href="#q18">11</a></sup>  Der FPV-Zweig des Projekts kombiniert diese
+    Firmware mit <em>wfb-ng</em>, einem Übertragungsverfahren, das gewöhnliche WLAN-Chips als
+    reine Videosender missbraucht: Auf dem Copter sitzt ein Kameramodul mit SigmaStar-Prozessor
+    und einem RTL8812-WLAN-Chip, am Boden empfängt ein USB-WLAN-Adapter (RTL8812AU) an einem
+    Einplatinenrechner, oder gleich ein Android-Gerät mit der App PixelPilot.<sup><a href="#q19">12</a></sup>
+    Damit ist erstmals die komplette digitale Videokette quelloffen: Wer will, kann jede
+    Komponente tauschen, jeden Parameter ändern und ist an keinen Hersteller gebunden.</p>
+    <p>Dass daraus mehr als ein Bastelprojekt wird, zeigt fertige Hardware wie der RunCam
+    WiFiLink&nbsp;2: SigmaStar SSC338Q, IMX415-Sensor mit 160-Grad-Optik, WLAN im 5-GHz-Bereich
+    mit wählbarer Kanalbreite von 5, 10 oder 20&nbsp;MHz, Sendeleistung 630&nbsp;mW nach FCC
+    beziehungsweise 100&nbsp;mW nach CE, bei 25 bis 30&nbsp;g Gewicht.<sup><a href="#q20">13</a></sup>
+    Die ehrliche Einordnung: Das System ist jung, es gibt keine fertige Brille aus einem Guss,
+    und die Fachdiskussion stuft es als vielversprechenden, aber noch reifenden Kandidaten
+    ein.<sup><a href="#q3">3</a></sup>  Rechtlich bewegt sich ein WLAN-basiertes System in
+    derselben 5-GHz-Landschaft wie alle anderen (<a href="#k9">Kapitel&nbsp;9</a>); welcher
+    Kanal mit welcher Leistung zulässig ist, hängt vom gewählten Band ab.</p>
+    <p><strong>Ascent</strong> ist der zweite Trend, und er kommt ebenfalls aus dem
+    Caddx-Haus: eine Budget-Linie unterhalb des Avatar-Systems.  Der zugehörige Empfänger
+    (VRX) kostet 99&nbsp;US-Dollar, hat einen HDMI-Ausgang und macht damit vorhandene analoge
+    Brillen und Monitore digitalfähig.  Übertragen wird 1080p mit 60&nbsp;fps oder 720p mit
+    120&nbsp;fps im Bereich 5,725 bis 5,829&nbsp;GHz bei 5, 10 oder 20&nbsp;MHz Kanalbreite;
+    die Latenz gibt der Hersteller mit „ab 35&nbsp;ms" an, die Reichweite mit
+    6&nbsp;km.<sup><a href="#q21">14</a></sup>  Auch hier die ehrliche Einordnung aus der
+    Fachdiskussion: In Bildqualität, Reichweite und Latenz liegt Ascent derzeit hinter den
+    etablierten Systemen.<sup><a href="#q3">3</a></sup>  Interessant ist es trotzdem, denn es
+    drückt den Einstiegspreis für digitales FPV in Regionen, die bisher analog vorbehalten
+    waren.</p>
+    <p>Zusammengefasst entwickelt sich das Feld in drei Richtungen gleichzeitig.  Nach oben:
+    DJI schiebt die Leistungsgrenze mit 4K-Aufnahme und 15-ms-Latenz weiter hinaus
+    (<a href="#k4">Kapitel&nbsp;4</a>).  Zur Seite: OpenIPC öffnet die komplette Kette für
+    Eigenbau und Forschung.  Und nach unten: 99-Dollar-Empfänger holen Digital-HD in
+    Preisklassen, in denen bisher nur Analog existierte.  Analog verschwindet damit nicht,
+    aber es verliert sein letztes Alleinstellungsmerkmal Stück für Stück: den Preis.</p>
+
+    <h2 id="k8">8. Latenz: die wichtigste und die am schlechtesten vergleichbare Zahl</h2>
     <p>Latenz ist die Zeit zwischen dem Moment, in dem etwas vor der Linse passiert, und dem
     Moment, in dem du es siehst.  Bei 100&nbsp;km/h legt ein Copter in 20&nbsp;ms gut einen halben
     Meter zurück (gerechnet: 27,8&nbsp;m/s mal 0,02&nbsp;s); wer eng an Hindernissen fliegt, spürt
@@ -286,12 +326,12 @@
     DJI und Walksnail eine variable, die unter Druck steigen kann.<sup><a href="#q9">9</a></sup><sup><a href="#q3">3</a></sup>
     Für Rennen ist Konstanz das härtere Kriterium als der Bestwert auf dem Datenblatt.</p>
 
-    <h2 id="k8">8. Was in Deutschland erlaubt ist</h2>
+    <h2 id="k9">9. Was in Deutschland erlaubt ist</h2>
     <p>Für die Videostrecke gelten dieselben Allgemeinzuteilungen der Bundesnetzagentur, die wir
     im Funk-Ratgeber für den RC-Link zitiert haben, nur eben andere Zeilen der Tabelle.  Maßgeblich
     für 5,8&nbsp;GHz ist die Verfügung 91/2025: Im Band&nbsp;61, also 5.725 bis 5.875&nbsp;MHz,
     sind für Geräte mit geringer Reichweite und nicht näher spezifizierte Anwendungen
-    <strong>25&nbsp;mW Strahlungsleistung (EIRP)</strong> zugeteilt.<sup><a href="#q11">11</a></sup>
+    <strong>25&nbsp;mW Strahlungsleistung (EIRP)</strong> zugeteilt.<sup><a href="#q11">15</a></sup>
     EIRP heißt: Der Gewinn der Antenne zählt mit; wer eine Richtantenne an den Sender schraubt,
     überschreitet die Grenze schon mit kleiner Modulleistung.</p>
     <p>An dieser Zahl hängen drei unbequeme Wahrheiten.  <strong>Erstens:</strong> Die
@@ -316,11 +356,11 @@
     <strong>200&nbsp;mW mittlere EIRP</strong> (bei höchstens 10&nbsp;mW/MHz), und die Ausrüstung
     darf beim Einsatz im Außenbereich nicht an ortsfesten Außenantennen oder ortsfester
     Infrastruktur befestigt sein, was auf einen fliegenden Copter und eine Brille in der Hand
-    naturgemäß zutrifft.<sup><a href="#q12">12</a></sup>  Genau dazu passt DJIs CE-Angabe von
+    naturgemäß zutrifft.<sup><a href="#q12">16</a></sup>  Genau dazu passt DJIs CE-Angabe von
     unter 23&nbsp;dBm im 5,1-GHz-Band, das sind rund 200&nbsp;mW (gerechnet), auf dem exakt
     zugelassenen Bereich 5.170 bis 5.250&nbsp;MHz.<sup><a href="#q6">6</a></sup>  Das
     benachbarte Band 5.250 bis 5.350&nbsp;MHz bleibt dagegen ausdrücklich den Innenräumen
-    vorbehalten.<sup><a href="#q12">12</a></sup>  Praktisch heißt das: Ein CE-konformes
+    vorbehalten.<sup><a href="#q12">16</a></sup>  Praktisch heißt das: Ein CE-konformes
     DJI-System darf im 5,1-GHz-Band mit der achtfachen Strahlungsleistung des 5,8-GHz-Bands
     senden.  Das ist der leise, legale Reichweitenvorteil des Systems, über den kaum jemand
     spricht.</p>
@@ -328,23 +368,23 @@
     für FPV-Video relevanten Zeilen wieder.  Verbindlich ist immer der Originaltext der
     Bundesnetzagentur, siehe Quellenangaben.  Dieser Ratgeber ist keine Rechtsberatung.</p>
 
-    <h2 id="k9">9. Sichtlinie, Höhe und Horizont</h2>
+    <h2 id="k10">10. Sichtlinie, Höhe und Horizont</h2>
     <p>Bevor die Physik drankommt, die Rechtslage, denn sie ist strenger.  Die europäische
     Drohnenverordnung verlangt in der offenen Kategorie, dass der Fernpilot das Luftfahrzeug
     <em>„zu jedem Zeitpunkt in VLOS-Betrieb"</em> hält, also in direkter Sicht mit den eigenen
     Augen.  Es sei denn, <em>„es fliegt im Follow-me-Modus oder es wird ein Beobachter
-    [&#8230;] hinzugezogen."</em><sup><a href="#q13">13</a></sup>  Für FPV heißt das: Mit der
+    [&#8230;] hinzugezogen."</em><sup><a href="#q13">17</a></sup>  Für FPV heißt das: Mit der
     Brille auf dem Kopf fliegst du legal nur, wenn neben dir ein Beobachter steht, der den Copter
     mit bloßem Auge verfolgt und den Luftraum im Blick behält.  Dazu kommt die Höhengrenze: Das
     unbemannte Luftfahrzeug ist in einem Abstand von höchstens <strong>120&nbsp;m vom
-    nächstgelegenen Punkt der Erdoberfläche</strong> zu halten.<sup><a href="#q13">13</a></sup></p>
+    nächstgelegenen Punkt der Erdoberfläche</strong> zu halten.<sup><a href="#q13">17</a></sup></p>
     <p>Und nun die Physik, die zeigt, wie wenig der Funkhorizont in diesem Rahmen begrenzt.  Rein
     geometrisch reicht die Sichtlinie von einem 120&nbsp;m hohen Punkt etwa 39&nbsp;km weit, bis
     die Erdkrümmung sie abschneidet; die Antennenhöhe des Piloten legt noch einige Kilometer drauf
     (gerechnet über den geometrischen Horizont, Wurzel aus zwei mal Erdradius mal Höhe, ohne
     atmosphärische Effekte).  Kein legales FPV-Szenario in Deutschland kommt auch nur in die Nähe
     dieser Distanz.  Was die Verbindung tatsächlich begrenzt, sind die 25&nbsp;mW aus
-    <a href="#k8">Kapitel&nbsp;8</a>, die Antennen und vor allem Hindernisse in der
+    <a href="#k9">Kapitel&nbsp;9</a>, die Antennen und vor allem Hindernisse in der
     Funkstrecke.</p>
     <p>Denn „freie Sicht" genügt einer Funkwelle nicht.  Sie braucht um die direkte Linie herum
     einen ellipsenförmigen Freiraum, die sogenannte Fresnel-Zone.  Bei 5,8&nbsp;GHz (Wellenlänge
@@ -355,9 +395,9 @@
     bricht das Bild in Bodennähe zuerst ab.  Die wirksamste „Reichweitenverlängerung" ist oft
     banal: höher stehen, freier stehen, und die Strecke von Hindernissen freihalten.</p>
 
-    <h2 id="k10">10. Reichweite legal verlängern: die Empfangsseite</h2>
+    <h2 id="k11">11. Reichweite legal verlängern: die Empfangsseite</h2>
     <p>Die Sendeleistung ist gedeckelt, und zwar als Strahlungsleistung inklusive Antennengewinn
-    (<a href="#k8">Kapitel&nbsp;8</a>).  Am Sender ist also legal nichts zu holen; Verstärker
+    (<a href="#k9">Kapitel&nbsp;9</a>).  Am Sender ist also legal nichts zu holen; Verstärker
     oder Richtantennen am Copter sprengen die EIRP-Grenze sofort.  Die gute Nachricht: Auf der
     Empfangsseite gibt es keine solche Grenze, denn Empfangen ist passiv.  Jedes dB
     Antennengewinn an der Brille wirkt auf die Verbindung wie mehr Sendeleistung am Copter, nur
@@ -365,12 +405,12 @@
     <p>Dafür muss man die Polarisation verstehen.  FPV-Videoantennen sind fast immer zirkular
     polarisiert: Die Welle rotiert, rechtsdrehend (RHCP) oder linksdrehend (LHCP).  Das hat einen
     handfesten Grund: Wird eine zirkular polarisierte Welle an einer Oberfläche reflektiert, kehrt
-    sich ihr Drehsinn um, aus RHCP wird LHCP.<sup><a href="#q14">14</a></sup>  Die
+    sich ihr Drehsinn um, aus RHCP wird LHCP.<sup><a href="#q14">18</a></sup>  Die
     Empfangsantenne mit festem Drehsinn blendet solche Reflexionen dadurch teilweise aus, und
     genau diese Reflexionen (Mehrwegempfang) sind es, die Videobilder zerreißen.  Zwei Regeln
     folgen daraus: Sender- und Empfängerantenne müssen denselben Drehsinn haben, sonst verschenkt
     man massiv Signal.  Und eine linear polarisierte Antenne an einem zirkularen System kostet
-    pauschal die Hälfte der Leistung, also 3&nbsp;dB, egal wie man sie dreht.<sup><a href="#q14">14</a></sup></p>
+    pauschal die Hälfte der Leistung, also 3&nbsp;dB, egal wie man sie dreht.<sup><a href="#q14">18</a></sup></p>
     <p>Die Werkzeuge der Empfangsseite, aufsteigend nach Aufwand:</p>
     <p><strong>Bessere Rundstrahler:</strong> Die Standardantennen vieler Brillen sind
     Kompromisse.  Hochwertige zirkulare Pilzantennen mit sauberem Drehsinn sind der günstigste
@@ -383,7 +423,7 @@
     Aufsteck-Patches gibt.</p>
     <p><strong>Diversity-Empfänger:</strong> Analoge Brillenmodule wie das ImmersionRC rapidFIRE
     empfangen auf zwei Antennen gleichzeitig und setzen das Bild aus dem jeweils besseren Signal
-    zusammen.<sup><a href="#q15">15</a></sup>  Das Prinzip entspricht dem Diversity-Gedanken, den
+    zusammen.<sup><a href="#q15">19</a></sup>  Das Prinzip entspricht dem Diversity-Gedanken, den
     wir vom RC-Link kennen: Zwei unterschiedlich ausgerichtete Antennen haben selten gleichzeitig
     ein Loch.  Die Digitalsysteme haben Diversity von Haus aus eingebaut, die O4 Pro etwa mit
     zwei kompletten Empfangszügen.<sup><a href="#q6">6</a></sup></p>
@@ -393,30 +433,30 @@
       <a href="https://www.fpv24.com/de/immersionrc/immersionrc-rapidfire-analog-plus-fpv-glasses-receiver-module?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ ImmersionRC rapidFIRE Diversity-Modul bei FPV24 ansehen (Anzeige)</a>
     </p>
 
-    <h2 id="k11">11. Rekorde, ehrlich eingeordnet</h2>
+    <h2 id="k12">12. Rekorde, ehrlich eingeordnet</h2>
     <p>Reichweiten-Rekorde sind das Schaufenster der Szene, und man muss sie sauber sortieren,
     denn die wenigsten „Rekord"-Videos im Netz sind nachprüfbar.  Drei Kategorien halten der
     Prüfung stand.</p>
     <p><strong>Herstellerangaben unter Idealbedingungen:</strong> Die 15&nbsp;km der O4 Air Unit
     Pro gelten für den FCC-Modus in offener, störungsfreier Umgebung; nach CE-Standard nennt
     DJI 8&nbsp;km.<sup><a href="#q6">6</a></sup>  Das sind Laborgrenzen des Machbaren, keine
-    Empfehlung und in Deutschland keine erlaubte Betriebsart (<a href="#k8">Kapitel&nbsp;8</a>).</p>
+    Empfehlung und in Deutschland keine erlaubte Betriebsart (<a href="#k9">Kapitel&nbsp;9</a>).</p>
     <p><strong>Dokumentierte Community-Rekorde:</strong> Die Rekordliste des
     ExpressLRS-Projekts, die wir im Funk-Ratgeber zitiert haben, verlangt für jeden Eintrag ein
-    DVR-Video als Beleg; der weiteste Eintrag steht bei 101,3&nbsp;km.<sup><a href="#q16">16</a></sup>
+    DVR-Video als Beleg; der weiteste Eintrag steht bei 101,3&nbsp;km.<sup><a href="#q16">20</a></sup>
     Das DVR-Video belegt, dass auf diesen Flügen auch die Videostrecke über solche Distanzen
     funktioniert hat; welches Videosystem im Einzelnen flog, dokumentiert die Liste allerdings
-    nicht.<sup><a href="#q16">16</a></sup>  Solche Flüge finden außerhalb des europäischen
+    nicht.<sup><a href="#q16">20</a></sup>  Solche Flüge finden außerhalb des europäischen
     Rechtsrahmens statt.</p>
     <p><strong>Offiziell verifizierte Weltrekorde:</strong> Den Guinness-Weltrekord für den
     weitesten Flug eines wasserstoffbetriebenen Multicopters hält seit dem 16.&nbsp;November 2025
     die Tianmushan-1 der Universität Beihang mit <strong>188,605&nbsp;km</strong> in über vier
-    Stunden.<sup><a href="#q17">17</a></sup>  Das ist kein FPV-Flug, aber er zeigt, wohin sich
+    Stunden.<sup><a href="#q17">21</a></sup>  Das ist kein FPV-Flug, aber er zeigt, wohin sich
     die Plattform-Reichweiten entwickeln, und damit auch, warum die Frage nach der
     Videoübertragung über solche Distanzen (jenseits klassischer FPV-Funkstrecken) gerade so
     intensiv bearbeitet wird.</p>
 
-    <h2 id="k12">12. Welches System für wen</h2>
+    <h2 id="k13">13. Welches System für wen</h2>
     <table>
       <thead>
         <tr><th>Du willst&nbsp;&#8230;</th><th>Unsere Einordnung</th><th>Warum</th></tr>
@@ -453,7 +493,7 @@
     und mit den Datenblättern der Hersteller.  Sie ist bewusst herstellerneutral: Es gibt kein
     „bestes" System, nur das passende für deinen Einsatz.</p>
 
-    <h2 id="k13">13. Was das für deinen nächsten Build heißt</h2>
+    <h2 id="k14">14. Was das für deinen nächsten Build heißt</h2>
     <ul>
       <li><strong>Wähle zuerst das Ökosystem, nicht den Sender.</strong>  Brille, Sender und
       Kamera müssen zum selben System gehören; der teuerste Fehlkauf ist die falsche Brille.</li>
@@ -537,6 +577,21 @@
       <li id="q10">FPV24, Produktdatenblatt HDZero Race V3 VTX — Auflösungsmodi 540p90/720p60/
         1080p30, Sendeleistung 25/200 mW, Band 5,725–5,850 GHz, Gewicht 5,5 g:
         <a href="https://www.fpv24.com/de/hdzero/hdzero-race-v3-vtx" rel="noopener" target="_blank">fpv24.com: HDZero Race V3</a></li>
+      <li id="q18">OpenIPC-Projekt — quelloffene alternative Firmware für IP-Kameras (Kern unter
+        MIT-Lizenz), entwickelt von einer offenen Community, mit FPV als Anwendungsfall:
+        <a href="https://openipc.org/" rel="noopener" target="_blank">openipc.org</a></li>
+      <li id="q19">OpenIPC-Dokumentation, „WFB-NG Quick Start" — Aufbau des FPV-Systems:
+        Sender aus Sensor, SigmaStar-SoC (SSC338Q/SSC30KQ) und RTL8812-WLAN-Chip; Bodenstation
+        als Einplatinenrechner mit RTL8812AU-Adapter oder Android-Gerät mit PixelPilot:
+        <a href="https://docs.openipc.org/use-cases/fpv/wfb-ng/-quick-start/" rel="noopener" target="_blank">docs.openipc.org: WFB-NG Quick Start</a></li>
+      <li id="q20">OpenIPC-Dokumentation, „Runcam WiFiLink 2" — SigmaStar SSC338Q, IMX415,
+        160-Grad-Optik, 5-GHz-WLAN mit 5/10/20 MHz Kanalbreite, 630 mW (FCC) bzw. 100 mW (CE),
+        25–30 g, RTL8812-Empfangsadapter:
+        <a href="https://docs.openipc.org/hardware/runcam/vtx/runcam-wifilink-v2/" rel="noopener" target="_blank">docs.openipc.org: Runcam WiFiLink 2</a></li>
+      <li id="q21">Caddx, Produktseite Walksnail Ascent FPV VRX — Ende-zu-Ende-Latenz „ab
+        35 ms", 1080p/60 und 720p/120, Band 5,725–5,829 GHz, Kanalbreiten 5/10/20 MHz,
+        HDMI-Ausgang, 6-km-Reichweitenangabe, Preis 99 USD:
+        <a href="https://www.caddxfpv.com/products/walksnail-ascent-fpv-vrx" rel="noopener" target="_blank">caddxfpv.com: Ascent FPV VRX</a></li>
       <li id="q11">Bundesnetzagentur, Allgemeinzuteilung Vfg. 91/2025 „Geräte mit geringer
         Reichweite (SRD)" — Band 61: 5.725–5.875 MHz, Geräte mit geringer Reichweite für nicht
         näher spezifizierte Anwendungen, 25 mW (EIRP):
