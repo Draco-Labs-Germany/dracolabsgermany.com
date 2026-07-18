@@ -15,13 +15,11 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <!-- Carbon-Ratgeber noch in Pruefung, beim Freischalten einkommentieren:
   <url>
     <loc>https://dracolabsgermany.com/ratgeber-carbon-frame.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  -->
   <!-- Funk-Ratgeber noch in Pruefung, beim Freischalten einkommentieren:
   <url>
     <loc>https://dracolabsgermany.com/ratgeber-funk-kommunikation.html</loc>
