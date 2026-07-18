@@ -247,9 +247,10 @@ main.legal tr:nth-child(even) { background: rgba(255, 255, 255, .025); }
 
 /* ---- Partner & Empfehlungen (Affiliate) ---------------------------------- */
 .partner-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  display: grid; grid-template-columns: repeat(2, 1fr);
   gap: 14px; margin-top: 18px;
 }
+@media (max-width: 640px) { .partner-grid { grid-template-columns: 1fr; } }
 .partner-card {
   display: flex; align-items: center; gap: 16px;
   background: var(--surface); border: 1px solid var(--line); border-radius: 6px;
