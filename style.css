@@ -260,4 +260,11 @@ main.legal tr:nth-child(even) { background: rgba(255, 255, 255, .025); }
 .partner-card img { flex: 0 0 auto; border-radius: 6px; background: #fff; padding: 4px; }
 .partner-name { font-weight: 700; letter-spacing: .06em; color: var(--ink); }
 .partner-desc { color: var(--muted); font-size: 14px; margin-top: 3px; }
+.partner-coupon { margin-top: 10px; font-size: 14px; color: var(--ink); }
+.partner-coupon code {
+  display: inline-block; margin-left: 6px; padding: 2px 10px;
+  font-weight: 800; letter-spacing: .04em; font-size: 15px;
+  color: var(--cyan); background: rgba(47,180,204,.12);
+  border: 1px solid var(--cyan); border-radius: 4px;
+}
 @media (prefers-reduced-motion: reduce) { .partner-card:hover { transform: none; } }
