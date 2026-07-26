@@ -245,6 +245,37 @@ main.legal tr:nth-child(even) { background: rgba(255, 255, 255, .025); }
   }
 }
 
+/* ---- Baustelle: Der Weg zum eigenen Frame (Baulog, regelmäßig erweitert) -- */
+.log { display: flex; flex-direction: column; gap: 16px; margin-top: 18px; }
+.log-entry {
+  display: grid; grid-template-columns: 280px 1fr; gap: 20px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 6px;
+  border-left: 3px solid var(--cyan); padding: 20px;
+}
+.log-entry:nth-child(2) { border-left-color: var(--red); }
+@media (max-width: 720px) { .log-entry { grid-template-columns: 1fr; } }
+.log-meta { display: flex; gap: 10px; align-items: baseline; margin-bottom: 6px; }
+.log-date { color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: .06em; }
+.log-tag { color: var(--cyan); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.log-entry h3 { font-size: 17px; margin: 0 0 8px; }
+.log-entry p { color: var(--muted); font-size: 15px; }
+.log-media {
+  position: relative; display: block; aspect-ratio: 16 / 9; border-radius: 6px;
+  overflow: hidden; background: var(--panel);
+}
+.log-media img { width: 100%; height: 100%; object-fit: contain; display: block; transition: transform .2s; }
+a.log-media:hover img { transform: scale(1.03); }
+.log-media .play {
+  position: absolute; inset: 0; margin: auto; width: 52px; height: 52px;
+  background: rgba(23, 27, 32, .72); border: 2px solid var(--cyan); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.log-media .play::after {
+  content: ""; margin-left: 4px; width: 0; height: 0;
+  border-top: 10px solid transparent; border-bottom: 10px solid transparent;
+  border-left: 16px solid var(--cyan);
+}
+
 /* ---- Partner & Empfehlungen (Affiliate) ---------------------------------- */
 .partner-grid {
   display: grid; grid-template-columns: repeat(2, 1fr);
