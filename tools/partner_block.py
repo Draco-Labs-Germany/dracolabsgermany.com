@@ -45,8 +45,8 @@ PARTNER = [
     # 3 Einloesungen limitiert und waere schnell tot; der Link traegt die Provision.
     ("DarwinFPV", "https://darwinfpv.com/DRACOLABSGERMANY",
      "assets/partner/darwinfpv-logo.png", 164, 30,
-     "Hersteller von FPV-Frames, Motoren und Komponenten; bekannt für die\n"
-     "          Toruk-Serie für Long-Range-Builds.",
+     "Hersteller von FPV-Frames, Motoren und Komponenten; unser Partner für\n"
+     "          X-Class-Frames der Toruk-Serie für Long-Range-Builds.",
      None),
 ]
 
