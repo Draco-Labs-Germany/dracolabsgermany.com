@@ -48,6 +48,11 @@ PARTNER = [
      "Hersteller von FPV-Frames, Motoren und Komponenten; unser Partner für\n"
      "          X-Class-Frames der Toruk-Serie für Long-Range-Builds.",
      "DRACOLABSGERMANY"),
+    ("Ampow", "https://www.ampow.com/DRACOLABSGERMANY",
+     "assets/partner/ampow-logo.png", 150, 30,
+     "Store der LiPo-Marke Ovonic; unser Partner für Flugakkus und\n"
+     "          Ladezubehör rund um FPV- und Long-Range-Builds.",
+     None),
 ]
 
 BLOCK_RE = re.compile(r"[ \t]*<!-- partner:start -->.*?<!-- partner:ende -->\n", re.S)
