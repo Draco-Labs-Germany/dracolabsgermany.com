@@ -77,7 +77,7 @@
     <p class="muted" style="font-size:17px; margin-top:-4px">Was zwischen deinen Daumen und den Motoren wirklich passiert: der RC-Link von ExpressLRS bis Crossfire, die Zahlen RSSI und LQ, das GPS-Prinzip und die Antenne als wichtigstes Bauteil.</p>
     <p class="muted">Ratgeber · Funktechnik &amp; Navigation · Lesezeit ca. 20 Min · Stand: Juli 2026</p>
 
-    <div style="background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--cyan); border-radius:10px; padding:18px 20px; margin:22px 0">
+    <div data-nosnippet style="background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--cyan); border-radius:10px; padding:18px 20px; margin:22px 0">
       <p style="margin:0 0 8px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; font-size:13px; color:var(--cyan)">Kurz gesagt</p>
       <p style="margin:0">Dein Steuersignal ist eine eigene Funkstrecke, getrennt vom Videobild.  Die
       wichtigste Zahl im Flug ist nicht RSSI, sondern <strong>LQ</strong> (der Anteil verstandener
@@ -249,7 +249,8 @@
     abgibt (EIRP bzw. ERP), nicht das, was das Modul erzeugt.  Ein Gewinn der Antenne zählt
     mit.</p>
     <p>Die für RC-Links relevanten Einträge:<sup><a href="#q6">6</a></sup></p>
-    <table>
+    <div data-nosnippet>
+<table>
       <thead>
         <tr><th>Band</th><th>Kategorie</th><th>Erlaubt</th><th>Auflagen</th></tr>
       </thead>
@@ -280,6 +281,7 @@
         </tr>
       </tbody>
     </table>
+</div>
     <p>Drei Dinge sollte man daraus mitnehmen.  <strong>Erstens:</strong> Auf 2,4&nbsp;GHz sind
     100&nbsp;mW EIRP die Obergrenze für frequenzspringende Breitbandsysteme, zu denen moderne
     RC-Links gehören.  Die 250-mW- oder 1-W-Stufen, die sich in vielen Sendemodulen einstellen
@@ -725,6 +727,7 @@
 <!-- historie:start -->
     <h2>Änderungshistorie</h2>
     <ul class="muted" style="font-size:14px; line-height:1.9; padding-left:20px">
+      <li><strong>12.08.2026</strong> · Snippet-Schutz: Kurzfassung und Tabellen für Google-Snippets/KI-Overviews gesperrt (data-nosnippet), KI-Trainings-Crawler per robots.txt ausgeschlossen</li>
       <li><strong>12.08.2026</strong> · Querverweise auf den neuen Videoübertragungs-Ratgeber verlinkt</li>
       <li><strong>12.08.2026</strong> · Video-Serie (3 Teile) eingebettet; Schaubilder aus der Serie ergänzt; Änderungshistorie eingeführt</li>
       <li><strong>12.08.2026</strong> · Partner-Karten DarwinFPV und Ampow, KI-Kennzeichnung im Footer</li>

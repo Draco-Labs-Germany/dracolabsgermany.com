@@ -76,7 +76,7 @@
     <p class="muted" style="font-size:17px; margin-top:-4px">Der richtige LiPo- oder Li-Ion-Akku für 13-Zoll-Long-Range- und Heavy-Lift-Copter, verständlich erklärt.</p>
     <p class="muted">Ratgeber · Long-Range &amp; Heavy-Lift · Lesezeit ca. 6 Min · Stand: Juli 2026</p>
 
-    <div style="background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--cyan); border-radius:10px; padding:18px 20px; margin:22px 0">
+    <div data-nosnippet style="background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--cyan); border-radius:10px; padding:18px 20px; margin:22px 0">
       <p style="margin:0 0 8px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; font-size:13px; color:var(--cyan)">Kurz gesagt</p>
       <p style="margin:0">Für 13-Zoll-Copter ist <strong>8S mit 6.000–8.000&nbsp;mAh</strong> der Standard.
       Achte auf <strong>XT90-S-Stecker</strong>, eine ausreichende <strong>C-Rate (15–25C)</strong> und
@@ -128,11 +128,13 @@
     führt der Weg zu <strong>Li-Ion-Packs</strong> (18650- oder 21700-Zellen): Sie haben eine deutlich
     höhere Energiedichte (mehr Wattstunden pro Gramm), liefern dafür aber weniger Spitzenstrom.  Für
     ruhige Cruise- und Mapping-Flüge sind sie ideal, für aggressive Heavy-Lift-Manöver eher nicht.</p>
-    <table>
+    <div data-nosnippet>
+<table>
       <tr><th>Akkutyp</th><th>Stärke</th><th>Schwäche</th><th>Ideal für</th></tr>
       <tr><td>LiPo</td><td>hoher Strom, günstig</td><td>schwerer, weniger Zyklen</td><td>Heavy-Lift, dynamisches Fliegen</td></tr>
       <tr><td>Li-Ion (18650/21700)</td><td>sehr hohe Energiedichte</td><td>geringer Spitzenstrom</td><td>Long-Range-Cruise, Mapping</td></tr>
     </table>
+</div>
 
     <h2>3. C-Rate: die Belastbarkeit</h2>
     <p>Die C-Rate gibt an, wie viel Strom der Akku relativ zu seiner Kapazität dauerhaft liefern kann.
@@ -175,13 +177,15 @@
 
     <h2>Schnellwahl nach Build-Größe</h2>
     <p>Als grober Startpunkt (die konkrete Wahl hängt immer von Motoren, Props und Einsatzprofil ab):</p>
-    <table>
+    <div data-nosnippet>
+<table>
       <tr><th>Copter</th><th>Empfehlung</th><th>Stecker</th></tr>
       <tr><td>10 Zoll Long-Range</td><td>6S 5.000–6.500&nbsp;mAh LiPo</td><td>XT90-S</td></tr>
       <tr><td>13 Zoll Long-Range / Cinelifter</td><td>8S 5.200–6.200&nbsp;mAh LiPo</td><td>XT90-S</td></tr>
       <tr><td>13 Zoll Heavy-Lift</td><td>8S ~6.200&nbsp;mAh, für mehr Ausdauer zwei Packs</td><td>XT90-S</td></tr>
       <tr><td>15 Zoll+ Cinelifter</td><td>8S–12S, hohe Kapazität (mehrere Packs)</td><td>XT90-S</td></tr>
     </table>
+</div>
     <p>Die <strong>Ovonic ROAM-Serie</strong> deckt genau diesen Bereich ab: 6S bis ~8.000&nbsp;mAh
     sowie 8S in 3.500 / 5.200 / 6.200&nbsp;mAh, alle mit XT90-S-Anti-Spark und Versand aus EU-Lager.
     Für maximale Ausdauer bei geringer Last sind zusätzlich <strong>Li-Ion-Packs</strong> (21700)
@@ -276,7 +280,8 @@
     <p>Den perfekten Akku gibt es nicht, nur den passenden für deinen Build.  Statt dir eine einzige
     Marke aufzudrängen, stellen wir dir die Hersteller vor, die im 6S-/8S-Long-Range-Segment einen
     Blick wert sind.  Vergleiche in Ruhe und entscheide selbst:</p>
-    <table>
+    <div data-nosnippet>
+<table>
       <tr><th>Hersteller</th><th>Herkunft</th><th>Stärken</th><th>Passend für</th></tr>
       <tr>
         <td><strong>Genspow / Gens Ace</strong></td>
@@ -303,6 +308,7 @@
         <td>Wer viele Zellkonfigurationen vergleichen will</td>
       </tr>
     </table>
+</div>
     <p class="muted" style="font-size:14px">Fairer Hinweis zur Herkunft: „Made in Germany" bezieht sich
     bei praktisch allen Marken auf <strong>Entwicklung, Qualitätskontrolle, Gewährleistung und
     Support</strong>.  Die eigentlichen Lithium-Zellen kommen bei nahezu allen Herstellern aus Asien.
@@ -343,6 +349,7 @@
 <!-- historie:start -->
     <h2>Änderungshistorie</h2>
     <ul class="muted" style="font-size:14px; line-height:1.9; padding-left:20px">
+      <li><strong>12.08.2026</strong> · Snippet-Schutz: Kurzfassung und Tabellen für Google-Snippets/KI-Overviews gesperrt (data-nosnippet), KI-Trainings-Crawler per robots.txt ausgeschlossen</li>
       <li><strong>12.08.2026</strong> · Schaubilder aus dem Wissensvideo ergänzt; Änderungshistorie eingeführt</li>
       <li><strong>12.08.2026</strong> · Partner-Karten DarwinFPV und Ampow, Toruk-Frame-Links, KI-Kennzeichnung im Footer</li>
       <li><strong>18.07.2026</strong> · Partner-Block ergänzt</li>
