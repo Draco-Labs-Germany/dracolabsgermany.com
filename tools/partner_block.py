@@ -41,6 +41,13 @@ PARTNER = [
      "Deutscher FPV-Fachhandel mit schnellem Versand und Support; Akkus,\n"
      "          Ladegeräte (u.&nbsp;a. ISDT) und FPV-Komponenten, die wir im Aufbau verwenden.",
      None),
+    # Kein Gutscheincode auf der Website: der Rabattcode DRACOLABSGERMANY ist auf
+    # 3 Einloesungen limitiert und waere schnell tot; der Link traegt die Provision.
+    ("DarwinFPV", "https://darwinfpv.com/DRACOLABSGERMANY",
+     "assets/partner/darwinfpv-logo.png", 164, 30,
+     "Hersteller preiswerter FPV-Frames und Komponenten, u.&nbsp;a. der\n"
+     "          Toruk-Serie für Long Range; Budget-Einstieg neben dem Custom-Build.",
+     None),
 ]
 
 BLOCK_RE = re.compile(r"[ \t]*<!-- partner:start -->.*?<!-- partner:ende -->\n", re.S)
