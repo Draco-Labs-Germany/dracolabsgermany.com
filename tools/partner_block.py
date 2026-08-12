@@ -52,8 +52,8 @@ PARTNER = [
      "assets/partner/ampow-logo.png", 150, 30,
      "Store der LiPo-Marke Ovonic; unser Partner für Flugakkus rund um FPV-\n"
      "          und Long-Range-Builds.  Die ROAM-Serie deckt mit 6S- und 8S-Packs bis\n"
-     "          8.000&nbsp;mAh genau die Klasse von 10 bis 15 Zoll ab, mit\n"
-     "          XT90-S-Anti-Spark und Versand aus EU-Lager.",
+     "          8.000&nbsp;mAh genau die von uns bevorzugten Klassen von 10 bis\n"
+     "          15 Zoll ab.",
      None),
 ]
 
