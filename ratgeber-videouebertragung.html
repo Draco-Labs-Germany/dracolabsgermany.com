@@ -107,6 +107,13 @@
     wird nur, was wir fachlich begründen können, und die Begründung steht immer im Text.</p>
 
     <h2 id="k1">1. Die zweite Funkstrecke: warum Video eigene Physik hat</h2>
+<!-- bild:start vtx-zweistrecken -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/vtx-zweistrecken.jpg" alt="Schemabild: schmaler Steuer-Pfad und breiter Video-Kachelstrom zwischen Fernsteuerung, Copter und Brille"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Zwei Funkstrecken, zwei Welten: ein paar robuste Steuerwerte hin, ein Bildstrom mit vielen Millionen Bit pro Sekunde zurück.  Alle Schaubilder in diesem Ratgeber sind Standbilder aus unserer fünfteiligen Wissensvideo-Serie.</figcaption>
+    </figure>
+<!-- bild:ende vtx-zweistrecken -->
     <p>Steuerung und Video sind auf einem FPV-Copter zwei getrennte Funksysteme, und sie könnten
     unterschiedlicher nicht sein.  Der RC-Link überträgt ein paar Flightstick-Werte, also winzige
     Datenmengen, und darf dafür extrem robust sein.  Die Videostrecke muss das Gegenteil leisten:
@@ -120,6 +127,13 @@
     andere Antwort auf dieses Dreieck aus Bildqualität, Latenz und Reichweite.</p>
 
     <h2 id="k2">2. Analog: Fernsehtechnik am Copter</h2>
+<!-- bild:start vtx-tvnorm -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/vtx-tvnorm.jpg" alt="Schemabild: Röhrenbild mit 625 Zeilen, 50 Halbbildern und 4:3-Rahmen"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Analog ist Fernsehtechnik: 625 Zeilen, 50 Halbbilder, Seitenverhältnis vier zu drei.  Und nirgends ein Puffer.</figcaption>
+    </figure>
+<!-- bild:ende vtx-tvnorm -->
     <p>Das klassische FPV-Bild ist technisch ein Fernsehsignal.  Die analoge Kamera erzeugt ein
     zusammengesetztes Videosignal nach den alten TV-Normen: In Europa sind das 625 Zeilen pro Bild
     bei 50 Halbbildern pro Sekunde (die Systemfamilie B/G, auf der PAL aufsetzt), in Amerika 525
@@ -151,6 +165,13 @@
     </p>
 
     <h2 id="k3">3. Digital: aus Bildern werden Pakete</h2>
+<!-- bild:start vtx-paketkette -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/vtx-paketkette.jpg" alt="Schemabild: digitale Kette Kamera, Encoder, Funk, Puffer, Decoder, Display mit einer Uhr unter jedem Glied"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Jedes Glied kostet Zeit: die Summe aller Uhren ist die Latenz, um die sich im Digitallager alles dreht.</figcaption>
+    </figure>
+<!-- bild:ende vtx-paketkette -->
     <p>Ein digitales System zerlegt die Aufgabe komplett anders.  Die Kamera liefert einen
     Datenstrom, ein Encoder komprimiert ihn (bei DJI und Walksnail mit dem Videocodec H.265, der
     aus der Streaming-Welt stammt<sup><a href="#q4">4</a></sup>), und die komprimierten Daten
@@ -172,6 +193,13 @@
     man: Videoübertragung ist die bandbreitenhungrigste Funkanwendung am Copter.</p>
 
     <h2 id="k4">4. DJI: der Konzern, der das Hobby digitalisiert hat</h2>
+<!-- bild:start vtx-o4karte -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/vtx-o4karte.jpg" alt="Schemabild: Systemkarte DJI O4 mit Übertragung, Datenrate, Latenz, Reichweite, Funkzügen und Kanalbreite"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Der Marktführer in Zahlen: 1080p bei bis zu 100&nbsp;fps, 15&nbsp;ms im Renn-Modus und zwei komplette Empfangszüge (Herstellerangaben).</figcaption>
+    </figure>
+<!-- bild:ende vtx-o4karte -->
     <p>Den Umbruch datiert man auf den 31.&nbsp;Juli 2019.  An diesem Tag stellte DJI sein
     „Digital FPV System" vor: Brille, Sendeeinheit (Air Unit), Kamera und Fernsteuerung aus einer
     Hand, mit 720p-Übertragung bei 120&nbsp;fps, einer Ende-zu-Ende-Latenz von 28&nbsp;ms und acht
@@ -219,6 +247,13 @@
     </p>
 
     <h2 id="k6">6. HDZero: digital, aber ohne Kompression</h2>
+<!-- bild:start vtx-hdzero -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/vtx-hdzero.jpg" alt="Schemabild: HDZero-Kette, in der der Encoder durchgestrichen ist und komplett entfällt"
+        width="1200" height="675" loading="lazy">
+      <figcaption>HDZeros Gegenentwurf: der Encoder entfällt komplett.  Intern unter 1&nbsp;ms, Glas zu Glas ab 14,1&nbsp;ms, fest.</figcaption>
+    </figure>
+<!-- bild:ende vtx-hdzero -->
     <p><strong>HDZero</strong> (entwickelt von der Firma Divimath) ist der technische
     Gegenentwurf zu DJI und Walksnail.  Das System überträgt den Videostrom unkomprimiert und
     verzichtet damit genau auf den Schritt, der anderswo die Latenz erzeugt: Zwischen Videoeingang
@@ -242,6 +277,13 @@
     </p>
 
     <h2 id="k7">7. OpenIPC und Ascent: der aktuelle Stand der Entwicklung</h2>
+<!-- bild:start vtx-openipc -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/vtx-openipc.jpg" alt="Schemabild: Videokette aus fünf quelloffenen Komponenten mit Code-Symbolen"
+        width="1200" height="675" loading="lazy">
+      <figcaption>OpenIPC plus wfb-ng: erstmals ist die komplette digitale Videokette quelloffen, jede Komponente ist austauschbar.</figcaption>
+    </figure>
+<!-- bild:ende vtx-openipc -->
     <p>Der Markt ist nicht fertig sortiert, und zwei jüngere Entwicklungen zeigen, in welche
     Richtungen er sich gerade bewegt: radikal offen und radikal günstig.</p>
     <p><strong>OpenIPC</strong> ist kein Produkt, sondern ein Open-Source-Projekt: eine
@@ -310,6 +352,13 @@
     aber es verliert sein letztes Alleinstellungsmerkmal Stück für Stück: den Preis.</p>
 
     <h2 id="k8">8. Latenz: die wichtigste und die am schlechtesten vergleichbare Zahl</h2>
+<!-- bild:start vtx-latenztafel -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/vtx-latenztafel.jpg" alt="Schemabild: Latenzwerte von Analog, DJI O4 Pro, HDZero und Avatar mit ihrer jeweiligen Messart"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Vier Systeme, vier Messarten: die Werte sind nur vergleichbar, wenn man weiß, was gemessen wurde.</figcaption>
+    </figure>
+<!-- bild:ende vtx-latenztafel -->
     <p>Latenz ist die Zeit zwischen dem Moment, in dem etwas vor der Linse passiert, und dem
     Moment, in dem du es siehst.  Bei 100&nbsp;km/h legt ein Copter in 20&nbsp;ms gut einen halben
     Meter zurück (gerechnet: 27,8&nbsp;m/s mal 0,02&nbsp;s); wer eng an Hindernissen fliegt, spürt
@@ -356,6 +405,13 @@
     Für Rennen ist Konstanz das härtere Kriterium als der Bestwert auf dem Datenblatt.</p>
 
     <h2 id="k9">9. Was in Deutschland erlaubt ist</h2>
+<!-- bild:start vtx-band51 -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/vtx-band51.jpg" alt="Schemabild: Leistungsvergleich 25 mW auf 5,8 GHz gegen 200 mW auf 5,1 GHz mit Faktor acht"
+        width="1200" height="675" loading="lazy">
+      <figcaption>DJIs zweites Band: im 5,1-GHz-Bereich sind 200&nbsp;mW mittlere EIRP zugeteilt, achtmal mehr als auf 5,8&nbsp;GHz.  Ganz legal.</figcaption>
+    </figure>
+<!-- bild:ende vtx-band51 -->
     <p>Für die Videostrecke gelten dieselben Allgemeinzuteilungen der Bundesnetzagentur, die wir
     im Funk-Ratgeber für den RC-Link zitiert haben, nur eben andere Zeilen der Tabelle.  Maßgeblich
     für 5,8&nbsp;GHz ist die Verfügung 91/2025: Im Band&nbsp;61, also 5.725 bis 5.875&nbsp;MHz,
@@ -398,6 +454,13 @@
     Bundesnetzagentur, siehe Quellenangaben.  Dieser Ratgeber ist keine Rechtsberatung.</p>
 
     <h2 id="k10">10. Sichtlinie, Höhe und Horizont</h2>
+<!-- bild:start vtx-fresnel -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/vtx-fresnel.jpg" alt="Schemabild: Fresnel-Zone als Ellipse zwischen Pilot und Copter, in die Bewuchs hineinwächst, während der Signalpegel einbricht"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Freie Sicht genügt nicht: wächst Boden oder Blattwerk in die Fresnel-Zone, bricht das Bild in Bodennähe zuerst ab.</figcaption>
+    </figure>
+<!-- bild:ende vtx-fresnel -->
     <p>Bevor die Physik drankommt, die Rechtslage, denn sie ist strenger.  Die europäische
     Drohnenverordnung verlangt in der offenen Kategorie, dass der Fernpilot das Luftfahrzeug
     <em>„zu jedem Zeitpunkt in VLOS-Betrieb"</em> hält, also in direkter Sicht mit den eigenen
@@ -425,6 +488,13 @@
     banal: höher stehen, freier stehen, und die Strecke von Hindernissen freihalten.</p>
 
     <h2 id="k11">11. Reichweite legal verlängern: die Empfangsseite</h2>
+<!-- bild:start vtx-empfangstreppe -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/vtx-empfangstreppe.jpg" alt="Schemabild: drei Stufen der Empfangsseite: bessere Pilzantennen, Patch-Antenne nach vorn, Diversity-Empfänger"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Der legale Hebel in drei Stufen: bessere Pilze, eine Patch für die Ferne, Diversity für das jeweils beste Signal.</figcaption>
+    </figure>
+<!-- bild:ende vtx-empfangstreppe -->
     <p>Die Sendeleistung ist gedeckelt, und zwar als Strahlungsleistung inklusive Antennengewinn
     (<a href="#k9">Kapitel&nbsp;9</a>).  Am Sender ist also legal nichts zu holen; Verstärker
     oder Richtantennen am Copter sprengen die EIRP-Grenze sofort.  Die gute Nachricht: Auf der
@@ -683,6 +753,7 @@
 <!-- historie:start -->
     <h2>Änderungshistorie</h2>
     <ul class="muted" style="font-size:14px; line-height:1.9; padding-left:20px">
+      <li><strong>12.08.2026</strong> · Zehn Schaubilder aus der fünfteiligen Wissensvideo-Serie in die Kapitel eingefügt</li>
       <li><strong>12.08.2026</strong> · Snippet-Schutz: Kurzfassung und Tabellen für Google-Snippets/KI-Overviews gesperrt (data-nosnippet), KI-Trainings-Crawler per robots.txt ausgeschlossen</li>
       <li><strong>12.08.2026</strong> · Go-live: Ratgeber freigegeben — auf Startseite und Sitemap verlinkt, robots auf index gestellt</li>
       <li><strong>12.08.2026</strong> · Partner-Karten DarwinFPV und Ampow, KI-Kennzeichnung im Footer; Änderungshistorie eingeführt</li>
