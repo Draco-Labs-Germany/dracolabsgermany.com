@@ -37,7 +37,7 @@
   "description": "Akku-Ratgeber für 13-Zoll-Long-Range- und Heavy-Lift-Multicopter: LiPo und Li-Ion, Zellenzahl, Kapazität, C-Rate, Stecker und Sicherheit.",
   "image": "https://dracolabsgermany.com/assets/logo.png",
   "datePublished": "2026-07-12",
-  "dateModified": "2026-07-12",
+  "dateModified": "2026-08-12",
   "author": { "@type": "Organization", "name": "Draco Labs Germany" },
   "publisher": {
     "@type": "Organization",
@@ -92,6 +92,13 @@
     die fünf Kenngrößen, die wirklich zählen, und zeigt am Ende eine Schnellwahl nach Build-Größe.</p>
 
     <h2>1. Zellenzahl (S): die Spannung</h2>
+<!-- bild:start akku-zellenzahl -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/akku-zellenzahl.jpg" alt="Schemabild: acht LiPo-Zellen in Reihe ergeben 8S mit 29,6 Volt nominal"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Acht Zellen in Reihe: 8S liefert 29,6&nbsp;V nominal und 33,6&nbsp;V voll geladen.  Alle Schaubilder in diesem Ratgeber sind Standbilder aus unserem Wissensvideo.</figcaption>
+    </figure>
+<!-- bild:ende akku-zellenzahl -->
     <p>Jede LiPo-Zelle liefert nominal 3,7&nbsp;V (voll geladen 4,2&nbsp;V).  Die Zellen werden in
     Reihe geschaltet.  Die Zahl davor, das „S", ist die Zellenanzahl.  Für 13-Zoll-Antriebe hat sich
     <strong>8S (29,6&nbsp;V nominal, 33,6&nbsp;V voll)</strong> als Standard etabliert.</p>
@@ -104,6 +111,13 @@
     zwei kleinere Packs.</p>
 
     <h2>2. Kapazität (mAh): die Flugzeit</h2>
+<!-- bild:start akku-kapazitaet -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/akku-kapazitaet.jpg" alt="Schemabild: Kapazität als Tank, der Akku wiegt höchstens ein Drittel des Abfluggewichts"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Typisch am 13-Zöller sind 6.000–8.000&nbsp;mAh: und der Akku wiegt höchstens ein Drittel des Abfluggewichts.</figcaption>
+    </figure>
+<!-- bild:ende akku-kapazitaet -->
     <p>Die Kapazität in Milliamperestunden (mAh) ist der „Tank".  Mehr Kapazität = mehr Flugzeit,
     aber auch mehr Gewicht, und ab einem gewissen Punkt trägt der Copter nur noch seinen eigenen
     Akku spazieren.  Typisch für einen Einzelpack am 13&nbsp;Zoll sind <strong>6.000–8.000&nbsp;mAh</strong>
@@ -130,6 +144,13 @@
     Spannung unter Last einbricht.</p>
 
     <h2>4. Stecker &amp; Anti-Spark</h2>
+<!-- bild:start akku-stecker -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/akku-stecker.jpg" alt="Schemabild: XT90-S-Verbindung zwischen 8S-Akku und Copter"
+        width="1200" height="675" loading="lazy">
+      <figcaption>XT90-S zwischen Akku und Copter: der Vorwiderstand nimmt dem Einschaltfunken die Kraft.</figcaption>
+    </figure>
+<!-- bild:ende akku-stecker -->
     <p>Bei 8S und hohen Kapazitäten führt am <strong>XT90</strong>, besser noch
     <strong>XT90-S (Anti-Spark)</strong>, kein Weg vorbei.  Beim Anstecken eines geladenen 8S-Packs
     entsteht sonst ein kräftiger Funke, weil die Kondensatoren im ESC schlagartig aufgeladen werden.
@@ -187,6 +208,13 @@
     <h2>Technischer Deep-Dive (mit Quellen)</h2>
 
     <h3>C-Rate: warum die aufgedruckte Zahl selten stimmt</h3>
+<!-- bild:start akku-c-rate -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/akku-c-rate.jpg" alt="Schemabild: Balkenvergleich aufgedruckte C-Rate 150C gegen real messbare 55C"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Aufdruck gegen Realität: von 120–150C auf dem Etikett bleiben real oft nur 40–55C übrig.</figcaption>
+    </figure>
+<!-- bild:ende akku-c-rate -->
     <p>Die von Herstellern angegebenen C-Werte sind über die Jahre stark inflationär geworden.
     Trotz Marketing-Labels von 120C–150C liegen die real messbaren Dauerentladeraten typischer
     FPV-LiPos meist nur bei etwa <strong>40C–55C</strong>.<sup>[1]</sup>  Für die Auslegung
@@ -203,6 +231,13 @@
     das Ende seiner Lebensdauer erreicht.<sup>[1]</sup></p>
 
     <h3>Lagerspannung &amp; Lebensdauer: die Zahlen</h3>
+<!-- bild:start akku-lagerspannung -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/akku-lagerspannung.jpg" alt="Schemabild: Ladezustandsskala mit Storage-Marke bei 3,8 Volt pro Zelle"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Nach dem Flug auf Storage: rund 3,8&nbsp;V pro Zelle ist der chemisch stabilste Zustand.</figcaption>
+    </figure>
+<!-- bild:ende akku-lagerspannung -->
     <p>3,8&nbsp;V/Zelle entsprechen etwa <strong>50&nbsp;% Ladezustand</strong>, dem chemisch
     stabilsten Zustand mit minimaler Alterung.  Laut Battery University (BU-808) gilt die Faustregel:
     <strong>jede Absenkung um 0,10&nbsp;V unter 4,20&nbsp;V verdoppelt die Zyklenzahl</strong>
@@ -304,6 +339,17 @@
       <li>IATA, „Lithium Battery Guidance Document":
         <a href="https://www.iata.org/contentassets/05e6d8742b0047259bf3a700bc9d42b9/lithium-battery-guidance-document.pdf" rel="noopener" target="_blank">iata.org: Lithium Battery Guidance Document (PDF)</a></li>
     </ol>
+
+<!-- historie:start -->
+    <h2>Änderungshistorie</h2>
+    <ul class="muted" style="font-size:14px; line-height:1.9; padding-left:20px">
+      <li><strong>12.08.2026</strong> · Schaubilder aus dem Wissensvideo ergänzt; Änderungshistorie eingeführt</li>
+      <li><strong>12.08.2026</strong> · Partner-Karten DarwinFPV und Ampow, Toruk-Frame-Links, KI-Kennzeichnung im Footer</li>
+      <li><strong>18.07.2026</strong> · Partner-Block ergänzt</li>
+      <li><strong>14.07.2026</strong> · Wissensvideo zum Artikel eingebettet</li>
+      <li><strong>12.07.2026</strong> · Erstveröffentlichung</li>
+    </ul>
+<!-- historie:ende -->
 
 <!-- video:start -->
     <h2>Video zum Artikel</h2>

@@ -38,7 +38,7 @@
   "description": "Wie ein RC-Link wirklich funktioniert: ExpressLRS, TBS Crossfire und Tracer im Vergleich, RSSI und LQ erklärt, die Rechtslage in Deutschland, das GPS-Prinzip und ein Antennen-Deep-Dive.",
   "image": "https://dracolabsgermany.com/assets/logo.png",
   "datePublished": "2026-07-18",
-  "dateModified": "2026-07-18",
+  "dateModified": "2026-08-12",
   "author": { "@type": "Organization", "name": "Draco Labs Germany" },
   "publisher": {
     "@type": "Organization",
@@ -111,6 +111,13 @@
     wird nur, was wir fachlich begründen können, und die Begründung steht immer im Text.</p>
 
     <h2 id="k1">1. Zwei Funkstrecken und ein Ortungssystem</h2>
+<!-- bild:start funk-systeme -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/funk-systeme.jpg" alt="Schemabild: drei Funksysteme am Copter, Steuerung mit Telemetrie, Video und GPS"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Drei Systeme, drei Aufgaben: RC-Link mit Telemetrie, Videostrecke und GPS arbeiten unabhängig.  Alle Schaubilder in diesem Ratgeber sind Standbilder aus unserer Wissensvideo-Serie.</figcaption>
+    </figure>
+<!-- bild:ende funk-systeme -->
     <p>Auf einem FPV-Copter laufen im Normalfall drei Funksysteme gleichzeitig.  Die
     <strong>Steuerstrecke</strong> bringt deine Flightstick-Bewegungen zum Copter und die Telemetrie
     zurück.  Die <strong>Videostrecke</strong> bringt das Kamerabild in deine Brille.  Und der
@@ -125,6 +132,13 @@
     spart.</p>
 
     <h2 id="k2">2. Wie ein RC-Link funktioniert: Sender, Empfänger, Modulation</h2>
+<!-- bild:start funk-modulation -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/funk-modulation.jpg" alt="Schemabild: das Sendemodul moduliert Daten auf einen Träger, der Empfänger holt sie zurück"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Der RC-Link im Kern: Träger plus Daten ergibt Modulation, der Empfänger rechnet sie zurück.</figcaption>
+    </figure>
+<!-- bild:ende funk-modulation -->
     <p>Die Grundlage ist immer gleich.  In deiner Fernsteuerung sitzt ein Sendemodul
     (TX, von <em>transmitter</em>), im Copter ein Empfänger (RX, von <em>receiver</em>).  Der Sender
     erzeugt eine hochfrequente Trägerwelle und prägt ihr die Steuerdaten auf; dieses Aufprägen
@@ -192,6 +206,13 @@
     oft sogar die bessere.</p>
 
     <h2 id="k4">4. RSSI, LQ und SNR: die Zahlen, die dich vor dem Absturz warnen</h2>
+<!-- bild:start funk-lq -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/funk-lq.jpg" alt="Schemabild: OSD-Werte RSSI, LQ und SNR nebeneinander"
+        width="1200" height="675" loading="lazy">
+      <figcaption>RSSI ist nur die Lautstärke des Signals: LQ ist die Zahl, die zählt.</figcaption>
+    </figure>
+<!-- bild:ende funk-lq -->
     <p>Dein OSD zeigt drei Werte für die Verbindungsqualität, und sie werden notorisch
     verwechselt.<sup><a href="#q4">4</a></sup></p>
     <p><strong>RSSI</strong> (Received Signal Strength Indicator) ist die Lautstärke des
@@ -213,6 +234,13 @@
     Notfallmodus (Failsafe) übernimmt.</p>
 
     <h2 id="k5">5. Was in Deutschland erlaubt ist</h2>
+<!-- bild:start funk-868 -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/funk-868.jpg" alt="Schemabild: Sender-Menü mit Leistungsstufen, von denen nur 25 und 100 Milliwatt zulässig sind"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Einstellbar heißt nicht erlaubt: maßgeblich ist die Allgemeinzuteilung, nicht das Sender-Menü.</figcaption>
+    </figure>
+<!-- bild:ende funk-868 -->
     <p>Funkanwendungen mit geringer Reichweite laufen in Deutschland über sogenannte
     Allgemeinzuteilungen der Bundesnetzagentur: Du brauchst keine eigene Lizenz, musst dich aber
     an die Parameter halten.  Maßgeblich ist die Verfügung 91/2025.<sup><a href="#q6">6</a></sup>
@@ -313,6 +341,13 @@
     </p>
 
     <h2 id="k8">8. ExpressLRS: Open Source und unsere Wahl</h2>
+<!-- bild:start funk-elrs -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/funk-elrs.jpg" alt="Schemabild: ExpressLRS-Checkliste für Long Range"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Unsere Wahl für Long Range: ExpressLRS mit klarer 100-mW-Rechtslage auf 2,4&nbsp;GHz, offener Firmware und True Diversity.</figcaption>
+    </figure>
+<!-- bild:ende funk-elrs -->
     <p><strong>ExpressLRS</strong> (kurz ELRS) ist kein Hersteller, sondern ein
     Open-Source-Projekt: Firmware und Protokoll sind offen, die Hardware bauen viele Firmen, von
     Radiomaster über BetaFPV bis GEPRC.<sup><a href="#q1">1</a></sup>  Technisch basiert das
@@ -344,6 +379,13 @@
     </p>
 
     <h2 id="k9">9. Diversity: zwei Antennen sind besser als eine</h2>
+<!-- bild:start funk-diversity -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/funk-diversity.jpg" alt="Schemabild: je nach Fluglage ist eine Antenne blind oder der Rahmen wirft einen Carbon-Schatten"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Warum Diversity: je nach Fluglage ist eine Antenne blind oder der Rahmen im Weg.</figcaption>
+    </figure>
+<!-- bild:ende funk-diversity -->
     <p>Jede Antenne hat blinde Winkel (<a href="#k13">Kapitel&nbsp;13</a>), und auf einem Copter kommt der eigene
     Rahmen als Hindernis dazu: Carbon schirmt Funk ab wie ein Blech, das haben wir im
     <a href="ratgeber-carbon-frame.html">Carbon-Ratgeber</a> ausführlich belegt.  In bestimmten
@@ -397,6 +439,13 @@
     volle Kontrolle, keine separate Telemetrie-Funke nötig.</p>
 
     <h2 id="k11">11. GPS: dreißig Satelliten für eine Position</h2>
+<!-- bild:start funk-gps -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/funk-gps.jpg" alt="Schemabild: GPS-Konstellation mit rund 31 aktiven Satelliten in 20.200 Kilometern Höhe"
+        width="1200" height="675" loading="lazy">
+      <figcaption>GPS von innen: rund 31 aktive Satelliten in 20.200&nbsp;km Höhe, dein Empfänger hört nur zu.</figcaption>
+    </figure>
+<!-- bild:ende funk-gps -->
     <p>GPS ist die dritte Funkstrecke an Bord, und die einzige, bei der dein Copter nur zuhört.
     Das amerikanische System besteht aus einer Grundordnung von 24 Satellitenplätzen, verteilt
     auf sechs Bahnebenen; tatsächlich betrieben werden seit Jahren rund 31 Satelliten, seit einer
@@ -439,6 +488,13 @@
     </p>
 
     <h2 id="k12">12. Holybro und Pixhawk: wo alles zusammenläuft</h2>
+<!-- bild:start funk-pixhawk -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/funk-pixhawk.jpg" alt="Schemabild: Pixhawk 6C als Sammelpunkt für RC-Link, GPS und Telemetrie"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Wo alles zusammenläuft: der Pixhawk ist der offene Standard unter den Flight Controllern.</figcaption>
+    </figure>
+<!-- bild:ende funk-pixhawk -->
     <p>Bei großen Coptern ab 13&nbsp;Zoll wandert die Elektronik weg vom Racing-Stack hin zur
     Autopilot-Welt, und dort ist <strong>Pixhawk</strong> der offene Hardware-Standard.
     Ein verbreiteter Vertreter ist der Pixhawk 6C von Holybro: Hauptprozessor ist ein STM32H743
@@ -482,6 +538,13 @@
     </p>
 
     <h2 id="k13">13. Antennen: der wichtigste Zentimeter deines Copters</h2>
+<!-- bild:start funk-antenne -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/funk-antenne.jpg" alt="Schemabild: donutförmiges Abstrahlbild eines Halbwellendipols"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Das Abstrahlbild ist ein Donut: quer zur Achse am stärksten, in Achsrichtung die Nullstelle.</figcaption>
+    </figure>
+<!-- bild:ende funk-antenne -->
     <p>Man kann an jedem Glied der Funkkette Geld ausgeben, aber kein Bauteil verändert die
     Verbindung so stark wie die Antenne und ihre Montage.  Dabei ist die Standardantenne am
     RC-Empfänger unspektakulär: ein Stück Koaxkabel, dessen Ende als Strahler freigelegt ist,
@@ -656,6 +719,100 @@
         Telem1 bis Telem3, Ethernet-Port:
         <a href="https://docs.holybro.com/autopilot/pixhawk-baseboards/pixhawk-baseboard-v2-ports" rel="noopener" target="_blank">docs.holybro.com: Baseboard v2 Ports</a></li>
     </ol>
+
+<!-- historie:start -->
+    <h2>Änderungshistorie</h2>
+    <ul class="muted" style="font-size:14px; line-height:1.9; padding-left:20px">
+      <li><strong>12.08.2026</strong> · Video-Serie (3 Teile) eingebettet; Schaubilder aus der Serie ergänzt; Änderungshistorie eingeführt</li>
+      <li><strong>12.08.2026</strong> · Partner-Karten DarwinFPV und Ampow, KI-Kennzeichnung im Footer</li>
+      <li><strong>18.07.2026</strong> · Erstveröffentlichung nach zwei Review-Runden; Partner-Block ergänzt</li>
+    </ul>
+<!-- historie:ende -->
+
+<!-- video:start funk1 -->
+    <h2>Video zum Artikel</h2>
+    <p class="muted">Wie dein Copter mit dir spricht: Der RC-Link von innen · Physik, Reichweite, Rechtslage.  Der Artikel als Video, gesprochen und animiert.</p>
+    <div style="position:relative; padding-top:56.25%; margin:24px 0; border-radius:8px; overflow:hidden">
+      <iframe src="https://www.youtube-nocookie.com/embed/xBjp_ZZUI3M" title="Wie dein Copter mit dir spricht" loading="lazy" allowfullscreen
+        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        style="position:absolute; inset:0; width:100%; height:100%; border:0"></iframe>
+    </div>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "Wie dein Copter mit dir spricht",
+  "description": "Der RC-Link von innen — Physik, Reichweite, Rechtslage",
+  "thumbnailUrl": "https://i.ytimg.com/vi/xBjp_ZZUI3M/maxresdefault.jpg",
+  "uploadDate": "2026-07-29",
+  "duration": "PT8M59S",
+  "embedUrl": "https://www.youtube-nocookie.com/embed/xBjp_ZZUI3M",
+  "contentUrl": "https://www.youtube.com/watch?v=xBjp_ZZUI3M",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Draco Labs"
+  },
+  "transcript": "Wer einen Copter baut, redet über Motoren, Propeller und Frames. Über die Funkstrecke redet kaum jemand — dabei ist sie das einzige, was dich im Flug mit dem Gerät verbindet. Reißt sie ab, ist alles andere egal — dann rettet dich hoffentlich noch der GPS-Rescue-Modus. Kurz gesagt: Die wichtigste Zahl im Flug ist die L Q, nicht der R S S I. Reichweite kauft man mit der Paketrate, nicht mit Watt — zwischen 500 und 50 Hertz liegen 10 Dezibel. In Deutschland gelten 100 Milliwatt auf 2,4 Gigahertz. Und GPS braucht vier sichtbare Satelliten und gehört auf den Mast. Was diese Serie nicht behandelt, ist die Videoübertragung: Analog, DJI, HDZero und Walksnail sind ein eigenes Thema mit eigener Physik. Hier geht es um Steuerung, Telemetrie und Satellitennavigation. Auf einem FPV-Copter laufen im Normalfall drei Funksysteme gleichzeitig. Die Steuerstrecke bringt deine Steuerbewegungen zum Copter und die Telemetrie zurück. Die Videostrecke bringt das Kamerabild in die Brille. Und der GPS-Empfänger hört nur passiv zu — er sendet selbst nichts. Die drei sind technisch unabhängig: verschiedene Frequenzen, verschiedene Verfahren — und sie fallen unabhängig voneinander aus. Das ist eine bewusste Architektur. Die Steuerstrecke braucht Zuverlässigkeit bei winziger Datenmenge. Die Videostrecke braucht das Gegenteil: enorme Datenmengen, darf dafür aber Bilder verlieren. Deshalb überlebt ein guter RC-Link Situationen, in denen das Videobild längst schwarz ist. Die Grundlage ist immer gleich: In der Fernsteuerung sitzt ein Sendemodul, im Copter ein Empfänger. Der Sender erzeugt eine hochfrequente Trägerwelle und prägt ihr die Steuerdaten auf — das nennt man Modulation. Der Empfänger macht das Gegenteil. Gesendet wird in kleinen Paketen mit fester Wiederholrate, der Paketrate: Kanalwerte, Prüfsumme, ein Zeitfenster für die Antwort. Denn der Link ist keine Einbahnstraße — moderne Empfänger senden Telemetrie zurück, von der Akkuspannung bis zur GPS-Position. Express L R S nutzt für die Reichweite LoRa, eine Spreizband-Modulation auf Chirp-Basis. Ein Chirp ist im Englischen das Zwitschern eines Vogels — und genau so klingt das Signal: ein Ton, dessen Frequenz beim Senden kontinuierlich nach oben gleitet. Das Signal wird dabei über ein breiteres Frequenzband verschmiert als nötig. Das klingt verschwenderisch, hat aber einen gewaltigen Vorteil: Der Empfänger kann das Chirp-Muster noch aus Signalen herausrechnen, die leiser sind als das Hintergrundrauschen. Genau daher kommt die Reichweite moderner RC-Links. Damit sich Piloten nicht gegenseitig stören, springen die Systeme viele Male pro Sekunde durch das Frequenzband. Bei Express L R S wird das Sprungmuster aus der gehashten Bindphrase berechnet. Wichtig: Die Bindphrase ist keine Verschlüsselung — sie verhindert nur Kollisionen. RC-Links leben in zwei Frequenzbereichen: dem weltweit gleichen 2,4-Gigahertz-Band und dem Bereich um 900 Megahertz — in Europa 868, in den USA 915. Die Physik dahinter: Je niedriger die Frequenz, desto geringer die Dämpfung, und desto besser schmiegt sich die Welle um Hindernisse. Leistungen gibt man logarithmisch in d B m an, bezogen auf 1 Milliwatt: Plus 3 Dezibel heißt doppelte Leistung, plus 10 Dezibel zehnfache. 100 Milliwatt sind 20 d B m — gerechnet über die Definition. Empfangspegel sind winzig und daher negativ. Die entscheidende Eigenschaft des Empfängers ist die Empfindlichkeit: der leiseste Pegel, bei dem ein Paket noch verstanden wird. Und der wichtigste Zusammenhang dieses Kapitels: Sie hängt an der Paketrate. Je langsamer gesendet wird, desto tiefer hört der Empfänger ins Rauschen hinein. Die Zahlen bei Express L R S auf 2,4 Gigahertz: minus 105 d B m bei 500 Hertz, minus 108 bei 250, minus 112 bei 150 und minus 115 bei 50 Hertz. Auf 900 Megahertz geht es bis minus 123 bei 25 Hertz. Deshalb ist mehr Sendeleistung die falsche erste Antwort auf Reichweitenprobleme: Von 500 auf 50 Hertz zu schalten bringt 10 Dezibel — das entspräche einer Verzehnfachung der Sendeleistung, kostet aber nichts außer Latenz. Ein Blick in die Rekordliste des Projekts: 101,3 Kilometer auf 2,4 Gigahertz, geflogen mit 50 Hertz und 2.000 Milliwatt — einer Leistung, die in Europa nicht zulässig ist, dazu gleich mehr. Viele dieser Flüge endeten nicht mit einem Abriss: Die Piloten sind schlicht umgekehrt. 2,4 Gigahertz ist für Long Range keine Notlösung, sondern vollwertig. Das OSD zeigt dir drei Werte für die Verbindungsqualität, und sie werden notorisch verwechselt. R S S I ist die Lautstärke des ankommenden Signals in d B m, typisch zwischen 0 und etwa minus 130. Sie sagt, wie viel Reserve bleibt — aber nicht, ob die Pakete verstanden werden. L Q, die Link Quality, ist der Anteil der korrekt ankommenden Pakete in Prozent. Das ist die Zahl, die zählt: Ein Link mit leisem R S S I und 100 Prozent L Q fliegt sich perfekt. Einer mit lautem R S S I und 60 Prozent stottert. S N R vergleicht das Signal mit dem Rauschen und steuert unter anderem die automatische Leistungsregelung. Eine Eigenheit der schnellen F L R C-Modi: Dort zeigt S N R konstant null an — das ist kein Fehler. Für die Warnschwelle empfiehlt das Projekt, den Alarm 5 bis 10 Dezibel über die Empfindlichkeitsgrenze der gewählten Rate zu setzen — bei 250 Hertz also etwa minus 103 bis minus 98. Wer den Alarm hört, dreht um oder reduziert die Rate, bevor der Failsafe übernimmt. Funk mit geringer Reichweite läuft in Deutschland über Allgemeinzuteilungen der Bundesnetzagentur: keine eigene Lizenz, aber feste Parameter — maßgeblich ist die Verfügung 91 aus 2025. Wichtig: Die Grenzwerte sind Strahlungsleistungen, E I R P. Es zählt, was die Antenne abgibt — ihr Gewinn rechnet mit. Auf 2,4 Gigahertz sind 100 Milliwatt Strahlungsleistung die Obergrenze für frequenzspringende Breitbandsysteme — und dazu gehören moderne RC-Links. Die 250-Milliwatt- oder 1-Watt-Stufen im Sendemodul sind eine Hardware-Fähigkeit, keine Erlaubnis. Und die oft zitierten 25 Milliwatt sind gar keine RC-Link-Grenze: Das ist der Wert für das 5,8-Gigahertz-Band der Videosender. Im 868er-Bereich ist die Lage komplizierter: 25 Milliwatt mit höchstens 1 Prozent Sendezeit-Anteil — oder 500 Milliwatt in einem schmalen Fenster mit höchstens 10 Prozent. Ein RC-Link sendet aber praktisch dauernd, und das verträgt sich damit schlecht. Das in amerikanischen Foren allgegenwärtige 915-Megahertz-Band taucht in der deutschen Tabelle schlicht nicht auf: Diese Hardware ist hier nicht zulässig, auch wenn sie problemlos zu kaufen ist. Beim Kauf also die EU-Variante wählen — oder gleich 2,4 Gigahertz. Das alles ist eine verkürzte Wiedergabe der Verfügung und keine Rechtsberatung. Merke aus Teil 1: Die L Q zählt. Reichweite kauft man mit der Paketrate. In Deutschland gelten 100 Milliwatt auf 2,4 Gigahertz — und 915-Megahertz-Hardware bleibt im Regal. Im zweiten Teil treten die Systeme gegeneinander an: TBS Crossfire, TBS Tracer und Express L R S — dazu Diversity-Empfänger und die richtige Verkabelung zum Flight Controller."
+}
+    </script>
+<!-- video:ende funk1 -->
+
+<!-- video:start funk2 -->
+    <p class="muted">Wie dein Copter mit dir spricht: Crossfire, Tracer, ExpressLRS · welcher Link passt zu dir.  Der Artikel als Video, gesprochen und animiert.</p>
+    <div style="position:relative; padding-top:56.25%; margin:24px 0; border-radius:8px; overflow:hidden">
+      <iframe src="https://www.youtube-nocookie.com/embed/rYRIap3QzT0" title="Wie dein Copter mit dir spricht" loading="lazy" allowfullscreen
+        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        style="position:absolute; inset:0; width:100%; height:100%; border:0"></iframe>
+    </div>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "Wie dein Copter mit dir spricht",
+  "description": "Crossfire, Tracer, ExpressLRS — welcher Link passt zu dir",
+  "thumbnailUrl": "https://i.ytimg.com/vi/rYRIap3QzT0/maxresdefault.jpg",
+  "uploadDate": "2026-08-01",
+  "duration": "PT7M21S",
+  "embedUrl": "https://www.youtube-nocookie.com/embed/rYRIap3QzT0",
+  "contentUrl": "https://www.youtube.com/watch?v=rYRIap3QzT0",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Draco Labs"
+  },
+  "transcript": "In Teil 1 ging es um die Physik: Paketrate, Empfindlichkeit, Rechtslage. Jetzt geht es um die Systeme, die du kaufen kannst — und darum, welches zu welchem Zweck passt. Drei Kandidaten: der Long-Range-Klassiker Crossfire, der 2,4-Gigahertz-Sprinter Tracer und das Open-Source-Projekt Express L R S — unsere Wahl. Und am Ende: warum zwei Antennen besser sind als eine, und wie der Empfänger richtig verkabelt wird. Team BlackSheep hat mit dem Crossfire das System gebaut, das Long Range im FPV-Bereich populär gemacht hat: in Europa 860 bis 885 Megahertz, am Modul 10 bis 2.000 Milliwatt einstellbar — was davon zulässig ist, regelt nicht das Modul, sondern die Rechtslage aus Teil 1 —, bidirektional mit Telemetrie, 150 Hertz Update-Rate. Zwei Dinge tragen das System: die schiere Reife — über ein Jahrzehnt im Einsatz, vom 5-Zoll-Racer bis zum Berg-Wing — und das mit ihm eingeführte Protokoll C R S F, heute der Quasi-Standard zwischen Empfänger und Flight Controller, auch bei der Konkurrenz. Der Hersteller wirbt mit bis zu minus 130 Dezibel Empfindlichkeit — eine Herstellerangabe für die langsamste Betriebsart. Und sie passt zur Physik aus Teil 1: niedrige Frequenz plus niedrige Rate gleich maximale Empfindlichkeit. Die ehrliche Einordnung für Deutschland: Das 868er-Band ist eng, der Papier-Vorsprung lässt sich legal kaum ausfahren. Wer das System aus dem Bestand fliegt, macht nichts falsch — wer neu kauft, sollte den Vergleich mit Express L R S führen. Der Tracer ist die 2,4-Gigahertz-Antwort von TBS — und der Gegenentwurf zur eigenen Crossfire-Philosophie: statt maximaler Reichweite eine konstante Paketrate von 250 Hertz in beide Richtungen, ohne Moduswahl. 25 bis 100 Milliwatt, eigene Modulation, bis zu 12 Kanäle, zwei T-Antennen am Empfänger. Die Zielgruppe: Piloten, die eine reaktionsschnelle, konstante Verbindung wollen und dafür aufs letzte Quäntchen Reichweite verzichten. Die 100-Milliwatt-Obergrenze der EU-Firmware passt sauber zur Rechtslage — und die Konfigurationswelt ist dieselbe wie beim Crossfire. Express L R S ist kein Hersteller, sondern ein Open-Source-Projekt: Firmware und Protokoll sind offen, die Hardware bauen viele Firmen — von Radiomaster über BetaFPV bis GEPRC. Technisch stecken Funkchips von Semtech drin — dieselben Bausteine wie in den weltweiten LoRa-Funknetzen des Internets der Dinge. Die Offenheit hat zu einem Ökosystem geführt, in dem ein Empfänger unter zehn Gramm wiegt und unter 30 Euro kostet, ohne Reichweitenverzicht. Die Paketrate ist frei wählbar und das zentrale Werkzeug: LoRa-Modi mit 50, 150, 250 und 500 Hertz, dazu die schnellen F L R C-Modi F 500 und F 1000, die Latenz gegen Empfindlichkeit tauschen. Racing nimmt die schnellen Modi, Long Range 150 Hertz oder weniger. Auch die Telemetrie ist einstellbar — von jedem zweiten bis zu jedem 64. Paket. Zwei Eigenheiten: Der Arm-Schalter gehört zwingend auf den Kanal Aux eins, der mit jedem Paket übertragen wird. Und die Bindphrase ersetzt das Binden per Knopfdruck. Warum es unsere Wahl ist: die 100-Milliwatt-Rechtslage des 2,4-Gigahertz-Bands, Empfindlichkeit bis minus 115 d B m, offene Firmware und ein Markt vom Ein-Gramm-Empfänger bis True Diversity. Und die Rekordliste zeigt: Die Reichweite ist nicht der begrenzende Faktor. Jede Antenne hat blinde Winkel — und auf dem Copter kommt der eigene Rahmen dazu: Carbon schirmt Funk ab wie ein Blech, das haben wir im Carbon-Ratgeber belegt. In bestimmten Fluglagen zeigt entweder die Nullstelle zum Piloten, oder der Rahmen steht im Weg. Die Antwort heißt Diversity, in zwei Ausbaustufen. Stufe eins, Antennen-Diversity: zwei Antennen, aber ein Funkchip — ein Umschalter wählt das bessere Signal. Das kostet fast nichts und hilft schon deutlich, etwa beim Radiomaster R P drei oder beim Matek R 24 D. Stufe zwei, True Diversity: zwei komplette Empfangszüge, jeder fest mit eigener Antenne — beide hören immer, das bessere Paket gewinnt. Kein Umschalten, keine falsche Entscheidung, etwa beim BetaFPV Super D oder beim Happymodel E P eins Dual. Für Long Range ist das aus unserer Sicht die richtige Stufe: Antennen so verteilen, dass nie beide gleichzeitig im Carbon-Schatten liegen. Express L R S setzt noch Gemini obendrauf: Das Sendemodul funkt dasselbe Paket gleichzeitig auf zwei Frequenzen, 40 Megahertz auseinander — ein True-Diversity-Empfänger hört beide. Das erhöht nicht die Reichweite, aber die L Q wird stabiler, gerade in gestörter Umgebung. Gemini-fähige Hardware auf beiden Seiten vorausgesetzt. Zwischen Empfänger und Flight Controller läuft ein eigenes, drahtgebundenes Protokoll. Das ältere S-Bus überträgt nur in eine Richtung und arbeitet invertiert, was auf manchen Boards Zusatz-Hardware braucht. Das noch ältere P P M verschwindet gerade ganz. Der heutige Standard ist C R S F: bidirektional über ein einziges Paar serieller Leitungen — Steuerkanäle hin, Telemetrie zurück. Die Verkabelung ist immer gekreuzt, T X an R X und umgekehrt, dazu 5 Volt und Masse. Standard sind 420.000 Baud, nur KISS erwartet 400.000. Bei größeren Coptern mit ArduPilot kommt MAVLink dazu, das Telemetrie-Protokoll der Autopilot-Welt. ArduPilot verarbeitet die C R S F-Telemetrie direkt und erlaubt sogar Parameter-Änderungen über den RC-Link — Crossfire-Hardware transportiert MAVLink nativ. Ein Kabelpaar, volle Kontrolle, keine separate Telemetrie-Funke. Merke aus Teil 2: Crossfire und Tracer bleiben solide — aber beim Neukauf muss der Vergleich mit Express L R S gewonnen werden, nicht andersherum. Für Long Range heißt das: Express L R S auf 2,4 Gigahertz mit True-Diversity-Empfänger, verkabelt per C R S F. Im dritten Teil verlassen wir die Steuerstrecke: Wie GPS aus dreißig Satelliten eine Position macht, was Pixhawk-Autopiloten anders machen — und warum die Antenne der wichtigste Zentimeter deines Copters ist."
+}
+    </script>
+<!-- video:ende funk2 -->
+
+<!-- video:start funk3 -->
+    <p class="muted">Wie dein Copter mit dir spricht: GPS und Antennen · der wichtigste Zentimeter deines Copters.  Der Artikel als Video, gesprochen und animiert.</p>
+    <div style="position:relative; padding-top:56.25%; margin:24px 0; border-radius:8px; overflow:hidden">
+      <iframe src="https://www.youtube-nocookie.com/embed/3XN59YSs-3U" title="Wie dein Copter mit dir spricht" loading="lazy" allowfullscreen
+        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        style="position:absolute; inset:0; width:100%; height:100%; border:0"></iframe>
+    </div>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "Wie dein Copter mit dir spricht",
+  "description": "GPS und Antennen — der wichtigste Zentimeter deines Copters",
+  "thumbnailUrl": "https://i.ytimg.com/vi/3XN59YSs-3U/maxresdefault.jpg",
+  "uploadDate": "2026-08-04",
+  "duration": "PT8M5S",
+  "embedUrl": "https://www.youtube-nocookie.com/embed/3XN59YSs-3U",
+  "contentUrl": "https://www.youtube.com/watch?v=3XN59YSs-3U",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Draco Labs"
+  },
+  "transcript": "Teil 1 hat die Physik erklärt, Teil 2 die Systeme. Jetzt kommt die dritte Funkstrecke an Bord — die einzige, bei der dein Copter nur zuhört: GPS. Und danach das Bauteil, das über alle drei Strecken entscheidet: die Antenne und ihre Montage. Das amerikanische GPS besteht aus einer Grundordnung von 24 Satellitenplätzen auf sechs Bahnebenen — tatsächlich betrieben werden rund 31 Satelliten. Sie fliegen in etwa 20.200 Kilometern Höhe und umrunden die Erde zweimal pro Tag; ein Umlauf dauert 11 Stunden und 58 Minuten. Das Prinzip ist Laufzeitmessung: Jeder Satellit funkt permanent seine Position und die exakte Zeit einer Atomuhr. Der Empfänger misst die Laufzeiten und errechnet daraus die Entfernungen. Drei Entfernungen würden für einen Punkt reichen — aber die billige Quarzuhr im Empfänger ist viel zu ungenau. Deshalb wird die Empfängeruhr als vierte Unbekannte mitgeschätzt, und dafür braucht es den vierten Satelliten. Die Konstellation ist genau darauf ausgelegt: Von praktisch jedem Punkt der Erde sind mindestens vier sichtbar. Wie leise das Signal ist, zeigt eine Zahl: Garantiert sind am Boden gerade einmal minus 128,5 d B m — um Größenordnungen leiser als alles, was der RC-Link verarbeitet. Deshalb kompromisslos: Der GPS-Empfänger gehört auf einen Mast über den Rahmen, nicht zwischen zwei Carbonplatten. Moderne Module empfangen längst nicht mehr nur GPS: Der verbreitete u-blox M zehn verarbeitet GPS, Galileo, GLONASS und BeiDou gleichzeitig — bis zu 10 Positionen pro Sekunde, 1,5 Meter Genauigkeit, 28 Sekunden Kaltstart, Signale bis etwa minus 165 d B m, bei unter 25 Milliwatt Verbrauch. Mehr sichtbare Satelliten heißt bessere Geometrie, gerade zwischen Hindernissen. Auf den Modulen sitzt fast immer ein Kompass, denn ein Satellitenempfänger kennt seine Position, aber im Stand keine Blickrichtung. Für Positionshaltung und Return to Home gilt: Kompass wie GPS so weit weg von Stromleitern wie möglich — auf den Mast. Bei großen Coptern ab 13 Zoll wandert die Elektronik zur Autopilot-Welt, und dort ist Pixhawk der offene Hardware-Standard. Ein verbreiteter Vertreter ist der Pixhawk sechs C von Holybro: ein 480-Megahertz-Hauptprozessor, ein separater Ein-Ausgabe-Prozessor, die Lageerfassung doppelt ausgeführt und vibrationsentkoppelt montiert. Softwareseitig laufen darauf die beiden großen offenen Autopiloten P X vier und ArduPilot. GPS kommt per Standardstecker, der RC-Link per C R S F auf einen seriellen Anschluss, die Bodenstation per MAVLink. Damit schließt sich der Kreis: alles offene, dokumentierte Schnittstellen. Warum Autopilot-GPS-Module so groß sind? Wegen der Antenne. Das Satellitensignal kommt an der Hörbarkeitsgrenze an, und eine Antenne kann nur die Energie verwerten, die ihre Fläche einfängt. Die großen Module tragen eine keramische Flächenantenne mit Massefläche, die zum Himmel bündelt und die Elektronik darunter abschirmt. Die daumennagelkleinen FPV-Module verschenken Empfindlichkeit genau dann, wenn es darauf ankommt. Ein 13-Zöller hat Platz und Traglast — also gehört das große Modul drauf, auf den Mast. Eine Stufe darüber steht der Pixhawk sechs X: Rechner und Anschlussplatine sind getrennt, das Modul steckt auf einem Baseboard mit zwei GPS-Anschlüssen, zwei CAN-Bussen, drei Telemetrie-Ports und Ethernet. Wichtig beim Bestellen: Das Baseboard allein ist keine Flugsteuerung. Für den Einstieg in die 13-Zoll-Klasse bleibt der sechs C unsere Empfehlung. Man kann an jedem Glied der Funkkette Geld ausgeben — aber kein Bauteil verändert die Verbindung so stark wie die Antenne und ihre Montage. Die Standardantenne am Empfänger ist unspektakulär: ein Stück Koaxkabel mit freigelegtem Ende, meist in T-Form. Elektrisch ist das ein Halbwellendipol, die Urform der Antenne. Die Antennentheorie liefert dafür klare Kennwerte: Richtwirkung das 1,64-fache eines idealen Rundumstrahlers, Halbwertsbreite 78 Grad. Übersetzt: quer zur Achse am stärksten, in Achsrichtung Nullstellen — das Abstrahlbild sieht aus wie ein Donut. Deshalb montiert man Diversity-Antennen in unterschiedlicher Ausrichtung. Die Länge folgt aus der Wellenlänge — gerechnet, nicht gemessen: Bei 2,4 Gigahertz ist die Welle rund 12,5 Zentimeter lang, der Dipol gut 6. Bei 868 Megahertz sind es gut 17 Zentimeter. Das erklärt die unhandlichen 868er-Antennen — und warum man Antennen nie kürzt oder knickt: Eine falsche Länge verstimmt die Antenne, die Leistung wird zum Teil reflektiert statt abgestrahlt. Antennengewinn in d B i entsteht nie aus dem Nichts, sondern immer durch Bündelung: in eine Richtung lauter, in andere leiser. Am Copter, der sich frei dreht, ist wenig Gewinn und gleichmäßige Abstrahlung richtig. Hoher Gewinn gehört auf die Bodenseite, wo eine Richtantenne nachgeführt werden kann. Ein Dipol strahlt linear polarisiert: Stehen Sende- und Empfangsantenne gekreuzt zueinander, kommt deutlich weniger an. Also parallel ausrichten — am Copter praktisch senkrecht nach oben oder unten. Die zirkularen Pilzantennen des Videobereichs sind ein eigenes Thema und kommen im Folgeartikel. Bleibt die Montage — und hier zahlt sich der Carbon-Ratgeber aus: Der Rahmen ist für Funk ein Blech. Also Antennenenden frei aus dem Rahmenschatten führen, nicht am Arm entlang, nicht zwischen die Platten. Kabelbinder-Röhrchen an den Standoffs sind die einfachste gute Lösung. Und: Die winzigen U F L-Stecker sind nur für wenige Steckzyklen gebaut — Vielwechsler planen S M A ein. Achte im Flug auf die L Q, nicht auf den R S S I — und setz den Alarm 5 bis 10 Dezibel über die Empfindlichkeitsgrenze deiner Paketrate. Reichweite kauft man mit der Paketrate, nicht mit Watt: Der Schritt von 500 auf 50 Hertz bringt 10 Dezibel — so viel wie eine Verzehnfachung der Sendeleistung, und er ist legal. Bleib in Deutschland bei 100 Milliwatt auf 2,4 Gigahertz — und kauf keine 915-Megahertz-Hardware: Dieses Band existiert hierzulande nicht. Für Long Range: Express L R S auf 2,4 Gigahertz mit True-Diversity-Empfänger, die Antennen unterschiedlich ausgerichtet und aus dem Carbon-Schatten geführt. Das ist die Kombination, die wir selbst fliegen. Verkable den Empfänger per C R S F — gekreuzt, T X an R X. GPS und Kompass gehören auf den Mast, denn minus 128,5 d B m verzeihen keine Abschirmung. Und: Antennen niemals kürzen, knicken oder im Frame verstecken — die Länge ist Physik, nicht Design. Wir bauen 13-Zoll-Copter und beraten herstellerneutral zu Funk, Navigation und Aufbau. Den Volltext-Artikel mit allen Quellen findest du über den Link in der Beschreibung."
+}
+    </script>
+<!-- video:ende funk3 -->
+
+
+
 
 
 <!-- partner:start -->

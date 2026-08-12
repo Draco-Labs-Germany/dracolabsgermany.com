@@ -206,6 +206,14 @@ main.legal ul, main.legal ol { margin: 0 0 16px; padding-left: 22px; }
 main.legal li { color: var(--ink); margin-bottom: 6px; }
 main.legal .muted { color: var(--muted); }
 
+/* Artikel-Illustrationen — Standbilder aus den Wissensvideos (tools/ratgeber_stills.py) */
+main.legal .artikel-bild { margin: 26px 0; }
+main.legal .artikel-bild img {
+  display: block; width: 100%; height: auto;
+  border: 1px solid var(--line); border-radius: 10px;
+}
+main.legal .artikel-bild figcaption { color: var(--muted); font-size: 13px; margin-top: 8px; }
+
 /* Tabellen in Ratgeber-Texten — klar abgesetzt, mit Rahmen */
 main.legal table {
   width: 100%; border-collapse: collapse; margin: 28px 0;
