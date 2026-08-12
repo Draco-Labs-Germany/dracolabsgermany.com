@@ -50,8 +50,10 @@ PARTNER = [
      "DRACOLABSGERMANY"),
     ("Ampow", "https://www.ampow.com/DRACOLABSGERMANY",
      "assets/partner/ampow-logo.png", 150, 30,
-     "Store der LiPo-Marke Ovonic; unser Partner für Flugakkus und\n"
-     "          Ladezubehör rund um FPV- und Long-Range-Builds.",
+     "Store der LiPo-Marke Ovonic; unser Partner für Flugakkus rund um FPV-\n"
+     "          und Long-Range-Builds.  Die ROAM-Serie deckt mit 6S- und 8S-Packs bis\n"
+     "          8.000&nbsp;mAh genau die Klasse von 10 bis 15 Zoll ab, mit\n"
+     "          XT90-S-Anti-Spark und Versand aus EU-Lager.",
      None),
 ]
 
