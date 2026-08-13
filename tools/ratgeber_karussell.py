@@ -73,21 +73,21 @@ RATGEBER = [
 ]
 
 TEILELISTEN = [
+    {"datei": "ratgeber-teileliste-10-zoll.html",
+     "titel": "10-Zoll-Build",
+     "teaser": "Der kompakte Long-Range-Build: Frame und Motoren von Axisflying, "
+               "MacroQuad-Props und ein 30,5er-Stack, dazu Akku, Funk, Video und "
+               "GPS mit Bezugsquellen.",
+     "bild": "teileliste-10-zoll.jpg",
+     "alt": "Schemabild: die sieben Komponentengruppen des 10-Zoll-Builds, von "
+            "Frame bis GPS"},
     {"datei": "ratgeber-teileliste-long-range.html",
-     "titel": "Build 1: Toruk (13/15 Zoll)",
-     "teaser": "Der große Long-Range-Build auf Basis der Toruk-Frames: Frame, "
-               "Motoren, Akku, Ladegerät, Funk, Video und GPS, mit direkten "
+     "titel": "13-Zoll-Build 1",
+     "teaser": "Der große Long-Range-Build mit 13 und 15 Zoll: Frame, Motoren, "
+               "Akku, Ladegerät, Funk, Video und GPS, mit direkten "
                "Bezugsquellen.",
      "bild": "teileliste-uebersicht.jpg",
-     "alt": "Schemabild: die sieben Komponentengruppen der Teileliste Build 1, "
-            "von Frame bis GPS"},
-    {"datei": "ratgeber-teileliste-manta.html",
-     "titel": "Build 2: Manta (10 Zoll)",
-     "teaser": "Der kompakte 10-Zoll-Build auf Manta-Basis: Frame und Motoren "
-               "von Axisflying, Stack-Kombo von iFlight, dazu Akku, Funk, Video "
-               "und GPS mit Bezugsquellen.",
-     "bild": "teileliste-manta.jpg",
-     "alt": "Schemabild: die sieben Komponentengruppen der Teileliste Build 2, "
+     "alt": "Schemabild: die sieben Komponentengruppen des 13-Zoll-Builds 1, "
             "von Frame bis GPS"},
 ]
 
