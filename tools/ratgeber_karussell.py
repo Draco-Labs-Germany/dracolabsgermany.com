@@ -34,6 +34,14 @@ ROOT = Path(__file__).parent.parent
 
 # Anzeigereihenfolge = Listenreihenfolge (neuester Artikel zuerst).
 RATGEBER = [
+    {"datei": "ratgeber-motoren.html",
+     "titel": "Wo der Schub herkommt",
+     "teaser": "Brushless-Motoren für FPV- und Long-Range-Copter: was Statorgröße, "
+               "KV und Drehmoment wirklich bedeuten und warum Gramm pro Watt die "
+               "ehrlichste Zahl ist.",
+     "bild": "motoren-hero.jpg",
+     "alt": "Schaubild mit den Motor-Themen Stator, KV, Drehmoment, Effizienz, "
+            "Qualität und Prüfstand"},
     {"datei": "ratgeber-videouebertragung.html",
      "titel": "Was dein Copter dir zeigt",
      "teaser": "Die Videoübertragung von analog bis DJI O4, Walksnail und HDZero: "
