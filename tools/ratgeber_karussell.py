@@ -43,7 +43,7 @@ RATGEBER = [
      "alt": "Schemabild: schmaler Steuer-Pfad und breiter Video-Kachelstrom "
             "zwischen Fernsteuerung, Copter und Brille"},
     {"datei": "ratgeber-funk-kommunikation.html",
-     "titel": "Wie dein Copter mit dir spricht",
+     "titel": "Wie du mit deinem Copter sprichst",
      "teaser": "Der RC-Link von ExpressLRS bis Crossfire: was RSSI und LQ bedeuten, "
                "wie GPS funktioniert und warum die Antenne der wichtigste "
                "Zentimeter deines Copters ist.",
