@@ -40,8 +40,8 @@ RATGEBER = [
                "KV und Drehmoment wirklich bedeuten und warum Gramm pro Watt die "
                "ehrlichste Zahl ist.",
      "bild": "motoren-hero.jpg",
-     "alt": "Schaubild mit den Motor-Themen Stator, KV, Drehmoment, Effizienz, "
-            "Qualität und Prüfstand"},
+     "alt": "Schemabild: Außenläufer-Motor im Querschnitt mit Stator, Glocke, "
+            "Propeller, Drehmoment-Bogen und Schub-Pfeil"},
     {"datei": "ratgeber-videouebertragung.html",
      "titel": "Was dein Copter dir zeigt",
      "teaser": "Die Videoübertragung von analog bis DJI O4, Walksnail und HDZero: "
