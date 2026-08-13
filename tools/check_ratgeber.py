@@ -236,6 +236,8 @@ def _motoren_rechnungen():
         ("8S dreht 'ein Drittel schneller' als 6S", 29.6 / 22.2 - 1, 0.32 <= 29.6 / 22.2 - 1 <= 0.34),
         ("3-kg-Copter: '750 g' Schub je Motor", 3000 / 4, 3000 / 4 == 750),
         ("'fast 10 Prozentpunkte' Effizienzspanne (82 - 72,5)", 82 - 72.5, 9 <= 82 - 72.5 <= 10),
+        ("Dreieck: 'die 1,73-fache' KV (Wurzel 3)", 3**0.5, 1.72 <= 3**0.5 <= 1.74),
+        ("Stern 920 KV -> Dreieck 'rund 1.590'", 920 * 3**0.5, 1570 <= 920 * 3**0.5 <= 1600),
     ]
 
 

@@ -75,7 +75,7 @@
 
     <h1>Wo der Schub herkommt</h1>
     <p class="muted" style="font-size:17px; margin-top:-4px">Brushless-Motoren für FPV- und Long-Range-Copter: was Statormaß und KV wirklich bedeuten, warum große Propeller langsam drehen wollen und woran man Qualität erkennt, bevor man kauft.</p>
-    <p class="muted">Ratgeber · Antrieb &amp; Effizienz · Lesezeit ca. 19 Min · Stand: August 2026</p>
+    <p class="muted">Ratgeber · Antrieb &amp; Effizienz · Lesezeit ca. 21 Min · Stand: August 2026</p>
 
     <div data-nosnippet style="background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--cyan); border-radius:10px; padding:18px 20px; margin:22px 0">
       <p style="margin:0 0 8px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; font-size:13px; color:var(--cyan)">Kurz gesagt</p>
@@ -128,7 +128,10 @@
     typischer 5-Zoll-Motor ist ein <strong>12N14P</strong>, zwölf Statorzähne und vierzehn
     Magnete.<sup><a href="#q1">1</a></sup>  Große Navigationsmotoren gehen höher: Der T-Motor
     MN4012 etwa ist ein 18N24P.<sup><a href="#q3">3</a></sup>  Mehr Pole laufen ruhiger und
-    runder, was bei großen, langsam drehenden Props genau das Richtige ist.<sup><a href="#q1">1</a></sup></p>
+    runder, was bei großen, langsam drehenden Props genau das Richtige ist.<sup><a href="#q1">1</a></sup>
+    Die Kombinationen sind kein Zufall: 12N14P etwa verbindet einen hohen Wicklungsfaktor mit
+    sehr geringem Rastmoment, dem fühlbaren „Einrasten" beim Drehen von
+    Hand.<sup><a href="#q17">17</a></sup></p>
 
     <h2 id="k2">2. Die Zahlen auf dem Motor: das Statormaß</h2>
     <p>Motorgrößen folgen dem Schema „Breite mal Höhe": Die ersten beiden Ziffern sind der
@@ -254,12 +257,34 @@
     <h2 id="k6">6. Qualität im Detail: Wicklung, Magnete, Lager</h2>
     <p>Woran erkennt man einen robusten Motor, wenn man kein Prüfstand-Labor hat?  An ein paar
     Konstruktionsmerkmalen, die Hersteller in der Regel dokumentieren.</p>
-    <p><strong>Die Wicklung.</strong>  Es gibt zwei Bauweisen: ein dicker Draht je Zahn
-    (Single-Core) oder mehrere dünne parallel (Multi-Core).  Für schwere Copter, die dauerhaft
-    unter Last laufen, ist Single-Core die klar robustere Wahl: Mehrsträngige Wicklungen mit
-    ihrer dünneren Isolierung überhitzen deutlich schneller und brennen eher durch.<sup><a href="#q4">4</a></sup>
+    <p><strong>Die Wicklung: Windungszahl macht die KV.</strong>  Dass derselbe Motor als
+    KV340-, KV400- und KV480-Variante existiert, liegt fast nie am Blechpaket, sondern an der
+    Wicklung: Mehr Windungen je Zahn senken die KV und erhöhen das Drehmoment je Ampere;
+    weniger Windungen heben die KV und lassen Platz für dickeren Draht mit weniger
+    Widerstand.<sup><a href="#q16">16</a></sup>  Der Widerstand ist keine Nebensache: Die
+    Verlustwärme in der Wicklung wächst mit dem Quadrat des Stroms (Kupferverlust gleich
+    Strom² mal Widerstand<sup><a href="#q16">16</a></sup>), deshalb steht der Innenwiderstand
+    in jedem guten Datenblatt (beim MN4012: 75&nbsp;mΩ<sup><a href="#q3">3</a></sup>).  Wie
+    viel Kupfer überhaupt in den Stator passt, beschreibt der Füllgrad: Runddraht packt nie
+    perfekt, Isolierung braucht Platz, und maschinell erreichbar sind je nach Verfahren etwa
+    55 bis 75&nbsp;Prozent.<sup><a href="#q17">17</a></sup>  Genau hier trennt sich gute von
+    mittelmäßiger Fertigung: Besseres Wickel-Equipment bringt schlicht mehr Kupfer in
+    denselben Stator (<a href="#k7">Kapitel&nbsp;7</a>).</p>
+    <p><strong>Ein dicker Draht oder viele dünne.</strong>  Für dieselbe Windungszahl gibt es
+    zwei Bauweisen: ein dicker Draht je Zahn (Single-Core) oder mehrere dünne parallel
+    (Multi-Core).  Parallel-Stränge lassen sich leichter wickeln und nutzen den Platz im Slot
+    gut.<sup><a href="#q16">16</a></sup>  Für schwere Copter, die dauerhaft unter Last laufen,
+    ist trotzdem Single-Core die klar robustere Wahl: Mehrsträngige Wicklungen mit ihrer
+    dünneren Isolierung überhitzen deutlich schneller und brennen eher durch.<sup><a href="#q4">4</a></sup>
     Hochwertige Motoren verwenden zusätzlich temperaturfesten Wicklungslack; beim Supernova
     etwa ist er bis 260&nbsp;°C spezifiziert.<sup><a href="#q6">6</a></sup></p>
+    <p><strong>Stern oder Dreieck.</strong>  Die drei Wicklungsstränge lassen sich auf zwei
+    Arten verschalten: im Stern (alle drei Enden auf einem gemeinsamen Punkt) oder im Dreieck
+    (Ende an Anfang, im Ring).  Dieselbe Wicklung hat im Dreieck die 1,73-fache KV der
+    Stern-Variante; ein Stern-Motor mit 920&nbsp;KV würde als Dreieck rund 1.590&nbsp;KV
+    messen.<sup><a href="#q17">17</a></sup>  Als Käufer wählt man das nicht selbst, aber es
+    erklärt, warum die KV allein nichts über die Güte eines Motors sagt: Sie ist eine
+    Auslegungsentscheidung aus Windungszahl und Verschaltung, kein Qualitätsmerkmal.</p>
     <p><strong>Die Magnete.</strong>  Die Güteklasse (N50, N52, N54) beschreibt die Stärke des
     Magnetmaterials; gebogene Magnete verkleinern den Luftspalt zur Wicklung und verbessern
     Drehmoment und Wirkungsgrad.<sup><a href="#q1">1</a></sup>  Wichtig für den Betrieb: Hitze
@@ -456,12 +481,12 @@
 
     <h2>Quellenangaben</h2>
     <ol class="muted" style="font-size:14px; line-height:1.9; padding-left:20px">
-      <li id="q1">Oscar Liang, „How to Choose FPV Drone Motors" — Statormaß-Nomenklatur,
+      <li id="q1">Oscar Liang, „How to Choose FPV Drone Motors".  Statormaß-Nomenklatur,
         Stator-Geometrie, KV-Definition, Magnetgüten (N50/N52/N54), 12N14P, Wicklungsarten,
         Lager (NSK/NMB/EZO, 9×4 mm), Unibell/7075, CW/CCW-Gewinde, Temperatur und Magnetalterung:
         <a href="https://oscarliang.com/motors/" rel="noopener" target="_blank">oscarliang.com/motors</a></li>
       <li id="q2">Things in Motion, „How to estimate the torque of a BLDC (PMSM) electric motor
-        using only its Kv and current draw" — Drehmoment ≈ 8,3 × Strom / KV (N·m, A, RPM/V):
+        using only its Kv and current draw".  Drehmoment ≈ 8,3 × Strom / KV (N·m, A, RPM/V):
         <a href="https://things-in-motion.blogspot.com/2018/12/how-to-estimate-torque-of-bldc-pmsm.html" rel="noopener" target="_blank">things-in-motion.blogspot.com</a></li>
       <li id="q3">T-Motor, Produktseite und Datenblatt MN4012 KV400 (Navigator/Antigravity) —
         Stator 40×12 mm, 18N24P, 155 g, 4–8S, Props bis 16 Zoll, Messreihen bei 22,2 V
@@ -469,44 +494,44 @@
         nach 10 min Vollgas):
         <a href="https://store.tmotor.com/goods-345-MN4012+KV400.html" rel="noopener" target="_blank">store.tmotor.com: MN4012 KV400</a></li>
       <li id="q4">Chris Rosser, „Testing 9&quot; FPV motors with a brand NEW Thrust Test Stand!"
-        (März 2025) — Prüfstands-Methodik, gemessene vs. aufgedruckte KV (bis ~10 % Abweichung),
+        (März 2025).  Prüfstands-Methodik, gemessene vs. aufgedruckte KV (bis ~10 % Abweichung),
         Effizienzspanne 72,5–82 % bei 600 W, Gewichtsnormierung, Single- vs. Multi-Core-Wicklung,
         XNOVA-2812- und Preis-Leistungs-Befunde:
         <a href="https://www.youtube.com/watch?v=TA0odTlAL1M" rel="noopener" target="_blank">youtube.com/watch?v=TA0odTlAL1M</a></li>
       <li id="q5">Chris Rosser, „7 inch motor testing: Second Batch and Full Comparison"
-        (Dezember 2023) — KV-Messmethode, Ist-KV-Abweichung (1300 → ~1150 KV),
+        (Dezember 2023).  KV-Messmethode, Ist-KV-Abweichung (1300 → ~1150 KV),
         Schwungrad-Drehmoment 0,275 vs. 0,15 N·m bei 10.000 U/min:
         <a href="https://www.youtube.com/watch?v=GAydIsxsKAQ" rel="noopener" target="_blank">youtube.com/watch?v=GAydIsxsKAQ</a></li>
       <li id="q6">Chris Rosser, „How I OPTIMISED the 5&quot; FPV Motor with SCIENCE: AOS
-        Supernova 2207" (September 2023) — Simulation mit &gt;20.000 Design-Varianten, +18 %
+        Supernova 2207" (September 2023).  Simulation mit &gt;20.000 Design-Varianten, +18 %
         Schub bei +4,6 % Effizienz, dicker Stahl-Flux-Ring, 260-°C-Wicklungslack, japanische
         Lager, Grenzen des Statormaßes als Kennzahl:
         <a href="https://www.youtube.com/watch?v=WO1D0krt24E" rel="noopener" target="_blank">youtube.com/watch?v=WO1D0krt24E</a></li>
       <li id="q7">Chris Rosser, „My biggest motor test yet!: The best motors for Ultralights,
-        Cinewhoops and Freestyle!" (Mai 2024) — über 30 Motoren, Effizienzeinbruch zu kleiner
+        Cinewhoops and Freestyle!" (Mai 2024).  über 30 Motoren, Effizienzeinbruch zu kleiner
         Motoren am zu großen Prop, KV-Ausreißer bis 500 KV, Statorform und Responsiveness,
         Prop-Aufnahmen (T-Mount/Welle):
         <a href="https://www.youtube.com/watch?v=ZKCDh8TzwiM" rel="noopener" target="_blank">youtube.com/watch?v=ZKCDh8TzwiM</a></li>
       <li id="q8">Chris Rosser, „How to Make 100,000 Drone Motors in Europe: Interview with
-        EUMOTORS CEO" (August 2026) — Serienfertigung in Krakau und Miami, eigenes
+        EUMOTORS CEO" (August 2026).  Serienfertigung in Krakau und Miami, eigenes
         Stator-Stanzen, In-house-Automatisierung, Kupferfüllgrad, Qualität als
         Wiederholbarkeit, 20–25 Jahre China-Erfahrungsvorsprung:
         <a href="https://www.youtube.com/watch?v=V8HoVHcb-_A" rel="noopener" target="_blank">youtube.com/watch?v=V8HoVHcb-_A</a></li>
-      <li id="q9">EUMOTORS, Produktkatalog 2026-1 — 42 Motoren von FPV 1505 bis KG45 mit
+      <li id="q9">EUMOTORS, Produktkatalog 2026-1.  42 Motoren von FPV 1505 bis KG45 mit
         KV, Gewicht, LiPo-Bereich, Prop-Empfehlung und Schub; u. a. FPV 3607 (400 KV, 13 Zoll)
         und 4014-Serie:
         <a href="https://www.eumotors.eu" rel="noopener" target="_blank">eumotors.eu</a></li>
-      <li id="q10">Axisflying, Produktseite AE3115 — 900 KV, 3–6S, Positionierung für
+      <li id="q10">Axisflying, Produktseite AE3115.  900 KV, 3–6S, Positionierung für
         8–10-Zoll-Long-Range- und Heavy-Lift-Builds:
         <a href="https://www.axisflying.com/products/az3115-3-6s-brushless-motor" rel="noopener" target="_blank">axisflying.com: AE3115</a></li>
-      <li id="q11">Axisflying, Produktseite AZ4320 — 420 KV, 6–8S, gut 6 kg Spitzenschub je
+      <li id="q11">Axisflying, Produktseite AZ4320.  420 KV, 6–8S, gut 6 kg Spitzenschub je
         Motor, ausgelegt für 13-Zoll-Props:
         <a href="https://www.axisflying.com/products/4320-brushless-motors-for-13-inch" rel="noopener" target="_blank">axisflying.com: AZ4320</a></li>
       <li id="q12">Renesas, „Brushless DC Motors, Part 1: An Introduction" (Engineer School) —
         Permanentmagnet-Rotor, feststehende Wicklungen, Drehung durch elektronisch gesteuerte
         Spulenströme, Wegfall von Bürsten/Kommutator als Verschleiß- und Funkenquelle:
         <a href="https://www.renesas.com/en/support/engineer-school/brushless-dc-motor-01-overview" rel="noopener" target="_blank">renesas.com: Brushless DC Motor Overview</a></li>
-      <li id="q13">Mini Quad Test Bench, „Brushless Motors and Torque" — Drehmoment je Ampere
+      <li id="q13">Mini Quad Test Bench, „Brushless Motors and Torque".  Drehmoment je Ampere
         als Funktion der KV; das erreichbare Gesamt-Drehmoment hängt an Magnetstärke, Luftspalt
         und Statorgröße, ein größerer Stator gleicher KV zieht für sein Mehr-Drehmoment mehr
         Strom:
@@ -517,15 +542,26 @@
         schlecht gepaarte Komponenten machen auch gute Einzelteile ineffizient:
         <a href="https://www.tytorobotics.com/blogs/articles/how-to-measure-brushless-motor-and-propeller-efficiency" rel="noopener" target="_blank">tytorobotics.com: Motor and Propeller Efficiency</a></li>
       <li id="q15">K&amp;J Magnetics, „Temperature and Neodymium Magnets" und
-        Spezifikationstabelle — Standard-N-Güten bis 80 °C, M/H/SH/UH/EH bis
+        Spezifikationstabelle.  Standard-N-Güten bis 80 °C, M/H/SH/UH/EH bis
         100/120/150/180/200 °C, reversible Verluste von 5–10 % bei Hitze, irreversible
         Verluste oberhalb der maximalen Betriebstemperatur:
         <a href="https://www.kjmagnetics.com/blog/temperature-and-neodymium-magnets" rel="noopener" target="_blank">kjmagnetics.com: Temperature and Neodymium Magnets</a></li>
+      <li id="q16">RCexplained, „All about RC Brushless Motor Windings".  Windungszahl vs. KV
+        (mehr Windungen = niedrigere KV, mehr Drehmoment je Ampere), Kupferverlust =
+        Strom² × Wicklungswiderstand, Parallel-Stränge als Wickelhilfe, Dreieck-KV ≈
+        Stern-KV × 1,732:
+        <a href="https://www.radiocontrolinfo.com/about-rc-brushless-motor-windings/" rel="noopener" target="_blank">radiocontrolinfo.com: Brushless Motor Windings</a></li>
+      <li id="q17">rftools.io, „BLDC Winding Calculator: How to Choose Turns, Wire Gauge, and
+        Winding Patterns".  Füllgrade nach Wickelverfahren (Hand 35–55 %, Maschine 55–70 %,
+        Nadelwickler 60–75 %), Stern-920-KV wird als Dreieck ca. 1.593 KV, 12N14P mit
+        Wicklungsfaktor 0,933 und sehr geringem Rastmoment:
+        <a href="https://rftools.io/blog/bldc-winding-turns-wire-gauge-patterns/" rel="noopener" target="_blank">rftools.io: BLDC Winding</a></li>
     </ol>
 
 <!-- historie:start -->
     <h2>Änderungshistorie</h2>
     <ul class="muted historie">
+      <li><strong>13.08.2026</strong> · Wicklungs-Kapitel vertieft (Windungszahl und KV, Kupferverlust und Füllgrad, Stern gegen Dreieck); Gedankenstriche aus den Quellenangaben entfernt</li>
       <li><strong>13.08.2026</strong> · Quellenbasis erweitert: Renesas, Mini Quad Test Bench, Tyto Robotics und K&J Magnetics als zusätzliche unabhängige Quellen eingearbeitet</li>
       <li><strong>13.08.2026</strong> · Erstfassung, zur Prüfung bereitgestellt (noindex, noch nicht freigeschaltet)</li>
     </ul>
