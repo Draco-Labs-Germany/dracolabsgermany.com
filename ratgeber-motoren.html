@@ -75,7 +75,7 @@
 
     <h1>Wo der Schub herkommt</h1>
     <p class="muted" style="font-size:17px; margin-top:-4px">Brushless-Motoren für FPV- und Long-Range-Copter: was Statormaß und KV wirklich bedeuten, warum große Propeller langsam drehen wollen und woran man Qualität erkennt, bevor man kauft.</p>
-    <p class="muted">Ratgeber · Antrieb &amp; Effizienz · Lesezeit ca. 17 Min · Stand: August 2026</p>
+    <p class="muted">Ratgeber · Antrieb &amp; Effizienz · Lesezeit ca. 19 Min · Stand: August 2026</p>
 
     <div data-nosnippet style="background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--cyan); border-radius:10px; padding:18px 20px; margin:22px 0">
       <p style="margin:0 0 8px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; font-size:13px; color:var(--cyan)">Kurz gesagt</p>
@@ -119,9 +119,11 @@
     <p>„Brushless" heißt: Es gibt keine Kohlebürsten, die den Strom mechanisch auf eine drehende
     Spule übertragen.  Stattdessen schaltet der ESC (der Regler) den Strom elektronisch durch die
     drei Wicklungsstränge des Stators und erzeugt so ein rotierendes Magnetfeld, dem die Magnete
-    der Glocke folgen.  Der Motor selbst ist also ein rein passives Bauteil aus Blech, Kupfer und
-    Magneten; das Timing übernimmt komplett der Regler.  Deshalb gehören Motor und ESC bei der
-    Auslegung immer zusammen gedacht.</p>
+    der Glocke folgen.<sup><a href="#q12">12</a></sup>  Genau dieser Verzicht auf Bürsten macht
+    die Bauart so effizient und langlebig: Nichts schleift, nichts funkt, und außer den Lagern
+    nutzt sich im Normalbetrieb nichts ab.<sup><a href="#q12">12</a></sup>  Der Motor selbst ist
+    ein rein passives Bauteil aus Blech, Kupfer und Magneten; das Timing übernimmt komplett der
+    Regler.  Deshalb gehören Motor und ESC bei der Auslegung immer zusammen gedacht.</p>
     <p>Wie viele Zähne und Magnete ein Motor hat, beschreibt die Konfigurationsangabe: Ein
     typischer 5-Zoll-Motor ist ein <strong>12N14P</strong>, zwölf Statorzähne und vierzehn
     Magnete.<sup><a href="#q1">1</a></sup>  Große Navigationsmotoren gehen höher: Der T-Motor
@@ -159,9 +161,13 @@
     Motors ist umgekehrt proportional zur KV.  Als Faustformel liefert ein Motor etwa
     8,3 geteilt durch seine KV an Newtonmetern je Ampere.<sup><a href="#q2">2</a></sup>  Der
     400-KV-Motor erzeugt also je Ampere gut das Vierfache des Drehmoments des 1750-KV-Motors
-    (gerechnet).  Genau deshalb brauchen große Propeller niedrige KV: Ein 13- oder 15-Zoll-Prop
-    ist eine große Luftschraube mit viel Widerstand.  Ein hochdrehender Motor müsste absurde
-    Ströme ziehen, um sie auf Drehzahl zu halten.</p>
+    (gerechnet).  Wichtig dabei: Die KV legt nur fest, wie viel Drehmoment je Ampere entsteht.
+    Wie viel Drehmoment ein Motor insgesamt aufbauen kann, bestimmen Magnete, Luftspalt und
+    Statorgröße; ein größerer Stator mit gleicher KV liefert mehr Drehmoment und zieht dafür
+    entsprechend mehr Strom.<sup><a href="#q13">13</a></sup>  Genau deshalb brauchen große
+    Propeller niedrige KV: Ein 13- oder 15-Zoll-Prop ist eine große Luftschraube mit viel
+    Widerstand.  Ein hochdrehender Motor müsste absurde Ströme ziehen, um sie auf Drehzahl zu
+    halten.</p>
     <p>Die zweite Hälfte der Gleichung ist die Akkuspannung: KV mal Spannung ergibt die
     Leerlaufdrehzahl.  Derselbe Motor dreht an 8S (29,6&nbsp;V) ein Drittel schneller als an 6S
     (gerechnet); warum höhere Spannung zusätzlich Kabel und Regler entlastet, steht im
@@ -198,6 +204,13 @@
     11,08&nbsp;g/W.<sup><a href="#q3">3</a></sup>  Große, langsam drehende Props sind schlicht
     die effizienteste Art, Luft zu bewegen.  Die Grenzen setzen Frame, Gewicht und das
     Einsatzprofil, nicht der Motor.</p>
+    <p>Wichtig beim Lesen solcher Zahlen: Gemessen wird immer das System.  Die Gesamteffizienz
+    ist das Produkt aus Propeller-Effizienz und Motor-Effizienz, und in der Praxis steckt sogar
+    der Regler mit in der Messung.  Zwei für sich genommen effiziente Komponenten können darum
+    als Kombination ineffizient sein, wenn sie nicht zusammenpassen, und jeder Messwert gilt
+    nur für genau einen Lastpunkt aus Gasstellung und Prop.<sup><a href="#q14">14</a></sup>
+    Datenblätter vergleicht man deshalb nur bei gleicher Spannung, gleichem Prop und gleicher
+    Gasstellung.</p>
     <p>Und der dritte Hebel ist die Motorwahl selbst: In einem unabhängigen Vergleichstest von
     elf 9-Zoll-Motoren lag die gemessene Antriebseffizienz bei 600&nbsp;W zwischen 72,5 und
     knapp 82&nbsp;Prozent.<sup><a href="#q4">4</a></sup>  Fast 10&nbsp;Prozentpunkte Unterschied
@@ -209,7 +222,8 @@
     Die Referenz dafür sind die Prüfstandstests von Chris Rosser (AOS RC): Jeder Motor durchläuft
     dort denselben Parcours aus KV-Messung (Drehzahl bei 10&nbsp;V, ohne Prop), Schubrampe an
     stabilisierter Spannung, Reaktionstest mit Gassprüngen und einem Schwungrad-Test, der das
-    Drehmoment über den Drehzahlbereich misst.<sup><a href="#q4">4</a></sup><sup><a href="#q5">5</a></sup></p>
+    Drehmoment über den Drehzahlbereich misst, gefahren auf kommerziellen Messprüfständen von
+    Tyto Robotics.<sup><a href="#q4">4</a></sup><sup><a href="#q5">5</a></sup></p>
     <p>Das Ernüchternde an diesen Messungen: <strong>Die aufgedruckte KV stimmt erstaunlich oft
     nicht.</strong>  Ein als 1300&nbsp;KV verkaufter 7-Zoll-Motor maß real etwa
     1150&nbsp;KV<sup><a href="#q5">5</a></sup>, zwei als 1100&nbsp;KV deklarierte 9-Zoll-Motoren
@@ -249,8 +263,11 @@
     <p><strong>Die Magnete.</strong>  Die Güteklasse (N50, N52, N54) beschreibt die Stärke des
     Magnetmaterials; gebogene Magnete verkleinern den Luftspalt zur Wicklung und verbessern
     Drehmoment und Wirkungsgrad.<sup><a href="#q1">1</a></sup>  Wichtig für den Betrieb: Hitze
-    ist der Feind der Magnete, dauerhaft heiß gefahrene Motoren verlieren irreversibel an
-    Magnetkraft.<sup><a href="#q1">1</a></sup></p>
+    ist der Feind der Magnete.  Neodym-Magnete der Standard-N-Güten sind nur bis etwa
+    80&nbsp;°C spezifiziert; schon unterhalb davon verlieren sie vorübergehend 5 bis
+    10&nbsp;Prozent Stärke (ein heißer Motor ist auch magnetisch schwächer), und oberhalb
+    davon wird der Verlust dauerhaft.  Temperaturfeste Varianten tragen Buchstaben-Suffixe,
+    SH-Material etwa ist bis 150&nbsp;°C stabil.<sup><a href="#q15">15</a></sup></p>
     <p><strong>Der Flux Ring.</strong>  Der Stahlring, der die Magnete in der Glocke hält,
     schließt zugleich den Magnetkreis.  Ein dickerer Ring verbessert die magnetische Performance
     und macht die Glocke crashfester, weil Stahl sich nicht so leicht dellt wie
@@ -341,7 +358,10 @@
     für 6S bis 8S und gut 6&nbsp;kg Spitzenschub je Motor.<sup><a href="#q11">11</a></sup>
     Beide Optionen samt Frame, Akku und Stack stehen in der
     <a href="ratgeber-teileliste-long-range.html">Teileliste 13-Zoll-Build 1</a>.</p>
-    <p>Die KV-Zahl muss zur Zellenzahl deines Akkus passen; das rechnen wir in der
+    <p>Die KV-Zahl muss zur Zellenzahl deines Akkus passen.  Für die rechnerische Gegenprobe
+    des kompletten Antriebs aus Motor, Prop, Akku und Abfluggewicht hat sich der Online-Rechner
+    <a href="https://www.ecalc.ch/xcoptercalc.php" rel="noopener" target="_blank">eCalc</a>
+    etabliert; oder wir rechnen es in der
     <a href="https://shop.dracolabsgermany.com/products/beratung-custombuild">Custom-Build-Beratung</a>
     für deinen Build durch.</p>
     <p style="margin-top:14px">
@@ -355,7 +375,8 @@
     <h2 id="k9">9. Pflege und Praxis</h2>
     <p><strong>Temperatur im Blick behalten.</strong>  Die Datenblatt-Referenz: Der MN4012
     erreicht nach zehn Minuten Dauervollgas je nach Prop und KV-Variante 47 bis
-    60&nbsp;°C.<sup><a href="#q3">3</a></sup>
+    60&nbsp;°C<sup><a href="#q3">3</a></sup>, mit reichlich Abstand zur 80-°C-Grenze der
+    Standard-Magnetgüten (<a href="#k6">Kapitel&nbsp;6</a>).
     Ein Motor, den man nach der Landung nicht mehr anfassen mag, läuft außerhalb seines
     Wohlfühlbereichs: Prop verkleinern, Gewicht senken oder die KV-Wahl überdenken, denn
     dauerhafte Hitze altert Magnete und Wicklungsisolierung.<sup><a href="#q1">1</a></sup></p>
@@ -481,11 +502,31 @@
       <li id="q11">Axisflying, Produktseite AZ4320 — 420 KV, 6–8S, gut 6 kg Spitzenschub je
         Motor, ausgelegt für 13-Zoll-Props:
         <a href="https://www.axisflying.com/products/4320-brushless-motors-for-13-inch" rel="noopener" target="_blank">axisflying.com: AZ4320</a></li>
+      <li id="q12">Renesas, „Brushless DC Motors, Part 1: An Introduction" (Engineer School) —
+        Permanentmagnet-Rotor, feststehende Wicklungen, Drehung durch elektronisch gesteuerte
+        Spulenströme, Wegfall von Bürsten/Kommutator als Verschleiß- und Funkenquelle:
+        <a href="https://www.renesas.com/en/support/engineer-school/brushless-dc-motor-01-overview" rel="noopener" target="_blank">renesas.com: Brushless DC Motor Overview</a></li>
+      <li id="q13">Mini Quad Test Bench, „Brushless Motors and Torque" — Drehmoment je Ampere
+        als Funktion der KV; das erreichbare Gesamt-Drehmoment hängt an Magnetstärke, Luftspalt
+        und Statorgröße, ein größerer Stator gleicher KV zieht für sein Mehr-Drehmoment mehr
+        Strom:
+        <a href="https://www.miniquadtestbench.com/motors-and-torque.html" rel="noopener" target="_blank">miniquadtestbench.com: Motors and Torque</a></li>
+      <li id="q14">Tyto Robotics, „How to Measure Brushless Motor and Propeller Efficiency" —
+        Systemeffizienz als Produkt aus Propeller-Effizienz (g/W mechanisch) und
+        Motor-Effizienz, ESC steckt mit in der Messung, Messwerte gelten je Lastpunkt,
+        schlecht gepaarte Komponenten machen auch gute Einzelteile ineffizient:
+        <a href="https://www.tytorobotics.com/blogs/articles/how-to-measure-brushless-motor-and-propeller-efficiency" rel="noopener" target="_blank">tytorobotics.com: Motor and Propeller Efficiency</a></li>
+      <li id="q15">K&amp;J Magnetics, „Temperature and Neodymium Magnets" und
+        Spezifikationstabelle — Standard-N-Güten bis 80 °C, M/H/SH/UH/EH bis
+        100/120/150/180/200 °C, reversible Verluste von 5–10 % bei Hitze, irreversible
+        Verluste oberhalb der maximalen Betriebstemperatur:
+        <a href="https://www.kjmagnetics.com/blog/temperature-and-neodymium-magnets" rel="noopener" target="_blank">kjmagnetics.com: Temperature and Neodymium Magnets</a></li>
     </ol>
 
 <!-- historie:start -->
     <h2>Änderungshistorie</h2>
     <ul class="muted historie">
+      <li><strong>13.08.2026</strong> · Quellenbasis erweitert: Renesas, Mini Quad Test Bench, Tyto Robotics und K&J Magnetics als zusätzliche unabhängige Quellen eingearbeitet</li>
       <li><strong>13.08.2026</strong> · Erstfassung, zur Prüfung bereitgestellt (noindex, noch nicht freigeschaltet)</li>
     </ul>
 <!-- historie:ende -->
