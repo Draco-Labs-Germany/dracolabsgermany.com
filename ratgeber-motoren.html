@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wo der Schub herkommt — FPV-Motoren-Ratgeber | Draco Labs</title>
+<meta name="description" content="Motoren-Ratgeber für FPV- und Long-Range-Copter: Statorgröße, KV, Drehmoment und Gramm pro Watt, verständlich erklärt. Mit unabhängigen Prüfstandsdaten.">
+<meta name="keywords" content="FPV Motor Ratgeber, Brushless Motor Drohne, KV Wert erklärt, Statorgröße 2207, Motor 13 Zoll Long Range, T-Motor MN4012, Gramm pro Watt, Motor Effizienz">
+<!-- Zur Freigabe bereitgestellt: beim Freischalten wieder auf "index, follow" stellen -->
+<meta name="robots" content="noindex, follow">
+<meta name="author" content="Draco Labs Germany">
+<link rel="canonical" href="https://dracolabsgermany.com/ratgeber-motoren.html">
+
+<!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Wo der Schub herkommt — Brushless-Motoren für FPV-Copter">
+<meta property="og:description" content="Statorgröße, KV, Drehmoment und Effizienz in Gramm pro Watt: wie du Motoren für FPV- und Long-Range-Copter verstehst und auswählst. Jede Zahl mit Quelle.">
+<meta property="og:url" content="https://dracolabsgermany.com/ratgeber-motoren.html">
+<meta property="og:image" content="https://dracolabsgermany.com/assets/logo.png">
+<meta property="og:site_name" content="Draco Labs Germany">
+<meta property="og:locale" content="de_DE">
+
+<!-- Twitter/X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Wo der Schub herkommt — Brushless-Motoren für FPV-Copter">
+<meta name="twitter:description" content="Statorgröße, KV, Drehmoment und Gramm pro Watt: Motoren verstehen und auswählen. Jede Zahl mit Quelle.">
+<meta name="twitter:image" content="https://dracolabsgermany.com/assets/logo.png">
+
+<link rel="icon" type="image/png" href="assets/emblem.png">
+<link rel="stylesheet" href="style.css">
+
+<!-- Strukturierte Daten für Google (Article) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Wo der Schub herkommt: Brushless-Motoren für FPV- und Long-Range-Copter",
+  "description": "Motoren-Ratgeber für FPV- und Long-Range-Copter: Statorgröße, KV, Drehmoment und Effizienz in Gramm pro Watt, mit unabhängigen Prüfstandsdaten und Marktübersicht.",
+  "image": "https://dracolabsgermany.com/assets/logo.png",
+  "datePublished": "2026-08-13",
+  "dateModified": "2026-08-13",
+  "author": { "@type": "Organization", "name": "Draco Labs Germany" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Draco Labs Germany",
+    "logo": { "@type": "ImageObject", "url": "https://dracolabsgermany.com/assets/logo.png" }
+  },
+  "mainEntityOfPage": "https://dracolabsgermany.com/ratgeber-motoren.html",
+  "inLanguage": "de-DE"
+}
+</script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a href="index.html"><img src="assets/emblem.png" alt="Draco Labs Emblem"></a>
+    <div class="name">Draco Labs <small>Germany</small></div>
+    <input type="checkbox" id="menu-auf" class="menu-toggle">
+    <label for="menu-auf" class="burger" aria-label="Menü öffnen und schließen">
+      <span></span><span></span><span></span>
+    </label>
+    <nav>
+      <a href="index.html#leistungen">Leistungen</a>
+      <a href="index.html#ratgeber">Ratgeber</a>
+      <a href="index.html#ueber">Über uns</a>
+      <a href="index.html#kontakt">Kontakt</a>
+    </nav>
+    <a class="shop-btn" href="https://shop.dracolabsgermany.com">Shop →</a>
+  </div>
+</header>
+
+<main class="legal">
+  <div class="wrap">
+
+    <h1>Wo der Schub herkommt</h1>
+    <p class="muted" style="font-size:17px; margin-top:-4px">Brushless-Motoren für FPV- und Long-Range-Copter: was Statormaß und KV wirklich bedeuten, warum große Propeller langsam drehen wollen und woran man Qualität erkennt, bevor man kauft.</p>
+    <p class="muted">Ratgeber · Antrieb &amp; Effizienz · Lesezeit ca. 17 Min · Stand: August 2026</p>
+
+    <div data-nosnippet style="background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--cyan); border-radius:10px; padding:18px 20px; margin:22px 0">
+      <p style="margin:0 0 8px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; font-size:13px; color:var(--cyan)">Kurz gesagt</p>
+      <p style="margin:0">Die <strong>Motorgröße muss zum Propeller passen</strong> und die <strong>KV zur
+      Akkuspannung</strong>: große Long-Range-Props brauchen große Statoren und niedrige KV.  Flugzeit
+      kauft man nicht mit Maximalschub, sondern mit <strong>Effizienz in Gramm pro Watt</strong>, und die
+      ist bei halbem Gas am höchsten: ein gut ausgelegter Copter schwebt weit unterhalb der
+      Volllast seiner Motoren.  Verlass dich nicht auf Herstellerangaben: unabhängige Messungen
+      zeigen KV-Abweichungen von bis zu 10&nbsp;Prozent und fast 10&nbsp;Prozentpunkte
+      Effizienz-Unterschied zwischen Motoren derselben Klasse.  Für schwere Builds:
+      <strong>Single-Core-Wicklung</strong>, sie verträgt Hitze deutlich besser.</p>
+    </div>
+
+    <p>Über den <a href="ratgeber-carbon-frame.html">Frame</a>, den
+    <a href="ratgeber-akku-13-zoll.html">Akku</a> und die
+    <a href="ratgeber-funk-kommunikation.html">Funkstrecke</a> haben wir bereits ausführliche
+    Ratgeber geschrieben.  Jetzt ist das Bauteil dran, das aus Strom Vortrieb macht: der Motor.
+    Kaum eine Komponente wird so sehr nach Bauchgefühl und Markennamen gekauft, dabei entscheiden
+    die vier Motoren darüber, wie lange dein Copter fliegt, wie viel er trägt und wie er sich
+    anfühlt.  Dieser Ratgeber erklärt herstellerneutral, wie ein Brushless-Motor funktioniert,
+    was die Zahlen auf dem Etikett bedeuten und woran man einen guten Motor erkennt, bevor man
+    ihn gekauft hat.</p>
+    <p><strong>Was dieser Artikel nicht behandelt:</strong> Propeller und der
+    FC/ESC-Stack.  Beide sind eigene Themen mit eigener Physik und bekommen eigene Ratgeber
+    (in Arbeit).  Hier geht es um den Motor selbst: Aufbau, Kenngrößen, Auswahl und Qualität.</p>
+    <p><strong>Hinweis:</strong> Jede Zahl in diesem Text hat eine Fußnote, die auf eine nachprüfbare
+    Quelle zeigt.  Wo wir gerechnet statt gemessen haben, steht es ausdrücklich dabei.  Für den Fall,
+    dass wir einen Fehler gemacht haben, kontaktiert uns gerne jederzeit.</p>
+    <p class="muted" style="font-size:14px"><strong>Transparenz:</strong> Einige Produktlinks in
+    diesem Artikel sind Affiliate-Links und als (Anzeige) markiert.  Kaufst du darüber, erhalten
+    wir eine kleine Vergütung, für dich ändert sich am Preis nichts.  Empfohlen wird nur, was wir
+    fachlich begründen können, und die Begründung steht immer im Text.</p>
+
+    <h2 id="k1">1. Wie ein Brushless-Motor funktioniert</h2>
+    <p>Fast alle Multicopter-Motoren sind sogenannte Außenläufer.  Innen sitzt der
+    <strong>Stator</strong>: ein Paket aus dünnen, gestapelten Elektroblechen mit Zähnen, um die
+    Kupferdraht gewickelt ist.  Außen dreht sich die <strong>Glocke</strong> (der Rotor): ein
+    Aluminiumtopf, an dessen Innenseite Permanentmagnete kleben, gehalten von einem Stahlring,
+    dem Flux Ring.  Der Stator steht fest, die Glocke mit dem Propeller dreht sich um ihn
+    herum.</p>
+    <p>„Brushless" heißt: Es gibt keine Kohlebürsten, die den Strom mechanisch auf eine drehende
+    Spule übertragen.  Stattdessen schaltet der ESC (der Regler) den Strom elektronisch durch die
+    drei Wicklungsstränge des Stators und erzeugt so ein rotierendes Magnetfeld, dem die Magnete
+    der Glocke folgen.  Der Motor selbst ist also ein rein passives Bauteil aus Blech, Kupfer und
+    Magneten; das Timing übernimmt komplett der Regler.  Deshalb gehören Motor und ESC bei der
+    Auslegung immer zusammen gedacht.</p>
+    <p>Wie viele Zähne und Magnete ein Motor hat, beschreibt die Konfigurationsangabe: Ein
+    typischer 5-Zoll-Motor ist ein <strong>12N14P</strong>, zwölf Statorzähne und vierzehn
+    Magnete.<sup><a href="#q1">1</a></sup>  Große Navigationsmotoren gehen höher: Der T-Motor
+    MN4012 etwa ist ein 18N24P.<sup><a href="#q3">3</a></sup>  Mehr Pole laufen ruhiger und
+    runder, was bei großen, langsam drehenden Props genau das Richtige ist.<sup><a href="#q1">1</a></sup></p>
+
+    <h2 id="k2">2. Die Zahlen auf dem Motor: das Statormaß</h2>
+    <p>Motorgrößen folgen dem Schema „Breite mal Höhe": Die ersten beiden Ziffern sind der
+    Statordurchmesser in Millimetern, die letzten beiden die Statorhöhe.  Ein 2207 hat also
+    einen Stator mit 22&nbsp;mm Durchmesser und 7&nbsp;mm Höhe.<sup><a href="#q1">1</a></sup>
+    Ein 4012 entsprechend 40&nbsp;mm Durchmesser und 12&nbsp;mm Höhe.<sup><a href="#q3">3</a></sup>
+    Das klingt nach einem kleinen Schritt, ist aber ein gewaltiger: Das Statorvolumen wächst mit
+    dem Quadrat des Durchmessers, der 4012 hat rund das 5,7-Fache des Statorvolumens eines 2207
+    (gerechnet aus den Nennmaßen, nicht gemessen).  Mehr Volumen heißt mehr Eisen und mehr
+    Kupfer, also mehr Drehmoment.</p>
+    <p>Auch die Form macht einen Unterschied.  Breite, flache Statoren kühlen gut und tragen
+    große Lager, sind aber wegen der höheren Rotationsträgheit etwas träger.  Hohe, schmale
+    Statoren reagieren schneller.<sup><a href="#q1">1</a></sup>  In unabhängigen Messungen über
+    dutzende Motoren zeigt sich das gleiche Bild: Hohe, schmale Statoren mit starken Magneten
+    liefern die beste Reaktionsfreude pro Gramm.<sup><a href="#q7">7</a></sup>  Und eine ehrliche
+    Einschränkung gehört dazu: Das Statormaß allein bestimmt die Performance nicht, zwischen zwei
+    „2207" verschiedener Hersteller können Welten liegen, weil Magnete, Luftspalt und Wicklung
+    mindestens genauso zählen.<sup><a href="#q6">6</a></sup></p>
+
+    <h2 id="k3">3. KV verstehen: Drehzahl, Spannung, Drehmoment</h2>
+    <p>Die KV-Zahl gibt an, wie viele Umdrehungen pro Minute der Motor je Volt macht, unbelastet
+    und ohne Propeller.<sup><a href="#q1">1</a></sup>  Ein Motor mit 400&nbsp;KV an einem
+    6S-Akku (22,2&nbsp;V nominal) dreht also leer rund 8.900 Umdrehungen pro Minute (gerechnet,
+    nicht gemessen).  Unter Last sieht das anders aus: Mit einem 15-Zoll-Propeller kommt derselbe
+    Motor bei Vollgas nur noch auf 6.300 Umdrehungen.<sup><a href="#q3">3</a></sup>  Ein
+    5-Zoll-Motor mit 1750&nbsp;KV dreht am selben Akku leer knapp 39.000 Umdrehungen (gerechnet).
+    Die KV ist damit so etwas wie die Übersetzung des Antriebs: hohe KV heißt hohe Drehzahl,
+    niedrige KV heißt hohes Drehmoment.</p>
+    <p>Dahinter steckt ein fester physikalischer Zusammenhang: Die Drehmomentkonstante eines
+    Motors ist umgekehrt proportional zur KV.  Als Faustformel liefert ein Motor etwa
+    8,3 geteilt durch seine KV an Newtonmetern je Ampere.<sup><a href="#q2">2</a></sup>  Der
+    400-KV-Motor erzeugt also je Ampere gut das Vierfache des Drehmoments des 1750-KV-Motors
+    (gerechnet).  Genau deshalb brauchen große Propeller niedrige KV: Ein 13- oder 15-Zoll-Prop
+    ist eine große Luftschraube mit viel Widerstand.  Ein hochdrehender Motor müsste absurde
+    Ströme ziehen, um sie auf Drehzahl zu halten.</p>
+    <p>Die zweite Hälfte der Gleichung ist die Akkuspannung: KV mal Spannung ergibt die
+    Leerlaufdrehzahl.  Derselbe Motor dreht an 8S (29,6&nbsp;V) ein Drittel schneller als an 6S
+    (gerechnet); warum höhere Spannung zusätzlich Kabel und Regler entlastet, steht im
+    <a href="ratgeber-akku-13-zoll.html">Akku-Ratgeber</a>.  KV, Zellenzahl und Propgröße bilden
+    darum immer ein Trio: Ändert man eine der drei Größen, müssen die anderen mitziehen.</p>
+    <p>Was passiert, wenn das Trio nicht zusammenpasst, zeigen unabhängige Prüfstandsmessungen
+    sehr deutlich.  Ein Motor mit zu hoher KV für seinen Prop läuft bei hohem Gas „aus dem
+    Drehmoment": Der Stromverbrauch explodiert und die Effizienz bricht genau dort ein, wo ein
+    Long-Range-Copter dauerhaft arbeitet.<sup><a href="#q4">4</a></sup>  Und ein zu kleiner
+    Motor kann einen großen Prop überhaupt nicht effizient treiben, egal wie gut er ist: In
+    einem Großtest brachen sämtliche 1804er-Motoren an einem zu großen Prop bei höherer
+    Leistung in der Effizienz ein.<sup><a href="#q7">7</a></sup>  Die umgekehrte Richtung ist
+    gutmütiger: Etwas zu niedrige KV kostet Maximalschub, hält aber den Strom unter Kontrolle
+    und hilft der Effizienz.<sup><a href="#q4">4</a></sup></p>
+
+    <h2 id="k4">4. Effizienz: Gramm pro Watt kauft Flugzeit</h2>
+    <p>Die wichtigste Kennzahl für Long Range ist nicht der Maximalschub, sondern die Effizienz:
+    Wie viel Gramm Schub liefert der Antrieb je Watt elektrischer Leistung?<sup><a href="#q1">1</a></sup>
+    Diese Zahl steht in jedem guten Motordatenblatt, und sie hat eine Eigenschaft, die man kennen
+    muss: <strong>Sie ist bei Teillast am höchsten.</strong></p>
+    <p>Ein Beispiel aus dem offiziellen Datenblatt des T-Motor MN4012 KV400, gemessen an
+    22,2&nbsp;V mit 15×5-Carbon-Prop: Bei halbem Gas liefert der Motor 1.010&nbsp;g Schub aus
+    106,6&nbsp;W, also 9,48&nbsp;g/W.  Bei Vollgas sind es 2.370&nbsp;g aus 359,6&nbsp;W, nur
+    noch 6,59&nbsp;g/W.<sup><a href="#q3">3</a></sup>  Bei halbem Gas holt derselbe Motor also
+    rund 44&nbsp;Prozent mehr Schub aus jedem Watt (gerechnet aus den Datenblattwerten).  Die
+    Konsequenz für die Auslegung: Motoren so wählen, dass der Copter im Schwebe- und
+    Reiseflug deutlich unter halbem Gas arbeitet.  Ein 3-kg-Copter braucht je Motor 750&nbsp;g
+    Schub (gerechnet), auf der 15×5-Kombination von oben liegt das komfortabel unterhalb der
+    Halbgas-Marke.  „Überdimensioniert" ist beim Long-Range-Antrieb kein Mangel, sondern das
+    Ziel.</p>
+    <p>Der zweite Hebel ist die Prop-Größe: Am selben Motor steigt die Teillast-Effizienz mit
+    dem Propeller.  Das Datenblatt zeigt bei halbem Gas 9,01&nbsp;g/W mit 13×4.4, 9,33&nbsp;g/W
+    mit 14×4.8 und 9,48&nbsp;g/W mit 15×5; die KV340-Variante schafft mit einem 16×5.4 sogar
+    11,08&nbsp;g/W.<sup><a href="#q3">3</a></sup>  Große, langsam drehende Props sind schlicht
+    die effizienteste Art, Luft zu bewegen.  Die Grenzen setzen Frame, Gewicht und das
+    Einsatzprofil, nicht der Motor.</p>
+    <p>Und der dritte Hebel ist die Motorwahl selbst: In einem unabhängigen Vergleichstest von
+    elf 9-Zoll-Motoren lag die gemessene Antriebseffizienz bei 600&nbsp;W zwischen 72,5 und
+    knapp 82&nbsp;Prozent.<sup><a href="#q4">4</a></sup>  Fast 10&nbsp;Prozentpunkte Unterschied
+    allein durch den Motor, bei ansonsten identischem Aufbau.  Auf einen Long-Range-Flug
+    gerechnet ist das der Unterschied von mehreren Minuten Flugzeit.</p>
+
+    <h2 id="k5">5. Der Prüfstand lügt nicht: Herstellerangabe gegen Messung</h2>
+    <p>Motoren kauft man am besten nach unabhängigen Messungen, nicht nach Datenblatt-Superlativen.
+    Die Referenz dafür sind die Prüfstandstests von Chris Rosser (AOS RC): Jeder Motor durchläuft
+    dort denselben Parcours aus KV-Messung (Drehzahl bei 10&nbsp;V, ohne Prop), Schubrampe an
+    stabilisierter Spannung, Reaktionstest mit Gassprüngen und einem Schwungrad-Test, der das
+    Drehmoment über den Drehzahlbereich misst.<sup><a href="#q4">4</a></sup><sup><a href="#q5">5</a></sup></p>
+    <p>Das Ernüchternde an diesen Messungen: <strong>Die aufgedruckte KV stimmt erstaunlich oft
+    nicht.</strong>  Ein als 1300&nbsp;KV verkaufter 7-Zoll-Motor maß real etwa
+    1150&nbsp;KV<sup><a href="#q5">5</a></sup>, zwei als 1100&nbsp;KV deklarierte 9-Zoll-Motoren
+    lagen unter 1000<sup><a href="#q4">4</a></sup>, und ein kleiner Racing-Motor verfehlte sein
+    Rating um volle 500&nbsp;KV.<sup><a href="#q7">7</a></sup>  Abweichungen um 10&nbsp;Prozent
+    sind keine Seltenheit.  Das ist nicht immer Betrug, zu niedrige Ist-KV verbessert sogar die
+    Effizienz, aber sie kostet Maximalschub, und sie verschiebt die Abstimmung von Prop und
+    Zellenzahl.<sup><a href="#q4">4</a></sup>  Wer vergleichen will, vergleicht gemessene
+    Werte.</p>
+    <p>Zwei weitere Lehren aus hunderten Prüfstandsläufen.  Erstens: Schwere Motoren schneiden
+    in Rohwerten fast automatisch gut ab, „es ist leicht, einen besseren Motor zu bauen, indem
+    man ihn schwerer macht".<sup><a href="#q4">4</a></sup>  Seriöse Vergleiche normieren deshalb
+    auf das Gewicht.  Zweitens: Das im Schwungrad-Test gemessene Drehmoment bei 10.000
+    Umdrehungen sagt zuverlässig voraus, wie direkt sich ein Motor am Stick anfühlt; zwischen
+    dem besten und dem schwächsten 7-Zoll-Motor lagen dabei 0,275 gegen
+    0,15&nbsp;Newtonmeter.<sup><a href="#q5">5</a></sup></p>
+    <p>Dass gutes Motordesign kein Zufall ist, zeigt ein Experiment aus derselben Werkstatt:
+    Für den AOS Supernova wurde ein Motor der 2207-Klasse per Simulation mit über 20.000
+    durchgerechneten Design-Varianten optimiert.  Das Ergebnis schaffte 1.980&nbsp;g Maximalschub
+    gegenüber 1.680&nbsp;g im Klassendurchschnitt, also rund 18&nbsp;Prozent mehr, bei
+    gleichzeitig 4,6&nbsp;Prozent besserer Effizienz und praktisch identischem Gewicht, unter
+    anderem durch einen deutlich dickeren Stahl-Flux-Ring.<sup><a href="#q6">6</a></sup>  Schub
+    und Effizienz sind also kein zwingender Widerspruch, gutes magnetisches Design hebt
+    beides.</p>
+    <p>Und der Preis?  Sagt wenig.  Im 9-Zoll-Vergleich war der günstigste Motor des Testfelds
+    zugleich einer der besten, mit über 80&nbsp;Prozent Effizienz bei 600&nbsp;W.<sup><a href="#q4">4</a></sup></p>
+
+    <h2 id="k6">6. Qualität im Detail: Wicklung, Magnete, Lager</h2>
+    <p>Woran erkennt man einen robusten Motor, wenn man kein Prüfstand-Labor hat?  An ein paar
+    Konstruktionsmerkmalen, die Hersteller in der Regel dokumentieren.</p>
+    <p><strong>Die Wicklung.</strong>  Es gibt zwei Bauweisen: ein dicker Draht je Zahn
+    (Single-Core) oder mehrere dünne parallel (Multi-Core).  Für schwere Copter, die dauerhaft
+    unter Last laufen, ist Single-Core die klar robustere Wahl: Mehrsträngige Wicklungen mit
+    ihrer dünneren Isolierung überhitzen deutlich schneller und brennen eher durch.<sup><a href="#q4">4</a></sup>
+    Hochwertige Motoren verwenden zusätzlich temperaturfesten Wicklungslack; beim Supernova
+    etwa ist er bis 260&nbsp;°C spezifiziert.<sup><a href="#q6">6</a></sup></p>
+    <p><strong>Die Magnete.</strong>  Die Güteklasse (N50, N52, N54) beschreibt die Stärke des
+    Magnetmaterials; gebogene Magnete verkleinern den Luftspalt zur Wicklung und verbessern
+    Drehmoment und Wirkungsgrad.<sup><a href="#q1">1</a></sup>  Wichtig für den Betrieb: Hitze
+    ist der Feind der Magnete, dauerhaft heiß gefahrene Motoren verlieren irreversibel an
+    Magnetkraft.<sup><a href="#q1">1</a></sup></p>
+    <p><strong>Der Flux Ring.</strong>  Der Stahlring, der die Magnete in der Glocke hält,
+    schließt zugleich den Magnetkreis.  Ein dickerer Ring verbessert die magnetische Performance
+    und macht die Glocke crashfester, weil Stahl sich nicht so leicht dellt wie
+    Aluminium.<sup><a href="#q6">6</a></sup></p>
+    <p><strong>Die Lager.</strong>  Japanische Markenlager (NSK, NMB, EZO) gelten als Referenz;
+    verbreitet ist das Maß 9×4&nbsp;mm als Kompromiss aus Laufruhe und Haltbarkeit.<sup><a href="#q1">1</a></sup>
+    Lager sind Verschleißteile: Ein Motor, der nach einem Crash kratzt oder pfeift, braucht
+    meist nur neue Lager, keinen Ersatz.</p>
+    <p><strong>Glocke und Welle.</strong>  Einteilig gefräste Glocken (Unibell) aus
+    7075-Aluminium überstehen Stürze besser als zweiteilige Konstruktionen.<sup><a href="#q1">1</a></sup>
+    Bei großen Motoren gehört außerdem ein Blick auf die Prop-Befestigung: Die 13-Zoll-Klasse
+    montiert Props mit Schrauben direkt auf der Glocke, das Lochbild muss zum Prop passen.</p>
+
+    <h2 id="k7">7. Wie ein Motor entsteht: ein Blick in die Serienfertigung</h2>
+    <p>Ein Brushless-Motor sieht simpel aus: Kupfer, Blech, Magnete.  Warum die Fertigung
+    trotzdem eine Kunst ist, zeigt ein ausführliches Interview mit dem CEO von EUMOTORS, einem
+    der ersten Hersteller, der Drohnenmotoren in Serie außerhalb Chinas baut, mit Werken in
+    Krakau und Miami und einer Zielkapazität von 100.000 Motoren pro
+    Monat.<sup><a href="#q8">8</a></sup></p>
+    <p>Drei Punkte daraus sind für Käufer lehrreich.  Erstens: Die Leistungsgrenzen eines Motors
+    setzen Material und Fertigung, nicht die Idee.  Besseres Wickel-Equipment bringt schlicht
+    mehr Kupfer in den Stator, und wer seine Statorbleche selbst stanzt, kann die Geometrie an
+    die Anwendung anpassen, statt Katalogware zu verbauen.<sup><a href="#q8">8</a></sup>
+    Zweitens: Qualität heißt Wiederholbarkeit.  Zehn perfekte Muster beweisen nichts, erst
+    zehntausende Motoren in gleicher Qualität machen ein Serienprodukt.<sup><a href="#q8">8</a></sup>
+    Drittens: Der Erfahrungsvorsprung Chinas liegt bei 20 bis 25 Jahren, und er steckt in
+    unzähligen kleinen Prozessdetails.  Wer europäische Fertigung will, bekommt sie inzwischen,
+    aber sie ist jung.<sup><a href="#q8">8</a></sup></p>
+    <p>Für unsere Beratung ist der EUMOTORS-Katalog inzwischen ein festes Werkzeug: 42 Motoren
+    von 3 bis 36 Zoll, mit vollständigen Datenblättern.<sup><a href="#q9">9</a></sup>  Die
+    Pendants zur 13-Zoll-Klasse dieses Ratgebers sind dort der FPV 3607 (400&nbsp;KV, 13-Zoll-Props)
+    und die 4014-Serie.<sup><a href="#q9">9</a></sup></p>
+
+    <h2 id="k8">8. Motorwahl nach Build-Größe</h2>
+    <p>Als grober Startpunkt (die konkrete Wahl hängt immer von Prop, Akku und Abfluggewicht
+    ab):</p>
+    <div data-nosnippet>
+<table>
+      <thead>
+        <tr><th>Copter</th><th>Statorklasse</th><th>Typische KV (6S)</th><th>Beispiele</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>5 Zoll Freestyle</td>
+          <td>2206–2306</td>
+          <td>1600–2000</td>
+          <td>AOS Supernova, EMAX ECO II 2207</td>
+        </tr>
+        <tr>
+          <td>7 Zoll Long-Range</td>
+          <td>2806.5–2807</td>
+          <td>1300–1500</td>
+          <td>GEPRC SpeedX 2806.5, EMAX ECO II 2807</td>
+        </tr>
+        <tr>
+          <td>9–10 Zoll Long-Range</td>
+          <td>2812–3115</td>
+          <td>900–1100</td>
+          <td>Axisflying AE3115, XNOVA 2812, EMAX Pro 2810</td>
+        </tr>
+        <tr>
+          <td>13 Zoll Long-Range / Heavy-Lift</td>
+          <td>4012–4320</td>
+          <td>400–420</td>
+          <td>T-Motor MN4012, Axisflying AZ4320, EUMOTORS FPV 3607</td>
+        </tr>
+        <tr>
+          <td>15 Zoll+ Cinelifter</td>
+          <td>4014–F418</td>
+          <td>320–410</td>
+          <td>EUMOTORS 4014, T-Motor MN4014</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+    <p>Für die 9-/10-Zoll-Klasse setzen wir in unserer
+    <a href="ratgeber-teileliste-10-zoll.html">Teileliste 10-Zoll-Build</a> auf den
+    <strong>Axisflying AE3115</strong> mit 900&nbsp;KV, den der Hersteller für 3S bis 6S
+    freigibt und für Long-Range- und Heavy-Lift-Builds von 8 bis 10 Zoll
+    positioniert.<sup><a href="#q10">10</a></sup>  In der unabhängigen 9-Zoll-Messung überzeugte
+    daneben der XNOVA 2812 als Effizienzsieger mit dem Drehmoment für 9,5- und 10-Zoll-Props;
+    seine niedrige Ist-KV hält den Strom unter Last im Zaum.<sup><a href="#q4">4</a></sup></p>
+    <p>Für die 13-Zoll-Klasse fliegt unser eigener Build den <strong>T-Motor Antigravity MN4012
+    KV400</strong> auf 6S mit 14-Zoll-Props: 155&nbsp;g schwer, 4S bis 8S freigegeben, vom
+    Hersteller bis 16-Zoll-Props spezifiziert und mit den Effizienzwerten aus
+    <a href="#k4">Kapitel&nbsp;4</a>.<sup><a href="#q3">3</a></sup>  Die Alternative aus der
+    FPV-Welt ist die 4320-Klasse, etwa der Axisflying AZ4320 mit 420&nbsp;KV, laut Hersteller
+    für 6S bis 8S und gut 6&nbsp;kg Spitzenschub je Motor.<sup><a href="#q11">11</a></sup>
+    Beide Optionen samt Frame, Akku und Stack stehen in der
+    <a href="ratgeber-teileliste-long-range.html">Teileliste 13-Zoll-Build 1</a>.</p>
+    <p>Die KV-Zahl muss zur Zellenzahl deines Akkus passen; das rechnen wir in der
+    <a href="https://shop.dracolabsgermany.com/products/beratung-custombuild">Custom-Build-Beratung</a>
+    für deinen Build durch.</p>
+    <p style="margin-top:14px">
+      <a href="https://www.axisflying.com/products/az3115-3-6s-brushless-motor" rel="noopener" target="_blank">➜ Axisflying AE3115 900KV bei Axisflying ansehen</a><br>
+      <a href="https://collabs.shop/huexzp" rel="sponsored noopener" target="_blank">➜ DarwinFPV 3115 Motor ansehen (Anzeige)</a><br>
+      <a href="https://store.tmotor.com/goods-345-MN4012+KV400.html" rel="noopener" target="_blank">➜ T-Motor Antigravity MN4012 KV400 im T-Motor-Store ansehen</a><br>
+      <a href="https://collabs.shop/eoovhg" rel="sponsored noopener" target="_blank">➜ DarwinFPV 4320 Motor ansehen (Anzeige)</a><br>
+      <a href="https://www.axisflying.com/products/4320-brushless-motors-for-13-inch" rel="noopener" target="_blank">➜ Axisflying AZ4320 420KV (13 Zoll) bei Axisflying ansehen</a>
+    </p>
+
+    <h2 id="k9">9. Pflege und Praxis</h2>
+    <p><strong>Temperatur im Blick behalten.</strong>  Die Datenblatt-Referenz: Der MN4012
+    erreicht nach zehn Minuten Dauervollgas je nach Prop und KV-Variante 47 bis
+    60&nbsp;°C.<sup><a href="#q3">3</a></sup>
+    Ein Motor, den man nach der Landung nicht mehr anfassen mag, läuft außerhalb seines
+    Wohlfühlbereichs: Prop verkleinern, Gewicht senken oder die KV-Wahl überdenken, denn
+    dauerhafte Hitze altert Magnete und Wicklungsisolierung.<sup><a href="#q1">1</a></sup></p>
+    <p><strong>Nach dem Crash.</strong>  Glocke von Hand drehen: Kratzen oder Pfeifen deutet auf
+    Lagerschaden, spürbares Rasten in Verbindung mit einem Schlag auf eine verbogene Welle oder
+    gelöste Magnete.  Lager lassen sich bei den meisten Motoren einzeln tauschen, das ist
+    deutlich günstiger als ein neuer Motor.</p>
+    <p><strong>Montage.</strong>  Bei 5-Zoll-Motoren mit Prop-Mutter gibt es CW- und
+    CCW-Gewinde; das bezeichnet nicht die Drehrichtung des Motors, sondern die Gewinderichtung
+    der Mutter, damit sie sich im Flug festzieht statt zu lösen.<sup><a href="#q1">1</a></sup>
+    Die großen Klassen ab etwa 9 Zoll montieren ihre Props mit Schrauben auf der Glocke; hier
+    zählt das passende Lochbild und die richtige Schraubenlänge, damit nichts in die Wicklung
+    ragt.  Beim Motorkauf außerdem auf die Prop-Aufnahme achten: T-Mount, 5-mm-Welle und
+    Schraubmontage sind nicht untereinander kompatibel.<sup><a href="#q7">7</a></sup></p>
+
+    <h2 id="k10">10. Häufige Fragen</h2>
+    <p><strong>Kann ich eine höhere KV nehmen, um mehr Schub zu bekommen?</strong><br>
+    Nur in engen Grenzen.  Mehr KV heißt mehr Drehzahl, aber weniger Drehmoment je Ampere;
+    an einem großen Prop läuft der Motor dann bei hohem Gas aus dem Drehmoment, zieht massiv
+    mehr Strom und verliert Effizienz.<sup><a href="#q4">4</a></sup>  Mehr Schub holt man in
+    dieser Klasse über einen größeren Stator oder einen größeren Prop, nicht über die KV.</p>
+    <p><strong>Sind teure Motoren automatisch besser?</strong><br>
+    Nein.  In unabhängigen Messungen war der günstigste Motor eines 9-Zoll-Testfelds zugleich
+    einer der besten.<sup><a href="#q4">4</a></sup>  Entscheidend sind Messwerte, nicht der
+    Preis, und auch nicht die aufgedruckte KV, die messbar daneben liegen kann.<sup><a href="#q5">5</a></sup></p>
+    <p><strong>Müssen alle vier Motoren identisch sein?</strong><br>
+    Ja, und idealerweise aus derselben Charge.  Schon die normale Serienstreuung verschiebt
+    KV und Drehmoment leicht; gemischte Motoren zwingen den Flight Controller zu ständigen
+    Korrekturen und kosten Effizienz.  Stirbt ein Motor, ersetzt man ihn durch das identische
+    Modell.</p>
+    <p><strong>Woran erkenne ich einen Long-Range-tauglichen Motor im Datenblatt?</strong><br>
+    An der Effizienz bei Teillast (g/W bei 50&nbsp;Prozent Gas), nicht am Maximalschub.  Dazu
+    Single-Core-Wicklung für die Dauerlast<sup><a href="#q4">4</a></sup> und eine KV, die mit
+    deiner Zellenzahl und Propgröße zusammenpasst (<a href="#k3">Kapitel&nbsp;3</a>).</p>
+    <p><strong>Wie lange hält ein Brushless-Motor?</strong><br>
+    Das mechanische Verschleißteil sind die Lager, alles andere altert vor allem durch Hitze
+    und Crashs.<sup><a href="#q1">1</a></sup>  Wer Temperaturen im Rahmen hält
+    (<a href="#k9">Kapitel&nbsp;9</a>) und Lager bei Bedarf tauscht, fliegt einen Motorsatz
+    in der Praxis über mehrere Frames hinweg.</p>
+
+    <h2 id="k11">11. Was das für deinen nächsten Build heißt</h2>
+    <ul>
+      <li><strong>Erst der Prop, dann der Motor, dann die KV.</strong>  Die Propgröße bestimmt
+      die Statorklasse, die Zellenzahl bestimmt die KV.  Die drei bilden ein Trio, das man
+      gemeinsam ändert oder gar nicht.</li>
+      <li><strong>Flugzeit steht bei Teillast im Datenblatt.</strong>  Vergleiche g/W bei
+      50&nbsp;Prozent Gas, nicht den Maximalschub; lege den Antrieb so aus, dass der Copter
+      unterhalb von halbem Gas schwebt.</li>
+      <li><strong>Traue Messungen, nicht Etiketten.</strong>  Ist-KV weicht bis zu
+      10&nbsp;Prozent vom Aufdruck ab, und zwischen Motoren derselben Klasse liegen bis zu
+      10 Effizienz-Prozentpunkte.  Unabhängige Prüfstandstests sind die beste
+      Kaufberatung.</li>
+      <li><strong>Für schwere Builds: Single-Core-Wicklung.</strong>  Ein dicker Draht je Zahn
+      verträgt Dauerlast und Hitze deutlich besser als viele dünne.</li>
+      <li><strong>13 Zoll heißt bei uns: 4012er-Klasse mit 400&nbsp;KV auf 6S.</strong>  Damit
+      schwebt ein 3-kg-Copter tief im effizienten Teillastbereich und hat trotzdem
+      Schubreserve.</li>
+      <li><strong>Motoren sind Verschleißteile mit tauschbaren Lagern.</strong>  Kratzende
+      Lager wechseln statt Motoren wegwerfen, und die Temperatur nach der Landung ist dein
+      ehrlichster Sensor.</li>
+    </ul>
+
+    <p style="margin-top:16px">Wir bauen Long-Range-Copter ab 10 Zoll und beraten
+    herstellerneutral zu Motorisierung, Props und Gesamtauslegung.  Wenn du unsicher bist,
+    welche Kombination zu deinem Vorhaben passt, sprich uns an, bevor du bestellst.</p>
+    <p style="margin-top:14px">
+      <a href="ratgeber-teileliste-long-range.html">➜ Passend dazu: Teileliste 13-Zoll-Build 1</a><br>
+      <a href="ratgeber-teileliste-10-zoll.html">➜ Passend dazu: Teileliste 10-Zoll-Build</a><br><br>
+      <a href="index.html#kontakt">➜ Persönliche Beratung zu deinem Build anfragen</a>
+    </p>
+
+    <p class="muted" style="margin-top:34px; font-size:14px">
+      Dieser Ratgeber ersetzt keine individuelle technische Prüfung.  Alle Angaben ohne
+      Gewähr.  Wo wir gerechnet statt gemessen haben, steht es ausdrücklich dabei.  Alle
+      Quellen wurden im August 2026 abgerufen und geprüft.
+    </p>
+
+    <h2>Quellenangaben</h2>
+    <ol class="muted" style="font-size:14px; line-height:1.9; padding-left:20px">
+      <li id="q1">Oscar Liang, „How to Choose FPV Drone Motors" — Statormaß-Nomenklatur,
+        Stator-Geometrie, KV-Definition, Magnetgüten (N50/N52/N54), 12N14P, Wicklungsarten,
+        Lager (NSK/NMB/EZO, 9×4 mm), Unibell/7075, CW/CCW-Gewinde, Temperatur und Magnetalterung:
+        <a href="https://oscarliang.com/motors/" rel="noopener" target="_blank">oscarliang.com/motors</a></li>
+      <li id="q2">Things in Motion, „How to estimate the torque of a BLDC (PMSM) electric motor
+        using only its Kv and current draw" — Drehmoment ≈ 8,3 × Strom / KV (N·m, A, RPM/V):
+        <a href="https://things-in-motion.blogspot.com/2018/12/how-to-estimate-torque-of-bldc-pmsm.html" rel="noopener" target="_blank">things-in-motion.blogspot.com</a></li>
+      <li id="q3">T-Motor, Produktseite und Datenblatt MN4012 KV400 (Navigator/Antigravity) —
+        Stator 40×12 mm, 18N24P, 155 g, 4–8S, Props bis 16 Zoll, Messreihen bei 22,2 V
+        (13×4.4 / 14×4.8 / 15×5 / 16×5.4, 50–100 % Gas, Schub, Leistung, g/W, Temperatur
+        nach 10 min Vollgas):
+        <a href="https://store.tmotor.com/goods-345-MN4012+KV400.html" rel="noopener" target="_blank">store.tmotor.com: MN4012 KV400</a></li>
+      <li id="q4">Chris Rosser, „Testing 9&quot; FPV motors with a brand NEW Thrust Test Stand!"
+        (März 2025) — Prüfstands-Methodik, gemessene vs. aufgedruckte KV (bis ~10 % Abweichung),
+        Effizienzspanne 72,5–82 % bei 600 W, Gewichtsnormierung, Single- vs. Multi-Core-Wicklung,
+        XNOVA-2812- und Preis-Leistungs-Befunde:
+        <a href="https://www.youtube.com/watch?v=TA0odTlAL1M" rel="noopener" target="_blank">youtube.com/watch?v=TA0odTlAL1M</a></li>
+      <li id="q5">Chris Rosser, „7 inch motor testing: Second Batch and Full Comparison"
+        (Dezember 2023) — KV-Messmethode, Ist-KV-Abweichung (1300 → ~1150 KV),
+        Schwungrad-Drehmoment 0,275 vs. 0,15 N·m bei 10.000 U/min:
+        <a href="https://www.youtube.com/watch?v=GAydIsxsKAQ" rel="noopener" target="_blank">youtube.com/watch?v=GAydIsxsKAQ</a></li>
+      <li id="q6">Chris Rosser, „How I OPTIMISED the 5&quot; FPV Motor with SCIENCE: AOS
+        Supernova 2207" (September 2023) — Simulation mit &gt;20.000 Design-Varianten, +18 %
+        Schub bei +4,6 % Effizienz, dicker Stahl-Flux-Ring, 260-°C-Wicklungslack, japanische
+        Lager, Grenzen des Statormaßes als Kennzahl:
+        <a href="https://www.youtube.com/watch?v=WO1D0krt24E" rel="noopener" target="_blank">youtube.com/watch?v=WO1D0krt24E</a></li>
+      <li id="q7">Chris Rosser, „My biggest motor test yet!: The best motors for Ultralights,
+        Cinewhoops and Freestyle!" (Mai 2024) — über 30 Motoren, Effizienzeinbruch zu kleiner
+        Motoren am zu großen Prop, KV-Ausreißer bis 500 KV, Statorform und Responsiveness,
+        Prop-Aufnahmen (T-Mount/Welle):
+        <a href="https://www.youtube.com/watch?v=ZKCDh8TzwiM" rel="noopener" target="_blank">youtube.com/watch?v=ZKCDh8TzwiM</a></li>
+      <li id="q8">Chris Rosser, „How to Make 100,000 Drone Motors in Europe: Interview with
+        EUMOTORS CEO" (August 2026) — Serienfertigung in Krakau und Miami, eigenes
+        Stator-Stanzen, In-house-Automatisierung, Kupferfüllgrad, Qualität als
+        Wiederholbarkeit, 20–25 Jahre China-Erfahrungsvorsprung:
+        <a href="https://www.youtube.com/watch?v=V8HoVHcb-_A" rel="noopener" target="_blank">youtube.com/watch?v=V8HoVHcb-_A</a></li>
+      <li id="q9">EUMOTORS, Produktkatalog 2026-1 — 42 Motoren von FPV 1505 bis KG45 mit
+        KV, Gewicht, LiPo-Bereich, Prop-Empfehlung und Schub; u. a. FPV 3607 (400 KV, 13 Zoll)
+        und 4014-Serie:
+        <a href="https://www.eumotors.eu" rel="noopener" target="_blank">eumotors.eu</a></li>
+      <li id="q10">Axisflying, Produktseite AE3115 — 900 KV, 3–6S, Positionierung für
+        8–10-Zoll-Long-Range- und Heavy-Lift-Builds:
+        <a href="https://www.axisflying.com/products/az3115-3-6s-brushless-motor" rel="noopener" target="_blank">axisflying.com: AE3115</a></li>
+      <li id="q11">Axisflying, Produktseite AZ4320 — 420 KV, 6–8S, gut 6 kg Spitzenschub je
+        Motor, ausgelegt für 13-Zoll-Props:
+        <a href="https://www.axisflying.com/products/4320-brushless-motors-for-13-inch" rel="noopener" target="_blank">axisflying.com: AZ4320</a></li>
+    </ol>
+
+<!-- historie:start -->
+    <h2>Änderungshistorie</h2>
+    <ul class="muted historie">
+      <li><strong>13.08.2026</strong> · Erstfassung, zur Prüfung bereitgestellt (noindex, noch nicht freigeschaltet)</li>
+    </ul>
+<!-- historie:ende -->
+
+
+<!-- partner:start -->
+    <h2>Partner &amp; Empfehlungen</h2>
+    <p class="muted"><strong>Anzeige:</strong> Ausrüstung, die wir selbst nutzen und
+    empfehlen können.  Die folgenden Links sind Affiliate-Links; kaufst du darüber,
+    erhalten wir eine Provision, für dich ändert sich am Preis nichts.  Empfohlen
+    wird nur, was uns fachlich überzeugt.</p>
+    <div class="partner-grid">
+      <a class="partner-card" href="https://www.sunlu.com/?sca_ref=11859027.qxuEVmIDy7"
+         target="_blank" rel="sponsored noopener">
+        <img src="assets/partner/sunlu-logo.png" alt="SUNLU" width="72" height="72" loading="lazy">
+        <div>
+          <div class="partner-name">SUNLU</div>
+          <div class="partner-desc">3D-Druck-Filament (PLA, PETG, TPU), Filament-Trockner und Zubehör; damit
+          drucken wir Prototypen und Halterungen.</div>
+          <div class="partner-coupon">Gutscheincode beim Checkout: <code>dracolabs</code></div>
+        </div>
+      </a>
+      <a class="partner-card" href="https://www.fpv24.com/de/?aid=U-THvRXn"
+         target="_blank" rel="sponsored noopener">
+        <img src="assets/partner/fpv24-logo.svg" alt="FPV24" width="134" height="44" loading="lazy">
+        <div>
+          <div class="partner-name">FPV24</div>
+          <div class="partner-desc">Deutscher FPV-Fachhandel mit schnellem Versand und Support; Akkus,
+          Ladegeräte (u.&nbsp;a. ISDT) und FPV-Komponenten, die wir im Aufbau verwenden.</div>
+        </div>
+      </a>
+      <a class="partner-card" href="https://darwinfpv.com/DRACOLABSGERMANY"
+         target="_blank" rel="sponsored noopener">
+        <img src="assets/partner/darwinfpv-logo.png" alt="DarwinFPV" width="164" height="30" loading="lazy">
+        <div>
+          <div class="partner-name">DarwinFPV</div>
+          <div class="partner-desc">Hersteller von FPV-Frames, Motoren und Komponenten; unser Partner für
+          X-Class-Frames der Toruk-Serie für Long-Range-Builds.</div>
+          <div class="partner-coupon">Gutscheincode beim Checkout: <code>DRACOLABSGERMANY</code></div>
+        </div>
+      </a>
+      <a class="partner-card" href="https://www.ampow.com/DRACOLABSGERMANY"
+         target="_blank" rel="sponsored noopener">
+        <img src="assets/partner/ampow-logo.png" alt="Ampow" width="150" height="30" loading="lazy">
+        <div>
+          <div class="partner-name">Ampow</div>
+          <div class="partner-desc">Store der LiPo-Marke Ovonic; unser Partner für Flugakkus rund um FPV-
+          und Long-Range-Builds.  Die ROAM-Serie deckt mit 6S- und 8S-Packs bis
+          8.000&nbsp;mAh genau die von uns bevorzugten Klassen von 10 bis
+          15 Zoll ab.</div>
+        </div>
+      </a>
+    </div>
+<!-- partner:ende -->
+
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <nav class="social" aria-label="Draco Labs in sozialen Netzwerken">
+      <a href="https://www.youtube.com/@DracoLabsGermany" rel="noopener" class="yt" aria-label="Draco Labs auf YouTube">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/draco.labs.germany" rel="noopener" class="ig" aria-label="Draco Labs auf Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c0-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 3.1A6.7 6.7 0 1 0 18.7 12 6.7 6.7 0 0 0 12 5.3Zm0 11a4.3 4.3 0 1 1 4.3-4.3 4.3 4.3 0 0 1-4.3 4.3ZM19 5a1.6 1.6 0 1 1-1.6-1.6A1.6 1.6 0 0 1 19 5Z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@dracolabsgermany" rel="noopener" class="tt" aria-label="Draco Labs auf TikTok">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16.6 2h-3.1v13.1a2.7 2.7 0 1 1-2.7-2.7c.2 0 .4 0 .6.1V9.3a6 6 0 0 0-.6 0 5.8 5.8 0 1 0 5.8 5.8V8.6a7 7 0 0 0 4.1 1.3V6.8a3.9 3.9 0 0 1-4.1-3.9V2Z"/></svg>
+      </a>
+    </nav>
+    <div class="links">
+      <a href="index.html">Startseite</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </div>
+    <div>© 2026 Draco Labs Germany · Kleinunternehmer gem. § 19 UStG</div>
+    <img class="ai-label" src="assets/label-ai-modified.svg" alt="KI-Kennzeichnung: Inhalte dieser Website wurden teilweise mit KI erstellt oder bearbeitet (AI MODIFIED)">
+  </div>
+</footer>
+
+</body>
+</html>

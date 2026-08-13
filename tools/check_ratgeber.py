@@ -218,8 +218,30 @@ def _video_rechnungen():
     ]
 
 
+def _motoren_rechnungen():
+    leerlauf_13 = 400 * 22.2                      # U/min, KV mal Spannung (6S nominal)
+    leerlauf_5 = 1750 * 22.2
+    kt_verh = (8.3 / 400) / (8.3 / 1750)          # Drehmoment je Ampere, 400KV vs 1750KV
+    vol_verh = (40**2 * 12) / (22**2 * 7)         # Statorvolumen ~ d^2 * h
+    gw_50 = 1010 / 106.56                         # g/W aus T-Motor-Datenblatt (15x5, 22,2 V)
+    gw_100 = 2370 / 359.64
+    return [
+        ("KV400 an 6S: 'rund 8.900' U/min Leerlauf", leerlauf_13, 8800 <= leerlauf_13 <= 8950),
+        ("KV1750 an 6S: 'knapp 39.000' U/min Leerlauf", leerlauf_5, 38500 <= leerlauf_5 <= 39000),
+        ("'gut das Vierfache' Drehmoment je Ampere (1750/400)", kt_verh, 4.2 <= kt_verh <= 4.6),
+        ("Statorvolumen 4012 'rund das 5,7-Fache' eines 2207", vol_verh, 5.5 <= vol_verh <= 5.9),
+        ("Halbgas: 'rund 44 %' mehr Schub je Watt (9,48/6,59)", 9.48 / 6.59 - 1, 0.42 <= 9.48 / 6.59 - 1 <= 0.46),
+        ("g/W-Gegenprobe Datenblatt 50 %: 1010 g / 106,56 W = 9,48", gw_50, 9.4 <= gw_50 <= 9.55),
+        ("g/W-Gegenprobe Datenblatt 100 %: 2370 g / 359,64 W = 6,59", gw_100, 6.5 <= gw_100 <= 6.7),
+        ("8S dreht 'ein Drittel schneller' als 6S", 29.6 / 22.2 - 1, 0.32 <= 29.6 / 22.2 - 1 <= 0.34),
+        ("3-kg-Copter: '750 g' Schub je Motor", 3000 / 4, 3000 / 4 == 750),
+        ("'fast 10 Prozentpunkte' Effizienzspanne (82 - 72,5)", 82 - 72.5, 9 <= 82 - 72.5 <= 10),
+    ]
+
+
 RECHNUNGEN = {"ratgeber-carbon-frame.html": _carbon_rechnungen,
-              "ratgeber-videouebertragung.html": _video_rechnungen}
+              "ratgeber-videouebertragung.html": _video_rechnungen,
+              "ratgeber-motoren.html": _motoren_rechnungen}
 
 
 def pruefe_rechnungen(name: str):
