@@ -206,6 +206,17 @@ main.legal ul, main.legal ol { margin: 0 0 16px; padding-left: 22px; }
 main.legal li { color: var(--ink); margin-bottom: 6px; }
 main.legal .muted { color: var(--muted); }
 
+/* Änderungshistorie (tools/ratgeber_changelog.py) — wächst mit jeder Änderung,
+   deshalb feste Höhe von ca. 5 Einträgen und danach vertikal scrollen */
+main.legal ul.historie {
+  font-size: 14px; line-height: 1.9; padding-left: 20px;
+  max-height: 150px; overflow-y: auto;
+  scrollbar-width: thin; scrollbar-color: var(--panel) transparent;
+}
+main.legal ul.historie::-webkit-scrollbar { width: 8px; }
+main.legal ul.historie::-webkit-scrollbar-thumb { background: var(--panel); border-radius: 4px; }
+main.legal ul.historie::-webkit-scrollbar-track { background: transparent; }
+
 /* Artikel-Illustrationen — Standbilder aus den Wissensvideos (tools/ratgeber_stills.py) */
 main.legal .artikel-bild { margin: 26px 0; }
 main.legal .artikel-bild img {
