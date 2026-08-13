@@ -310,3 +310,34 @@ a.log-media:hover img { transform: scale(1.03); }
   border: 1px solid var(--cyan); border-radius: 4px;
 }
 @media (prefers-reduced-motion: reduce) { .partner-card:hover { transform: none; } }
+
+/* ---- Ratgeber- & Teilelisten-Karussell -----------------------------------
+   Horizontal scrollbare Kachelreihe (reines CSS, scroll-snap, kein JS);
+   gepflegt von tools/ratgeber_karussell.py. Skaliert mit beliebig vielen
+   Artikeln: die Startseite bleibt gleich hoch, die angeschnittene nächste
+   Kachel zeigt, dass es weitergeht. */
+.rg-karussell {
+  display: flex; gap: 14px; margin-top: 18px;
+  overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 12px;
+  scrollbar-width: thin; scrollbar-color: var(--panel) transparent;
+}
+.rg-karussell::-webkit-scrollbar { height: 8px; }
+.rg-karussell::-webkit-scrollbar-thumb { background: var(--panel); border-radius: 4px; }
+.rg-karussell::-webkit-scrollbar-track { background: transparent; }
+.rg-kachel {
+  flex: 0 0 340px; scroll-snap-align: start; display: block;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 6px;
+  border-top: 3px solid var(--cyan); overflow: hidden;
+  transition: transform .2s, border-color .2s;
+}
+.rg-kachel:hover { transform: translateY(-3px); border-color: #4a5560; text-decoration: none; }
+.rg-kachel img {
+  display: block; width: 100%; height: auto; aspect-ratio: 16 / 9;
+  object-fit: cover; background: var(--panel); border-bottom: 1px solid var(--line);
+}
+.rg-text { padding: 16px 18px 18px; }
+.rg-titel { font-weight: 700; letter-spacing: .04em; color: var(--ink); }
+.rg-teaser { color: var(--muted); font-size: 14px; margin-top: 6px; }
+.rg-meta { color: var(--muted); font-size: 13px; margin-top: 12px; letter-spacing: .04em; }
+@media (max-width: 640px) { .rg-kachel { flex-basis: 78vw; } }
+@media (prefers-reduced-motion: reduce) { .rg-kachel:hover { transform: none; } }
