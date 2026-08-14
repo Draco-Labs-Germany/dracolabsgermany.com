@@ -80,6 +80,19 @@ RATGEBER = [
             "eines 8S-Akkus"},
 ]
 
+# Rubrik "Neuigkeiten": Berichte und Einordnungen zu Ereignissen der Szene,
+# im Gegensatz zu den zeitlosen Ratgebern.  Dateien heissen artikel-*.html.
+NEUIGKEITEN = [
+    {"datei": "artikel-darpa-lift-challenge.html",
+     "titel": "DARPA Lift Challenge",
+     "teaser": "Eine Woche Dayton: 76 Teams, nur 9 gewertete Läufe und ein "
+               "klassischer Elektro-Helikopter, der alle Multikopter schlägt.  "
+               "Mit Bildergalerie und Videos der Teams.",
+     "bild": "darpa-lift-hero.jpg",
+     "alt": "Unbemannter Single-Rotor-Helikopter im Flug, unter dem Rumpf hängt "
+            "eine Gusseisen-Hantelscheibe"},
+]
+
 TEILELISTEN = [
     {"datei": "ratgeber-teileliste-10-zoll.html",
      "titel": "10-Zoll-Build",
@@ -100,7 +113,8 @@ TEILELISTEN = [
 ]
 
 # (Markername, Rubrik in der Meta-Zeile, Datenliste)
-BEREICHE = [("ratgeber", "Ratgeber", RATGEBER),
+BEREICHE = [("neuigkeiten", "Neuigkeiten", NEUIGKEITEN),
+            ("ratgeber", "Ratgeber", RATGEBER),
             ("teilelisten", "Teileliste", TEILELISTEN)]
 
 LESEZEIT_RE = re.compile(r"Lesezeit ca\.\s*(\d+)\s*Min")
@@ -120,10 +134,13 @@ def kachel(eintrag: dict, rubrik: str) -> str:
                      f"(Eintrag {eintrag['titel']!r}).")
     minuten = lesezeit(eintrag["datei"])
     meta = rubrik + (f" · Lesezeit ca. {minuten} Min" if minuten else "")
+    # break_on_hyphens=False ist Pflicht: sonst bricht textwrap deutsche
+    # Komposita am Bindestrich um ("Elektro-\nHelikopter"), und der Browser
+    # macht aus dem Zeilenumbruch ein Leerzeichen ("Elektro- Helikopter").
     alt = textwrap.fill(eintrag["alt"], width=86, initial_indent="",
-                        subsequent_indent=" " * 13).strip()
+                        subsequent_indent=" " * 13, break_on_hyphens=False).strip()
     teaser = textwrap.fill(eintrag["teaser"], width=88,
-                           subsequent_indent=" " * 10)
+                           subsequent_indent=" " * 10, break_on_hyphens=False)
     return (
         f'      <a class="rg-kachel" href="{eintrag["datei"]}">\n'
         f'        <img src="assets/ratgeber/{eintrag["bild"]}" alt="{alt}"\n'

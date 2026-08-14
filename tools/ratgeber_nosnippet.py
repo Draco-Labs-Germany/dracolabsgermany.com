@@ -63,7 +63,8 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
-    for pfad in sorted(ROOT.glob("ratgeber-*.html")):
+    seiten = sorted(ROOT.glob("ratgeber-*.html")) + sorted(ROOT.glob("artikel-*.html"))
+    for pfad in seiten:
         html = pfad.read_text(encoding="utf-8")
         neu, taten = schuetze(html)
         if not taten:

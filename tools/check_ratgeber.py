@@ -298,21 +298,28 @@ def pruefe_header_kanon(pfade):
     return len(abweichler)
 
 
+def inhaltsseiten() -> list:
+    """Alle redaktionellen Seiten: Ratgeber/Teilelisten und Artikel (Rubrik
+    Neuigkeiten).  Beide folgen demselben Template und denselben Hausregeln."""
+    return sorted(ROOT.glob("ratgeber-*.html")) + sorted(ROOT.glob("artikel-*.html"))
+
+
 def main():
     # cp1252-Konsole: UTF-8 erzwingen (nur im CLI-Lauf, nicht beim Import)
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("seiten", nargs="*", help="HTML-Dateien relativ zum Repo-Root")
-    ap.add_argument("--alle", action="store_true", help="alle ratgeber-*.html pruefen")
+    ap.add_argument("--alle", action="store_true",
+                    help="alle Inhaltsseiten pruefen (ratgeber-*.html und artikel-*.html)")
     ap.add_argument("--fix", action="store_true", help="Fussnotennummern reparieren")
     ap.add_argument("--extern", action="store_true", help="externe Links auf Erreichbarkeit pruefen")
     args = ap.parse_args()
 
     pfade = ([ROOT / s for s in args.seiten] if args.seiten else []) + \
-            (sorted(ROOT.glob("ratgeber-*.html")) if args.alle or not args.seiten else [])
+            (inhaltsseiten() if args.alle or not args.seiten else [])
 
     gesamt = sum(pruefe_seite(p, args.fix, args.extern) for p in pfade)
-    gesamt += pruefe_header_kanon(sorted(ROOT.glob("ratgeber-*.html")) + [ROOT / "index.html"])
+    gesamt += pruefe_header_kanon(inhaltsseiten() + [ROOT / "index.html"])
 
     print(f"\nGesamt: {'ALLES GRUEN' if gesamt == 0 else f'{gesamt} Befund(e)'}")
     sys.exit(0 if gesamt == 0 else 1)
