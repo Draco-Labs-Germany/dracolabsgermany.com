@@ -1,0 +1,4 @@
+
+# Python-Bytecode (entsteht, seit og_bild.py aus ratgeber_karussell.py importiert)
+__pycache__/
+*.pyc
