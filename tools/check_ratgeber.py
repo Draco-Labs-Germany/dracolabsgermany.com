@@ -16,6 +16,9 @@ Checks je Seite:
      identisch sein (Shop/Website = ein Auftritt).
   6. Rechnungen: alle als "unsere Rechnung" markierten Zahlen der Seite werden
      unabhaengig nachgerechnet (Tabelle RECHNUNGEN unten, je Seite gepflegt).
+  7. Vorschaubild: og:image, twitter:image und das "image" im Article-JSON-LD
+     muessen vorhanden, identisch, kein Logo und lokal auch wirklich da sein.
+     Gesetzt werden sie von tools/og_bild.py; der Check ist die Gegenprobe.
 
 Aufruf:  python tools/check_ratgeber.py ratgeber-carbon-frame.html [--fix]
          python tools/check_ratgeber.py --alle
@@ -151,6 +154,43 @@ def pruefe_externe_links(html: str):
     return fehler, len(urls)
 
 
+BILD_FELDER = (
+    ("og:image", r'<meta property="og:image" content="([^"]*)">'),
+    ("twitter:image", r'<meta name="twitter:image" content="([^"]*)">'),
+    ("JSON-LD image", r'\n  "image": "([^"]*)"'),
+)
+
+BASIS = "https://dracolabsgermany.com/"
+
+
+def pruefe_vorschaubild(html: str) -> list:
+    """Die drei Bildfelder muessen auf dasselbe eigene Schaubild zeigen.
+
+    Der Befund vom 14.08.2026 hing genau daran: og_bild.py setzte nur die
+    beiden Meta-Tags, das JSON-LD blieb auf logo.png stehen.  Beim Teilen sah
+    die Seite damit richtig aus, in Google Discover falsch — und weil nichts
+    das geprueft hat, fiel es erst beim dritten Hinsehen auf.
+    """
+    fehler, werte = [], {}
+    for name, muster in BILD_FELDER:
+        m = re.search(muster, html)
+        if not m:
+            fehler.append(f"{name} fehlt")
+            continue
+        werte[name] = m.group(1)
+    if len(set(werte.values())) > 1:
+        fehler.append("Bildfelder weichen voneinander ab: "
+                      + ", ".join(f"{k}={v.split('/')[-1]}" for k, v in werte.items()))
+    for name, url in werte.items():
+        if url.endswith(("logo.png", "emblem.png")):
+            fehler.append(f"{name} zeigt aufs Logo statt aufs eigene Schaubild")
+        elif url.startswith(BASIS) and not (ROOT / url[len(BASIS):]).exists():
+            fehler.append(f"{name}: Datei {url[len(BASIS):]} fehlt im Repo")
+        elif not url.startswith(BASIS):
+            fehler.append(f"{name}: keine absolute URL auf {BASIS}")
+    return fehler
+
+
 def header_block(html: str) -> str:
     m = re.search(r'<header class="site">.*?</header>', html, re.S)
     if not m:
@@ -271,6 +311,7 @@ def pruefe_seite(pfad: Path, fix: bool, extern: bool = False) -> int:
         "Stil": pruefe_stil(html, quellen_start),
         "Tag-Balance": pruefe_tags(html),
         "Lokale Links": pruefe_links(html, pfad),
+        "Vorschaubild": pruefe_vorschaubild(html),
     }
     rechnung_zeilen, rechnung_fehler = pruefe_rechnungen(pfad.name)
     befunde["Rechnungen"] = rechnung_fehler

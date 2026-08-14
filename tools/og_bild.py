@@ -14,6 +14,15 @@ tiktok-callback) behalten das Logo — dort ist die Marke das richtige Motiv.
 Die Standbilder liegen bei 1200 Pixel Breite und im 16:9-Format; das deckt die
 Mindestmasse von Facebook, LinkedIn und X ab.
 
+Nachtrag 14.08.2026: Die erste Fassung hat nur ``og:image`` und
+``twitter:image`` gesetzt.  Das ``image``-Feld im Article-JSON-LD blieb
+uebersehen und stand auf allen zehn Artikelseiten weiter auf ``logo.png`` —
+also genau der Fehler, der behoben werden sollte, nur eine Ebene tiefer.  Google
+zieht das Vorschaubild fuer Discover und die Suchergebnisse aus dem JSON-LD,
+nicht aus Open Graph; die Seite sah damit im Chat richtig und in der Suche
+falsch aus.  Seither setzt das Skript alle drei Felder, und
+``check_ratgeber.py`` prueft sie mit, damit es nicht ein drittes Mal auffaellt.
+
 Idempotent: was schon stimmt, wird nicht neu geschrieben.
 
 Aufruf:  python tools/og_bild.py [--pruefen]
@@ -39,12 +48,21 @@ BILD = {e["datei"]: "assets/ratgeber/" + e["bild"]
 
 OG_RE = re.compile(r'(<meta property="og:image" content=")([^"]*)(">)')
 TW_RE = re.compile(r'(<meta name="twitter:image" content=")([^"]*)(">)')
+# Nur das "image" der Article-Ebene, nicht das "url" im publisher-Logo darunter.
+LD_RE = re.compile(r'(\n  "image": ")([^"]*)(")')
+
+MUSTER = (("og:image", OG_RE), ("twitter:image", TW_RE), ("JSON-LD image", LD_RE))
 
 
-def setzen(html: str, url: str) -> str:
-    for muster in (OG_RE, TW_RE):
-        html = muster.sub(lambda m: m.group(1) + url + m.group(3), html, count=1)
-    return html
+def setzen(html: str, url: str) -> tuple:
+    """Setzt alle drei Bildfelder und meldet, welche gar nicht vorhanden sind."""
+    fehlend = []
+    for name, muster in MUSTER:
+        html, treffer = muster.subn(
+            lambda m: m.group(1) + url + m.group(3), html, count=1)
+        if not treffer:
+            fehlend.append(name)
+    return html, fehlend
 
 
 def main() -> None:
@@ -55,7 +73,9 @@ def main() -> None:
         if not (ROOT / bild).exists():
             sys.exit(f"FEHLER: {bild} fehlt (gehört zu {datei}).")
         html = pfad.read_text(encoding="utf-8")
-        neu = setzen(html, BASIS + bild)
+        neu, fehlend = setzen(html, BASIS + bild)
+        if fehlend:
+            sys.exit(f"FEHLER: {datei} hat kein {', kein '.join(fehlend)}.")
         if neu == html:
             print(f"  =  {datei}")
             continue
