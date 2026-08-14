@@ -38,7 +38,10 @@ except Exception:
 
 ROOT = Path(__file__).parent.parent
 BILDER = ROOT / "assets" / "produkte"
-BREITE = 480                          # Anzeigebreite der Karte, doppelt fuer Retina.
+# Alle Quellbilder sind quadratisch; die Karte zeigt rund 190 px, gespeichert
+# wird das Doppelte fuer Retina.  width/height im HTML nur als Seitenverhaeltnis,
+# die tatsaechliche Groesse steuert .produkt-grid in style.css.
+BREITE = 480
 
 # key -> (Marke, Produktname, Quell-Bild beim Hersteller)
 PRODUKTE = {
@@ -121,7 +124,7 @@ def karte(key: str, ziel: str) -> str:
         f'      <a class="produkt-karte" href="{ziel}"\n'
         f'         target="_blank" rel="sponsored noopener">\n'
         f'        <img src="assets/produkte/{key}.jpg" alt="{marke} {name}"\n'
-        f'             width="{BREITE}" loading="lazy">\n'
+        f'             width="{BREITE}" height="{BREITE}" loading="lazy">\n'
         f'        <div class="produkt-marke">{marke}</div>\n'
         f'        <div class="produkt-name">{name}</div>\n'
         f'        <div class="produkt-hinweis">Anzeige</div>\n'

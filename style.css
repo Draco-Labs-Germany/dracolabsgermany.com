@@ -327,9 +327,11 @@ a.log-media:hover img { transform: scale(1.03); }
    Karten unter den Kaufempfehlungen der Ratgeber; gepflegt von
    tools/produktbilder.py.  Die Marke steht sichtbar unter jedem Foto — das ist
    Auflage der Bildfreigabe von DarwinFPV, nicht nur Deko. */
+/* auto-FILL statt auto-fit und eine feste Obergrenze je Spalte: sonst zieht
+   sich eine einzelne Karte (z. B. der 4320-Motor) ueber die volle Breite. */
 .produkt-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 14px; margin-top: 16px;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 190px));
+  gap: 14px; margin-top: 16px; justify-content: start;
 }
 .produkt-karte {
   display: block; text-align: center; padding: 12px;
@@ -338,7 +340,8 @@ a.log-media:hover img { transform: scale(1.03); }
 }
 .produkt-karte:hover { transform: translateY(-3px); border-color: #4a5560; text-decoration: none; }
 .produkt-karte img {
-  width: 100%; height: auto; border-radius: 4px; background: #fff;
+  width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: contain;
+  border-radius: 4px; background: #fff;
 }
 .produkt-marke {
   margin-top: 10px; font-weight: 700; letter-spacing: .06em;
