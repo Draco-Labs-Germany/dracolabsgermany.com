@@ -353,3 +353,21 @@ a.log-media:hover img { transform: scale(1.03); }
 .rg-meta { color: var(--muted); font-size: 13px; margin-top: 12px; letter-spacing: .04em; }
 @media (max-width: 640px) { .rg-kachel { flex-basis: 78vw; } }
 @media (prefers-reduced-motion: reduce) { .rg-kachel:hover { transform: none; } }
+
+/* ---- Video-Raster ---------------------------------------------------------
+   Responsives Raster fuer mehrere eingebettete Videos (Artikel-Galerien).
+   Die Player laden per loading="lazy" erst beim Heranscrollen, sonst zoege
+   eine Seite mit neun Embeds beim Aufruf neun YouTube-Player nach. */
+.video-raster {
+  display: grid; gap: 22px; margin: 22px 0;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.video-karte { display: flex; flex-direction: column; margin: 0; }
+.video-rahmen {
+  position: relative; padding-top: 56.25%;
+  border-radius: 8px; overflow: hidden; background: var(--panel);
+  border: 1px solid var(--line);
+}
+.video-rahmen iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video-karte figcaption { color: var(--muted); font-size: 13px; margin-top: 8px; }
+.video-karte .video-kanal { display: block; margin-top: 4px; letter-spacing: .04em; }
