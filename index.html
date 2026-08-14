@@ -15,8 +15,51 @@
 <meta property="og:site_name" content="Draco Labs Germany">
 <meta property="og:locale" content="de_DE">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Draco Labs Germany — Drohnen · Prototyping · Beratung">
+<meta name="twitter:description" content="Entwicklung von Multicoptern, Prototyping und 3D-Druck, technische Beratung. Aus NRW, deutschlandweit.">
+<meta name="twitter:image" content="https://dracolabsgermany.com/assets/logo.png">
 <link rel="icon" type="image/png" href="assets/emblem.png">
 <link rel="stylesheet" href="style.css">
+
+<!-- Strukturierte Daten für Google (Organization + WebSite) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://dracolabsgermany.com/#organization",
+      "name": "Draco Labs Germany",
+      "url": "https://dracolabsgermany.com/",
+      "logo": "https://dracolabsgermany.com/assets/logo.png",
+      "email": "info@dracolabsgermany.com",
+      "founder": { "@type": "Person", "name": "Christian Lindemann" },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "c/o IP-Management #11000, Ludwig-Erhard-Straße 18",
+        "postalCode": "20459",
+        "addressLocality": "Hamburg",
+        "addressCountry": "DE"
+      },
+      "areaServed": { "@type": "Country", "name": "Deutschland" },
+      "sameAs": [
+        "https://www.youtube.com/@DracoLabsGermany",
+        "https://www.instagram.com/draco.labs.germany",
+        "https://www.tiktok.com/@dracolabsgermany",
+        "https://shop.dracolabsgermany.com"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://dracolabsgermany.com/#website",
+      "url": "https://dracolabsgermany.com/",
+      "name": "Draco Labs Germany",
+      "inLanguage": "de-DE",
+      "publisher": { "@id": "https://dracolabsgermany.com/#organization" }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -48,7 +91,7 @@
 <section class="hero">
   <img src="assets/logo-hero.png" alt="Draco Labs Germany — Logo">
   <h1>Drohnen · Prototyping · Beratung</h1>
-  <p class="tagline">Technologie-Entwicklung für <span class="accent">Multicopter</span> —
+  <p class="tagline">Technologie-Entwicklung für <span class="accent">Multicopter</span>,
   von der Idee über den Prototyp bis zum Einsatz.</p>
 </section>
 
@@ -57,19 +100,19 @@
     <div class="card">
       <h2>Drohnen &amp; UAS</h2>
       <p>Entwicklung ferngesteuerter Multicopter, Komponenten und Zubehör.
-      Einsätze wie Luftaufnahmen und Inspektion — Betrieb nach EU-Drohnenrecht,
+      Einsätze wie Luftaufnahmen und Inspektion: Betrieb nach EU-Drohnenrecht,
       LBA-registriert und versichert.</p>
     </div>
     <div class="card">
       <h2>Prototyping &amp; Fertigung</h2>
       <p>Vom Konzept zum funktionsfähigen Prototyp: Konstruktion, 3D-Druck,
-      Elektronik-Integration und Kleinserien — schnell, iterativ und
+      Elektronik-Integration und Kleinserien, schnell, iterativ und
       dokumentiert.</p>
     </div>
     <div class="card">
       <h2>Technische Beratung</h2>
       <p>Produktdesign und technische Entwicklung: Machbarkeit, Komponentenwahl,
-      Automatisierung — ehrliche Einschätzungen statt Buzzwords.</p>
+      Automatisierung.  Ehrliche Einschätzungen statt Buzzwords.</p>
     </div>
   </div>
 
@@ -79,7 +122,7 @@
   <section class="block" id="baustelle">
     <h2>Baustelle: Der Weg zum eigenen Frame</h2>
     <p>Kein Rendering, kein Stockfootage: Hier zeigen wir, wie unser eigener
-    Frame tatsächlich entsteht — mit echtem Bildmaterial aus Konstruktion und
+    Frame tatsächlich entsteht, mit echtem Bildmaterial aus Konstruktion und
     Werkstatt, in unregelmäßigen Abständen erweitert.</p>
     <div class="log">
       <article class="log-entry">
@@ -97,7 +140,7 @@
         <div>
           <div class="log-meta"><span class="log-tag">Folge 0</span><span class="log-date">20.07.2026</span></div>
           <h3>So haben wir ihn geplant</h3>
-          <p>Das CAD-Modell, aus dem die gedruckten Teile stammen — der Plan,
+          <p>Das CAD-Modell, aus dem die gedruckten Teile stammen: der Plan,
           bevor er real wurde.</p>
         </div>
         <div class="log-media">
@@ -130,7 +173,7 @@
 
   <section class="block" id="ratgeber">
     <h2>Ratgeber &amp; Wissen</h2>
-    <p>Technisches Wissen rund um Long-Range- und Heavy-Lift-Multicopter — verständlich
+    <p>Technisches Wissen rund um Long-Range- und Heavy-Lift-Multicopter, verständlich
     erklärt.</p>
     <!-- ratgeber:start -->
     <div class="rg-karussell">
@@ -213,7 +256,7 @@
           <div class="rg-titel">10-Zoll-Build</div>
           <div class="rg-teaser">Der kompakte Long-Range-Build: Frame und Motoren von Axisflying, MacroQuad-Props und ein
           30,5er-Stack, dazu Akku, Funk, Video und GPS mit Bezugsquellen.</div>
-          <div class="rg-meta">Teileliste</div>
+          <div class="rg-meta">Teileliste · Lesezeit ca. 8 Min</div>
         </div>
       </a>
       <a class="rg-kachel" href="ratgeber-teileliste-long-range.html">
@@ -223,7 +266,7 @@
           <div class="rg-titel">13-Zoll-Build 1</div>
           <div class="rg-teaser">Der große Long-Range-Build mit 13 und 15 Zoll: Frame, Motoren, Akku, Ladegerät, Funk,
           Video und GPS, mit direkten Bezugsquellen.</div>
-          <div class="rg-meta">Teileliste</div>
+          <div class="rg-meta">Teileliste · Lesezeit ca. 6 Min</div>
         </div>
       </a>
     </div>
@@ -233,25 +276,25 @@
   <section class="block" id="ueber">
     <h2>Über Draco Labs</h2>
     <p>Draco Labs Germany ist ein unabhängiges Unternehmen aus Nordrhein-Westfalen.
-    Wir entwickeln, bauen und fliegen Multicopter — mit Schwerpunkt auf den großen
+    Wir entwickeln, bauen und fliegen Multicopter, mit Schwerpunkt auf den großen
     Klassen ab 13 Zoll, wo Long-Range und Heavy-Lift anfangen und Bauteile aus dem
     5-Zoll-Regal nicht mehr ausreichen.</p>
     <p>Was wir verbauen, haben wir selbst konstruiert, gedruckt, verlötet, geflogen
-    und getestet. Fertige Komponenten beziehen wir vom Originalhersteller (OEM),
-    keine China-Nachbauten. Und was wir behaupten, können wir belegen: In unseren
+    und getestet.  Fertige Komponenten beziehen wir vom Originalhersteller (OEM),
+    keine China-Nachbauten.  Und was wir behaupten, können wir belegen: In unseren
     <a href="#ratgeber">Ratgebern</a> hat jede Zahl eine Quelle, und wo wir etwas
-    nicht wissen, schreiben wir es hin. Dieselbe Regel gilt in der Beratung —
+    nicht wissen, schreiben wir es hin.  Dieselbe Regel gilt in der Beratung:
     ehrliche Einschätzungen statt Buzzwords, herstellerneutral.</p>
     <p>Geflogen wird nach EU-Drohnenrecht: LBA-registriert und versichert.</p>
     <p>Wenn du an einem großen Copter baust und nicht weiterkommst,
-    <a href="#kontakt">schreib uns</a> — genau dafür gibt es uns.</p>
+    <a href="#kontakt">schreib uns</a>, genau dafür gibt es uns.</p>
   </section>
 
   <section class="block" id="partner">
     <h2>Partner &amp; Empfehlungen</h2>
     <p>Ausrüstung, die wir selbst nutzen und empfehlen können. <strong>Anzeige:</strong>
-    Die folgenden Links sind Affiliate-Links — kaufst du darüber, erhalten wir eine
-    Provision, für dich ändert sich am Preis nichts. Empfohlen wird trotzdem nur, was
+    Die folgenden Links sind Affiliate-Links; kaufst du darüber, erhalten wir eine
+    Provision, für dich ändert sich am Preis nichts.  Empfohlen wird trotzdem nur, was
     uns fachlich überzeugt.</p>
     <div class="partner-grid">
       <a class="partner-card" href="https://www.sunlu.com/?sca_ref=11859027.qxuEVmIDy7"
@@ -315,19 +358,20 @@
 <footer class="site">
   <div class="wrap">
     <nav class="social" aria-label="Draco Labs in sozialen Netzwerken">
-      <a href="https://www.youtube.com/@DracoLabsGermany" target="_blank" rel="noopener" class="yt" aria-label="Draco Labs auf YouTube">
+      <a href="https://www.youtube.com/@DracoLabsGermany" rel="noopener" class="yt" aria-label="Draco Labs auf YouTube">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/></svg>
       </a>
-      <a href="https://www.instagram.com/draco.labs.germany" target="_blank" rel="noopener" class="ig" aria-label="Draco Labs auf Instagram">
+      <a href="https://www.instagram.com/draco.labs.germany" rel="noopener" class="ig" aria-label="Draco Labs auf Instagram">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c0-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 3.1A6.7 6.7 0 1 0 18.7 12 6.7 6.7 0 0 0 12 5.3Zm0 11a4.3 4.3 0 1 1 4.3-4.3 4.3 4.3 0 0 1-4.3 4.3ZM19 5a1.6 1.6 0 1 1-1.6-1.6A1.6 1.6 0 0 1 19 5Z"/></svg>
       </a>
-      <a href="https://www.tiktok.com/@dracolabsgermany" target="_blank" rel="noopener" class="tt" aria-label="Draco Labs auf TikTok">
+      <a href="https://www.tiktok.com/@dracolabsgermany" rel="noopener" class="tt" aria-label="Draco Labs auf TikTok">
         <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16.6 2h-3.1v13.1a2.7 2.7 0 1 1-2.7-2.7c.2 0 .4 0 .6.1V9.3a6 6 0 0 0-.6 0 5.8 5.8 0 1 0 5.8 5.8V8.6a7 7 0 0 0 4.1 1.3V6.8a3.9 3.9 0 0 1-4.1-3.9V2Z"/></svg>
       </a>
     </nav>
     <div class="links">
       <a href="impressum.html">Impressum</a>
       <a href="datenschutz.html">Datenschutz</a>
+      <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
     </div>
     <div>© 2026 Draco Labs Germany · Kleinunternehmer gem. § 19 UStG</div>
     <img class="ai-label" src="assets/label-ai-modified.svg" alt="KI-Kennzeichnung: Inhalte dieser Website wurden teilweise mit KI erstellt oder bearbeitet (AI MODIFIED)">
