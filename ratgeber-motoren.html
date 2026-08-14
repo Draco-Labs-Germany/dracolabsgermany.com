@@ -37,7 +37,7 @@
   "description": "Motoren-Ratgeber für FPV- und Long-Range-Copter: Statorgröße, KV, Drehmoment und Effizienz in Gramm pro Watt, mit unabhängigen Prüfstandsdaten und Marktübersicht.",
   "image": "https://dracolabsgermany.com/assets/logo.png",
   "datePublished": "2026-08-13",
-  "dateModified": "2026-08-13",
+  "dateModified": "2026-08-14",
   "author": { "@type": "Organization", "name": "Draco Labs Germany" },
   "publisher": {
     "@type": "Organization",
@@ -109,6 +109,13 @@
     fachlich begründen können, und die Begründung steht immer im Text.</p>
 
     <h2 id="k1">1. Wie ein Brushless-Motor funktioniert</h2>
+<!-- bild:start motoren-aussenlaeufer -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/motoren-aussenlaeufer.jpg" alt="Schemabild: Querschnitt eines Außenläufers mit feststehendem Stator innen und drehender Magnetglocke außen"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Der Aufbau in einem Bild: innen steht der Stator, außen dreht die Glocke mit den Magneten.  Alle Schaubilder in diesem Ratgeber sind Standbilder aus unserer zweiteiligen Wissensvideo-Serie.</figcaption>
+    </figure>
+<!-- bild:ende motoren-aussenlaeufer -->
     <p>Fast alle Multicopter-Motoren sind sogenannte Außenläufer.  Innen sitzt der
     <strong>Stator</strong>: ein Paket aus dünnen, gestapelten Elektroblechen mit Zähnen, um die
     Kupferdraht gewickelt ist.  Außen dreht sich die <strong>Glocke</strong> (der Rotor): ein
@@ -133,6 +140,13 @@
     Hand.<sup><a href="#q17">17</a></sup></p>
 
     <h2 id="k2">2. Die Zahlen auf dem Motor: das Statormaß</h2>
+<!-- bild:start motoren-statormass -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/motoren-statormass.jpg" alt="Schemabild: Balkenvergleich des Statorvolumens von 2207 und 4012, Faktor 5,7"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Vier Ziffern, ein Volumen: vom 2207 zum 4012 wächst der Stator um das 5,7-Fache.  Mehr Eisen und mehr Kupfer heißt mehr Drehmoment.</figcaption>
+    </figure>
+<!-- bild:ende motoren-statormass -->
     <p>Motorgrößen folgen dem Schema „Breite mal Höhe": Die ersten beiden Ziffern sind der
     Statordurchmesser in Millimetern, die letzten beiden die Statorhöhe.  Ein 2207 hat also
     einen Stator mit 22&nbsp;mm Durchmesser und 7&nbsp;mm Höhe.<sup><a href="#q1">1</a></sup>
@@ -151,6 +165,13 @@
     mindestens genauso zählen.<sup><a href="#q6">6</a></sup></p>
 
     <h2 id="k3">3. KV verstehen: Drehzahl, Spannung, Drehmoment</h2>
+<!-- bild:start motoren-kv-drehmoment -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/motoren-kv-drehmoment.jpg" alt="Schemabild: Drehmoment je Ampere bei 400 KV gegen 1750 KV, Faktor vier"
+        width="1200" height="675" loading="lazy">
+      <figcaption>KV ist die Übersetzung des Antriebs: bei 400&nbsp;KV steckt in jedem Ampere rund viermal so viel Drehmoment wie bei 1750&nbsp;KV.</figcaption>
+    </figure>
+<!-- bild:ende motoren-kv-drehmoment -->
     <p>Die KV-Zahl gibt an, wie viele Umdrehungen pro Minute der Motor je Volt macht, unbelastet
     und ohne Propeller.<sup><a href="#q1">1</a></sup>  Ein Motor mit 400&nbsp;KV an einem
     6S-Akku (22,2&nbsp;V nominal) dreht also leer rund 8.900 Umdrehungen pro Minute (gerechnet,
@@ -186,6 +207,13 @@
     und hilft der Effizienz.<sup><a href="#q4">4</a></sup></p>
 
     <h2 id="k4">4. Effizienz: Gramm pro Watt kauft Flugzeit</h2>
+<!-- bild:start motoren-grammwatt -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/motoren-grammwatt.jpg" alt="Schemabild: Datenblattwerte des MN4012 mit 9,48 Gramm pro Watt bei halbem Gas gegen 6,59 bei Vollgas"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Derselbe Motor, derselbe Propeller: bei 50&nbsp;% Gas liefert er 9,48&nbsp;g/W, bei Vollgas nur 6,59.  Flugzeit entsteht bei Teillast.</figcaption>
+    </figure>
+<!-- bild:ende motoren-grammwatt -->
     <p>Die wichtigste Kennzahl für Long Range ist nicht der Maximalschub, sondern die Effizienz:
     Wie viel Gramm Schub liefert der Antrieb je Watt elektrischer Leistung?<sup><a href="#q1">1</a></sup>
     Diese Zahl steht in jedem guten Motordatenblatt, und sie hat eine Eigenschaft, die man kennen
@@ -220,6 +248,13 @@
     gerechnet ist das der Unterschied von mehreren Minuten Flugzeit.</p>
 
     <h2 id="k5">5. Der Prüfstand lügt nicht: Herstellerangabe gegen Messung</h2>
+<!-- bild:start motoren-istkv -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/motoren-istkv.jpg" alt="Schemabild: aufgedruckte KV-Werte durchgestrichen, daneben die auf dem Prüfstand gemessenen Ist-Werte"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Der Aufdruck ist eine Angabe, keine Messung: die Ist-KV weicht regelmäßig um bis zu zehn Prozent ab.</figcaption>
+    </figure>
+<!-- bild:ende motoren-istkv -->
     <p>Motoren kauft man am besten nach unabhängigen Messungen, nicht nach Datenblatt-Superlativen.
     Die Referenz dafür sind die Prüfstandstests von Chris Rosser (AOS RC): Jeder Motor durchläuft
     dort denselben Parcours aus KV-Messung (Drehzahl bei 10&nbsp;V, ohne Prop), Schubrampe an
@@ -254,6 +289,13 @@
     zugleich einer der besten, mit über 80&nbsp;Prozent Effizienz bei 600&nbsp;W.<sup><a href="#q4">4</a></sup></p>
 
     <h2 id="k6">6. Qualität im Detail: Wicklung, Magnete, Lager</h2>
+<!-- bild:start motoren-wicklung -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/motoren-wicklung.jpg" alt="Schemabild: Single-Core-Wicklung mit einem dicken Draht gegen Multi-Core mit mehreren dünnen Drähten"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Zwei Wege zur selben Windungszahl: ein dicker Draht je Zahn verträgt Dauerlast besser als mehrere dünne parallel.</figcaption>
+    </figure>
+<!-- bild:ende motoren-wicklung -->
     <p>Woran erkennt man einen robusten Motor, wenn man kein Prüfstand-Labor hat?  An ein paar
     Konstruktionsmerkmalen, die Hersteller in der Regel dokumentieren.</p>
     <p><strong>Die Wicklung: Windungszahl macht die KV.</strong>  Dass derselbe Motor als
@@ -306,6 +348,13 @@
     montiert Props mit Schrauben direkt auf der Glocke, das Lochbild muss zum Prop passen.</p>
 
     <h2 id="k7">7. Wie ein Motor entsteht: ein Blick in die Serienfertigung</h2>
+<!-- bild:start motoren-fertigung -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/motoren-fertigung.jpg" alt="Schemabild: Zeitstrahl mit jungem europäischem Motorenbau gegenüber 20 bis 25 Jahren Erfahrung in China"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Der Vorsprung steckt in den Prozessen, nicht in den Maschinen: 20 bis 25 Jahre Serienerfahrung lassen sich nicht kaufen.</figcaption>
+    </figure>
+<!-- bild:ende motoren-fertigung -->
     <p>Ein Brushless-Motor sieht simpel aus: Kupfer, Blech, Magnete.  Warum die Fertigung
     trotzdem eine Kunst ist, zeigt ein ausführliches Interview mit dem CEO von EUMOTORS, einem
     der ersten Hersteller, der Drohnenmotoren in Serie außerhalb Chinas baut, mit Werken in
@@ -326,6 +375,13 @@
     und die 4014-Serie.<sup><a href="#q9">9</a></sup></p>
 
     <h2 id="k8">8. Motorwahl nach Build-Größe</h2>
+<!-- bild:start motoren-wahltafel -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/motoren-wahltafel.jpg" alt="Schemabild: Tabelle der Statorklassen und KV-Bereiche von 5 Zoll Freestyle bis 15 Zoll Cinelifter"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Der Startpunkt für die Motorwahl: 13&nbsp;Zoll heißt 4012 bis 4320 mit 400 bis 420&nbsp;KV.  Die konkrete Wahl hängt an Propeller, Akku und Abfluggewicht.</figcaption>
+    </figure>
+<!-- bild:ende motoren-wahltafel -->
     <p>Als grober Startpunkt (die konkrete Wahl hängt immer von Prop, Akku und Abfluggewicht
     ab):</p>
     <div data-nosnippet>
@@ -397,6 +453,13 @@
     </p>
 
     <h2 id="k9">9. Pflege und Praxis</h2>
+<!-- bild:start motoren-temperatur -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/motoren-temperatur.jpg" alt="Schemabild: Thermometer mit dem Betriebsbereich des MN4012 bei 47 bis 60 Grad und der 80-Grad-Grenze der Standard-Magnetgüten"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Die Handprobe nach dem Flug: 47 bis 60&nbsp;°C sind normal, ab 80&nbsp;°C wird es für Standard-Magnete kritisch.</figcaption>
+    </figure>
+<!-- bild:ende motoren-temperatur -->
     <p><strong>Temperatur im Blick behalten.</strong>  Die Datenblatt-Referenz: Der MN4012
     erreicht nach zehn Minuten Dauervollgas je nach Prop und KV-Variante 47 bis
     60&nbsp;°C<sup><a href="#q3">3</a></sup>, mit reichlich Abstand zur 80-°C-Grenze der
@@ -560,6 +623,7 @@
 <!-- historie:start -->
     <h2>Änderungshistorie</h2>
     <ul class="muted historie">
+      <li><strong>14.08.2026</strong> · Neun Schaubilder aus der Wissensvideo-Serie ergänzt</li>
       <li><strong>13.08.2026</strong> · Veröffentlichung</li>
     </ul>
 <!-- historie:ende -->
