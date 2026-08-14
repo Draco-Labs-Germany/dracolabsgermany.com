@@ -34,6 +34,7 @@ MENUE = [
     ("leistungen", "Leistungen"),
     ("neuigkeiten", "Neuigkeiten"),
     ("ratgeber", "Ratgeber"),
+    ("teilelisten", "Teilelisten"),
     ("ueber", "Über uns"),
     ("kontakt", "Kontakt"),
 ]

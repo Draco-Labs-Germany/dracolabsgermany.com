@@ -1,11 +1,15 @@
 # Normale Suchmaschinen-Crawler: erlaubt (wir wollen gefunden werden).
 User-agent: *
+Disallow: /tools/
 Allow: /
 
-# --- KI-Trainings- und Antwortmaschinen-Crawler: nicht erwuenscht -------------
+# --- KI-Trainings- und Antwortmaschinen-Crawler: nicht erwuenscht ---
 # Diese Bots nutzen Inhalte fuer Modelltraining oder KI-Antworten, ohne
 # Besucher auf die Seite zu bringen. Das Blocken kostet kein Google-Ranking:
 # Google-Extended steuert NUR die Gemini-Nutzung, nicht die Suche.
+# Gepflegt wird die Liste in draco-labs/tools/robots_sync.py — dort steht
+# auch, welche Bots bewusst erlaubt bleiben und warum.
+
 User-agent: Google-Extended
 Disallow: /
 
@@ -27,6 +31,9 @@ Disallow: /
 User-agent: Claude-Web
 Disallow: /
 
+User-agent: Claude-SearchBot
+Disallow: /
+
 User-agent: PerplexityBot
 Disallow: /
 
@@ -45,6 +52,9 @@ Disallow: /
 User-agent: meta-externalagent
 Disallow: /
 
+User-agent: Meta-ExternalFetcher
+Disallow: /
+
 User-agent: FacebookBot
 Disallow: /
 
@@ -57,10 +67,28 @@ Disallow: /
 User-agent: Amazonbot
 Disallow: /
 
+User-agent: Timpibot
+Disallow: /
+
+User-agent: AI2Bot
+Disallow: /
+
+User-agent: YouBot
+Disallow: /
+
 User-agent: omgili
 Disallow: /
 
-User-agent: Timpibot
+User-agent: omgilibot
+Disallow: /
+
+User-agent: Webzio-Extended
+Disallow: /
+
+User-agent: ImagesiftBot
+Disallow: /
+
+User-agent: img2dataset
 Disallow: /
 
 Sitemap: https://dracolabsgermany.com/sitemap.xml
