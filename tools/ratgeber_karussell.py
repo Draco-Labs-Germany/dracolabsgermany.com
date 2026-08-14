@@ -83,6 +83,14 @@ RATGEBER = [
 # Rubrik "Neuigkeiten": Berichte und Einordnungen zu Ereignissen der Szene,
 # im Gegensatz zu den zeitlosen Ratgebern.  Dateien heissen artikel-*.html.
 NEUIGKEITEN = [
+    {"datei": "artikel-exportbeschraenkungen.html",
+     "titel": "Exportbeschränkungen",
+     "teaser": "China verschärft die Exportkontrollen, und es gibt keinen "
+               "einzigen 13-Zoll-Frame aus deutscher Fertigung.  Was davon bei "
+               "dir im Warenkorb und bei uns in der Werkstatt ankommt.",
+     "bild": "exportbeschraenkungen-hero.jpg",
+     "alt": "Schaubild: die Lieferkette als Kette aus Rohstoff, Bauteil, "
+            "Ausfuhrkontrolle und Werkstatt"},
     {"datei": "artikel-darpa-lift-challenge.html",
      "titel": "DARPA Lift Challenge",
      "teaser": "Eine Woche Dayton: 76 Teams, nur 9 gewertete Läufe und ein "
