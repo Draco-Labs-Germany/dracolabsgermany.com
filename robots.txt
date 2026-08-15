@@ -1,6 +1,5 @@
 # Normale Suchmaschinen-Crawler: erlaubt (wir wollen gefunden werden).
 User-agent: *
-Disallow: /tools/
 Allow: /
 
 # --- KI-Trainings- und Antwortmaschinen-Crawler: nicht erwuenscht ---
