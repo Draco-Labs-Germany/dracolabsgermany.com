@@ -83,6 +83,21 @@ header.site nav a:hover { border-bottom-color: var(--cyan); text-decoration: non
 .hero p.tagline { color: var(--muted); font-size: 18px; margin-top: 10px; }
 .hero .accent { color: var(--cyan); }
 
+/* Hinweiskasten auf den Leistungsseiten. Roter Balken statt Cyan, weil hier
+   keine Zusatzinfo steht, sondern eine Bedingung: wer Akkus mitschickt,
+   bekommt sie nicht zurueck. Muss vor dem Versand gelesen worden sein. */
+.hinweis {
+  background: var(--panel); border: 1px solid var(--line);
+  border-left: 3px solid var(--red); border-radius: 10px;
+  padding: 16px 20px; margin: 22px 0;
+}
+.hinweis p { margin: 0; }
+.hinweis p + p { margin-top: 8px; }
+.hinweis .titel {
+  font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+  font-size: 13px; color: var(--red);
+}
+
 /* Leistungen */
 .cards {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
