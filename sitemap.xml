@@ -18,6 +18,16 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://dracolabsgermany.com/aufbau-service.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dracolabsgermany.com/beratung.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://dracolabsgermany.com/ratgeber-akku-13-zoll.html</loc>
     <lastmod>2026-08-14</lastmod>
     <changefreq>monthly</changefreq>
@@ -62,6 +72,11 @@
   <url>
     <loc>https://dracolabsgermany.com/ratgeber-videouebertragung.html</loc>
     <lastmod>2026-08-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dracolabsgermany.com/reparatur-service.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
