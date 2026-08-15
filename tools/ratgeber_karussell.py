@@ -89,8 +89,8 @@ NEUIGKEITEN = [
                "einzigen 13-Zoll-Frame aus deutscher Fertigung.  Was davon bei "
                "dir im Warenkorb und bei uns in der Werkstatt ankommt.",
      "bild": "exportbeschraenkungen-hero.jpg",
-     "alt": "Schaubild: die Lieferkette als Kette aus Rohstoff, Bauteil, "
-            "Ausfuhrkontrolle und Werkstatt"},
+     "alt": "Schaubild: Containerstapel, geschlossene Zollschranke und "
+            "dahinter ein Quadrocopter als Werkstatt"},
     {"datei": "artikel-darpa-lift-challenge.html",
      "titel": "DARPA Lift Challenge",
      "teaser": "Eine Woche Dayton: 76 Teams, nur 9 gewertete Läufe und ein "
