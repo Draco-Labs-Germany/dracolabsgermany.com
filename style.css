@@ -157,12 +157,15 @@ footer.site nav.social a.ig:hover { background: linear-gradient(45deg,#f9ce34,#e
 footer.site nav.social a.tt:hover { background: #000; }
 @media (prefers-reduced-motion: reduce) { footer.site nav.social a:hover { transform: none; } }
 
-/* ---- Mobil ----------------------------------------------------------------
+/* ---- Kopf: Burger ----------------------------------------------------------
    Bis hierher hatte die Seite KEINE einzige Media Query: die Navigation lief
-   auf schmalen Displays schlicht über. Ab 760px klappt sie deshalb hinter den
-   Burger; Logo und Shop-Button bleiben immer stehen. */
-@media (max-width: 760px) {
-  .wrap { padding: 0 16px; }
+   auf schmalen Displays schlicht über. Sie klappt deshalb hinter den Burger;
+   Logo und Shop-Button bleiben immer stehen.
+
+   Eigener Breakpoint, weiter oben als der Rest der Mobil-Regeln (760px): sieben
+   Menüpunkte plus Logo und Shop-Knopf brauchen rund 950px, im Hochformat eines
+   Tablets (768px) lief die Leiste sonst wieder über. */
+@media (max-width: 900px) {
   /* height: auto — die feste Kopfhöhe der Desktop-Regel würde das aufgeklappte
      Burger-Menü abschneiden, das hier in eine zweite Zeile umbricht. */
   header.site .wrap { flex-wrap: wrap; gap: 10px; height: auto; padding: 10px 16px; }
@@ -175,14 +178,15 @@ footer.site nav.social a.tt:hover { background: #000; }
      definiert nur die ERSTE Zeile, die weiteren Links landen in impliziten
      Zeilen und blieben sichtbar (genau der Fehler beim ersten Versuch).
      Der max-height-Wert ist absichtlich großzügig; er begrenzt nur, er setzt
-     keine Höhe. */
+     keine Höhe — er muss aber über der echten Höhe liegen, sonst schneidet er
+     die letzten Punkte ab (sieben Punkte à ~44px). */
   header.site nav {
     order: 4; flex-basis: 100%; margin-left: 0;
     flex-direction: column; gap: 0;
     max-height: 0; overflow: hidden;
     transition: max-height .25s ease;
   }
-  .menu-toggle:checked ~ nav { max-height: 320px; }
+  .menu-toggle:checked ~ nav { max-height: 440px; }
   header.site nav a {
     padding: 12px 2px; border-bottom: 1px solid var(--line); font-size: 15px;
   }
@@ -192,6 +196,11 @@ footer.site nav.social a.tt:hover { background: #000; }
   .menu-toggle:checked + .burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
   .menu-toggle:checked + .burger span:nth-child(2) { opacity: 0; }
   .menu-toggle:checked + .burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+}
+
+/* ---- Mobil ---------------------------------------------------------------- */
+@media (max-width: 760px) {
+  .wrap { padding: 0 16px; }
 
   /* Der Hero lief rechts aus dem Bild: Sperrsatz (letter-spacing) plus clamp()
      ergaben auf 390px eine Zeile, die breiter war als der Bildschirm. */
