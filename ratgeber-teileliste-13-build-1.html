@@ -255,7 +255,9 @@
     Luftfahrteinheit dort ihren Strom herbekommt (siehe Kapitel 8).  Der unten verlinkte
     Stack ist die richtige Version, im Datenblatt steht „BEC: 5V 3A / 12V 3A".  Steht in
     einem anderen Angebot nur „F7 SE" ohne Zellenangabe oder ein 10-V-BEC, ist es die
-    alte Fassung.</p>
+    alte Fassung.  Lass dich dabei vom Anschlussbild nicht irritieren: Die Zeichnungen,
+    die im Handel kursieren, zeigen teilweise noch die alte Fassung mit 10&nbsp;V.
+    Maßgeblich ist die Beschriftung auf dem Board.</p>
     <p style="margin-top:14px">
       <a href="https://www.fpv24.com/de/t-motor/t-motor-velox-f7-se-v70a-8s-fc-flight-controller-esc-stack?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ T-Motor Velox F7 SE + V70A 8S Stack bei FPV24 ansehen (Anzeige)</a>
     </p>
@@ -415,13 +417,13 @@
     den Akku.  Die O4 Air Unit Pro nimmt laut DJI 7,4 bis 26,4&nbsp;V (also 2S bis 6S),
     der Walksnail-VTX 11,1 bis 25,2&nbsp;V (3S bis 6S); ein volles 8S-Pack liefert
     33,6&nbsp;V und zerstört beide.  Auf 6S hängst du sie direkt an VBAT, auf 8S
-    <strong>zwingend an einen geregelten Ausgang des Stacks</strong>.  Dabei lohnt der
-    Blick ins Anschlussbild: Der F7 SE hat einen eigenen Anschluss für HD-Luftfahrteinheiten
-    mit 10&nbsp;V und daneben das 12-V-BEC mit 3&nbsp;A.  Für die
-    <strong>DJI O4 Air Unit Pro</strong> passt beides, sie nimmt alles ab 7,4&nbsp;V.  Der
-    <strong>Walksnail-VTX</strong> will dagegen mindestens 11,1&nbsp;V sehen und gehört
-    deshalb an die 12&nbsp;V, nicht an den 10-V-Anschluss.  Das ist der eine Punkt, an dem
-    der Sprung auf 8S wirklich Verkabelungsarbeit macht.</p>
+    <strong>zwingend an den geregelten VTX-Ausgang des Stacks</strong>.  Der ist beim
+    F7 SE umschaltbar: bei der aktuellen 8S-Fassung zwischen 5 und
+    <strong>12&nbsp;V</strong>, bei der alten 6S-Fassung zwischen 5 und 10&nbsp;V.  Die
+    <strong>DJI O4 Air Unit Pro</strong> läuft mit beidem, sie nimmt alles ab
+    7,4&nbsp;V.  Der <strong>Walksnail-VTX</strong> will dagegen mindestens 11,1&nbsp;V
+    sehen und gehört damit zwingend an die 12-V-Stellung der neuen Fassung.  Das ist der
+    eine Punkt, an dem der Sprung auf 8S wirklich Verkabelungsarbeit macht.</p>
     <p style="margin-top:14px">
       <a href="https://www.fpv24.com/de/dji/dji-o4-air-unit-fpv-lufteinheit-pro?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ DJI O4 Air Unit Pro bei FPV24 ansehen (Anzeige)</a><br>
       <a href="https://n-factory.de/Walksnail-Avatar-HD-GT2-Kit-1080P-Dual" rel="noopener" target="_blank">➜ Walksnail Avatar HD GT2 Kit (1080p, Dual-Antenne) bei n-factory.de ansehen</a>
@@ -484,6 +486,7 @@
 <!-- historie:start -->
     <h2>Änderungshistorie</h2>
     <ul class="muted historie">
+      <li><strong>16.08.2026</strong> · VTX-Ausgang des F7 SE ist umschaltbar (neue Fassung 5/12 V, alte 5/10 V); Hinweis ergaenzt, dass die kursierenden Anschlussbilder teils noch die alte Fassung zeigen</li>
       <li><strong>16.08.2026</strong> · VTX-Versorgung auf 8S praezisiert: HD-VTX-Anschluss fuehrt 10 V, das BEC 12 V; die O4 Pro laeuft mit beidem, der Walksnail-VTX braucht die 12 V</li>
       <li><strong>16.08.2026</strong> · RadioMaster GX15 MAX als Sender-Option 1 aufgenommen (Dual-2,4-GHz-ELRS, AG02-Gimbals), TX16S MKII wird Option 2</li>
       <li><strong>16.08.2026</strong> · Bezugsquellen aufgeraeumt: Motorlinks nur noch zum T-Motor-Store, Stack jetzt bei FPV24, fehlender Link zum 8S 6.200 ergaenzt</li>
