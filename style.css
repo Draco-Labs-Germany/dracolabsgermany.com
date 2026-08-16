@@ -225,6 +225,8 @@ main.legal h2 {
   color: var(--cyan); border-top: 1px solid var(--line); line-height: 1.3;
 }
 main.legal h3 { font-size: 16px; margin: 34px 0 10px; color: var(--cyan); }
+/* Optionsbloecke in Teilelisten deutlich voneinander absetzen */
+main.legal p.option { margin-top: 30px; }
 main.legal p { color: var(--ink); margin-bottom: 14px; }
 main.legal ul, main.legal ol { margin: 0 0 16px; padding-left: 22px; }
 main.legal li { color: var(--ink); margin-bottom: 6px; }
