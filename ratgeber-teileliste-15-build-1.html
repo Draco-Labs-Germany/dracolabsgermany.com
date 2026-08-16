@@ -149,18 +149,28 @@
     und je größer der Prop, desto niedriger muss die Drehzahl liegen.  T-Motor fährt die
     15x5-Carbonprops in den eigenen Messreihen zwischen 3.600 und 6.300&nbsp;U/min.  Genau
     dort willst du landen.</p>
-    <p><strong>Option 1: T-Motor MN4012 KV340.</strong><br>Der MN4012 (Baureihe Navigator)
-    ist vom Hersteller mit 4S bis 8S freigegeben, wiegt 155&nbsp;g mit Kabel und hat einen
-    Stator von 40&nbsp;x&nbsp;12&nbsp;mm bei 4-mm-Welle.  In T-Motors Messreihe bringt die
-    KV340 an 22,2&nbsp;V (6S) mit dem 15x5-Carbonprop <strong>1.920&nbsp;g Schub bei
-    11,4&nbsp;A</strong> und 5.700&nbsp;U/min, bei halbem Gas 790&nbsp;g für 3,4&nbsp;A.
-    Vier davon ergeben rund 7,7&nbsp;kg Standschub, also selbst mit Kamera-Nutzlast noch
-    reichlich Reserve.  Der Dauerstrom liegt bei 22&nbsp;A pro Motor.</p>
-    <p><strong>Option 2: DarwinFPV 4320.</strong><br>Der 4320 mit 350KV, Stator
-    43&nbsp;x&nbsp;20&nbsp;mm und M6-Welle wird von DarwinFPV ausdrücklich für 13- bis
-    15-Zoll-X-Class und Nutzlast-Copter positioniert.  Er ist der kräftigere, schwerere
-    Motor und die naheliegende Wahl, wenn Frame und Antrieb aus einer Hand kommen sollen,
-    ebenfalls auf 6S.</p>
+    <p><strong>Option 1: T-Motor MN4012 KV340.</strong><br>Der MN4012 aus T-Motors
+    Baureihe Navigator:</p>
+    <ul>
+      <li>vom Hersteller mit 4S bis 8S freigegeben</li>
+      <li>155&nbsp;g mit Kabel</li>
+      <li>Stator 40&nbsp;x&nbsp;12&nbsp;mm, 4-mm-Welle</li>
+      <li>Dauerstrom 22&nbsp;A pro Motor</li>
+    </ul>
+    <p>In T-Motors Messreihe bringt die KV340 an 22,2&nbsp;V (6S) mit dem
+    15x5-Carbonprop <strong>1.920&nbsp;g Schub bei 11,4&nbsp;A</strong> und
+    5.700&nbsp;U/min, bei halbem Gas 790&nbsp;g für 3,4&nbsp;A.</p>
+    <p>Vier davon ergeben rund 7,7&nbsp;kg Standschub, also selbst mit Kamera-Nutzlast
+    noch reichlich Reserve.</p>
+    <p><strong>Option 2: DarwinFPV 4320.</strong><br>Von DarwinFPV ausdrücklich für 13-
+    bis 15-Zoll-X-Class und Nutzlast-Copter positioniert:</p>
+    <ul>
+      <li>350KV</li>
+      <li>Stator 43&nbsp;x&nbsp;20&nbsp;mm</li>
+      <li>M6-Welle</li>
+    </ul>
+    <p>Er ist der kräftigere, schwerere Motor und die naheliegende Wahl, wenn Frame und
+    Antrieb aus einer Hand kommen sollen, ebenfalls auf 6S.</p>
     <p><strong>Und 8S?</strong>  Rechnerisch bräuchte 15 Zoll auf 8S rund 260KV.  Genau
     diese Lücke ist im Programm nicht sauber besetzt: Die kleinste MN4012-Variante ist die
     KV340 (auf 8S zu schnell für 15 Zoll), die nächstgrößere Baureihe MN5008 gibt es mit
@@ -221,13 +231,17 @@
     Profi-Variante, und es ist der Weg, den iFlight bei der eigenen 13-Zoll-Drohne geht:
     Die X413 mit 8S fliegt mit einem BLITZ-Pro-Flight-Controller, dem E80-Pro-Regler,
     XING-4214-Motoren und 13-Zoll-Dreiblatt-Props.  Der <strong>H7 Pro</strong> ist der
-    aktuelle Pro-Controller der Reihe: STM32H743 statt F7, ICM42688-Gyro, Barometer,
-    sieben UARTs, Blackbox auf SD-Karte und ein Eingangsbereich von 14,8 bis 50,4&nbsp;V
-    (4S bis 12S).  Die BEC-Ausgänge liefern 5&nbsp;V mit 3&nbsp;A und
-    <strong>12&nbsp;V mit 2,5&nbsp;A</strong>, also genug für jede VTX-Einheit.  Der
-    <strong>E80 Pro</strong> ist für 2S bis 8S freigegeben und liefert 80&nbsp;A dauerhaft
-    (100&nbsp;A Burst) mit BLHeli_32.  Die 8S-Grenze dieses Builds setzt hier also der
-    Regler, nicht der Controller.</p>
+    aktuelle Pro-Controller der Reihe:</p>
+    <ul>
+      <li>STM32H743 statt F7, ICM42688-Gyro, Barometer</li>
+      <li>sieben UARTs, Blackbox auf SD-Karte</li>
+      <li>Eingang 14,8 bis 50,4&nbsp;V (4S bis 12S)</li>
+      <li>BEC 5&nbsp;V mit 3&nbsp;A und <strong>12&nbsp;V mit 2,5&nbsp;A</strong>, also
+      genug für jede VTX-Einheit</li>
+    </ul>
+    <p>Der <strong>E80 Pro</strong> dazu ist für 2S bis 8S freigegeben und liefert
+    80&nbsp;A dauerhaft (100&nbsp;A Burst) mit BLHeli_32.  Die 8S-Grenze setzt hier also
+    der Regler, nicht der Controller.</p>
     <p>Der entscheidende Vorteil gegenüber Option 2: Für den H7 Pro gibt es Targets für
     <strong>Betaflight, INAV und ArduPilot</strong>.  Wer Wegpunkt-Missionen fliegen will,
     kommt an dieser Seite kaum vorbei.  Zwei Dinge dafür im Blick behalten: Der Stack baut
@@ -253,10 +267,13 @@
     <p>Der eigentliche Punkt steht im Datenblatt: Ihre Firmware-Targets heißen bei
     ArduPilot, INAV und Betaflight allesamt <strong>MATEKH743</strong>.  Die Platine ist
     also zur Matek-H743-Plattform kompatibel, dem Arbeitspferd der Long-Range- und
-    Autopilot-Ecke, und erbt damit deren Firmware-Auswahl.  Dazu STM32H743 mit
-    480&nbsp;MHz, zwei IMUs, Barometer, Blackbox auf microSD, sieben UARTs mit Inversion
-    und 6 bis 36&nbsp;V Eingang (2S bis 8S) bei nur 7&nbsp;g Gewicht, alles auf
-    <strong>30,5&nbsp;mm</strong>.</p>
+    Autopilot-Ecke, und erbt damit deren Firmware-Auswahl.  Die Eckdaten:</p>
+    <ul>
+      <li>STM32H743 mit 480&nbsp;MHz, zwei IMUs, Barometer</li>
+      <li>Blackbox auf microSD, sieben UARTs mit Inversion</li>
+      <li>Eingang 6 bis 36&nbsp;V (2S bis 8S)</li>
+      <li>7&nbsp;g Gewicht, Lochbild <strong>30,5&nbsp;mm</strong></li>
+    </ul>
     <p>Zwei Dinge musst du dafür einplanen.  Erstens gibt es nur ein
     <strong>5-V-BEC mit 2&nbsp;A</strong> (kurzzeitig 3&nbsp;A), keine 9, 10 oder
     12&nbsp;V: Die VTX-Einheit braucht also einen eigenen Spannungswandler,
@@ -415,6 +432,7 @@
 <!-- historie:start -->
     <h2>Änderungshistorie</h2>
     <ul class="muted historie">
+      <li><strong>16.08.2026</strong> · Lesbarkeit: Zahlenlastige Absaetze bei Motoren und Stack in Aufzaehlungen zerlegt</li>
       <li><strong>16.08.2026</strong> · Uebersicht: Ratgeber-Spalte wieder vollstaendig, Motoren und Props teilen sich einen Verweis, Stack-Zeilen zusammengefasst</li>
       <li><strong>16.08.2026</strong> · OddityRC H743 als Stack-Option 2 aufgenommen (Matek-H743-kompatibel, 2S-8S, 30,5 mm, INAV und ArduPilot) samt Vergleichstabelle der drei Stacks</li>
       <li><strong>16.08.2026</strong> · Lochbild-Hinweis praezisiert: iFlight-Stack 35x35, Velox 30,5; das Lochbild der Toruk-Platte veroeffentlicht DarwinFPV nicht</li>
