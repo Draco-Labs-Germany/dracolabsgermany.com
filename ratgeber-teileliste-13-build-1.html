@@ -241,12 +241,19 @@
 
     <h2>4. Flight Controller &amp; ESC</h2>
     <p>Der T-Motor Velox F7 SE Stack kombiniert einen F7-Flight-Controller
-    (ICM42688-Gyro, 128&nbsp;MB Blackbox, Betaflight und INAV) mit dem V70A SE 4-in-1-ESC
+    (ICM42688-Gyro, 128&nbsp;MB Blackbox) mit dem V70A SE 4-in-1-ESC
     mit AM32-Firmware.  Entscheidend für diese Liste: Der V70A SE ist laut Hersteller für
     <strong>4S bis 8S</strong> ausgelegt (70&nbsp;A dauerhaft) und deckt damit beide
     Zellenzahlen dieses Builds ab, ohne dass du beim Wechsel von 6S auf 8S den Stack
     tauschen musst.  Die 25&nbsp;A Dauerstrom eines MN4012 KV400 lässt er weit hinter
     sich.  Lochbild 30,5&nbsp;x&nbsp;30,5&nbsp;mm.</p>
+    <p><strong>Nur Betaflight:</strong> Für den Velox F7 SE gibt es Stand August 2026
+    ausschließlich ein Betaflight-Target.  Ein INAV-Target ist bei den Entwicklern
+    beantragt, aber nicht verfügbar, und ArduPilot scheidet am knappen Speicher des
+    F722-Prozessors aus.  Manche Shops schreiben trotzdem „Betaflight/INAV" ins
+    Datenblatt.  Wer Wegpunkt-Missionen oder die Navigationsfunktionen von INAV fliegen
+    will, muss also einen anderen Flight Controller nehmen; für den klassischen
+    Long-Range-Flug mit GPS-Rescue reicht Betaflight.</p>
     <p><strong>Beim Bestellen aufpassen:</strong> Vom Velox F7 SE gibt es zwei Versionen,
     und nur die neuere kann 8S.  Die alte geht bis 6S und hat die BEC-Ausgänge 5&nbsp;V
     und 10&nbsp;V, die 8S-Version läuft von 4S bis 8S und ist an den Beschriftungen
@@ -486,6 +493,7 @@
 <!-- historie:start -->
     <h2>Änderungshistorie</h2>
     <ul class="muted historie">
+      <li><strong>16.08.2026</strong> · Korrektur: Der Velox F7 SE laeuft nur mit Betaflight, INAV-Target ist beantragt aber nicht verfuegbar, ArduPilot scheidet aus</li>
       <li><strong>16.08.2026</strong> · VTX-Ausgang des F7 SE ist umschaltbar (neue Fassung 5/12 V, alte 5/10 V); Hinweis ergaenzt, dass die kursierenden Anschlussbilder teils noch die alte Fassung zeigen</li>
       <li><strong>16.08.2026</strong> · VTX-Versorgung auf 8S praezisiert: HD-VTX-Anschluss fuehrt 10 V, das BEC 12 V; die O4 Pro laeuft mit beidem, der Walksnail-VTX braucht die 12 V</li>
       <li><strong>16.08.2026</strong> · RadioMaster GX15 MAX als Sender-Option 1 aufgenommen (Dual-2,4-GHz-ELRS, AG02-Gimbals), TX16S MKII wird Option 2</li>

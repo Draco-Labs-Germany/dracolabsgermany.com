@@ -208,12 +208,19 @@
 
     <h2>4. Flight Controller &amp; ESC</h2>
     <p>Am Stack ändert sich gegenüber dem 13-Zoll-Build nichts: Der T-Motor Velox F7 SE
-    kombiniert einen F7-Flight-Controller (ICM42688-Gyro, 128&nbsp;MB Blackbox, Betaflight
-    und INAV) mit dem V70A SE 4-in-1-ESC mit AM32-Firmware, freigegeben für 4S bis 8S mit
+    kombiniert einen F7-Flight-Controller (ICM42688-Gyro, 128&nbsp;MB Blackbox)
+    mit dem V70A SE 4-in-1-ESC mit AM32-Firmware, freigegeben für 4S bis 8S mit
     70&nbsp;A dauerhaft je Motor.  Gegenüber den 22&nbsp;A Dauerstrom eines MN4012 KV340
     ist das viel Reserve, und genau die willst du bei großen Props haben, weil der Strom
     beim Beschleunigen kurzzeitig weit über den Dauerwert springt.  Lochbild
     30,5&nbsp;x&nbsp;30,5&nbsp;mm.</p>
+    <p><strong>Nur Betaflight:</strong> Für den Velox F7 SE gibt es Stand August 2026
+    ausschließlich ein Betaflight-Target.  Ein INAV-Target ist bei den Entwicklern
+    beantragt, aber nicht verfügbar, und ArduPilot scheidet am knappen Speicher des
+    F722-Prozessors aus.  Manche Shops schreiben trotzdem „Betaflight/INAV" ins
+    Datenblatt.  Wer Wegpunkt-Missionen oder die Navigationsfunktionen von INAV fliegen
+    will, muss also einen anderen Flight Controller nehmen; für den klassischen
+    Long-Range-Flug mit GPS-Rescue reicht Betaflight.</p>
     <p><strong>Beim Bestellen aufpassen:</strong> Vom Velox F7 SE gibt es zwei Versionen.
     Die alte geht bis 6S und hat die BEC-Ausgänge 5&nbsp;V und 10&nbsp;V, die 8S-Version
     läuft von 4S bis 8S und trägt die Beschriftungen <strong>5&nbsp;V und
@@ -347,6 +354,7 @@
 <!-- historie:start -->
     <h2>Änderungshistorie</h2>
     <ul class="muted historie">
+      <li><strong>16.08.2026</strong> · Korrektur: Der Velox F7 SE laeuft nur mit Betaflight, INAV-Target ist beantragt aber nicht verfuegbar, ArduPilot scheidet aus</li>
       <li><strong>16.08.2026</strong> · Bezugsquellen aufgeraeumt: Motorlinks nur noch zum T-Motor-Store, Stack jetzt bei FPV24; Kaufhinweis zu den zwei Velox-F7-SE-Versionen ergaenzt</li>
       <li><strong>16.08.2026</strong> · Spannungsbereich der O4 Air Unit Pro konkret benannt (7,4 bis 26,4 V)</li>
       <li><strong>16.08.2026</strong> · Akku-Kapitel auf den ROAM 6S 8.000 mAh als erste Wahl umgestellt, Schubbudget und Parallelschaltung ergaenzt</li>
