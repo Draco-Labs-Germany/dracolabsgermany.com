@@ -97,7 +97,8 @@
       <tr><td>Motoren · Option 3 (6S/8S)</td><td>Axisflying AZ4320 (420KV)</td></tr>
       <tr><td>Props · Option 1</td><td>Gemfan 1308-3 (13x8x3)</td><td></td></tr>
       <tr><td>Props · Option 2</td><td>T-Motor P13x4.4 CF (flach, effizienzorientiert)</td><td></td></tr>
-      <tr><td>FC/ESC-Stack</td><td>T-Motor Velox F7 SE + V70A SE (4S bis 8S)</td><td></td></tr>
+      <tr><td>FC/ESC-Stack · Option 1</td><td>iFlight BLITZ H7 Pro + E80 Pro (2S bis 8S, INAV-faehig)</td><td></td></tr>
+      <tr><td>FC/ESC-Stack · Option 2</td><td>T-Motor Velox F7 SE + V70A SE (4S bis 8S, nur Betaflight)</td><td></td></tr>
       <tr><td>Akku · Option 1 (6S)</td><td>Ovonic ROAM 6S 6.500&nbsp;mAh (150C)</td><td rowspan="4"><a href="ratgeber-akku-13-zoll.html">Du und dein Akku</a></td></tr>
       <tr><td>Akku · Option 2 (6S)</td><td>Ovonic ROAM 6S 8.000&nbsp;mAh (150C)</td></tr>
       <tr><td>Akku · Option 3 (8S)</td><td>Ovonic ROAM 8S 5.200&nbsp;mAh (150C)</td></tr>
@@ -240,7 +241,31 @@
     </p>
 
     <h2>4. Flight Controller &amp; ESC</h2>
-    <p>Der T-Motor Velox F7 SE Stack kombiniert einen F7-Flight-Controller
+    <p><strong>Option 1: iFlight BLITZ H7 Pro + BLITZ E80 Pro.</strong>  Das ist die
+    Profi-Variante, und es ist der Weg, den iFlight bei der eigenen 13-Zoll-Drohne geht:
+    Die X413 mit 8S fliegt mit einem BLITZ-Pro-Flight-Controller, dem E80-Pro-Regler,
+    XING-4214-Motoren und 13-Zoll-Dreiblatt-Props.  Der <strong>H7 Pro</strong> ist der
+    aktuelle Pro-Controller der Reihe: STM32H743 statt F7, ICM42688-Gyro, Barometer,
+    sieben UARTs, Blackbox auf SD-Karte und ein Eingangsbereich von 14,8 bis 50,4&nbsp;V
+    (4S bis 12S).  Die BEC-Ausgänge liefern 5&nbsp;V mit 3&nbsp;A und
+    <strong>12&nbsp;V mit 2,5&nbsp;A</strong>, also genug für jede Luftfahrteinheit.  Der
+    <strong>E80 Pro</strong> ist für 2S bis 8S freigegeben und liefert 80&nbsp;A dauerhaft
+    (100&nbsp;A Burst) mit BLHeli_32.  Die 8S-Grenze dieses Builds setzt hier also der
+    Regler, nicht der Controller.</p>
+    <p>Der entscheidende Vorteil gegenüber Option 2: Für den H7 Pro gibt es Targets für
+    <strong>Betaflight, INAV und ArduPilot</strong>.  Wer Wegpunkt-Missionen fliegen will,
+    kommt an dieser Seite kaum vorbei.  Zwei Dinge dafür im Blick behalten: Der Stack baut
+    auf <strong>35&nbsp;x&nbsp;35&nbsp;mm</strong> statt 30,5, das muss der Rahmen
+    hergeben, und er kostet ein Vielfaches von Option 2.</p>
+    <p style="margin-top:14px">
+      <a href="https://iflight-rc.eu/en/products/blitz-h7-pro-combo-set-e80-pro-4in1-esc" rel="noopener" target="_blank">➜ iFlight BLITZ H7 Pro Combo Set (mit E80 Pro 4in1) im EU-Lager von iFlight ansehen</a><br>
+      <a href="https://iflight-rc.eu/en/products/blitz-h7-pro-flight-controller" rel="noopener" target="_blank">➜ BLITZ H7 Pro Flight Controller einzeln ansehen</a><br>
+      <a href="https://iflight-rc.eu/en/products/blitz-e80-pro-4in1-esc" rel="noopener" target="_blank">➜ BLITZ E80 Pro 4in1 ESC (2S bis 8S, 80 A) einzeln ansehen</a>
+    </p>
+
+    <p><strong>Option 2: T-Motor Velox F7 SE + V70A SE.</strong>  Die günstige Variante,
+    und die naheliegende, wenn ohnehin T-Motor-Antriebe verbaut werden.  Der Stack
+    kombiniert einen F7-Flight-Controller
     (ICM42688-Gyro, 128&nbsp;MB Blackbox) mit dem V70A SE 4-in-1-ESC
     mit AM32-Firmware.  Entscheidend für diese Liste: Der V70A SE ist laut Hersteller für
     <strong>4S bis 8S</strong> ausgelegt (70&nbsp;A dauerhaft) und deckt damit beide
@@ -266,7 +291,7 @@
     die im Handel kursieren, zeigen teilweise noch die alte Fassung mit 10&nbsp;V.
     Maßgeblich ist die Beschriftung auf dem Board.</p>
     <p style="margin-top:14px">
-      <a href="https://www.fpv24.com/de/t-motor/t-motor-velox-f7-se-v70a-8s-fc-flight-controller-esc-stack?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ T-Motor Velox F7 SE + V70A 8S Stack bei FPV24 ansehen (Anzeige)</a>
+      <a href="https://www.fpv24.com/de/t-motor/t-motor-velox-f7-se-v70a-8s-fc-flight-controller-esc-stack?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ Option 2: T-Motor Velox F7 SE + V70A 8S Stack bei FPV24 ansehen (Anzeige)</a>
     </p>
 
     <h2>5. Akku</h2>
@@ -493,6 +518,7 @@
 <!-- historie:start -->
     <h2>Änderungshistorie</h2>
     <ul class="muted historie">
+      <li><strong>16.08.2026</strong> · FC/ESC jetzt mit zwei Optionen: iFlight BLITZ H7 Pro + E80 Pro als Option 1 (INAV- und ArduPilot-faehig, 12-V-BEC, ESC bis 8S), Velox F7 SE als guenstige Option 2</li>
       <li><strong>16.08.2026</strong> · Korrektur: Der Velox F7 SE laeuft nur mit Betaflight, INAV-Target ist beantragt aber nicht verfuegbar, ArduPilot scheidet aus</li>
       <li><strong>16.08.2026</strong> · VTX-Ausgang des F7 SE ist umschaltbar (neue Fassung 5/12 V, alte 5/10 V); Hinweis ergaenzt, dass die kursierenden Anschlussbilder teils noch die alte Fassung zeigen</li>
       <li><strong>16.08.2026</strong> · VTX-Versorgung auf 8S praezisiert: HD-VTX-Anschluss fuehrt 10 V, das BEC 12 V; die O4 Pro laeuft mit beidem, der Walksnail-VTX braucht die 12 V</li>
