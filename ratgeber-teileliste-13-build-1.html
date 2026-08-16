@@ -106,8 +106,9 @@
       <tr><td>Funk: Sender (TX)</td><td>RadioMaster TX16S MKII</td><td rowspan="3"><a href="ratgeber-funk-kommunikation.html">Funk &amp; Kommunikation</a></td></tr>
       <tr><td>Funk: Empfänger (RX) · Option 1</td><td>HGLRC ELRS Gemini Dual</td></tr>
       <tr><td>Funk: Empfänger (RX) · Option 2</td><td>RadioMaster RP4TD</td></tr>
-      <tr><td>Videoübertragung · Option 1</td><td>DJI O4 Air Unit Pro</td><td rowspan="2"><a href="ratgeber-videouebertragung.html">Videoübertragung</a></td></tr>
+      <tr><td>Videoübertragung · Option 1</td><td>DJI O4 Air Unit Pro</td><td rowspan="3"><a href="ratgeber-videouebertragung.html">Videoübertragung</a></td></tr>
       <tr><td>Videoübertragung · Option 2</td><td>Walksnail Avatar HD GT2</td></tr>
+      <tr><td>VTX-Antennen (2 Stück)</td><td>HGLRC 5.8G Hammer Dual (LHCP, SMA)</td></tr>
       <tr><td>GPS</td><td>HGLRC M100 Pro mit Kompass + ViFly GPS Mate</td><td><a href="ratgeber-funk-kommunikation.html">Funk &amp; Kommunikation</a></td></tr>
     </table>
 </div>
@@ -246,6 +247,13 @@
     Zellenzahlen dieses Builds ab, ohne dass du beim Wechsel von 6S auf 8S den Stack
     tauschen musst.  Die 25&nbsp;A Dauerstrom eines MN4012 KV400 lässt er weit hinter
     sich.  Lochbild 30,5&nbsp;x&nbsp;30,5&nbsp;mm.</p>
+    <p><strong>Beim Bestellen aufpassen:</strong> Vom Velox F7 SE gibt es zwei Versionen,
+    und nur die neuere kann 8S.  Die alte geht bis 6S und hat die BEC-Ausgänge 5&nbsp;V
+    und 10&nbsp;V, die 8S-Version läuft von 4S bis 8S und ist an den Beschriftungen
+    <strong>5&nbsp;V und 12&nbsp;V</strong> zu erkennen.  Genau dieser
+    <strong>12-V-Ausgang mit 3&nbsp;A</strong> ist auf 8S Pflicht, weil die
+    Luftfahrteinheit dort ihren Strom herbekommt (siehe Kapitel 8).  Steht im Angebot nur
+    „F7 SE" ohne Zellenangabe, vor dem Kauf nachfragen.</p>
     <p style="margin-top:14px">
       <a href="https://n-factory.de/T-Motor-F7-VELOX-SE-Stack-8S-V70A-SE-AM32" rel="noopener" target="_blank">➜ T-Motor F7 VELOX SE Stack (8S) bei n-factory.de ansehen</a>
     </p>
@@ -378,15 +386,44 @@
 
     <h2>8. Videoübertragung</h2>
     <p>Für digitale Videoübertragung in dieser Klasse ist die DJI O4 Air Unit Pro der
-    Standard: Reichweite, Aufnahmequalität und volle Spannungsfestigkeit für unsere
-    Akku-Klassen (die kleine O4 Lite scheidet aus, sie verträgt nur bis 3S).  Eine starke
-    Alternative außerhalb des DJI-Ökosystems ist das Walksnail Avatar HD GT2 Kit:
-    1080p-Kamera plus VTX mit rund 22&nbsp;ms Latenz, und die Brillenwahl bleibt offen.
-    Den Vergleich mit Analog, Walksnail und HDZero findest du im
-    <a href="ratgeber-videouebertragung.html">Videoübertragungs-Ratgeber</a>.</p>
+    Standard: Reichweite und Aufnahmequalität (die kleine O4 Lite scheidet aus, sie
+    verträgt nur bis 3S).  Eine starke Alternative außerhalb des DJI-Ökosystems ist das
+    Walksnail Avatar HD GT2 Kit: 1080p-Kamera plus VTX mit rund 22&nbsp;ms Latenz, und die
+    Brillenwahl bleibt offen.  Den Vergleich mit Analog, Walksnail und HDZero findest du
+    im <a href="ratgeber-videouebertragung.html">Videoübertragungs-Ratgeber</a>.</p>
+    <p><strong>Achtung bei 8S:</strong> Keines der beiden Systeme darf auf 8S direkt an
+    den Akku.  Die O4 Air Unit Pro nimmt laut DJI 7,4 bis 26,4&nbsp;V (also 2S bis 6S),
+    der Walksnail-VTX 11,1 bis 25,2&nbsp;V (3S bis 6S); ein volles 8S-Pack liefert
+    33,6&nbsp;V und zerstört beide.  Auf 6S hängst du sie direkt an VBAT, auf 8S
+    <strong>zwingend an den 12-V-Ausgang des Stacks</strong> (der F7 SE liefert 12&nbsp;V
+    mit 3&nbsp;A, siehe Kapitel 4).  Das ist der eine Punkt, an dem der Sprung auf 8S
+    wirklich Verkabelungsarbeit macht.</p>
     <p style="margin-top:14px">
       <a href="https://www.fpv24.com/de/dji/dji-o4-air-unit-fpv-lufteinheit-pro?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ DJI O4 Air Unit Pro bei FPV24 ansehen (Anzeige)</a><br>
       <a href="https://n-factory.de/Walksnail-Avatar-HD-GT2-Kit-1080P-Dual" rel="noopener" target="_blank">➜ Walksnail Avatar HD GT2 Kit (1080p, Dual-Antenne) bei n-factory.de ansehen</a>
+    </p>
+
+    <h3>Antennen für den VTX</h3>
+    <p>Die Serienantennen sind der Teil, den man zuerst tauscht.  Unsere Empfehlung ist
+    die <strong>HGLRC 5.8G Hammer Dual</strong>: 2&nbsp;dBi, 5.645 bis 5.945&nbsp;GHz,
+    120&nbsp;mm lang, 10&nbsp;g leicht, mit SMA-Stecker und Montageclip.  Sie wird
+    <strong>einzeln verkauft, du brauchst also zwei Stück</strong>, eine je Ausgang der
+    Luftfahrteinheit.</p>
+    <p>Der entscheidende Punkt ist die Polarisation, und da gibt es Entwarnung: Diese
+    Antenne ist <strong>LHCP</strong>, und LHCP ist bei beiden Systemen dieser Liste ab
+    Werk gesetzt.  DJI liefert die O4 Air Unit Pro mit LHCP-Antennen aus, Walksnail
+    bestückt beim Avatar sowohl den VTX als auch die Brille mit LHCP.  Wichtig ist nur,
+    dass beide Seiten gleich drehen: LHCP am Copter und RHCP an der Brille kostet dich
+    rund 20&nbsp;dB, also den Großteil der Reichweite.  Wer schon LHCP fliegt, bleibt
+    also einfach dabei.</p>
+    <p>Was du zusätzlich brauchst, ist der passende Übergang: Die Hammer hat einen
+    <strong>SMA-Stecker</strong>, die O4 Air Unit Pro dagegen einen I-PEX-Anschluss und
+    der Walksnail-GT2-VTX einen MMCX-Anschluss.  Du brauchst also je ein Pigtail von
+    I-PEX beziehungsweise MMCX auf SMA-Buchse, das du am Rahmen befestigst.  Bei einem
+    13-Zoll-Copter ist das ohnehin die saubere Lösung, weil die Antennen dort hinter die
+    Props und weg von den Armen gehören.</p>
+    <p style="margin-top:14px">
+      <a href="https://www.fpv24.com/de/hglrc/hglrc-58g-hammer-dual-antenna-sma-lhcp-fpv-antenne?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ HGLRC 5.8G Hammer Dual (LHCP, SMA) bei FPV24 ansehen, 2 Stück nötig (Anzeige)</a>
     </p>
 
     <h2>9. GPS</h2>
@@ -423,6 +460,8 @@
 <!-- historie:start -->
     <h2>Änderungshistorie</h2>
     <ul class="muted historie">
+      <li><strong>16.08.2026</strong> · Korrektur: O4 Air Unit Pro (2S-6S) und Walksnail-VTX (3S-6S) duerfen auf 8S nicht an VBAT, sondern an den 12-V-Ausgang des Stacks; dazu Kaufhinweis zu den zwei F7-SE-Versionen</li>
+      <li><strong>16.08.2026</strong> · VTX-Antennen ergaenzt (HGLRC Hammer Dual LHCP, zwei Stueck) samt Polarisations- und Steckerhinweis</li>
       <li><strong>16.08.2026</strong> · Neuer Abschnitt: zwei Packs parallel (mehr Kapazitaet) oder in Reihe (mehr Spannung, 2x4S = 8S, 2x6S = 12S) samt Fallstricken</li>
       <li><strong>16.08.2026</strong> · Akku-Kapitel erweitert: vier ROAM-Packs mit Energie, Gewicht und Energie je Kilogramm, dazu Schubbudget und Hinweis zur Parallelschaltung zweier 8S-Packs</li>
       <li><strong>16.08.2026</strong> · Lieferumfang des MN4012 nach T-Motor-Packliste belegt: Prop-Adapter M6 und M8 liegen bei, M3x12-Schrauben gehoeren zur Deckplatte</li>
