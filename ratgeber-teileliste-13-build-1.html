@@ -98,8 +98,10 @@
       <tr><td>Props · Option 1</td><td>Gemfan 1308-3 (13x8x3)</td><td></td></tr>
       <tr><td>Props · Option 2</td><td>T-Motor P13x4.4 CF (flach, effizienzorientiert)</td><td></td></tr>
       <tr><td>FC/ESC-Stack</td><td>T-Motor Velox F7 SE + V70A SE (4S bis 8S)</td><td></td></tr>
-      <tr><td>Akku · Option 1 (6S)</td><td>Ovonic ROAM 6S 6.500&nbsp;mAh (150C)</td><td rowspan="2"><a href="ratgeber-akku-13-zoll.html">Du und dein Akku</a></td></tr>
-      <tr><td>Akku · Option 2 (8S)</td><td>Ovonic ROAM 8S 6.200&nbsp;mAh (150C)</td></tr>
+      <tr><td>Akku · Option 1 (6S)</td><td>Ovonic ROAM 6S 6.500&nbsp;mAh (150C)</td><td rowspan="4"><a href="ratgeber-akku-13-zoll.html">Du und dein Akku</a></td></tr>
+      <tr><td>Akku · Option 2 (6S)</td><td>Ovonic ROAM 6S 8.000&nbsp;mAh (150C)</td></tr>
+      <tr><td>Akku · Option 3 (8S)</td><td>Ovonic ROAM 8S 5.200&nbsp;mAh (150C)</td></tr>
+      <tr><td>Akku · Option 4 (8S)</td><td>Ovonic ROAM 8S 6.200&nbsp;mAh (150C)</td></tr>
       <tr><td>Ladegerät</td><td>ISDT Q8 Max</td><td><a href="ratgeber-ladegeraet-8s.html">Der Akku und sein Ladegerät</a></td></tr>
       <tr><td>Funk: Sender (TX)</td><td>RadioMaster TX16S MKII</td><td rowspan="3"><a href="ratgeber-funk-kommunikation.html">Funk &amp; Kommunikation</a></td></tr>
       <tr><td>Funk: Empfänger (RX) · Option 1</td><td>HGLRC ELRS Gemini Dual</td></tr>
@@ -258,9 +260,49 @@
     Bereich ab, mit XT90-S-Anti-Spark und Versand aus EU-Lager (Akkus sind Gefahrgut,
     Direktimport lohnt nicht).  Alle Details inklusive C-Rate und Li-Ion-Alternative
     stehen im <a href="ratgeber-akku-13-zoll.html">Akku-Ratgeber</a>.</p>
+    <p>Vier Packs kommen für diesen Build infrage.  Interessant ist die letzte Spalte:
+    Sie sagt, wie viel Energie du je Kilogramm Akku mitschleppst, und genau das ist bei
+    Long Range die Währung.  Die Zahlen sind unsere Rechnung aus den Herstellerangaben
+    (Energie = Zellenspannung mal Kapazität).</p>
+    <div data-nosnippet>
+<table>
+      <tr><th>Pack</th><th>Kapazität</th><th>Energie</th><th>Gewicht</th><th>Energie je kg</th></tr>
+      <tr><td>ROAM 6S · Option 1</td><td>6.500&nbsp;mAh</td><td>144&nbsp;Wh</td><td>777&nbsp;g</td><td>186&nbsp;Wh/kg</td></tr>
+      <tr><td>ROAM 6S · Option 2</td><td>8.000&nbsp;mAh</td><td>178&nbsp;Wh</td><td>1.023&nbsp;g</td><td>174&nbsp;Wh/kg</td></tr>
+      <tr><td>ROAM 8S · Option 3</td><td>5.200&nbsp;mAh</td><td>154&nbsp;Wh</td><td>922&nbsp;g</td><td>167&nbsp;Wh/kg</td></tr>
+      <tr><td>ROAM 8S · Option 4</td><td>6.200&nbsp;mAh</td><td>184&nbsp;Wh</td><td>1.042&nbsp;g</td><td>176&nbsp;Wh/kg</td></tr>
+    </table>
+</div>
+    <p>Der <strong>6S mit 6.500&nbsp;mAh</strong> ist der Allrounder und mit Abstand der
+    leichteste; er hat auch die beste Energie je Kilogramm der vier.  Der <strong>6S mit
+    8.000&nbsp;mAh</strong> bringt gut 23&nbsp;Prozent mehr Energie an Bord, kostet dafür
+    aber 246&nbsp;g mehr Abflugmasse.  Auf der 8S-Seite ist der <strong>5.200er</strong>
+    der lieferbare Standard; der größere <strong>6.200er</strong> stand bei Ampow im
+    August 2026 auf „coming soon", lohnt aber das Warten, wenn du auf 8S maximale Energie
+    willst.</p>
+    <p>Wie viel Akku der Copter verträgt, sagt das Schubbudget: Vier MN4012 KV400 stehen
+    auf 6S mit dem 13x4.4-Prop bei 5,8&nbsp;kg Standschub (Herstellermessung,
+    1.450&nbsp;g je Motor).  Nach der üblichen Faustregel „doppelt so viel Schub wie
+    Abflugmasse" ist bei rund <strong>2,9&nbsp;kg</strong> Schluss, und da ist der Akku
+    schon mit einem knappen Kilo dabei.  Wer schwerer wird, verliert Steigreserve und
+    Windfestigkeit, nicht nur Flugzeit.</p>
+    <p><strong>Mehr als 6.200&nbsp;mAh auf 8S</strong> gibt es in der ROAM-Serie nicht.
+    Der übliche Ausweg ist, zwei 5.200er <strong>parallel</strong> zu schalten: gleiche
+    Spannung, doppelte Kapazität, also 10.400&nbsp;mAh bei 29,6&nbsp;V.  Drei Dinge sind
+    dabei Pflicht.  Erstens parallel und nicht in Reihe, sonst stehen plötzlich 16S am
+    Regler.  Zweitens nur zwei baugleiche Packs mit gleichem Ladezustand: Steckst du einen
+    vollen und einen leeren zusammen, fließt zwischen ihnen ein Ausgleichsstrom, den keine
+    Sicherung begrenzt.  Drittens ein Y-Adapter, der den Gesamtstrom aushält, und geladen
+    wird trotzdem einzeln.  Rechnerisch heißt das aber auch 1.844&nbsp;g nur für die
+    Akkus, also fast zwei Drittel des Budgets von oben.  Für den 13-Zoll-Build ist das zu
+    viel; wer wirklich zwei Packs fliegen will, gehört auf den
+    <a href="ratgeber-teileliste-15-build-1.html">15-Zoll-Build</a>, der das Schubbudget
+    dafür hat.</p>
     <p style="margin-top:14px">
       <a href="https://collabs.shop/vwf4bn" rel="sponsored noopener" target="_blank">➜ Option 1: Ovonic ROAM 6S 6.500 mAh (150C, XT90-S) bei Ampow ansehen (Anzeige)</a><br>
-      <a href="https://www.ampow.com/collections/ovonic-roam-series-6s-8s-lipo-battery-for-long-range-drone?dt_id=3341217" rel="sponsored noopener" target="_blank">➜ Option 2: Ovonic ROAM 8S-Akkus bei Ampow ansehen (Anzeige)</a>
+      <a href="https://collabs.shop/ktncyp" rel="sponsored noopener" target="_blank">➜ Option 2: Ovonic ROAM 6S 8.000 mAh (150C, XT90-S) bei Ampow ansehen (Anzeige)</a><br>
+      <a href="https://collabs.shop/7bmzgd" rel="sponsored noopener" target="_blank">➜ Option 3: Ovonic ROAM 8S 5.200 mAh (150C, XT90) bei Ampow ansehen (Anzeige)</a><br>
+      <a href="https://www.ampow.com/collections/ovonic-roam-series-6s-8s-lipo-battery-for-long-range-drone?dt_id=3341217" rel="sponsored noopener" target="_blank">➜ Alle Ovonic ROAM 6S- und 8S-Akkus bei Ampow ansehen (Anzeige)</a>
     </p>
     <!-- produktbilder:akku -->
     <div class="produkt-grid">
@@ -272,12 +314,20 @@
         <div class="produkt-name">ROAM 6S 6.500 mAh (150C, XT90-S)</div>
         <div class="produkt-hinweis">Anzeige</div>
       </a>
-      <a class="produkt-karte" href="https://www.ampow.com/collections/ovonic-roam-series-6s-8s-lipo-battery-for-long-range-drone?dt_id=3341217"
+      <a class="produkt-karte" href="https://collabs.shop/ktncyp"
          target="_blank" rel="sponsored noopener">
-        <img src="assets/produkte/ovonic-roam-8s-6200.jpg" alt="Ovonic ROAM 8S 6.200 mAh (150C, XT90-S)"
+        <img src="assets/produkte/ovonic-roam-6s-8000.jpg" alt="Ovonic ROAM 6S 8.000 mAh (150C, XT90-S)"
              width="480" height="480" loading="lazy">
         <div class="produkt-marke">Ovonic</div>
-        <div class="produkt-name">ROAM 8S 6.200 mAh (150C, XT90-S)</div>
+        <div class="produkt-name">ROAM 6S 8.000 mAh (150C, XT90-S)</div>
+        <div class="produkt-hinweis">Anzeige</div>
+      </a>
+      <a class="produkt-karte" href="https://collabs.shop/7bmzgd"
+         target="_blank" rel="sponsored noopener">
+        <img src="assets/produkte/ovonic-roam-8s-5200.jpg" alt="Ovonic ROAM 8S 5.200 mAh (150C, XT90-S)"
+             width="480" height="480" loading="lazy">
+        <div class="produkt-marke">Ovonic</div>
+        <div class="produkt-name">ROAM 8S 5.200 mAh (150C, XT90-S)</div>
         <div class="produkt-hinweis">Anzeige</div>
       </a>
     </div>
@@ -357,6 +407,7 @@
 <!-- historie:start -->
     <h2>Änderungshistorie</h2>
     <ul class="muted historie">
+      <li><strong>16.08.2026</strong> · Akku-Kapitel erweitert: vier ROAM-Packs mit Energie, Gewicht und Energie je Kilogramm, dazu Schubbudget und Hinweis zur Parallelschaltung zweier 8S-Packs</li>
       <li><strong>16.08.2026</strong> · Lieferumfang des MN4012 nach T-Motor-Packliste belegt: Prop-Adapter M6 und M8 liegen bei, M3x12-Schrauben gehoeren zur Deckplatte</li>
       <li><strong>16.08.2026</strong> · Propbefestigung des MN4012 praezisiert: Deckplatte plus vier M3-Schrauben fuer T-Motor-CF-Props, M6-Adapter fuer die 6-mm-Bohrung des Gemfan (nicht 5 mm)</li>
       <li><strong>16.08.2026</strong> · Seite umbenannt in ratgeber-teileliste-13-build-1.html; die alte Adresse leitet weiter</li>
