@@ -286,18 +286,35 @@
     Abflugmasse" ist bei rund <strong>2,9&nbsp;kg</strong> Schluss, und da ist der Akku
     schon mit einem knappen Kilo dabei.  Wer schwerer wird, verliert Steigreserve und
     Windfestigkeit, nicht nur Flugzeit.</p>
-    <p><strong>Mehr als 6.200&nbsp;mAh auf 8S</strong> gibt es in der ROAM-Serie nicht.
-    Der übliche Ausweg ist, zwei 5.200er <strong>parallel</strong> zu schalten: gleiche
-    Spannung, doppelte Kapazität, also 10.400&nbsp;mAh bei 29,6&nbsp;V.  Drei Dinge sind
-    dabei Pflicht.  Erstens parallel und nicht in Reihe, sonst stehen plötzlich 16S am
-    Regler.  Zweitens nur zwei baugleiche Packs mit gleichem Ladezustand: Steckst du einen
-    vollen und einen leeren zusammen, fließt zwischen ihnen ein Ausgleichsstrom, den keine
-    Sicherung begrenzt.  Drittens ein Y-Adapter, der den Gesamtstrom aushält, und geladen
-    wird trotzdem einzeln.  Rechnerisch heißt das aber auch 1.844&nbsp;g nur für die
-    Akkus, also fast zwei Drittel des Budgets von oben.  Für den 13-Zoll-Build ist das zu
-    viel; wer wirklich zwei Packs fliegen will, gehört auf den
+    <h3>Zwei Packs statt einem: parallel oder in Reihe?</h3>
+    <p>Beides geht, und beide Schaltungen tun etwas völlig anderes.
+    <strong>Parallel</strong> addiert die Kapazität, die Spannung bleibt.
+    <strong>In Reihe</strong> addiert die Spannung, die Kapazität bleibt.  Wer das
+    verwechselt, schickt im schlimmsten Fall die doppelte Spannung in den Regler.</p>
+    <p><strong>Parallel</strong> ist der Ausweg, wenn mehr Kapazität her soll: Über
+    6.200&nbsp;mAh gibt es in der ROAM-Serie bei 8S nichts, zwei 5.200er nebeneinander
+    ergeben dagegen 10.400&nbsp;mAh bei 29,6&nbsp;V.  Nur eben auch 1.844&nbsp;g Akku,
+    also fast zwei Drittel des Budgets von oben.  Für den 13-Zoll-Build ist das zu viel;
+    wer wirklich zwei Packs fliegen will, gehört auf den
     <a href="ratgeber-teileliste-15-build-1.html">15-Zoll-Build</a>, der das Schubbudget
     dafür hat.</p>
+    <p><strong>In Reihe</strong> ist der Weg zur Zellenzahl, die du sonst nicht kaufen
+    kannst: Zwei 4S-Packs ergeben 8S, zwei 6S-Packs ergeben 12S, die mAh-Zahl bleibt dabei
+    unverändert.  Das ist kein Bastel-Trick, sondern serienmäßig vorgesehen: Genau dafür
+    liegt dem Toruk13 die XT60-Reihenschaltung bei, mit der DarwinFPV aus zwei 6S-Packs
+    seine 12S macht.  Praktisch daran ist, dass du kleine Packs einzeln lädst und ein
+    einfacherer Lader reicht.  Zwei Haken hat die Sache trotzdem.  Erstens gibt es die
+    ROAM-Serie erst ab 6S; passende 4S-Packs kommen aus der RC-Car-Ecke, mit anderen
+    C-Raten und oft im schweren Hardcase.  Zweitens fließt durch beide Packs derselbe
+    Strom, die Flugsteuerung sieht aber nur die Summenspannung: Ist ein Pack schwächer,
+    wird er tiefer entladen, ohne dass die Warnschwelle das merkt.  Und 12S ändert die
+    ganze Auslegung, weil dann rechnerisch rund 200KV statt 400KV nötig sind, also andere
+    Motoren als die drei oben.</p>
+    <p>Für beide Varianten gilt dasselbe Kleingedruckte: nur baugleiche Packs mit gleichem
+    Ladezustand zusammenstecken (bei Parallelschaltung fließt zwischen einem vollen und
+    einem leeren Pack ein Ausgleichsstrom, den keine Sicherung begrenzt), Adapter mit
+    ausreichendem Querschnitt und Anti-Spark, Balancer-Stecker bleiben getrennt, und
+    geladen wird immer einzeln.</p>
     <p style="margin-top:14px">
       <a href="https://collabs.shop/vwf4bn" rel="sponsored noopener" target="_blank">➜ Option 1: Ovonic ROAM 6S 6.500 mAh (150C, XT90-S) bei Ampow ansehen (Anzeige)</a><br>
       <a href="https://collabs.shop/ktncyp" rel="sponsored noopener" target="_blank">➜ Option 2: Ovonic ROAM 6S 8.000 mAh (150C, XT90-S) bei Ampow ansehen (Anzeige)</a><br>
@@ -407,6 +424,7 @@
 <!-- historie:start -->
     <h2>Änderungshistorie</h2>
     <ul class="muted historie">
+      <li><strong>16.08.2026</strong> · Neuer Abschnitt: zwei Packs parallel (mehr Kapazitaet) oder in Reihe (mehr Spannung, 2x4S = 8S, 2x6S = 12S) samt Fallstricken</li>
       <li><strong>16.08.2026</strong> · Akku-Kapitel erweitert: vier ROAM-Packs mit Energie, Gewicht und Energie je Kilogramm, dazu Schubbudget und Hinweis zur Parallelschaltung zweier 8S-Packs</li>
       <li><strong>16.08.2026</strong> · Lieferumfang des MN4012 nach T-Motor-Packliste belegt: Prop-Adapter M6 und M8 liegen bei, M3x12-Schrauben gehoeren zur Deckplatte</li>
       <li><strong>16.08.2026</strong> · Propbefestigung des MN4012 praezisiert: Deckplatte plus vier M3-Schrauben fuer T-Motor-CF-Props, M6-Adapter fuer die 6-mm-Bohrung des Gemfan (nicht 5 mm)</li>
