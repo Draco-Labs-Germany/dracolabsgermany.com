@@ -99,7 +99,8 @@
       <tr><td>Props · Option 2</td><td>Gemfan 1308-3 (13x8x3, ausgewogen)</td><td></td></tr>
       <tr><td>Props · Option 3</td><td>T-Motor P13x4.4 CF (flach, effizienzorientiert)</td><td></td></tr>
       <tr><td>FC/ESC-Stack · Option 1</td><td>iFlight BLITZ H7 Pro + E80 Pro (2S bis 8S, INAV-faehig)</td><td></td></tr>
-      <tr><td>FC/ESC-Stack · Option 2</td><td>T-Motor Velox F7 SE + V70A SE (4S bis 8S, nur Betaflight)</td><td></td></tr>
+      <tr><td>FC/ESC-Stack · Option 2</td><td>OddityRC H743 (2S bis 8S, INAV/ArduPilot) plus 4-in-1 nach Wahl</td><td></td></tr>
+      <tr><td>FC/ESC-Stack · Option 3</td><td>T-Motor Velox F7 SE + V70A SE (4S bis 8S, nur Betaflight)</td><td></td></tr>
       <tr><td>Akku · Option 1 (6S)</td><td>Ovonic ROAM 6S 6.500&nbsp;mAh (150C)</td><td rowspan="4"><a href="ratgeber-akku-13-zoll.html">Du und dein Akku</a></td></tr>
       <tr><td>Akku · Option 2 (6S)</td><td>Ovonic ROAM 6S 8.000&nbsp;mAh (150C)</td></tr>
       <tr><td>Akku · Option 3 (8S)</td><td>Ovonic ROAM 8S 5.200&nbsp;mAh (150C)</td></tr>
@@ -250,6 +251,14 @@
     </p>
 
     <h2>4. Flight Controller &amp; ESC</h2>
+    <div data-nosnippet>
+<table>
+      <tr><th>Stack</th><th>Zellenzahl</th><th>Lochbild</th><th>BEC</th><th>Firmware</th></tr>
+      <tr><td>iFlight BLITZ H7 Pro + E80 Pro</td><td>FC 4S-12S, ESC 2S-8S</td><td>35 x 35&nbsp;mm</td><td>5&nbsp;V/3&nbsp;A + 12&nbsp;V/2,5&nbsp;A</td><td>Betaflight, INAV, ArduPilot</td></tr>
+      <tr><td>OddityRC H743 + 4-in-1 nach Wahl</td><td>FC 2S-8S</td><td>30,5 x 30,5&nbsp;mm</td><td>nur 5&nbsp;V/2&nbsp;A</td><td>Betaflight, INAV, ArduPilot</td></tr>
+      <tr><td>T-Motor Velox F7 SE + V70A SE</td><td>4S-8S</td><td>30,5 x 30,5&nbsp;mm</td><td>5&nbsp;V/3&nbsp;A + 12&nbsp;V/3&nbsp;A</td><td>nur Betaflight</td></tr>
+    </table>
+</div>
     <p><strong>Option 1: iFlight BLITZ H7 Pro + BLITZ E80 Pro.</strong>  Das ist die
     Profi-Variante, und es ist der Weg, den iFlight bei der eigenen 13-Zoll-Drohne geht:
     Die X413 mit 8S fliegt mit einem BLITZ-Pro-Flight-Controller, dem E80-Pro-Regler,
@@ -257,7 +266,7 @@
     aktuelle Pro-Controller der Reihe: STM32H743 statt F7, ICM42688-Gyro, Barometer,
     sieben UARTs, Blackbox auf SD-Karte und ein Eingangsbereich von 14,8 bis 50,4&nbsp;V
     (4S bis 12S).  Die BEC-Ausgänge liefern 5&nbsp;V mit 3&nbsp;A und
-    <strong>12&nbsp;V mit 2,5&nbsp;A</strong>, also genug für jede Luftfahrteinheit.  Der
+    <strong>12&nbsp;V mit 2,5&nbsp;A</strong>, also genug für jede VTX-Einheit.  Der
     <strong>E80 Pro</strong> ist für 2S bis 8S freigegeben und liefert 80&nbsp;A dauerhaft
     (100&nbsp;A Burst) mit BLHeli_32.  Die 8S-Grenze dieses Builds setzt hier also der
     Regler, nicht der Controller.</p>
@@ -276,7 +285,31 @@
       <a href="https://iflight-rc.eu/en/products/blitz-e80-pro-4in1-esc" rel="noopener" target="_blank">➜ BLITZ E80 Pro 4in1 ESC (2S bis 8S, 80 A) einzeln ansehen</a>
     </p>
 
-    <p><strong>Option 2: T-Motor Velox F7 SE + V70A SE.</strong>  Die günstige Variante,
+    <p><strong>Option 2: OddityRC H743 plus 4-in-1-Regler nach Wahl.</strong>  Der
+    Außenseiter, und der interessanteste Kompromiss aus den dreien.  OddityRC ist
+    eigentlich für seine Cinewhoop-Rahmen bekannt und baut gar keine Regler, deshalb
+    findest du zu dieser Platine kein Set.  Nötig ist auch keins: Der 8-polige
+    JST-SH1.0-Anschluss ist der übliche Stecker für einen 4-in-1-Regler, du kombinierst
+    sie also mit dem Regler deiner Wahl, zum Beispiel dem V70A SE aus Option 3, der mit
+    30,5&nbsp;mm und 4S bis 8S genau darunter passt.</p>
+    <p>Der eigentliche Punkt steht im Datenblatt: Ihre Firmware-Targets heißen bei
+    ArduPilot, INAV und Betaflight allesamt <strong>MATEKH743</strong>.  Die Platine ist
+    also zur Matek-H743-Plattform kompatibel, dem Arbeitspferd der Long-Range- und
+    Autopilot-Ecke, und erbt damit deren Firmware-Auswahl.  Dazu STM32H743 mit
+    480&nbsp;MHz, zwei IMUs, Barometer, Blackbox auf microSD, sieben UARTs mit Inversion
+    und 6 bis 36&nbsp;V Eingang (2S bis 8S) bei nur 7&nbsp;g Gewicht, alles auf
+    <strong>30,5&nbsp;mm</strong>.</p>
+    <p>Zwei Dinge musst du dafür einplanen.  Erstens gibt es nur ein
+    <strong>5-V-BEC mit 2&nbsp;A</strong> (kurzzeitig 3&nbsp;A), keine 9, 10 oder
+    12&nbsp;V: Die VTX-Einheit braucht also einen eigenen Spannungswandler,
+    und das gilt auf 8S erst recht.  Zweitens sitzt <strong>kein Strommesser</strong> auf
+    dem Board, nur die Pads dafür; die Verbrauchsanzeige muss dann vom 4-in-1-Regler
+    kommen.</p>
+    <p style="margin-top:14px">
+      <a href="https://www.fpv24.com/de/oddityrc/oddityrc-h743-fc-flight-controller?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ Option 2: OddityRC H743 Flight Controller bei FPV24 ansehen (Anzeige)</a>
+    </p>
+
+    <p><strong>Option 3: T-Motor Velox F7 SE + V70A SE.</strong>  Die günstige Variante,
     und die naheliegende, wenn ohnehin T-Motor-Antriebe verbaut werden.  Der Stack
     kombiniert einen F7-Flight-Controller
     (ICM42688-Gyro, 128&nbsp;MB Blackbox) mit dem V70A SE 4-in-1-ESC
@@ -297,14 +330,14 @@
     und 10&nbsp;V, die 8S-Version läuft von 4S bis 8S und ist an den Beschriftungen
     <strong>5&nbsp;V und 12&nbsp;V</strong> zu erkennen.  Genau dieser
     <strong>12-V-Ausgang mit 3&nbsp;A</strong> ist auf 8S Pflicht, weil die
-    Luftfahrteinheit dort ihren Strom herbekommt (siehe Kapitel 8).  Der unten verlinkte
+    VTX-Einheit dort ihren Strom herbekommt (siehe Kapitel 8).  Der unten verlinkte
     Stack ist die richtige Version, im Datenblatt steht „BEC: 5V 3A / 12V 3A".  Steht in
     einem anderen Angebot nur „F7 SE" ohne Zellenangabe oder ein 10-V-BEC, ist es die
     alte Fassung.  Lass dich dabei vom Anschlussbild nicht irritieren: Die Zeichnungen,
     die im Handel kursieren, zeigen teilweise noch die alte Fassung mit 10&nbsp;V.
     Maßgeblich ist die Beschriftung auf dem Board.</p>
     <p style="margin-top:14px">
-      <a href="https://www.fpv24.com/de/t-motor/t-motor-velox-f7-se-v70a-8s-fc-flight-controller-esc-stack?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ Option 2: T-Motor Velox F7 SE + V70A 8S Stack bei FPV24 ansehen (Anzeige)</a>
+      <a href="https://www.fpv24.com/de/t-motor/t-motor-velox-f7-se-v70a-8s-fc-flight-controller-esc-stack?aid=U-THvRXn" rel="sponsored noopener" target="_blank">➜ Option 3: T-Motor Velox F7 SE + V70A 8S Stack bei FPV24 ansehen (Anzeige)</a>
     </p>
 
     <h2>5. Akku</h2>
@@ -479,7 +512,7 @@
     die <strong>HGLRC 5.8G Hammer Dual</strong>: 2&nbsp;dBi, 5.645 bis 5.945&nbsp;GHz,
     120&nbsp;mm lang, 10&nbsp;g leicht, mit SMA-Stecker und Montageclip.  Sie wird
     <strong>einzeln verkauft, du brauchst also zwei Stück</strong>, eine je Ausgang der
-    Luftfahrteinheit.</p>
+    VTX-Einheit.</p>
     <p>Der entscheidende Punkt ist die Polarisation, und da gibt es Entwarnung: Diese
     Antenne ist <strong>LHCP</strong>, und LHCP ist bei beiden Systemen dieser Liste ab
     Werk gesetzt.  DJI liefert die O4 Air Unit Pro mit LHCP-Antennen aus, Walksnail
@@ -499,7 +532,7 @@
 
 
     <h3>Adapterkabel für die Antennen</h3>
-    <p>Damit die SMA-Antennen an die Luftfahrteinheit kommen, brauchst du je ein Pigtail,
+    <p>Damit die SMA-Antennen an die VTX-Einheit kommen, brauchst du je ein Pigtail,
     und zwar <strong>zwei Stück, eines je Antenne</strong>.  Entscheidend ist das Ende am
     Rahmen: Es muss eine <strong>SMA-Buchse</strong> sein, weil die Hammer einen
     SMA-Stecker mit Pin hat.</p>
@@ -550,6 +583,7 @@
 <!-- historie:start -->
     <h2>Änderungshistorie</h2>
     <ul class="muted historie">
+      <li><strong>16.08.2026</strong> · OddityRC H743 als Stack-Option 2 aufgenommen (Matek-H743-kompatibel, 2S-8S, 30,5 mm, INAV und ArduPilot) samt Vergleichstabelle der drei Stacks</li>
       <li><strong>16.08.2026</strong> · Antennen-Pigtails ergaenzt: U.FL auf SMA-Buchse fuer die DJI O4, MMCX auf SMA-Buchse fuer den Walksnail, je zwei Stueck</li>
       <li><strong>16.08.2026</strong> · Props neu sortiert: HQProp 13x10x3 als Option 1, Gemfan 1308-3 als Option 2, T-Motor P13x4.4 als Option 3, jeweils mit der Steigung als Auswahlkriterium</li>
       <li><strong>16.08.2026</strong> · Korrektur: Der DarwinFPV 4320 deckt mit 350KV 6S und 8S ab (praktisch gleichauf mit der KV340 des MN4012), nicht nur 6S</li>
