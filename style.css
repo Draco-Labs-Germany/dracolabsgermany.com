@@ -357,6 +357,7 @@ main.legal tr:nth-child(even) { background: rgba(255, 255, 255, .025); }
   background: var(--surface); border: 1px solid var(--line); border-radius: 6px;
   border-left: 3px solid var(--cyan); padding: 18px;
 }
+.aktion-karte.ohne-hero { grid-template-columns: 1fr; }
 .aktion-hero video, .aktion-hero img {
   width: 100%; height: auto; display: block; border-radius: 5px; background: #000;
 }
