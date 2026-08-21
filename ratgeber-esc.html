@@ -1,0 +1,1172 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Die Zahl auf dem Schrumpfschlauch — ESC-Ratgeber | Draco Labs</title>
+<meta name="description" content="ESC-Ratgeber für Multicopter: Kommutierung, MOSFETs, Kondensatoren, DShot und bidirektionale Drehzahl-Rückmeldung verständlich erklärt. Jede Zahl mit Quelle.">
+<meta name="keywords" content="ESC Ratgeber, Drohne Regler, DShot erklärt, bidirektionales DShot, BLHeli_S Bluejay AM32, ESC Ampere Dauerstrom, MOSFET Verluste, ESC Kondensator, eRPM Polpaare">
+<meta name="robots" content="noindex, nofollow">
+<meta name="tdm-reservation" content="1">
+<meta name="author" content="Draco Labs Germany">
+<link rel="canonical" href="https://dracolabsgermany.com/ratgeber-esc.html">
+
+<!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Die Zahl auf dem Schrumpfschlauch — der ESC-Ratgeber">
+<meta property="og:description" content="Warum die Amperezahl auf dem Regler eine Prüfbedingung ist und keine Grenze, wie DShot funktioniert und wie die Drehzahl zurückkommt. Jede Zahl mit Quelle.">
+<meta property="og:url" content="https://dracolabsgermany.com/ratgeber-esc.html">
+<meta property="og:image" content="https://dracolabsgermany.com/assets/ratgeber/esc-hero.jpg">
+<meta property="og:site_name" content="Draco Labs Germany">
+<meta property="og:locale" content="de_DE">
+
+<!-- Twitter/X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Die Zahl auf dem Schrumpfschlauch — der ESC-Ratgeber">
+<meta name="twitter:description" content="Kommutierung, MOSFETs, Kondensatoren, DShot und Drehzahl-Rückmeldung: den Regler verstehen und auswählen. Jede Zahl mit Quelle.">
+<meta name="twitter:image" content="https://dracolabsgermany.com/assets/ratgeber/esc-hero.jpg">
+
+<link rel="icon" type="image/png" href="assets/emblem.png">
+<link rel="stylesheet" href="style.css">
+
+<!-- Strukturierte Daten für Google (Article) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Die Zahl auf dem Schrumpfschlauch: der ESC-Ratgeber",
+  "description": "ESC-Ratgeber für Multicopter: sechs Schaltzustände und Gegen-EMK, MOSFET-Verluste und Wärme, Kondensatoren und Spannungsspitzen, DShot und bidirektionale Drehzahl-Rückmeldung, an Datenblättern und Firmware-Dokumentationen erklärt.",
+  "image": "https://dracolabsgermany.com/assets/ratgeber/esc-hero.jpg",
+  "datePublished": "2026-08-20",
+  "dateModified": "2026-08-20",
+  "author": { "@type": "Organization", "name": "Draco Labs Germany" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Draco Labs Germany",
+    "logo": { "@type": "ImageObject", "url": "https://dracolabsgermany.com/assets/logo.png" }
+  },
+  "mainEntityOfPage": "https://dracolabsgermany.com/ratgeber-esc.html",
+  "inLanguage": "de-DE"
+}
+</script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a href="index.html"><img src="assets/emblem.png" alt="Draco Labs Emblem"></a>
+    <div class="name">Draco Labs <small>Germany</small></div>
+    <input type="checkbox" id="menu-auf" class="menu-toggle">
+    <label for="menu-auf" class="burger" aria-label="Menü öffnen und schließen">
+      <span></span><span></span><span></span>
+    </label>
+    <nav>
+      <!-- <a href="index.html#baustelle">Baustelle</a> reaktivieren, wenn die Serie kurz vor Frame-Go-live released wird -->
+      <a href="leistungen.html">Leistungen</a>
+      <a href="index.html#neuigkeiten">Neuigkeiten</a>
+      <a href="index.html#ratgeber">Ratgeber</a>
+      <a href="index.html#teilelisten">Teilelisten</a>
+      <a href="index.html#ueber">Über uns</a>
+      <a href="index.html#partner">Partner</a>
+      <a href="index.html#kontakt">Kontakt</a>
+    </nav>
+    <a class="shop-btn" href="https://shop.dracolabsgermany.com" target="_blank" rel="noopener">Shop →</a>
+  </div>
+</header>
+
+<main class="legal">
+  <div class="wrap">
+
+    <h1>Die Zahl auf dem Schrumpfschlauch</h1>
+    <p class="muted" style="font-size:17px; margin-top:-4px">Auf einem Regler steht eine
+    Amperezahl, und fast jede Kaufberatung im Netz besteht darin, diese Zahl mit einer anderen
+    zu vergleichen.  Sie ist die am wenigsten aussagekräftige Angabe am ganzen Bauteil.</p>
+    <p class="muted">Ratgeber · Elektronik &amp; Steuerung · Lesezeit ca. 31 Min · Stand: August 2026</p>
+
+    <div data-nosnippet style="background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--cyan); border-radius:10px; padding:18px 20px; margin:22px 0">
+      <p style="margin:0 0 8px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; font-size:13px; color:var(--cyan)">Kurz gesagt</p>
+      <p style="margin:0">Der Regler ist kein Regler, sondern ein <strong>Wechselrichter</strong>:
+      er macht aus der Gleichspannung des Akkus ein Drehfeld, indem er sechs Transistoren in
+      sechs Zuständen umschaltet.  Wo der Rotor gerade steht, misst er nicht, sondern
+      <strong>erschließt es aus der Spannung der gerade stromlosen Phase</strong>, und weil diese
+      Spannung mit der Drehzahl wächst, ist der Anlauf immer ein Blindflug.  Die
+      <strong>Amperezahl auf dem Schrumpfschlauch ist eine Prüfbedingung, keine Grenze</strong>:
+      derselbe Transistor darf 234&nbsp;Ampere, wenn jemand sein Gehäuse auf 25&nbsp;Grad hält,
+      und nur noch 31&nbsp;Ampere, wenn er auf einer normalen Platine in stehender Luft sitzt.
+      Die <strong>zweite Zahl, bei der es kein „ungefähr" gibt, ist die Spannung</strong>, denn
+      beim Bremsen speist der Motor zurück und hebt sie an.  Und die
+      <strong>folgenreichste Entscheidung ist die Firmware</strong>, weil nur sie die Drehzahl
+      zurückmeldet, an der die Filterkette des Flight Controllers hängt.</p>
+    </div>
+
+    <p>Über den <a href="ratgeber-carbon-frame.html">Frame</a>, den
+    <a href="ratgeber-akku-13-zoll.html">Akku</a>, die
+    <a href="ratgeber-motoren.html">Motoren</a>, die
+    <a href="ratgeber-propeller.html">Propeller</a> und den
+    <a href="ratgeber-flight-controller.html">Flight Controller</a> haben wir eigene Ratgeber
+    geschrieben.  Zwischen den letzten beiden klafft eine Lücke, und in dieser Lücke sitzt das
+    Bauteil, das die ganze Leistung des Akkus in der Hand hält.  Der Flight Controller rechnet
+    aus, wie schnell ein Motor drehen soll.  Der Motor dreht.  Dazwischen steht ein Stück
+    Elektronik, das diese Rechenzahl in Strom übersetzt, und wenn etwas an einem Copter mit
+    einem Knall endet, endet es meistens hier.</p>
+
+    <p><strong>Was dieser Artikel nicht behandelt:</strong> die Filterkette.  Was der Flight
+    Controller mit der zurückgemeldeten Drehzahl anfängt, steht im
+    <a href="ratgeber-flight-controller.html#k6">Flight-Controller-Ratgeber, Kapitel 6</a>.
+    Hier endet der Text bei der Zahl, die den Regler verlässt.  Ebenfalls nicht behandelt: der
+    Motor selbst, dessen KV-Zahl, Statormaß und Wirkungsgrad im
+    <a href="ratgeber-motoren.html">Motoren-Ratgeber</a> stehen, und der Akku, dessen Zellenzahl
+    und Innenwiderstand im <a href="ratgeber-akku-13-zoll.html">Akku-Ratgeber</a> stehen.  Dieser
+    Text ist außerdem keine Abstimmungsanleitung und kein Reparaturkurs: er erklärt, was die
+    Einstellungen tun und was die Fehlerbilder bedeuten, nicht in welcher Reihenfolge du den
+    Lötkolben ansetzt.</p>
+
+    <p><strong>Hinweis:</strong> Jede Zahl in diesem Text hat eine Fußnote, die auf eine
+    nachprüfbare Quelle zeigt.  Wo wir gerechnet statt gemessen haben, steht es ausdrücklich
+    dabei.  Für den Fall, dass wir einen Fehler gemacht haben, kontaktiert uns gerne jederzeit.</p>
+
+    <p class="muted" style="font-size:14px"><strong>Transparenz:</strong> Einige Produktlinks in
+    diesem Artikel sind Affiliate-Links und als (Anzeige) markiert.  Kaufst du darüber, erhalten
+    wir eine kleine Vergütung, für dich ändert sich am Preis nichts.  Empfohlen wird nur, was wir
+    fachlich begründen können, und die Begründung steht immer im Text.</p>
+
+    <h2 id="k1">1. Was der Regler wirklich tut</h2>
+    <!-- bild:start esc-bruecke -->
+    <!-- bild:ende esc-bruecke -->
+
+    <p>Der deutsche Name führt in die Irre.  „Fahrtregler" klingt nach einem Bauteil, das
+    Leistung wegdrosselt, so wie ein Dimmer eine Glühbirne dunkler macht.  Genau das tut er
+    nicht.  Ein bürstenloser Motor braucht ein <strong>Drehfeld</strong>: drei Wicklungen, die
+    nacheinander in wechselnder Richtung bestromt werden, sodass sich das Magnetfeld im Stator
+    dreht und der Rotor mit seinen Dauermagneten hinterherläuft.  Der Akku liefert aber keine
+    Wechselspannung, sondern eine glatte Gleichspannung.  Das Bauteil, das aus dem einen das
+    andere macht, heißt in der Leistungselektronik Wechselrichter, und ein Regler ist genau
+    das.</p>
+
+    <p>Dafür braucht es sechs Transistoren, angeordnet als drei Halbbrücken: je einer nach oben
+    an den Pluspol, je einer nach unten an den Minuspol, und dazwischen hängt eine Motorphase.
+    Zu jedem Zeitpunkt sind nur zwei der drei Phasen bestromt.  Texas Instruments formuliert das
+    Prinzip in seinem Anwendungsbericht zur sensorlosen Trapezregelung so: der Strom soll
+    immer nur in zwei der drei Phasen fließen, und im Bereich des Nulldurchgangs der Gegenspannung
+    soll gar kein Drehmoment erzeugt werden<sup><a href="#q2">2</a></sup>.  Die dritte Phase
+    bleibt stromlos, und sie bleibt es nicht aus Bequemlichkeit, sondern weil sie gebraucht wird
+    (dazu Kapitel 2).</p>
+
+    <p>Sechs Schaltzustände ergeben einen vollständigen elektrischen Umlauf.  Der
+    Microchip-Anwendungsbericht zu den Grundlagen bürstenloser Motoren beschreibt es genau so:
+    alle 60 elektrischen Grad wechselt ein Zustand, und damit sind es sechs Schritte bis zum
+    Ende eines elektrischen Zyklus<sup><a href="#q1">1</a></sup>.  Daher der Name
+    Sechs-Schritt-Kommutierung (Fachwort: Blockkommutierung).</p>
+
+    <h3>Elektrische und mechanische Umdrehungen sind nicht dasselbe</h3>
+
+    <p>Hier liegt der Punkt, an dem später der halbe Artikel hängt.  Ein elektrischer Zyklus ist
+    keine volle Umdrehung der Motorglocke.  Wie viele elektrische Zyklen eine mechanische
+    Umdrehung braucht, bestimmt die Zahl der Polpaare im Rotor: je Polpaar ein elektrischer
+    Zyklus<sup><a href="#q1">1</a></sup>.  Ein Rotor mit 24 Magneten hat 12 Polpaare, also dreht
+    sich das elektrische Feld zwölfmal, während sich die Glocke einmal dreht.</p>
+
+    <p>Nehmen wir einen Motor, den wir selbst verbauen.  Der T-Motor MN4012 KV400 ist im
+    Datenblatt als 18N24P angegeben, also 18 Statornuten und 24 Rotorpole, und dreht mit einem
+    13x4.4-Propeller an 22,2&nbsp;Volt bei Vollgas 7.150&nbsp;Umdrehungen je
+    Minute<sup><a href="#q5">5</a></sup>.  24 Pole sind 12 Polpaare, und 7.150 mal 12 ergibt
+    <strong>85.800 elektrische Umdrehungen je Minute</strong> (unsere Rechnung).  Das ist die
+    Zahl, die der Regler tatsächlich verarbeitet, und es ist auch die Zahl, die er später
+    zurückmeldet.</p>
+
+    <h3>Wie die Leistung eingestellt wird</h3>
+
+    <p>Innerhalb eines Schaltzustands wird nicht durchgehend eingeschaltet, sondern schnell
+    getaktet (Fachwort: Pulsweitenmodulation, PWM).  Der Mittelwert der Spannung an der Wicklung
+    ergibt sich aus dem Verhältnis von Ein- zu Ausschaltzeit.  Die Taktfrequenz ist keine
+    Nebensache: BLHeli_S taktet fest mit 24&nbsp;Kilohertz und löst dabei in 2.048 Stufen auf,
+    wenn der Mikrocontroller mit 48&nbsp;Megahertz läuft und die Endstufe ihre Totzeit selbst
+    regelt, sonst in 1.024 Stufen<sup><a href="#q3">3</a></sup>.  Bluejay macht daraus eine
+    Auswahl zwischen 24, 48 und 96&nbsp;Kilohertz<sup><a href="#q9">9</a></sup>, und BLHeli_32
+    lässt die Frequenz ab Version 32.8 sogar mit dem Gas mitwandern: tiefe Frequenz bei wenig
+    Gas, weil dort das aktive Bremsen am meisten gebraucht wird, hohe Frequenz bei viel Gas,
+    weil der Lauf dann ruhiger wird<sup><a href="#q4">4</a></sup>.</p>
+
+    <h2 id="k2">2. Woher der Regler weiß, wo der Rotor steht</h2>
+    <!-- bild:start esc-gegenemk -->
+    <!-- bild:ende esc-gegenemk -->
+
+    <p>Damit die sechs Schaltzustände Drehmoment erzeugen, müssen sie zur Rotorstellung passen.
+    In der Industrie löst man das mit drei Hall-Sensoren im Stator, die melden, welcher Magnet
+    gerade vorbeikommt<sup><a href="#q1">1</a></sup>.  In einem Multicopter-Motor sind sie nicht
+    verbaut: drei zusätzliche Adern je Motor, drei zusätzliche Fehlerquellen, zusätzliches
+    Gewicht.  Der Regler muss die Rotorstellung also erschließen.</p>
+
+    <p>Er benutzt dafür die stromlose Phase.  Ein drehender Motor ist gleichzeitig ein
+    Generator: die Bewegung der Magnete an den Wicklungen vorbei induziert eine Spannung, die
+    der Betriebsspannung entgegensteht (Fachwort: Gegen-EMK).  Diese Spannung ist an der
+    unbestromten Phase messbar, und ihr Nulldurchgang ist ein eindeutiger Marker für die
+    Rotorstellung<sup><a href="#q2">2</a></sup>.</p>
+
+    <p>Nur liegt der Nulldurchgang nicht dort, wo umgeschaltet werden muss.  Er liegt
+    30 elektrische Grad davor.  Texas Instruments beschreibt genau dieses Vorgehen: aus der Zeit,
+    die der Rotor für die vorherige Umdrehung gebraucht hat, wird der Zeitanteil berechnet, der
+    30&nbsp;Grad entspricht, und um diese Zeit wird die Kommutierung verzögert; im Programmcode
+    ist der Winkel fest auf 30&nbsp;Grad gesetzt<sup><a href="#q2">2</a></sup>.  Der Regler
+    schaut also in die Vergangenheit, um die Zukunft zu treffen.  Solange die Drehzahl sich
+    langsam ändert, geht das gut.  Bei einem harten Gasstoß nicht immer, und darauf kommen wir
+    in Kapitel 13 zurück.</p>
+
+    <h3>Der Anlauf ist ein Blindflug</h3>
+
+    <p>Die Gegenspannung ist direkt proportional zur Drehzahl<sup><a href="#q2">2</a></sup>.  Bei
+    Stillstand ist sie also null, und es gibt nichts zu messen.  Der Regler muss den Motor
+    deshalb erst einmal steuern, statt ihn zu regeln: er gibt ein Drehfeld vor und hofft, dass
+    der Rotor mitkommt, so wie bei einem Schrittmotor<sup><a href="#q2">2</a></sup>.  Erst wenn
+    genug Drehzahl da ist, kann er auf die Messung umschalten.</p>
+
+    <p>Deshalb ist die Anlaufleistung in jeder Regler-Firmware ein eigener Parameter.  BLHeli_S
+    lässt Werte zwischen 0,031 und 1,5 zu und begründet die Begrenzung ausdrücklich damit, dass
+    bei niedrigen Drehzahlen die Motorleistung begrenzt werden muss, um die kleinen
+    Gegenspannungen überhaupt erkennen zu können<sup><a href="#q3">3</a></sup>.  BLHeli_32 nennt
+    denselben Parameter Rampup Power und stellt ihn zwischen 3 und 150&nbsp;Prozent
+    ein<sup><a href="#q4">4</a></sup>.  Beide Handbücher warnen an derselben Stelle: schaltet man
+    die Leistungsbegrenzung bei niedriger Drehzahl ab, um an einem Motor mit niedriger KV-Zahl
+    volle Leistung zu bekommen, steigt das Risiko, den Synchronlauf zu verlieren, mit der
+    Möglichkeit, Motor oder Regler zu rösten<sup><a href="#q3">3</a></sup><sup><a href="#q4">4</a></sup>.</p>
+
+    <p>Große, träge Motoren sind hier das eigentliche Problem, weil sie lange brauchen, bis die
+    Gegenspannung brauchbar ist.  AM32 hat dafür einen sinusförmigen Anlaufmodus, der
+    ausdrücklich dafür gedacht ist, größere Motoren auf Drehzahl zu
+    bringen<sup><a href="#q10">10</a></sup>.</p>
+
+    <h2 id="k3">3. Block, Sinus, Feldorientierung</h2>
+    <!-- bild:start esc-kurvenformen -->
+    <!-- bild:ende esc-kurvenformen -->
+
+    <p>Die Blockkommutierung ist einfach, robust und billig zu rechnen.  Sie ist aber auch grob:
+    das Drehmoment schwankt innerhalb jedes 60-Grad-Sektors, weil ein rechteckiger Stromblock
+    auf eine nicht ganz rechteckige Gegenspannung trifft.  Microchip unterscheidet dafür zwei
+    Motorbauarten: der trapezförmig gewickelte Motor liefert eine trapezförmige Gegenspannung,
+    der sinusförmig gewickelte eine sinusförmige, und der Sinusmotor läuft mit gleichmäßigerem
+    Drehmoment, verlangt dafür aber mehr Kupfer und mehr
+    Verschaltungsaufwand<sup><a href="#q1">1</a></sup>.</p>
+
+    <p>Zwischen der reinen Blockansteuerung und der vollen Feldorientierung liegt ein billiger
+    Zwischenschritt.  BLHeli_32 nennt ihn Sine Modulation und beschreibt ihn sehr genau: die
+    Leistung wird über den Kommutierungszyklus mit einer Sinusform moduliert, von
+    sin(60&nbsp;Grad) gleich 87&nbsp;Prozent am Anfang über 100&nbsp;Prozent in der Mitte zurück
+    auf 87&nbsp;Prozent am Ende.  Der Gewinn sind „ein paar Prozent" mehr Wirkungsgrad und ein
+    ruhigerer Lauf, und die Grenze ist ehrlich benannt: selbst mit 48&nbsp;Kilohertz Taktfrequenz
+    ist die Sinusform nur bis etwa 100.000 elektrischen Umdrehungen je Minute sauber
+    darstellbar, darüber läuft der Motor zwar weiter, aber die Modulation wird
+    ungenau<sup><a href="#q4">4</a></sup>.</p>
+
+    <p>Die feldorientierte Regelung (Fachwort: FOC) geht einen Schritt weiter.  Sie misst die
+    Phasenströme, rechnet sie in ein mit dem Rotor mitdrehendes Koordinatensystem um und stellt
+    getrennt ein, welcher Anteil des Stroms Drehmoment erzeugt und welcher nur das Feld
+    aufbaut.  Im industriellen Multicopter ist das Stand der Technik: T-Motor bewirbt die
+    ALPHA-Serie ausdrücklich als FOC-Regler<sup><a href="#q25">25</a></sup>, KDE Direct nennt
+    für seine UAS-Regler temperaturgeführte Synchrongleichrichtung und dynamische
+    Timing-Algorithmen<sup><a href="#q24">24</a></sup>.  Im FPV-Bereich ist es unüblich, und der
+    Grund steht in den Datenblättern der Firmware: BLHeli_S läuft auf 8-Bit-Mikrocontrollern mit
+    24 oder 48&nbsp;Megahertz<sup><a href="#q3">3</a></sup>, und auf so einem Baustein bleibt für
+    Koordinatentransformationen im Kilohertz-Takt kein Rechenwerk übrig.</p>
+
+    <p>Was FOC an einem konkreten Multicopter an Flugzeit bringt, können wir nicht belegen.
+    Vergleichbare Prüfstandsmessungen desselben Motors mit beiden Ansteuerungen haben wir nicht
+    gefunden, und deshalb steht hier keine Zahl.</p>
+
+    <h2 id="k4">4. Die Transistoren, und wo die Wärme entsteht</h2>
+    <!-- bild:start esc-verluste -->
+    <!-- bild:ende esc-verluste -->
+
+    <p>Ein Regler ist ein Wärmeproblem.  Alles, was an ihm kaputtgeht, geht an zu viel Wärme
+    oder zu viel Spannung kaputt, und die Wärme entsteht fast vollständig in den sechs
+    Transistoren.  Es lohnt sich deshalb, einmal in ein echtes Datenblatt zu schauen.  Wir nehmen
+    einen Leistungstransistor aus der 60-Volt-Klasse, wie er in Reglern für sechs Zellen typisch
+    ist: den Infineon BSC016N06NS.</p>
+
+    <p>Zwei Zahlen bestimmen die Verluste.  Die erste ist der <strong>Kanalwiderstand</strong>
+    im eingeschalteten Zustand: typisch 1,4 und höchstens 1,6&nbsp;Milliohm, gemessen bei
+    10&nbsp;Volt Steuerspannung am Gate und 50&nbsp;Ampere
+    Strom<sup><a href="#q19">19</a></sup>.  Der Durchlassverlust ist das Quadrat des Stroms mal
+    diesem Widerstand.  Bei 55&nbsp;Ampere, dem Dauerstrom eines gängigen 4-in-1-Reglers, sind
+    das 4,84&nbsp;Watt je Transistor (unsere Rechnung).  Da immer zwei Transistoren in Reihe im
+    Strompfad liegen, einer oben und einer unten, sind es rund 9,7&nbsp;Watt je Motorkanal
+    (unsere Rechnung, vereinfacht: wir setzen den Kanalstrom gleich dem Eingangsstrom und lassen
+    Kurvenform und Tastverhältnis außen vor).</p>
+
+    <p>Bemerkenswert ist die Fußnote zur Steuerspannung.  Derselbe Transistor hat bei nur
+    6&nbsp;Volt am Gate einen Kanalwiderstand von typisch 1,9 und höchstens
+    2,4&nbsp;Milliohm<sup><a href="#q19">19</a></sup>.  Das sind bei den Höchstwerten
+    <strong>50&nbsp;Prozent mehr Durchlassverlust</strong> (unsere Rechnung), ohne dass sich am
+    Motor, am Strom oder an der Software irgendetwas geändert hätte.  Die Qualität der
+    Gate-Ansteuerung ist eine der Stellen, an denen billige und gute Regler sich unterscheiden,
+    und man sieht sie von außen nicht.</p>
+
+    <h3>Die zweite Zahl: die Ladung im Gate</h3>
+
+    <p>Das Gate ist ein Kondensator.  Jedes Einschalten kostet Ladung, jedes Ausschalten wirft
+    sie weg, und beides zusammen kostet Leistung, die proportional zur Schaltfrequenz steigt.
+    Für unseren Transistor sind es 71&nbsp;Nanocoulomb, um das Gate von 0 auf 10&nbsp;Volt zu
+    bringen<sup><a href="#q19">19</a></sup>.  Bei 24&nbsp;Kilohertz Taktfrequenz macht das
+    17&nbsp;Milliwatt je Transistor, bei 96&nbsp;Kilohertz sind es 68&nbsp;Milliwatt (beides
+    unsere Rechnung, Ladung mal Spannung mal Frequenz).</p>
+
+    <p>Das klingt vernachlässigbar, und für die Ansteuerung allein ist es das auch.  Der eigentliche
+    Schaltverlust entsteht anderswo: in den Nanosekunden, in denen Spannung und Strom gleichzeitig
+    am Transistor anliegen.  Unser Beispiel schaltet in 9&nbsp;Nanosekunden ein und in
+    9&nbsp;Nanosekunden aus, braucht aber 35&nbsp;Nanosekunden, bis das Ausschalten überhaupt
+    beginnt<sup><a href="#q19">19</a></sup>.  Infineon beschreibt die Aufteilung in seinem
+    Anwendungsbericht zur Bauteilauswahl klar: die Verluste zerfallen in lastabhängige
+    Durchlassverluste und nahezu konstante Schaltverluste, bei kleiner Last dominieren die
+    Schaltverluste, bei großer Last die Durchlassverluste, und deshalb gibt es zu jeder Anwendung
+    ein Optimum statt eines „je niederohmiger, desto besser"<sup><a href="#q20">20</a></sup>.
+    Denn niederohmigere Bauteile haben größere Gate- und Ausgangsladungen, ihre Schaltverluste
+    steigen also<sup><a href="#q20">20</a></sup>.</p>
+
+    <h3>Die Totzeit, die niemand sieht</h3>
+
+    <p>Oberer und unterer Transistor einer Halbbrücke dürfen nie gleichzeitig leiten, sonst
+    schließen sie den Akku kurz.  Zwischen dem Ausschalten des einen und dem Einschalten des
+    anderen liegt deshalb eine Totzeit, und in ihr fließt der Strom durch die eingebaute Diode
+    des Transistors, was zusätzliche Verluste
+    erzeugt<sup><a href="#q20">20</a></sup>.</p>
+
+    <p>Wie lang diese Totzeit ist, steht bei BLHeli_S sogar im Dateinamen.  Die Namenskonvention
+    lautet Buchstabe für die Anschlussbelegung, Buchstabe für die Taktfrequenz des Controllers,
+    dann zwei Ziffern für die Totzeit in Einheiten von 20,4&nbsp;Nanosekunden; Endstufen mit
+    eigener Totzeitregelung tragen die Ziffern 00<sup><a href="#q3">3</a></sup>.  Der
+    SpeedyBee-Regler, den wir hier liegen haben, läuft mit der Firmware
+    J-H-40<sup><a href="#q27">27</a></sup>.  Das sind 40 mal 20,4&nbsp;Nanosekunden, also
+    <strong>816&nbsp;Nanosekunden</strong> Totzeit (unsere Rechnung), und bei 24&nbsp;Kilohertz
+    Taktfrequenz mit einer Periodendauer von 41,7&nbsp;Mikrosekunden entspricht das
+    2,0&nbsp;Prozent jeder Periode (unsere Rechnung).  Zwei Prozent der Zeit läuft der Strom
+    durch eine Diode statt durch einen niederohmigen Kanal.</p>
+
+    <h3>Wo die Wärme hin muss</h3>
+
+    <p>Der Chip selbst ist erstaunlich unkritisch.  Er darf bis 175&nbsp;Grad Celsius warm
+    werden, und der Wärmewiderstand von der Sperrschicht zum Gehäuseboden beträgt typisch
+    0,5&nbsp;Kelvin je Watt<sup><a href="#q19">19</a></sup>.  Unsere 4,84&nbsp;Watt heben die
+    Sperrschichttemperatur gegenüber dem Gehäuse also um 2,4&nbsp;Kelvin (unsere Rechnung).  Der
+    Engpass ist nie der Halbleiter.  Der Engpass ist der Weg vom Gehäuse in die Umgebung, und
+    genau davon handelt das nächste Kapitel.</p>
+
+    <h2 id="k5">5. Die Amperezahl auf dem Schrumpfschlauch</h2>
+    <!-- bild:start esc-ampere -->
+    <!-- bild:ende esc-ampere -->
+
+    <p>Wenn du dir aus diesem Artikel einen Absatz merkst, dann diesen.</p>
+
+    <p>Im Datenblatt unseres Transistors stehen für den Dauerstrom drei verschiedene Werte, alle
+    drei richtig, alle drei für dasselbe Bauteil.  <strong>234&nbsp;Ampere</strong>, wenn die
+    Gehäusetemperatur bei 25&nbsp;Grad gehalten wird.  <strong>164&nbsp;Ampere</strong>, wenn sie
+    bei 100&nbsp;Grad gehalten wird.  Und <strong>31&nbsp;Ampere</strong>, wenn das Bauteil auf
+    einer 40 mal 40&nbsp;Millimeter großen Platine mit 6&nbsp;Quadratzentimeter Kupferfläche
+    senkrecht in stehender Luft sitzt<sup><a href="#q19">19</a></sup>.  Der letzte Fall ist der,
+    der einem Regler am nächsten kommt.  31 von 234&nbsp;Ampere sind
+    <strong>13&nbsp;Prozent</strong> (unsere Rechnung).</p>
+
+    <p>Bei der Verlustleistung ist der Sprung noch größer: 167&nbsp;Watt bei gehaltener
+    Gehäusetemperatur gegen 3,0&nbsp;Watt in derselben Platinenumgebung<sup><a href="#q19">19</a></sup>,
+    ein Faktor von rund 56 (unsere Rechnung).  Die Amperezahl beschreibt keine Eigenschaft des
+    Bauteils.  Sie beschreibt eine Prüfbedingung.</p>
+
+    <h3>Wer die Bedingung dazuschreibt</h3>
+
+    <p>Die aufschlussreichste Angabe ist deshalb die, die den Zeitraum und die Kühlung nennt.
+    KDE Direct macht das bei seinem KDEXF-UAS35 vorbildlich: <strong>35&nbsp;Ampere für
+    180&nbsp;Sekunden</strong> als Dauerstrom, <strong>60&nbsp;Ampere für 5&nbsp;Sekunden</strong>
+    als Spitze, dazu 1.035&nbsp;Watt und 1.775&nbsp;Watt als zugehörige Leistungen, und ein
+    ausdrücklicher Vorbehalt: der Regler braucht dauerhaft eine Anströmung von mindestens
+    5&nbsp;Meilen je Stunde über den Kühlkörper, um diese Werte zu
+    halten<sup><a href="#q24">24</a></sup>.  Dieselbe Anforderung wiederholt der Hersteller in
+    seinen technischen Hinweisen<sup><a href="#q23">23</a></sup>.  Ein Regler, der im geschlossenen
+    Rumpf sitzt, erreicht seine Katalogzahl nicht, und der Hersteller sagt das selbst.</p>
+
+    <p>Die übrigen Angaben lesen sich ähnlich, sobald man weiß, worauf zu achten ist.  T-Motor
+    gibt für den ALPHA 60A an 6S 40&nbsp;Ampere Dauerstrom und 60&nbsp;Ampere Spitze für
+    10&nbsp;Sekunden an, bei 62,8&nbsp;Gramm mit Kabeln und Abmessungen von 71,3 mal 32,5 mal
+    15,9&nbsp;Millimetern<sup><a href="#q25">25</a></sup>.  Hobbywing nennt für den XRotor Pro 40A
+    schlicht „40A/60A" bei 3S bis 6S und 45 bis 50&nbsp;Gramm<sup><a href="#q26">26</a></sup>.
+    SpeedyBee gibt für seinen 4-in-1 55&nbsp;Ampere je Kanal und 70&nbsp;Ampere für
+    10&nbsp;Sekunden an<sup><a href="#q27">27</a></sup>.  Bei den 60&nbsp;Ampere von Hobbywing
+    fehlt die Zeitangabe, und damit fehlt die Hälfte der Information.</p>
+
+    <h3>Was der Motor tatsächlich zieht</h3>
+
+    <p>Gegen diese Zahlen sollte man halten, was wirklich fließt.  Der MN4012 KV400 zieht laut
+    Prüfstandstabelle des Herstellers an 22,2&nbsp;Volt mit einem 15x5-Propeller bei Vollgas
+    16,2&nbsp;Ampere, mit einem 13x4.4 nur 9,4&nbsp;Ampere, und der Motor selbst ist mit
+    25&nbsp;Ampere Dauerstrom und 750&nbsp;Watt für 180&nbsp;Sekunden
+    angegeben<sup><a href="#q5">5</a></sup>.  Vier solche Motoren an 15-Zoll-Propellern ziehen bei
+    Vollgas zusammen 64,8&nbsp;Ampere (unsere Rechnung), also im Mittel gut 16&nbsp;Ampere je
+    Kanal.  Ein 40-Ampere-Regler ist damit reichlich dimensioniert, und das ist auch gut so:
+    Vollgas hält man selten, aber wenn, dann bei Wind, in der Kurve und mit warmem Akku.</p>
+
+    <p>Wo der Strom wirklich knapp wird, greift die Firmware ein.  BLHeli_32 kann den Strom
+    begrenzen und schreibt ausdrücklich dazu, dass der eingestellte Wert je Regler gilt: 40
+    Ampere Grenze an jedem der vier Regler eines Quadrocopters ergeben 160&nbsp;Ampere
+    Gesamtgrenze<sup><a href="#q4">4</a></sup>.  Wer die Zahl für den ganzen Copter hält, stellt
+    sie viermal zu hoch ein.</p>
+
+    <h3>Der Temperaturschutz ist kein Schutz, sondern eine Bremse</h3>
+
+    <p>Beide großen Firmwarefamilien messen die Temperatur im Mikrocontroller, nicht an den
+    Transistoren, und begrenzen bei Überschreitung die Motorleistung.  BLHeli_S erlaubt eine
+    programmierbare Schwelle zwischen 80 und 140&nbsp;Grad Celsius und regelt dann in vier
+    Stufen: oberhalb der Schwelle auf 75&nbsp;Prozent, 5&nbsp;Grad darüber auf 50, 10&nbsp;Grad
+    darüber auf 25 und 15&nbsp;Grad darüber auf 0&nbsp;Prozent<sup><a href="#q3">3</a></sup>.
+    BLHeli_32 regelt stufenlos und geht dabei nicht unter 25&nbsp;Prozent
+    herunter<sup><a href="#q4">4</a></sup>.  Wer im Flug einen plötzlichen Leistungseinbruch
+    erlebt, hat oft nicht den Akku am Ende, sondern den Regler am Anschlag.</p>
+
+    <h2 id="k6">6. Spannung: die Zahl, bei der es kein „ungefähr" gibt</h2>
+    <!-- bild:start esc-spannung -->
+    <!-- bild:ende esc-spannung -->
+
+    <p>Beim Strom verzeiht Physik.  Zu viel Strom bedeutet zu viel Wärme, und Wärme braucht
+    Zeit, um Schaden anzurichten.  Bei der Spannung verzeiht sie nicht.  Wird die Sperrspannung
+    eines Transistors überschritten, ist er in Mikrosekunden zerstört.</p>
+
+    <p>Die erste Falle ist die Nennspannung des Akkus.  Ein 6S-LiPo heißt 22,2&nbsp;Volt, aber
+    das ist der Nennwert.  Voll geladen liefert jede Zelle 4,2&nbsp;Volt, wie Tattu in seinen
+    Datenblättern angibt<sup><a href="#q29">29</a></sup>, also
+    <strong>25,2&nbsp;Volt</strong> (unsere Rechnung).  T-Motor schreibt das bei seinem
+    ALPHA 60A für 6S denn auch korrekt als Eingangsbereich „18 bis 25,2&nbsp;Volt"
+    hin<sup><a href="#q25">25</a></sup>.</p>
+
+    <p>Die zweite Falle ist ernster, und KDE Direct benennt sie so deutlich, wie man es selten
+    liest.  Der Hersteller listet für seine Reglerfamilien getrennt Nenn- und Höchstspannung
+    auf: 35&nbsp;Volt Nennspannung bei 40&nbsp;Volt Maximum, begrenzt durch die Transistoren;
+    55&nbsp;Volt bei 60&nbsp;Volt Maximum, ebenfalls durch die Transistoren; und 63&nbsp;Volt bei
+    63&nbsp;Volt Maximum, hier begrenzt durch die Kondensatoren, während die Transistoren
+    80&nbsp;Volt vertragen würden<sup><a href="#q23">23</a></sup>.  Dann folgt der Satz, um den
+    es geht: der Hersteller empfiehlt mindestens 10&nbsp;Prozent Reserve für die
+    Rückspeisefähigkeit, weil die Spannung während der Rückspeisephasen ansteigt, und wer den
+    Regler oberhalb der angegebenen Spannung betreibt, beschädigt die Transistorkanäle durch
+    Spannungswelligkeit und Rückspeisung<sup><a href="#q23">23</a></sup>.</p>
+
+    <p>Rechnet man diese 10&nbsp;Prozent auf die vollen Akkuspannungen, kommt man auf
+    <strong>27,7&nbsp;Volt</strong> für 6S und <strong>37,0&nbsp;Volt</strong> für 8S (beides
+    unsere Rechnung).  Ein Bauteil mit 40&nbsp;Volt Sperrspannung ist an acht Zellen damit genau
+    an der Grenze, und ein 60-Volt-Transistor wie unser Beispiel aus Kapitel 4 hat an sechs
+    Zellen komfortabel Luft.  Das ist der sachliche Grund hinter der verbreiteten Faustregel,
+    einen Regler eine Zellenzahl größer zu kaufen, als man fliegt.</p>
+
+    <h3>Wo die Spitzen herkommen, die im Datenblatt nicht stehen</h3>
+
+    <p>Zur vollen Akkuspannung kommen kurze Überhöhungen aus dem Schalten selbst.  Jede
+    Zuleitung hat eine Induktivität, und eine Induktivität wehrt sich gegen schnelle
+    Stromänderungen mit einer Gegenspannung.  Ein Regler ändert seinen Eingangsstrom
+    zehntausende Male je Sekunde.  Castle Creations formuliert die praktische Folge in seiner
+    Produktbeschreibung zu Kondensatorpaketen unmissverständlich: lange Akkuleitungen können eine
+    Spannungswelligkeit erzeugen, die den Regler beschädigt, und das Kondensatorpaket gehört so
+    nah wie möglich an den Regler<sup><a href="#q22">22</a></sup>.  Die Länge der Akkuleitung ist
+    damit ein elektrischer Parameter, kein Verlegedetail.</p>
+
+    <h2 id="k7">7. Der Kondensator ist kein Zubehör</h2>
+    <!-- bild:start esc-kondensator -->
+    <!-- bild:ende esc-kondensator -->
+
+    <p>Fast jedem 4-in-1-Regler liegt ein dicker Elektrolytkondensator bei, und fast jeder
+    zweite Aufbau fliegt ohne ihn, weil er unordentlich aussieht.  Die Hersteller sind an dieser
+    Stelle ungewöhnlich eindeutig.  SpeedyBee legt seinem 55-Ampere-Stack einen
+    1.000-Mikrofarad-Kondensator mit niedrigem Ersatzserienwiderstand
+    bei<sup><a href="#q27">27</a></sup>.  Holybro schreibt bei seinem Tekko32-Regler sogar in die
+    Spezifikation hinein, dass für den Betrieb an sechs Zellen ein Kondensator nötig ist, und
+    nennt die Werte: 1.000&nbsp;Mikrofarad, 35&nbsp;Volt<sup><a href="#q28">28</a></sup>.</p>
+
+    <p>Der Grund ist der Rippelstrom.  Der Akku liefert einen vergleichsweise glatten Strom, der
+    Regler entnimmt ihn im Takt seiner Pulsweitenmodulation in Stücken.  Die Differenz muss
+    irgendwo herkommen, und sie kommt aus dem Kondensator.  Dieser Wechselstrom fließt durch den
+    Ersatzserienwiderstand des Kondensators (Fachwort: ESR) und erzeugt dort Wärme.</p>
+
+    <h3>Wie viel Wärme das ist</h3>
+
+    <p>Rubycon gibt in seinen technischen Hinweisen zu Aluminium-Elektrolytkondensatoren die
+    Formel an: die Temperaturerhöhung an der Oberfläche ist das Quadrat des Rippelstroms mal dem
+    Ersatzserienwiderstand, geteilt durch das Produkt aus einem Abstrahlfaktor und der
+    Mantelfläche.  Für den Abstrahlfaktor nennt der Hersteller die Näherung
+    2,3&nbsp;mal&nbsp;10 hoch minus 3 mal der Mantelfläche hoch minus
+    0,2<sup><a href="#q21">21</a></sup>.</p>
+
+    <p>Setzen wir das für einen typischen Becher von 10&nbsp;Millimeter Durchmesser und
+    20&nbsp;Millimeter Höhe an.  Mantelfläche und die beiden Stirnflächen ergeben zusammen rund
+    7,9&nbsp;Quadratzentimeter (unsere Rechnung).  Der Abstrahlfaktor wird damit zu
+    1,52&nbsp;Milliwatt je Grad und Quadratzentimeter (unsere Rechnung), und daraus folgt: jedes
+    Watt, das im Kondensator verheizt wird, hebt seine Oberflächentemperatur um rund
+    <strong>83&nbsp;Grad</strong> (unsere Rechnung).  Schon ein halbes Watt sind
+    41&nbsp;Grad.  Ein Kondensator mit niedrigem Ersatzserienwiderstand ist deshalb keine
+    Angeberei, sondern der Unterschied zwischen handwarm und heiß.</p>
+
+    <p>Und es wird schlimmer, statt besser.  Rubycon beschreibt den Rückkopplungseffekt
+    ausdrücklich: der Ersatzserienwiderstand steigt, während der Elektrolyt austrocknet, dadurch
+    steigt die Erwärmung durch den Rippelstrom weiter, und deshalb muss man beim Abschätzen der
+    Lebensdauer unter Rippelstrom mit einer stärkeren Beschleunigung rechnen als bei reiner
+    Temperaturbelastung<sup><a href="#q21">21</a></sup>.  Ein Kondensator, der einmal zu heiß
+    lief, wird nie wieder so gut wie vorher.</p>
+
+    <h3>Die Spannungsfestigkeit gehört zur Zellenzahl</h3>
+
+    <p>Castle Creations verkauft seine Pakete konsequent nach Spannungsklasse: 2.240&nbsp;Mikrofarad
+    für bis zu acht Zellen bei 33,6&nbsp;Volt, 880&nbsp;Mikrofarad für mehr als acht Zellen bei
+    50,4&nbsp;Volt<sup><a href="#q22">22</a></sup>.  Der beigelegte 35-Volt-Kondensator eines
+    FPV-Reglers hat an sechs vollen Zellen mit 25,2&nbsp;Volt eine vernünftige Reserve, an acht
+    vollen Zellen mit 33,6&nbsp;Volt keine mehr (unsere Rechnung, siehe Kapitel 6).  Wer von 6S
+    auf 8S umbaut, tauscht nicht nur den Regler.</p>
+
+    <h2 id="k8">8. Die Ansteuerung: von der Pulsweite zu DShot</h2>
+    <!-- bild:start esc-protokolle -->
+    <!-- bild:ende esc-protokolle -->
+
+    <p>Bis vor wenigen Jahren sprach der Flight Controller mit dem Regler wie eine
+    Fernsteuerung mit einem Servo: ein Impuls, dessen Länge zwischen 1.000 und
+    2.000&nbsp;Mikrosekunden den Sollwert trägt, wiederholt mit einer Rahmenrate zwischen 50 und
+    490&nbsp;Hertz<sup><a href="#q16">16</a></sup>.  Das Verfahren hat drei Schwächen: es ist
+    langsam, es ist analog, und es muss kalibriert werden, weil jeder Regler die Endpunkte etwas
+    anders interpretiert.</p>
+
+    <p>Die Zwischenschritte verkürzten einfach die Impulse.  Oneshot125 verwendet 125 bis
+    250&nbsp;Mikrosekunden, Oneshot42 41,7 bis 83,3&nbsp;Mikrosekunden, Multishot nur noch 5 bis
+    25&nbsp;Mikrosekunden; die Regler-Firmware behandelt sie identisch, nur mit geteiltem
+    Zeitmaßstab<sup><a href="#q3">3</a></sup><sup><a href="#q4">4</a></sup>.  ArduPilot merkt
+    zu Oneshot nüchtern an, es biete gegenüber gewöhnlicher Pulsweite wenig
+    Vorteil<sup><a href="#q16">16</a></sup>.</p>
+
+    <h3>Was DShot anders macht</h3>
+
+    <p>DShot überträgt keine Zeitdauer, sondern eine Zahl.  Ein Rahmen besteht aus 16 Bit: 11 Bit
+    Sollwert, 1 Bit Telemetrieanforderung und 4 Bit Prüfsumme<sup><a href="#q6">6</a></sup>.  Der
+    Wert 0 bedeutet entschärft, die Werte 1 bis 47 sind Sonderbefehle, und erst 48 bis 2.047
+    sind Gaswerte<sup><a href="#q6">6</a></sup>, also <strong>2.000 Stufen</strong> (unsere
+    Rechnung).  Die Prüfsumme ist der eigentliche Fortschritt: ein gestörter Rahmen wird
+    verworfen, statt als falscher Gaswert zu wirken.</p>
+
+    <p>Die Zahl im Namen ist die Bitrate in Kilobit je Sekunde.  Betaflight gibt die zugehörigen
+    Rahmenlängen an: 106,72&nbsp;Mikrosekunden bei DShot150, 53,28 bei DShot300, 26,72 bei
+    DShot600 und 13,28 bei DShot1200<sup><a href="#q6">6</a></sup>.  Aus 26,72&nbsp;Mikrosekunden
+    folgen theoretisch 37.425 Rahmen je Sekunde (unsere Rechnung), womit klar ist, dass nicht das
+    Protokoll das Nadelöhr ist, sondern die Schleifenrate des Flight Controllers.</p>
+
+    <p>Weil eine Zahl übertragen wird und keine Impulslänge, entfällt die Kalibrierung
+    vollständig; ArduPilot und PX4 sagen das beide ausdrücklich<sup><a href="#q14">14</a></sup><sup><a href="#q17">17</a></sup>.
+    Und weil 47 Werte frei sind, kann der Flight Controller Befehle schicken statt nur Sollwerte:
+    Piepen in fünf Lautstärken (Befehle 1 bis 5), Drehrichtung setzen (7 und 8 beziehungsweise
+    20 und 21), 3D-Modus ein- und ausschalten (9 und 10), Einstellungen speichern (12) und bis zu
+    vier Leuchtdioden schalten (22 bis 29)<sup><a href="#q6">6</a></sup>.  Wer schon einmal einen
+    Motor umgedreht hat, ohne zwei Kabel zu tauschen, hat diese Befehle benutzt.</p>
+
+    <h3>Welche Rate man nimmt</h3>
+
+    <p>Schneller ist nicht besser.  BLHeli_S nennt die Grenzen seiner Mikrocontroller offen:
+    Regler mit 24&nbsp;Megahertz unterstützen DShot600 gar nicht und sollten bei DShot150
+    bleiben, für 48-Megahertz-Regler empfiehlt das Handbuch DShot300, weil der Gewinn an
+    Geschwindigkeit durch DShot600 vom Verlust an Störabstand aufgewogen
+    wird<sup><a href="#q3">3</a></sup>.  BLHeli_32 unterstützt jede Rate bis mindestens
+    DShot1200<sup><a href="#q4">4</a></sup>.  ArduPilot empfiehlt DShot300 für die meisten
+    Fluggeräte und DShot150 ausdrücklich für größere Maschinen mit langen
+    Signalleitungen<sup><a href="#q14">14</a></sup>, und Betaflight koppelt die Empfehlung an die
+    Regelschleife: bei 4-Kilohertz-Schleife DShot300 wegen der besseren Zuverlässigkeit, bei
+    8&nbsp;Kilohertz DShot600<sup><a href="#q7">7</a></sup>.</p>
+
+    <p>Wie oft überhaupt gesendet wird, hängt am Flight Controller.  ArduPilot gibt bei einem
+    Standard-Copter rund 1,4&nbsp;Kilohertz aus und lässt die Rate über einen Parameter auf
+    Vielfache der Schleifenrate setzen, etwa 800&nbsp;Hertz oder
+    1,2&nbsp;Kilohertz<sup><a href="#q14">14</a></sup>.  BLHeli_32 verlangt dabei eine
+    Mindestrate: bei einem 48-Megahertz-Controller etwa 1.000&nbsp;Hertz für DShot, rund
+    300&nbsp;Hertz für die übrigen digitalen Formate und etwa 40&nbsp;Hertz für klassische
+    Pulsweite<sup><a href="#q4">4</a></sup>.</p>
+
+    <h2 id="k9">9. Bidirektionales DShot: wie die Drehzahl zurückkommt</h2>
+    <!-- bild:start esc-bidshot -->
+    <!-- bild:ende esc-bidshot -->
+
+    <p>Hier liegt die Grenze zum
+    <a href="ratgeber-flight-controller.html#k6">Flight-Controller-Ratgeber</a>, und hier liegt
+    der Grund, warum dieses Bauteil in den letzten Jahren wichtiger geworden ist als seine
+    Amperezahl.</p>
+
+    <p>Der Regler kennt die Drehzahl ohnehin.  Er muss sie kennen, weil er ohne sie nicht
+    kommutieren könnte: die Zeit zwischen zwei Nulldurchgängen der Gegenspannung ist die
+    Drehzahlinformation (Kapitel 2).  Diese Zahl liegt also fertig im Regler und musste nur noch
+    zurück zum Flight Controller.  Bidirektionales DShot tut genau das, und zwar auf derselben
+    einen Signalleitung, die ohnehin schon da ist.</p>
+
+    <h3>Wie das technisch geht</h3>
+
+    <p>Das Signal wird invertiert, damit beide Seiten den Leitungszustand unterscheiden können;
+    das Verfahren setzt DShot300 oder schneller voraus, und zwischen Senden und Empfangen liegen
+    jeweils 30&nbsp;Mikrosekunden Umschaltzeit<sup><a href="#q6">6</a></sup>.  Der Rückrahmen ist
+    wieder 16 Bit lang, aber anders aufgeteilt: 3 Bit Exponent, 9 Bit Zahlenwert und 4 Bit
+    Prüfsumme, wobei der Zahlenwert keine Drehzahl ist, sondern eine <strong>Periodendauer in
+    Mikrosekunden</strong><sup><a href="#q6">6</a></sup>.  Damit die Leitung genug Flanken für
+    die Taktrückgewinnung führt, wird der Rahmen zusätzlich von 16 auf 20 Bit gespreizt und mit
+    dem 1,25-fachen der DShot-Bitrate gesendet; bei DShot600 sind das
+    750&nbsp;Kilobit je Sekunde<sup><a href="#q6">6</a></sup>.</p>
+
+    <p>Das kostet.  Betaflight rechnet die Bilanz für DShot300 selbst vor: 53,28&nbsp;Mikrosekunden
+    Hinrahmen, 30&nbsp;Mikrosekunden Umschalten, 56&nbsp;Mikrosekunden Rückrahmen und noch einmal
+    30&nbsp;Mikrosekunden Umschalten ergeben 169,28&nbsp;Mikrosekunden, also eine mögliche
+    Höchstrate von rund 5,9&nbsp;Kilohertz statt der 18&nbsp;Kilohertz, die ohne Rückmeldung
+    möglich wären<sup><a href="#q6">6</a></sup>.  Man tauscht Rahmenrate gegen Wissen, und der
+    Tausch lohnt sich.</p>
+
+    <h3>Von eRPM zu Umdrehungen</h3>
+
+    <p>Was zurückkommt, sind elektrische Umdrehungen, nicht mechanische.  Die Umrechnung ist die
+    aus Kapitel 1, nur rückwärts: elektrische Umdrehungen geteilt durch die Zahl der Polpaare
+    ergeben die Drehzahl der Glocke.  Betaflight sagt dem Nutzer deshalb, er solle die Magnete an
+    der Glocke zählen und nicht den Stator, und nennt als typische Werte 14 Magnete bei
+    Fünfzoll-Motoren und oft 12 bei kleineren<sup><a href="#q7">7</a></sup>; ArduPilot hat für
+    denselben Zweck einen Parameter mit dem Standardwert 14<sup><a href="#q15">15</a></sup>.</p>
+
+    <p>An unseren beiden Beispielmotoren sieht man die Spannweite.  Der MN4012 mit seinen 24
+    Polen<sup><a href="#q5">5</a></sup> hat 12 Polpaare, meldet bei 7.150&nbsp;Umdrehungen je
+    Minute also 85.800 elektrische Umdrehungen (unsere Rechnung).  Ein Fünfzoll-Motor mit
+    14 Magneten hat 7 Polpaare und meldet bei 30.000&nbsp;Umdrehungen je Minute
+    <strong>210.000 elektrische Umdrehungen</strong> (unsere Rechnung).  Das ist kein
+    theoretisches Problem: BLHeli_S begrenzt die Motorleistung oberhalb von 350.000 elektrischen
+    Umdrehungen bei 24-Megahertz-Reglern und oberhalb von 500.000 bei 48-Megahertz-Reglern, und
+    bei DShot-Eingang liegen diese Grenzen noch etwas
+    tiefer<sup><a href="#q3">3</a></sup>.</p>
+
+    <h3>Wer es kann und wer nicht</h3>
+
+    <p>Die Rückmeldung ist eine Eigenschaft der Regler-Firmware, nicht der Platine.  BLHeli_32
+    beherrscht sie ab Version 32.7.0, AM32 vollständig, und für die 8-Bit-Regler gibt es Bluejay
+    und JESC; das ursprüngliche BLHeli_S kann es
+    nicht<sup><a href="#q7">7</a></sup><sup><a href="#q15">15</a></sup>.  Betaflight
+    formuliert seine Empfehlung inzwischen klar: AM32 für 32-Bit-Regler, Bluejay für
+    8-Bit-Regler<sup><a href="#q8">8</a></sup>.  Und die Fehlerquote muss stimmen: Betaflight
+    verlangt, unter einem Prozent zu bleiben, und verweigert das Scharfschalten, wenn der
+    RPM-Filter aktiv ist, aber ein Regler keine gültige Telemetrie
+    liefert<sup><a href="#q7">7</a></sup>.</p>
+
+    <h3>Was sonst noch durch dieselbe Leitung passt</h3>
+
+    <p>Wenn ohnehin ein Rückkanal existiert, kann man mehr darüber schicken als nur die
+    Drehzahl.  Die erweiterte DShot-Telemetrie definiert dafür weitere Rahmenarten mit eigenen
+    Kennungen: Temperatur in Grad Celsius, Spannung in Schritten von 0,25&nbsp;Volt, Strom in
+    Schritten von 1&nbsp;Ampere, dazu ab Version 2 ein Belastungswert von 0 bis 255 und ein
+    Statusrahmen mit je einem Bit für Alarm, Warnung und Fehler sowie der höchsten aufgetretenen
+    Belastungsstufe<sup><a href="#q13">13</a></sup>.  Solange kein anderer Rahmen ansteht, wird
+    die Drehzahl gesendet, und die Antwort folgt 30&nbsp;Mikrosekunden nach dem
+    Hinrahmen<sup><a href="#q13">13</a></sup>.  PX4 nennt dieselben Größen als Inhalt der
+    erweiterten Telemetrie<sup><a href="#q17">17</a></sup>.</p>
+
+    <p>Die ältere Lösung, eine eigene serielle Telemetrieleitung, gibt es weiterhin.  Betaflight
+    hält fest, dass die Drehzahl über DShot ein deutlicher Fortschritt gegenüber der seriellen
+    Telemetrie war, weil sie viel schneller aktualisiert und keine zusätzliche Verkabelung
+    braucht<sup><a href="#q12">12</a></sup>.  Die Zahlen dazu liefert ArduPilot: die serielle
+    Telemetrierate steht standardmäßig auf 10&nbsp;Hertz und lässt sich für die Filterung auf
+    100&nbsp;Hertz anheben<sup><a href="#q15">15</a></sup>.  BLHeli_32 kann ab Version 32.6 auch
+    von sich aus alle 32&nbsp;Millisekunden senden, ohne dass jemand
+    fragt<sup><a href="#q4">4</a></sup>.</p>
+
+    <h3>Wo dieser Artikel aufhört</h3>
+
+    <p>Was der Flight Controller mit der Zahl macht, steht im
+    <a href="ratgeber-flight-controller.html#k6">Flight-Controller-Ratgeber, Kapitel 6</a>: er
+    legt Kerbfilter genau auf die Frequenz, mit der der Motor stört, und führt sie dem Gas in
+    Echtzeit nach.  Betaflight nennt als weiteren Nutzen zwölf dynamische Filter bei einem
+    Quadrocopter, eine Drehzahlbegrenzung für Rennklassen und das Protokollieren der Drehzahl zu
+    Testzwecken<sup><a href="#q12">12</a></sup>.  Und die Leerlaufregelung hängt ebenfalls daran:
+    Betaflights Dynamic Idle setzt einen Regler mit bidirektionaler DShot-Telemetrie zwingend
+    voraus und arbeitet bei Fünfzöllern mit Zielwerten um 3.000 bis
+    4.000&nbsp;Umdrehungen<sup><a href="#q30">30</a></sup>.</p>
+
+    <h2 id="k10">10. Firmware: die folgenreichste Entscheidung</h2>
+    <!-- bild:start esc-firmware -->
+    <!-- bild:ende esc-firmware -->
+
+    <p>Zwischen zwei Reglern verschiedener Hersteller liegt oft weniger Unterschied als zwischen
+    zwei Firmwareständen auf derselben Platine.  Die Landschaft ist überschaubar.</p>
+
+    <p>Das ursprüngliche BLHeli und BLHeli_S sind unter GPLv3 offengelegt, BLHeli_32 ist
+    geschlossen; BLHeli_S läuft in Assembler auf 8-Bit-Controllern von Silicon Labs, BLHeli_32
+    auf 32-Bit-ARM-Kernen<sup><a href="#q11">11</a></sup>.  <strong>Bluejay</strong> baut auf
+    BLHeli_S in der Version 16.7 auf, läuft auf den Bausteinen EFM8 BB21 und BB51, bietet
+    24, 48 und 96&nbsp;Kilohertz Taktfrequenz zur Auswahl, spricht DShot300 und DShot600 und
+    beherrscht die bidirektionale Rückmeldung samt erweiterter
+    Telemetrie<sup><a href="#q9">9</a></sup>.  <strong>AM32</strong> steht unter GPL-3.0,
+    unterstützt die Controller STSPIN32F0, STM32F051, STM32G071, GD32E230, AT32F415 und AT32F421,
+    spricht Servo-Pulsweite sowie DShot300 und DShot600, kann bidirektionales DShot und die
+    KISS-Telemetrie, hat eine variable Taktfrequenz und den erwähnten sinusförmigen
+    Anlauf<sup><a href="#q10">10</a></sup>.  Betaflight führt für AM32 zusätzlich STM32L432 und
+    AT32F4A auf und nennt als empfohlene Stände AM32 ab 2.04 und Bluejay
+    0.19.2<sup><a href="#q8">8</a></sup>.</p>
+
+    <h3>Die Einstellungen, die wirklich etwas tun</h3>
+
+    <p>Von den zwei Dutzend Parametern in den Konfigurationsprogrammen sind drei entscheidend,
+    und alle drei drehen sich um denselben Fehler: den Verlust des Synchronlaufs.</p>
+
+    <p><strong>Das Kommutierungs-Timing</strong> verschiebt den Umschaltzeitpunkt gegenüber dem
+    berechneten Ideal.  BLHeli_S bietet fünf Stufen, die 0, 7,5, 15, 22,5 und 30&nbsp;Grad
+    Voreilung entsprechen<sup><a href="#q3">3</a></sup>; BLHeli_32 stellt zwischen etwa 1 und
+    31&nbsp;Grad in Ein-Grad-Schritten ein oder überlässt die Wahl einer Automatik, die die
+    Entmagnetisierungszeit beobachtet und das Timing so niedrig hält, wie es geht.  Der Preis
+    steht ausdrücklich dabei: höheres Timing hilft gegen Stottern, kostet aber
+    Wirkungsgrad<sup><a href="#q4">4</a></sup>.</p>
+
+    <p><strong>Die Demag-Kompensation</strong> ist der zweite Weg zum selben Ziel.  Sie erkennt,
+    wenn die Wicklung nach dem Umschalten zu lange braucht, um ihr Magnetfeld abzubauen.  In
+    dieser Lage gibt es keine verwertbare Information über die Rotorstellung, der Regler
+    kommutiert also blind mit einem vorhergesagten Zeitpunkt und nimmt zusätzlich vor der
+    nächsten Kommutierung Leistung weg; je schwerer der Fall, desto mehr Leistung.  Ein höherer
+    Wert schützt besser, kann aber die Höchstleistung
+    senken<sup><a href="#q3">3</a></sup><sup><a href="#q4">4</a></sup>.</p>
+
+    <p><strong>Die Beschleunigungsbegrenzung</strong> gibt es nur bei BLHeli_32: zwischen
+    0,1 und 25,5&nbsp;Prozent je Millisekunde, ausdrücklich als Rückfallebene für Aufbauten
+    gedacht, bei denen zu harte Beschleunigung den Synchronlauf
+    zerreißt<sup><a href="#q4">4</a></sup>.  Zehn Prozent je Millisekunde heißen, dass die
+    Motorleistung in einer Millisekunde um höchstens zehn Prozentpunkte steigen
+    darf<sup><a href="#q4">4</a></sup>.</p>
+
+    <p>Daneben stehen Dinge, die man einmal einstellt und dann vergisst: der Unterspannungsschutz
+    zwischen 2,5 und 4,0&nbsp;Volt je Zelle, vor allem für Flächenflugzeuge
+    gedacht<sup><a href="#q4">4</a></sup>, die Signaltöne mit dem Hinweis, dass laute Töne Motor
+    und Regler heiß machen können<sup><a href="#q3">3</a></sup><sup><a href="#q4">4</a></sup>,
+    und ab Version 32.8 sogar S.BUS als Eingang und FrSky-Telemetrie als
+    Ausgang<sup><a href="#q4">4</a></sup>.</p>
+
+    <h2 id="k11">11. Bremsen, Rückspeisung und Umkehr</h2>
+    <!-- bild:start esc-bremsen -->
+    <!-- bild:ende esc-bremsen -->
+
+    <p>Ein Multicopter fliegt nicht mit konstanter Drehzahl, sondern mit ständigen kleinen
+    Korrekturen, und die Hälfte davon sind Bremsvorgänge.  Wie ein Regler bremst, entscheidet
+    deshalb spürbar über das Flugverhalten.</p>
+
+    <p>Der Fachbegriff ist Damped Light, und beide BLHeli-Handbücher beschreiben ihn identisch:
+    er arbeitet mit regenerativem Bremsen, was den Motor sehr schnell abbremst, und bringt
+    naturgemäß auch aktives Freilaufen mit sich, wobei die Verluste des Bremsens durch die
+    geringeren Verluste des aktiven Freilaufs ausgeglichen
+    werden<sup><a href="#q3">3</a></sup><sup><a href="#q4">4</a></sup>.  Bei BLHeli_S nutzen
+    alle Programmstände diesen Modus ohne Wahlmöglichkeit<sup><a href="#q3">3</a></sup>; BLHeli_32
+    lässt ihn ab Version 32.4 abschalten, was für Multicopter die Leistung verschlechtert, für
+    Flächenflugzeuge aber erwünscht sein kann<sup><a href="#q4">4</a></sup>.</p>
+
+    <p>Wohin die Bremsenergie geht, sagt KDE Direct am deutlichsten: statt in Wärme umgewandelt zu
+    werden, wird die Leistung in die Akkus zurückgeführt, was der Hersteller aktives
+    Stromfreilaufen nennt, und die Gesamteffizienz steigt mit eingeschalteter
+    Synchrongleichrichtung um rund 10&nbsp;Prozent<sup><a href="#q23">23</a></sup>.  Damit
+    schließt sich der Kreis zu Kapitel 6: dieselbe Rückspeisung, die Wirkungsgrad bringt, hebt
+    die Zwischenkreisspannung an, und deshalb verlangt derselbe Hersteller 10&nbsp;Prozent
+    Spannungsreserve<sup><a href="#q23">23</a></sup>.  Wer regeneratives Bremsen will, muss ihm
+    Platz nach oben lassen.</p>
+
+    <p>Vom Bremsen zu unterscheiden ist das Bremsen im Stillstand.  BLHeli_S kann es nur ein- oder
+    ausschalten<sup><a href="#q3">3</a></sup>, BLHeli_32 stellt eine Bremskraft zwischen 1 und
+    100&nbsp;Prozent ein, wobei manche Endstufen die Abstufung nicht können und dann bei jedem
+    Wert voll bremsen; gedacht ist die Funktion vor allem für Klapppropeller an
+    Flächenflugzeugen<sup><a href="#q4">4</a></sup>.</p>
+
+    <h3>Rückwärts</h3>
+
+    <p>Die Drehrichtung ist nur noch eine Softwarefrage: DShot kennt Befehle für beide
+    Richtungen und für das Ein- und Ausschalten des 3D-Modus, in dem die Knüppelmitte den
+    Stillstand bedeutet<sup><a href="#q6">6</a></sup>.  BLHeli_32 unterscheidet dabei zwei
+    Spielarten: der harte 3D-Modus legt beim Richtungswechsel mehr Leistung an und begrenzt das
+    Mindestgas auf 6&nbsp;Prozent, der weiche Modus legt weniger Leistung an und begrenzt
+    nicht<sup><a href="#q4">4</a></sup>.  Betaflight warnt an dieser Stelle ausdrücklich: die
+    Leerlaufregelung Dynamic Idle darf nicht zusammen mit dem 3D-Modus benutzt
+    werden<sup><a href="#q30">30</a></sup>.  Bei ArduPilot dient dasselbe umkehrbare DShot vor
+    allem Landfahrzeugen, Booten und Flächenflugzeugen mit
+    Umkehrschub<sup><a href="#q14">14</a></sup>.</p>
+
+    <h2 id="k12">12. Vier Regler oder einer mit vier Kanälen</h2>
+    <!-- bild:start esc-4in1 -->
+    <!-- bild:ende esc-4in1 -->
+
+    <p>Im FPV-Bereich ist der 4-in-1-Regler die Norm, im industriellen Multicopter der
+    Einzelregler am Ausleger.  Beides hat Gründe, und beide sind physikalisch.</p>
+
+    <p>Für den 4-in-1 spricht alles, was mit Bauraum und Verkabelung zu tun hat.  SpeedyBee bringt
+    vier Kanäle zu je 55&nbsp;Ampere auf eine Platine mit dem Lochbild 30,5 mal
+    30,5&nbsp;Millimeter und gibt für sie 23,5&nbsp;Gramm an<sup><a href="#q27">27</a></sup>, Holybro baut
+    45&nbsp;Ampere je Kanal auf eine Platine von 30 mal 39&nbsp;Millimetern mit 20-Millimeter-Lochbild
+    und AM32 ab Werk<sup><a href="#q28">28</a></sup>.  Statt vier Akkuleitungen gibt es eine, statt
+    zwölf Motorlötstellen an verstreuten Platinen zwölf an einer.</p>
+
+    <p>Dagegen spricht die Wärme.  Unsere Rechnung aus Kapitel 4 ergab rund 9,7&nbsp;Watt je Kanal
+    bei 55&nbsp;Ampere; auf einer Platine sind das <strong>rund 39&nbsp;Watt</strong> auf gut zehn
+    Quadratzentimetern (beides unsere Rechnung, die Verlustleistung vereinfacht wie in Kapitel 4,
+    die Fläche aus den 30 mal 39&nbsp;Millimetern der Holybro-Platine), mitten im Rahmen, wo die
+    Luft steht.
+    Ein Einzelregler am Ausleger sitzt dagegen im Propellerabwind, und genau darauf bauen die
+    Hersteller: KDE verlangt für die Katalogwerte eine Anströmung von mindestens 5&nbsp;Meilen je
+    Stunde<sup><a href="#q24">24</a></sup>.  Wie gut die Wärme vom Ausleger weggeht, hängt am
+    Material; was Kohlefaser dabei kann und was nicht, steht im
+    <a href="ratgeber-carbon-frame.html">Frame-Ratgeber</a>.</p>
+
+    <p>Beim Gewicht liegen die Bauarten näher beieinander, als man denkt: der KDE-Einzelregler
+    wiegt 24&nbsp;Gramm nackt und 50&nbsp;Gramm mit Kabeln und
+    Steckern<sup><a href="#q24">24</a></sup>, der Hobbywing 45 bis
+    50&nbsp;Gramm<sup><a href="#q26">26</a></sup>, der T-Motor ALPHA 60A
+    62,8&nbsp;Gramm<sup><a href="#q25">25</a></sup>.  Viermal 50&nbsp;Gramm sind 200&nbsp;Gramm (unsere Rechnung)
+    gegen 23,5&nbsp;Gramm für den 4-in-1, allerdings ohne die vier Kabelsätze, die der
+    4-in-1 dafür in Form längerer Motorleitungen wieder mitbringt.</p>
+
+    <p>Zwei praktische Punkte fallen oft unter den Tisch.  Der erste ist der Stromsensor: er
+    sitzt auf der Reglerplatine, und sein Umrechnungsfaktor gehört zur Platine, nicht zum
+    Copter.  SpeedyBee gibt für seinen Sensor den Faktor 400 an<sup><a href="#q27">27</a></sup>,
+    Holybro nennt für seinen 120<sup><a href="#q28">28</a></sup>.  Wer die Zahl beim
+    Reglertausch nicht mitwechselt, misst danach falsch und wundert sich über die
+    Restkapazität.  Der zweite ist die Reparierbarkeit: ein durchgebrannter Kanal auf einem
+    4-in-1 bedeutet, dass vier Regler in den Müll gehen.</p>
+
+    <h2 id="k13">13. Fehlerbilder und was sie verraten</h2>
+    <!-- bild:start esc-fehler -->
+    <!-- bild:ende esc-fehler -->
+
+    <p><strong>Der Motor stottert oder bleibt stehen, wenn du bei niedriger Drehzahl schnell Gas
+    gibst.</strong>  Das ist das Lehrbuchbild für den Verlust des Synchronlaufs, und beide
+    BLHeli-Handbücher beschreiben es wörtlich als typisches Symptom einer zu langen
+    Entmagnetisierungszeit der Wicklung, das besonders bei Motoren mit hoher Induktivität
+    auftritt<sup><a href="#q3">3</a></sup><sup><a href="#q4">4</a></sup>.  Die Gegenmittel stehen
+    in Kapitel 10: mehr Timing, das Wirkungsgrad kostet, oder eine höhere Demag-Kompensation, die
+    Höchstleistung kosten kann.</p>
+
+    <p><strong>Der Motor läuft nach einem Propellerschlag nicht wieder an.</strong>  Das ist
+    Absicht.  BLHeli_S beschreibt seine Blockierschutzfunktion so: hat der Motor einige Sekunden
+    lang erfolglos zu starten versucht, hört der Regler auf und wartet, bis das Gas auf null
+    war<sup><a href="#q3">3</a></sup>.  BLHeli_32 lässt ab Version 32.7 zwischen einer normalen
+    und einer entspannten Variante wählen, wobei die entspannte schneller wieder anläuft, wenn
+    ein Propeller ein Hindernis getroffen hat, dafür aber das Risiko eines Schadens an Regler
+    oder Motor erhöht<sup><a href="#q4">4</a></sup>.</p>
+
+    <p><strong>Die Leistung bricht im Flug plötzlich ein, der Akku ist aber noch voll.</strong>
+    Das ist mit hoher Wahrscheinlichkeit der Temperaturschutz aus Kapitel 5, der in Stufen auf
+    75, 50, 25 und schließlich 0&nbsp;Prozent herunterregelt<sup><a href="#q3">3</a></sup>.
+    Abhilfe schafft nicht ein größerer Regler auf dem Papier, sondern Luft.</p>
+
+    <p><strong>Die Motoren zappeln im Stand und werden heiß, ohne dass du fliegst.</strong>  Das
+    kommt in aller Regel nicht vom Regler, sondern vom Regelkreis davor: ein zu hoher D-Anteil
+    verstärkt Vibration.  Betaflight wird an dieser Stelle sehr deutlich: der D-Anteil ist
+    ausgesprochen empfindlich für hochfrequente Vibration und verstärkt sie um das Zehn- bis
+    Hundertfache, ein zu hoher Wert kann die Motoren verbrennen, und nach jeder Erhöhung gehört
+    ein kurzer Testflug mit anschließender Kontrolle auf heiße Motoren<sup><a href="#q32">32</a></sup>.
+    Der Zusammenhang ist im
+    <a href="ratgeber-flight-controller.html#k6">Flight-Controller-Ratgeber</a> ausführlich
+    beschrieben.  Ein Regler kann nur ausführen, was ihm gesagt wird.</p>
+
+    <p><strong>Die Drehzahl-Rückmeldung fällt sporadisch aus.</strong>  Betaflight nennt für den
+    Fall, dass sie gar nicht funktioniert, zwei Ursachen: das originale BLHeli_S kann es nicht
+    und braucht eine andere Firmware wie Bluejay, und BLHeli_32 kann es erst in neueren
+    Versionen<sup><a href="#q31">31</a></sup>.  Für den sporadischen Ausfall zählt die
+    Fehlerquote von unter einem Prozent<sup><a href="#q7">7</a></sup>: dann ist es ein
+    Leitungs-, kein Firmwareproblem.</p>
+
+    <h3>Werkzeuge, die es schon gibt</h3>
+
+    <p>Bevor man rät, sollte man messen.  BLHeli_32 zählt ab Version 32.4 gute und schlechte
+    Eingangsrahmen mit und lässt sie auslesen, ausdrücklich zur Diagnose eines verrauschten
+    Eingangssignals<sup><a href="#q4">4</a></sup>.  Die erweiterte DShot-Telemetrie liefert seit
+    Version 2 einen Belastungswert und Statusbits für Alarm, Warnung und
+    Fehler<sup><a href="#q13">13</a></sup>, und ArduPilot wertet daraus zusätzliche Größen wie
+    Kommutierungsbelastung, blockierte Propeller, Synchronverluste und Entmagnetisierungsereignisse
+    aus<sup><a href="#q15">15</a></sup>.  Ein Regler, der von sich aus meldet, dass er Mühe hat,
+    ist mehr wert als einer mit zehn Ampere mehr auf dem Aufkleber.</p>
+
+    <p>Zwei Randnotizen zum Schluss dieses Kapitels.  Der Einschaltfunke beim Anstecken des Akkus
+    ist der Ladestrom der Kondensatoren aus Kapitel 7; KDE baut dagegen eine
+    Funkenschutzschaltung ein<sup><a href="#q24">24</a></sup>.  Und wer über CAN-Bus statt über
+    eine Signalleitung anbinden will, verlässt die hier beschriebene Welt: PX4 unterstützt
+    DroneCAN-Regler ebenso wie DShot, PWM und Oneshot und listet dafür eigene Geräte
+    auf<sup><a href="#q18">18</a></sup>.</p>
+
+    <h2 id="k14">14. Wie wir auswählen</h2>
+    <!-- bild:start esc-wahltafel -->
+    <!-- bild:ende esc-wahltafel -->
+
+    <p>Aus allem oben folgt eine Reihenfolge, und sie beginnt nicht bei der Amperezahl.</p>
+
+    <p><strong>Zuerst die Spannung.</strong>  Volle Zellenspannung mal Zellenzahl, plus die
+    10&nbsp;Prozent Reserve, die KDE für die Rückspeisung
+    verlangt<sup><a href="#q23">23</a></sup>: für 6S sind das 27,7&nbsp;Volt, für 8S
+    37,0&nbsp;Volt (unsere Rechnung).  Ein Regler, der die Zellenzahl gerade eben abdeckt, ist
+    keiner.</p>
+
+    <p><strong>Dann den Strom, aber mit der Kühlung zusammen.</strong>  Eine Dauerstromangabe
+    ohne Zeit und ohne Anströmung ist eine Werbeaussage.  Wir nehmen Angaben nach dem Muster von
+    KDE ernst, die den Zeitraum und die geforderte Anströmung
+    nennen<sup><a href="#q24">24</a></sup>, und wir vergleichen sie mit dem, was der Motor laut
+    Prüfstandstabelle wirklich zieht<sup><a href="#q5">5</a></sup>, nicht mit dem, was theoretisch
+    fließen könnte.</p>
+
+    <p><strong>Dann die Firmware.</strong>  Bluejay auf 8-Bit-Reglern, AM32 auf 32-Bit-Reglern,
+    beides quelloffen und beides von Betaflight empfohlen<sup><a href="#q8">8</a></sup>.  Ein
+    Regler ohne bidirektionales DShot ist heute kein Sparen, sondern ein Verzicht auf die
+    Filterkette, an der die halbe Flugqualität hängt.</p>
+
+    <p><strong>Dann die Kleinteile, die keine sind.</strong>  Kondensator montieren, nicht in die
+    Tüte legen; Akkuleitung kurz halten; den Umrechnungsfaktor des Stromsensors
+    übernehmen<sup><a href="#q27">27</a></sup><sup><a href="#q28">28</a></sup>.</p>
+
+    <p>Konkret heißt das für die beiden Größen, die wir selbst bauen.  Am Fünfzöller nehmen wir
+    einen 4-in-1 mit 45 bis 55&nbsp;Ampere je Kanal, AM32 oder Bluejay, bidirektionales DShot bei
+    DShot300, und den beigelegten 1.000-Mikrofarad-Kondensator wirklich
+    dran<sup><a href="#q27">27</a></sup><sup><a href="#q28">28</a></sup>.  Am 13-Zöller mit vier
+    MN4012 KV400, die bei Vollgas gut 9&nbsp;Ampere je Motor
+    ziehen<sup><a href="#q5">5</a></sup>, reicht ein 40-Ampere-Einzelregler mit reichlicher
+    Spannungsreserve am Ausleger.  Welche Teile wir dafür konkret einsetzen, steht in unseren
+    Teilelisten für den <a href="ratgeber-teileliste-10-zoll.html">10-Zöller</a> und den
+    <a href="ratgeber-teileliste-13-build-1.html">13-Zöller</a>.</p>
+
+    <p>Und wenn du unsicher bist, ob dein Aufbau zusammenpasst: schreib uns über
+    <a href="index.html#kontakt">das Kontaktformular</a>.  Wir rechnen lieber einmal vorher nach,
+    als hinterher einen verbrannten Kanal zu begutachten.</p>
+
+    <p class="muted" style="font-size:14px">Dieser Ratgeber ersetzt keine individuelle technische
+    Prüfung.  Alle Angaben ohne Gewähr.  Wo wir gerechnet statt gemessen haben, steht es
+    ausdrücklich dabei.  Alle Quellen wurden im August 2026 abgerufen und geprüft.</p>
+
+    <h2>Quellenangaben</h2>
+    <ol class="muted" style="font-size:14px; line-height:1.9; padding-left:20px">
+      <li id="q1">Microchip Technology, „AN885: Brushless DC (BLDC) Motor Fundamentals".  Aufbau
+        des Dreiphasenmotors, Hall-Sensoren im Stator, Umschaltung alle 60 elektrische Grad, sechs
+        Schritte je elektrischem Zyklus, Zahl der elektrischen Zyklen je mechanischer Umdrehung
+        gleich der Zahl der Rotor-Polpaare, Unterschied zwischen trapezförmiger und sinusförmiger
+        Gegenspannung und der damit verbundene Kupfer- und Verschaltungsaufwand:
+        <a href="https://ww1.microchip.com/downloads/en/appnotes/00885a.pdf" rel="noopener" target="_blank">microchip.com, AN885</a></li>
+      <li id="q2">Texas Instruments, „SPRABQ7A: Sensorless Trapezoidal Control of BLDC Motors".
+        Strom in nur zwei der drei Phasen, kein Drehmoment im Bereich des Nulldurchgangs der
+        Gegenspannung, Messung der Klemmenspannungen zur Erkennung des Nulldurchgangs, fester
+        Verzögerungswinkel von 30&nbsp;Grad zwischen Nulldurchgang und Kommutierung, Gegenspannung
+        direkt proportional zur Drehzahl, Hochlauf aus dem Stillstand in offener Steuerung wie bei
+        einem Schrittmotor:
+        <a href="https://www.ti.com/lit/an/sprabq7/sprabq7.pdf" rel="noopener" target="_blank">ti.com, SPRABQ7</a></li>
+      <li id="q3">BLHeli, „Operation manual for BLHeli_S SiLabs Rev16.x".  Damped Light als
+        regeneratives Bremsen mit aktivem Freilauf, Namenskonvention mit Totzeit in Einheiten von
+        20,4&nbsp;Nanosekunden, Startleistung 0,031 bis 1,5 und Leistungsbegrenzung bei niedriger
+        Drehzahl zur Erkennung kleiner Gegenspannungen, Kommutierungs-Timing 0/7,5/15/22,5/30&nbsp;Grad,
+        Demag-Kompensation, Temperaturschutz zwischen 80 und 140&nbsp;Grad Celsius mit vier
+        Begrenzungsstufen, Blockierschutz, Motor-PWM fest 24&nbsp;Kilohertz mit 2.048 beziehungsweise
+        1.024 Stufen, Höchstdrehzahl 350.000 und 500.000 elektrische Umdrehungen, Eingangssignale
+        Oneshot125, Oneshot42 und Multishot, DShot-Empfehlungen je Controllertakt:
+        <a href="https://github.com/bitdump/BLHeli/blob/master/BLHeli_S%20SiLabs/BLHeli_S%20manual%20SiLabs%20Rev16.x.pdf" rel="noopener" target="_blank">github.com, BLHeli_S Rev16.x</a></li>
+      <li id="q4">BLHeli, „Operation manual for BLHeli_32 ARM Rev32.x".  Rampup Power 3 bis
+        150&nbsp;Prozent, Motor-Timing 1 bis 31&nbsp;Grad und Automatik, variable PWM-Frequenz ab
+        Rev32.8 und drehzahlgeführte Frequenz ab Rev32.9, Sinusmodulation von sin(60&nbsp;Grad)
+        gleich 87&nbsp;Prozent bis 100&nbsp;Prozent und ihre Grenze bei rund 100.000 elektrischen
+        Umdrehungen, Demag-Kompensation, Beschleunigungsbegrenzung 0,1 bis 25,5&nbsp;Prozent je
+        Millisekunde, Unterspannungsschutz 2,5 bis 4,0&nbsp;Volt je Zelle, Strombegrenzung je Regler
+        mit dem Rechenbeispiel 4 mal 40&nbsp;Ampere gleich 160&nbsp;Ampere, Temperaturschutz bis
+        herunter auf 25&nbsp;Prozent, autonome Telemetrie alle 32&nbsp;Millisekunden, Brake on Stop
+        1 bis 100&nbsp;Prozent, 3D-Modus mit 6&nbsp;Prozent Mindestgas, S.BUS und S.PORT,
+        Eingangssignalstatistik ab Rev32.4, Mindest-Signalraten:
+        <a href="https://github.com/bitdump/BLHeli/blob/master/BLHeli_32%20ARM/BLHeli_32%20manual%20ARM%20Rev32.x.pdf" rel="noopener" target="_blank">github.com, BLHeli_32 Rev32.x</a></li>
+      <li id="q5">T-Motor, „MN4012 KV400".  Aufbau 18N24P, Innenwiderstand 75&nbsp;Milliohm,
+        Gewicht 155&nbsp;Gramm mit Kabeln, Dauerstrom 25&nbsp;Ampere, 750&nbsp;Watt für
+        180&nbsp;Sekunden, Prüfstandstabelle an 22,2&nbsp;Volt mit 13x4.4 (9,4&nbsp;Ampere und
+        7.150&nbsp;Umdrehungen bei Vollgas, 3,7&nbsp;Ampere bei halbem Gas) und mit 15x5
+        (16,2&nbsp;Ampere und 2.370&nbsp;Gramm Schub bei Vollgas):
+        <a href="https://store.tmotor.com/product/mn4012-kv400-motor-navigator-type.html" rel="noopener" target="_blank">store.tmotor.com, MN4012 KV400</a></li>
+      <li id="q6">Betaflight, „DShot".  Rahmenaufbau aus 11&nbsp;Bit Sollwert, 1&nbsp;Bit
+        Telemetrieanforderung und 4&nbsp;Bit Prüfsumme, Wertebereiche 0, 1 bis 47 und 48 bis 2.047,
+        Bitzeiten und Rahmenlängen für DShot150/300/600/1200, Liste der Sonderbefehle, invertiertes
+        Signal und 30&nbsp;Mikrosekunden Umschaltzeit bei bidirektionalem Betrieb, eRPM-Rahmen aus
+        3&nbsp;Bit Exponent, 9&nbsp;Bit Periodenwert und 4&nbsp;Bit Prüfsumme, GCR-Spreizung von 16
+        auf 20&nbsp;Bit und Übertragung mit dem 1,25-fachen der Bitrate, Rechenbeispiel zur
+        effektiven Rahmenrate von rund 5,9&nbsp;Kilohertz:
+        <a href="https://betaflight.com/docs/development/API/Dshot" rel="noopener" target="_blank">betaflight.com, DShot</a></li>
+      <li id="q7">Betaflight, „DShot RPM Filtering".  Unterstützung durch BLHeli_32 ab 32.7.0,
+        AM32, Bluejay und JESC, Umrechnung der elektrischen Drehzahl über die an der Glocke
+        gezählten Magnete mit 14 als typischem und 12 als kleinerem Wert, bidirektionaler Betrieb ab
+        DShot300, Empfehlung DShot300 bei 4-Kilohertz- und DShot600 bei 8-Kilohertz-Schleife,
+        geforderte Fehlerquote unter einem Prozent, Arming-Sperre bei fehlender Telemetrie:
+        <a href="https://betaflight.com/docs/wiki/guides/current/DSHOT-RPM-Filtering" rel="noopener" target="_blank">betaflight.com, DShot RPM Filtering</a></li>
+      <li id="q8">Betaflight, „ESC Firmware".  Übersicht der Regler-Firmware für 8-Bit- und
+        32-Bit-Regler, unterstützte Controller von AM32, empfohlene Stände AM32 ab 2.04 und Bluejay
+        0.19.2, Empfehlung AM32 für 32-Bit- und Bluejay für 8-Bit-Regler:
+        <a href="https://betaflight.com/docs/wiki/getting-started/hardware/esc-firmware" rel="noopener" target="_blank">betaflight.com, ESC Firmware</a></li>
+      <li id="q9">Bluejay, „Bluejay: Digital ESC firmware for controlling brushless motors".
+        Unterstützte Bausteine EFM8 BB21 und BB51, wählbare PWM-Frequenzen 24, 48 und
+        96&nbsp;Kilohertz, DShot300 und DShot600, bidirektionales DShot mit RPM- und erweiterter
+        Telemetrie, Grundlage BLHeli_S Revision 16.7:
+        <a href="https://github.com/bird-sanctuary/bluejay" rel="noopener" target="_blank">github.com, bird-sanctuary/bluejay</a></li>
+      <li id="q10">AM32, „AM32 multi rotor ESC firmware".  Unterstützte Controller STSPIN32F0,
+        STM32F051, STM32G071, GD32E230, AT32F415 und AT32F421, Servo-PWM sowie DShot300 und
+        DShot600, bidirektionales DShot, KISS-Telemetrie, variable PWM-Frequenz, sinusförmiger
+        Anlaufmodus für größere Motoren, Lizenz GPL-3.0, Aktualisierung über Betaflight-Passthrough:
+        <a href="https://github.com/am32-firmware/AM32" rel="noopener" target="_blank">github.com, am32-firmware/AM32</a></li>
+      <li id="q11">BLHeli, „BLHeli".  BLHeli und BLHeli_S in Assembler für 8-Bit-Controller von
+        Atmel und Silicon Labs und unter GPLv3 offengelegt, BLHeli_32 für 32-Bit-Controller und
+        geschlossen, Liste der verfügbaren Handbücher:
+        <a href="https://github.com/bitdump/BLHeli" rel="noopener" target="_blank">github.com, bitdump/BLHeli</a></li>
+      <li id="q12">Betaflight, „ESC Telemetry".  Drehzahltelemetrie über DShot als deutlicher
+        Fortschritt gegenüber serieller Telemetrie wegen schnellerer Aktualisierung und
+        entfallender Verkabelung, zwölf dynamische Drehzahlfilter am Quadrocopter,
+        Drehzahlbegrenzung und Protokollierung, erweiterte DShot-Telemetrie mit Temperatur,
+        Spannung und Strom:
+        <a href="https://betaflight.com/docs/wiki/guides/current/ESC-Telemetry" rel="noopener" target="_blank">betaflight.com, ESC Telemetry</a></li>
+      <li id="q13">Extended DShot Telemetry, „Specification".  Rahmenarten mit ihren Kennungen,
+        Temperatur in Grad Celsius, Spannung in Schritten von 0,25&nbsp;Volt, Strom in Schritten
+        von 1&nbsp;Ampere, Belastungswert 0 bis 255 und Statusrahmen mit Bits für Alarm, Warnung
+        und Fehler sowie höchster Belastungsstufe, Versenden der Drehzahl, wenn kein anderer
+        Rahmen ansteht, Antwort 30&nbsp;Mikrosekunden nach dem DShot-Rahmen:
+        <a href="https://github.com/bird-sanctuary/extended-dshot-telemetry" rel="noopener" target="_blank">github.com, extended-dshot-telemetry</a></li>
+      <li id="q14">ArduPilot, „DShot ESCs".  Baudraten DShot150 bis DShot1200 mit den Empfehlungen
+        DShot600 für die meisten Fluggeräte und DShot150 für größere Maschinen mit langen
+        Signalleitungen, Ausgaberate von rund 1,4&nbsp;Kilohertz und ihre Einstellung über
+        Vielfache der Schleifenrate, entfallende Kalibrierung, Drehzahltelemetrie nur mit BLHeli_32
+        und AM32, DShot-Befehle für Leuchtdioden, Summer und Drehrichtung, umkehrbares DShot für
+        Land-, Wasserfahrzeuge und Flächenflugzeuge:
+        <a href="https://ardupilot.org/copter/docs/common-dshot-escs.html" rel="noopener" target="_blank">ardupilot.org, DShot ESCs</a></li>
+      <li id="q15">ArduPilot, „ESC Telemetry".  Übertragene Größen Drehzahl, Spannung, Strom,
+        Temperatur und Verbrauch, Telemetrierate standardmäßig 10&nbsp;Hertz und bis
+        100&nbsp;Hertz anhebbar, Polzahl-Parameter mit dem Standardwert 14, Voraussetzungen für
+        bidirektionales DShot bei BLHeli_32 ab 32.7, BLHeli_S nur mit Bluejay oder JESC und AM32,
+        Auswertung von Kommutierungsbelastung, blockierten Propellern, Synchronverlusten und
+        Entmagnetisierungsereignissen über die erweiterte Telemetrie:
+        <a href="https://ardupilot.org/copter/docs/common-esc-telemetry.html" rel="noopener" target="_blank">ardupilot.org, ESC Telemetry</a></li>
+      <li id="q16">ArduPilot, „Brushless ESCs".  Klassische Pulsweite mit 1.000 bis
+        2.000&nbsp;Mikrosekunden und Rahmenraten von 50 bis 490&nbsp;Hertz, Einordnung von Oneshot
+        als kaum vorteilhaft gegenüber gewöhnlicher Pulsweite, Oneshot125 mit durch acht geteilten
+        Impulslängen, Warnung vor Protokolleinstellungen, die der Regler nicht beherrscht:
+        <a href="https://ardupilot.org/copter/docs/common-brushless-escs.html" rel="noopener" target="_blank">ardupilot.org, Brushless ESCs</a></li>
+      <li id="q17">PX4, „DShot".  Bezeichnung der Varianten nach ihrer Geschwindigkeit in Kilobit
+        je Sekunde, Vorteile gegenüber Pulsweite durch geringere Verzögerung, Prüfsumme und
+        entfallende Kalibrierung, Rückmeldung der elektrischen Drehzahl über dieselbe
+        Signalleitung, erweiterte Telemetrie mit Temperatur, Spannung und Strom, Umkehr der
+        Drehrichtung per Befehl:
+        <a href="https://docs.px4.io/main/en/peripherals/dshot.html" rel="noopener" target="_blank">docs.px4.io, DShot</a></li>
+      <li id="q18">PX4, „ESCs &amp; Motors".  Unterstützte Regleranbindungen PWM, Oneshot, DShot,
+        DroneCAN, PCA9685 und UART, Liste erprobter Regler mit ihren Protokollen, Notwendigkeit der
+        Kalibrierung bei analogen Protokollen:
+        <a href="https://docs.px4.io/main/en/peripherals/esc_motors.html" rel="noopener" target="_blank">docs.px4.io, ESCs and Motors</a></li>
+      <li id="q19">Infineon Technologies, „BSC016N06NS OptiMOS Power-MOSFET, 60&nbsp;V, Datasheet
+        Rev. 2.6".  Sperrspannung 60&nbsp;Volt, Kanalwiderstand typisch 1,4 und höchstens
+        1,6&nbsp;Milliohm bei 10&nbsp;Volt Gatespannung sowie typisch 1,9 und höchstens
+        2,4&nbsp;Milliohm bei 6&nbsp;Volt, Dauerstrom 234&nbsp;Ampere bei 25&nbsp;Grad
+        Gehäusetemperatur, 164&nbsp;Ampere bei 100&nbsp;Grad und 31&nbsp;Ampere auf einer
+        40x40-Millimeter-Platine mit 6&nbsp;Quadratzentimeter Kupfer in stehender Luft,
+        Verlustleistung 167&nbsp;Watt beziehungsweise 3,0&nbsp;Watt unter denselben Bedingungen,
+        Impulsstrom 936&nbsp;Ampere, Gate-Ladung 71&nbsp;Nanocoulomb von 0 auf 10&nbsp;Volt,
+        Eingangskapazität 5.200&nbsp;Picofarad, Anstiegs- und Abfallzeit 9&nbsp;Nanosekunden,
+        Ausschaltverzögerung 35&nbsp;Nanosekunden, Wärmewiderstand Sperrschicht zu Gehäuseboden
+        typisch 0,5&nbsp;Kelvin je Watt und auf der genannten Platine 50&nbsp;Kelvin je Watt,
+        Grenztemperatur 175&nbsp;Grad Celsius:
+        <a href="https://www.infineon.com/assets/row/public/documents/24/49/infineon-bsc016n06ns-datasheet-en.pdf?fileId=db3a3043353fdc160135532b353c483c" rel="noopener" target="_blank">infineon.com, BSC016N06NS</a></li>
+      <li id="q20">Infineon Technologies, „Application Note AN 2012-05: OptiMOS optimum selection
+        for synchronous rectification".  Aufteilung der Verluste in lastabhängige Durchlassverluste
+        und nahezu konstante Schaltverluste, Notwendigkeit einer Totzeit gegen Querströme und die
+        dabei leitende Body-Diode, Anstieg der Ausgangsladung bei niederohmigeren Bauteilen und der
+        daraus folgende Kompromiss zwischen Durchlass- und Schaltverlusten, Dominanz der
+        Schaltverluste bei kleiner und der Durchlassverluste bei großer Last:
+        <a href="https://www.infineon.com/assets/row/public/documents/24/42/infineon-mosfet-optimos-optimum-selection-for-synchronous-rectification-applicationnotes-en.pdf?fileId=db3a30431ff988150120664202606c8b" rel="noopener" target="_blank">infineon.com, AN 2012-05</a></li>
+      <li id="q21">Rubycon, „Aluminum Electrolytic Capacitor Technical Notes".  Eigenerwärmung
+        durch Rippelstrom, Formel für die Oberflächenerwärmung als Quadrat des Rippelstroms mal
+        Ersatzserienwiderstand geteilt durch Abstrahlfaktor mal Mantelfläche, Näherung für den
+        Abstrahlfaktor als 2,3&nbsp;mal&nbsp;10 hoch minus 3 mal Mantelfläche hoch minus 0,2,
+        Anstieg des Ersatzserienwiderstands durch Austrocknen des Elektrolyten und die daraus
+        folgende zusätzliche Beschleunigung der Alterung:
+        <a href="https://www.rubycon.co.jp/wp-content/uploads/products-aluminum/al-technical-note_en.pdf" rel="noopener" target="_blank">rubycon.co.jp, Technical Notes</a></li>
+      <li id="q22">Castle Creations, „Capacitor Packs".  Spannungswelligkeit durch lange
+        Akkuleitungen als Schadensursache für den Regler, Einbau zwischen Akku und Regler zur
+        Verringerung der Welligkeit, Kondensatorpakete mit 2.240&nbsp;Mikrofarad für bis zu acht
+        Zellen bei 33,6&nbsp;Volt und 880&nbsp;Mikrofarad für mehr als acht Zellen bei
+        50,4&nbsp;Volt:
+        <a href="https://www.castlecreations.com/en/capacitor-packs" rel="noopener" target="_blank">castlecreations.com, Capacitor Packs</a></li>
+      <li id="q23">KDE Direct, „Support Center: FAQ Electronics".  Nenn- und Höchstspannungen der
+        Reglerfamilien mit 35/40&nbsp;Volt und 55/60&nbsp;Volt jeweils begrenzt durch die
+        Transistoren sowie 63/63&nbsp;Volt begrenzt durch die Kondensatoren bei 80-Volt-Transistoren,
+        Empfehlung von mindestens 10&nbsp;Prozent Spannungsreserve wegen der Rückspeisung, Schaden
+        an den Transistorkanälen bei Überschreitung, Rückspeisung der Bremsenergie in den Akku und
+        rund 10&nbsp;Prozent besserer Wirkungsgrad mit Synchrongleichrichtung, Eingangssignal mit
+        400&nbsp;Hertz und 500&nbsp;Hertz im synchronisierten Betrieb, geforderte Mindestanströmung
+        von 5&nbsp;Meilen je Stunde:
+        <a href="https://www.kdedirect.com/pages/technical-support-center-uas-electronics" rel="noopener" target="_blank">kdedirect.com, FAQ Electronics</a></li>
+      <li id="q24">KDE Direct, „KDEXF-UAS35 35A+ Electronic Speed Controller".  Dauerstrom
+        35&nbsp;Ampere für 180&nbsp;Sekunden und 1.035&nbsp;Watt, Spitzenstrom 60&nbsp;Ampere für
+        5&nbsp;Sekunden und 1.775&nbsp;Watt, Spannungsbereich 7,4 bis 34,8&nbsp;Volt, Gewicht
+        24&nbsp;Gramm ohne und 50&nbsp;Gramm mit Kabeln, Platine 25 mal 48&nbsp;Millimeter,
+        Signalrate 600&nbsp;Hertz mit 50 bis 600&nbsp;Hertz Anpassung, regeneratives Bremsen,
+        temperaturgeführte Synchrongleichrichtung, dynamische Timing-Algorithmen,
+        Funkenschutzschaltung, geforderte Anströmung von mindestens 5&nbsp;Meilen je Stunde:
+        <a href="https://www.kdedirect.com/products/kdexf-uas35" rel="noopener" target="_blank">kdedirect.com, KDEXF-UAS35</a></li>
+      <li id="q25">T-Motor, „ALPHA 60A 6S Multi-Rotor Drone FOC ESC".  Feldorientierte Regelung,
+        Dauerstrom 40&nbsp;Ampere und Spitzenstrom 60&nbsp;Ampere für 10&nbsp;Sekunden,
+        Eingangsspannung 18 bis 25,2&nbsp;Volt, Signaleingang 1.100 bis 1.940&nbsp;Mikrosekunden bei
+        500&nbsp;Hertz, Abmessungen 71,3 mal 32,5 mal 15,9&nbsp;Millimeter, Gewicht 62,8&nbsp;Gramm
+        mit Kabeln, Ruhestrom höchstens 50&nbsp;Milliampere, Ansprechzeit 50&nbsp;Millisekunden,
+        Schutzfunktionen gegen Überstrom, Blockade, Kurzschluss und Unterspannung:
+        <a href="https://store.tmotor.com/product/alpha-60a-6s-esc.html" rel="noopener" target="_blank">store.tmotor.com, ALPHA 60A 6S</a></li>
+      <li id="q26">Hobbywing, „XRotor Pro 40A".  Dauer- und Spitzenstrom mit 40&nbsp;Ampere und
+        60&nbsp;Ampere, Eingangsspannung 3S bis 6S, Abmessungen 66,0 beziehungsweise 73,5 mal 21,8
+        mal 11,0&nbsp;Millimeter, Gewicht 45 beziehungsweise 50&nbsp;Gramm, kein eingebautes
+        Spannungsteil für die Bordelektronik:
+        <a href="https://www.hobbywing.com/en/products/xrotor-pro-40a120" rel="noopener" target="_blank">hobbywing.com, XRotor Pro 40A</a></li>
+      <li id="q27">SpeedyBee, „SpeedyBee F405 V4 BLS 55A 30x30 FC &amp; ESC Stack".  Dauerstrom
+        55&nbsp;Ampere je Kanal und Spitzenstrom 70&nbsp;Ampere für 10&nbsp;Sekunden,
+        Eingangsspannung 3S bis 6S, Firmware BLHeli_S J-H-40, DShot300 und DShot600, Stromsensor mit
+        dem Umrechnungsfaktor 400, beiliegender Kondensator mit 1.000&nbsp;Mikrofarad und niedrigem
+        Ersatzserienwiderstand, Gewicht 23,5&nbsp;Gramm, Lochbild 30,5 mal 30,5&nbsp;Millimeter:
+        <a href="https://www.speedybee.com/speedybee-f405-v4-bls-55a-30x30-fc-esc-stack/" rel="noopener" target="_blank">speedybee.com, F405 V4 Stack</a></li>
+      <li id="q28">Holybro, „Tekko32 F4 4in1 Mini 45A ESC (AM32)".  F4-Controller mit
+        AM32-Firmware, 3S bis 6S Eingangsspannung mit dem ausdrücklichen Hinweis, dass für 6S ein
+        Kondensator nötig ist, mitgelieferter Kondensator mit 1.000&nbsp;Mikrofarad und
+        35&nbsp;Volt, Oneshot, Multishot und DShot, PWM-Ausgangsfrequenz bis 96&nbsp;Kilohertz bei
+        48&nbsp;Kilohertz Voreinstellung, Stromsensor mit dem Umrechnungsfaktor 120, Abmessungen 30
+        mal 39&nbsp;Millimeter, Lochbild 20 mal 20&nbsp;Millimeter:
+        <a href="https://holybro.com/products/tekko32-f4-4in1-mini-45a-esc" rel="noopener" target="_blank">holybro.com, Tekko32 F4 4in1 Mini 45A</a></li>
+      <li id="q29">Tattu, „Tattu Semi Solid 22000mAh 22.2V 5C 6S1P G-Tech Lipo Battery Pack".
+        Nennspannung 22,2&nbsp;Volt bei sechs Zellen, Zellenspannung von 4,2&nbsp;Volt bei
+        vollem bis 2,75&nbsp;Volt bei leerem Ladezustand, Dauerentladung 3C und Spitzenentladung 5C
+        für weniger als 3&nbsp;Sekunden:
+        <a href="https://genstattu.com/tattu-semi-solid-22000mah-5c-22-2v-6s1p-xt90s-f-g-tech-lipo-battery/" rel="noopener" target="_blank">genstattu.com, Tattu 6S 22000&nbsp;mAh</a></li>
+      <li id="q30">Betaflight, „Dynamic Idle".  Voraussetzung eines Reglers mit bidirektionaler
+        DShot-Telemetrie, Zielwerte von 3.000 bis 4.000&nbsp;Umdrehungen für Fünfzöller, Verbot der
+        Kombination mit dem 3D-Modus, Abschalten der Übergangsbegrenzung des Gases:
+        <a href="https://betaflight.com/docs/wiki/guides/current/Dynamic-Idle" rel="noopener" target="_blank">betaflight.com, Dynamic Idle</a></li>
+      <li id="q31">Betaflight, „Troubleshooting".  Ursachen für ausbleibende bidirektionale
+        DShot-Telemetrie: BLHeli_S kann es ohne andere Firmware wie Bluejay nicht, BLHeli_32 erst in
+        neueren Versionen, sowie die Arming-Sperre bei aktivem RPM-Filter ohne Telemetrie:
+        <a href="https://betaflight.com/docs/wiki/getting-started/troubleshooting" rel="noopener" target="_blank">betaflight.com, Troubleshooting</a></li>
+      <li id="q32">Betaflight, „PID Tuning Guide".  Empfindlichkeit des D-Anteils gegenüber
+        hochfrequenter Vibration mit einer Verstärkung um das Zehn- bis Hundertfache, Warnung,
+        dass ein zu hoher D-Anteil die Motoren verbrennen kann, und die Aufforderung, nach jeder
+        Erhöhung einen kurzen Testflug zu machen und die Motoren auf Hitze zu prüfen:
+        <a href="https://betaflight.com/docs/wiki/guides/current/PID-Tuning-Guide" rel="noopener" target="_blank">betaflight.com, PID Tuning Guide</a></li>
+    </ol>
+
+<!-- historie:start -->
+    <h2>Änderungshistorie</h2>
+    <ul class="muted historie">
+      <li><strong>20.08.2026</strong> · Veröffentlichung</li>
+    </ul>
+<!-- historie:ende -->
+
+
+<!-- partner:start -->
+<!-- partner:ende -->
+
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <nav class="social" aria-label="Draco Labs in sozialen Netzwerken">
+      <a href="https://www.youtube.com/@DracoLabsGermany" rel="noopener" class="yt" aria-label="Draco Labs auf YouTube">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/draco.labs.germany" rel="noopener" class="ig" aria-label="Draco Labs auf Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c0-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 3.1A6.7 6.7 0 1 0 18.7 12 6.7 6.7 0 0 0 12 5.3Zm0 11a4.3 4.3 0 1 1 4.3-4.3 4.3 4.3 0 0 1-4.3 4.3ZM19 5a1.6 1.6 0 1 1-1.6-1.6A1.6 1.6 0 0 1 19 5Z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@dracolabsgermany" rel="noopener" class="tt" aria-label="Draco Labs auf TikTok">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16.6 2h-3.1v13.1a2.7 2.7 0 1 1-2.7-2.7c.2 0 .4 0 .6.1V9.3a6 6 0 0 0-.6 0 5.8 5.8 0 1 0 5.8 5.8V8.6a7 7 0 0 0 4.1 1.3V6.8a3.9 3.9 0 0 1-4.1-3.9V2Z"/></svg>
+      </a>
+    </nav>
+    <div class="links">
+      <a href="index.html">Startseite</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
+    </div>
+    <div>© 2026 Draco Labs Germany · Kleinunternehmer gem. § 19 UStG</div>
+    <img class="ai-label" src="assets/label-ai-modified.svg" alt="KI-Kennzeichnung: Inhalte dieser Website wurden teilweise mit KI erstellt oder bearbeitet (AI MODIFIED)">
+  </div>
+</footer>
+
+</body>
+</html>

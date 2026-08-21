@@ -1,0 +1,974 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Was die Kamera wirklich misst — Ratgeber Kamerasysteme | Draco Labs</title>
+<meta name="description" content="RGB, Wärmebild, LiDAR und Multispektral im Vergleich: was jeder Sensor physikalisch misst, welche Datenblattzahl trägt und welche nichts verspricht.">
+<meta name="keywords" content="Drohne Kamerasysteme, Waermebildkamera Drohne, LiDAR Drohne, Multispektralkamera Landwirtschaft, NDVI Drohne, Bodenaufloesung GSD, Emissionsgrad Thermografie, Mikrobolometer">
+<meta name="robots" content="noindex, nofollow">
+<meta name="tdm-reservation" content="1">
+<meta name="author" content="Draco Labs Germany">
+<link rel="canonical" href="https://dracolabsgermany.com/ratgeber-kamerasysteme.html">
+
+<!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Was die Kamera wirklich misst — RGB, Wärmebild, LiDAR, Multispektral">
+<meta property="og:description" content="Vier Sensoren, vier Physiken: warum die Zahl auf dem Datenblatt den Sensor beschreibt und nicht das Ergebnis, mit belegten Zahlen und offenen Rechnungen.">
+<meta property="og:url" content="https://dracolabsgermany.com/ratgeber-kamerasysteme.html">
+<meta property="og:image" content="https://dracolabsgermany.com/assets/ratgeber/kamerasysteme-hero.jpg">
+<meta property="og:site_name" content="Draco Labs Germany">
+<meta property="og:locale" content="de_DE">
+
+<!-- Twitter/X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Was die Kamera wirklich misst — RGB, Wärmebild, LiDAR, Multispektral">
+<meta name="twitter:description" content="Vier Sensoren, vier Messgrößen. Was jede Datenblattzahl trägt, und was sie nicht verspricht.">
+<meta name="twitter:image" content="https://dracolabsgermany.com/assets/ratgeber/kamerasysteme-hero.jpg">
+
+<link rel="icon" type="image/png" href="assets/emblem.png">
+<link rel="stylesheet" href="style.css">
+
+<!-- Strukturierte Daten für Google (Article) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Was die Kamera wirklich misst: RGB, Wärmebild, LiDAR und Multispektral",
+  "description": "Technischer Vergleich der vier Kamerasysteme für Drohnen: Messgröße, Sensoraufbau, Kennzahlen und die Grenzen, die nicht im Datenblatt stehen.",
+  "image": "https://dracolabsgermany.com/assets/ratgeber/kamerasysteme-hero.jpg",
+  "datePublished": "2026-08-20",
+  "dateModified": "2026-08-20",
+  "author": { "@type": "Organization", "name": "Draco Labs Germany" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Draco Labs Germany",
+    "logo": { "@type": "ImageObject", "url": "https://dracolabsgermany.com/assets/logo.png" }
+  },
+  "mainEntityOfPage": "https://dracolabsgermany.com/ratgeber-kamerasysteme.html",
+  "inLanguage": "de-DE"
+}
+</script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a href="index.html"><img src="assets/emblem.png" alt="Draco Labs Emblem"></a>
+    <div class="name">Draco Labs <small>Germany</small></div>
+    <input type="checkbox" id="menu-auf" class="menu-toggle">
+    <label for="menu-auf" class="burger" aria-label="Menü öffnen und schließen">
+      <span></span><span></span><span></span>
+    </label>
+    <nav>
+      <!-- <a href="index.html#baustelle">Baustelle</a> reaktivieren, wenn die Serie kurz vor Frame-Go-live released wird -->
+      <a href="leistungen.html">Leistungen</a>
+      <a href="index.html#neuigkeiten">Neuigkeiten</a>
+      <a href="index.html#ratgeber">Ratgeber</a>
+      <a href="index.html#teilelisten">Teilelisten</a>
+      <a href="index.html#ueber">Über uns</a>
+      <a href="index.html#partner">Partner</a>
+      <a href="index.html#kontakt">Kontakt</a>
+    </nav>
+    <a class="shop-btn" href="https://shop.dracolabsgermany.com" target="_blank" rel="noopener">Shop →</a>
+  </div>
+</header>
+
+<main class="legal">
+  <div class="wrap">
+
+    <h1>Was die Kamera wirklich misst</h1>
+    <p class="muted" style="font-size:17px; margin-top:-4px">RGB, Wärmebild, LiDAR und Multispektral: vier Sensoren, vier völlig verschiedene Messgrößen.  Und vier Datenblattzahlen, die etwas anderes versprechen, als die meisten aus ihnen herauslesen.</p>
+    <p class="muted">Ratgeber · Kamera &amp; Nutzlast · Lesezeit ca. 38 Min · Stand: August 2026</p>
+
+    <div data-nosnippet style="background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--cyan); border-radius:10px; padding:18px 20px; margin:22px 0">
+      <p style="margin:0 0 8px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; font-size:13px; color:var(--cyan)">Kurz gesagt</p>
+      <p style="margin:0"><strong>Die vier Systeme messen nicht dasselbe in verschiedener Qualität, sondern verschiedene Dinge.</strong>  RGB und Multispektral messen <strong>reflektiertes Sonnenlicht</strong>, die Wärmebildkamera misst die <strong>Eigenstrahlung</strong> des Objekts, LiDAR misst die <strong>Laufzeit seines eigenen Lichtimpulses</strong>.  Die ersten drei sind passiv, das vierte ist aktiv und funktioniert deshalb nachts.<sup><a href="#q1">1</a></sup>  <strong>Bei jedem der vier entscheidet über das Ergebnis etwas, das nicht im Sensor sitzt.</strong>  Eine 640×512-Wärmebildkamera mit 32° Bildwinkel löst aus 50&nbsp;m rund 4,5&nbsp;cm je Pixel auf, kann aber erst Objekte ab etwa 13&nbsp;cm zuverlässig <em>messen</em>, weil eine Temperaturmessung drei mal drei Pixel braucht (unsere Rechnung).  Eine 60&nbsp;°C heiße, blank polierte Aluminiumfläche zeigt derselben Kamera <strong>22,5&nbsp;°C</strong> an, wenn der Emissionsgrad falsch eingestellt ist (unsere Rechnung).  Ein LiDAR, das auf 2&nbsp;cm genau misst, liefert 5&nbsp;cm Systemgenauigkeit, weil der Rest aus der Lagebestimmung der Drohne kommt.<sup><a href="#q20">20</a></sup>  Und eine Multispektralkamera ohne Sonnenlichtsensor und Kalibrierpanel liefert Bilder, die man <strong>zwischen zwei Flügen nicht vergleichen kann</strong>.<sup><a href="#q29">29</a></sup></p>
+    </div>
+
+    <p>Im <a href="ratgeber-nutzlast-gimbal.html">Ratgeber zu Nutzlast und Gimbal</a> haben wir die
+    Aufhängung behandelt: was ein Gramm Nutzlast an Schwebeleistung kostet, wo der Schwerpunkt zur
+    härteren Grenze wird und wann ein fester Halter das bessere Bild liefert als ein Gimbal.  Dort
+    steht ein Satz, den wir hier einlösen: die Kamerawahl selbst sei ein eigenes Thema und komme
+    später.  Das ist dieser Artikel.  Er behandelt nicht, <em>wie</em> ein Sensor hängt, sondern
+    <em>was</em> er misst.  Die Strecke danach, also Übertragung und Aufzeichnung, steht im
+    <a href="ratgeber-videouebertragung.html">Ratgeber zur Videoübertragung</a>; wie viel Flugzeit
+    eine schwere Nutzlast kostet, steht im <a href="ratgeber-akku-13-zoll.html">Akku-Ratgeber</a>,
+    und die satellitengestützte Positionsbestimmung, ohne die Kapitel&nbsp;9 nicht funktioniert,
+    im <a href="ratgeber-funk-kommunikation.html">Ratgeber zu Funk und GPS</a>.</p>
+
+    <p><strong>Was dieser Artikel nicht behandelt:</strong> Stabilisierung, Dämpfung und Gimbal
+    stehen vollständig im <a href="ratgeber-nutzlast-gimbal.html">Nutzlast-Ratgeber</a>.  Die
+    Auswertesoftware bleibt außen vor: der Artikel sagt, welche Daten entstehen, nicht wie man
+    Punktwolken klassifiziert oder Orthomosaike rechnet.  FPV-Kameras für den Sichtflug haben
+    andere Kennzahlen und stehen im
+    <a href="ratgeber-videouebertragung.html">Videoübertragungs-Ratgeber</a>.  Hyperspektrale
+    Sensorik behandeln wir in einem Absatz zur Abgrenzung und nicht weiter, weil sie für die
+    Copter-Klasse, die wir bauen, keine realistische Nutzlast ist.</p>
+
+    <p><strong>Hinweis:</strong> Jede Zahl in diesem Text hat eine Fußnote, die auf eine nachprüfbare
+    Quelle zeigt.  Wo wir gerechnet statt gemessen haben, steht es ausdrücklich dabei.  Für den Fall,
+    dass wir einen Fehler gemacht haben, kontaktiert uns gerne jederzeit.</p>
+
+    <p class="muted" style="font-size:14px"><strong>Transparenz:</strong> Einige Produktlinks in
+    diesem Artikel sind Affiliate-Links und als (Anzeige) markiert.  Kaufst du darüber, erhalten
+    wir eine kleine Vergütung, für dich ändert sich am Preis nichts.  Empfohlen wird nur, was wir
+    fachlich begründen können, und die Begründung steht immer im Text.</p>
+
+    <h2 id="k1">1. Vier Systeme, vier Messgrößen</h2>
+<!-- bild:start kamerasysteme-messgroessen -->
+<!-- bild:ende kamerasysteme-messgroessen -->
+    <p>Die meisten Vergleichstabellen im Netz stellen die vier Systeme nebeneinander und
+    vergleichen Auflösungen.  Das ist ungefähr so hilfreich wie ein Vergleich von Waage,
+    Thermometer und Bandmaß nach der Anzahl der Ziffern auf dem Display.  Die Systeme messen nicht
+    dasselbe in verschiedener Güte, sie messen <strong>verschiedene physikalische Größen</strong>.</p>
+
+    <p>Die Fernerkundung teilt Sensoren zuerst nach ihrer Energiequelle ein, und diese Einteilung
+    ist der brauchbarste Einstieg: „Passive Systeme erfassen Strahlung, die von einer externen
+    Energiequelle erzeugt wird, etwa der Sonne, während aktive Systeme Energie erzeugen und auf
+    ein Ziel richten und die Strahlung anschließend erfassen."<sup><a href="#q1">1</a></sup>  Drei
+    der vier Systeme in diesem Artikel sind passiv, eines ist aktiv.</p>
+
+    <table>
+    <tr><th>System</th><th>Gemessene Größe</th><th>Energiequelle</th><th>Ergebnis</th></tr>
+    <tr><td>RGB-Kamera</td><td>reflektiertes Sonnenlicht im sichtbaren Bereich</td><td>passiv (Sonne)</td><td>Bild, aus mehreren Bildern ein 3D-Modell</td></tr>
+    <tr><td>Wärmebildkamera</td><td>Eigenstrahlung des Objekts im langwelligen Infrarot</td><td>passiv (Objekt selbst)</td><td>Bild, bei radiometrischen Geräten je Pixel eine Temperatur</td></tr>
+    <tr><td>LiDAR</td><td>Laufzeit eines selbst ausgesandten Laserimpulses</td><td>aktiv (eigener Laser)</td><td>Punktwolke mit Koordinaten</td></tr>
+    <tr><td>Multispektralkamera</td><td>reflektiertes Sonnenlicht in wenigen schmalen Bändern</td><td>passiv (Sonne)</td><td>Bänderstapel, daraus gerechnete Indexkarten</td></tr>
+    </table>
+
+    <p>Aus dieser Einteilung folgt sofort der praktisch wichtigste Unterschied.  Weil LiDAR seine
+    eigene Lichtquelle mitbringt, ist es unabhängig von der Sonne: „Diese Eigenschaft erlaubt es,
+    LiDAR-Daten nachts zu erheben, wenn die Luft üblicherweise klarer ist und der Himmel weniger
+    Flugverkehr enthält.  Tatsächlich werden die meisten LiDAR-Daten nachts
+    erhoben."<sup><a href="#q1">1</a></sup>  Dieselbe Quelle nennt die Kehrseite im gleichen Atemzug:
+    „Anders als Radar kann LiDAR Wolken, Regen oder dichten Dunst nicht durchdringen und muss bei
+    gutem Wetter geflogen werden."<sup><a href="#q1">1</a></sup></p>
+
+    <p>Die Wärmebildkamera ist der Sonderfall unter den passiven Systemen.  Sie braucht keine
+    Sonne, weil ihre Strahlungsquelle das Objekt selbst ist.  Ein warmer Motor strahlt um zwei Uhr
+    nachts genauso wie um zwei Uhr mittags.  Das macht sie zum einzigen der drei passiven Systeme,
+    das im Dunkeln arbeitet, und es ist der Grund, warum thermische Gebäudeaufnahmen üblicherweise
+    nachts entstehen: tagsüber ist das Bild vom aufgeheizten Mauerwerk und von Sonnenreflexen
+    überlagert.</p>
+
+    <p>Ein zweiter Schnitt ist genauso wichtig und wird noch häufiger übersehen: <strong>abbildend
+    gegen messend</strong>.  RGB und Multispektral bilden ab.  LiDAR misst.  Die Wärmebildkamera
+    tut beides, aber nur, wenn sie radiometrisch ist, also so kalibriert, dass sie „die Temperatur
+    jedes Pixels in der Szene messen" kann.<sup><a href="#q10">10</a></sup>  Nicht-radiometrische
+    Module liefern nur Falschfarben, in denen Hell und Dunkel relativ zueinander stimmen und keine
+    absolute Bedeutung haben.  Wer eine Wärmebildkamera kauft und Temperaturen erwarten will, muss
+    dieses eine Wort im Datenblatt suchen.</p>
+
+    <h2 id="k2">2. Das Spektrum als gemeinsame Landkarte</h2>
+<!-- bild:start kamerasysteme-spektrum -->
+<!-- bild:ende kamerasysteme-spektrum -->
+    <p>Alle vier Systeme arbeiten mit elektromagnetischer Strahlung, nur in verschiedenen
+    Abschnitten des Spektrums.  Diese Abschnitte sind nicht willkürlich gewählt, sondern folgen der
+    Physik der Atmosphäre und der Objekte.</p>
+
+    <p>Das sichtbare Licht liegt zwischen 0,4 und 0,7&nbsp;µm.  Das ist derselbe Bereich, in dem
+    Chlorophyll arbeitet: „Chlorophyll absorbiert sichtbares Licht (von 0,4 bis 0,7&nbsp;µm)
+    stark, um es für die Photosynthese zu nutzen.  Die Zellstruktur der Blätter reflektiert
+    dagegen nahes Infrarot (von 0,7 bis 1,1&nbsp;µm) stark."<sup><a href="#q28">28</a></sup>  Diese
+    beiden Zahlenpaare sind die gesamte physikalische Grundlage der Multispektralfotografie in der
+    Landwirtschaft, und wir kommen in Kapitel&nbsp;11 darauf zurück.</p>
+
+    <p>Der andere relevante Abschnitt liegt weit außerhalb dessen, was Auge oder Silizium sehen
+    können.  Wärmebildkameras für Drohnen arbeiten praktisch alle im langwelligen Infrarot
+    (Fachwort: LWIR) zwischen 8 und 14&nbsp;µm.  Das gilt für den OEM-Kern
+    Boson<sup><a href="#q3">3</a></sup> genauso wie für eine komplette Nutzlast wie die DJI
+    Zenmuse&nbsp;H30T, deren Datenblatt denselben Bereich „8 bis 14&nbsp;μm"
+    nennt.<sup><a href="#q19">19</a></sup>  Der Grund ist zweifach: In diesem Bereich liegt bei
+    Objekten mit Umgebungstemperatur das Maximum der Eigenstrahlung, und die Atmosphäre ist hier
+    weitgehend durchlässig.</p>
+
+    <p>Diese Wellenlänge hat eine Folge, die im Feld regelmäßig für Ärger sorgt: <strong>Glas ist
+    dafür undurchsichtig.</strong>  Optisches Standardglas „ist in diesem Teil des Spektrums
+    opak", weshalb Germanium das Material der Wahl ist, das „Infrarotstrahlung im Bereich 8 bis
+    14&nbsp;µm effizient überträgt".<sup><a href="#q12">12</a></sup>  Der Kamerahersteller sagt
+    dasselbe von der Anwendungsseite: Für eine Schutzscheibe vor einer LWIR-Kamera „ist Germanium
+    ein empfohlenes Fenstermaterial", alternativ entspiegeltes Silizium, das weniger durchlässig,
+    aber günstiger ist.<sup><a href="#q11">11</a></sup></p>
+
+    <p>Praktisch heißt das: Eine Wärmebildkamera kann nicht durch eine Fensterscheibe, durch eine
+    Plexiglashaube oder durch einen normalen Objektivfilter messen.  Wer eine Wärmebildnutzlast in
+    ein Gehäuse setzt, braucht ein Germaniumfenster, und das ist kein Beiwerk: Germaniumlinsen
+    „sind fast immer durch harte Oberflächenbeschichtungen geschützt, meist diamantähnlicher
+    Kohlenstoff (DLC) und Antireflexschichten, die auf das LWIR-Spektrum abgestimmt
+    sind".<sup><a href="#q12">12</a></sup>  Ein solches Fenster kostet mehr als das gesamte
+    Kunststoffgehäuse drumherum.  Das ist auch der Grund, warum die Wärmebildoptik einer
+    Drohnennutzlast nie hinter derselben Kuppel sitzt wie die Sichtkamera.</p>
+
+    <h2 id="k3">3. Die RGB-Kamera und die Frage, was „Megapixel" bedeutet</h2>
+<!-- bild:start kamerasysteme-bayer -->
+<!-- bild:ende kamerasysteme-bayer -->
+    <p>Der Sensor einer normalen Farbkamera misst keine Farbe.  Er misst Helligkeit, und über jedem
+    Pixel sitzt ein Farbfilter.  Die übliche Anordnung ist die Bayer-Matrix: „Das Filtermuster
+    besteht zu 50&nbsp;Prozent aus Grün, zu 25&nbsp;Prozent aus Rot und zu 25&nbsp;Prozent aus
+    Blau."<sup><a href="#q4">4</a></sup>  Jedes einzelne Pixel liefert also genau einen der drei
+    Farbwerte, „die Lücken werden durch Interpolation gefüllt, was oft Demosaicing genannt
+    wird".<sup><a href="#q4">4</a></sup></p>
+
+    <p>Das hat eine nüchterne Konsequenz für jede Angabe in Megapixel.  Bei einem 45-Megapixel-Sensor
+    sind rund 11&nbsp;Millionen Pixel tatsächlich rotempfindlich; die restlichen roten Werte im
+    fertigen Bild sind gerechnet.  Für ein Foto ist das völlig unproblematisch, weil das Auge Grün
+    am schärfsten sieht und die Rekonstruktion gut funktioniert.  Für die Fernerkundung ist es der
+    Grund, warum Multispektralkameras eben <em>keine</em> Bayer-Matrix verwenden, sondern für jedes
+    Band ein eigenes Objektiv mit eigenem Filter.  Wer eine Pflanzenanalyse aus interpolierten
+    Farbwerten rechnet, rechnet zum Teil mit erfundenen Zahlen.  Der Hersteller weist selbst
+    darauf hin, dass „unzureichendes Demosaicing eine der Hauptursachen für Artefakte in
+    Farbbildern ist, besonders an scharfen Kanten".<sup><a href="#q4">4</a></sup></p>
+
+    <p>Die zweite Zahl, die mehr sagt als die Megapixel, ist die <strong>Pixelgröße</strong>.  Sie
+    bestimmt, wie viel Licht ein Pixel sammeln kann, bevor es voll ist.  Diese Sättigungsmenge
+    heißt Full Well Capacity und ist „die Ladungsmenge, die in einem einzelnen Pixel gespeichert
+    werden kann, ohne dass das Pixel in Sättigung geht".<sup><a href="#q5">5</a></sup>  Der
+    Zusammenhang mit der Pixelgröße ist überproportional: „Eine Vergrößerung um mehr als das
+    1,5-fache kann zu einer 3,8-fachen Zunahme der im Pixel gespeicherten Elektronen
+    führen."<sup><a href="#q5">5</a></sup>  Größere Pixel bedeuten damit mehr Dynamikumfang und
+    besseres Verhalten bei wenig Licht, und das ist genau der Kompromiss, den man eingeht, wenn man
+    auf demselben Sensorformat die Megapixelzahl erhöht.</p>
+
+    <p>Ein konkretes Beispiel aus der Vermessungspraxis: Die Nutzlast DJI Zenmuse&nbsp;P1 hat einen
+    Sensor im Vollformat mit „35,9&nbsp;×&nbsp;24&nbsp;mm", „45&nbsp;Megapixel" effektiver
+    Auflösung und einer „Pixelgröße: 4,4&nbsp;μm"; sie wiegt „ca.&nbsp;800&nbsp;g" und trägt
+    Wechselobjektive mit 24, 35 und 50&nbsp;mm.<sup><a href="#q6">6</a></sup>  Zum Vergleich: Der
+    Wärmebildkern Boson hat einen Pixelabstand von „12&nbsp;µm".<sup><a href="#q3">3</a></sup>  Ein
+    Thermalpixel hat damit rund die <strong>7,4-fache Fläche</strong> eines Pixels dieser
+    Vermessungskamera (unsere Rechnung: 12&nbsp;µm zu 4,4&nbsp;µm im Quadrat).  Wer die Zahl
+    „640&nbsp;×&nbsp;512" als armselige Auflösung liest, vergleicht dabei unbewusst Pixel, die
+    sich um fast eine Größenordnung in der Fläche unterscheiden und in völlig verschiedenen
+    Wellenlängenbereichen arbeiten.</p>
+
+    <p>Die dritte Zahl ist der <strong>Verschluss</strong>.  Die P1 gibt „Geschwindigkeit des
+    mechanischen Verschlusses: 1/2.000 bis 1&nbsp;s" an, zusätzlich zum elektronischen
+    Verschluss.<sup><a href="#q6">6</a></sup>  Dass eine Vermessungskamera überhaupt noch einen
+    mechanischen Verschluss mitbringt, hat einen handfesten Grund, und der steht im nächsten
+    Kapitel.</p>
+
+    <h2 id="k4">4. Bodenauflösung: die Rechnung, die alle vier Systeme verbindet</h2>
+<!-- bild:start kamerasysteme-gsd -->
+<!-- bild:ende kamerasysteme-gsd -->
+    <p>Die wichtigste Kennzahl eines abbildenden Sensors an der Drohne steht auf keinem Datenblatt,
+    weil sie erst im Flug entsteht: die Bodenauflösung, also die Kantenlänge des Bodenstücks, das
+    ein Pixel abdeckt (Fachwort: Ground Sample Distance, kurz GSD).  Die Formel dafür lautet
+    „GSD = Sensorbreite (mm) × Flughöhe (m) / Brennweite (mm) × Bildbreite
+    (Pixel)".<sup><a href="#q7">7</a></sup>  Kürzer und gleichwertig: Pixelgröße mal Flughöhe,
+    geteilt durch Brennweite.</p>
+
+    <p>Setzen wir die Zahlen der P1 mit dem 24-mm-Objektiv ein, Flughöhe 100&nbsp;m: 4,4&nbsp;µm
+    mal 100&nbsp;m geteilt durch 24&nbsp;mm ergibt <strong>1,83&nbsp;cm je Pixel</strong> (unsere
+    Rechnung).  Die Gegenprobe über die Sensorbreite kommt auf 1,83&nbsp;cm, was bestätigt, dass
+    beide Schreibweisen dieselbe Formel sind.</p>
+
+    <p>Damit lässt sich jede der vier Nutzlasten auf eine gemeinsame Skala bringen, und die
+    Ergebnisse sind bemerkenswert weit auseinander:</p>
+
+    <table>
+    <tr><th>Sensor</th><th>Flughöhe</th><th>Bodenauflösung</th><th>Quelle</th></tr>
+    <tr><td>DJI Zenmuse P1, 24&nbsp;mm</td><td>100&nbsp;m</td><td>1,83&nbsp;cm/px (unsere Rechnung)</td><td>Sensordaten<sup><a href="#q6">6</a></sup></td></tr>
+    <tr><td>MicaSense RedEdge-P, Multispektralband</td><td>120&nbsp;m</td><td>7,7&nbsp;cm/px</td><td>Datenblatt<sup><a href="#q24">24</a></sup></td></tr>
+    <tr><td>MicaSense RedEdge-P, Panchromatisch</td><td>120&nbsp;m</td><td>3,98&nbsp;cm/px</td><td>Datenblatt<sup><a href="#q24">24</a></sup></td></tr>
+    <tr><td>Wärmebildkern Boson 640, 32°</td><td>50&nbsp;m</td><td>4,48&nbsp;cm/px (unsere Rechnung)</td><td>Auflösung und Bildwinkel<sup><a href="#q9">9</a></sup></td></tr>
+    </table>
+
+    <p>Die Wärmebildzeile ist gerechnet und soll offenliegen: Bei 32°&nbsp;horizontalem Bildwinkel
+    deckt die Kamera aus 50&nbsp;m einen Streifen von rund 28,7&nbsp;m Breite ab; verteilt auf
+    640&nbsp;Pixel sind das 4,48&nbsp;cm je Pixel (unsere Rechnung, Kontrolle in
+    <code>check_ratgeber.py</code>).  Die Wärmebildkamera fliegt hier halb so hoch wie die
+    Vermessungskamera und liefert trotzdem die gröbere Auflösung.  Das ist keine Schwäche des
+    Geräts, sondern der Preis der langen Wellenlänge und der großen Pixel.</p>
+
+    <p><strong>GSD ist nicht Erkennbarkeit.</strong>  Eine Bodenauflösung von 2&nbsp;cm bedeutet
+    nicht, dass ein 2&nbsp;cm großes Objekt erkennbar ist.  Es bedeutet, dass es genau ein Pixel
+    belegt, und ein einzelnes Pixel mit unbekannter Umgebung ist keine Information.  Bei der
+    Temperaturmessung wird aus dieser Faustregel sogar eine harte Vorschrift, siehe
+    Kapitel&nbsp;7.</p>
+
+    <p>Und jetzt zum Verschluss.  Ein Sensor mit rollendem Verschluss liest das Bild zeilenweise
+    aus: „Kameras mit rollendem Verschluss zeichnen jedes Einzelbild Zeile für Zeile auf, von oben
+    nach unten", während Kameras mit globalem Verschluss „das gesamte Einzelbild nahezu exakt
+    gleichzeitig aufzeichnen".<sup><a href="#q8">8</a></sup>  Bewegt sich die Drohne während des
+    Auslesens, ist das Bild in sich verzerrt.  Der Softwarehersteller rechnet das an einem
+    konkreten Fall vor: Bei einer Auslesedauer von 74&nbsp;Millisekunden, 8&nbsp;m/s
+    Fluggeschwindigkeit und 70&nbsp;m Flughöhe ergibt sich ein Versatz von 10&nbsp;Pixeln, und die
+    Drohne hat sich während des Auslesens eines einzigen Bildes um rund 60&nbsp;Zentimeter
+    bewegt.<sup><a href="#q8">8</a></sup></p>
+
+    <p>Für ein Video ist das ein optischer Fehler.  Für die Fotogrammetrie ist es ein Messfehler,
+    denn die Software nimmt an, dass alle Bildpunkte eines Fotos zum selben Aufnahmestandort
+    gehören.  Deshalb hat eine 800&nbsp;g schwere Vermessungskamera einen mechanischen Verschluss,
+    und deshalb erreicht sie laut Hersteller eine absolute Genauigkeit von „Horizontal:
+    3&nbsp;cm, Vertikal: 5&nbsp;cm" bei 3&nbsp;cm Bodenauflösung, 15&nbsp;m/s Fluggeschwindigkeit,
+    75&nbsp;Prozent Längs- und 55&nbsp;Prozent Querüberdeckung.<sup><a href="#q6">6</a></sup>  Man
+    beachte, wie viele Bedingungen an dieser einen Genauigkeitsangabe hängen.  Das ist der
+    Normalfall in diesem Themenfeld und nicht die Ausnahme.</p>
+
+    <h2 id="k5">5. Die Wärmebildkamera: das Mikrobolometer</h2>
+<!-- bild:start kamerasysteme-mikrobolometer -->
+<!-- bild:ende kamerasysteme-mikrobolometer -->
+    <p>Ein Wärmebildsensor für Drohnen ist in aller Regel ein ungekühltes Mikrobolometer.  Das
+    Bauprinzip ist erfrischend simpel: Jedes Pixel ist ein winziger Widerstand, der sich erwärmt,
+    wenn Infrarotstrahlung darauf fällt, und dessen Widerstandsänderung ausgelesen wird.  Keine
+    Photonenzählung, keine Kühlung auf Stickstofftemperatur, kein Kompressor.  Genau das macht die
+    Bauform leicht genug für eine Drohne.</p>
+
+    <p>Die Eckdaten des verbreitetsten Kerns, Teledyne FLIR Boson, lauten: Auflösung
+    „640&nbsp;×&nbsp;512 oder 320&nbsp;×&nbsp;256", Pixelgröße „12&nbsp;µm", Spektralbereich
+    „8&nbsp;μm bis 14&nbsp;μm", Bildrate „60&nbsp;Hz und 9&nbsp;Hz", Leistungsaufnahme „bereits ab
+    600&nbsp;mW".<sup><a href="#q3">3</a></sup>  Die Nachfolgegeneration Boson+ bietet dieselbe
+    Auflösung und denselben Pixelabstand bei besserer Empfindlichkeit.<sup><a href="#q3">3</a></sup></p>
+
+    <p>Als fertiges Doppelmodul mit Sichtkamera sieht das so aus: Das Hadron&nbsp;640 wiegt
+    „leichte 56&nbsp;g" bei „niedriger Dauerleistungsaufnahme von 1,8&nbsp;W", kombiniert den
+    640&nbsp;×&nbsp;512-Thermalkern mit einer 64-Megapixel-Sichtkamera und gibt beide Ströme mit
+    60&nbsp;Hz über USB oder MIPI aus; der horizontale Bildwinkel beträgt
+    32°.<sup><a href="#q9">9</a></sup>  Für die Nutzlastplanung ist das die entscheidende
+    Botschaft: <strong>Gewicht ist beim Wärmebild praktisch nie das Problem.</strong>  56&nbsp;g
+    trägt jeder brauchbare Copter.  Die Probleme liegen woanders, nämlich beim zweiten Datenstrom,
+    bei der Optik aus Kapitel&nbsp;2 und bei der Messgenauigkeit aus Kapitel&nbsp;7.</p>
+
+    <p>Bleibt die merkwürdige Angabe „60&nbsp;Hz und 9&nbsp;Hz".  Warum sollte jemand eine Kamera
+    absichtlich auf neun Bilder je Sekunde drosseln?  Die Antwort hat mit Optik nichts zu tun:
+    „Die US-Regierung erlaubt den Export von Wärmebildkameras mit Bildraten unter 9&nbsp;Bildern
+    je Sekunde ohne Lizenz", während Kameras ab 30&nbsp;Bildern je Sekunde exportkontrolliert
+    sind und je nach Modell eine Ausfuhrgenehmigung des US-Handels- oder -Außenministeriums
+    verlangen.<sup><a href="#q13">13</a></sup>  Die 9-Hz-Variante ist also ein
+    ausfuhrrechtliches Produkt, kein technisches.</p>
+
+    <p>Es ist trotzdem eine technische Entscheidung, sobald man fliegt.  Bei 9&nbsp;Hz liegen
+    111&nbsp;Millisekunden zwischen zwei Bildern.  Eine Drohne mit 10&nbsp;m/s legt in dieser Zeit
+    1,11&nbsp;m zurück, was bei der oben gerechneten Bodenauflösung von 4,48&nbsp;cm einem Versatz
+    von rund <strong>25&nbsp;Pixeln zwischen zwei aufeinanderfolgenden Bildern</strong> entspricht
+    (unsere Rechnung).  Bei 60&nbsp;Hz sind es 3,7&nbsp;Pixel.  Wer aus Wärmebildern ein Mosaik
+    rechnen oder einer bewegten Wärmequelle folgen will, merkt den Unterschied sofort.  Wer aus
+    dem Schwebeflug ein Dach betrachtet, merkt ihn gar nicht.</p>
+
+    <h2 id="k6">6. NETD und der Verschluss, der das Bild einfrieren lässt</h2>
+    <p>Die Kennzahl, die bei einer Wärmebildkamera die Bildqualität bestimmt, ist nicht die
+    Auflösung, sondern die <strong>rauschäquivalente Temperaturdifferenz</strong> (Fachwort: NETD,
+    Noise Equivalent Temperature Difference).  Sie gibt an, wie groß ein Temperaturunterschied
+    sein muss, damit er sich vom Eigenrauschen des Sensors abhebt, und wird in Millikelvin
+    angegeben.</p>
+
+    <p>Der Boson wird in drei Empfindlichkeitsklassen geliefert: „Industrial: ≤40&nbsp;mK,
+    Professional: ≤50&nbsp;mK, Consumer: ≤60&nbsp;mK".  Der Boson+ verbessert das auf
+    „Industrial: ≤20&nbsp;mK, Professional: ≤30&nbsp;mK".<sup><a href="#q3">3</a></sup>  Eine
+    komplette Nutzlast wie die Zenmuse&nbsp;H30T liegt mit „≤50&nbsp;mk bei f/1,0" im mittleren
+    Feld, bringt dafür aber die höhere Auflösung von „1280&nbsp;×&nbsp;1024" mit und misst je nach
+    Verstärkungsstufe von „-20° bis 150°&nbsp;C" oder „0° bis 600°&nbsp;C".<sup><a href="#q19">19</a></sup></p>
+
+    <p>Der Hinweis „bei f/1,0" ist kein Beiwerk.  NETD hängt von der Öffnung des Objektivs ab, und
+    eine Kamera mit lichtschwächerer Optik erreicht denselben Sensorwert nicht.  Zwei
+    NETD-Angaben sind deshalb nur dann vergleichbar, wenn die Blende dabeisteht.  Steht sie nicht
+    dabei, ist die Angabe im besten Fall unvollständig.</p>
+
+    <p>Die zweite Eigenheit dieser Sensorart merkt man im Betrieb sofort.  Ungekühlte
+    Mikrobolometer driften mit der eigenen Temperatur, und deshalb kalibrieren sie sich in
+    Abständen gegen eine gleichmäßige Referenzfläche.  Diese Korrektur heißt
+    Flat-Field-Korrektur, kurz FFC: „Während der FFC bietet der Verschluss jedem Detektorelement
+    im Feld eine Quelle gleichmäßiger Temperatur."<sup><a href="#q14">14</a></sup>  Was der
+    Bediener davon merkt, beschreibt derselbe Hersteller nüchtern: „Solange der Verschluss im
+    Sichtfeld des Sensors steht, wird das Bild unmittelbar vor der Verschlussbewegung eingefroren
+    und angezeigt, bis der FFC-Vorgang abgeschlossen ist", begleitet von einem leisen Klicken;
+    der ganze Vorgang dauert etwa eine halbe Sekunde.<sup><a href="#q14">14</a></sup></p>
+
+    <p>Am dichtesten liegen diese Vorgänge direkt nach dem Einschalten: „Wenn eine Tau2-Kamera
+    mit Spannung versorgt wird, treten zwei zwingende Verschlussvorgänge auf: einer innerhalb von
+    2&nbsp;Sekunden nach dem Start, der andere innerhalb von 6&nbsp;Sekunden nach dem
+    ersten."<sup><a href="#q14">14</a></sup>  Danach löst die Kamera nach Zeit und
+    Temperaturänderung selbsttätig aus.  Wer genau messen will, gibt der Kamera ohnehin Zeit: Für
+    die Überprüfung der Messgenauigkeit verlangt der Hersteller 30&nbsp;Minuten
+    Stabilisierungszeit.<sup><a href="#q16">16</a></sup></p>
+
+    <p>Für die Flugplanung folgt daraus etwas Unbequemes: Die ersten Minuten nach dem Einschalten
+    liefert eine Wärmebildnutzlast die schlechtesten Messwerte, und jeder Kalibriervorgang
+    unterbricht die Aufnahme für einen Sekundenbruchteil.  Wer eine lückenlose Bildfolge für ein
+    Mosaik braucht, plant den Vorlauf ein, statt den Copter aus der Kiste zu nehmen und zu
+    starten.</p>
+
+    <h2 id="k7">7. Warum die Wärmebildkamera keine Temperatur sieht</h2>
+<!-- bild:start kamerasysteme-emissionsgrad -->
+<!-- bild:ende kamerasysteme-emissionsgrad -->
+    <p>Dies ist das wichtigste Kapitel des Artikels, weil es die größte Lücke zwischen Erwartung und
+    Physik schließt.  Eine radiometrische Wärmebildkamera misst keine Temperatur.  Sie misst
+    <strong>Strahlung</strong> und rechnet daraus eine Temperatur, unter Annahmen, die der Bediener
+    setzt.</p>
+
+    <p>Die wichtigste dieser Annahmen ist der Emissionsgrad: das Verhältnis der abgestrahlten
+    Leistung einer realen Oberfläche zu der eines idealen Strahlers, mit Werten zwischen 0 und 1.
+    Wie stark er zwischen Materialien schwankt, zeigt eine Herstellertabelle: poliertes Aluminium
+    liegt bei 50 bis 100&nbsp;°C zwischen 0,04 und 0,06, stark oxidiertes Aluminium bei 0,2 bis
+    0,3, oxidierter Stahl bei 100&nbsp;°C bei 0,74, weißer Lack bei 0,91 bis 0,95, matter
+    schwarzer Lack bei 0,96 bis 0,98, menschliche Haut bei 0,98 und destilliertes Wasser bei
+    0,96.<sup><a href="#q15">15</a></sup>  Zwischen der blanken und der oxidierten Fläche
+    <em>desselben</em> Metalls liegt damit ein Faktor von rund fünf.</p>
+
+    <p>Was das bedeutet, formuliert der Kamerahersteller in seiner Handreichung für
+    Drohnenkameras anschaulich: „Ein Objekt mit einem Emissionsgrad von 48&nbsp;Prozent strahlt
+    halb so viel Wärmestrahlung ab wie ein Objekt mit einem Emissionsgrad von
+    96&nbsp;Prozent."<sup><a href="#q18">18</a></sup>  Und weil Oberflächen mit niedrigem
+    Emissionsgrad denselben Anteil, den sie nicht abstrahlen, aus der Umgebung reflektieren,
+    „reflektieren sie auch mehr Wärmestrahlung aus ihrer Umgebung", weshalb die
+    Hintergrundtemperatur bekannt sein muss.<sup><a href="#q18">18</a></sup></p>
+
+    <p>Was ein falsch gesetzter Emissionsgrad anrichtet, lässt sich ausrechnen.  Nehmen wir eine
+    blank polierte Aluminiumfläche mit einem Emissionsgrad von 0,05, die tatsächlich 60&nbsp;°C
+    heiß ist, in einer Umgebung von 20&nbsp;°C, und eine Kamera, die auf 0,95 eingestellt ist,
+    weil dort der Voreinstellwert für Lack steht.  Nach dem Stefan-Boltzmann-Gesetz setzt sich die
+    ankommende Strahlung aus dem eigenen Anteil des Objekts und dem reflektierten Anteil der
+    Umgebung zusammen.  Löst man das nach der Temperatur auf, die die Kamera anzeigen wird, kommt
+    <strong>22,5&nbsp;°C</strong> heraus: ein Fehler von 37,5&nbsp;Kelvin (unsere Rechnung,
+    vereinfacht als Graukörper ohne Atmosphärenanteil, Kontrolle in
+    <code>check_ratgeber.py</code>).  Die 60&nbsp;°C heiße Fläche erscheint damit kaum wärmer als
+    die Luft davor.</p>
+
+    <p>Das ist kein konstruiertes Extrembeispiel, sondern nur das obere Ende einer Reihe.  Bei
+    stark oxidiertem Aluminium mit 0,30 beträgt der Fehler in derselben Rechnung noch
+    25,6&nbsp;Kelvin, bei oxidiertem Stahl mit 0,74 immer noch 7,6&nbsp;Kelvin (unsere Rechnung).
+    Selbst der gutmütigste dieser drei Fälle liegt also weit außerhalb dessen, was die
+    Datenblattgenauigkeit verspricht.  In der Werkstatt hilft man sich, indem man eine Oberfläche
+    mit bekanntem, hohem Emissionsgrad auf die blanke Stelle klebt.  Aus der Luft ist genau
+    dieser Ausweg nicht verfügbar.</p>
+
+    <p>Vor diesem Hintergrund liest sich die übliche Genauigkeitsangabe anders.  Für
+    Messgeräte unter Laborbedingungen nennt der Hersteller „-20 bis 100&nbsp;°C, Genauigkeit
+    ±2&nbsp;°C" und „100 bis 650&nbsp;°C, Genauigkeit ±2&nbsp;Prozent" und schreibt dazu den Satz,
+    der alles davor relativiert: „Der Emissionsgrad Ihres Ziels ist der wichtigste zu bestimmende
+    Objektparameter."<sup><a href="#q16">16</a></sup>  Diese Genauigkeit ist also keine Zusage der
+    Kamera, sondern eine Zusage <em>unter der Bedingung</em>, dass der Bediener die Physik der
+    Oberfläche kennt.</p>
+
+    <p>Für Drohnenkameras ist der Hersteller entsprechend zurückhaltender.  Auf die Frage nach der
+    Messgenauigkeit einer UAS-Kamera lautet die Antwort: „der größere Wert aus ±5&nbsp;Grad
+    Celsius oder 5&nbsp;Prozent", wobei „die typische Genauigkeit oft besser ist, besonders in der
+    Bildmitte".<sup><a href="#q18">18</a></sup>  Dazu passt die Angabe für das radiometrische
+    Hadron&nbsp;640R: Messbereich „null bis 100&nbsp;Grad Celsius", Genauigkeit „allgemein etwa
+    plus/minus fünf Grad Celsius".<sup><a href="#q10">10</a></sup>  Fünf Kelvin ist die
+    Ausgangslage bei korrekt gesetztem Emissionsgrad.  Alles, was im Feld schiefgeht, kommt
+    obendrauf, und der Hersteller nennt auch das: „Große Entfernungen oder atmosphärische
+    Trübungen beeinflussen die Menge an Wärmestrahlung, die die Kamera von einem Objekt
+    empfängt."<sup><a href="#q18">18</a></sup></p>
+
+    <p>Die dritte Grenze ist geometrisch und wird noch häufiger übersehen als der Emissionsgrad.
+    Ein einzelnes Pixel reicht für eine Temperaturmessung nicht aus.  Das Verhältnis von
+    Entfernung zu kleinstem messbarem Objekt heißt Spot-Size-Verhältnis, und es beruht auf dem
+    Blickwinkel eines einzelnen Pixels (Fachwort: IFOV, Instantaneous Field of View), also „einer
+    winkelmäßigen Projektion nur eines einzigen Detektorpixels im
+    Infrarotbild".<sup><a href="#q17">17</a></sup>  Der Grund, warum ein Pixel nicht reicht, ist
+    optisch: „Aufgrund eines Phänomens namens optische Dispersion liefert Strahlung aus einer sehr
+    kleinen Fläche einem Detektorelement nicht genug Energie für einen korrekten Wert."  Die
+    Empfehlung lautet deshalb, „sicherzustellen, dass die heiße Fläche, für die der Spotwert
+    verlangt wird, mindestens 3&nbsp;×&nbsp;3&nbsp;Pixel groß ist"; für die Überprüfung der
+    Kalibrierung an einer Referenzquelle verlangt derselbe Hersteller sogar ein Feld von
+    6&nbsp;×&nbsp;6&nbsp;Pixeln.<sup><a href="#q17">17</a></sup><sup><a href="#q16">16</a></sup>
+    Wichtig dabei: „Digitalzoom verbessert die Genauigkeit
+    nicht."<sup><a href="#q17">17</a></sup></p>
+
+    <p>Angewandt auf unsere Beispielkamera: 4,48&nbsp;cm Bodenauflösung aus 50&nbsp;m Höhe, mal
+    drei, ergibt <strong>13,4&nbsp;cm</strong> als kleinstes zuverlässig messbares Objekt (unsere
+    Rechnung).  Eine 5&nbsp;cm breite überhitzte Kabelklemme auf einem Flachdach ist aus dieser
+    Höhe im Bild sichtbar und trotzdem nicht messbar: Ihr Pixelwert ist eine Mischung aus Klemme
+    und kaltem Dach.  Der angezeigte Wert liegt zu niedrig, und zwar ohne jede Warnung.  Wer
+    messen will statt nur zu sehen, muss tiefer fliegen oder länger brennen.</p>
+
+    <h2 id="k8">8. LiDAR: Laufzeit statt Bild</h2>
+<!-- bild:start kamerasysteme-echos -->
+<!-- bild:ende kamerasysteme-echos -->
+    <p>LiDAR steht für „light detection and ranging" und bezeichnet „eine Fernerkundungstechnologie,
+    die intensive, gebündelte Lichtstrahlen aussendet und die Zeit misst, die die Reflexionen
+    brauchen, um vom Sensor erfasst zu werden".<sup><a href="#q1">1</a></sup>  Der entscheidende
+    Satz für das Verständnis folgt unmittelbar: Die dreidimensionalen Koordinaten eines Punktes
+    ergeben sich aus drei Größen, nämlich „1) der Zeitdifferenz zwischen dem Aussenden und dem
+    Zurückkommen des Laserimpulses, 2) dem Winkel, unter dem der Impuls abgefeuert wurde, und
+    3) der absoluten Position des Sensors auf oder über der
+    Erdoberfläche".<sup><a href="#q1">1</a></sup></p>
+
+    <p>Zwei von drei Größen haben mit dem Laser nichts zu tun.  Darauf kommen wir in Kapitel&nbsp;9
+    zurück, denn dort liegt das eigentliche Fehlerbudget.</p>
+
+    <p>Zunächst die Leistungsdaten.  Historisch schafften frühe Systeme 10.000&nbsp;Punkte je
+    Sekunde; heutige Geräte erreichen „Pulsraten von über 300.000 je Sekunde", üblich sind
+    „ungefähr 50.000 bis 150.000 Impulse je Sekunde".<sup><a href="#q1">1</a></sup>  Ein aktuelles
+    Drohnengerät liegt genau in diesem Feld: Die DJI Zenmuse&nbsp;L2 liefert „bis zu
+    240.000&nbsp;Punkte/s" bei Einzelecho und „bis zu 1.200.000&nbsp;Punkte/s" bei
+    Mehrfachecho.<sup><a href="#q20">20</a></sup>  Der reine Sensor Livox Avia kommt auf
+    „≥&nbsp;240.000" Punkte je Sekunde im nicht-repetitiven Muster und wiegt
+    „498&nbsp;g".<sup><a href="#q21">21</a></sup></p>
+
+    <p>Die Reichweite hängt stark davon ab, wie gut die Oberfläche das Laserlicht zurückwirft.  Die
+    L2 nennt zwei Betriebspunkte: „450&nbsp;m bei 50&nbsp;Prozent Reflektivität, 0&nbsp;klx" und
+    „250&nbsp;m bei 10&nbsp;Prozent Reflektivität, 100&nbsp;klx".<sup><a href="#q20">20</a></sup>
+    Das ist ein Faktor 1,8 zwischen der besten und der schlechtesten der beiden Angaben, allein aus
+    Oberfläche und Sonnenlicht.  Für die Flugplanung heißt das: Die Reichweitenangabe eines
+    LiDAR-Datenblatts ohne Reflektivitätsangabe ist wertlos.</p>
+
+    <p>Der Laser arbeitet bei „905&nbsp;nm" und ist als „Klasse&nbsp;1 (nach IEC/EN
+    60825-1:2014)" eingestuft.<sup><a href="#q20">20</a></sup>  Der Livox-Sensor führt dieselbe
+    Einstufung, zertifiziert durch TÜV Rheinland.<sup><a href="#q21">21</a></sup>  Klasse&nbsp;1
+    heißt, dass das Gerät unter allen vernünftigerweise vorhersehbaren Betriebsbedingungen sicher
+    ist; eine Schutzbrille braucht am Boden also niemand.  Das entbindet nicht davon, den Sensor
+    beim Hantieren nicht direkt in Augenhöhe zu halten, aber es ist kein Betriebshindernis.</p>
+
+    <p>Das eigentlich Besondere an LiDAR sind die <strong>Mehrfachechos</strong>.  Ein einzelner
+    Laserimpuls hat eine räumliche Ausdehnung; trifft er eine Baumkrone, wird ein Teil vom Blattwerk
+    zurückgeworfen, ein Teil dringt durch und trifft Äste, ein Teil erreicht den Boden.  „Systeme
+    mit Mehrfachechos, die verbreitet sind, können bis zu fünf Rückstreuungen je Impuls erfassen.
+    Das kann die Datenmenge um 30&nbsp;Prozent oder mehr erhöhen und steigert die Fähigkeit, die
+    dreidimensionale Struktur der Merkmale über der Bodenoberfläche zu betrachten, etwa Kronendach
+    und Unterwuchs."<sup><a href="#q1">1</a></sup>  Die L2 nutzt genau das mit „5" Echos, der Livox
+    Avia mit „Dreifachecho".<sup><a href="#q20">20</a></sup><sup><a href="#q21">21</a></sup></p>
+
+    <p>Wie dicht die resultierende Punktwolke wird, lässt sich ausrechnen.  Die L2 hat einen
+    horizontalen Sichtbereich von 70°.<sup><a href="#q20">20</a></sup>  Aus 100&nbsp;m Flughöhe
+    deckt sie damit einen Streifen von rund 140&nbsp;m Breite ab.  Bei 5&nbsp;m/s
+    Fluggeschwindigkeit überstreicht sie 700&nbsp;m² je Sekunde; mit 240.000&nbsp;Punkten je
+    Sekunde im Einzelecho ergibt das rund <strong>343&nbsp;Punkte je Quadratmeter</strong> (unsere
+    Rechnung).  Zum Vergleich: Die anspruchsvollste Qualitätsstufe der US-Landesvermessung
+    verlangt „≥&nbsp;8&nbsp;Pkt/m²".<sup><a href="#q22">22</a></sup>  Ein Drohnen-LiDAR liefert
+    also das 43-fache der geforderten Punktdichte (unsere Rechnung).  Warum das trotzdem keine
+    43-fach bessere Karte ergibt, steht im nächsten Kapitel.</p>
+
+    <h2 id="k9">9. Warum LiDAR ohne IMU und GNSS wertlos ist</h2>
+    <p>Ein LiDAR misst eine Strecke.  Aus einer Strecke wird erst dann ein Punkt im Raum, wenn man
+    weiß, wo der Sensor war und wohin er zeigte, und zwar in dem Moment, in dem der Impuls
+    losflog.  Die Fachliteratur formuliert die Anforderung unmissverständlich: „Um ein hohes Maß
+    an Genauigkeit zu erreichen, ist dieser Vorgang etwas komplizierter, da man <strong>auf etwa
+    einen Zentimeter genau wissen muss</strong>, wo sich das Flugzeug befindet, während es mit 100
+    bis 200&nbsp;Meilen je Stunde fliegt, auf und ab schwankt und dabei Hunderttausende von
+    LiDAR-Impulsen je Sekunde verfolgt."<sup><a href="#q1">1</a></sup></p>
+
+    <p>Gelöst wird das durch die Kombination zweier Systeme, die sich gegenseitig stützen.  Die
+    Trägheitsmesseinheit (Fachwort: IMU) misst Bewegung in allen Richtungen, ist aber nicht
+    perfekt und „verliert nach kurzer Zeit an Präzision (zum Beispiel nach einer Sekunde)".  Ein
+    hochwertiger GNSS-Empfänger „aktualisiert oder setzt die INS oder IMU etwa jede Sekunde
+    zurück", und eine Bodenstation an bekannter Position liefert dafür einen
+    Korrekturfaktor.<sup><a href="#q1">1</a></sup>  Genau dieses Prinzip steckt hinter den
+    RTK-Angaben moderner Nutzlasten: „RTK FIX: 1&nbsp;cm + 1&nbsp;ppm" horizontal und
+    „1,5&nbsp;cm + 1&nbsp;ppm" vertikal.<sup><a href="#q20">20</a></sup></p>
+
+    <p>Wie stark dieser Anteil das Ergebnis bestimmt, zeigt ein Blick auf zwei Zahlen desselben
+    Datenblatts.  Die <strong>Entfernungsgenauigkeit</strong> des Lasers beträgt „2&nbsp;cm bei
+    150&nbsp;m".  Die <strong>Systemgenauigkeit</strong> des fertigen Punkts beträgt „Horizontal:
+    5&nbsp;cm bei 150&nbsp;m" und „Vertikal: 4&nbsp;cm bei 150&nbsp;m".<sup><a href="#q20">20</a></sup>
+    Der Laser, also das Bauteil, das im Prospekt die Hauptrolle spielt, trägt zum Gesamtfehler
+    weniger bei als alles andere zusammen.  Wer ein LiDAR-System auswählt und dabei auf die
+    Entfernungsgenauigkeit schaut, schaut auf die kleinere Hälfte.</p>
+
+    <p>Deshalb ist auch die Punktdichte aus Kapitel&nbsp;8 kein Genauigkeitsmaß.  Die
+    US-Landesvermessung trennt beides sauber: Die Qualitätsstufen QL0 und QL1 verlangen dieselbe
+    Punktdichte von „≥&nbsp;8&nbsp;Pkt/m²" und denselben Punktabstand von „≤&nbsp;0,35&nbsp;m",
+    unterscheiden sich aber in der Höhengenauigkeit, nämlich „5&nbsp;cm" gegen
+    „10&nbsp;cm".<sup><a href="#q22">22</a></sup>  Dieselben Punkte, doppelte Genauigkeitsanforderung.
+    Eine dichte Punktwolke aus einer schlecht georeferenzierten Befliegung ist eine sehr präzise
+    Darstellung einer falschen Geländeform.</p>
+
+    <table>
+    <tr><th>Qualitätsstufe</th><th>Höhengenauigkeit (RMSEz)</th><th>Punktabstand</th><th>Punktdichte</th></tr>
+    <tr><td>QL0</td><td>5&nbsp;cm</td><td>≤&nbsp;0,35&nbsp;m</td><td>≥&nbsp;8&nbsp;Pkt/m²</td></tr>
+    <tr><td>QL1</td><td>10&nbsp;cm</td><td>≤&nbsp;0,35&nbsp;m</td><td>≥&nbsp;8&nbsp;Pkt/m²</td></tr>
+    <tr><td>QL2</td><td>10&nbsp;cm</td><td>≤&nbsp;0,71&nbsp;m</td><td>≥&nbsp;2&nbsp;Pkt/m²</td></tr>
+    <tr><td>QL3</td><td>20&nbsp;cm</td><td>≤&nbsp;1,41&nbsp;m</td><td>≥&nbsp;0,5&nbsp;Pkt/m²</td></tr>
+    </table>
+    <p class="muted" style="font-size:14px">Qualitätsstufen nach der Lidar Base Specification des
+    US Geological Survey.<sup><a href="#q22">22</a></sup></p>
+
+    <p>Ein letzter Begriff, der beim Lesen von LiDAR-Berichten hilft: Die
+    Fundamental&nbsp;Vertical&nbsp;Accuracy „ist ein Maß für die Genauigkeit der Daten in offenem
+    Gelände bei hohem Konfidenzniveau (95&nbsp;Prozent); sie wird aus dem RMSE nach der Formel
+    RMSE&nbsp;×&nbsp;1,96&nbsp;=&nbsp;FVA berechnet".<sup><a href="#q1">1</a></sup>  Eine
+    FVA-Angabe ist damit rund doppelt so groß wie die zugehörige RMSE-Angabe, obwohl beide
+    dieselbe Datenlage beschreiben.  Wer zwei Angebote vergleicht, muss prüfen, welche der beiden
+    Zahlen genannt wird.</p>
+
+    <h2 id="k10">10. LiDAR gegen Fotogrammetrie</h2>
+    <p>Die häufigste Fehlannahme in diesem Feld lautet, LiDAR sei die genauere Fotogrammetrie.  Das
+    ist es nicht.  Auf offenem, texturiertem Gelände liegen beide Verfahren nah beieinander: Ein
+    Hersteller, der beides anbietet, gibt für die horizontale Genauigkeit beider Verfahren „bis
+    1&nbsp;cm" an und für die vertikale „leicht besser 1&nbsp;bis 3&nbsp;cm" bei LiDAR gegen „gut
+    2&nbsp;bis 4&nbsp;cm" bei Fotogrammetrie.<sup><a href="#q23">23</a></sup>  Das ist ein
+    Unterschied, aber keiner, der eine Verzehnfachung des Sensorpreises rechtfertigt.</p>
+
+    <p>Der Unterschied entsteht dort, wo die Fotogrammetrie strukturell scheitert.  Sie beruht
+    darauf, dass dieselbe Stelle in mehreren Bildern wiedererkannt wird.  Fehlt die Textur, fehlt
+    die Wiedererkennung.  Deshalb gilt für die Fotogrammetrie: „Ergebnisse hängen von Beleuchtung,
+    Schatten und Textur ab", während LiDAR „sogar im Dunkeln arbeiten
+    kann".<sup><a href="#q23">23</a></sup></p>
+
+    <p>Der zweite und wichtigere Unterschied ist die Vegetation.  Fotogrammetrie sieht das
+    Kronendach und rekonstruiert genau dieses; unter Bäumen ist sie „durch Schatten und
+    Verdeckungen eingeschränkt", während LiDAR-Impulse „sich streuen und den Boden und komplexe
+    Oberflächen reflektieren".<sup><a href="#q23">23</a></sup>  Das ist die praktische Umsetzung
+    der Mehrfachechos aus Kapitel&nbsp;8 und der Grund, warum die Fernerkundungsliteratur
+    „Bodenerkennung in bewaldetem Gelände" als einen der drei Hauptvorteile von LiDAR gegenüber
+    anderen Verfahren führt.<sup><a href="#q1">1</a></sup></p>
+
+    <p>Der dritte Unterschied ist die Anschaulichkeit, und er fällt zugunsten der Fotogrammetrie
+    aus.  Fotogrammetrie liefert „lebensechte und genaue Ansichten" mit „Textur, Form und Farbe",
+    LiDAR liefert „Punktwolken aus Laserimpulsen".<sup><a href="#q23">23</a></sup>  Für einen
+    Bericht an einen Auftraggeber, der kein Vermesser ist, ist das ein handfester Vorteil.  Das ist
+    auch der Grund, warum ernsthafte LiDAR-Nutzlasten eine RGB-Kamera mitbringen: Die
+    Zenmuse&nbsp;L2 kombiniert das LiDAR mit einem „4/3&nbsp;CMOS, Effektive Pixel:
+    20&nbsp;MP".<sup><a href="#q20">20</a></sup>  Die Punktwolke bekommt ihre Farbe aus dem Foto.</p>
+
+    <p>Bleibt die Datenmenge.  Bei 240.000&nbsp;Punkten je Sekunde im Einzelecho entstehen in
+    einem 20-minütigen Flug <strong>288&nbsp;Millionen Punkte</strong> (unsere Rechnung).  Im
+    Mehrfachecho-Betrieb wird daraus ein Vielfaches.  Diese Daten müssen an Bord geschrieben,
+    heruntergeladen und verarbeitet werden, und das ist bei LiDAR-Projekten regelmäßig der
+    zeitaufwendigere Teil als der Flug selbst.</p>
+
+    <p><strong>Unsere Einordnung:</strong> LiDAR ist die richtige Wahl, wenn das Gelände unter
+    Bewuchs liegt, wenn ohne Tageslicht geflogen werden muss oder wenn eine gleichmäßige
+    Punktdichte über texturarme Flächen gefordert ist.  In allen anderen Fällen liefert eine gute
+    RGB-Kamera mit RTK ein Ergebnis in derselben Genauigkeitsklasse, sieht besser aus und kostet
+    einen Bruchteil.</p>
+
+    <h2 id="k11">11. Multispektralkameras: wenige Bänder, sehr genau platziert</h2>
+<!-- bild:start kamerasysteme-bandpass -->
+<!-- bild:ende kamerasysteme-bandpass -->
+    <p>Eine Multispektralkamera ist im Kern eine Sammlung kleiner Schwarzweißkameras, von denen
+    jede einen eigenen schmalen Bandpassfilter vor dem Objektiv hat.  Keine Bayer-Matrix, keine
+    Interpolation: Jedes Band wird von einem eigenen Sensor voll aufgelöst gemessen.  Das ist der
+    strukturelle Unterschied zur RGB-Kamera aus Kapitel&nbsp;3 und der Grund, warum eine
+    Multispektralkamera trotz kleinerer Einzelsensoren die verlässlicheren Werte liefert.</p>
+
+    <p>Ein typisches Gerät ist die MicaSense RedEdge-P.  Ihr Datenblatt nennt die Bänder mit
+    Mittenwellenlänge und Bandbreite: „Blau (475&nbsp;nm Mitte, 32&nbsp;nm Bandbreite), Grün
+    (560&nbsp;nm Mitte, 27&nbsp;nm Bandbreite), Rot (668&nbsp;nm Mitte, 14&nbsp;nm Bandbreite),
+    RedEdge (717&nbsp;nm Mitte, 12&nbsp;nm Bandbreite), Nahinfrarot (842&nbsp;nm Mitte,
+    57&nbsp;nm Bandbreite)".<sup><a href="#q24">24</a></sup>  Die Sensorauflösung beträgt
+    „1456&nbsp;×&nbsp;1088 (1,6&nbsp;MP je Multispektralband), 2464&nbsp;×&nbsp;2056 (5,1&nbsp;MP
+    panchromatisches Band)", das Blickfeld „50°&nbsp;horizontal ×&nbsp;38°&nbsp;vertikal", das
+    Auslöseintervall „0,8&nbsp;Sekunden" und das Gewicht flugfertig
+    „503,7&nbsp;g".<sup><a href="#q24">24</a></sup></p>
+
+    <p>Die Bandbreiten sind der Punkt.  Ein Rotkanal einer normalen Kamera erfasst grob alles, was
+    rötlich aussieht.  Der Rotkanal dieser Kamera ist 14&nbsp;nm breit und sitzt bei 668&nbsp;nm,
+    also genau im Absorptionsmaximum des Chlorophylls.  Das ist keine Farbe, das ist eine Messung.
+    Der Hersteller bietet dieselbe Kamera deshalb auch mit anderen Filtersätzen an, etwa einer
+    Variante für Gewässer mit „Ozeanblau 444(28), Grün 531(14), Rot 650(16), Red Edge 705(10),
+    Red Edge 740(18)".<sup><a href="#q25">25</a></sup>  Dieselbe Optik, andere Filter, anderer
+    Anwendungsbereich.</p>
+
+    <p>Die Bodenauflösung lässt sich am Datenblatt gegenprüfen.  Angegeben sind „7,7&nbsp;cm je
+    Pixel (je MS-Band) bei 120&nbsp;m über Grund".<sup><a href="#q24">24</a></sup>  Rechnet man aus
+    dem Blickfeld von 50° und der Flughöhe von 120&nbsp;m einen Streifen von 111,9&nbsp;m und
+    verteilt ihn auf 1456&nbsp;Pixel, kommen 7,69&nbsp;cm heraus (unsere Rechnung).  Datenblatt und
+    Geometrie stimmen überein, was für die Angabe spricht.  Solche Gegenproben lohnen sich: Sie
+    sind billig und decken jene Datenblätter auf, in denen die GSD-Angabe aus einer anderen
+    Konfiguration stammt als die Optikangabe.</p>
+
+    <p>Als eingebaute Lösung gibt es dasselbe Prinzip kompakter.  Die DJI Mavic&nbsp;3M trägt vier
+    Multispektralsensoren mit „Grün (G): 560&nbsp;±16&nbsp;nm", „Rot (R): 650&nbsp;±16&nbsp;nm",
+    „Red Edge (RE): 730&nbsp;±16&nbsp;nm" und „Nahinfrarot (NIR): 860&nbsp;±26&nbsp;nm", jeweils
+    mit einem „1/2,8″&nbsp;CMOS, effektive Pixel: 5&nbsp;MP", dazu eine RGB-Kamera mit
+    „4/3&nbsp;CMOS, effektive Pixel: 20&nbsp;MP".<sup><a href="#q26">26</a></sup>  Die Bandmitten
+    liegen dicht bei denen der RedEdge-P, die Bandbreiten sind mit ±16&nbsp;nm etwas großzügiger.</p>
+
+    <p>Warum ausgerechnet diese Wellenlängen?  Die Antwort liegt in der Pflanzenphysiologie aus
+    Kapitel&nbsp;2.  Zwischen dem stark absorbierten Rot und dem stark reflektierten Nahinfrarot
+    liegt eine steile Flanke, die Rote Kante (Fachwort: Red Edge).  Sie ist die aussagekräftigste
+    Stelle im gesamten Pflanzenspektrum, weil ihre genaue Lage sich mit dem Zustand der Pflanze
+    verschiebt.  Die europäische Erdbeobachtung hat deshalb eigens „4 schmale Bänder im
+    VNIR-Bereich der Vegetations-Roten-Kante" eingerichtet, bei 704, 740 und 783&nbsp;nm sowie
+    einem schmalen Nahinfrarotband bei 865&nbsp;nm.<sup><a href="#q27">27</a></sup>  Wenn ein
+    Satellitensystem und eine Drohnenkamera unabhängig voneinander auf dieselben Wellenlängen
+    kommen, liegt das nicht an Absprache, sondern an der Pflanze.</p>
+
+    <p>Der bekannteste Auswertewert aus diesen Bändern ist der normierte differenzierte
+    Vegetationsindex: „NDVI = (NIR − VIS)/(NIR + VIS)".<sup><a href="#q28">28</a></sup>  Die
+    zugehörigen Wertebereiche: „Sehr niedrige NDVI-Werte (0,1 und darunter) entsprechen kahlen
+    Flächen aus Fels, Sand oder Schnee", „mittlere Werte stehen für Busch- und Grasland (0,2 bis
+    0,3)", „hohe Werte zeigen gemäßigte und tropische Regenwälder (0,6 bis
+    0,8)".<sup><a href="#q28">28</a></sup></p>
+
+    <p>Es lohnt, diese Werte einmal rückwärts zu rechnen, weil dabei klar wird, wie extrem der
+    Kontrast zwischen den beiden Bändern bei gesunder Vegetation ist.  Ein NDVI von 0,8 verlangt,
+    dass das Nahinfrarot <strong>neunmal</strong> so stark reflektiert wird wie das Rot; ein NDVI
+    von 0,6 verlangt den Faktor 4, ein NDVI von 0,2 nur noch den Faktor 1,5 (unsere Rechnung).
+    Zwischen kargem Grasland und dichtem Bestand liegt also ein Reflexionsverhältnis, das um den
+    Faktor 6 auseinandergeht.  Das ist der Grund, warum dieser eine Index über Jahrzehnte so
+    robust funktioniert hat: Er misst einen sehr großen Effekt.</p>
+
+    <p><strong>Abgrenzung zu hyperspektral.</strong>  Der Unterschied ist keiner des Grades, sondern
+    der Größenordnung: „Typischerweise bezieht sich multispektrale Bildgebung auf 3 bis
+    10&nbsp;Bänder, während hyperspektrale Bildgebung aus Hunderten oder Tausenden (schmalerer)
+    Bänder besteht."<sup><a href="#q2">2</a></sup>  Hyperspektrale Sensoren liefern für jedes
+    Bildpixel eine durchgehende Spektralkurve statt einiger Stützstellen.  Sie sind schwer, teuer,
+    datenintensiv und für einen selbstgebauten Copter keine realistische Nutzlast.  Für die
+    Vollständigkeit gehören sie in diese Landkarte, für die Kaufentscheidung eines Aufbaus in
+    unserer Klasse nicht.</p>
+
+    <h2 id="k12">12. Warum Multispektral ohne Kalibrierung nur bunte Bilder liefert</h2>
+    <p>Hier steht der rote Faden dieses Artikels in seiner deutlichsten Form.  Eine
+    Multispektralkamera liefert zunächst Rohwerte, und diese Rohwerte sind keine Messgröße:
+    „Diese Pixelwerte beziehen sich auf die Bedingungen, unter denen die Daten erhoben wurden, und
+    sind nicht absolut.  Das liegt größtenteils an Änderungen der
+    Lichtverhältnisse."<sup><a href="#q29">29</a></sup>  Die Konsequenz ist unbequem: „Eine
+    zeitbasierte Analyse ist nicht möglich, ohne die Lichtverhältnisse zu
+    berücksichtigen."<sup><a href="#q29">29</a></sup></p>
+
+    <p>Damit fällt genau die Anwendung weg, für die man sich so eine Kamera überhaupt anschafft.
+    Ein einzelner NDVI-Flug zeigt, wo im Feld die Unterschiede liegen.  Der Nutzen entsteht erst
+    beim Vergleich über Wochen, und der ist ohne Kalibrierung wertlos, weil zwischen zwei Flügen
+    der Sonnenstand, die Bewölkung und die Belichtungszeit anders waren.</p>
+
+    <p>Zwei Hilfsmittel lösen das, und sie arbeiten zusammen.  Das erste ist ein Kalibrierpanel mit
+    bekanntem Reflexionsgrad: „Ein Foto des Kalibrierpanels erlaubt es, den Pixeln des Panels die
+    bekannten Reflexionswerte zuzuweisen und den restlichen Datensatz entsprechend anzupassen"; es
+    wird „vor und nach jedem Flug" aufgenommen.<sup><a href="#q29">29</a></sup>  Das zweite ist ein
+    nach oben gerichteter Sonnenlichtsensor (Fachwort: Downwelling Light Sensor, DLS) auf der
+    Drohne, der „die Lichtverhältnisse während des gesamten Flugs aufzeichnet und sie in die
+    Metadaten jedes aufgenommenen Bildes schreibt, was später bei der Bildverarbeitung genutzt
+    werden kann, um die durch das Panel vorgenommene radiometrische Korrektur
+    nachzujustieren".<sup><a href="#q29">29</a></sup>  Die DJI Mavic&nbsp;3M führt denselben
+    Sonnenlichtsensor als „integriertes Modul".<sup><a href="#q26">26</a></sup></p>
+
+    <p>Die Arbeitsteilung ist logisch: Das Panel liefert den absoluten Bezugspunkt am Boden, der
+    Sensor verfolgt die Änderung während des Flugs.  Wer nur eines von beiden hat, hat entweder
+    einen Bezugspunkt ohne Verlauf oder einen Verlauf ohne Bezugspunkt.</p>
+
+    <p>Ein dritter Punkt betrifft die Bauform aus Kapitel&nbsp;11.  Wenn jedes Band ein eigenes
+    Objektiv hat, sehen die Objektive das Motiv aus leicht verschiedenen Blickwinkeln, und die
+    Bänder müssen deckungsgleich gemacht werden, bevor man sie miteinander verrechnet.  Der
+    Hersteller löst das bei der RedEdge-P mit einem panchromatischen Kanal, dessen
+    „5,1&nbsp;MP&nbsp;(globaler Verschluss, mit allen Bändern ausgerichtet)" die Bänder aufeinander
+    beziehen und zusätzlich nachschärfen.<sup><a href="#q24">24</a></sup>  Dass hier ein globaler
+    Verschluss verbaut ist, ist nach Kapitel&nbsp;4 kein Zufall: Bei einer Kamera, die vier oder
+    fünf Bilder gleichzeitig aufnimmt und anschließend pixelgenau überlagert, wäre ein rollender
+    Verschluss ein systematischer Fehler in jedem einzelnen Indexwert.</p>
+
+    <p>Schließlich noch eine Kennzahl, die selten diskutiert wird und für die Auswertung zählt: die
+    radiometrische Auflösung, also die Bittiefe.  Sie „beschreibt die Fähigkeit eines Sensors,
+    Unterschiede in Energie (oder Strahldichte) zu unterscheiden.  Je besser die radiometrische
+    Auflösung, desto empfindlicher ist der Sensor für kleine
+    Energieunterschiede."<sup><a href="#q2">2</a></sup>  Ein 12-Bit-Sensor unterscheidet 4.096
+    Stufen, ein 8-Bit-Sensor 256.<sup><a href="#q2">2</a></sup>  Wer eine Indexkarte aus einem
+    8-Bit-JPEG rechnet, hat den größten Teil der Messinformation weggeworfen, bevor die Rechnung
+    begonnen hat.</p>
+
+    <h2 id="k13">13. Was das alles für die Drohne bedeutet</h2>
+    <p>Jetzt die Zusammenführung.  Alle vier Systeme sind Nutzlast, und für Nutzlast gelten die
+    Regeln aus dem <a href="ratgeber-nutzlast-gimbal.html">Nutzlast-Ratgeber</a>: Jedes Gramm wird
+    über den Antriebsstrang mehrfach bezahlt, und der Schwerpunkt ist meist die härtere Grenze als
+    das Gewicht.  Hier die belegten Eckwerte nebeneinander:</p>
+
+    <table>
+    <tr><th>Nutzlast</th><th>Gewicht</th><th>Leistung</th><th>Bemerkung</th></tr>
+    <tr><td>Teledyne FLIR Hadron 640 (Thermal + Sicht)</td><td>56&nbsp;g<sup><a href="#q9">9</a></sup></td><td>1,8&nbsp;W<sup><a href="#q9">9</a></sup></td><td>reines Modul, ohne Gehäuse und Aufhängung</td></tr>
+    <tr><td>DJI Zenmuse P1 (RGB Vollformat)</td><td>ca. 800&nbsp;g<sup><a href="#q6">6</a></sup></td><td>Herstellerangabe nicht genannt</td><td>fertige Nutzlast mit Gimbal</td></tr>
+    <tr><td>DJI Zenmuse H30T (Thermal + Zoom)</td><td>920&nbsp;±&nbsp;5&nbsp;g<sup><a href="#q19">19</a></sup></td><td>Herstellerangabe nicht genannt</td><td>fertige Nutzlast mit Gimbal</td></tr>
+    <tr><td>Livox Avia (LiDAR-Sensor)</td><td>498&nbsp;g<sup><a href="#q21">21</a></sup></td><td>Herstellerangabe nicht genannt</td><td>Sensor allein, ohne GNSS und Speicher</td></tr>
+    <tr><td>DJI Zenmuse L2 (LiDAR + RGB + IMU)</td><td>905&nbsp;±&nbsp;5&nbsp;g<sup><a href="#q20">20</a></sup></td><td>Herstellerangabe nicht genannt</td><td>vollständiges System</td></tr>
+    <tr><td>MicaSense RedEdge-P (Multispektral)</td><td>503,7&nbsp;g flugfertig<sup><a href="#q24">24</a></sup></td><td>5,5&nbsp;/&nbsp;7,0&nbsp;/&nbsp;10&nbsp;W<sup><a href="#q24">24</a></sup></td><td>Bereitschaft, Mittel, Spitze</td></tr>
+    </table>
+
+    <p>Die Spalte „Leistung" ist überwiegend leer, und das ist eine Aussage für sich: Bei
+    Komplettnutzlasten gehört die Leistungsaufnahme regelmäßig nicht zu den veröffentlichten
+    Angaben, weil sie über die Gimbal-Schnittstelle des jeweiligen Herstellersystems läuft.  Für
+    einen Eigenbau ist genau das die Zahl, die man braucht.  Wo sie fehlt, muss sie erfragt oder
+    gemessen werden.  Wir tragen sie hier nicht ein, weil wir sie nicht belegen können.</p>
+
+    <p>Der zweite Aspekt ist die <strong>Flugzeit</strong>, und hier verschiebt sich das Problem
+    vom Gewicht zur Abdeckung.  Rechnen wir eine Multispektralbefliegung durch: Die RedEdge-P deckt
+    aus 120&nbsp;m einen Streifen von 111,9&nbsp;m ab (Kapitel&nbsp;11).  Mit 70&nbsp;Prozent
+    Querüberdeckung, wie sie für die Bandregistrierung üblich ist, bleiben 33,6&nbsp;m effektive
+    Bahnbreite.  Ein quadratisches Feld von 100&nbsp;Hektar, also 1.000&nbsp;×&nbsp;1.000&nbsp;m,
+    braucht damit <strong>30&nbsp;Bahnen</strong> und 30&nbsp;km Flugstrecke, was bei den vom
+    Hersteller genannten 17&nbsp;m/s rund <strong>29&nbsp;Minuten</strong> reiner Bahnzeit ergibt
+    (unsere Rechnung, ohne Wenden und ohne An- und Abflug).  Das ist mehr, als ein
+    13-Zoll-Multicopter mit 500&nbsp;g Nutzlast am Stück fliegt.  Multispektrale Flächenerfassung
+    ist deshalb in der Praxis Starrflügler- oder VTOL-Gebiet, und das liegt nicht an der Kamera,
+    sondern an der Flächenleistung.</p>
+
+    <p>Der dritte Aspekt ist die <strong>Schnittstelle</strong>.  Eine Vermessungskamera muss
+    ausgelöst werden, und die Auslösung muss protokolliert sein, sonst lässt sich das Bild
+    nachträglich nicht verorten.  ArduPilot bietet dafür zwei Wege, Servoausgang oder
+    Relais-/GPIO-Pin, konfiguriert über die Parameter <code>CAM1_TYPE</code>,
+    <code>CAM1_SERVO_ON</code> und <code>CAM1_DURATION</code>.<sup><a href="#q30">30</a></sup>  Der
+    entscheidende Teil ist die Rückmeldung: Das System „protokolliert TRIG-Meldungen, wenn es die
+    Kamera auslöst", aber erst wenn der Blitzschuh-Ausgang der Kamera an einen GPIO-Pin geht und
+    <code>CAM1_FEEDBAK_PIN</code> gesetzt ist, entstehen CAM-Meldungen „im exakten Moment, in dem
+    die Fotos aufgenommen werden".<sup><a href="#q30">30</a></sup>  Der Unterschied zwischen „ich
+    habe ausgelöst" und „das Bild wurde jetzt aufgenommen" ist bei 15&nbsp;m/s Fluggeschwindigkeit
+    schnell ein halber Meter Positionsfehler.</p>
+
+    <p>Und weil jede dieser Nutzlasten Anschlüsse belegt, wird der Autopilot selbst zur knappen
+    Ressource.  ArduPilot hat darauf reagiert und erlaubt seit Version&nbsp;4.5, serielle Ports
+    über den CAN-Bus nachzurüsten: „Bis zu drei Ports können vom Peripheriegerät in das Fluggerät
+    eingebunden werden."<sup><a href="#q31">31</a></sup>  Wer Kamera, Entfernungsmesser, Gimbal und
+    zweiten GNSS-Empfänger gleichzeitig betreiben will, kommt an dieser Technik kaum vorbei.</p>
+
+    <p>Der vierte Aspekt ist rechtlich und gilt unabhängig davon, welches der vier Systeme man
+    fliegt.  Die europäische Luftfahrtbehörde beantwortet die Frage nach der Registrierungspflicht
+    für die kleinsten Klassen mit „Nein, es sei denn, es ist eine Kamera oder ein Sensor an Bord
+    <strong>und</strong> die Drohne ist kein Spielzeug".<sup><a href="#q32">32</a></sup>  Jeder der
+    vier hier besprochenen Sensoren erfüllt diese Bedingung.  Die Gewichtsgrenzen der Klassen sind
+    ohnehin schnell erreicht: „C0 unter 250&nbsp;g, C1 unter 900&nbsp;g, C2 unter 4&nbsp;kg, C3 und
+    C4 unter 25&nbsp;kg".<sup><a href="#q32">32</a></sup>  Eine 905&nbsp;g schwere LiDAR-Nutzlast
+    verbraucht allein schon mehr als das gesamte Startgewicht der Klasse&nbsp;C1.  Wie sich das auf
+    Betriebskategorien und Abstände auswirkt, steht im
+    <a href="ratgeber-nutzlast-gimbal.html">Nutzlast-Ratgeber</a>.</p>
+
+    <h2 id="k14">14. Wie wir auswählen</h2>
+    <p>Am Ende steht keine Rangliste, weil die vier Systeme nicht dasselbe tun.  Es steht eine
+    Zuordnung von Frage zu Sensor, und dazu die ehrliche Einschätzung, was davon an einem
+    selbstgebauten Copter unserer Klasse sinnvoll fliegt.</p>
+
+    <table>
+    <tr><th>Die Frage lautet</th><th>Der Sensor heißt</th><th>Der Haken ist</th></tr>
+    <tr><td>Wie sieht es aus, wie groß ist es, wie ist das Gelände geformt?</td><td>RGB mit RTK</td><td>braucht Textur und Tageslicht; unter Vegetation blind</td></tr>
+    <tr><td>Wo ist es wärmer als anderswo?</td><td>Wärmebild, radiometrisch</td><td>der Emissionsgrad entscheidet; Messfläche mindestens 3×3 Pixel</td></tr>
+    <tr><td>Wie hoch liegt der Boden unter dem Bewuchs?</td><td>LiDAR mit RTK und IMU</td><td>Genauigkeit kommt aus der Lagebestimmung, nicht aus dem Laser</td></tr>
+    <tr><td>Wie geht es der Pflanze, verglichen mit letzter Woche?</td><td>Multispektral mit DLS und Panel</td><td>ohne Kalibrierung nicht vergleichbar; Flächenleistung begrenzt</td></tr>
+    </table>
+
+    <p>Für einen 13-Zoll-Aufbau, wie wir ihn bauen, fällt die Antwort deutlich aus.  <strong>RGB ist
+    die einzige der vier Nutzlasten, die ohne Kompromiss trägt.</strong>  Eine gute Kamera mit
+    globalem oder mechanischem Verschluss, sauber gedämpft aufgehängt und mit protokollierter
+    Auslösung, liefert Ergebnisse in derselben Genauigkeitsklasse wie deutlich teurere Verfahren,
+    solange das Gelände offen ist.</p>
+
+    <p><strong>Wärmebild ist die zweite realistische Nutzlast.</strong>  56&nbsp;g und 1,8&nbsp;W
+    für ein komplettes Doppelmodul sind an jedem tragfähigen Copter unterzubringen.  Der Aufwand
+    liegt nicht im Gewicht, sondern im zweiten Datenstrom, im Germaniumfenster und in der Disziplin
+    bei der Messung.  Wer Wärmebild fliegt und Temperaturen berichtet, muss den Emissionsgrad der
+    betrachteten Oberfläche kennen und dokumentieren; sonst berichtet er Zahlen, die um
+    zweistellige Kelvinbeträge falsch sein können.</p>
+
+    <p><strong>LiDAR und Multispektral scheitern in dieser Klasse nicht am Sensor.</strong>  Der
+    Livox Avia wiegt 498&nbsp;g, die RedEdge-P 503,7&nbsp;g; beides ist tragbar.  Sie scheitern an
+    dem, was daran hängt: hochgenaues GNSS mit Bodenstation, Zeitsynchronisation zwischen Sensor
+    und Lagedaten, Speicher für dreistellige Millionen Punkte, Kalibrierpanel und Auswertekette.
+    Diese Kette ist der eigentliche Kaufgegenstand, und sie ist der Grund, warum diese Systeme als
+    fertige Nutzlasten für fertige Plattformen verkauft werden.  Wer sie an einem Eigenbau
+    betreiben will, kauft nicht einen Sensor, sondern baut ein Vermessungssystem.  Das ist
+    machbar, aber es ist ein anderes Projekt als ein Copter mit Kamera.</p>
+
+    <p>Was in jedem der vier Fälle gilt, ist der rote Faden dieses Artikels: <strong>Die Zahl auf
+    dem Datenblatt beschreibt den Sensor, nicht das Ergebnis.</strong>  Die Flughöhe entscheidet
+    über die Bodenauflösung, der Emissionsgrad über die Temperatur, die Lagebestimmung über die
+    Punktgenauigkeit und die Kalibrierung über die Vergleichbarkeit.  Alle vier stehen nicht im
+    Prospekt.</p>
+
+    <p>Welche Kamera zu welchem Aufbau passt, hängt am Ende an der Frage, die beantwortet werden
+    soll.  Unsere <a href="ratgeber-teileliste-13-build-1.html">13-Zoll-Teileliste</a> und die
+    <a href="ratgeber-teileliste-long-range.html">Long-Range-Teileliste</a> zeigen, was an
+    Tragfähigkeit und Bauraum zur Verfügung steht.  Wenn du unsicher bist, welcher Sensor deine
+    Frage tatsächlich beantwortet, schreib uns über <a href="index.html#kontakt">den Kontakt</a>.
+    Eine halbe Stunde Gespräch ist billiger als eine Nutzlast, die die falsche Größe misst.</p>
+
+    <p class="muted" style="font-size:14px">Dieser Ratgeber ersetzt keine individuelle technische
+    Prüfung.  Alle Angaben ohne Gewähr.  Wo wir gerechnet statt gemessen haben, steht es
+    ausdrücklich dabei.  Alle Quellen wurden im August 2026 abgerufen und geprüft.</p>
+
+    <h2>Quellenangaben</h2>
+    <ol class="muted" style="font-size:14px; line-height:1.9; padding-left:20px">
+      <li id="q1">NOAA Coastal Services Center, „Lidar 101: An Introduction to Lidar Technology, Data, and Applications".  Aktive gegen passive Fernerkundung, Definition und Laufzeitprinzip, die drei Größen für eine Punktkoordinate, Nachtbefliegung und Wetterabhängigkeit, Pulsraten, Mehrfachechos bis fünf und 30&nbsp;Prozent Datenzuwachs, Zentimeter-Anforderung an die Flugzeugposition, IMU-Drift und GPS-Stützung, FVA-Formel, Bodenerkennung im Wald:
+        <a href="https://coast.noaa.gov/data/digitalcoast/pdf/lidar-101.pdf" rel="noopener" target="_blank">coast.noaa.gov: Lidar 101 (PDF)</a></li>
+      <li id="q2">NASA Applied Remote Sensing Training (ARSET), „Fundamentals of Remote Sensing".  Spektrale Auflösung, multispektral 3 bis 10 Bänder gegen hyperspektral Hunderte bis Tausende, radiometrische Auflösung mit den Bittiefen 12&nbsp;Bit / 4.096&nbsp;Stufen und 8&nbsp;Bit / 256&nbsp;Stufen:
+        <a href="https://appliedsciences.nasa.gov/sites/default/files/2023-02/Fundamentals_of_RS.pdf" rel="noopener" target="_blank">appliedsciences.nasa.gov: Fundamentals of Remote Sensing (PDF)</a></li>
+      <li id="q3">Teledyne FLIR OEM, „Boson Family".  Auflösungen 640×512 und 320×256, Pixelgröße 12&nbsp;µm, Spektralbereich 8 bis 14&nbsp;µm, Bildraten 60&nbsp;Hz und 9&nbsp;Hz, Leistungsaufnahme ab 600&nbsp;mW, NETD-Klassen für Boson (≤40/50/60&nbsp;mK) und Boson+ (≤20/30&nbsp;mK):
+        <a href="https://oem.flir.com/boson-family/" rel="noopener" target="_blank">oem.flir.com: Boson Family</a></li>
+      <li id="q4">Adimec, „In-camera color processing from a mosaic color filter array (e.g. Bayer)".  Filtermuster 50&nbsp;Prozent Grün, 25&nbsp;Prozent Rot, 25&nbsp;Prozent Blau; jedes Pixel misst nur einen Farbwert, die Lücken werden per Demosaicing interpoliert; Artefakte an scharfen Kanten:
+        <a href="https://www.adimec.com/in-camera-color-processing-from-a-mosaic-color-filter-array-e-g-bayer/" rel="noopener" target="_blank">adimec.com: Bayer-Farbverarbeitung</a></li>
+      <li id="q5">Teledyne Vision Solutions, „Full Well Capacity and Pixel Saturation".  Definition der Sättigungskapazität, überproportionaler Zusammenhang mit der Pixelgröße (1,5-fache Größe, 3,8-fache Elektronenzahl), Auswirkung auf Dynamikumfang und Schwachlichtverhalten:
+        <a href="https://www.teledynevisionsolutions.com/en-gb/learn/learning-center/imaging-fundamentals/full-well-capacity-and-pixel-saturation/" rel="noopener" target="_blank">teledynevisionsolutions.com: Full Well Capacity</a></li>
+      <li id="q6">DJI, „Zenmuse P1 — Technische Daten".  Vollformatsensor 35,9&nbsp;×&nbsp;24&nbsp;mm, 45&nbsp;MP, Pixelgröße 4,4&nbsp;µm, mechanischer Verschluss 1/2.000 bis 1&nbsp;s, Wechselobjektive 24/35/50&nbsp;mm, Gewicht ca.&nbsp;800&nbsp;g, absolute Genauigkeit 3&nbsp;cm horizontal und 5&nbsp;cm vertikal unter genannten Flugbedingungen:
+        <a href="https://enterprise.dji.com/zenmuse-p1/specs" rel="noopener" target="_blank">enterprise.dji.com: Zenmuse P1</a></li>
+      <li id="q7">Wingtra, „Ground sample distance: what GSD means for drone surveys".  GSD-Formel aus Sensorbreite, Flughöhe, Brennweite und Bildbreite; Definition der Variablen:
+        <a href="https://wingtra.com/surveying-gis/ground-sample-distance/" rel="noopener" target="_blank">wingtra.com: Ground Sample Distance</a></li>
+      <li id="q8">Pix4D, „Improved accuracy for rolling shutter cameras".  Rollender gegen globaler Verschluss, Beispielrechnung mit 74&nbsp;ms Auslesezeit, 8&nbsp;m/s, 70&nbsp;m Flughöhe, 10&nbsp;Pixel Versatz und rund 60&nbsp;cm Flugweg während eines Bildes:
+        <a href="https://www.pix4d.com/blog/rolling-shutter-correction" rel="noopener" target="_blank">pix4d.com: Rolling-Shutter-Korrektur</a></li>
+      <li id="q9">Teledyne FLIR OEM, „Hadron 640 Series".  Modulgewicht 56&nbsp;g, Dauerleistungsaufnahme 1,8&nbsp;W, Thermalauflösung 640×512 mit 12&nbsp;µm Pixelabstand, Sichtkamera 64&nbsp;MP, 60&nbsp;Hz über USB oder MIPI, horizontaler Bildwinkel 32°:
+        <a href="https://oem.flir.com/products/hadron-640?vertical=lwir&amp;segment=oem" rel="noopener" target="_blank">oem.flir.com: Hadron 640</a></li>
+      <li id="q10">Teledyne FLIR OEM, „Hadron 640R FAQ".  Radiometrie je Pixel, Messbereich null bis 100&nbsp;°C, Messgenauigkeit allgemein etwa ±5&nbsp;°C, 12-µm-Boson mit Radiometrie, bis 60&nbsp;Hz:
+        <a href="https://oem.flir.com/learn/discover/faq---everything-you-need-to-know-about-hadron-640r/" rel="noopener" target="_blank">oem.flir.com: Hadron 640R FAQ</a></li>
+      <li id="q11">Teledyne FLIR OEM, Support, „For protection, is a special window needed in front of my FLIR camera?".  Germanium als empfohlenes Fenstermaterial für LWIR-Kameras, entspiegeltes Silizium als günstigere und weniger durchlässige Alternative:
+        <a href="https://oem.flir.com/support/support-center/knowledge-base/for-protection-is-a-special-window-needed-in-front-of-my-flir-camera-that-wont-interfere-with-the-thermal-imaging/" rel="noopener" target="_blank">oem.flir.com: Schutzfenster für Thermalkameras</a></li>
+      <li id="q12">Workswell, „Germanium lens &amp; LWIR optics for thermal cameras and modules".  LWIR-Bereich 8 bis 14&nbsp;µm, Standard-Optikglas ist dort opak, Germanium überträgt effizient, hoher Brechungsindex erlaubt kompakte Optik, Schutzschichten aus diamantähnlichem Kohlenstoff und Antireflexschichten:
+        <a href="https://workswell.eu/germanium-lens-lwir-optics-thermal-cameras-modules/" rel="noopener" target="_blank">workswell.eu: Germanium-Optik für LWIR</a></li>
+      <li id="q13">Teledyne FLIR OEM, Support, „As far as 30 fps vs. 9 fps video rates are concerned, why use one over the other?".  Kameras unter 9&nbsp;Bildern je Sekunde sind ohne Lizenz exportierbar, ab 30&nbsp;Bildern je Sekunde exportkontrolliert mit Genehmigungspflicht:
+        <a href="https://oem.flir.com/support/support-center/knowledge-base/as-far-as-30-fps-vs.-9-fps-video-rates-are-concerned-why-use-one-over-the-other" rel="noopener" target="_blank">oem.flir.com: 30 fps gegen 9 fps</a></li>
+      <li id="q14">Teledyne FLIR OEM, Support, „What is the occasional clicking sound made by the Tau2 camera?  What is FFC?".  Flat-Field-Korrektur, gleichmäßige Referenzfläche für jedes Detektorelement, Einfrieren des zuletzt gezeigten Bildes während des Vorgangs, leises Klicken, Dauer rund eine halbe Sekunde, zwei Pflichtvorgänge innerhalb von 2 und 6&nbsp;Sekunden nach dem Einschalten, danach automatisch nach Zeit und Temperatur:
+        <a href="https://oem.flir.com/support/support-center/knowledge-base/what-is-the-occasional-clicking-sound-made-by-the-tau2-camera-what-is-ffc/" rel="noopener" target="_blank">oem.flir.com: Flat-Field-Korrektur</a></li>
+      <li id="q15">Optris, „Emissivity Table".  Emissionsgrade nach Material und Temperatur: Aluminium poliert 0,04 bis 0,06 (50 bis 100&nbsp;°C), Aluminium stark oxidiert 0,2 bis 0,3, Kupfer poliert 0,02, Stahl oxidiert 0,74 (100&nbsp;°C), Lack weiß 0,91 bis 0,95, Lack schwarz matt 0,96 bis 0,98, menschliche Haut 0,98, Wasser destilliert 0,96:
+        <a href="https://optris.com/us/technology/emissivity-table/" rel="noopener" target="_blank">optris.com: Emissivity Table</a></li>
+      <li id="q16">Teledyne FLIR, Support-Wissensdatenbank, „FLIR Cameras — Verifying the thermal accuracy of your camera".  Genauigkeitsangaben nach Messbereich (±2&nbsp;°C von -20 bis 100&nbsp;°C, ±2&nbsp;Prozent von 100 bis 650&nbsp;°C), der Emissionsgrad als wichtigster zu bestimmender Objektparameter, Forderung nach einem 6&nbsp;×&nbsp;6&nbsp;Pixel großen Messfeld auf der Referenzquelle, 30&nbsp;Minuten Stabilisierungszeit vor der Messung:
+        <a href="https://flir.custhelp.com/app/answers/detail/a_id/4217/~/flir-cameras---verifing-the-thermal-accuracy-of-your-camera" rel="noopener" target="_blank">flir.custhelp.com: Thermische Genauigkeit prüfen</a></li>
+      <li id="q17">FLIR Systems, Technical Note 17-1465, „How Far Can You Measure?  Considering Spot Size Ratio is Key".  Definition von Spot-Size-Verhältnis und IFOV, IFOV-Formel mit Rechenbeispiel, optische Dispersion als Grund dafür, dass ein einzelnes Pixel nicht reicht, Empfehlung von mindestens 3&nbsp;×&nbsp;3&nbsp;Pixeln, Hinweis, dass Digitalzoom die Genauigkeit nicht verbessert:
+        <a href="https://www.itm.com/pdfs/resources/FLIR/flir-technical-note-spot-size-ratio-is-key-to-how-far-you-can-measure-USD.pdf" rel="noopener" target="_blank">FLIR Technical Note: Spot Size Ratio (PDF)</a></li>
+      <li id="q18">Teledyne FLIR, Support-Wissensdatenbank, „FLIR — UAS camera temperature reading accuracy?".  Genauigkeit einer Drohnen-Wärmebildkamera als „der größere Wert aus ±5&nbsp;°C oder 5&nbsp;Prozent", typischerweise besser in der Bildmitte; Emissionsgrad, reflektierte Hintergrundtemperatur sowie Entfernung und Atmosphäre als Einflussgrößen; nur radiometrische Kameras messen Temperatur:
+        <a href="https://flir.custhelp.com/app/answers/detail/a_id/3489/~/flir---uas-camera-temperature-reading-accuracy" rel="noopener" target="_blank">flir.custhelp.com: Messgenauigkeit von UAS-Kameras</a></li>
+      <li id="q19">DJI, „Zenmuse H30 Series — Technische Daten".  Thermalauflösung 1280×1024, NETD ≤50&nbsp;mK bei f/1,0, Spektralbereich 8 bis 14&nbsp;µm, Messbereiche -20 bis 150&nbsp;°C und 0 bis 600&nbsp;°C, Gewicht 920&nbsp;±&nbsp;5&nbsp;g:
+        <a href="https://enterprise.dji.com/zenmuse-h30-series/specs" rel="noopener" target="_blank">enterprise.dji.com: Zenmuse H30 Series</a></li>
+      <li id="q20">DJI, „Zenmuse L2 — Technische Daten".  Reichweite 450&nbsp;m bei 50&nbsp;Prozent Reflektivität und 250&nbsp;m bei 10&nbsp;Prozent, Punktrate 240.000 einfach und 1.200.000 mehrfach, fünf Echos, Entfernungsgenauigkeit 2&nbsp;cm bei 150&nbsp;m, Systemgenauigkeit 5&nbsp;cm horizontal und 4&nbsp;cm vertikal, Wellenlänge 905&nbsp;nm, Laserklasse 1 nach IEC/EN 60825-1:2014, Sichtfeld 70° horizontal, RTK-Genauigkeit, RGB-Kamera 4/3&nbsp;CMOS mit 20&nbsp;MP, Gewicht 905&nbsp;±&nbsp;5&nbsp;g:
+        <a href="https://enterprise.dji.com/zenmuse-l2/specs" rel="noopener" target="_blank">enterprise.dji.com: Zenmuse L2</a></li>
+      <li id="q21">Livox, „Avia LiDAR sensor".  Gewicht 498&nbsp;g, maximale Reichweite 450&nbsp;m, Entfernungsgenauigkeit 2&nbsp;cm, Dreifachecho, Punktrate ≥240.000 je Sekunde, Sichtfelder 70,4°&nbsp;×&nbsp;77,2° und 70,4°&nbsp;×&nbsp;4,5°, Laserklasse 1 mit TÜV-Rheinland-Zertifizierung, eingebaute IMU, IP67:
+        <a href="https://www.livoxtech.com/avia" rel="noopener" target="_blank">livoxtech.com: Avia</a></li>
+      <li id="q22">U.S. Geological Survey, „Topographic Data Quality Levels (QLs)".  Qualitätsstufen QL0 bis QL3 mit Höhengenauigkeit, Punktabstand, Punktdichte und Rasterweite; identische Punktdichte bei QL0 und QL1 mit doppelter Genauigkeitsanforderung für QL0:
+        <a href="https://www.usgs.gov/3d-elevation-program/topographic-data-quality-levels-qls" rel="noopener" target="_blank">usgs.gov: Topographic Data Quality Levels</a></li>
+      <li id="q23">Wingtra, „LIDAR vs. photogrammetry: which one is better for drone surveying".  Horizontalgenauigkeit beider Verfahren bis 1&nbsp;cm, Vertikalgenauigkeit 1 bis 3&nbsp;cm gegen 2 bis 4&nbsp;cm, Vegetationsverhalten, Abhängigkeit der Fotogrammetrie von Beleuchtung und Textur, LiDAR-Betrieb im Dunkeln, Art der jeweiligen Ergebnisdaten:
+        <a href="https://wingtra.com/lidar-drone/lidar-vs-photogrammetry-what-sensor-to-choose/" rel="noopener" target="_blank">wingtra.com: LiDAR gegen Fotogrammetrie</a></li>
+      <li id="q24">MicaSense, „RedEdge-P — Technical Specification" (Datenblatt in der Kameraübersicht zur Quantum-Systems Trinity F90+).  Bänder mit Mittenwellenlänge und Bandbreite, Sensorauflösung 1456×1088 je Band und 2464×2056 panchromatisch, RGB-Ausgabe 5,1&nbsp;MP mit globalem Verschluss und Bandausrichtung, GSD 7,7&nbsp;cm und 3,98&nbsp;cm bei 120&nbsp;m, Auslöseintervall 0,8&nbsp;s, Sichtfeld 50°&nbsp;×&nbsp;38°, Gewicht flugfertig 503,7&nbsp;g, Leistungsaufnahme 5,5/7,0/10&nbsp;W, Beispielflug mit 17&nbsp;m/s:
+        <a href="https://geobauen.com/wp-content/uploads/2022/08/MicaSense-RedEdge-P-RGB-and-Multispectral-Data.pdf" rel="noopener" target="_blank">MicaSense RedEdge-P Datenblatt (PDF)</a></li>
+      <li id="q25">AgEagle / MicaSense, „RedEdge-P".  Die drei Filtervarianten (Standard, green, blue) mit ihren jeweiligen Bandmitten und Bandbreiten, 15 Multispektralbänder à 1,6&nbsp;MP, panchromatisches Band 5,1&nbsp;MP, globaler Verschluss, bis zu drei Aufnahmen je Sekunde, CFexpress-Speicher:
+        <a href="https://eaglenxt.com/products/sensors/micasense-series/rededge-p/" rel="noopener" target="_blank">eaglenxt.com: RedEdge-P</a></li>
+      <li id="q26">DJI, „Mavic 3M — Technische Daten".  Vier Multispektralbänder mit 560&nbsp;±16, 650&nbsp;±16, 730&nbsp;±16 und 860&nbsp;±26&nbsp;nm, Sensor 1/2,8″&nbsp;CMOS mit 5&nbsp;MP je Band, RGB-Kamera 4/3&nbsp;CMOS mit 20&nbsp;MP, Sonnenlichtsensor als integriertes Modul, RTK-Genauigkeit, Abfluggewicht 951&nbsp;g:
+        <a href="https://ag.dji.com/mavic-3-m/specs" rel="noopener" target="_blank">ag.dji.com: Mavic 3M</a></li>
+      <li id="q27">Copernicus SentiWiki (ESA), „Sentinel-2 Mission".  Vier schmale Bänder im Bereich der Vegetations-Roten-Kante, Mittenwellenlängen 704&nbsp;nm (B5), 740&nbsp;nm (B6), 783&nbsp;nm (B7) und 865&nbsp;nm (B8A) mit den zugehörigen Bandbreiten:
+        <a href="https://sentiwiki.copernicus.eu/web/s2-mission" rel="noopener" target="_blank">sentiwiki.copernicus.eu: Sentinel-2 Mission</a></li>
+      <li id="q28">NASA Earth Observatory, „Measuring Vegetation (NDVI &amp; EVI)".  NDVI-Formel, Absorption des sichtbaren Lichts von 0,4 bis 0,7&nbsp;µm durch Chlorophyll und Reflexion des nahen Infrarots von 0,7 bis 1,1&nbsp;µm durch die Blattzellstruktur, Wertebereiche für kahle Flächen, Busch- und Grasland sowie dichte Vegetation:
+        <a href="https://science.nasa.gov/earth/earth-observatory/measuring-vegetation-ndvi-evi" rel="noopener" target="_blank">science.nasa.gov: Measuring Vegetation</a></li>
+      <li id="q29">AgEagle / MicaSense, „Let's talk about calibration".  Rohe Pixelwerte sind relativ zu den Aufnahmebedingungen und nicht absolut, zeitbasierte Analyse ohne Berücksichtigung der Lichtverhältnisse nicht möglich, Kalibrierpanel vor und nach jedem Flug, Aufgabe des nach oben gerichteten Sonnenlichtsensors und dessen Metadaten:
+        <a href="https://eaglenxt.com/lets-talk-about-calibration/" rel="noopener" target="_blank">eaglenxt.com: Let's talk about calibration</a></li>
+      <li id="q30">ArduPilot, „Camera Shutter with Servo".  Auslösung über Servoausgang oder Relais/GPIO, Parameter CAM1_TYPE, CAM1_SERVO_ON, CAM1_SERVO_OFF und CAM1_DURATION, TRIG-Meldungen beim Auslösen, CAM-Meldungen über den Blitzschuh-Rückmeldepin für die Verortung:
+        <a href="https://ardupilot.org/copter/docs/common-camera-shutter-with-servo.html" rel="noopener" target="_blank">ardupilot.org: Camera Shutter with Servo</a></li>
+      <li id="q31">ArduPilot, „DroneCAN Serial PassThrough".  Bidirektionale Durchreichung serieller Daten zu DroneCAN-Peripherie, bis zu drei zusätzliche Ports je Bus, verfügbar ab Firmware 4.5:
+        <a href="https://ardupilot.org/copter/docs/common-dronecan-serial.html" rel="noopener" target="_blank">ardupilot.org: DroneCAN Serial PassThrough</a></li>
+      <li id="q32">EASA, „Open Category — Low Risk — Civil Drones".  Registrierungspflicht des Betreibers, sobald Kamera oder Sensor an Bord sind und die Drohne kein Spielzeug ist; Massegrenzen der Klassen C0 bis C4 und Zuordnung zu den Unterkategorien A1, A2 und A3:
+        <a href="https://www.easa.europa.eu/en/domains/drones-air-mobility/operating-drone/open-category-low-risk-civil-drones" rel="noopener" target="_blank">easa.europa.eu: Open Category</a></li>
+    </ol>
+
+<!-- historie:start -->
+    <h2>Änderungshistorie</h2>
+    <ul class="muted historie">
+      <li><strong>20.08.2026</strong> · Veröffentlichung</li>
+    </ul>
+<!-- historie:ende -->
+
+
+<!-- partner:start -->
+<!-- partner:ende -->
+
+
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <nav class="social" aria-label="Draco Labs in sozialen Netzwerken">
+      <a href="https://www.youtube.com/@DracoLabsGermany" rel="noopener" class="yt" aria-label="Draco Labs auf YouTube">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/draco.labs.germany" rel="noopener" class="ig" aria-label="Draco Labs auf Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c0-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 3.1A6.7 6.7 0 1 0 18.7 12 6.7 6.7 0 0 0 12 5.3Zm0 11a4.3 4.3 0 1 1 4.3-4.3 4.3 4.3 0 0 1-4.3 4.3ZM19 5a1.6 1.6 0 1 1-1.6-1.6A1.6 1.6 0 0 1 19 5Z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@dracolabsgermany" rel="noopener" class="tt" aria-label="Draco Labs auf TikTok">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16.6 2h-3.1v13.1a2.7 2.7 0 1 1-2.7-2.7c.2 0 .4 0 .6.1V9.3a6 6 0 0 0-.6 0 5.8 5.8 0 1 0 5.8 5.8V8.6a7 7 0 0 0 4.1 1.3V6.8a3.9 3.9 0 0 1-4.1-3.9V2Z"/></svg>
+      </a>
+    </nav>
+    <div class="links">
+      <a href="index.html">Startseite</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
+    </div>
+    <div>© 2026 Draco Labs Germany · Kleinunternehmer gem. § 19 UStG</div>
+    <img class="ai-label" src="assets/label-ai-modified.svg" alt="KI-Kennzeichnung: Inhalte dieser Website wurden teilweise mit KI erstellt oder bearbeitet (AI MODIFIED)">
+  </div>
+</footer>
+
+</body>
+</html>

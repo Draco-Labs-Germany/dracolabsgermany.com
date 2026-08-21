@@ -1,0 +1,881 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Der billigste Schub der Welt — FPV-Propeller-Ratgeber | Draco Labs</title>
+<meta name="description" content="Propeller-Ratgeber für FPV- und Long-Range-Copter: Durchmesser, Steigung, Blattzahl, Material und Drehzahlgrenzen, an gemessenen Herstellerdaten erklärt.">
+<meta name="keywords" content="FPV Propeller Ratgeber, Propeller Steigung erklärt, Durchmesser oder Steigung, Dreiblatt Propeller, Propeller Material Polycarbonat, 13 Zoll Propeller Long Range, Blattspitzengeschwindigkeit, Propeller auswuchten">
+<meta name="robots" content="noindex, nofollow">
+<meta name="tdm-reservation" content="1">
+<meta name="author" content="Draco Labs Germany">
+<link rel="canonical" href="https://dracolabsgermany.com/ratgeber-propeller.html">
+
+<!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Der billigste Schub der Welt — Propeller für FPV-Copter">
+<meta property="og:description" content="Warum Durchmesser mehr bringt als Steigung, wann drei Blätter sinnvoll sind und was die Zahlen auf der Packung wirklich bedeuten. Jede Zahl mit Quelle.">
+<meta property="og:url" content="https://dracolabsgermany.com/ratgeber-propeller.html">
+<meta property="og:image" content="https://dracolabsgermany.com/assets/ratgeber/propeller-hero.jpg">
+<meta property="og:site_name" content="Draco Labs Germany">
+<meta property="og:locale" content="de_DE">
+
+<!-- Twitter/X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Der billigste Schub der Welt — Propeller für FPV-Copter">
+<meta name="twitter:description" content="Durchmesser, Steigung, Blattzahl und Material: Propeller verstehen und auswählen. Jede Zahl mit Quelle.">
+<meta name="twitter:image" content="https://dracolabsgermany.com/assets/ratgeber/propeller-hero.jpg">
+
+<link rel="icon" type="image/png" href="assets/emblem.png">
+<link rel="stylesheet" href="style.css">
+
+<!-- Strukturierte Daten für Google (Article) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Der billigste Schub der Welt: Propeller für FPV- und Long-Range-Copter",
+  "description": "Propeller-Ratgeber für FPV- und Long-Range-Copter: Durchmesser, Steigung, Blattzahl, Material und Drehzahlgrenzen, an gemessenen Herstellerdaten und Windkanaldaten erklärt.",
+  "image": "https://dracolabsgermany.com/assets/ratgeber/propeller-hero.jpg",
+  "datePublished": "2026-08-20",
+  "dateModified": "2026-08-20",
+  "author": { "@type": "Organization", "name": "Draco Labs Germany" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Draco Labs Germany",
+    "logo": { "@type": "ImageObject", "url": "https://dracolabsgermany.com/assets/logo.png" }
+  },
+  "mainEntityOfPage": "https://dracolabsgermany.com/ratgeber-propeller.html",
+  "inLanguage": "de-DE"
+}
+</script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a href="index.html"><img src="assets/emblem.png" alt="Draco Labs Emblem"></a>
+    <div class="name">Draco Labs <small>Germany</small></div>
+    <input type="checkbox" id="menu-auf" class="menu-toggle">
+    <label for="menu-auf" class="burger" aria-label="Menü öffnen und schließen">
+      <span></span><span></span><span></span>
+    </label>
+    <nav>
+      <!-- <a href="index.html#baustelle">Baustelle</a> reaktivieren, wenn die Serie kurz vor Frame-Go-live released wird -->
+      <a href="leistungen.html">Leistungen</a>
+      <a href="index.html#neuigkeiten">Neuigkeiten</a>
+      <a href="index.html#ratgeber">Ratgeber</a>
+      <a href="index.html#teilelisten">Teilelisten</a>
+      <a href="index.html#ueber">Über uns</a>
+      <a href="index.html#partner">Partner</a>
+      <a href="index.html#kontakt">Kontakt</a>
+    </nav>
+    <a class="shop-btn" href="https://shop.dracolabsgermany.com" target="_blank" rel="noopener">Shop →</a>
+  </div>
+</header>
+
+<main class="legal">
+  <div class="wrap">
+
+    <h1>Der billigste Schub der Welt</h1>
+    <p class="muted" style="font-size:17px; margin-top:-4px">Propeller kosten wenige Euro und
+    entscheiden trotzdem darüber, wie lange dein Copter fliegt, wie laut er ist und wie er sich
+    anfühlt.  Was Durchmesser, Steigung und Blattzahl wirklich bedeuten, und warum die meisten
+    Piloten an der falschen Zahl drehen.</p>
+    <p class="muted">Ratgeber · Antrieb &amp; Effizienz · Lesezeit ca. 22 Min · Stand: August 2026</p>
+
+    <div data-nosnippet style="background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--cyan); border-radius:10px; padding:18px 20px; margin:22px 0">
+      <p style="margin:0 0 8px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; font-size:13px; color:var(--cyan)">Kurz gesagt</p>
+      <p style="margin:0">Ein Propeller schraubt sich nicht durch die Luft, er
+      <strong>beschleunigt Luftmasse nach hinten</strong>.  Deshalb ist der <strong>Durchmesser die
+      wichtigste Zahl</strong>, nicht die Steigung: viel Luft langsam zu bewegen kostet weniger
+      Leistung als wenig Luft schnell.  In der Messreihe eines Herstellers braucht derselbe Motor
+      mit einem 15-Zoll-Propeller für praktisch denselben Schub rund
+      <strong>18&nbsp;Prozent weniger Leistung</strong> als mit einem 13-Zoll-Propeller.  Blätter
+      hinzuzufügen ist dagegen der teuerste Weg zu mehr Schub und nur dann richtig, wenn der Frame
+      keinen größeren Durchmesser zulässt.  <strong>Groß und langsam ist zugleich leise</strong>,
+      weil die Blattspitzengeschwindigkeit der Haupttreiber des Lärms ist.  Und: ein Propeller mit
+      einer Kerbe gehört in den Müll, nicht zurück an den Motor.</p>
+    </div>
+
+    <p>Über den <a href="ratgeber-carbon-frame.html">Frame</a>, den <a
+    href="ratgeber-akku-13-zoll.html">Akku</a>, die <a
+    href="ratgeber-funk-kommunikation.html">Funkstrecke</a>, die <a
+    href="ratgeber-videouebertragung.html">Videoübertragung</a> und die <a
+    href="ratgeber-motoren.html">Motoren</a> haben wir eigene Ratgeber geschrieben.  Jetzt kommt
+    das Bauteil, das ihre Arbeit in Vortrieb umsetzt.  Es wird am seltensten verstanden.  Der
+    Propeller ist das billigste Teil am Copter.  Er ist auch das einzige, das für zehn Euro
+    zwanzig Prozent Flugzeit bringt oder kostet.</p>
+
+    <p><strong>Was dieser Artikel nicht behandelt:</strong> die Motorseite derselben Physik, also
+    Statormaß, KV und Drehmoment.  Die steht im <a
+    href="ratgeber-motoren.html">Motoren-Ratgeber</a>.  Ebenfalls nicht behandelt: Flight
+    Controller, ESC und Propeller für Starrflügler.  Ein Teil der belastbarsten Messdaten stammt
+    aus der Starrflügel-Forschung.  Dieser Text bleibt trotzdem beim Multicopter.</p>
+
+    <p><strong>Hinweis:</strong> Jede Zahl in diesem Text hat eine Fußnote, die auf eine
+    nachprüfbare Quelle zeigt.  Wo wir gerechnet statt gemessen haben, steht es ausdrücklich
+    dabei.  Für den Fall, dass wir einen Fehler gemacht haben, kontaktiert uns gerne jederzeit.</p>
+
+    <h2 id="k1">1. Was ein Propeller wirklich tut</h2>
+    <!-- bild:start propeller-scheibe -->
+    <!-- bild:ende propeller-scheibe -->
+
+    <p>Das Bild von der Schraube, die sich ins Holz dreht, steckt schon im Wort: Luftschraube.  Es
+    ist bequem und führt in die Irre.  Ein Propeller findet in der Luft kein Gewinde vor.  Er tut
+    etwas Einfacheres: er greift die Luft vor sich und wirft sie nach hinten.  Der Rückstoß daraus
+    ist der Schub.</p>
+
+    <p>In Formeln: der Schub ist der Massenstrom der Luft mal der Geschwindigkeitsdifferenz, die
+    der Propeller ihr aufzwingt, also <em>T = ṁ · (V<sub>e</sub> − V<sub>0</sub>)</em>.  Der
+    Massenstrom selbst ergibt sich aus Luftdichte, durchströmter Fläche und
+    Strömungsgeschwindigkeit, also <em>ṁ = ρ · A · V<sub>p</sub></em><sup><a href="#q4">4</a></sup>.
+     Die entscheidende Größe ist das <strong>A</strong>.  Es ist die
+    Kreisfläche, die der Propeller überstreicht, die sogenannte Propellerscheibe.</p>
+
+    <p>Die Kreisfläche wächst mit dem Quadrat des Durchmessers.  Der Sprung von 13 auf
+    15&nbsp;Zoll klingt nach wenig.  Er bringt rund ein Drittel mehr Scheibenfläche, genau
+    33&nbsp;Prozent (unsere Rechnung: 15 geteilt durch 13, das Ergebnis quadriert).  Ein Drittel
+    mehr Fläche heißt ein Drittel mehr Luft.  Die muss für denselben Schub weniger stark
+    beschleunigt werden.</p>
+
+    <p>Das ist der ganze Trick: <strong>viel Luft langsam zu bewegen ist billiger als wenig Luft
+    schnell</strong>.  Er erklärt, warum ein Hubschrauber einen riesigen, langsam drehenden Rotor
+    hat und ein Modellflugzeug einen kleinen, schnellen.  Die kinetische Energie im Abstrom wächst
+    mit dem Quadrat der Geschwindigkeit.  Der Schub wächst nur linear.  Wer den Durchmesser
+    vergrößern kann, gewinnt mehr als mit jeder Feinabstimmung an der Blattform.</p>
+
+    <h3>Die drei Kennzahlen, die in jeder Messreihe stehen</h3>
+
+    <p>Damit sich Propeller unterschiedlicher Größe vergleichen lassen, rechnet die Aerodynamik
+    sie auf dimensionslose Beiwerte um.  Der Schubbeiwert ist <em>C<sub>T</sub> = T / (ρ · n² ·
+    D⁴)</em>, der Leistungsbeiwert <em>C<sub>P</sub> = P / (ρ · n³ · D⁵)</em>.  Das
+    Fortschrittsverhältnis beschreibt, wie schnell der Propeller durch die Luft fliegt: <em>J = V
+    / (n · D)</em><sup><a href="#q5">5</a></sup>.  Dieselben Definitionen benutzt die
+    Windkanal-Datenbank der University of Illinois<sup><a href="#q2">2</a></sup>.  Aus ihr stammen
+    weiter unten die Zahlen zur Reynoldszahl.</p>
+
+    <p>Aus den Exponenten folgt eine Regel (unsere Rechnung, direkt aus den Definitionen
+    abgelesen): <strong>der Schub wächst mit dem Quadrat der Drehzahl, die Leistung mit der
+    dritten Potenz</strong>.  Doppelte Drehzahl heißt vierfacher Schub, aber achtfache Leistung.
+    Deshalb kostet das letzte Viertel Gas so viel Akku.  Und deshalb ist die Frage nach dem
+    Maximalschub fast immer die falsche.</p>
+
+    <p>Die Kennzahl, die im Alltag zählt, ist einfacher: <strong>Gramm Schub je Watt</strong>.
+    Sie ist Schub geteilt durch die aufgenommene Leistung<sup><a href="#q6">6</a></sup>.  Jede
+    Herstellertabelle führt sie mit.  Jede Kaufentscheidung sollte sich an ihr orientieren, nicht
+    am Spitzenschub.</p>
+
+    <h2 id="k2">2. Die Zahlen auf der Packung</h2>
+    <!-- bild:start propeller-nomenklatur -->
+    <!-- bild:ende propeller-nomenklatur -->
+
+    <p>Auf einer FPV-Propellertüte steht meist etwas wie <em>5×4.3×3</em> oder
+    <em>13×4.4×2</em>.  Die erste Zahl ist der Durchmesser in Zoll, die zweite die Steigung in
+    Zoll, die dritte die Anzahl der Blätter<sup><a href="#q15">15</a></sup>.</p>
+
+    <p>Daneben kursiert eine vierstellige Kurzform, etwa <em>5045</em> für fünf Zoll Durchmesser
+    und 4,5&nbsp;Zoll Steigung.  Sie ist bequem, aber nicht zuverlässig: die Hersteller halten
+    sich nicht durchgängig an dieselbe Lesart<sup><a href="#q15">15</a></sup>.  Im Zweifel gilt
+    die ausgeschriebene Form.  Wer ein Datenblatt hat, liest die Zahlen dort nach, statt sie aus
+    dem Produktnamen zu erraten.</p>
+
+    <p>Zwei Angaben fehlen in der Kurzform und sind trotzdem kaufentscheidend.  Die erste ist die
+    <strong>Drehrichtung</strong>: CW für im Uhrzeigersinn, CCW für gegen den Uhrzeigersinn.  Ein
+    Quadrocopter braucht beides, je zwei Stück diagonal gepaart.  Sonst dreht er sich um die
+    Hochachse, statt zu fliegen.  Propellersätze werden deshalb als zwei CW und zwei CCW
+    verkauft<sup><a href="#q16">16</a></sup>.</p>
+
+    <p>Die zweite ist die <strong>Nabenbohrung</strong>.  Im FPV-Bereich sind 5&nbsp;mm der
+    verbreitete Standard.  Ein HQProp 7×3.5×3 hat eine 5-mm-Bohrung bei 13,5&nbsp;mm
+    Nabendurchmesser und 7&nbsp;mm Nabendicke<sup><a href="#q16">16</a></sup>.  Passt die Bohrung
+    nicht zur Motorwelle, hilft kein Aufbohren von Hand.  Die Zentrierung entscheidet über die
+    Unwucht, dazu mehr in Kapitel&nbsp;10.</p>
+
+    <h3>Gewicht ist eine Leistungsangabe</h3>
+
+    <p>Propeller werden fast immer nach Durchmesser und Steigung gekauft und fast nie nach
+    Gewicht.  Dabei ist das Gewicht die Zahl, die man im Flugverhalten am schnellsten merkt.  Ein
+    HQProp 4×4.3×3 wiegt 2,24&nbsp;Gramm, ein 7×3.5×3 desselben Herstellers
+    8,8&nbsp;Gramm<sup><a href="#q23">23</a></sup><sup><a href="#q16">16</a></sup>.  Diese Gramm entscheiden über das Massenträgheitsmoment, also darüber, wie schnell der Motor
+    die Drehzahl ändern kann.  Leichtere Propeller reagieren schneller.  Masse nahe der Nabe ist
+    dabei günstiger als Masse an der Blattspitze<sup><a href="#q15">15</a></sup>.</p>
+
+    <p>Für einen Freestyle-Copter ist das ein Argument für den leichten Propeller.  Für einen Long-Range-Copter, der gleichmäßig fliegt, zählt die Effizienz mehr.</p>
+
+    <h2 id="k3">3. Steigung: die Zahl, die eine Obergrenze ist</h2>
+
+    <p>Die Steigung ist der Rest des Schraubenbildes, den man nicht loswird.  Sie gibt an, wie weit sich der Propeller in einer Umdrehung vorwärts bewegen
+    würde, wenn die Luft ein Festkörper wäre<sup><a href="#q15">15</a></sup>.  Ein
+    4,3-Zoll-Propeller würde sich pro Umdrehung um 4,3&nbsp;Zoll voranschrauben.</p>
+
+    <p>Daraus lässt sich eine theoretische Höchstgeschwindigkeit rechnen, die
+    Steigungsgeschwindigkeit: Steigung mal Drehzahl<sup><a href="#q15">15</a></sup>.  Für einen
+    5×4.3-Propeller bei 25.000&nbsp;U/min sind das 45,5&nbsp;Meter je Sekunde.  Das entspricht
+    163,8&nbsp;km/h (unsere Rechnung: 4,3&nbsp;Zoll mal 25.000, geteilt durch 60&nbsp;Sekunden,
+    umgerechnet in Meter).</p>
+
+    <p>Nur fliegt kein Copter der Welt diese 163,8&nbsp;km/h.  Die Luft ist kein Holz, sie weicht
+    aus.  Die Differenz zwischen theoretischem und tatsächlichem Vorschub heißt Schlupf (Fachwort:
+    Slip).  Eine zweite Abweichung geht in die andere Richtung.  APC weist darauf hin, dass die
+    Steigungsgeschwindigkeit mit der <em>gemessenen</em> Steigung rechnet und die Wölbung des
+    Blattprofils übergeht<sup><a href="#q10">10</a></sup>.  Die <em>wirksame</em> Steigung liegt
+    wegen des Auftriebs am gewölbten Profil höher als die
+    gemessene<sup><a href="#q10">10</a></sup>.</p>
+
+    <p>Die Steigungsgeschwindigkeit ist also eine grobe Orientierung und kein Tacho.  Wer sie als
+    Versprechen liest, wird enttäuscht.  Wer sie als Größenordnung liest, kann zwei Propeller
+    sinnvoll abwägen.</p>
+
+    <h3>Was hohe Steigung kostet</h3>
+
+    <p>Ein Propeller mit großer Steigung greift pro Umdrehung mehr Luft.  Das bringt mehr Schub
+    und eine höhere theoretische Endgeschwindigkeit.  Es verlangt dem Motor aber mehr Drehmoment
+    ab und zieht mehr Strom.  Er ändert seine Drehzahl träger, die Reaktion auf Steuerbefehle wird
+    langsamer.  Und er ist meist <strong>weniger effizient</strong> als ein flacherer
+    Propeller<sup><a href="#q15">15</a></sup>.</p>
+
+    <p>Niedrige Steigung dreht leichter durch die Luft.  Sie erlaubt schnellere Drehzahlwechsel,
+    erzeugt weniger Verwirbelung im eigenen Abstrom und braucht weniger Drehmoment und Strom.
+    Dafür liefert sie weniger Schub und weniger
+    Spitzengeschwindigkeit<sup><a href="#q15">15</a></sup>.  Für einen Copter, der lange fliegen
+    soll, ist das kein Nachteil, sondern die richtige Richtung.</p>
+
+    <h2 id="k4">4. Durchmesser schlägt Steigung</h2>
+    <!-- bild:start propeller-durchmesser -->
+    <!-- bild:ende propeller-durchmesser -->
+
+    <p>Bis hierher war das Theorie.  Jetzt die Messung, und sie ist eindeutig.</p>
+
+    <p>T-Motor veröffentlicht für seinen MN4012 Prüfstandsdaten.  Derselbe Motor, dieselbe
+    Spannung und dieselbe Messreihe wurden dort mit verschiedenen Propellern gefahren.  Der MN4012
+    ist ein Außenläufer mit 40&nbsp;mm Statordurchmesser und 12&nbsp;mm Statorhöhe.  Er hat
+    18N24P-Konfiguration, wiegt 155&nbsp;Gramm mit Kabeln und ist für vier bis acht Zellen
+    freigegeben<sup><a href="#q14">14</a></sup>.  Die Tabelle zeigt die Variante mit 400&nbsp;KV
+    an 22,2&nbsp;Volt, also an einem 6S-Akku.</p>
+
+    <table>
+      <tr><th>Propeller</th><th>Gas</th><th>Leistung</th><th>Schub</th><th>Drehzahl</th><th>Effizienz</th></tr>
+      <tr><td>13×4.4</td><td>50&nbsp;%</td><td>82,14&nbsp;W</td><td>740&nbsp;g</td><td>4.900&nbsp;U/min</td><td>9,01&nbsp;g/W</td></tr>
+      <tr><td>13×4.4</td><td>75&nbsp;%</td><td>133,20&nbsp;W</td><td>1.040&nbsp;g</td><td>6.000&nbsp;U/min</td><td>7,81&nbsp;g/W</td></tr>
+      <tr><td>13×4.4</td><td>100&nbsp;%</td><td>208,68&nbsp;W</td><td>1.450&nbsp;g</td><td>7.150&nbsp;U/min</td><td>6,95&nbsp;g/W</td></tr>
+      <tr><td>14×4.8</td><td>50&nbsp;%</td><td>93,24&nbsp;W</td><td>870&nbsp;g</td><td>4.500&nbsp;U/min</td><td>9,33&nbsp;g/W</td></tr>
+      <tr><td>14×4.8</td><td>100&nbsp;%</td><td>290,82&nbsp;W</td><td>1.960&nbsp;g</td><td>6.700&nbsp;U/min</td><td>6,74&nbsp;g/W</td></tr>
+      <tr><td>15×5</td><td>50&nbsp;%</td><td>106,56&nbsp;W</td><td>1.010&nbsp;g</td><td>4.000&nbsp;U/min</td><td>9,48&nbsp;g/W</td></tr>
+      <tr><td>15×5</td><td>100&nbsp;%</td><td>359,64&nbsp;W</td><td>2.370&nbsp;g</td><td>6.300&nbsp;U/min</td><td>6,59&nbsp;g/W</td></tr>
+    </table>
+
+    <p class="muted" style="font-size:14px">Alle Werte aus dem Prüfbericht des Herstellers,
+    MN4012 KV400 an 22,2&nbsp;Volt<sup><a href="#q14">14</a></sup>.  Die Temperaturangabe des
+    Berichts bezieht sich auf die Motoroberfläche nach zehn Minuten Vollgas.</p>
+
+    <p>Zeilenweise gelesen zeigt die Tabelle zuerst das Erwartbare: der größere Propeller liefert
+    bei Vollgas mehr Schub und zieht mehr Leistung.  Interessant wird der Vergleich <strong>bei
+    gleichem Schub</strong>.  Das ist die Situation im Schwebeflug.  Der Copter braucht eine
+    bestimmte Schubmenge, um oben zu bleiben.  Die Frage lautet, welcher Propeller sie am
+    billigsten liefert.</p>
+
+    <p>Der 13×4.4 liefert bei 75&nbsp;Prozent Gas 1.040&nbsp;Gramm für 133,20&nbsp;Watt.  Der
+    15×5 liefert bei 50&nbsp;Prozent Gas 1.010&nbsp;Gramm für 106,56&nbsp;Watt.  Fast derselbe Schub, aber (unsere Rechnung, Leistung je Gramm gegeneinander gestellt)
+    <strong>17,6&nbsp;Prozent weniger Leistung</strong> für den größeren Propeller.  Die
+    Effizienzspalte sagt dasselbe von der anderen Seite: 9,48 gegen 7,81&nbsp;Gramm je Watt, also
+    21,4&nbsp;Prozent besser (unsere Rechnung).</p>
+
+    <h3>Die Gegenprobe mit einem anderen Motor</h3>
+
+    <p>Eine einzelne Messreihe kann täuschen.  Die Gegenprobe läuft mit der langsamer drehenden
+    Variante desselben Motors, dem MN4012 KV340 an 22,2&nbsp;Volt.  Dort liefert der 16×5.4 bei
+    50&nbsp;Prozent Gas 910&nbsp;Gramm für 82,14&nbsp;Watt.  Der kleinere 14×4.8 liefert bei
+    65&nbsp;Prozent Gas 860&nbsp;Gramm für 97,68&nbsp;Watt<sup><a href="#q14">14</a></sup>.  Das
+    sind (unsere Rechnung) <strong>20,5&nbsp;Prozent weniger Leistung</strong> für den größeren
+    Propeller, bei sogar leicht höherem Schub.  Der Effekt ist kein Ausreißer, sondern
+    systematisch.</p>
+
+    <p>Dieselbe Tabelle liefert die Erklärung mit: für die rund 1.000&nbsp;Gramm Schub dreht der
+    13-Zöller 6.000&nbsp;U/min, der 15-Zöller nur 4.000<sup><a href="#q14">14</a></sup>.  Ein
+    Drittel weniger Drehzahl bei mehr Fläche.  Das ist der Mechanismus aus Kapitel&nbsp;1,
+    gemessen statt behauptet.</p>
+
+    <h3>Wo die Grenze liegt</h3>
+
+    <p>Es gibt keinen kostenlosen Gewinn.  Der größere Propeller verlangt vom Motor mehr
+    Drehmoment.  Drehmoment kommt beim Brushless-Motor aus Statorvolumen und niedriger KV.  Ein
+    15-Zoll-Propeller an einem Motor für fünf Zoll produziert keine Effizienz, sondern Hitze.
+    Welcher Motor welchen Propeller tragen kann, steht im
+    <a href="ratgeber-motoren.html">Motoren-Ratgeber</a>.  Die Kurzfassung: große Propeller
+    brauchen große Statoren und niedrige KV.</p>
+
+    <p>Die zweite Grenze setzt der Frame: der Propellerkreis darf den Ausleger nicht überragen
+    und die Nachbarpropeller nicht schneiden.  Wer über einen Durchmesserwechsel nachdenkt, misst
+    also zuerst den Frame und danach die Tabelle.  Die dritte Grenze ist das Flugverhalten: mehr
+    Durchmesser heißt mehr Massenträgheit heißt trägere Reaktion.  Für Long Range ist das
+    egal bis erwünscht, für Freestyle ist es ein echter Verlust.</p>
+
+    <h2 id="k5">5. Blattzahl: der teuerste Weg zu mehr Schub</h2>
+    <!-- bild:start propeller-blattzahl -->
+    <!-- bild:ende propeller-blattzahl -->
+
+    <p>Im FPV-Bereich sind dreiblättrige Propeller der Normalfall, und viele Piloten halten drei
+    Blätter deshalb für die technisch bessere Lösung.  Das ist eine Verwechslung von Verbreitung
+    mit Überlegenheit.</p>
+
+    <p>Die Einordnung ist seit Langem unstrittig.  Zweiblättrige Propeller gelten als effizient
+    und widerstandsarm und sind damit die Wahl für
+    Langstreckenflüge<sup><a href="#q15">15</a></sup>.  Dreiblättrige bieten einen Kompromiss aus
+    Schub, Agilität und Effizienz.  Ab vier Blättern gibt es mehr Schub und mehr Laufruhe, aber
+    weniger Effizienz<sup><a href="#q15">15</a></sup>.  Mehr Blätter bedeuten mehr Blattfläche,
+    und mehr Blattfläche verlangt mehr Drehmoment vom Motor<sup><a href="#q15">15</a></sup>.</p>
+
+    <p>Der Grund für den scheinbaren Widerspruch liegt in der Physik von Kapitel&nbsp;1.  Fläche
+    im Luftstrom ist gut, aber es kommt darauf an, <em>wie</em> man sie bekommt.  Über den
+    Durchmesser bekommt man neue, unberührte Luft dazu.  Über zusätzliche Blätter bekommt man
+    Fläche, die im Abwind des vorherigen Blattes arbeitet, also in Luft, die schon in Bewegung
+    ist.  Das kostet Wirkungsgrad.</p>
+
+    <p>Warum trotzdem fast jeder Fünfzöller drei Blätter hat: weil der Frame den Durchmesser
+    festnagelt.  Wer mehr Schub braucht und den Kreis nicht vergrößern darf, kann nur noch
+    Blätter hinzufügen.  Das ist keine schlechte Entscheidung, es ist die einzig verbliebene.</p>
+
+    <h3>Die Messung am Extremfall</h3>
+
+    <p>Wie weit trägt das Argument?  Tyto Robotics hat es am Extremfall geprüft und einem
+    zweiblättrigen Carbonpropeller ein Blatt abgeschnitten.  Bei gleichem Steuersignal drehten
+    beide Varianten fast gleich schnell: 2.330 gegenüber
+    2.318&nbsp;U/min<sup><a href="#q7">7</a></sup>.  Das sind zwölf Umdrehungen Unterschied oder
+    0,5&nbsp;Prozent.  Bei gleicher Drehzahl lieferte das Zweiblatt deutlich mehr Schub.  Bei
+    nahezu doppelter auftriebserzeugender Fläche war das zu erwarten.</p>
+
+    <p>Der Einblatt-Propeller war nur im untersten Schubbereich sparsamer.  Über den gesamten
+    Drehzahlbereich war das Zweiblatt effizienter, mit einem maximalen Vorsprung von
+    1,89&nbsp;Gramm je Watt<sup><a href="#q7">7</a></sup>.  Dazu kamen seine Nachteile: mehr
+    Masse, mehr Vibration und schnellerer Verschleiß<sup><a href="#q7">7</a></sup>.</p>
+
+    <p>Die Lehre daraus ist nicht, dass mehr Blätter immer besser sind.  Sie ist, dass die
+    Blattzahl <strong>zum Betriebspunkt passen muss</strong>: zu wenig Fläche ist genauso falsch
+    wie zu viel.  Und dass die Reihenfolge der Stellschrauben feststeht: erst Durchmesser, dann
+    Steigung, dann Blattzahl.</p>
+
+    <h2 id="k6">6. Blattform: was zwischen Nabe und Spitze passiert</h2>
+
+    <p>Ein Propellerblatt ist ein Flügel, der im Kreis fliegt.  Damit gelten für ihn dieselben
+    Regeln wie für eine Tragfläche, nur mit einer Komplikation: die Umfangsgeschwindigkeit wächst von der Nabe zur Spitze linear an.  Ein Blatt mit überall
+    gleichem Anstellwinkel würde deshalb innen zu steil und außen zu flach
+    stehen.  Die Lösung heißt Verwindung (Fachwort: Twist): der Anstellwinkel nimmt von innen
+    nach außen ab.</p>
+
+    <p>Auch die Profilwahl folgt dieser Aufteilung.  APC nennt Profile, die dem NACA&nbsp;4412 und
+    dem Clark-Y ähneln, mit tiefer liegender Nasenkante und dickerem hinteren
+    Bereich<sup><a href="#q8">8</a></sup>.  Bei dünnen Elektro- und Slow-Fly-Propellern verblendet
+    APC innen das Eppler-E63-Profil für niedrige Reynoldszahlen mit einem Clark-Y-ähnlichen Profil
+    an der Spitze<sup><a href="#q8">8</a></sup>.  Innen also ein Profil für zähe Strömung, außen
+    eines mit wenig Widerstand bei hoher Geschwindigkeit.</p>
+
+    <p>Die Blattspitze ist der Bereich, der am meisten Schub erzeugt und am meisten Ärger macht.
+    Dort ist die Geschwindigkeit am höchsten, dort entsteht der Randwirbel, dort entsteht der
+    Lärm.  Deshalb gibt es zugespitzte Blattenden, die den Wirbel schwächen, und breite,
+    abgerundete (Bullnose), die auf kleinem Durchmesser mehr Fläche unterbringen.  Beides sind
+    Kompromisse, keine Verbesserungen.</p>
+
+    <p>Ein Detail ist für die Bewertung von Datenblättern wichtig.  Die Leistungsdaten, die APC
+    für seine Propeller veröffentlicht, sind mit einer eigenen Analysesoftware
+    <strong>berechnet</strong>, nicht gemessen<sup><a href="#q9">9</a></sup>.  Für experimentelle
+    Windkanaldaten verweist APC auf die Universität von Illinois<sup><a href="#q9">9</a></sup>.
+    Wer Herstellerkurven mit Prüfstandsdaten vergleicht, sollte wissen, welche Sorte Zahl er vor
+    sich hat.</p>
+
+    <h2 id="k7">7. Reynoldszahl: warum kleine Propeller schlechter sind</h2>
+    <!-- bild:start propeller-reynolds -->
+    <!-- bild:ende propeller-reynolds -->
+
+    <p>Die Reynoldszahl beschreibt das Verhältnis von Trägheitskräften zu Zähigkeitskräften in
+    einer Strömung.  Anschaulich: bei hoher Reynoldszahl verhält sich Luft wie Luft, bei niedriger wie Sirup.  Sie hängt von Geschwindigkeit und Abmessung ab, für Propeller wird
+    sie üblicherweise auf der Blattstation bei 75&nbsp;Prozent des Radius
+    gebildet<sup><a href="#q1">1</a></sup>.</p>
+
+    <p>Für Modellpropeller ist das keine akademische Fußnote.  Sie erklärt einen Großteil der
+    Streuung zwischen Produkten.  Die Windkanal-Datenbank der University of Illinois enthält
+    allein im ersten Band Messungen für nahezu 140 Propeller<sup><a href="#q3">3</a></sup>.
+    Vertreten sind Hersteller wie APC, Graupner, GWS, Kyosho und Master Airscrew, jeweils mit
+    Standmessung und Messungen bei mehreren Drehzahlen<sup><a href="#q3">3</a></sup>.  Es ist die
+    größte frei zugängliche Sammlung dieser Art, und weitere Bände sind
+    hinzugekommen<sup><a href="#q22">22</a></sup>.</p>
+
+    <p>Die Auswertung zu diesem Datensatz ist deutlich.  Untersucht wurden 79&nbsp;Propeller, fast
+    alle mit neun bis elf Zoll Durchmesser.  Der Standschub wurde je nach Durchmesser über etwa
+    1.500 bis 7.500&nbsp;U/min gemessen<sup><a href="#q2">2</a></sup>.  Das Ergebnis:
+    <strong>deutliche Reynoldszahl-Effekte mit einer Verschlechterung der Leistung bei niedrigeren
+    Drehzahlen</strong><sup><a href="#q2">2</a></sup>.</p>
+
+    <p>Über die getesteten Propeller hinweg schwankte der Wirkungsgrad erheblich: von nahe 0,65
+    bis hinunter auf etwa 0,28 bei einem „außergewöhnlich schlechten"
+    Propeller<sup><a href="#q2">2</a></sup>.  Zwischen dem besten und dem schlechtesten Propeller
+    derselben Größenklasse liegt mehr als der Faktor zwei.  Das ist mehr, als jede Motorwahl
+    ausmacht.</p>
+
+    <h3>Was daraus für den Bau folgt</h3>
+
+    <p>Erstens: derselbe Propeller ist bei niedriger Drehzahl schlechter als bei hoher.  Das
+    begrenzt die Idee, Effizienz über besonders niedrige Drehzahlen zu holen.  Irgendwann verliert
+    die Strömung mehr, als die geringere Geschwindigkeit einspart.</p>
+
+    <p>Zweitens: kleine Propeller sind immer im Nachteil, weil sie bei jeder Drehzahl kleinere
+    Reynoldszahlen sehen.  Ein Fünfzöller arbeitet dauerhaft in einem Bereich, in dem
+    die Strömung zäh und die Profilgüte schlecht ist.  Das ist kein Konstruktionsfehler der
+    Hersteller, sondern der Preis der Baugröße, und es ist ein weiteres Argument dafür, für
+    Langstrecke groß zu bauen.</p>
+
+    <p>Drittens: Markenname und Preis sagen wenig.  Wer wissen will, ob ein Propeller taugt,
+    schaut in eine Messreihe, nicht in eine Produktbeschreibung.</p>
+
+    <h2 id="k8">8. Material: warum unkaputtbar kein Ziel ist</h2>
+
+    <p>Im FPV-Bereich ist Polycarbonat (PC) der Standard.  Es ist leicht, zäh und elastisch.  Es
+    biegt sich, bevor es bricht, und übersteht Kontakt mit Gras und Ästen, der einen steiferen
+    Propeller zerlegen würde<sup><a href="#q15">15</a></sup>.  Hersteller wie HQProp
+    geben das Material auf jeder Produktseite an<sup><a href="#q16">16</a></sup>.</p>
+
+    <p>Die zweite große Familie ist glasfaserverstärktes Nylon.  APC fertigt seine Propeller aus
+    Nylon und bietet daneben eine spritzgegossene Verbundvariante aus 40&nbsp;Prozent Carbon und
+    60&nbsp;Prozent Nylon an<sup><a href="#q10">10</a></sup>.  Solche Propeller sind steifer und formstabiler.  Sie behalten ihre Geometrie auch unter Last.
+    Darum geht es: ein Propeller, der sich unter Schub aufbiegt, ändert seine wirksame Steigung
+    und damit seinen Betriebspunkt.</p>
+
+    <p>Vollcarbon ist die dritte Möglichkeit.  Steif, leicht, teuer und im Schadensfall
+    unangenehm: Carbon splittert, statt sich zu verformen, und die Bruchstücke sind scharf.  Für große, langsam drehende Long-Range-Propeller ist die Steifigkeit ein echter
+    Vorteil; für einen Freestyle-Copter, der regelmäßig Bodenkontakt hat, ist es das falsche
+    Material.</p>
+
+    <h3>Was Material im Betrieb ausmacht</h3>
+
+    <p>Zwei Umwelteinflüsse werden regelmäßig unterschätzt.  Der erste ist Feuchtigkeit.  APC
+    weist darauf hin, dass Verbundpropeller bei Feuchtigkeitsaufnahme an Festigkeit, Steifigkeit
+    und Dauerfestigkeit verlieren, und rät zu trockener Lagerung<sup><a href="#q12">12</a></sup>.
+    Der zweite ist Kälte: Propeller werden bei niedrigen Temperaturen steifer und spröder, das
+    Bruchrisiko steigt<sup><a href="#q15">15</a></sup>.  Wer im Winter fliegt, sieht den Satz
+    Propeller danach kritischer an als im Sommer.</p>
+
+    <p>Ein dritter Punkt betrifft die Optik: lackierte Propeller müssen neu ausgewuchtet werden,
+    eingefärbte dagegen nicht<sup><a href="#q10">10</a></sup>.  Farbe ist Masse, und Masse an der
+    falschen Stelle ist Unwucht.</p>
+
+    <p>Bleibt die Frage, warum man ein Material wählen sollte, das kaputtgeht.  Die Energie muss
+    irgendwohin.  Ein Propeller, der bricht, wandelt einen Teil davon in Bruch um.  Einer, der
+    nicht bricht, leitet sie in Motorwelle, Lager und Ausleger weiter.  Das gebrochene Teil kostet
+    zehn Euro, das verzogene Motorlager erheblich mehr.</p>
+
+    <h2 id="k9">9. Drehzahlgrenzen und Blattspitzengeschwindigkeit</h2>
+
+    <p>Propeller haben eine Höchstdrehzahl, und sie steht selten auf der Packung.  APC
+    veröffentlicht sie als Formel, je nach Bauart des Propellers, wobei der Durchmesser in Zoll
+    einzusetzen ist<sup><a href="#q11">11</a></sup>:</p>
+
+    <table>
+      <tr><th>Bauart</th><th>Grenzdrehzahl</th></tr>
+      <tr><td>Sport und Speed 400 Elektro</td><td>190.000 / Durchmesser</td></tr>
+      <tr><td>Dünne Elektro- und Polycarbonat-FPV-Propeller</td><td>150.000 / Durchmesser</td></tr>
+      <tr><td>Klapppropeller Elektro</td><td>120.000 / Durchmesser</td></tr>
+      <tr><td>Multirotor und Multirotor-Klapppropeller</td><td>105.000 / Durchmesser</td></tr>
+      <tr><td>Slow Flyer</td><td>65.000 / Durchmesser</td></tr>
+      <tr><td>Racing, Verbrenner</td><td>225.000 / Durchmesser</td></tr>
+      <tr><td>Racing, Elektromotor</td><td>270.000 / Durchmesser</td></tr>
+    </table>
+
+    <p class="muted" style="font-size:14px">Angaben des Herstellers APC für APC-Propeller; andere
+    Hersteller veröffentlichen eigene Grenzen<sup><a href="#q11">11</a></sup>.</p>
+
+    <p>Eingesetzt heißt das (unsere Rechnung): ein Polycarbonat-FPV-Propeller mit fünf Zoll
+    Durchmesser darf bis 30.000&nbsp;U/min drehen.  Ein Multirotor-Propeller mit 13&nbsp;Zoll darf
+    nur bis rund 8.077&nbsp;U/min.  Zum Vergleich: der 13×4.4 aus Kapitel&nbsp;4 dreht bei Vollgas
+    7.150&nbsp;U/min<sup><a href="#q14">14</a></sup> und bleibt darunter.</p>
+
+    <h3>Warum es diese Grenze gibt</h3>
+
+    <p>Die Fliehkraft ist einer der drei Lastfälle, gegen die ein Propellerblatt ausgelegt
+    wird<sup><a href="#q8">8</a></sup>, und sie wächst mit dem Quadrat der Drehzahl.  Wer zehn
+    Prozent über der Grenze dreht, hat nicht zehn Prozent mehr Last, sondern einundzwanzig.</p>
+
+    <p>Anschaulicher wird es über die Blattspitzengeschwindigkeit, den Weg der Blattspitze pro
+    Sekunde.  Sie ergibt sich aus Umfang mal Drehzahl.  Für die
+    Beispiele aus Kapitel&nbsp;4 (unsere Rechnung):</p>
+
+    <table>
+      <tr><th>Propeller</th><th>Drehzahl</th><th>Blattspitze</th><th>entspricht</th></tr>
+      <tr><td>13&nbsp;Zoll</td><td>6.000&nbsp;U/min</td><td>103,7&nbsp;m/s</td><td>373&nbsp;km/h</td></tr>
+      <tr><td>15&nbsp;Zoll</td><td>4.000&nbsp;U/min</td><td>79,8&nbsp;m/s</td><td>287&nbsp;km/h</td></tr>
+      <tr><td>5&nbsp;Zoll</td><td>30.000&nbsp;U/min</td><td>199,5&nbsp;m/s</td><td>718&nbsp;km/h</td></tr>
+    </table>
+
+    <p>Der Fünfzöller an der APC-Grenze bewegt seine Blattspitzen mit knapp 200&nbsp;Metern je
+    Sekunde.  Das sind rund 58&nbsp;Prozent der Schallgeschwindigkeit (unsere Rechnung, mit
+    343&nbsp;m/s gerechnet).  In diesem Bereich beginnen Kompressibilitätseffekte an der
+    Blattspitze zu wirken, und der Lärm steigt steil an.  Der 15-Zöller bleibt bei denselben rund
+    1.000&nbsp;Gramm Schub bei 79,8&nbsp;m/s.  Das sind 23,1&nbsp;Prozent weniger als beim
+    13-Zöller (unsere Rechnung).</p>
+
+    <h2 id="k10">10. Unwucht, Vibration und was der Flight Controller daraus macht</h2>
+    <!-- bild:start propeller-unwucht -->
+    <!-- bild:ende propeller-unwucht -->
+
+    <p>Ein Propeller, der nicht exakt symmetrisch ist, erzeugt bei jeder Umdrehung eine
+    umlaufende Kraft.  Diese Kraft geht in die Motorlager, in den Ausleger und schließlich in den
+    Beschleunigungssensor des Flight Controllers.  Dort wird sie zum Problem: der Regler kann nicht unterscheiden, ob der Copter kippt oder der
+    Propeller rüttelt.</p>
+
+    <p>Beim Multicopter ist nicht die Unwucht selbst die größte Quelle.  Die
+    ArduPilot-Dokumentation nennt als Hauptursache die Blätter, die über die Ausleger
+    streichen<sup><a href="#q18">18</a></sup>.  Dazu kommt Rahmen- und vor allem Auslegerflex als
+    Ursache asynchroner Vibration.  ArduPilot rät deshalb zu Auslegern aus Aluminium oder Carbon,
+    leichtgängigen Motorlagern und Propelleradaptern, die konzentrisch und gerade
+    laufen<sup><a href="#q18">18</a></sup>.</p>
+
+    <h3>Ab wann es zu viel ist</h3>
+
+    <p>ArduPilot nennt konkrete Grenzwerte.  Sie sind eine der wenigen belastbaren Zahlen zu
+    diesem Thema.  Unter 30&nbsp;m/s² ist normalerweise akzeptabel.  Über 30&nbsp;m/s² kann es
+    Probleme geben.  Über 60&nbsp;m/s² gibt es nahezu immer Probleme mit Höhen- oder
+    Positionshaltung<sup><a href="#q17">17</a></sup>.  Als Referenz für einen gesunden Copter
+    gelten Werte unter 15&nbsp;m/s² mit gelegentlichen Spitzen bis
+    30<sup><a href="#q17">17</a></sup>.</p>
+
+    <p>Zusätzlich zählt der Autopilot, wie oft ein Beschleunigungssensor an seine Messgrenze von
+    16&nbsp;g stößt (Fachwort: Clipping).  Idealerweise passiert das über den ganzen Flug gar nicht.  Niedrige Zahlen unter 100 sind
+    vertretbar, besonders bei harten Landungen.  Eine über den Flug stetig steigende Zahl ist dagegen ein ernstes
+    Vibrationsproblem<sup><a href="#q17">17</a></sup>.</p>
+
+    <h3>Auswuchten, richtig gemacht</h3>
+
+    <p>APC gibt an, erheblichen Aufwand zu betreiben, damit die Propeller ab Werk so gut wie
+    möglich ausgewuchtet sind<sup><a href="#q13">13</a></sup>.  Prüfen sollte man trotzdem.  Dabei
+    kommt es auf ein Detail an: geprüft wird über das präzise gespritzte Loch auf der Rückseite
+    der Nabe, nicht über die gebohrte Seite.  Man steckt einen Stift ein, der dünner ist als die
+    Durchgangsbohrung.  Gesichert wird er mit einer Scheibe an der vorderen Nabenfläche, so wie
+    der Propeller später am Motor sitzt<sup><a href="#q13">13</a></sup>.</p>
+
+    <p>Zeigt sich eine Unwucht, wird Material an der Ober- und Unterseite der Spitze des
+    schwereren Blattes abgetragen<sup><a href="#q13">13</a></sup>.  Alternativ kommt ein Streifen
+    Klarsichtklebeband auf das leichtere Blatt, was APC nur für Elektroanwendungen
+    empfiehlt<sup><a href="#q13">13</a></sup>.  Für die Montage gilt: die Durchgangsbohrung soll
+    für die Motorwelle bewusst zu groß sein, damit ausschließlich der Adapterring
+    zentriert<sup><a href="#q13">13</a></sup>.  Ein Propeller, der auf der Welle klemmt, ist nicht
+    besser zentriert, sondern nur schwerer zu korrigieren.</p>
+
+    <h3>Was die Software daraus macht</h3>
+
+    <p>Moderne Flugsoftware bekämpft die verbleibende Vibration mit Filtern, die auf die
+    Motordrehzahl gesetzt werden.  Betaflight betreibt dafür standardmäßig 36 Kerbfilter
+    (Fachwort: Notch).  Das sind zwölf je Achse für Nick, Roll und Gier, die jeweils die ersten
+    drei Harmonischen des Motorgeräuschs abdecken<sup><a href="#q19">19</a></sup>.  Der Regler
+    errechnet die mechanische Drehzahl aus der elektrischen, dafür muss die Polzahl eingetragen
+    sein.  Typische Fünfzoll-Motoren haben 14&nbsp;Magnete, kleinere oft
+    12<sup><a href="#q19">19</a></sup>.  Konkret: 14&nbsp;Pole bei 22XX-, 23XX- und 24XX-Motoren,
+    12&nbsp;Pole bei den Baureihen von 08XX bis 16XX<sup><a href="#q24">24</a></sup>.</p>
+
+    <p>Der Nutzen ist messbar: Betaflight beschreibt kühler laufende Motoren, eine bessere
+    Toleranz gegenüber verbogenen Propellern und einen saubereren Klang bei Vollgas<sup><a href="#q19">19</a></sup>.  Hier liegt aber auch
+    die Gefahr.  „Bessere
+    Toleranz gegenüber verbogenen Propellern" heißt nicht, dass ein verbogener Propeller in
+    Ordnung wäre.  Die Filter beseitigen das Störsignal im Regelkreis, nicht die Kraft in den
+    Lagern.  Filter ersetzen kein Auswuchten und keinen Propellerwechsel.</p>
+
+    <h2 id="k11">11. Lärm: groß und langsam ist leise</h2>
+
+    <p>Lärm ist bei Multicoptern kein Nebenthema.  Er entscheidet darüber, wo man fliegen darf,
+    und warum die Akzeptanz von Drohnen in Wohngebieten gering ist.</p>
+
+    <p>Die wichtigste Stellschraube ist bekannt.  Eine Auslegungsstudie der NASA zur
+    Geräuschvorhersage künftiger Lufttaxis nennt die Blattspitzengeschwindigkeit des Rotors als
+    gut belegten Haupttreiber des Lärms<sup><a href="#q20">20</a></sup>.  Sie war dort die primäre
+    Auslegungsgröße, vor Blattverwindung, Zuspitzung und
+    Blattzahl<sup><a href="#q20">20</a></sup>.  Untersucht wurden sechs Entwürfe mit
+    Blattspitzengeschwindigkeiten von 450 bis 700&nbsp;Fuß je Sekunde.  Allein ihre Variation
+    sparte bis zu 9&nbsp;EPNdB<sup><a href="#q20">20</a></sup>.</p>
+
+    <p>Die Studie betrachtet Kipprotoren einer ganz anderen Größenklasse.  Die absoluten Zahlen
+    lassen sich nicht auf einen FPV-Copter übertragen, die Richtung schon.  Sie folgt aus
+    derselben Aerodynamik.  Und sie deckt sich mit dem Ergebnis aus Kapitel&nbsp;9: der Wechsel
+    vom 13- auf den 15-Zoll-Propeller senkt bei gleichem Schub die Blattspitzengeschwindigkeit um
+    23,1&nbsp;Prozent (unsere Rechnung).  Der größere Propeller ist nicht nur sparsamer, sondern
+    auch leiser, aus demselben Grund.</p>
+
+    <h3>Warum der eine sirrt und der andere wummert</h3>
+
+    <p>Neben der Lautstärke ändert sich auch die Tonhöhe.  Der Grundton ist die
+    Blattfolgefrequenz: wie oft pro Sekunde ein Blatt an einem festen Punkt vorbeikommt, also
+    Drehzahl geteilt durch 60, mal Blattzahl.</p>
+
+    <p>Für einen dreiblättrigen Fünfzöller bei 30.000&nbsp;U/min sind das 1.500&nbsp;Hertz.  Ein
+    zweiblättriger 15-Zöller bei 4.000&nbsp;U/min kommt auf 133&nbsp;Hertz (beides unsere
+    Rechnung).  Das Ohr ist in diesem Bereich nicht gleichmäßig empfindlich.  Die Resonanz des
+    Gehörgangs verstärkt Frequenzen zwischen 2.000 und 7.000&nbsp;Hertz besonders
+    stark<sup><a href="#q25">25</a></sup>.  Der Grundton des Fünfzöllers liegt knapp unterhalb
+    dieses Fensters.  Seine ersten beiden Oberwellen mit 3.000 und 4.500&nbsp;Hertz liegen mitten
+    darin (unsere Rechnung).  Beim großen, langsamen Propeller bleiben Grundton und Oberwellen
+    weit darunter.  Deshalb klingt der eine wie ein wütendes Insekt und der andere wie ein
+    entfernter Ventilator.</p>
+
+    <p>Wer leiser fliegen will, hat damit eine klare Reihenfolge: größerer Durchmesser bei
+    niedrigerer Drehzahl zuerst, weniger Blätter als Zweites, und erst danach lohnt es sich, über
+    Blattformen nachzudenken.</p>
+
+    <h2 id="k12">12. Sicherheit und rechtlicher Rahmen</h2>
+
+    <p>Beim Thema Sicherheit ist der Ton der Hersteller ungewöhnlich direkt.  APC schreibt:
+    „Alle Propeller sind grundsätzlich gefährlich.  Modellflugpropeller sind besonders
+    gefährlich."<sup><a href="#q12">12</a></sup>  Die zentrale Anweisung lautet, sich niemals
+    selbst in die Rotationsebene des Propellers zu stellen und auch andere ihr nicht
+    auszusetzen<sup><a href="#q12">12</a></sup>.  Und weiter: man solle davon ausgehen, dass ein
+    Propeller jederzeit versagen kann, besonders bei Leistungsproben am
+    Boden<sup><a href="#q12">12</a></sup>.</p>
+
+    <p>Das ist keine juristische Floskel.  Ein 13-Zoll-Propeller bewegt seine Blattspitze mit über
+    370&nbsp;km/h (Kapitel&nbsp;9), und die Bruchstücke behalten diese Geschwindigkeit.  Konkret
+    heißt das dreierlei.  Akku erst anstecken, wenn niemand in der Ebene steht.  Bei
+    Schubmessungen am Boden hinter dem Copter bleiben.  Und die Rotationsebene auch dann
+    respektieren, wenn die Propeller demontiert scheinen.</p>
+
+    <h3>Wann ein Propeller in den Müll gehört</h3>
+
+    <p>Jede Kerbe an der Nasenkante und jeder Haarriss an der Nabe ist ein Anfangspunkt für
+    Dauerbruch.  Die Dauerfestigkeit ist genau die Größe, gegen die ein Propellerblatt ausgelegt
+    wird<sup><a href="#q8">8</a></sup>, und eine Kerbe hebelt diese Auslegung aus.  Dazu kommen
+    die Materialeinflüsse aus Kapitel&nbsp;8: Feuchtigkeit senkt Festigkeit, Steifigkeit und
+    Dauerfestigkeit<sup><a href="#q12">12</a></sup>, Kälte macht spröde<sup><a href="#q15">15</a></sup>.</p>
+
+    <p>Die Regel daraus ist unbequem und trotzdem richtig: ein Propeller mit sichtbarem Schaden
+    fliegt nicht mehr.  Er kostet ein paar Euro, ein Motorschaden das
+    Zehnfache und ein Personenschaden ungleich mehr.</p>
+
+    <h3>Was die Propellerwahl für die Betriebskategorie bedeutet</h3>
+
+    <p>Der Propeller ist in den EU-Regeln kein eigenständiger Gegenstand.  Seine Wirkung auf Masse
+    und Energie ist es sehr wohl.  Die Unterkategorien der offenen Kategorie hängen an der
+    Startmasse, und zur Startmasse zählen vier Propeller mit<sup><a href="#q21">21</a></sup>.</p>
+
+    <p>Für den Bau heißt das: wer die Klassengrenze von
+    250&nbsp;Gramm<sup><a href="#q21">21</a></sup> unterschreiten will, rechnet auch die Propeller
+    mit.  Bei einem leichten Copter sind vier Propeller schnell ein Zehntel der Abflugmasse.  Ein
+    größerer Durchmesser verschiebt Masse nach außen.  An der Kategorie ändert das nichts, an der
+    Energie im Schadensfall sehr wohl.</p>
+
+    <h2 id="k13">13. Die Reihenfolge, in der man auswählt</h2>
+
+    <p>Aus den vorangegangenen Kapiteln ergibt sich eine feste Reihenfolge.  Sie beginnt nicht
+    beim Propeller, sondern bei dem, was ihn begrenzt.</p>
+
+    <p><strong>Erstens der Frame.</strong>  Er gibt den maximalen Durchmesser vor, der ohne
+    Überschneidung mit den Nachbarpropellern und ohne Überstand über den Ausleger möglich ist.
+    Diese Zahl ist eine harte Grenze, keine Empfehlung.</p>
+
+    <p><strong>Zweitens der Motor.</strong>  Er muss das Drehmoment für den gewählten Durchmesser
+    liefern.  Das läuft auf großes Statorvolumen und niedrige KV hinaus.  Die Auswahl steht im
+    <a href="ratgeber-motoren.html">Motoren-Ratgeber</a>.  Die Prüfstandstabellen der Hersteller
+    zeigen für jede Kombination, was herauskommt.</p>
+
+    <p><strong>Drittens der größte Durchmesser, den beide zulassen.</strong>  Das ist die
+    Entscheidung mit dem größten Hebel: rund 18&nbsp;Prozent weniger Leistung für denselben
+    Schub beim Sprung von 13 auf 15&nbsp;Zoll (Kapitel&nbsp;4).</p>
+
+    <p><strong>Viertens eine moderate Steigung.</strong>  Für Langstrecke lieber flach.  Die
+    Endgeschwindigkeit, die man dabei liegen lässt, fliegt kaum jemand aus.</p>
+
+    <p><strong>Fünftens so wenige Blätter wie möglich.</strong>  Zwei Blätter, wenn der
+    Durchmesser reicht, drei nur dort, wo der Frame den Durchmesser begrenzt.</p>
+
+    <p><strong>Sechstens das Material nach Einsatz.</strong>  Polycarbonat für alles, was
+    regelmäßig Bodenkontakt hat, steifere Verbundwerkstoffe für große, langsam drehende
+    Long-Range-Propeller.</p>
+
+    <h3>Die Probe: passt der Betriebspunkt?</h3>
+
+    <p>Am Ende steht eine Rechnung, die jeden
+    Vorschlag prüft.  Ein Beispiel mit den Zahlen aus Kapitel&nbsp;4: ein 13-Zoll-Copter mit
+    angenommenen 2,9&nbsp;Kilogramm Abflugmasse braucht im Schwebeflug 725&nbsp;Gramm Schub je
+    Motor (unsere Rechnung: 2.900 geteilt durch vier).  In der Tabelle liegt dieser Punkt bei etwa
+    halbem Gas.  Dort liefert der 13×4.4 am MN4012 KV400 740&nbsp;Gramm für 82,14&nbsp;Watt, also
+    9,01&nbsp;Gramm je Watt<sup><a href="#q14">14</a></sup>.  Das ist der effizienteste Punkt der
+    ganzen Messreihe.</p>
+
+    <p>Daraus folgt eine Faustregel: ein Copter, der im Schwebeflug bei etwa halbem Gas steht, ist
+    nicht untermotorisiert, sondern richtig ausgelegt.  Für die eigene Rechnung braucht man drei
+    Zahlen: Abflugmasse, Motortyp und Prüfstandstabelle.</p>
+
+    <p>Und ein letzter, unspektakulärer Punkt: Propeller
+    sind Verschleißteile.  Wer mit einem Satz aus dem Haus geht, fliegt einmal.  Wer mit drei
+    Sätzen aus dem Haus geht, fliegt den ganzen Nachmittag.</p>
+
+    <p>Wenn du unsicher bist, welche
+    Kombination aus Motor und Propeller zu deinem Vorhaben passt, sprich uns an, bevor du
+    bestellst.</p>
+
+    <p style="margin-top:14px">
+      <a href="ratgeber-motoren.html">➜ Passend dazu: der Motoren-Ratgeber</a><br>
+      <a href="ratgeber-teileliste-13-build-1.html">➜ Passend dazu: Teileliste 13-Zoll-Build</a><br>
+      <a href="ratgeber-teileliste-10-zoll.html">➜ Passend dazu: Teileliste 10-Zoll-Build</a><br><br>
+      <a href="index.html#kontakt">➜ Persönliche Beratung zu deinem Build anfragen</a>
+    </p>
+
+    <p class="muted" style="margin-top:34px; font-size:14px">
+      Dieser Ratgeber ersetzt keine individuelle technische Prüfung.  Alle Angaben ohne
+      Gewähr.  Wo wir gerechnet statt gemessen haben, steht es ausdrücklich dabei.  Alle
+      Quellen wurden im August 2026 abgerufen und geprüft.
+    </p>
+
+    <h2>Quellenangaben</h2>
+    <ol class="muted" style="font-size:14px; line-height:1.9; padding-left:20px">
+      <li id="q1">UIUC Applied Aerodynamics Group, „UIUC Propeller Data Site".  Windkanalmessungen
+        an Propellern für kleine UAV und Modellflugzeuge, Bildung der Reynoldszahl auf der
+        Blattstation bei 75&nbsp;Prozent des Radius:
+        <a href="https://m-selig.ae.illinois.edu/props/propDB.html" rel="noopener" target="_blank">m-selig.ae.illinois.edu/props/propDB.html</a></li>
+      <li id="q2">Brandt, J. B. und Selig, M. S., „Propeller Performance Data at Low Reynolds
+        Numbers", AIAA Paper 2011-1255.  79 getestete Propeller, fast alle 9 bis 11&nbsp;Zoll,
+        Standschub von 1.500 bis 7.500&nbsp;U/min, deutliche Reynoldszahl-Effekte mit
+        Leistungsabfall bei niedrigerer Drehzahl, Wirkungsgrad von 0,65 bis 0,28; Definitionen
+        von J, C<sub>T</sub>, C<sub>P</sub> und Wirkungsgrad:
+        <a href="https://m-selig.ae.illinois.edu/pubs/BrandtSelig-2011-AIAA-2011-1255-LRN-Propellers.pdf" rel="noopener" target="_blank">m-selig.ae.illinois.edu, AIAA 2011-1255 (PDF)</a></li>
+      <li id="q3">UIUC Propeller Data Site, Band 1.  Nahezu 140 Propeller, Hersteller Aeronaut,
+        APC, Graupner, GWS, Kavon, Kyosho, Master Airscrew, Rev Up und Zingali, je Propeller
+        Standmessung und Windkanalmessungen bei mehreren Drehzahlen:
+        <a href="https://m-selig.ae.illinois.edu/props/volume-1/propDB-volume-1.html" rel="noopener" target="_blank">m-selig.ae.illinois.edu, Band 1</a></li>
+      <li id="q4">Tyto Robotics, „How to Calculate &amp; Measure Propeller Thrust".  Schub aus
+        dem Impulssatz, T = ṁ (V<sub>e</sub> − V<sub>0</sub>) mit ṁ = ρ A V<sub>p</sub>,
+        Bedeutung der Scheibenfläche:
+        <a href="https://www.tytorobotics.com/blogs/articles/how-to-calculate-propeller-thrust" rel="noopener" target="_blank">tytorobotics.com, Propeller Thrust</a></li>
+      <li id="q5">Tyto Robotics, „How to Measure Propeller Performance Coefficients".
+        Definitionen von Schubbeiwert, Drehmomentbeiwert, Leistungsbeiwert und
+        Fortschrittsverhältnis samt Exponenten von Drehzahl und Durchmesser:
+        <a href="https://www.tytorobotics.com/blogs/articles/how-to-measure-propeller-performance-coefficients" rel="noopener" target="_blank">tytorobotics.com, Performance Coefficients</a></li>
+      <li id="q6">Tyto Robotics, „How to Measure Brushless Motor and Propeller Efficiency".
+        Definition der Propellereffizienz als Schub geteilt durch mechanische Leistung in Gramm
+        je Watt:
+        <a href="https://www.tytorobotics.com/blogs/articles/how-to-measure-brushless-motor-and-propeller-efficiency" rel="noopener" target="_blank">tytorobotics.com, Motor and Propeller Efficiency</a></li>
+      <li id="q7">Tyto Robotics, „Single Blade Propeller Efficiency: The Unexpected Results".
+        Vergleich Einblatt gegen Zweiblatt: 2.330 gegen 2.318&nbsp;U/min bei gleichem Signal
+        (0,5&nbsp;Prozent), höherer Schub beim Zweiblatt, Vorsprung von bis zu 1,89&nbsp;g/W,
+        Nachteile Masse, Vibration und Verschleiß:
+        <a href="https://www.tytorobotics.com/blogs/articles/single-blade-propeller-efficiency" rel="noopener" target="_blank">tytorobotics.com, Single Blade</a></li>
+      <li id="q8">APC Propellers, „Engineering".  Profile ähnlich NACA&nbsp;4412 und Clark-Y,
+        Eppler E63 innen bei dünnen Elektro- und Slow-Fly-Propellern, Wirbeltheorie als
+        Rechenverfahren, Lastfälle Biegung, Fliehkraft und Torsion, Dauerfestigkeit nach
+        Goodman, Gerber und Smith:
+        <a href="https://www.apcprop.com/technical-information/engineering/" rel="noopener" target="_blank">apcprop.com/technical-information/engineering</a></li>
+      <li id="q9">APC Propellers, „Performance Data".  Die veröffentlichten Leistungsdaten werden
+        mit einer eigenen Analysesoftware aus der tatsächlichen Propellergeometrie berechnet,
+        nicht gemessen; für Windkanaldaten verweist APC auf die University of Illinois:
+        <a href="https://www.apcprop.com/technical-information/performance-data/" rel="noopener" target="_blank">apcprop.com/technical-information/performance-data</a></li>
+      <li id="q10">APC Propellers, „Propeller FAQ".  Steigungsgeschwindigkeit rechnet mit der
+        gemessenen Steigung und lässt die Profilwölbung außer Acht, wirksame Steigung liegt
+        höher; Werkstoffe Nylon und Spritzguss-Verbund aus 40&nbsp;Prozent Carbon und
+        60&nbsp;Prozent Nylon; lackierte Propeller müssen neu ausgewuchtet werden, eingefärbte
+        nicht:
+        <a href="https://www.apcprop.com/faq/" rel="noopener" target="_blank">apcprop.com/faq</a></li>
+      <li id="q11">APC Propellers, „RPM Limits".  Grenzdrehzahlen je Bauart als Formel über den
+        Durchmesser in Zoll, von 65.000 für Slow Flyer bis 270.000 für Racing-Propeller am
+        Elektromotor, 105.000 für Multirotor-Propeller:
+        <a href="https://www.apcprop.com/technical-information/rpm-limits/" rel="noopener" target="_blank">apcprop.com/technical-information/rpm-limits</a></li>
+      <li id="q12">APC Propellers, „Safety Concerns".  Grundsätzliche Gefährlichkeit aller
+        Propeller, Verbot des Aufenthalts in der Rotationsebene, Annahme jederzeitigen Versagens
+        besonders bei Vollgas am Boden, Feuchtigkeit senkt Festigkeit, Steifigkeit und
+        Dauerfestigkeit von Verbundpropellern:
+        <a href="https://www.apcprop.com/technical-information/safety-concerns/" rel="noopener" target="_blank">apcprop.com/technical-information/safety-concerns</a></li>
+      <li id="q13">APC Propellers, „Technical Support Advisories".  Werksseitiges Auswuchten,
+        Prüfung über das präzise gespritzte Loch an der Nabenrückseite, Korrektur durch
+        Materialabtrag an der Spitze des schweren Blattes oder Klarsichtband auf dem leichten,
+        Zentrierung ausschließlich über den Adapterring:
+        <a href="https://www.apcprop.com/technical-information/technical-support-advisories/" rel="noopener" target="_blank">apcprop.com/technical-information/technical-support-advisories</a></li>
+      <li id="q14">T-Motor, Produktseite und Prüfbericht MN4012.  Stator 40×12&nbsp;mm, 18N24P,
+        155&nbsp;g mit Kabeln, 4 bis 8S; Messreihen für KV400 an 22,2&nbsp;V mit 13×4.4, 14×4.8
+        und 15×5 sowie für KV340 an 22,2&nbsp;V mit 14×4.8, 15×5 und 16×5.4, je Zeile Leistung,
+        Schub, Drehzahl und Gramm je Watt:
+        <a href="https://store.tmotor.com/goods-345-MN4012+KV400.html" rel="noopener" target="_blank">store.tmotor.com, MN4012 KV400</a></li>
+      <li id="q15">Oscar Liang, „Choosing Propellers for FPV Drones".  Bezeichnungsschema
+        Durchmesser mal Steigung mal Blattzahl, Uneinheitlichkeit der vierstelligen Kurzform,
+        Wirkung von Durchmesser und Steigung, Blattzahl-Einordnung, Polycarbonat als üblicher
+        Werkstoff, Gewicht und Massenträgheit, Formel für die Steigungsgeschwindigkeit,
+        Versprödung bei Kälte:
+        <a href="https://oscarliang.com/propellers/" rel="noopener" target="_blank">oscarliang.com/propellers</a></li>
+      <li id="q16">HQProp, Produktseite 7×3.5×3.  Werkstoff Polycarbonat, 8,8&nbsp;g je
+        Propeller, 5&nbsp;mm Wellenbohrung, 13,5&nbsp;mm Nabendurchmesser, 7&nbsp;mm Nabendicke,
+        Satz aus zwei CW und zwei CCW:
+        <a href="https://www.hqprop.com/https-hqprop-7x35x3-light-grey-2cw2ccw-poly-carbonate-p0320.html" rel="noopener" target="_blank">hqprop.com, 7×3.5×3</a></li>
+      <li id="q17">ArduPilot, „Measuring Vibration".  Unter 30&nbsp;m/s² normalerweise
+        akzeptabel, über 30 möglicherweise und über 60 nahezu immer Probleme mit Höhen- und
+        Positionshaltung, Referenzwerte unter 15 mit Spitzen bis 30, Clipping ab 16&nbsp;g,
+        Zahlen unter 100 vertretbar:
+        <a href="https://ardupilot.org/copter/docs/common-measuring-vibration.html" rel="noopener" target="_blank">ardupilot.org, Measuring Vibration</a></li>
+      <li id="q18">ArduPilot, „Vibration Damping".  Größte Vibrationsquelle beim Multicopter sind
+        die über die Ausleger streichenden Blätter, Auslegerflex als Ursache asynchroner
+        Vibration, Anforderungen an Lager und Propelleradapter, Auswuchten mit einem guten
+        Propellerwuchtgerät:
+        <a href="https://ardupilot.org/copter/docs/common-vibration-damping.html" rel="noopener" target="_blank">ardupilot.org, Vibration Damping</a></li>
+      
+      <li id="q19">Betaflight, „DShot RPM Filtering".  36 Kerbfilter, zwölf je Achse für die
+        ersten drei Harmonischen, Umrechnung von elektrischer auf mechanische Drehzahl über die
+        Polzahl, 14&nbsp;Magnete bei typischen Fünfzoll-Motoren, kühlere Motoren und bessere
+        Toleranz gegenüber verbogenen Propellern:
+        <a href="https://betaflight.com/docs/wiki/guides/current/DSHOT-RPM-Filtering" rel="noopener" target="_blank">betaflight.com, DShot RPM Filtering</a></li>
+      <li id="q20">Radotich, M. u. a., „Conceptual Design Trade Studies for Acoustic Predictions",
+        NASA Technical Reports Server.  Blattspitzengeschwindigkeit als primäre
+        Auslegungsgröße vor Verwindung, Zuspitzung und Blattzahl, sechs Entwürfe mit 450 bis
+        700&nbsp;ft/s, Einsparung von bis zu 9&nbsp;EPNdB allein durch deren Variation:
+        <a href="https://ntrs.nasa.gov/citations/20240000889" rel="noopener" target="_blank">ntrs.nasa.gov, 20240000889</a></li>
+      <li id="q21">EASA, „Open category of civil drones".  Unterkategorien A1, A2 und A3,
+        250&nbsp;Gramm für den Flug über unbeteiligten Personen, 30&nbsp;Meter Abstand in A2 und
+        fünf Meter bei Langsamflug, 150&nbsp;Meter in A3, Höchsthöhe 120&nbsp;Meter über Grund,
+        Klassenkennzeichnungen C0 bis C4:
+        <a href="https://www.easa.europa.eu/en/domains/civil-drones/drones-regulatory-framework-background/open-category-civil-drones" rel="noopener" target="_blank">easa.europa.eu, Open Category</a></li>
+      <li id="q22">UIUC Applied Aerodynamics Group, Publikationsliste.  Weitere Messreihen zu
+        kleinen Propellern bei niedrigen Reynoldszahlen, unter anderem Deters, Ananda und Selig,
+        AIAA 2014-2151:
+        <a href="https://m-selig.ae.illinois.edu/publications.html" rel="noopener" target="_blank">m-selig.ae.illinois.edu/publications.html</a></li>
+      <li id="q23">HQProp, Produktseite 4×4.3×3&nbsp;V1S.  Werkstoff Polycarbonat,
+        2,24&nbsp;g je Propeller, 5&nbsp;mm Wellenbohrung, 13&nbsp;mm Nabendurchmesser:
+        <a href="https://www.hqprop.com/hq-durable-prop-4x43x3v1s-2cw2ccw-poly-carbonate-p0184.html" rel="noopener" target="_blank">hqprop.com, 4×4.3×3 V1S</a></li>
+      <li id="q24">Oscar Liang, „How to Setup RPM Filters in Betaflight".  Polzahlen je
+        Motorbaureihe, 14 Pole bei 22XX, 23XX und 24XX, 12 Pole bei 08XX bis 16XX, drei
+        Harmonische je Motor und Achse und damit 36 Kerbfilter:
+        <a href="https://oscarliang.com/rpm-filter/" rel="noopener" target="_blank">oscarliang.com/rpm-filter</a></li>
+      <li id="q25">Peterson, D. C. u.&nbsp;a., „Physiology, Ear", StatPearls, NCBI Bookshelf.
+        Resonanz des Gehörgangs für kurze Wellenlängen im Bereich von 2.000 bis
+        7.000&nbsp;Hertz, Hörbereich des jungen Ohrs von 20 bis 20.000&nbsp;Hertz:
+        <a href="https://www.ncbi.nlm.nih.gov/books/NBK540992/" rel="noopener" target="_blank">ncbi.nlm.nih.gov, Physiology, Ear</a></li>
+    </ol>
+
+<!-- historie:start -->
+    <h2>Änderungshistorie</h2>
+    <ul class="muted historie">
+      <li><strong>20.08.2026</strong> · Veröffentlichung</li>
+    </ul>
+<!-- historie:ende -->
+
+<!-- partner:start -->
+<!-- partner:ende -->
+
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <nav class="social" aria-label="Draco Labs in sozialen Netzwerken">
+      <a href="https://www.youtube.com/@DracoLabsGermany" rel="noopener" class="yt" aria-label="Draco Labs auf YouTube">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/draco.labs.germany" rel="noopener" class="ig" aria-label="Draco Labs auf Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c0-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 3.1A6.7 6.7 0 1 0 18.7 12 6.7 6.7 0 0 0 12 5.3Zm0 11a4.3 4.3 0 1 1 4.3-4.3 4.3 4.3 0 0 1-4.3 4.3ZM19 5a1.6 1.6 0 1 1-1.6-1.6A1.6 1.6 0 0 1 19 5Z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@dracolabsgermany" rel="noopener" class="tt" aria-label="Draco Labs auf TikTok">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16.6 2h-3.1v13.1a2.7 2.7 0 1 1-2.7-2.7c.2 0 .4 0 .6.1V9.3a6 6 0 0 0-.6 0 5.8 5.8 0 1 0 5.8 5.8V8.6a7 7 0 0 0 4.1 1.3V6.8a3.9 3.9 0 0 1-4.1-3.9V2Z"/></svg>
+      </a>
+    </nav>
+    <div class="links">
+      <a href="index.html">Startseite</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
+    </div>
+    <div>© 2026 Draco Labs Germany · Kleinunternehmer gem. § 19 UStG</div>
+    <img class="ai-label" src="assets/label-ai-modified.svg" alt="KI-Kennzeichnung: Inhalte dieser Website wurden teilweise mit KI erstellt oder bearbeitet (AI MODIFIED)">
+  </div>
+</footer>
+
+</body>
+</html>

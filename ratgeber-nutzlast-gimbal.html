@@ -1,0 +1,919 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Was der Copter tragen kann — Nutzlast- und Gimbal-Ratgeber | Draco Labs</title>
+<meta name="description" content="Nutzlast und Bildstabilisierung für FPV- und Long-Range-Copter: was ein Gimbal an Gewicht und Strom kostet, wann zwei Achsen reichen und wann EIS besser ist.">
+<meta name="keywords" content="Drohne Nutzlast, Gimbal Drohne, 2 Achsen 3 Achsen Gimbal, elektronische Bildstabilisierung, EIS Drohne, Rolling Shutter Jello, Vibrationsdaempfung Copter, Schwerpunkt Multicopter">
+<meta name="robots" content="noindex, nofollow">
+<meta name="tdm-reservation" content="1">
+<meta name="author" content="Draco Labs Germany">
+<link rel="canonical" href="https://dracolabsgermany.com/ratgeber-nutzlast-gimbal.html">
+
+<!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Was der Copter tragen kann — Nutzlast und Bildstabilisierung">
+<meta property="og:description" content="Was ein Gimbal an Gewicht, Strom und Bauhöhe kostet, warum die dritte Achse die teuerste ist und wann ein fester Halter mit Dämpfung das bessere Bild liefert.">
+<meta property="og:url" content="https://dracolabsgermany.com/ratgeber-nutzlast-gimbal.html">
+<meta property="og:image" content="https://dracolabsgermany.com/assets/ratgeber/nutzlast-gimbal-hero.jpg">
+<meta property="og:site_name" content="Draco Labs Germany">
+<meta property="og:locale" content="de_DE">
+
+<!-- Twitter/X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Was der Copter tragen kann — Nutzlast und Bildstabilisierung">
+<meta name="twitter:description" content="Gimbal oder elektronische Stabilisierung? Gewicht, Strom, Bildwinkel und Recht, mit belegten Zahlen.">
+<meta name="twitter:image" content="https://dracolabsgermany.com/assets/ratgeber/nutzlast-gimbal-hero.jpg">
+
+<link rel="icon" type="image/png" href="assets/emblem.png">
+<link rel="stylesheet" href="style.css">
+
+<!-- Strukturierte Daten für Google (Article) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Was der Copter tragen kann: Nutzlast, Sensorik und Bildstabilisierung",
+  "description": "Nutzlast- und Gimbal-Ratgeber für FPV- und Long-Range-Copter: Leistungsbedarf, Schwerpunkt, Vibrationsdämpfung, 2 gegen 3 Achsen, elektronische Stabilisierung und die rechtlichen Grenzen.",
+  "image": "https://dracolabsgermany.com/assets/ratgeber/nutzlast-gimbal-hero.jpg",
+  "datePublished": "2026-08-20",
+  "dateModified": "2026-08-20",
+  "author": { "@type": "Organization", "name": "Draco Labs Germany" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Draco Labs Germany",
+    "logo": { "@type": "ImageObject", "url": "https://dracolabsgermany.com/assets/logo.png" }
+  },
+  "mainEntityOfPage": "https://dracolabsgermany.com/ratgeber-nutzlast-gimbal.html",
+  "inLanguage": "de-DE"
+}
+</script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a href="index.html"><img src="assets/emblem.png" alt="Draco Labs Emblem"></a>
+    <div class="name">Draco Labs <small>Germany</small></div>
+    <input type="checkbox" id="menu-auf" class="menu-toggle">
+    <label for="menu-auf" class="burger" aria-label="Menü öffnen und schließen">
+      <span></span><span></span><span></span>
+    </label>
+    <nav>
+      <!-- <a href="index.html#baustelle">Baustelle</a> reaktivieren, wenn die Serie kurz vor Frame-Go-live released wird -->
+      <a href="leistungen.html">Leistungen</a>
+      <a href="index.html#neuigkeiten">Neuigkeiten</a>
+      <a href="index.html#ratgeber">Ratgeber</a>
+      <a href="index.html#teilelisten">Teilelisten</a>
+      <a href="index.html#ueber">Über uns</a>
+      <a href="index.html#partner">Partner</a>
+      <a href="index.html#kontakt">Kontakt</a>
+    </nav>
+    <a class="shop-btn" href="https://shop.dracolabsgermany.com" target="_blank" rel="noopener">Shop →</a>
+  </div>
+</header>
+
+<main class="legal">
+  <div class="wrap">
+
+    <h1>Was der Copter tragen kann</h1>
+    <p class="muted" style="font-size:17px; margin-top:-4px">Nutzlast, Sensorik und Bildstabilisierung: was ein Gimbal wirklich kostet, warum die dritte Achse die teuerste ist und wann ein fester Halter mit guter Dämpfung das bessere Bild liefert.</p>
+    <p class="muted">Ratgeber · Kamera &amp; Nutzlast · Lesezeit ca. 31 Min · Stand: August 2026</p>
+
+    <div data-nosnippet style="background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--cyan); border-radius:10px; padding:18px 20px; margin:22px 0">
+      <p style="margin:0 0 8px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; font-size:13px; color:var(--cyan)">Kurz gesagt</p>
+      <p style="margin:0"><strong>Nutzlast wird mehrfach bezahlt.</strong>  220&nbsp;g Kamera und Gimbal
+      sind an unserem 13-Zoll-Copter rund 7&nbsp;Prozent mehr Abfluggewicht, kosten aber nach der
+      Herstellertabelle rund 13&nbsp;Prozent mehr Schwebeleistung, weil der Motor gleichzeitig aus
+      seinem effizientesten Bereich wandert.  <strong>Gimbal und Dämpfung lösen verschiedene
+      Probleme:</strong> der Gimbal nimmt die langsame Fluglage heraus, die Dämpfung die schnelle
+      Vibration.  Wer das eine gegen das andere einsetzt, bekommt beides nicht.  <strong>Die dritte
+      Achse ist die teuerste.</strong>  Beim selben Hersteller, mit identischer Traglast, wiegt die
+      3-Achsen-Ausführung 240&nbsp;g und die 2-Achsen-Ausführung 180&nbsp;g: ein Drittel Mehrgewicht
+      allein für die Gierachse, die am wenigsten Bildfehler entfernt.  <strong>Elektronische
+      Stabilisierung kostet Bildwinkel statt Gramm</strong> und ist deshalb für leichte Builds fast
+      immer die richtige Wahl.  Und: eine Kamera an Bord macht dich <strong>registrierungspflichtig,
+      unabhängig vom Gewicht</strong>.</p>
+    </div>
+
+    <p>Über den <a href="ratgeber-carbon-frame.html">Frame</a>, die
+    <a href="ratgeber-motoren.html">Motoren</a>, den <a href="ratgeber-akku-13-zoll.html">Akku</a>
+    und die <a href="ratgeber-videouebertragung.html">Videoübertragung</a> haben wir bereits
+    ausführliche Ratgeber geschrieben.  Damit steht der Copter und das Bild kommt beim Piloten an.
+    Offen ist die Frage dazwischen: <em>was</em> hängt eigentlich unter dem Copter, und warum sieht
+    das Bild trotzdem aus, als würde es zittern?  Dieser Ratgeber behandelt die Nutzlast als das,
+    was sie technisch ist: eine Masse an einem Hebelarm, die Strom zieht, Bauhöhe braucht und die
+    Rechtsklasse des Fluggeräts verändert.  Und er behandelt die Bildstabilisierung als das, was
+    sie ist: zwei völlig verschiedene Verfahren, die dasselbe Wort im Namen tragen.</p>
+
+    <p><strong>Was dieser Artikel nicht behandelt:</strong> die Videoübertragung selbst, also die
+    Strecke <em>nach</em> der Kamera, steht vollständig im
+    <a href="ratgeber-videouebertragung.html">Ratgeber zur Videoübertragung</a>.  Die Kamerawahl
+    nach Bildqualität (Sensorgröße, Bitrate, Farbprofile) ist ein eigenes Thema und kommt später.
+    Flight Controller und ESC bekommen ebenfalls eigene Ratgeber; hier geht es nur um die
+    Schnittstelle, über die ein Gimbal angesteuert wird.  Vermessungs- und Fotogrammetrie-Abläufe
+    sind Anwendungsthemen, keine Bauteilthemen, und bleiben außen vor.</p>
+
+    <p><strong>Hinweis:</strong> Jede Zahl in diesem Text hat eine Fußnote, die auf eine nachprüfbare
+    Quelle zeigt.  Wo wir gerechnet statt gemessen haben, steht es ausdrücklich dabei.  Für den Fall,
+    dass wir einen Fehler gemacht haben, kontaktiert uns gerne jederzeit.</p>
+
+    <p class="muted" style="font-size:14px"><strong>Transparenz:</strong> Einige Produktlinks in
+    diesem Artikel sind Affiliate-Links und als (Anzeige) markiert.  Kaufst du darüber, erhalten
+    wir eine kleine Vergütung, für dich ändert sich am Preis nichts.  Empfohlen wird nur, was wir
+    fachlich begründen können, und die Begründung steht immer im Text.</p>
+
+    <h2 id="k1">1. Was Nutzlast wirklich kostet</h2>
+<!-- bild:start nutzlast-gimbal-schubkette -->
+<!-- bild:ende nutzlast-gimbal-schubkette -->
+    <p>Die naive Rechnung geht so: Der Copter hebt 5,8&nbsp;kg, er wiegt 3,2&nbsp;kg, also bleiben
+    2,6&nbsp;kg für die Nutzlast.  Diese Rechnung ist in jedem einzelnen Schritt richtig und im
+    Ergebnis wertlos, weil kein Multicopter bei Vollgas schwebt.  Was zählt, ist nicht der
+    Maximalschub, sondern die Frage, wie weit ein Motor bei Schwebeflug schon vom Gas ist und wie
+    teuer das nächste Gramm wird.</p>
+
+    <p>Nehmen wir Zahlen, die wir selbst verwenden.  Unser 13-Zoll-Aufbau nutzt vier T-Motor
+    MN4012 mit KV&nbsp;400 an 6S, dazu Propeller mit 13&nbsp;Zoll Durchmesser und 4,4&nbsp;Zoll
+    Steigung.  Die Prüfstandstabelle des Herstellers für genau diese Kombination bei 22,2&nbsp;V
+    liest sich so:<sup><a href="#q1">1</a></sup></p>
+
+    <table>
+    <tr><th>Gas</th><th>Schub je Motor</th><th>Strom</th><th>Leistung</th><th>Effizienz</th></tr>
+    <tr><td>50 %</td><td>740 g</td><td>3,7 A</td><td>82,14 W</td><td><strong>9,01 g/W</strong></td></tr>
+    <tr><td>65 %</td><td>850 g</td><td>4,8 A</td><td>106,56 W</td><td>7,98 g/W</td></tr>
+    <tr><td>75 %</td><td>1.040 g</td><td>6,0 A</td><td>133,20 W</td><td>7,81 g/W</td></tr>
+    <tr><td>85 %</td><td>1.260 g</td><td>7,9 A</td><td>175,38 W</td><td>7,18 g/W</td></tr>
+    <tr><td>100 %</td><td>1.450 g</td><td>9,4 A</td><td>208,68 W</td><td>6,95 g/W</td></tr>
+    </table>
+
+    <p>Die entscheidende Spalte ist die rechte.  Bei halbem Gas macht dieser Motor
+    9,01&nbsp;Gramm Schub aus jedem Watt, bei Vollgas nur noch 6,95&nbsp;Gramm.<sup><a href="#q1">1</a></sup>
+    Das ist keine Besonderheit dieses Motors, sondern gilt für Brushless-Antriebe allgemein und
+    steht ausführlicher im <a href="ratgeber-motoren.html">Motoren-Ratgeber</a>.  Für die Nutzlast
+    heißt es: <strong>jedes zusätzliche Gramm kostet nicht nur seinen eigenen Schub, sondern
+    verschiebt den gesamten Antrieb in einen schlechteren Wirkungsgrad.</strong>  Man bezahlt
+    zweimal.</p>
+
+    <p>Rechnen wir das durch.  Unser Aufbau kommt nach der Hochrechnung mit gewogenen Bauteilen auf
+    ein Abfluggewicht von rund 3.156&nbsp;g (eigene Messung und Hochrechnung, siehe
+    <a href="ratgeber-carbon-frame.html">Frame-Ratgeber</a> zur Bauweise).  Vier Motoren teilen sich
+    diese Last, also <strong>789&nbsp;g je Motor im Schwebeflug</strong> (unsere Rechnung:
+    3.156&nbsp;÷&nbsp;4).  Damit liegt der Copter zwischen der 50-Prozent- und der
+    65-Prozent-Zeile der Tabelle.</p>
+
+    <p>Jetzt hängen wir eine Nutzlast dran: einen kompakten 3-Achsen-Gimbal mit 164&nbsp;g<sup><a href="#q2">2</a></sup>
+    und ein Wärmebild-Sichtmodul mit 56&nbsp;g<sup><a href="#q3">3</a></sup>, zusammen
+    <strong>220&nbsp;g</strong>.  Das Abfluggewicht steigt auf 3.376&nbsp;g, der Schwebeschub je
+    Motor auf <strong>844&nbsp;g</strong> (unsere Rechnung).  Interpoliert man zwischen den beiden
+    Messpunkten der Herstellertabelle linear (die reale Kurve ist gekrümmt, die Interpolation ist
+    also eine Näherung und keine Messung), braucht ein Motor dafür rund 105,2&nbsp;W statt zuvor
+    93,0&nbsp;W.  Für alle vier zusammen: <strong>421&nbsp;W statt 372&nbsp;W</strong>.</p>
+
+    <p>Das Ergebnis ist der Kern dieses Kapitels.  Die Nutzlast wiegt <strong>knapp
+    7&nbsp;Prozent</strong> des Abfluggewichts, kostet aber <strong>rund 13&nbsp;Prozent</strong>
+    mehr Schwebeleistung (unsere Rechnung).  Bei gleichem Akku bedeutet das etwa
+    <strong>12&nbsp;Prozent weniger Flugzeit</strong>.  Wer also überlegt, ob die Kamera „doch noch
+    mit draufpasst", sollte nicht das Abfluggewicht vergleichen, sondern die Leistung im
+    Schwebeflug.</p>
+
+    <p>Für die Frage, wie viel Reserve überhaupt bleiben muss, gibt es eine gut belegte Kennzahl.
+    ArduPilot beschreibt den Schwebeflug-Gaswert als Parameter <code>MOT_THST_HOVER</code> und hält
+    fest, dass er „üblicherweise zwischen 0,2 und 0,6" liegt, bei sehr gutem
+    Leistungsgewicht auch darunter.<sup><a href="#q4">4</a></sup>  Als Startwert für das Einfliegen
+    empfiehlt die Dokumentation, den Parameter auf „0,25 oder darunter" zu setzen, also
+    bewusst vorsichtig.<sup><a href="#q5">5</a></sup>  Ein Copter, der bei 60&nbsp;Prozent Gas
+    schwebt, hat für Steuereingaben, Wind und Ausfälle kaum noch etwas übrig.  Genau dort landet
+    man, wenn Nutzlast ohne Nachrechnen dazukommt.</p>
+
+    <h2 id="k2">2. Der Schwerpunkt ist die härtere Grenze</h2>
+<!-- bild:start nutzlast-gimbal-schwerpunkt -->
+<!-- bild:ende nutzlast-gimbal-schwerpunkt -->
+    <p>Das vorige Kapitel hat so getan, als verteile sich die Last gleichmäßig auf vier Motoren.
+    Das tut sie fast nie.  Eine Kamera hängt vorn, ein Gimbal hängt vorn und unten, und beides sitzt
+    damit weit vor dem geometrischen Mittelpunkt des Copters.  Der Schwerpunkt wandert nach vorn,
+    und weil ein Multicopter waagerecht schweben will, müssen die vorderen Motoren dauerhaft mehr
+    leisten als die hinteren.</p>
+
+    <p>An unserem eigenen Aufbau haben wir das durchgerechnet, und die Zahlen sind unbequem.  Bei
+    der ursprünglich geplanten Akkulage lag die Schubverteilung zwischen Front und Heck bei
+    <strong>64,6 zu 35,4&nbsp;Prozent</strong>: die vorderen Motoren hätten 1.020&nbsp;g tragen
+    müssen, die hinteren nur 558&nbsp;g (eigene Rechnung aus gewogenen Bauteilen).  Der vordere
+    Motor arbeitet damit in einem völlig anderen Betriebspunkt als der hintere, verbraucht mehr,
+    wird wärmer und hat weniger Reserve für Steuereingaben.  Erst durch Verschieben des Akkus nach
+    hinten ließ sich die Verteilung auf etwa 54 zu 46&nbsp;Prozent bringen, und selbst das heißt
+    noch: die Frontmotoren leisten rund 17&nbsp;Prozent mehr als die hinteren.</p>
+
+    <p>Wichtig ist die richtige Deutung solcher Zahlen.  Wiegt man einen Rumpf auf zwei Waagen, um
+    den Schwerpunkt zu bestimmen, erhält man eine <em>Auflagerverteilung</em>.  Das ist nicht
+    dasselbe wie die Schubverteilung im Flug, auch wenn beide als Prozentpaar aussehen.  Die
+    Auflagerverteilung sagt nur, wo der Schwerpunkt entlang der Plattenlänge liegt; die
+    Schubverteilung ergibt sich erst aus dem Verhältnis von Schwerpunkt zu Motorpositionen.  Wer
+    beides verwechselt, hält einen kopflastigen Copter für ausgewogen.</p>
+
+    <p>Die praktisch wichtigste Erkenntnis aus unserer eigenen Rechnung ist aber eine andere:
+    <strong>Nutzlast lässt sich durch Verschieben leichter Bauteile kaum kompensieren.</strong>
+    Bei unserem Copter verschiebt eine 36&nbsp;g schwere Kamera, die um 100&nbsp;mm nach hinten
+    wandert, den Gesamtschwerpunkt um lediglich 1,1&nbsp;mm.  Die gesamte GPS-Baugruppe mit
+    60&nbsp;g über 230&nbsp;mm bringt 4,4&nbsp;mm.  Zum Vergleich: der Akku mit über 1.000&nbsp;g
+    verschiebt den Schwerpunkt um 0,35&nbsp;mm je Millimeter Eigenverschiebung.  <strong>Trimmen
+    kann man nur mit dem schwersten Bauteil</strong>, und das ist praktisch immer der Akku.  Kleine
+    Bauteile hin und her zu schieben, ist verlorene Zeit.</p>
+
+    <p>Daraus folgt eine Reihenfolge, die sich in der Praxis bewährt: Erst die Nutzlast festlegen,
+    dann den Akkuplatz konstruieren, nicht umgekehrt.  Wer den Akkuhalter fertig baut und danach
+    eine Kamera vorn anschraubt, hat keinen Freiheitsgrad mehr übrig.  Ein Gimbal, der ohnehin
+    unter dem Copter hängt, sollte so weit wie baulich möglich <em>hinter</em> der Vorderkante
+    sitzen, auch wenn das den nutzbaren Blickwinkel nach unten einschränkt.</p>
+
+    <h2 id="k3">3. Woher die Bildunruhe kommt</h2>
+<!-- bild:start nutzlast-gimbal-frequenzen -->
+<!-- bild:ende nutzlast-gimbal-frequenzen -->
+    <p>Bevor man über Stabilisierung redet, muss man sortieren, <em>was</em> genau stabilisiert
+    werden soll.  Ein unruhiges Copterbild hat zwei völlig verschiedene Ursachen, und sie werden
+    mit völlig verschiedenen Mitteln bekämpft.</p>
+
+    <p><strong>Erstens die Fluglage.</strong>  Ein Multicopter fliegt vorwärts, indem er sich nach
+    vorn neigt.  Er gleicht Wind aus, indem er sich neigt.  Jede Steuereingabe ist eine
+    Lageänderung.  Das sind langsame Bewegungen im Bereich von Bruchteilen einer Sekunde bis
+    einigen Sekunden, und sie sind physikalisch unvermeidbar: ohne Neigung kein Vortrieb.  Im Bild
+    erscheinen sie als Kippen des Horizonts und als Wandern des Bildausschnitts.</p>
+
+    <p><strong>Zweitens die Vibration.</strong>  Motoren drehen, Propeller schlagen Luft, der Rahmen
+    schwingt.  Das sind schnelle, periodische Anregungen im Bereich von etwa hundert bis mehreren
+    hundert Hertz.  Im Bild erscheinen sie nicht als Kippen, sondern als Zittern, als Unschärfe und
+    bei Kameras mit zeilenweisem Auslesen als wabernde Verzerrung (dazu Kapitel 8).</p>
+
+    <p>Die Frequenzen lassen sich benennen.  Betaflight leitet aus der Motordrehzahl die
+    Grundfrequenz ab, indem es die Drehzahl je Minute durch 60 teilt, und filtert zusätzlich deren
+    Oberwellen: in der Voreinstellung laufen zwölf Kerbfilter je Achse, die „die ersten drei
+    Oberwellen der Geräuschsignatur jedes Motors" abdecken.<sup><a href="#q6">6</a></sup>  Bei einem
+    Copter, dessen Motoren im Schwebeflug mit rund 5.000&nbsp;Umdrehungen je Minute laufen, liegt
+    die Grundfrequenz also bei rund 83&nbsp;Hz (unsere Rechnung: 5.000&nbsp;÷&nbsp;60).  Ein
+    Dreiblattpropeller schlägt bei jeder Umdrehung dreimal Luft, die sogenannte Blattfolgefrequenz
+    liegt damit bei rund 250&nbsp;Hz (unsere Rechnung).  Genau in diesem Bereich muss eine Dämpfung
+    wirken.</p>
+
+    <p>Warum ist die Trennung so wichtig?  Weil <strong>ein Gimbal die Vibration nicht wegnimmt und
+    eine Dämpfung die Fluglage nicht ausgleicht.</strong>  Ein Gimbal regelt Winkel; er ist ein
+    Lageregler mit einer Bandbreite, die weit unterhalb von 250&nbsp;Hz liegt.  Hochfrequente
+    Vibration geht durch ihn hindurch oder regt seine eigene Mechanik an.  Eine
+    Schwingungsdämpfung wiederum ist ein Feder-Masse-System; sie sperrt hohe Frequenzen, folgt aber
+    langsamen Lageänderungen praktisch ungehindert.  Wer einen Gimbal starr an einen vibrierenden
+    Rahmen schraubt, bekommt ein zitterndes Bild mit geradem Horizont.  Wer nur dämpft, bekommt ein
+    ruhiges Bild, das sich bei jeder Kurve mitneigt.</p>
+
+    <p>Deshalb ist die Reihenfolge in der Praxis immer dieselbe: <strong>zuerst die Vibration an
+    der Quelle reduzieren</strong> (ausgewuchtete Propeller, feste Motorverschraubung, steifer
+    Rahmen), <strong>dann dämpfen</strong>, <strong>und erst dann über Lagestabilisierung
+    reden</strong>.  Ein Gimbal auf einem schlecht gewuchteten Copter ist teures Gewicht.</p>
+
+    <h2 id="k4">4. Schwingungsdämpfung, und warum weicher nicht besser ist</h2>
+<!-- bild:start nutzlast-gimbal-daempfung -->
+<!-- bild:ende nutzlast-gimbal-daempfung -->
+    <p>Vibration lässt sich messen, und zwar bevor sie das Bild ruiniert.  Der Flight Controller
+    misst sie ohnehin, weil seine eigene Lageregelung darunter leidet.  ArduPilot nennt dafür
+    klare Grenzwerte: Werte <strong>unter 30&nbsp;m/s²</strong> sind „normalerweise akzeptabel",
+    oberhalb davon treten Probleme auf, und <strong>über 60&nbsp;m/s²</strong> gibt es „fast immer
+    Probleme" mit Positions- oder Höhenhaltung.<sup><a href="#q7">7</a></sup>  Zusätzlich zählt die
+    Software sogenannte Clipping-Ereignisse, bei denen der Beschleunigungssensor in die Begrenzung
+    läuft; ideal sind null, „niedrige Zahlen (unter 100)" gelten noch als in
+    Ordnung.<sup><a href="#q7">7</a></sup>  Diese Werte gelten dem Flight Controller, nicht der
+    Kamera, sind aber der beste verfügbare Indikator: ein Copter, dessen FC sauber liegt, hat auch
+    für die Kamera brauchbare Verhältnisse.</p>
+
+    <p>Für die Dämpfung selbst gilt eine Regel, die häufig missverstanden wird.  Die ArduPilot-
+    Dokumentation formuliert sie unmissverständlich: <strong>„zu viel ist genauso schlecht wie zu
+    wenig".</strong><sup><a href="#q8">8</a></sup>  Eine Dämpfung ist ein Feder-Masse-System, und
+    ein Feder-Masse-System hat eine Eigenfrequenz.  Liegt diese Eigenfrequenz zufällig in der Nähe
+    der Anregung, verstärkt die Dämpfung die Schwingung, statt sie zu sperren.  Eine sehr weiche
+    Aufhängung mit einer leichten Nutzlast hat eine niedrige Eigenfrequenz und beginnt bei
+    langsamen Manövern zu schaukeln.  Eine harte Aufhängung sperrt gar nichts.</p>
+
+    <p>Der entscheidende Zusammenhang ist deshalb <strong>die Abstimmung zwischen Dämpfungsmaterial
+    und der Masse, die es tragen soll</strong>.  Die Dokumentation weist ausdrücklich darauf hin,
+    dass „die Menge und Art des Dämpfungsmediums sorgfältig auf das Gewicht (die Masse) des zu
+    isolierenden Teils abgestimmt werden muss".<sup><a href="#q8">8</a></sup>  Und sie nennt eine
+    Falle, die praktisch jeden betrifft, der fertige Dämpfer kauft: „praktisch alle
+    Standardlösungen sind für eine isolierte Masse ausgelegt, die mindestens das Fünf- bis
+    Zehnfache eines durchschnittlichen Autopiloten wiegt", um optimal zu
+    wirken.<sup><a href="#q8">8</a></sup>  Fertige Gummipuffer aus dem Modellbauhandel sind also
+    fast immer für schwerere Lasten gedacht, als man ihnen tatsächlich aufbürdet, und arbeiten
+    deshalb im falschen Bereich.</p>
+
+    <p>An Materialien nennt die Dokumentation geschäumte Klebepads, Gelbänder, gedruckte
+    Dämpfungsplattformen, O-Ring-Aufhängungen und Schaumstoff-Ohrstöpsel als praktikable Lösungen;
+    bei Gelen wird vor Versagen durch Hitze gewarnt.<sup><a href="#q8">8</a></sup>  Und sie enthält
+    einen unscheinbaren, aber sehr praktischen Hinweis: Man solle darauf achten, dass ein
+    Spanngurt „das Bauteil nicht so fest niederhält, dass er die Dämpfungswirkung der Pads
+    behindert".<sup><a href="#q8">8</a></sup>  Genau das passiert regelmäßig: sauber gedämpft
+    montiert, dann mit einem Klettband stramm festgezogen und damit die Dämpfung überbrückt.</p>
+
+    <p>Für Kameranutzlast heißt das konkret: Die Dämpfung gehört <em>zwischen</em> Rahmen und
+    Kamerahalter, sie muss auf das Gewicht genau dieser Kamera abgestimmt sein, und nichts darf sie
+    kurzschließen: kein straffes Kabel, kein Klettband, keine zusätzliche Strebe „zur Sicherheit".
+    Ein Kabel, das steif genug ist, Schwingung zu übertragen, ist ein Teil der Aufhängung, ob man
+    es so plant oder nicht.</p>
+
+    <h2 id="k5">5. Der mechanische Gimbal</h2>
+<!-- bild:start nutzlast-gimbal-aufbau -->
+<!-- bild:ende nutzlast-gimbal-aufbau -->
+    <p>Ein Gimbal ist eine kardanische Aufhängung: die Kamera sitzt in einem Rahmen, der sich um
+    eine oder mehrere Achsen drehen kann, und Motoren halten sie gegen die Bewegung des Copters in
+    der gewünschten Lage.  Die heute übliche Bauart nutzt bürstenlose Motoren im Direktantrieb
+    (Fachwort: Brushless Gimbal), also ohne Getriebe zwischen Motor und Achse.</p>
+
+    <p>Der Hersteller der am weitesten verbreiteten offenen Gimbal-Steuerung beschreibt das Prinzip
+    so: Jede Drehachse verläuft „durch den Schwerpunkt des Systems aus Kamera und Rahmen" und ist
+    starr mit dem Motor verbunden.<sup><a href="#q9">9</a></sup>  Dieser Satz ist die wichtigste
+    Bauvorschrift überhaupt.  <strong>Ein Gimbal muss ausbalanciert werden</strong>, und zwar so,
+    dass die Kamera in jeder Lage von selbst stehen bleibt.  Ist sie das nicht, muss der Motor
+    dauerhaft ein Haltemoment aufbringen, zieht Strom, wird warm, und die Regelung verliert genau
+    die Reserve, die sie für schnelle Störungen bräuchte.  Wer eine Kamera tauscht und die Balance
+    nicht neu einstellt, hat effektiv einen anderen Gimbal.</p>
+
+    <p>Die Regelung selbst arbeitet mit einer Lagesensorik direkt an der Kamera: Gyroskope und
+    Beschleunigungssensoren sind „auf der Kameraplattform montiert" und liefern die Winkel, die
+    ausgeregelt werden.<sup><a href="#q9">9</a></sup>  Optional kommt ein zweiter Sensor am Rahmen
+    hinzu, dessen Daten die Steuerung gleichzeitig auswertet, um genauer zu
+    stabilisieren.<sup><a href="#q9">9</a></sup>  Das ist ein wesentlicher Unterschied zur
+    elektronischen Stabilisierung: Der Gimbal misst dort, wo die Kamera wirklich ist, und schließt
+    den Regelkreis mechanisch.</p>
+
+    <p>Zwei bauartbedingte Vorteile ergeben sich daraus.  Erstens gibt es im Direktantrieb „kein
+    Spiel, wie es Zahnrädern oder Riemen eigen ist"<sup><a href="#q9">9</a></sup>  Ein
+    Getriebegimbal hat immer ein Losbrechmoment und ein Umkehrspiel, und beides sieht man im Bild.
+    Zweitens braucht diese Bauart laut Hersteller „keine komplexen und teuren hochauflösenden
+    Encoder für jede Achse", weil die kleine Sensorplatine auf der Kameraplattform
+    genügt.<sup><a href="#q9">9</a></sup>  Das erklärt, warum brauchbare Gimbals überhaupt
+    bezahlbar geworden sind.  In der Oberklasse werden Encoder trotzdem verbaut, weil sie die
+    Regelgüte und das Verhalten beim Anfahren von Endlagen verbessern.</p>
+
+    <p>Wie gut das Ergebnis ist, geben Hersteller als Restwinkelfehler an.  Kompakte Modelle für
+    UAS-Einsatz nennen einen Winkelvibrationsbereich von <strong>±&nbsp;0,01°</strong> beim
+    3-Achsen-Modell<sup><a href="#q2">2</a></sup> und <strong>±&nbsp;0,02°</strong> beim
+    2-Achsen-Modell derselben Baureihe.<sup><a href="#q10">10</a></sup>  Das sind
+    Herstellerangaben; wir haben sie nicht nachgemessen.  Als Größenordnung sagen sie aber
+    Wesentliches: die Restbewegung liegt deutlich unter dem, was ein einzelnes Bildpixel bei
+    üblichen Brennweiten abdeckt.  Ein sauber gebauter und ausbalancierter Gimbal ist mechanisch
+    dem Bild überlegen, das er trägt.</p>
+
+    <h2 id="k6">6. Zwei Achsen oder drei, und was die dritte kostet</h2>
+<!-- bild:start nutzlast-gimbal-achsen -->
+<!-- bild:ende nutzlast-gimbal-achsen -->
+    <p>Das ist die Frage, um die es in der Praxis geht, und sie wird meistens falsch gestellt.
+    „Drei Achsen sind besser als zwei" ist keine Antwort, sondern eine Preisangabe.  Interessant
+    ist, <em>welchen Bildfehler</em> jede Achse entfernt.</p>
+
+    <p>Die drei Achsen heißen Nick (Pitch, Blick nach oben und unten), Roll (Rollen, Kippen des
+    Horizonts) und Gier (Yaw, Drehung um die Hochachse, also die Blickrichtung).  Ihre Wirkung auf
+    das Bild ist sehr unterschiedlich:</p>
+
+    <table>
+    <tr><th>Achse</th><th>Was sie im Bild entfernt</th><th>Nachträglich korrigierbar?</th></tr>
+    <tr><td><strong>Roll</strong></td><td>schiefer Horizont beim Kurvenflug</td><td>ja, aber mit Beschnitt</td></tr>
+    <tr><td><strong>Nick</strong></td><td>Auf- und Abwandern des Ausschnitts beim Beschleunigen</td><td>ja, aber mit Beschnitt</td></tr>
+    <tr><td><strong>Gier</strong></td><td>Wandern der Blickrichtung beim Drehen</td><td>nur eingeschränkt</td></tr>
+    </table>
+
+    <p>Nick und Roll sind die beiden Achsen, die den Bildinhalt <em>innerhalb</em> der Szene
+    verschieben.  Die Gierachse dagegen bestimmt, <em>wohin</em> die Kamera überhaupt schaut.  Genau
+    daraus folgt der oft übersehene Punkt: <strong>Für ein ruhiges Bild aus fester Blickrichtung
+    braucht man die Gierachse nicht.</strong>  Für eine Kamera, die unabhängig von der Flugrichtung
+    ein Objekt verfolgen soll, braucht man sie zwingend.</p>
+
+    <p>Diese Einordnung ist nicht unsere Erfindung, sie steckt in den offenen Standards selbst.  Die
+    MAVLink-Spezifikation, der gemeinsame Nenner nahezu aller Flight Controller, führt die Achsen
+    als getrennt <em>optionale</em> Fähigkeiten eines Gimbals: Es gibt eigene Kennzeichen dafür, ob
+    ein Gerät „das Drehen um die Roll-Achse", „um die Nick-Achse" beziehungsweise „um die
+    Gier-Achse" unterstützt.<sup><a href="#q11">11</a></sup>  Ein Gimbal mit zwei Achsen ist damit
+    kein unvollständiges Gerät, sondern eine vorgesehene Bauform.</p>
+
+    <p>Noch deutlicher wird es beim Blick darauf, wie ein Gimbal <em>angesteuert</em> wird.  Der
+    zentrale Befehl in ArduPilot heißt <code>MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW</code> und bewegt
+    den Gimbal „auf gewünschte Nick-/Gier-Winkel oder -Raten".<sup><a href="#q12">12</a></sup>  Die
+    Roll-Achse taucht im Namen dieses Befehls überhaupt nicht auf, und das ist kein Versehen: In der
+    MAVLink-Spezifikation ist das Rollen als <em>Stabilisierungs</em>-Achse definiert.  Das
+    entsprechende Kennzeichen beschreibt, den Rollwinkel „auf einen absoluten Winkel relativ zum
+    Horizont" festzuhalten, und hält ausdrücklich fest: „das ist im Allgemeinen die Voreinstellung
+    bei einem stabilisierenden Gimbal".<sup><a href="#q11">11</a></sup>  Dieselbe Formulierung
+    verwendet die Spezifikation für die Nick-Achse.<sup><a href="#q11">11</a></sup></p>
+
+    <p>Anders gesagt: <strong>Roll und Nick sind primär dazu da, das Bild ruhig zu halten; die
+    Gierachse ist primär dazu da, es zu richten.</strong>  Für ein reines Kamerabild aus der
+    Flugrichtung ist die dritte Achse die mit dem geringsten Nutzen je Gramm.</p>
+
+    <p>Und die Gramm lassen sich beziffern, weil es Hersteller gibt, die dieselbe Baureihe in
+    beiden Ausführungen anbieten.  Bei einem kompakten UAS-Gimbal wiegt die 3-Achsen-Ausführung
+    <strong>240&nbsp;g</strong><sup><a href="#q13">13</a></sup>, die 2-Achsen-Ausführung
+    <strong>180&nbsp;g</strong><sup><a href="#q10">10</a></sup>, und beide tragen laut Datenblatt
+    dieselbe Nutzlast von 400&nbsp;g.<sup><a href="#q13">13</a></sup><sup><a href="#q10">10</a></sup>
+    Die dritte Achse kostet hier also <strong>60&nbsp;g, ein Drittel mehr Eigengewicht</strong>
+    (unsere Rechnung: 240&nbsp;÷&nbsp;180), ohne die Traglast zu erhöhen.  Rechnet man diese
+    60&nbsp;g mit dem Ansatz aus Kapitel 1 hoch, kosten sie an unserem Copter rund
+    3,6&nbsp;Prozent Schwebeleistung (unsere Rechnung), und zwar für eine Funktion, die ein Bild aus fester
+    Blickrichtung nicht ruhiger macht.</p>
+
+    <p>Die 2-Achsen-Ausführung hat dabei durchaus brauchbare Stellbereiche: Nick ±&nbsp;127° und
+    Roll ±&nbsp;60°.<sup><a href="#q10">10</a></sup>  Die Blickrichtung ändert man bei so einem
+    Aufbau, indem man den ganzen Copter dreht.  Für Filmaufnahmen aus der Bewegung ist das ohnehin
+    die natürlichere Bewegung; für Inspektionsflüge, bei denen der Copter stehen bleiben und die
+    Kamera schwenken soll, ist es ein echter Nachteil.</p>
+
+    <p><strong>Vorsicht bei der Bezeichnung.</strong>  „3-Achsen" auf der Verpackung heißt nicht
+    zwingend, dass alle drei Achsen aktiv geregelt werden.  Manche Geräte führen eine Achse nur
+    mechanisch mit oder erlauben sie nur als Voreinstellung.  Der verlässliche Test ist nicht das
+    Marketing, sondern das Datenblatt: Gibt es für jede Achse einen <em>Stellbereich</em> und einen
+    <em>Motor</em>?  In der Flight-Controller-Konfiguration entspricht dem je Achse ein eigenes
+    Parameterpaar für Minimal- und Maximalwinkel, etwa <code>MNT1_ROLL_MIN</code> und
+    <code>MNT1_ROLL_MAX</code>, jeweils in Grad.<sup><a href="#q14">14</a></sup>  Was dort keinen
+    sinnvollen Bereich hat, wird auch nicht geregelt.</p>
+
+    <h2 id="k7">7. Elektronische Stabilisierung</h2>
+<!-- bild:start nutzlast-gimbal-eis -->
+<!-- bild:ende nutzlast-gimbal-eis -->
+    <p>Die elektronische Bildstabilisierung (Fachwort: EIS, Electronic Image Stabilization) löst
+    dasselbe Problem ohne bewegte Teile.  Das Verfahren ist im Kern einfach: Die Kamera nimmt ein
+    größeres Bild auf, als sie am Ende ausgibt, und verschiebt den ausgegebenen Ausschnitt von Bild
+    zu Bild so, dass die Bewegung herausfällt.</p>
+
+    <p>Ein Sensorhersteller beschreibt es knapp: EIS „beschneidet jedes einzelne Bild intelligent
+    auf Basis von Bewegungssensordaten, um Bildunruhe zu reduzieren".<sup><a href="#q15">15</a></sup>
+    Der entscheidende Halbsatz ist „auf Basis von Bewegungssensordaten": Moderne EIS rät die
+    Bewegung nicht aus dem Bildinhalt, sondern liest sie aus einem Gyroskop.  Damit funktioniert
+    sie auch dort, wo Bildinhalt-basierte Verfahren scheitern: bei gleichförmigen Flächen, bei
+    Nacht, bei bewegten Objekten im Bild.</p>
+
+    <p>Der Preis ist immer derselbe: <strong>Bildwinkel</strong>.  Was am Rand für die Verschiebung
+    reserviert wird, steht als Bild nicht mehr zur Verfügung.  Eine Untersuchung zu
+    gyroskopgestützter Videostabilisierung beschreibt genau dieses Vorgehen: Nach dem Ausgleich
+    entstehen „schwarze Bereiche nahe den Bildrändern", die „durch Beschneiden entfernt werden"
+    können, und eine einfache Lösung bestehe darin, „den Beschnittfaktor größer zu wählen als die
+    maximal erwartete Bildbewegung".<sup><a href="#q16">16</a></sup>  Je unruhiger der Flug, desto
+    mehr Rand muss man opfern.</p>
+
+    <p>Genau daraus ergibt sich die Kernabwägung dieses Ratgebers.  <strong>Ein Gimbal kostet
+    Gewicht und Strom, aber keinen Bildwinkel.  EIS kostet Bildwinkel, aber kein Gewicht und
+    praktisch keinen Strom.</strong>  Bei einem Copter, dessen Nutzlastbudget knapp ist, ist das
+    fast immer die günstigere Währung, zumal ein Weitwinkelobjektiv Reserve im Bildwinkel ohnehin
+    im Überfluss hat.</p>
+
+    <p>Eine zweite Eigenschaft von EIS wird oft übersehen: Sie arbeitet <em>rückwärts</em>.  Die
+    Bewegung wird gemessen und danach im Bild kompensiert; es gibt keinen mechanischen Regelkreis,
+    der zu langsam sein könnte.  Dafür hat sie eine andere Schwäche.  Die Kamerarotation wird durch
+    Integration der Gyroskopmessungen bestimmt, und diese Messung enthält systematisch
+    <strong>Drift und Rauschen</strong>.<sup><a href="#q16">16</a></sup>  Über kurze Zeiträume ist
+    das unerheblich; über lange Aufnahmen wandert ein rein gyroskopgestützt gehaltener Horizont
+    langsam weg, wenn ihn nicht ein Beschleunigungssensor nachführt.  Ein mechanischer Gimbal hat
+    dasselbe Problem und löst es genauso: mit Gyroskop <em>und</em> Beschleunigungssensor auf der
+    Kameraplattform.<sup><a href="#q9">9</a></sup></p>
+
+    <p>Für den Selbstbau interessant ist, dass EIS nicht in der Kamera stattfinden muss.  Freie
+    Werkzeuge stabilisieren Videos nachträglich am Rechner „unter Verwendung von Bewegungsdaten
+    eines Gyroskops und optional eines Beschleunigungssensors".<sup><a href="#q17">17</a></sup>
+    Liefert die Kamera selbst keine Bewegungsdaten, lassen sich diese von einem separaten Gerät
+    aufzeichnen.  Ausdrücklich genannt wird der Flight
+    Controller.<sup><a href="#q17">17</a></sup>  Damit wird aus einer Blackbox-Aufzeichnung, die man
+    ohnehin für die Fehlersuche mitschreibt, die Datengrundlage der Bildstabilisierung.  Diese
+    Werkzeuge bieten außerdem eine „adaptive Zoomstufe (dynamischer Beschnitt)" mit einstellbarer
+    Grenze<sup><a href="#q17">17</a></sup>, beschneiden also nur so viel, wie die jeweilige Passage
+    wirklich braucht.</p>
+
+    <p>Der Nachteil dieses Weges ist ehrlich zu benennen: Er wirkt erst nach dem Flug.  Das
+    Livebild in der Brille bleibt unruhig, und wer nach dem Bild fliegt, fliegt nach dem
+    unstabilisierten.</p>
+
+    <h2 id="k8">8. Rolling Shutter: die Grenze, an der EIS aufhört</h2>
+<!-- bild:start nutzlast-gimbal-rollingshutter -->
+<!-- bild:ende nutzlast-gimbal-rollingshutter -->
+    <p>Es gibt einen Bildfehler, bei dem der mechanische Gimbal dem elektronischen Verfahren
+    grundsätzlich überlegen ist, und er hat mit der Bauart heutiger Bildsensoren zu tun.</p>
+
+    <p>Fast alle Kameras in Coptern nutzen CMOS-Sensoren mit zeilenweisem Auslesen (Fachwort:
+    Rolling Shutter).  Ein Kamerahersteller beschreibt das Verfahren so: Solche Sensoren „lesen die
+    Bilddaten Zeile für Zeile" aus, und „aus Effizienzgründen gibt es einen zeitlichen Versatz
+    zwischen den Start- und Endzeiten der Belichtung jeder Zeile".<sup><a href="#q18">18</a></sup>
+    Die Folge: „Durch die zeitliche Verzögerung bei der Belichtung der einzelnen Zeilen wird
+    dieser zeitliche Versatz auch im zusammengesetzten Bild in Form von Verzerrungen
+    sichtbar."<sup><a href="#q18">18</a></sup></p>
+
+    <p>Ein Sensorhersteller aus der industriellen Bildverarbeitung formuliert dieselbe Physik noch
+    schärfer: Rolling-Shutter-Sensoren „verzerren Bilder bewegter Objekte, weil sie immer nur eine
+    Zeile ihres Arrays auf einmal auslesen; bis sie die nächste Zeile lesen, hat sich das Objekt
+    bewegt".<sup><a href="#q19">19</a></sup>  Ein Global Shutter dagegen „startet und stoppt die
+    Belichtung aller Pixel eines Arrays gleichzeitig, elektronisch
+    gesteuert".<sup><a href="#q19">19</a></sup></p>
+
+    <p>Warum ist das für Copter so relevant?  Weil ein vibrierender Copter die Kamera genau
+    während dieses zeilenweisen Auslesens bewegt.  Jede Bildzeile wird aus einer minimal anderen
+    Kameralage aufgenommen.  Das Ergebnis ist kein verschobenes, sondern ein <em>in sich
+    verzerrtes</em> Bild: gerade Objekte werden wellig, senkrechte Kanten wackeln.  In der
+    FPV-Szene heißt der Effekt Jello, nach dem Wackelpudding.</p>
+
+    <p>Und hier liegt der grundsätzliche Unterschied.  <strong>Eine Verschiebung des
+    Bildausschnitts kann eine Verzerrung innerhalb des Bildes nicht rückgängig machen.</strong>
+    Einfache EIS verschiebt den Ausschnitt und lässt das Wabern stehen.  Anspruchsvollere Verfahren
+    korrigieren den Rolling Shutter ausdrücklich mit: freie Stabilisierungswerkzeuge führen
+    „Rolling-Shutter-Korrektur" als eigenes Merkmal.<sup><a href="#q17">17</a></sup>  Das
+    funktioniert, weil man mit bekannter Auslesezeit und bekannter Drehrate jede Zeile einzeln
+    zurückrechnen kann.  Es bleibt aber eine Rekonstruktion aus bereits verzerrten Daten.</p>
+
+    <p>Ein mechanischer Gimbal hat dieses Problem gar nicht erst, weil er die Kamera <em>während</em>
+    der Belichtung ruhig hält.  Es wird nichts zurückgerechnet, weil nichts verzerrt wurde.  Wer
+    lange Brennweiten fliegt oder Aufnahmen für Vermessung und Auswertung macht, wo geometrische
+    Treue zählt, hat hier ein sachliches Argument für den Gimbal, das sich nicht mit Software
+    ausgleichen lässt.</p>
+
+    <p>Der praktische Hebel für alle anderen bleibt Kapitel 3 und 4: Jello ist zuerst ein
+    Vibrationsproblem.  Ausgewuchtete Propeller und eine passende Dämpfung entfernen die Ursache;
+    jede Form von Stabilisierung behandelt nur die Folge.</p>
+
+    <h2 id="k9">9. Gimbal gegen EIS: der ehrliche Vergleich</h2>
+<!-- bild:start nutzlast-gimbal-vergleich -->
+<!-- bild:ende nutzlast-gimbal-vergleich -->
+    <p>Stellen wir die belegten Zahlen nebeneinander.  Die Gimbal-Spalte nutzt einen kompakten
+    3-Achsen-Gimbal für UAS-Einsatz als Beispiel; die Werte sind Herstellerangaben, die wir nicht
+    nachgemessen haben.</p>
+
+    <table>
+    <tr><th>Kriterium</th><th>Mechanischer Gimbal</th><th>Elektronische Stabilisierung</th></tr>
+    <tr><td>Zusatzgewicht</td><td>164 g (3 Achsen, kompakt)<sup><a href="#q2">2</a></sup> bis 240 g<sup><a href="#q13">13</a></sup></td><td>keines</td></tr>
+    <tr><td>Stromaufnahme</td><td>4,5–6 W im Mittel, 12 W Spitze<sup><a href="#q2">2</a></sup></td><td>keine nennenswerte</td></tr>
+    <tr><td>Bildwinkel</td><td>voll erhalten</td><td>Beschnitt am Rand nötig<sup><a href="#q16">16</a></sup></td></tr>
+    <tr><td>Rolling Shutter / Jello</td><td>entsteht gar nicht erst</td><td>nur rechnerisch korrigierbar<sup><a href="#q17">17</a></sup></td></tr>
+    <tr><td>Blickrichtung schwenkbar</td><td>ja, mit Gierachse</td><td>nein</td></tr>
+    <tr><td>Bauhöhe unter dem Copter</td><td>erheblich, landeabhängig</td><td>keine</td></tr>
+    <tr><td>Ausfallverhalten</td><td>Mechanik kann klemmen oder brechen</td><td>Software, kein mechanischer Ausfall</td></tr>
+    <tr><td>Balance nötig</td><td>ja, bei jedem Kameratausch<sup><a href="#q9">9</a></sup></td><td>nein</td></tr>
+    <tr><td>Wirkt im Livebild</td><td>ja</td><td>je nach Kamera; Nachbearbeitung erst später<sup><a href="#q17">17</a></sup></td></tr>
+    </table>
+
+    <p>Die Zeile, die in der Praxis am häufigsten unterschätzt wird, ist die Bauhöhe.  Ein Gimbal
+    hängt unter dem Copter und braucht Bodenfreiheit; kompakte Modelle bauen rund
+    7&nbsp;cm hoch.<sup><a href="#q20">20</a></sup>  Das bedeutet höhere Landebeine, mehr Hebel beim
+    Aufsetzen, ein größeres Transportmaß und ein exponiertes Bauteil bei jeder harten Landung.  Wer
+    ein Fluggerät baut, das auch mal auf unebenem Gelände abgesetzt wird, kauft mit dem Gimbal auch
+    ein Fahrwerksproblem.</p>
+
+    <p>Die zweite unterschätzte Zeile ist die Stromaufnahme.  4,5 bis 6&nbsp;W im Mittel klingen
+    neben mehreren hundert Watt Antriebsleistung nach nichts.  Sie fließen aber unabhängig vom
+    Flugzustand, auch am Boden bei laufendem System, und sie kommen zum Mehrverbrauch durch das
+    Gewicht noch hinzu.</p>
+
+    <p><strong>Unsere Einordnung:</strong> Für einen Copter, der ein Bild aus der Flugrichtung
+    liefern soll, gewinnt die elektronische Stabilisierung deutlich.  Sie kostet die Währung
+    (Bildwinkel), von der ein Weitwinkelaufbau reichlich hat, und nicht die (Gewicht und Strom),
+    von der er zu wenig hat.  Sobald die Blickrichtung unabhängig vom Flugweg sein muss, sobald
+    lange Brennweiten im Spiel sind oder geometrische Treue gefordert ist, dreht sich das
+    Verhältnis, und der Gimbal ist ohne Alternative.</p>
+
+    <h2 id="k10">10. Sensorik jenseits der Kamera</h2>
+<!-- bild:start nutzlast-gimbal-sensorik -->
+<!-- bild:ende nutzlast-gimbal-sensorik -->
+    <p>Nutzlast ist nicht nur Kamera.  Drei Klassen begegnen einem regelmäßig, und alle drei haben
+    Anforderungen, die über das Gewicht hinausgehen.</p>
+
+    <p><strong>Wärmebild.</strong>  Thermalmodule für UAS sind erstaunlich leicht geworden: Ein
+    kombiniertes Modul mit 640×512 Thermalauflösung und einer 64-Megapixel-Sichtkamera wiegt
+    56&nbsp;g und nimmt im stationären Betrieb rund 1,8&nbsp;W auf.<sup><a href="#q3">3</a></sup>
+    Das Gewicht ist damit selten das Problem.  Zwei andere Dinge sind es: Ein Wärmebildmodul liefert
+    einen zweiten Videostrom, der übertragen oder aufgezeichnet werden muss, und ein
+    radiometrisches Modul (also eines, das echte Temperaturen misst statt nur Falschfarben zu
+    zeigen) verlangt eine ungestörte Sicht ohne Fensterscheibe davor.</p>
+
+    <p><strong>Entfernungsmessung nach unten.</strong>  Laser- und Ultraschallsensoren melden dem
+    Flight Controller den Abstand zum Boden.  ArduPilot nutzt nach unten gerichtete
+    Entfernungsmesser „automatisch in Flugmodi mit Höhenregelung, etwa Altitude Hold, Loiter und
+    PosHold".<sup><a href="#q21">21</a></sup>  Weitere Anwendungen sind Präzisionslandung,
+    Geländefolgeflug und Hindernisvermeidung; die Anbindung läuft je nach Gerät über I²C, analog,
+    serielle Schnittstellen oder DroneCAN.<sup><a href="#q21">21</a></sup>  Für Kameraflüge ist
+    das mehr als Komfort: Ein Copter, der seine Höhe über Grund kennt, hält Aufnahmeabstände
+    konstant.</p>
+
+    <p><strong>Hochgenaue Positionierung.</strong>  Für Vermessung reicht normales GNSS nicht.  Mit
+    zwei GNSS-Empfängern lässt sich zusätzlich die Ausrichtung bestimmen (Fachwort: Moving
+    Baseline), was laut ArduPilot „die Notwendigkeit eines Kompasses beseitigt, der unter
+    magnetischer Störung leiden kann".<sup><a href="#q22">22</a></sup>  Das ist gerade auf
+    Carbon-Rahmen mit starken Motorströmen ein echtes Argument, siehe auch unseren
+    <a href="ratgeber-funk-kommunikation.html">Ratgeber zu Funk und GPS</a>.  Die Anforderung ist
+    handfest: „Zwei Antennen sind in jedem Fall erforderlich", und sie „müssen am Fluggerät
+    mindestens 30&nbsp;cm voneinander entfernt sein".<sup><a href="#q22">22</a></sup>  An einem
+    13-Zoll-Copter ist das eine Konstruktionsaufgabe, nicht nur eine
+    Beschaffungsentscheidung.  Zur Kontrolle nennt die Dokumentation ein klares Kriterium: Der
+    zweite Empfänger muss den Fixtyp 6 (Fixed RTK) melden, und der gemeldete Abstand zwischen den
+    Modulen muss zum tatsächlichen „innerhalb von 20&nbsp;Prozent"
+    passen.<sup><a href="#q22">22</a></sup></p>
+
+    <p>Allen drei Klassen gemeinsam ist etwas, das man bei der Planung leicht übersieht: Sie
+    brauchen nicht nur Platz und Strom, sondern <strong>Schnittstellen am Flight Controller</strong>,
+    und die sind an kompakten Stacks knapp.  Wer Gimbal, Entfernungsmesser und zweiten
+    GNSS-Empfänger zusammen plant, sollte die freien seriellen Anschlüsse zählen, bevor er
+    bestellt.</p>
+
+    <h2 id="k11">11. Wie ein Gimbal an den Flight Controller kommt</h2>
+<!-- bild:start nutzlast-gimbal-anbindung -->
+<!-- bild:ende nutzlast-gimbal-anbindung -->
+    <p>Es gibt zwei grundsätzlich verschiedene Wege, einen Gimbal anzusteuern, und der Unterschied
+    entscheidet darüber, was später möglich ist.</p>
+
+    <p><strong>Weg eins: der Flight Controller stabilisiert selbst.</strong>  Bei einfachen,
+    servogetriebenen Gimbals übernimmt die Flugsoftware die Regelung und gibt Winkel als
+    PWM-Signale aus.  ArduPilot unterscheidet das ausdrücklich von der zweiten Bauart: Unterstützt
+    werden „bürstenlose Direktantriebs-Gimbals, die eigene Stabilisierungsregler besitzen, und die
+    einfacheren servogetriebenen Gimbals, bei denen ArduPilot die Stabilisierung
+    übernimmt".<sup><a href="#q23">23</a></sup>  Der Vorteil ist Einfachheit und Preis; der
+    Nachteil ist, dass die Regelgüte an der Rechenzeit und der Sensorlage des Flight Controllers
+    hängt, der nicht auf der Kamera sitzt.</p>
+
+    <p><strong>Weg zwei: der Gimbal regelt selbst, der Flight Controller richtet ihn nur aus.</strong>
+    Das ist die heute übliche Bauart und der Grund, warum ein Protokoll gebraucht wird.  MAVLink
+    trennt dafür zwei Rollen: das <em>Gimbal Device</em> ist „die eigentliche Hardware und
+    Low-Level-Software", der <em>Gimbal Manager</em> ist die Software, die „Befehle aus mehreren
+    Quellen entflicht und die Fähigkeiten des Geräts abstrahiert".<sup><a href="#q24">24</a></sup>
+    Der Manager hat dabei „eine 1:1-Beziehung zu einem bestimmten Gimbal Device und ist die einzige
+    Partei im MAVLink-Netz, die dieses Gerät direkt kommandieren
+    darf".<sup><a href="#q24">24</a></sup></p>
+
+    <p>Diese Trennung klingt akademisch, löst aber ein reales Problem: Ohne sie würden Fernsteuerung
+    und Bodenstation gleichzeitig widersprüchliche Befehle an denselben Gimbal schicken.  PX4
+    setzt dasselbe Modell um und arbeitet dabei „als Gimbal Manager", der hochrangige MAVLink-
+    Befehle entgegennimmt und für das Gerät übersetzt.<sup><a href="#q25">25</a></sup>  Konfiguriert
+    wird getrennt nach Eingang (woher die Befehle kommen: Fernsteuerung, Bodenstation oder
+    automatische Umschaltung) und Ausgang (wie mit dem Gimbal gesprochen wird).<sup><a href="#q25">25</a></sup></p>
+
+    <p>Praktisch heißt das für den Aufbau: Ein Gimbal, der das MAVLink-Gimbal-Protokoll spricht,
+    hängt an einem freien seriellen Anschluss und ist danach über die Bodenstation, die
+    Fernsteuerung und über Missionsbefehle erreichbar.  Kompakte UAS-Gimbals geben dafür als
+    Schnittstellen typischerweise „USB 2.0, UART, SBus" an und weisen die Unterstützung des
+    Gimbal-MAVLink-Protokolls ausdrücklich aus.<sup><a href="#q2">2</a></sup>  Ein Gimbal, der nur
+    PWM versteht, bleibt auf das beschränkt, was sich über einen Kanal der Fernsteuerung
+    einstellen lässt.</p>
+
+    <p>Was dadurch möglich wird, geht über das Schwenken hinaus.  ArduPilot kennt für den Gimbal
+    unter anderem Zielmodi, die auf einen geografischen Punkt zeigen
+    (<code>MAV_CMD_DO_SET_ROI_LOCATION</code>) oder einem anderen Fluggerät folgen
+    (<code>MAV_CMD_DO_SET_ROI_SYSID</code>).<sup><a href="#q12">12</a></sup>  Ab Version 4.5 wechselt
+    die Software zudem „automatisch in den RC-Zielmodus, sobald der Pilot einen konfigurierten
+    Roll-/Nick-/Gier-Eingang bewegt".<sup><a href="#q14">14</a></sup>  Für eine Kamera, die während
+    eines automatischen Fluges ein festes Objekt im Blick behalten soll, ist das der eigentliche
+    Grund, überhaupt einen protokollfähigen Gimbal zu nehmen.</p>
+
+    <h2 id="k12">12. Recht: Gewicht und Kamera ändern die Kategorie</h2>
+<!-- bild:start nutzlast-gimbal-recht -->
+<!-- bild:ende nutzlast-gimbal-recht -->
+    <p>Nutzlast ist nicht nur ein technisches, sondern ein rechtliches Thema, und dieser Teil wird
+    beim Bauen regelmäßig vergessen.  Zwei Regeln greifen unabhängig voneinander.</p>
+
+    <p><strong>Erstens das Gewicht.</strong>  Die europäischen Regeln teilen die offene Kategorie in
+    drei Unterkategorien mit unterschiedlichen Startmassen.  Das Luftfahrt-Bundesamt nennt für die
+    Unterkategorie A1 „UAS mit einer höchstzulässigen Startmasse von unter 900&nbsp;g", für A2 „UAS
+    mit einer höchstzulässigen Startmasse bis zu 4&nbsp;kg" und für A3 „UAS von weniger als
+    25&nbsp;kg Höchstabflugmasse".<sup><a href="#q26">26</a></sup>  Mit den Klassenkennzeichen der
+    EU korrespondiert das so: C0 unter 250&nbsp;g, C1 unter 900&nbsp;g, C2 unter 4&nbsp;kg, C3 und
+    C4 unter 25&nbsp;kg.<sup><a href="#q27">27</a></sup></p>
+
+    <p>Für die Praxis ist die relevante Zahl <strong>die Startmasse, nicht das Leergewicht</strong>.
+    Nutzlast zählt mit.  Ein Copter, der leer bei 3,8&nbsp;kg liegt, ist mit einem 240-g-Gimbal
+    über der 4-kg-Grenze und wechselt damit die Unterkategorie.  Bei unserem 13-Zoll-Aufbau mit
+    rund 3,2&nbsp;kg ist der Abstand komfortabler, aber er ist endlich: gut 800&nbsp;g trennen ihn
+    von der Grenze, und das ist bei schwerer Nutzlast schneller aufgebraucht, als es klingt.</p>
+
+    <p>Die Unterkategorien unterscheiden sich nicht nur im Papierkram, sondern in dem, was man
+    fliegen darf.  In A2 dürfen Drohnen „horizontal bis zu 30&nbsp;m an unbeteiligte Personen
+    herangeflogen werden", im Langsamflugmodus „bis auf 5&nbsp;m"; in A3 ist ein „Mindestabstand
+    von 150&nbsp;m zu Wohn-, Gewerbe-, Industrie- oder Erholungsgebieten"
+    einzuhalten.<sup><a href="#q26">26</a></sup>  Für A2 wird ein EU-Fernpiloten-Zeugnis verlangt,
+    für A1 und A3 ein Online-Lehrgang mit bestandener
+    Online-Theorieprüfung.<sup><a href="#q26">26</a></sup></p>
+
+    <p><strong>Zweitens die Kamera selbst.</strong>  Und das ist die Regel, die viele überrascht:
+    Die Registrierungspflicht als UAS-Betreiber greift, „wenn das UAS eine Startmasse ab
+    250&nbsp;g besitzt <em>oder</em> einen Sensor zur Erfassung personenbezogener Daten (z.&nbsp;B.
+    eine Kamera) besitzt".<sup><a href="#q28">28</a></sup>  Das „oder" ist entscheidend:
+    <strong>Eine Kamera macht registrierungspflichtig, unabhängig vom Gewicht.</strong>  Auch ein
+    80-Gramm-Copter mit Kamera fällt darunter.</p>
+
+    <p>Dieselbe Logik taucht bei den Überflugregeln wieder auf.  Der Flug über Wohngrundstücke ist
+    nur unter engen Bedingungen zulässig, unter anderem wenn das Gerät unter 250&nbsp;g wiegt
+    <em>und</em> „über keine Kamera oder Sensoren zur Aufzeichnung von optischen, akustischen oder
+    Funksignalen verfügt".<sup><a href="#q28">28</a></sup>  Wer also einen leichten Copter baut, um
+    Auflagen zu vermeiden, verliert diesen Vorteil in dem Moment, in dem eine Kamera dazukommt.</p>
+
+    <p class="muted" style="font-size:14px">Diese Zusammenfassung ersetzt keine Rechtsberatung.  Die
+    Regeln ändern sich, und für den konkreten Einsatz gelten zusätzlich örtliche Beschränkungen
+    (Naturschutz, Flugverbotszonen, Landesrecht) sowie das Datenschutzrecht.  Maßgeblich sind immer
+    die aktuellen Veröffentlichungen von LBA und EASA.</p>
+
+    <h2 id="k13">13. Wie wir auswählen</h2>
+<!-- bild:start nutzlast-gimbal-auswahl -->
+<!-- bild:ende nutzlast-gimbal-auswahl -->
+    <p>Am Ende steht eine Entscheidung, und wir treffen sie an unserem eigenen Aufbau so:</p>
+
+    <p><strong>Für unseren 13-Zoll-Long-Range-Copter: fester Kamerahalter mit sauberer Dämpfung,
+    Stabilisierung elektronisch.</strong>  Die Begründung steht in den Kapiteln davor und lässt sich
+    in drei Sätzen zusammenfassen.  Das Nutzlastbudget ist knapp, und Gimbal und Kamera zusammen
+    kosten uns rund 13&nbsp;Prozent Schwebeleistung, ohne dass wir die Blickrichtung brauchen, die
+    wir ohnehin nicht schwenken.  Der Schwerpunkt ist bereits ausgereizt: Unsere eigene Rechnung zeigt,
+    dass sich zusätzliches Frontgewicht mit dem Akku kaum noch austrimmen lässt.  Und die
+    Bauhöhe eines Gimbals unter dem Copter passt nicht zu einem Fluggerät, das auf Wiesen
+    abgesetzt wird.</p>
+
+    <p><strong>Wann wir anders entscheiden würden.</strong>  Sobald eine dieser Bedingungen
+    zutrifft, führt an einem mechanischen Gimbal kein Weg vorbei:</p>
+
+    <ul>
+      <li>Die Blickrichtung muss unabhängig vom Flugweg sein, etwa beim Umfliegen und Betrachten
+      eines Objekts.  Dann braucht es die Gierachse, und dann sind es drei Achsen.</li>
+      <li>Es kommt eine längere Brennweite zum Einsatz.  Jeder Winkelfehler wird mit der Brennweite
+      multipliziert, und der Bildwinkelverlust durch elektronischen Beschnitt tut bei einem engen
+      Bildwinkel richtig weh.</li>
+      <li>Die Aufnahmen sollen ausgewertet werden, nicht angeschaut.  Für Vermessung zählt
+      geometrische Treue, und ein rückgerechneter Rolling Shutter ist eine Rekonstruktion, kein
+      Messwert.</li>
+      <li>Ein zweiter Sensorstrom, etwa Wärmebild, soll mit dem Sichtbild deckungsgleich bleiben.</li>
+    </ul>
+
+    <p><strong>Die Reihenfolge beim Bauen</strong>, in der wir es selbst machen und die uns
+    einiges an Nacharbeit erspart hätte:</p>
+
+    <ol>
+      <li><strong>Nutzlast zuerst festlegen</strong>, mit Gewicht und Einbauort.  Nicht zuletzt,
+      weil sie den Akkuplatz bestimmt (Kapitel 2).</li>
+      <li><strong>Schwebeleistung nachrechnen</strong> mit der Prüfstandstabelle des Motors, nicht
+      mit dem Maximalschub (Kapitel 1).</li>
+      <li><strong>Vibration messen</strong>, bevor irgendetwas stabilisiert wird: unter 30&nbsp;m/s²,
+      Clipping möglichst null (Kapitel 4).</li>
+      <li><strong>Dämpfung auf die tatsächliche Nutzlastmasse abstimmen</strong> und sicherstellen,
+      dass kein Kabel und kein Gurt sie überbrückt.</li>
+      <li><strong>Erst dann</strong> entscheiden, ob mechanisch oder elektronisch stabilisiert
+      wird.</li>
+      <li><strong>Startmasse gegen die Kategoriegrenze prüfen</strong> und die Registrierung nicht
+      vergessen, sobald eine Kamera an Bord ist (Kapitel 12).</li>
+    </ol>
+
+    <p>Wie so ein Aufbau konkret aussieht, zeigen unsere Teilelisten:
+    <a href="ratgeber-teileliste-13-build-1.html">13-Zoll-Build</a>,
+    <a href="ratgeber-teileliste-long-range.html">Long-Range-Aufbau</a> und
+    <a href="ratgeber-teileliste-10-zoll.html">10-Zoll-Build</a>.  Wenn du bei der Auslegung deiner
+    Nutzlast unsicher bist oder eine Zweitmeinung zu Schwerpunkt und Leistungsbedarf brauchst:
+    <a href="index.html#kontakt">Schreib uns</a>.  Wir rechnen so etwas ohnehin für unsere eigenen
+    Aufbauten und schauen gern drauf.</p>
+
+    <p class="muted" style="font-size:14px">Dieser Ratgeber ersetzt keine individuelle technische
+    Prüfung.  Alle Angaben ohne Gewähr.  Wo wir gerechnet statt gemessen haben, steht es
+    ausdrücklich dabei.  Alle Quellen wurden im August 2026 abgerufen und geprüft.</p>
+
+    <h2>Quellenangaben</h2>
+    <ol class="muted" style="font-size:14px; line-height:1.9; padding-left:20px">
+      <li id="q1">T-Motor, „MN4012 KV400".  Prüfstandstabelle bei 22,2&nbsp;V mit Propeller 13×4.4:
+        Schub, Strom, Leistung und Effizienz von 50 bis 100&nbsp;Prozent Gas; Motormaße und Gewicht:
+        <a href="https://store.tmotor.com/goods-345-MN4012+KV400.html" rel="noopener" target="_blank">store.tmotor.com: MN4012 KV400</a></li>
+      <li id="q2">Gremsy, „G-Hadron Specification".  Gimbalgewicht 164&nbsp;g, drei Achsen,
+        Winkelvibration ±&nbsp;0,01°, Stellbereiche, Leistungsaufnahme 4,5–6&nbsp;W im Mittel und
+        12&nbsp;W Spitze, Schnittstellen USB 2.0 / UART / SBus und MAVLink-Gimbal-Protokoll:
+        <a href="https://docs.gremsy.com/tiny-gimbal/g-hadron/getting-started/specification" rel="noopener" target="_blank">docs.gremsy.com: G-Hadron</a></li>
+      <li id="q3">Teledyne FLIR OEM, „Hadron 640 Series".  Modulgewicht 56&nbsp;g, Leistungsaufnahme
+        1,8&nbsp;W, Thermalauflösung 640×512, Sichtkamera 64&nbsp;MP:
+        <a href="https://oem.flir.com/products/hadron-640?vertical=lwir&amp;segment=oem" rel="noopener" target="_blank">oem.flir.com: Hadron 640</a></li>
+      <li id="q4">ArduPilot, „Setting Hover Throttle".  <code>MOT_THST_HOVER</code> liegt
+        „üblicherweise zwischen 0,2 und 0,6", niedriger bei hohem Leistungsgewicht:
+        <a href="https://ardupilot.org/copter/docs/ac_throttlemid.html" rel="noopener" target="_blank">ardupilot.org: Hover Throttle</a></li>
+      <li id="q5">ArduPilot, „Setting the Aircraft Up for Tuning".  Startwert für
+        <code>MOT_THST_HOVER</code>: „0,25 oder unterhalb des erwarteten tatsächlichen
+        Schwebeschub-Prozentsatzes":
+        <a href="https://ardupilot.org/copter/docs/setting-up-for-tuning.html" rel="noopener" target="_blank">ardupilot.org: Setting Up for Tuning</a></li>
+      <li id="q6">Betaflight, „DShot RPM Filtering".  Motordrehzahl über bidirektionales DShot,
+        zwölf Kerbfilter je Achse, erste drei Oberwellen je Motor, Empfehlung 4k/4k:
+        <a href="https://betaflight.com/docs/wiki/guides/current/DSHOT-RPM-Filtering" rel="noopener" target="_blank">betaflight.com: DShot RPM Filtering</a></li>
+      <li id="q7">ArduPilot, „Measuring Vibration".  Grenzwerte: unter 30&nbsp;m/s² akzeptabel, über
+        60&nbsp;m/s² fast immer Probleme mit Positions- und Höhenhaltung; Clipping ideal null,
+        unter 100 vertretbar:
+        <a href="https://ardupilot.org/copter/docs/common-measuring-vibration.html" rel="noopener" target="_blank">ardupilot.org: Measuring Vibration</a></li>
+      <li id="q8">ArduPilot, „Vibration Damping".  „Zu viel ist genauso schlecht wie zu wenig";
+        Dämpfungsmedium auf die zu isolierende Masse abstimmen; Standardlösungen sind für das Fünf-
+        bis Zehnfache eines Autopilotengewichts ausgelegt; Materialien; Warnung vor überbrückenden
+        Spanngurten:
+        <a href="https://ardupilot.org/copter/docs/common-vibration-damping.html" rel="noopener" target="_blank">ardupilot.org: Vibration Damping</a></li>
+      <li id="q9">BaseCam Electronics, „SimpleBGC".  Drehachsen durch den Schwerpunkt des Systems
+        aus Kamera und Rahmen, IMU auf der Kameraplattform, optionale Rahmen-IMU, kein Spiel wie bei
+        Zahnrädern oder Riemen, keine teuren Encoder je Achse nötig:
+        <a href="https://www.basecamelectronics.com/simplebgc/" rel="noopener" target="_blank">basecamelectronics.com: SimpleBGC</a></li>
+      <li id="q10">Gremsy, „Mio Two-Axis Specification".  Gimbalgewicht 180&nbsp;g, Traglast
+        400&nbsp;g, Winkelvibration ±&nbsp;0,02°, Stellbereiche Nick ±&nbsp;127° und Roll
+        ±&nbsp;60°, Stromaufnahme, MAVLink-Gimbal-Protokoll:
+        <a href="https://docs.gremsy.com/gimbals/mio-two-axis/getting-started/specification" rel="noopener" target="_blank">docs.gremsy.com: Mio Two-Axis</a></li>
+      <li id="q11">MAVLink, „common.xml" (Nachrichtendefinitionen).  <code>GIMBAL_DEVICE_CAP_FLAGS</code>
+        mit getrennten Kennzeichen für Roll-, Nick- und Gier-Achse; <code>GIMBAL_DEVICE_FLAGS</code>
+        mit <code>ROLL_LOCK</code> und <code>PITCH_LOCK</code> als Voreinstellung eines
+        stabilisierenden Gimbals:
+        <a href="https://raw.githubusercontent.com/mavlink/mavlink/master/message_definitions/v1.0/common.xml" rel="noopener" target="_blank">github.com/mavlink: common.xml</a></li>
+      <li id="q12">ArduPilot (Dev), „Control a Gimbal / Camera Mount".  Befehlsübersicht,
+        <code>MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW</code> für Nick- und Gierwinkel oder -raten,
+        <code>MAV_CMD_DO_SET_ROI_LOCATION</code> und <code>MAV_CMD_DO_SET_ROI_SYSID</code>:
+        <a href="https://ardupilot.org/dev/docs/mavlink-gimbal-mount.html" rel="noopener" target="_blank">ardupilot.org/dev: MAVLink Gimbal Mount</a></li>
+      <li id="q13">Gremsy, „Mio Specification".  Gimbalgewicht 240&nbsp;g, maximale Traglast
+        400&nbsp;g, Eingangsspannung, Schnittstellen:
+        <a href="https://docs.gremsy.com/gimbals/mio/getting-started/specification" rel="noopener" target="_blank">docs.gremsy.com: Mio</a></li>
+      <li id="q14">ArduPilot, „Mount Targeting".  Zielmodi des Gimbals, automatischer Wechsel in den
+        RC-Zielmodus ab Version 4.5, Winkelgrenzen je Achse über <code>MNT1_ROLL_MIN</code>/
+        <code>MNT1_ROLL_MAX</code> und die entsprechenden Nick- und Gier-Parameter:
+        <a href="https://ardupilot.org/copter/docs/common-mount-targeting.html" rel="noopener" target="_blank">ardupilot.org: Mount Targeting</a></li>
+      <li id="q15">TDK InvenSense, „Image Stabilization".  Abgrenzung optischer und elektronischer
+        Stabilisierung; EIS „beschneidet jedes einzelne Bild intelligent auf Basis von
+        Bewegungssensordaten":
+        <a href="https://www.invensense.tdk.com/en-us/image-stabilization" rel="noopener" target="_blank">invensense.tdk.com: Image Stabilization</a></li>
+      <li id="q16">Sensors (MDPI) / PMC, „Gyroscope-Based Video Stabilization for Electro-Optical
+        Long-Range Surveillance Systems".  Schwarze Randbereiche nach dem Ausgleich und deren
+        Entfernung durch Beschnitt, Beschnittfaktor größer als die maximal erwartete Bildbewegung,
+        Integration der Gyroskopmessungen mit Drift und Rauschen:
+        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8473288/" rel="noopener" target="_blank">pmc.ncbi.nlm.nih.gov: Gyroscope-Based Video Stabilization</a></li>
+      <li id="q17">Gyroflow.  Stabilisierung mit Bewegungsdaten aus Gyroskop und optional
+        Beschleunigungssensor, Rolling-Shutter-Korrektur, adaptiver dynamischer Beschnitt mit
+        Zoomgrenze, Bewegungsdaten wahlweise aus dem Flight Controller:
+        <a href="https://gyroflow.xyz/" rel="noopener" target="_blank">gyroflow.xyz</a></li>
+      <li id="q18">Basler, „CMOS Rolling Shutter Cameras".  Zeilenweises Auslesen, zeitlicher
+        Versatz zwischen Start und Ende der Belichtung je Zeile, daraus folgende Verzerrungen im
+        zusammengesetzten Bild:
+        <a href="https://www.baslerweb.com/en/learning/cmos-rolling-shutter-cameras/" rel="noopener" target="_blank">baslerweb.com: CMOS Rolling Shutter</a></li>
+      <li id="q19">Teledyne Vision Solutions, „Global Shutter Imaging".  Rolling-Shutter-Sensoren
+        lesen jeweils nur eine Zeile aus, das Objekt bewegt sich zwischenzeitlich; Global Shutter
+        startet und stoppt die Belichtung aller Pixel gleichzeitig:
+        <a href="https://www.teledynevisionsolutions.com/learn/learning-center/machine-vision/global-shutter-imaging/" rel="noopener" target="_blank">teledynevisionsolutions.com: Global Shutter Imaging</a></li>
+      <li id="q20">SIYI, „A8 mini".  Kompakte 3-Achsen-Gimbalkamera als Größenvergleich: Gewicht
+        95&nbsp;g, Abmessungen 55 × 55 × 70&nbsp;mm:
+        <a href="https://shop.siyi.biz/products/siyi-a8-mini-gimbal-camera" rel="noopener" target="_blank">shop.siyi.biz: A8 mini</a></li>
+      <li id="q21">ArduPilot, „Rangefinders (Landing Page)".  Bauarten (Lidar, Sonar, Radar,
+        Tiefenkameras), automatische Nutzung in höhengeregelten Flugmodi, Präzisionslandung,
+        Geländefolge und Hindernisvermeidung, Anbindung über I²C, analog, seriell oder DroneCAN:
+        <a href="https://ardupilot.org/copter/docs/common-rangefinder-landingpage.html" rel="noopener" target="_blank">ardupilot.org: Rangefinders</a></li>
+      <li id="q22">ArduPilot, „GPS for Yaw (Moving Baseline)".  Ausrichtungsbestimmung mit zwei
+        GNSS-Empfängern statt Kompass, zwei Antennen mit mindestens 30&nbsp;cm Abstand, Prüfkriterium
+        Fixtyp 6 und Abstandsabgleich innerhalb von 20&nbsp;Prozent:
+        <a href="https://ardupilot.org/copter/docs/common-gps-for-yaw.html" rel="noopener" target="_blank">ardupilot.org: GPS for Yaw</a></li>
+      <li id="q23">ArduPilot, „Cameras and Gimbals".  Unterscheidung zwischen bürstenlosen
+        Direktantriebs-Gimbals mit eigenem Stabilisierungsregler und servogetriebenen Gimbals, bei
+        denen ArduPilot stabilisiert; Unterstützung von bis zu drei Achsen; Ansteuerung über
+        serielle Schnittstellen, PWM oder SBUS:
+        <a href="https://ardupilot.org/copter/docs/common-cameras-and-gimbals.html" rel="noopener" target="_blank">ardupilot.org: Cameras and Gimbals</a></li>
+      <li id="q24">MAVLink, „Gimbal Protocol v2".  Trennung von Gimbal Device und Gimbal Manager,
+        1:1-Beziehung und Alleinzuständigkeit des Managers für das Gerät, Nachrichtenübersicht:
+        <a href="https://mavlink.io/en/services/gimbal_v2.html" rel="noopener" target="_blank">mavlink.io: Gimbal Protocol v2</a></li>
+      <li id="q25">PX4, „Gimbal Control".  PX4 als Gimbal Manager, Trennung von Eingangs- und
+        Ausgangsmethode (<code>MNT_MODE_IN</code>, <code>MNT_MODE_OUT</code>), MAVLink-Gimbal-
+        Protokoll v2 als empfohlener Weg, alternativ PWM-Ausgänge für Roll, Nick und Gier:
+        <a href="https://docs.px4.io/main/en/advanced/gimbal_control.html" rel="noopener" target="_blank">docs.px4.io: Gimbal Control</a></li>
+      <li id="q26">Luftfahrt-Bundesamt, „Anforderungen an Fernpiloten für den Betrieb eines UAS in
+        der offenen Kategorie".  Startmassen der Unterkategorien A1 (unter 900&nbsp;g), A2 (bis
+        4&nbsp;kg) und A3 (unter 25&nbsp;kg), Abstandsregeln 30&nbsp;m / 5&nbsp;m / 150&nbsp;m,
+        geforderte Kompetenznachweise:
+        <a href="https://www.lba.de/DE/Drohnen/Fernpiloten/Anforderung_offene_Kat.html" rel="noopener" target="_blank">lba.de: Anforderungen offene Kategorie</a></li>
+      <li id="q27">EASA, „Open category (civil drones)".  Klassenkennzeichen C0 bis C4 mit den
+        zugehörigen Startmassen und die Zuordnung zu den Unterkategorien A1, A2 und A3:
+        <a href="https://www.easa.europa.eu/en/domains/civil-drones/drones-regulatory-framework-background/open-category-civil-drones" rel="noopener" target="_blank">easa.europa.eu: Open Category</a></li>
+      <li id="q28">Luftfahrt-Bundesamt, „FAQ Allgemein (Drohnen)".  Registrierungspflicht ab
+        250&nbsp;g Startmasse oder bei einem Sensor zur Erfassung personenbezogener Daten,
+        Bedingungen für den Überflug von Wohngrundstücken:
+        <a href="https://www.lba.de/DE/Drohnen/FAQ/01_FAQ_Allgemein/FAQ_node.html" rel="noopener" target="_blank">lba.de: FAQ Drohnen</a></li>
+    </ol>
+
+<!-- historie:start -->
+    <h2>Änderungshistorie</h2>
+    <ul class="muted historie">
+      <li><strong>20.08.2026</strong> · Veröffentlichung</li>
+    </ul>
+<!-- historie:ende -->
+
+
+<!-- partner:start -->
+<!-- partner:ende -->
+
+
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <nav class="social" aria-label="Draco Labs in sozialen Netzwerken">
+      <a href="https://www.youtube.com/@DracoLabsGermany" rel="noopener" class="yt" aria-label="Draco Labs auf YouTube">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/draco.labs.germany" rel="noopener" class="ig" aria-label="Draco Labs auf Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c0-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 3.1A6.7 6.7 0 1 0 18.7 12 6.7 6.7 0 0 0 12 5.3Zm0 11a4.3 4.3 0 1 1 4.3-4.3 4.3 4.3 0 0 1-4.3 4.3ZM19 5a1.6 1.6 0 1 1-1.6-1.6A1.6 1.6 0 0 1 19 5Z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@dracolabsgermany" rel="noopener" class="tt" aria-label="Draco Labs auf TikTok">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16.6 2h-3.1v13.1a2.7 2.7 0 1 1-2.7-2.7c.2 0 .4 0 .6.1V9.3a6 6 0 0 0-.6 0 5.8 5.8 0 1 0 5.8 5.8V8.6a7 7 0 0 0 4.1 1.3V6.8a3.9 3.9 0 0 1-4.1-3.9V2Z"/></svg>
+      </a>
+    </nav>
+    <div class="links">
+      <a href="index.html">Startseite</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
+    </div>
+    <div>© 2026 Draco Labs Germany · Kleinunternehmer gem. § 19 UStG</div>
+    <img class="ai-label" src="assets/label-ai-modified.svg" alt="KI-Kennzeichnung: Inhalte dieser Website wurden teilweise mit KI erstellt oder bearbeitet (AI MODIFIED)">
+  </div>
+</footer>
+
+</body>
+</html>

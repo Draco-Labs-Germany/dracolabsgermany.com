@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drei Kreisel, die einander misstrauen — Autopilot-Ratgeber | Draco Labs</title>
+<meta name="description" content="Autopilot-Ratgeber für Copter: was ArduPilot und PX4 können, was ein FPV-Board nicht kann. EKF, Pixhawk-Standard, Redundanz, CAN, Absicherungen und EU-Recht. Jede Zahl mit Quelle.">
+<meta name="keywords" content="Autopilot Drohne, ArduPilot PX4 Unterschied, Pixhawk Standard, EKF Zustandsschätzung, Redundanz Flight Controller, DroneCAN, Failsafe Copter, EASA offene Kategorie A3">
+<meta name="robots" content="noindex, nofollow">
+<meta name="tdm-reservation" content="1">
+<meta name="author" content="Draco Labs Germany">
+<link rel="canonical" href="https://dracolabsgermany.com/ratgeber-autopilot.html">
+
+<!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Drei Kreisel, die einander misstrauen — vom FPV-Board zum Autopiloten">
+<meta property="og:description" content="Warum ein Autopilot langsamer regelt und trotzdem ruhiger fliegt, was der EKF wirklich tut und weshalb Redundanz erst beim zweiten Sensor anfängt. Jede Zahl mit Quelle.">
+<meta property="og:url" content="https://dracolabsgermany.com/ratgeber-autopilot.html">
+<meta property="og:image" content="https://dracolabsgermany.com/assets/ratgeber/autopilot-hero.jpg">
+<meta property="og:site_name" content="Draco Labs Germany">
+<meta property="og:locale" content="de_DE">
+
+<!-- Twitter/X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Drei Kreisel, die einander misstrauen — vom FPV-Board zum Autopiloten">
+<meta name="twitter:description" content="EKF, Pixhawk-Standard, Redundanz, CAN und Absicherungen: was einen Autopiloten von einem FPV-Board unterscheidet. Jede Zahl mit Quelle.">
+<meta name="twitter:image" content="https://dracolabsgermany.com/assets/ratgeber/autopilot-hero.jpg">
+
+<link rel="icon" type="image/png" href="assets/emblem.png">
+<link rel="stylesheet" href="style.css">
+
+<!-- Strukturierte Daten für Google (Article) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Drei Kreisel, die einander misstrauen: vom FPV-Board zum Autopiloten",
+  "description": "Autopilot-Ratgeber für Copter: kaskadierte Regelkreise, Zustandsschätzung mit dem EKF, Firmware-Wahl zwischen INAV, ArduPilot und PX4, Pixhawk-Standard und Sensorredundanz, DroneCAN, Absicherungen und die EU-Regeln der offenen Kategorie, an Herstellerangaben und Firmware-Dokumentationen erklärt.",
+  "image": "https://dracolabsgermany.com/assets/ratgeber/autopilot-hero.jpg",
+  "datePublished": "2026-08-20",
+  "dateModified": "2026-08-20",
+  "author": { "@type": "Organization", "name": "Draco Labs Germany" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Draco Labs Germany",
+    "logo": { "@type": "ImageObject", "url": "https://dracolabsgermany.com/assets/logo.png" }
+  },
+  "mainEntityOfPage": "https://dracolabsgermany.com/ratgeber-autopilot.html",
+  "inLanguage": "de-DE"
+}
+</script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a href="index.html"><img src="assets/emblem.png" alt="Draco Labs Emblem"></a>
+    <div class="name">Draco Labs <small>Germany</small></div>
+    <input type="checkbox" id="menu-auf" class="menu-toggle">
+    <label for="menu-auf" class="burger" aria-label="Menü öffnen und schließen">
+      <span></span><span></span><span></span>
+    </label>
+    <nav>
+      <!-- <a href="index.html#baustelle">Baustelle</a> reaktivieren, wenn die Serie kurz vor Frame-Go-live released wird -->
+      <a href="leistungen.html">Leistungen</a>
+      <a href="index.html#neuigkeiten">Neuigkeiten</a>
+      <a href="index.html#ratgeber">Ratgeber</a>
+      <a href="index.html#teilelisten">Teilelisten</a>
+      <a href="index.html#ueber">Über uns</a>
+      <a href="index.html#partner">Partner</a>
+      <a href="index.html#kontakt">Kontakt</a>
+    </nav>
+    <a class="shop-btn" href="https://shop.dracolabsgermany.com" target="_blank" rel="noopener">Shop →</a>
+  </div>
+</header>
+
+<main class="legal">
+  <div class="wrap">
+
+    <h1>Drei Kreisel, die einander misstrauen</h1>
+    <p class="muted" style="font-size:17px; margin-top:-4px">Ein FPV-Board regelt eine
+    Drehrate, und das hervorragend.  Ein Autopilot tut etwas anderes: er behauptet zu wissen,
+    wo er ist.  Was dafür nötig ist und woran man merkt, dass man es braucht.</p>
+    <p class="muted">Ratgeber · Elektronik &amp; Steuerung · Lesezeit ca. 16 Min · Stand: August 2026</p>
+
+    <div data-nosnippet style="background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--cyan); border-radius:10px; padding:18px 20px; margin:22px 0">
+      <p style="margin:0 0 8px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; font-size:13px; color:var(--cyan)">Kurz gesagt</p>
+      <p style="margin:0">Ein Autopilot ist kein schnellerer Flight Controller, sondern ein
+      anderer.  Er legt <strong>drei weitere Regelkreise</strong> um den einen, den auch ein
+      FPV-Board hat, führt eine <strong>gemeinsame Zustandsschätzung über alle Sensoren</strong>
+      und hält ein Dutzend Absicherungen bereit.  Dafür regelt er langsamer: ArduPilot läuft mit
+      400&nbsp;Hertz, zwanzigmal langsamer als ein 8-Kilohertz-Betaflight, und fliegt trotzdem
+      ruhiger.  Der Preis sind Speicher, Gewicht und Geld.  Die wichtigste Zahl ist dabei keine
+      Leistungszahl, sondern eine Prüfschwelle: <strong>0,75&nbsp;Meter je Sekunde im
+      Quadrat</strong> dürfen zwei Beschleunigungsmesser auseinanderliegen, sonst verweigert
+      ArduPilot das Scharfschalten.  Ein Copter mit einem einzigen Kreisel kann diese Prüfung gar
+      nicht erst durchführen.</p>
+    </div>
+
+    <p>Im <a href="ratgeber-flight-controller.html">Flight-Controller-Ratgeber</a> geht es um den
+    innersten Regelkreis: Kreisel, Filter, Regler, Motoren, achttausend Mal je Sekunde.  Dieser
+    Kreis genügt, um zu fliegen, und mehr braucht ein Freestyle-Fünfzöller nicht.  Sobald ein
+    Copter aber selbst die Lage halten, eine Position anfliegen oder nach einem Funkabriss allein
+    nach Hause finden soll, reicht er nicht mehr.  Dann kommen Kreise dazu, die den ersten von
+    außen umschließen, und mit ihnen eine ganze Klasse von Hardware, die anders gebaut ist.</p>
+
+    <p><strong>Was dieser Artikel nicht behandelt:</strong> den innersten Regelkreis selbst.
+    Kreisel und Rauschdichte, Loop-Rate, Filterkette, PID-Abstimmung und die Montage der Platine
+    stehen im <a href="ratgeber-flight-controller.html">Flight-Controller-Ratgeber</a> und gelten
+    für einen Autopiloten unverändert.  Ebenfalls nicht behandelt: der Regler, also der ESC, der
+    im <a href="ratgeber-esc.html">ESC-Ratgeber</a> steht, und die Funkstrecke, die im
+    <a href="ratgeber-funk-kommunikation.html">Funk-Ratgeber</a> steht.  Dieser Text ist
+    außerdem keine Einrichtungsanleitung: er erklärt, was ein Autopilot mitbringt und warum,
+    nicht in welcher Reihenfolge du seine Parameter setzt.</p>
+
+    <p><strong>Hinweis:</strong> Jede Zahl in diesem Text hat eine Fußnote, die auf eine
+    nachprüfbare Quelle zeigt.  Wo wir gerechnet statt gemessen haben, steht es ausdrücklich
+    dabei.  Für den Fall, dass wir einen Fehler gemacht haben, kontaktiert uns gerne jederzeit.</p>
+
+    <h2 id="k1">1. Wo das FPV-Board aufhört</h2>
+    <!-- bild:start autopilot-grenze -->
+    <!-- bild:ende autopilot-grenze -->
+
+    <p>Ein Multicopter ist ohne Regelung nicht flugfähig.  Diese Regelung ist ein geschlossener
+    Kreis aus Sollwert, Istwert, Abweichung und Stellgröße, und im Kunstflugmodus (Fachwort:
+    Acro) ist es genau ein Kreis, der Drehraten regelt.  Dafür genügt ein einziger Sensor: der
+    Kreisel.  Betaflight kommt in diesem Modus mit ihm aus, und deshalb fliegt ein Rennquad ohne
+    GPS und ohne Höhenmesser prima.</p>
+
+    <p>Ein Autopilot beantwortet eine andere Frage.  Nicht „wie schnell drehe ich mich gerade",
+    sondern „wo bin ich, wie schnell bewege ich mich und wohin soll ich".  Das lässt sich aus
+    einem Kreisel nicht ableiten, und deshalb nennt PX4 vier Sensorarten als Mindestausstattung:
+    Kreisel, Beschleunigungsmesser, Magnetfeldsensor und
+    Luftdrucksensor<sup><a href="#q14">14</a></sup>.  Erst deren gemeinsame Auswertung ergibt eine
+    Lage im Raum statt einer Drehrate um eine Achse.</p>
+
+    <p>Zwischen beiden Welten liegt eine dritte.  INAV ist aus Betaflight hervorgegangen und
+    ergänzt es um Navigation: es unterstützt Flächenflugzeuge, Segler, Multicopter und sogar
+    Fahrzeuge zu Land und zu Wasser und bietet Wegpunktmissionen, Rückkehr zum Startpunkt sowie
+    Positions- und Höhenhaltung<sup><a href="#q20">20</a></sup>.  Wer nicht gleich ein
+    Vermessungsgerät bauen will, findet dort oft die passende Mitte.</p>
+
+    <p>Der Rest dieses Artikels beschreibt, was in der obersten dieser drei Stufen dazukommt.
+    Vier Dinge sind es im Kern: mehr Regelkreise, eine gemeinsame Zustandsschätzung, mehrfach
+    vorhandene Sensoren und ein Regelwerk für den Fall, dass etwas ausfällt.  Jedes davon kostet
+    Speicher, und deshalb endet der Weg nach oben nicht bei der Software, sondern bei der
+    Platine.</p>
+
+    <h2 id="k2">2. Mehr Kreise als einer</h2>
+    <!-- bild:start autopilot-kaskade -->
+    <!-- bild:ende autopilot-kaskade -->
+
+    <p>PX4 beschreibt die Struktur ausdrücklich als Kaskade, also als Staffelung ineinander
+    liegender Regelkreise.  Ein Positionsregler gibt eine Sollgeschwindigkeit vor, ein
+    Geschwindigkeitsregler daraus eine Sollbeschleunigung, daraus wird eine Solllage, und die
+    innerste Schleife macht daraus wieder Drehraten und schließlich
+    Motorbefehle<sup><a href="#q13">13</a></sup>.  Die innerste dieser Schleifen ist genau die, die
+    ein FPV-Board auch hat.  Die drei anderen sind der Unterschied.</p>
+
+    <p>Jeder äußere Kreis darf dabei langsamer laufen als der innere, weil eine Position sich
+    langsamer ändert als eine Drehrate.  Und jeder äußere Kreis darf einfacher gebaut sein.  PX4
+    setzt das konsequent um: der Positionsregler ist ein reiner P-Regler, der
+    Geschwindigkeitsregler ein voller PID, der Lageregler wieder ein P-Regler mit Vorsteuerung,
+    und erst der innerste Ratenregler ist ein vollständiger PID mit
+    Vorfaktor<sup><a href="#q13">13</a></sup>.</p>
+
+    <p>Das ist keine Sparsamkeit, sondern Absicht.  Wer außen zu viel regelt, bekommt langsame
+    Pendelbewegungen, die sich über Sekunden aufschaukeln und die man beim Fliegen oft für
+    Windböen hält.  Ein Copter, der beim Positionshalten in weiten Bögen um seinen Punkt kreist,
+    hat fast nie ein GPS-Problem, sondern einen zu kräftig eingestellten äußeren Regler.</p>
+
+    <p>Ein Blick auf die Zahlen zeigt, dass es dieselbe Physik mit anderer Skalierung ist.  PX4
+    nennt für den Ratenregler eines Multicopters typische P-Werte zwischen 0,01 für einen
+    Vierzoll-Renner und 0,04 für eine Maschine der 500er-Klasse, D-Werte zwischen 0,01 und 0,04
+    und I-Werte zwischen 0,5 für ein VTOL und 8 für den kleinen
+    Renner<sup><a href="#q15">15</a></sup>.  Mit den Betaflight-Werten aus dem
+    <a href="ratgeber-flight-controller.html#k7">Flight-Controller-Ratgeber</a> sind diese Zahlen
+    nicht vergleichbar, weil die Firmwares intern anders skalieren.  Die Verhältnisse sind es
+    sehr wohl: auch bei PX4 gilt zu viel D als Ursache für zuckende, heiße Motoren, und auch dort
+    empfiehlt die Anleitung, in Schritten von 20 bis 30&nbsp;Prozent vorzugehen und beim
+    Feinschliff auf 5 bis 10 zu reduzieren<sup><a href="#q15">15</a></sup>.</p>
+
+    <h2 id="k3">3. Warum vierhundert Hertz reichen</h2>
+    <!-- bild:start autopilot-looprate -->
+    <!-- bild:ende autopilot-looprate -->
+
+    <p>Wer aus der FPV-Welt kommt, stolpert an dieser Stelle.  Dort wird mit Loop-Raten von
+    8&nbsp;Kilohertz geworben.  ArduPilot läuft auf Pixhawk-Hardware mit einer Hauptschleife von
+    400&nbsp;Hertz, also 2,5&nbsp;Millisekunden je
+    Durchlauf<sup><a href="#q12">12</a></sup><sup><a href="#q2">2</a></sup>.  Das ist zwanzigmal
+    langsamer (unsere Rechnung).  Trotzdem fliegen Vermessungscopter mit ArduPilot ruhiger als
+    die meisten Rennquads.</p>
+
+    <p>Rechnerisch dürfte das nicht funktionieren.  Ein digitales System kann nur Schwingungen
+    sauber erfassen, deren Frequenz unter der Hälfte seiner Abtastrate liegt; alles darüber
+    erscheint als falsche, niedrigere Frequenz im Signal (Fachwort: Aliasing).  Eine
+    400-Hertz-Schleife käme damit nur bis 200&nbsp;Hertz (unsere Rechnung), und genau dort liegt
+    die Grundfrequenz der Motoren: ArduPilot nennt rund 200&nbsp;Hertz bei kleineren Coptern und
+    rund 100&nbsp;Hertz bei größeren Maschinen<sup><a href="#q3">3</a></sup>.  Die Schleife wäre
+    also exakt so schnell wie die Störung, die sie wegfiltern soll.</p>
+
+    <p>Die Auflösung ist eine Trennung, die man von außen nicht sieht: ArduPilot tastet den
+    Kreisel nicht im Takt der Hauptschleife ab.  Das Sensor-Hinterteil läuft standardmäßig mit
+    1&nbsp;Kilohertz und lässt sich über einen Parameter auf 2 hoch N Kilohertz stellen, also bis
+    4&nbsp;Kilohertz<sup><a href="#q3">3</a></sup><sup><a href="#q2">2</a></sup>.  Gefiltert wird
+    schnell, geregelt langsamer.  Dieselbe Trennung gibt es in der Betaflight-Welt unter anderem
+    Namen, wo der zweite Gyro-Tiefpass auf der Geschwindigkeit der Gyro-Schleife arbeitet und
+    nicht auf der der PID-Schleife.</p>
+
+    <p>Warum die Hauptschleife dann überhaupt langsam bleibt, erklärt der Ablaufplaner.  Er
+    rechnet in Einheiten von 2,5&nbsp;Millisekunden, jede Aufgabe meldet ihre erwartete Laufzeit
+    in Mikrosekunden an, und der Planer entscheidet damit, ob sie in den laufenden Durchlauf noch
+    hineinpasst oder auf den nächsten wartet<sup><a href="#q12">12</a></sup>.  Ein Autopilot hat
+    eben nicht nur zu regeln.  Er schätzt gleichzeitig seinen Zustand, liest ein halbes Dutzend
+    Sensoren, spricht mit der Bodenstation, führt eine Mission und überwacht ein Dutzend
+    Absicherungen.  Die 400&nbsp;Hertz sind kein Leistungsmangel, sondern ein Budget.</p>
+
+    <p>Wer die Schleife dennoch schneller haben will, kann sie schneller haben, aber nicht
+    umsonst.  ArduPilot bietet eine schnelle Ratenschleife bis 4&nbsp;Kilohertz in einem eigenen
+    Programmfaden an und stellt in derselben Dokumentation nüchtern fest, dass H7-Autopiloten die
+    erhöhte Last sauber tragen, F4-Systeme sie dagegen möglicherweise nicht
+    durchhalten<sup><a href="#q2">2</a></sup>.  Dieselbe Grenze zeigt sich bei den Filtern:
+    ein Achtkopter, bei dem drei Oberwellen gefiltert werden, betreibt
+    8&nbsp;×&nbsp;3&nbsp;=&nbsp;24 Kerbfilter gleichzeitig, und wer zu viele davon aktiviert, hat
+    keine Rechenzyklen mehr übrig, mit unvorhersehbaren Folgen<sup><a href="#q1">1</a></sup>.</p>
+
+    <p>Damit ist die Prozessorfrage beantwortet, ohne dass eine Megahertz-Zahl gefallen wäre.
+    Ein Autopilot braucht Rechenreserve nicht für den Regelkreis, sondern für alles, was daneben
+    läuft.</p>
+
+    <h2 id="k4">4. Der EKF: aus vielen Sensoren eine Lage</h2>
+    <!-- bild:start autopilot-ekf -->
+    <!-- bild:ende autopilot-ekf -->
+
+    <p>Das eigentliche Herzstück eines Autopiloten ist keine Regelung, sondern eine Schätzung.
+    Betaflight und INAV mischen Kreisel und Beschleunigungsmesser so, dass der Kreisel die kurzen
+    Zeiten trägt und der Beschleunigungsmesser die langen.  ArduPilot und PX4 tun etwas
+    grundsätzlich anderes: sie führen einen erweiterten Kalman-Filter, kurz EKF, der alle
+    verfügbaren Sensoren zu einer gemeinsamen Schätzung von Position, Geschwindigkeit und Lage
+    verrechnet und dabei laufend bewertet, welchem Sensor er gerade wie weit traut.</p>
+
+    <p>Wie fein das geht, zeigt die Quellenverwaltung.  ArduPilot erlaubt es, für
+    Horizontalposition, Höhe, Vertikalgeschwindigkeit und Gierwinkel getrennt festzulegen, welche
+    Quelle jeweils zuständig ist, und drei solcher Quellensätze im Flug
+    umzuschalten<sup><a href="#q8">8</a></sup>.  Ein Copter kann damit draußen dem GPS folgen und
+    beim Einflug in eine Halle auf einen anderen Satz wechseln, ohne dass die Regelung davon
+    etwas merkt.</p>
+
+    <p>Zwei Beispiele zeigen, was daraus praktisch folgt.  Der Gierwinkel kommt normalerweise vom
+    Magnetfeldsensor, der aber genau dort stört, wo starke Ströme fließen, also am Copter selbst.
+    ArduPilot bietet deshalb an, die Richtung stattdessen aus den Signallaufzeiten zweier
+    GPS-Antennen zu bestimmen, die mindestens 30&nbsp;Zentimeter auseinanderstehen müssen; der
+    Kompass wird damit überflüssig<sup><a href="#q9">9</a></sup>.  Und wo gar kein GPS
+    verfügbar ist, kann ein optischer Flusssensor die Bodentextur beobachten und daraus die
+    Geschwindigkeit über Grund ableiten<sup><a href="#q11">11</a></sup>.</p>
+
+    <p>Beides sind Fähigkeiten, die es in Betaflight schlicht nicht gibt, weil dort niemand sie
+    braucht.  Und beides erklärt, warum die Firmware-Entscheidung vor der Hardware-Entscheidung
+    kommt: eine Zustandsschätzung dieser Art ist kein Zusatzmodul, das man später nachrüstet,
+    sondern der Kern, um den herum alles andere gebaut ist.</p>
+
+    <h2 id="k5">5. Die Firmware entscheidet über die Platine</h2>
+    <!-- bild:start autopilot-firmware -->
+    <!-- bild:ende autopilot-firmware -->
+
+    <p>Zwei Platinen mit demselben Prozessor und demselben Kreisel verhalten sich völlig
+    unterschiedlich, wenn verschiedene Firmware darauf läuft.  Für Autopiloten gilt das doppelt,
+    weil die Firmware hier nicht nur das Verhalten bestimmt, sondern auch den Platzbedarf.</p>
+
+    <p>Die Zustandsschätzung, die Missionslogik und die vielen Sensortreiber müssen in den
+    Flash-Speicher passen, und genau daran scheitern kleine Platinen.  ArduPilot stellt in seiner
+    Hardwareliste nüchtern fest, dass die meisten F4-Platinen wegen der Flash-Grenze nicht alle
+    Funktionen enthalten; wer eine bestimmte Funktion braucht, muss sich eine passgenaue Firmware
+    bauen lassen, aus der anderes entfernt wurde<sup><a href="#q4">4</a></sup>.  Der Prozessor
+    begrenzt hier also nicht die Geschwindigkeit, sondern den Funktionsumfang.  Wer ArduPilot
+    oder PX4 ernsthaft nutzen will, kauft H7.</p>
+
+    <p>Aufschlussreich ist, worauf ArduPilot bei der Auswahl eines Autopiloten selbst hinweist.
+    Die Kriterienliste lautet: Sensorredundanz, Zahl der Motorausgänge, Zahl der seriellen
+    Schnittstellen, externe Busse, analoge Ein- und Ausgänge, eingebaute Zusatzfunktionen, Größe
+    und Preis<sup><a href="#q4">4</a></sup>.  Der Prozessortakt kommt in dieser Liste nicht
+    vor.  Die ersten beiden Punkte sind genau die, um die es in den nächsten drei Kapiteln
+    geht.</p>
+
+    <p>Für die Wahl zwischen den beiden großen Projekten gibt es keine allgemeingültige Antwort,
+    und wer etwas anderes behauptet, hat meist nur eines von beiden benutzt.  ArduPilot bringt
+    mehr fertige Fahrzeugtypen und mehr Parameter mit, PX4 eine strengere innere Struktur und
+    eine Dokumentation, die den Regelkreis offenlegt.  Wer sich nicht entscheiden kann, sollte
+    prüfen, welche Bodenstation und welche Sensorik im geplanten Einsatz üblich sind.  Die
+    Hardware nach Pixhawk-Standard trägt beide.</p>
+
+    <h2 id="k6">6. Der Pixhawk-Standard</h2>
+    <!-- bild:start autopilot-pixhawk -->
+    <!-- bild:ende autopilot-pixhawk -->
+
+    <p>Anders als in der FPV-Welt, in der jeder Hersteller sein eigenes Lochbild pflegt, gibt es
+    für Autopiloten einen offenen Hardwarestandard.  Die Pixhawk-Standards beschreiben nicht nur
+    einzelne Platinen, sondern ganze Baureihen: die Autopilot-Standards v5X, v6X, v6C und v6U,
+    dazu einen Steckerstandard, einen Bus-Standard für den Autopiloten selbst, einen für die
+    Nutzlast und einen in Arbeit befindlichen für intelligente
+    Akkus<sup><a href="#q18">18</a></sup>.  Der Bus-Standard legt Pinbelegung,
+    Blockschaltbilder, Leiterplattenrichtlinien und Steckerangaben
+    fest<sup><a href="#q18">18</a></sup>, der Nutzlast-Standard zusätzlich eine MAVLink-basierte
+    Softwareschnittstelle und einen Schutz gegen Schäden beim Stecken unter
+    Spannung<sup><a href="#q18">18</a></sup>.  Das Ergebnis ist, dass Platinen verschiedener
+    Hersteller austauschbar sind.</p>
+
+    <p>Was so ein Gerät ausmacht, lässt sich am Pixhawk&nbsp;6X ablesen.  Er trägt einen STM32H753
+    mit 480&nbsp;Megahertz, 2&nbsp;Megabyte Flash und 1&nbsp;Megabyte
+    Arbeitsspeicher<sup><a href="#q16">16</a></sup>.  Interessanter als diese Zahlen ist aber ein
+    zweiter, winziger Prozessor mit 24&nbsp;Megahertz und 8&nbsp;Kilobyte Speicher, der nur die
+    Ausgänge bedient<sup><a href="#q16">16</a></sup>.  Dieser Ein-Ausgabe-Prozessor ist kein
+    Sparmodell, sondern eine Sicherheitsmaßnahme: stürzt die Hauptsoftware ab, hält der kleine
+    Prozessor die Motoren weiter an.  Dasselbe Bauteil saß schon auf dem Vorgänger
+    Pixhawk&nbsp;4<sup><a href="#q17">17</a></sup>.</p>
+
+    <p>Er ist zwanzigmal langsamer als der Hauptrechner (unsere Rechnung).  Wer über Prozessoren
+    am Flight Controller redet, redet meistens über Megahertz.  Bemerkenswert ist, dass die
+    ernsthafteste Plattform des Marktes ihre Sicherheit ausgerechnet dem langsamsten Baustein
+    anvertraut.  Bezahlt wird das an einer Stelle, die man kennen sollte: die Motorausgänge
+    hängen bei diesen Platinen am Ein-Ausgabe-Prozessor, was für DShot Einschränkungen mit sich
+    bringt<sup><a href="#q10">10</a></sup>.</p>
+
+    <p>Zwei weitere Eigenschaften betreffen die Sensorik und haben mit Rechenleistung nichts zu
+    tun.  Erstens ist die Sensorplatine <strong>beheizt</strong>: Heizwiderstände halten die
+    Kreisel auf Betriebstemperatur<sup><a href="#q16">16</a></sup>.  Das ist kein Luxus, denn die
+    verbaute ICM-45686 hat einen Temperaturgang von ±0,005&nbsp;Grad je Sekunde je Grad
+    Celsius<sup><a href="#q19">19</a></sup>; kühlt der Copter im Steigflug um zwanzig Grad aus,
+    wandert der Nullpunkt des Kreisels um ein Zehntel Grad je Sekunde (unsere Rechnung).  Für
+    einen Rennquad ist das belanglos, für einen Copter, der zwanzig Minuten lang eine Position
+    halten soll, nicht.  Zweitens ist dieselbe Platine <strong>mechanisch
+    entkoppelt</strong><sup><a href="#q16">16</a></sup>, bringt ihre Schwingungsdämpfung also
+    mit, statt sie dem Erbauer zu überlassen.</p>
+
+    <p>Und schließlich die Stromversorgung, bei der Sicherheit vor Leistung geht.  Der
+    Pixhawk&nbsp;6X begrenzt den Strom eines einzelnen Telemetrieanschlusses auf 1,5&nbsp;Ampere
+    und alle übrigen Anschlüsse zusammen ebenfalls auf 1,5&nbsp;Ampere<sup><a href="#q16">16</a></sup>.
+    Ein Kurzschluss an einem Stecker legt damit nicht den Autopiloten lahm.  Ein FPV-Controller
+    liefert an seinen Schienen mehr, schützt aber nichts.</p>
+
+    <h2 id="k7">7. Redundanz heißt vergleichen</h2>
+    <!-- bild:start autopilot-redundanz -->
+    <!-- bild:ende autopilot-redundanz -->
+
+    <p>Ein einzelner Sensor hat keine Möglichkeit zu bemerken, dass er falsch liegt.  Das ist der
+    ganze Grund für Redundanz, und es erklärt auch, warum ein zweiter Sensor mehr bringt als ein
+    besserer.</p>
+
+    <p>Der Pixhawk&nbsp;6X trägt in seiner aktuellen Ausführung drei identische
+    Trägheitsmesseinheiten vom Typ ICM-45686 und zwei Luftdrucksensoren unterschiedlicher Bauart,
+    nämlich ICP20100 und BMP388<sup><a href="#q16">16</a></sup>.  Zwei verschiedene
+    Luftdrucksensoren statt zweier gleicher sind kein Zufall: gleiche Bauteile haben gleiche
+    Schwächen, unterschiedliche Bauteile fallen bei unterschiedlichen Bedingungen aus.</p>
+
+    <p>Wichtiger als die Zahl ist ohnehin die Trennung.  Die Sensorbereiche sind vollständig
+    voneinander isoliert, mit eigenen Bussen und eigener
+    Stromversorgung<sup><a href="#q16">16</a></sup>.  Zwei Sensoren, die an derselben
+    Spannungsschiene hängen, fallen gemeinsam aus, und dann hat man keine Redundanz, sondern
+    doppeltes Gewicht.</p>
+
+    <p>Redundanz wirkt aber erst, wenn jemand die Sensoren vergleicht, und genau das tut die
+    Firmware vor jedem Start.  ArduPilot verweigert das Scharfschalten, wenn zwei
+    Beschleunigungsmesser um mehr als 0,75&nbsp;Meter je Sekunde im Quadrat auseinanderliegen
+    oder zwei Kreisel um mehr als 5&nbsp;Grad je Sekunde<sup><a href="#q7">7</a></sup>.
+    Weitere Schwellen betreffen die Höhe, die zwischen Luftdrucksensor und Zustandsschätzung auf
+    einen Meter genau übereinstimmen muss, die Spannung der Servoschiene mit mindestens
+    4,3&nbsp;Volt und die Kalibrierung der Fernsteuerkanäle<sup><a href="#q7">7</a></sup>.</p>
+
+    <p>Dieser Absatz ist der Kern des ganzen Artikels.  Ein Copter mit einem einzigen Kreisel
+    kann diese Prüfung gar nicht erst durchführen.  Er startet immer, auch wenn sein Sensor
+    Unsinn meldet, und man erfährt es in der Luft.</p>
+
+    <h2 id="k8">8. CAN statt Kabelbaum</h2>
+
+    <p>Im <a href="ratgeber-flight-controller.html#k8">Flight-Controller-Ratgeber</a> steht, woran
+    das Aufrüsten eines FPV-Boards praktisch scheitert: an den seriellen Anschlüssen (Fachwort:
+    UART), von denen es typischerweise sechs gibt, zwei davon fest belegt.  Empfänger,
+    Videosender, GPS, Telemetrie und Kamerasteuerung wollen alle einen haben.</p>
+
+    <p>Die großen Autopiloten lösen dasselbe Problem anders: statt jedem Gerät eine eigene
+    Leitung zu geben, hängen alle an einem gemeinsamen Zweidrahtbus.  Das dafür verwendete
+    Protokoll heißt DroneCAN und ist das Standard-CAN-Protokoll von ArduPilot und
+    PX4<sup><a href="#q21">21</a></sup>; es stammt aus dem UAVCAN-Projekt und wurde
+    weitergeführt, als dessen Nachfolgeversion einen Bruch bedeutet
+    hätte<sup><a href="#q21">21</a></sup>.  Jeder Knoten bekommt seine Adresse dynamisch
+    zugeteilt, und die Nachrichten sind in einer eigenen Beschreibungssprache
+    festgelegt<sup><a href="#q21">21</a></sup>.</p>
+
+    <p>Praktisch heißt das: GPS, Kompass, Leistungsmessung und Entfernungsmesser kommen über
+    zwei Adern statt über vier Steckverbinder.  Der Pixhawk&nbsp;6X bietet dafür zwei CAN-Busse
+    sowie zusätzlich einen Ethernet-Anschluss mit 100&nbsp;Megabit je
+    Sekunde<sup><a href="#q16">16</a></sup>, über den eine Nutzlast oder ein Bordrechner
+    angebunden wird.</p>
+
+    <p>Der Unterschied ist keiner der Bequemlichkeit.  Ein Bus lässt sich erweitern, ohne dass
+    die Platine dafür einen freien Anschluss übrig haben muss.  Genau das ist der Grund, warum
+    ein Autopilot nach fünf Jahren noch passt und ein FPV-Board nach zwei Umbauten nicht
+    mehr.</p>
+
+    <h2 id="k9">9. Was passiert, wenn etwas ausfällt</h2>
+    <!-- bild:start autopilot-failsafe -->
+    <!-- bild:ende autopilot-failsafe -->
+
+    <p>Der Autopilot ist auch die Instanz, die entscheidet, was geschieht, wenn etwas schiefgeht.
+    ArduPilot führt dafür zehn getrennte Absicherungen: Ausfall der Fernsteuerung, leerer Akku,
+    Abriss der Bodenstationsverbindung, Ausfall der Zustandsschätzung, Verlust der
+    Positionsbestimmung, überhöhte Vibration, fehlende Geländedaten, Absturzerkennung,
+    Fallschirmauslösung und einen unabhängigen Wachhund für die
+    Software<sup><a href="#q6">6</a></sup>.</p>
+
+    <p>Am Beispiel des Fernsteuerungsausfalls lässt sich zeigen, wie fein das geregelt ist.  Die
+    Zeit bis zum Auslösen liegt standardmäßig bei einer Sekunde<sup><a href="#q5">5</a></sup>.
+    Ausgelöst wird nicht nur bei einem abgeschalteten Sender, sondern auch bei Verlassen der
+    Reichweite, bei Ausfall der Empfängerstromversorgung und bei einem gebrochenen
+    Kabel<sup><a href="#q5">5</a></sup>.  Als Reaktion lässt sich Rückkehr zum Startpunkt
+    einstellen, Landen an Ort und Stelle, eine intelligente Rückkehr entlang des Hinwegs oder das
+    Anfliegen eines vorher festgelegten Landepunkts<sup><a href="#q5">5</a></sup>.  Die
+    Schwelle, an der ein Empfänger als ausgefallen gilt, muss dabei über 910&nbsp;Mikrosekunden
+    Pulsbreite liegen und mindestens zehn Einheiten unterhalb des normalen
+    Gasminimums<sup><a href="#q5">5</a></sup>.  Wer diese Werte nicht sauber setzt, hat
+    entweder eine Absicherung, die nie auslöst, oder eine, die im Flug grundlos auslöst.</p>
+
+    <p>PX4 löst dieselbe Aufgabe mit vergleichbarer Liste und ergänzt sie um einen Punkt, der
+    rechtlich relevant ist: eine virtuelle Sperre in Form eines Zylinders um den Startpunkt, die
+    der Copter nicht verlässt<sup><a href="#q14">14</a></sup>.  Dazu kommt, dass das Scharfschalten
+    verweigert wird, wenn das Fluggerät sich in einem ungesunden Zustand befindet, und dass
+    automatisch wieder entschärft wird, wenn nach dem Scharfschalten nicht zügig gestartet
+    wird<sup><a href="#q14">14</a></sup>.</p>
+
+    <p>Diese Liste ist der eigentliche Grund, warum ein Copter mit Nutzlast einen Autopiloten
+    bekommt.  Nicht weil er besser regelt, sondern weil er ein durchdachtes Verhalten für den Tag
+    hat, an dem etwas nicht funktioniert.</p>
+
+    <h2 id="k10">10. Recht: die offene Kategorie</h2>
+
+    <p>In der EU fliegt ein privat gebauter Copter in aller Regel in der offenen Kategorie, und
+    die kennt drei Unterkategorien.  A1 betrifft Geräte unter 250&nbsp;Gramm und die Klassen C0
+    und C1, A2 die Klasse C2 mit weniger als 4&nbsp;Kilogramm, A3 die Klassen C3 und C4 sowie
+    ältere Geräte bis 25&nbsp;Kilogramm<sup><a href="#q23">23</a></sup>.  In A2 ist ein
+    waagerechter Abstand von 30&nbsp;Metern zu unbeteiligten Personen einzuhalten, der sich bei
+    aktiviertem Langsamflug auf 5&nbsp;Meter verringert; in A3 sind es 150&nbsp;Meter zu Personen
+    und zu bebautem Gebiet<sup><a href="#q23">23</a></sup>.  Für alle Unterkategorien gilt eine
+    Höhengrenze von 120&nbsp;Metern über Grund<sup><a href="#q23">23</a></sup>.  Und mit
+    begrenzten Ausnahmen müssen alle Geräte in der offenen Kategorie mit einem System zur
+    Fernidentifizierung ausgerüstet sein<sup><a href="#q23">23</a></sup>.</p>
+
+    <p>Für die Auswahl des Autopiloten folgt daraus zweierlei.  Erstens: die Höhengrenze und die
+    Abstandsregeln sind nichts, was sich am Boden merken lässt; sie gehören als Begrenzung in die
+    Konfiguration, und das setzt eine Firmware voraus, die Höhenbegrenzung und geografische
+    Sperren überhaupt kennt.  Genau das ist eine der Funktionen, die auf einer kleinen F4-Platine
+    dem Flash-Speicher zum Opfer fällt<sup><a href="#q4">4</a></sup>.</p>
+
+    <p>Zweitens: der Langsamflugmodus, mit dem sich in A2 der Abstand von 30 auf 5&nbsp;Meter
+    verringern lässt, ist eine Funktion des Fluggeräts und Teil seiner Klassifizierung.  Ein
+    selbst gebauter Copter hat sie in diesem Sinne nicht, gleich wie langsam man ihn einstellt.
+    Wer in dieser Kategorie fliegen will, kauft ein klassifiziertes Gerät; wer selbst baut,
+    bleibt in A3.</p>
+
+    <h2 id="k11">11. Wann sich der Schritt lohnt</h2>
+
+    <p>Aus allem Vorstehenden ergibt sich eine einfache Entscheidungsregel, und sie hat nichts
+    mit Können zu tun, sondern mit dem, was der Copter tragen und wo er fliegen soll.</p>
+
+    <p><strong>Freestyle und Rennen:</strong> Betaflight, FPV-Board, fertig.  Alles in diesem
+    Artikel wäre bezahltes Gewicht.  Was zählt, steht im
+    <a href="ratgeber-flight-controller.html">Flight-Controller-Ratgeber</a>: Montage, Filter,
+    Anschlüsse, Aufzeichnung.</p>
+
+    <p><strong>Eine Strecke abfliegen, Höhe und Position halten, zurückkommen:</strong> INAV auf
+    ordentlicher FPV-Hardware<sup><a href="#q20">20</a></sup>.  Der Sprung zum vollen Autopiloten
+    lohnt hier meistens noch nicht.</p>
+
+    <p><strong>Nutzlast über fremdem Grund, Vermessung, Arbeit mit Auftrag:</strong> ArduPilot
+    oder PX4 auf Hardware nach Pixhawk-Standard, mit H7, mehreren Trägheitsmesseinheiten und
+    CAN-Anschluss<sup><a href="#q16">16</a></sup><sup><a href="#q21">21</a></sup>.  Ab hier ist
+    Redundanz keine Ausstattung, sondern Voraussetzung.</p>
+
+    <p>Der Preis dieses letzten Schritts ist überschaubarer, als viele denken.  Ein
+    Pixhawk&nbsp;4 wiegt 15,8&nbsp;Gramm bei einer Grundfläche von 44 mal
+    84&nbsp;Millimetern<sup><a href="#q17">17</a></sup>, ein FPV-Controller wie der SpeedyBee
+    F405&nbsp;V4 10,5&nbsp;Gramm auf dem üblichen Lochbild von
+    30,5&nbsp;Millimetern<sup><a href="#q22">22</a></sup>.  Das sind rund 50&nbsp;Prozent mehr
+    Masse, in absoluten Zahlen aber nur gut fünf Gramm (unsere Rechnung).  Die Grundfläche ist
+    dagegen rund das Vierfache (unsere Rechnung), und das ist die Zahl, die den Aufbau
+    tatsächlich bestimmt: nicht das Gewicht entscheidet, sondern ob die Platine überhaupt
+    hinpasst.</p>
+
+    <p>Für unseren 13-Zoll-Long-Range-Aufbau ist die Antwort deshalb ein Autopilot nach
+    Pixhawk-Standard, weil dort GPS, Kompass und Leistungsmessung ohnehin über den Bus
+    kommen<sup><a href="#q16">16</a></sup><sup><a href="#q21">21</a></sup> und weil ein Copter
+    dieser Klasse ohne Sensorvergleich vor dem Start nicht starten sollte.  Für den
+    10-Zoll-Aufbau und für Freestyle-Fünfzöller bleibt es bei Betaflight, und die gesparte Zeit
+    fließt in die Montage und in die Filterkette.</p>
+
+    <p>Wenn du unsicher bist, ob dein Vorhaben den Schritt zum Autopiloten wirklich braucht,
+    sprich uns an, bevor du bestellst.  Die Antwort ist häufiger „nein" als man erwartet, und
+    wenn sie „ja" lautet, ändert sie meistens auch den Frame.</p>
+
+    <p style="margin-top:14px">
+      <a href="ratgeber-flight-controller.html">➜ Passend dazu: der Flight-Controller-Ratgeber</a><br>
+      <a href="ratgeber-esc.html">➜ Passend dazu: der ESC-Ratgeber</a><br>
+      <a href="ratgeber-funk-kommunikation.html">➜ Passend dazu: Funk und Kommunikation</a><br>
+      <a href="ratgeber-nutzlast-gimbal.html">➜ Passend dazu: Nutzlast und Gimbal</a><br>
+      <a href="ratgeber-teileliste-13-build-1.html">➜ Passend dazu: Teileliste 13-Zoll-Build</a><br><br>
+      <a href="index.html#kontakt">➜ Persönliche Beratung zu deinem Build anfragen</a>
+    </p>
+
+    <p class="muted" style="margin-top:34px; font-size:14px">
+      Dieser Ratgeber ersetzt keine individuelle technische Prüfung.  Alle Angaben ohne
+      Gewähr.  Wo wir gerechnet statt gemessen haben, steht es ausdrücklich dabei.  Alle
+      Quellen wurden im August 2026 abgerufen und geprüft.
+    </p>
+
+    <h2>Quellenangaben</h2>
+    <ol class="muted" style="font-size:14px; line-height:1.9; padding-left:20px">
+      <li id="q1">ArduPilot, „Managing Gyro Noise with the Dynamic Harmonic Notch Filters".
+        Betriebsarten des harmonischen Kerbfilters, Kerben bis zum Sechzehnfachen der
+        Grundfrequenz, drei Oberwellen als sicherer Bereich, Rechenbeispiel Achtkopter mit
+        8 × 3 = 24 Kerbfiltern, Warnung vor dem Aufbrauchen der Rechenzyklen:
+        <a href="https://ardupilot.org/copter/docs/common-imu-notch-filtering.html" rel="noopener" target="_blank">ardupilot.org, Dynamic Harmonic Notch Filters</a></li>
+      <li id="q2">ArduPilot, „Aggressive Rate Loop Tuning".  Hauptschleife standardmäßig 400 Hz
+        entsprechend 2,5 ms, schnelle Ratenschleife bis 4 kHz in einem eigenen Programmfaden,
+        Gyro-Abtastrate über INS_GYRO_RATE, Empfehlungen für Filtergrenzfrequenzen, Feststellung
+        der höheren Rechenlast und dass F4-Systeme sie möglicherweise nicht durchhalten,
+        H7-Autopiloten dagegen schon:
+        <a href="https://ardupilot.org/copter/docs/high-loop-rate-tuning.html" rel="noopener" target="_blank">ardupilot.org, Aggressive Rate Loop Tuning</a></li>
+      <li id="q3">ArduPilot, „Measuring Vibration with IMU Batch Sampler".  Standardmäßige
+        Abtastung des Sensor-Hinterteils mit 1 kHz und Einstellbarkeit auf 2 hoch N kHz,
+        Aufzeichnung der Sensordaten vor und nach dem Filter, typische Motorgrundfrequenzen von
+        rund 200 Hz bei kleinen und rund 100 Hz bei großen Coptern, Feststellung, dass Vibration
+        oberhalb von 100 Hz Lage- und Positionsprobleme verursacht:
+        <a href="https://ardupilot.org/copter/docs/common-imu-batchsampling.html" rel="noopener" target="_blank">ardupilot.org, IMU Batch Sampler</a></li>
+      <li id="q4">ArduPilot, „Autopilot Hardware Options".  Feststellung, dass die meisten
+        F4-Platinen wegen der Flash-Grenze nicht alle Funktionen enthalten und dafür eine
+        maßgeschneiderte Firmware gebaut werden muss, Liste der Auswahlkriterien für einen
+        Autopiloten (Sensorredundanz, Ausgänge, serielle Schnittstellen, externe Busse, analoge
+        Ein- und Ausgänge, eingebaute Funktionen, Größe, Preis):
+        <a href="https://ardupilot.org/copter/docs/common-autopilots.html" rel="noopener" target="_blank">ardupilot.org, Autopilot Hardware Options</a></li>
+      <li id="q5">ArduPilot, „Radio Failsafe".  Auslösebedingungen einschließlich abgeschaltetem
+        Sender, Reichweitenverlust, Ausfall der Empfängerstromversorgung und Kabelbruch,
+        Standardzeit von 1 Sekunde, Schwellenwert oberhalb von 910 Mikrosekunden und mindestens
+        10 Einheiten unter dem Gasminimum, Reaktionen von Rückkehr zum Startpunkt über Landen bis
+        zum Anfliegen eines festgelegten Landepunkts:
+        <a href="https://ardupilot.org/copter/docs/radio-failsafe.html" rel="noopener" target="_blank">ardupilot.org, Radio Failsafe</a></li>
+      <li id="q6">ArduPilot, „Failsafe".  Übersicht der zehn Absicherungen: Fernsteuerung, Akku,
+        Bodenstation, Zustandsschätzung, Koppelnavigation, Vibration, Geländedaten,
+        Absturzerkennung, Fallschirm und unabhängiger Wachhund:
+        <a href="https://ardupilot.org/copter/docs/failsafe-landing-page.html" rel="noopener" target="_blank">ardupilot.org, Failsafe</a></li>
+      <li id="q7">ArduPilot, „Pre-Arm Safety Checks".  Konsistenzschwellen von 0,75 m/s² zwischen
+        zwei Beschleunigungsmessern und 5 Grad je Sekunde zwischen zwei Kreiseln,
+        Höhenübereinstimmung von Luftdrucksensor und Zustandsschätzung auf 1 Meter,
+        Mindestspannung der Servoschiene von 4,3 Volt, Anforderungen an die Kanalkalibrierung
+        und weitere Prüfungen:
+        <a href="https://ardupilot.org/copter/docs/common-prearm-safety-checks.html" rel="noopener" target="_blank">ardupilot.org, Pre-Arm Safety Checks</a></li>
+      <li id="q8">ArduPilot, „EKF Source Selection".  Getrennte Festlegung der Quellen für
+        Horizontalposition und -geschwindigkeit, Höhe, Vertikalgeschwindigkeit und Gierwinkel,
+        drei umschaltbare Quellensätze, mögliche Quellen von GPS über Entfernungsmesser, Baken,
+        externe Navigation und optischen Fluss bis zum Kompass und GPS-basierten Gierwinkel:
+        <a href="https://ardupilot.org/copter/docs/common-ekf-sources.html" rel="noopener" target="_blank">ardupilot.org, EKF Source Selection</a></li>
+      <li id="q9">ArduPilot, „GPS for Yaw (Moving Baseline)".  Bestimmung der Ausrichtung aus den
+        Signallaufzeiten zweier getrennter Antennen, Mindestabstand von 30 Zentimetern,
+        Plausibilitätsprüfung des gemeldeten Abstands auf 20 Prozent genau, Entfall des Kompasses
+        und dessen Störanfälligkeit durch Motoren und Regler:
+        <a href="https://ardupilot.org/copter/docs/common-gps-for-yaw.html" rel="noopener" target="_blank">ardupilot.org, GPS for Yaw</a></li>
+      <li id="q10">ArduPilot, „DShot ESCs".  Die vier Geschwindigkeiten DShot150, 300, 600 und
+        1200 mit 150 bis 1.200 Kilobaud und ihre Einsatzempfehlungen, bidirektionales DShot als
+        Eigenschaft bestimmter Regler, Einschränkungen der Motorausgänge bei Platinen mit
+        Ein-Ausgabe-Prozessor:
+        <a href="https://ardupilot.org/copter/docs/common-dshot-escs.html" rel="noopener" target="_blank">ardupilot.org, DShot ESCs</a></li>
+      <li id="q11">ArduPilot, „Optical Flow Sensors".  Ableitung der Geschwindigkeit über Grund
+        aus Bodentextur und sichtbaren Merkmalen, Unterstützung durch Copter, Plane und Rover,
+        Einordnung als Verfahren der Navigation ohne GPS:
+        <a href="https://ardupilot.org/copter/docs/common-optical-flow-sensors-landingpage.html" rel="noopener" target="_blank">ardupilot.org, Optical Flow Sensors</a></li>
+      <li id="q12">ArduPilot Dev, „Scheduling Code to Run Intermittently".  Schnelle Schleife mit
+        400 Hz auf Pixhawk-Hardware, Zeitrechnung des Planers in Einheiten von 2,5 ms, Angabe der
+        erwarteten Laufzeit jeder Aufgabe in Mikrosekunden und Verwendung dieser Schätzung zur
+        Entscheidung, ob eine Aufgabe noch in den laufenden Durchlauf passt:
+        <a href="https://ardupilot.org/dev/docs/code-overview-scheduling-your-new-code-to-run-intermittently.html" rel="noopener" target="_blank">ardupilot.org, Scheduling Code</a></li>
+      <li id="q13">PX4, „Controller Diagrams".  Kaskadierte Regelstruktur aus Positions-,
+        Geschwindigkeits-, Lage- und Ratenschleife, Positionsregler als reiner P-Regler,
+        Geschwindigkeitsregler als PID, Lageregler als P-Regler mit Vorsteuerung auf
+        Quaternionenbasis, Ratenregler als PID mit Vorfaktor, Tiefpässe auf den
+        Differenzierpfaden und Begrenzung des Integralanteils:
+        <a href="https://docs.px4.io/main/en/flight_stack/controller_diagrams.html" rel="noopener" target="_blank">docs.px4.io, Controller Diagrams</a></li>
+      <li id="q14">PX4, „Basic Concepts".  Kreisel, Beschleunigungsmesser, Magnetfeldsensor und
+        Luftdrucksensor als Mindestausstattung, empfohlene Zusatzsensoren, Liste der
+        Absicherungen einschließlich virtueller Sperre in Zylinderform, Verweigerung des
+        Scharfschaltens in ungesundem Zustand und automatisches Entschärfen ohne zügigen Start:
+        <a href="https://docs.px4.io/main/en/getting_started/px4_basic_concepts.html" rel="noopener" target="_blank">docs.px4.io, Basic Concepts</a></li>
+      <li id="q15">PX4, „Multicopter PID Tuning Guide".  Typische Wertebereiche des Ratenreglers
+        von 0,01 bis 0,04 für P und D sowie 0,5 bis 8 für I je nach Fluggerätgröße, zuckende und
+        heiß werdende Motoren als Folge eines zu hohen D-Anteils, Vorgehen in Schritten von 20
+        bis 30 Prozent und 5 bis 10 Prozent beim Feinschliff, Wirkung des Luftmodus und Hinweis
+        auf ungewolltes Steigen bei starken Schwingungen:
+        <a href="https://docs.px4.io/main/en/config_mc/pid_tuning_guide_multicopter.html" rel="noopener" target="_blank">docs.px4.io, Multicopter PID Tuning Guide</a></li>
+      <li id="q16">PX4 und Holybro, „Pixhawk 6X".  STM32H753 mit 480 MHz, 2 MB Flash und 1 MB RAM,
+        Ein-Ausgabe-Prozessor STM32F100 mit 24 MHz und 8 KB Speicher, drei ICM-45686 sowie zwei
+        Luftdrucksensoren ICP20100 und BMP388, dreifach getrennte Sensorbereiche mit eigenen
+        Bussen und eigener Stromversorgung, beheizte und mechanisch entkoppelte Sensorplatine,
+        Strombegrenzung auf 1,5 Ampere je Anschlussgruppe, vier serielle Schnittstellen, zwei
+        CAN-Busse und 100-Megabit-Ethernet:
+        <a href="https://docs.px4.io/main/en/flight_controller/pixhawk6x.html" rel="noopener" target="_blank">docs.px4.io, Pixhawk 6X</a></li>
+      <li id="q17">PX4 und Holybro, „Pixhawk 4".  STM32F765 mit 216 MHz, 2 MB Flash und 512 KB RAM,
+        Ein-Ausgabe-Prozessor STM32F100 mit 24 MHz, Sensoren ICM-20689 und BMI055 beziehungsweise
+        ICM-20602, Magnetfeldsensor IST8310 und Luftdrucksensor MS5611, fünf serielle
+        Schnittstellen, Gewicht 15,8 Gramm bei 44 mal 84 Millimetern:
+        <a href="https://docs.px4.io/main/en/flight_controller/pixhawk4.html" rel="noopener" target="_blank">docs.px4.io, Pixhawk 4</a></li>
+      <li id="q18">Pixhawk, „Standards".  Autopilot-Referenzstandards v6X, v5X, v6C und v6U,
+        Steckerstandard, Autopilot-Bus-Standard mit Pinbelegung, Blockschaltbildern,
+        Leiterplattenrichtlinie und Steckerangaben, Nutzlast-Bus-Standard mit
+        MAVLink-Schnittstelle und Schutz beim Stecken unter Spannung, Standard für intelligente
+        Akkus im Entwurf:
+        <a href="https://pixhawk.org/standards/" rel="noopener" target="_blank">pixhawk.org/standards</a></li>
+      <li id="q19">TDK InvenSense, „ICM-45686".  Rauschdichte des Kreisels von 3,8 mdps/√Hz,
+        Messbereich bis ±4.000 Grad je Sekunde und ±32 g, Stromaufnahme 0,42 mA im rauscharmen
+        Sechsachsbetrieb, Temperaturgang von ±0,005 Grad je Sekunde je Grad Celsius beim Kreisel,
+        BalancedGyro-Bauweise:
+        <a href="https://invensense.tdk.com/products/motion-tracking/6-axis/icm-45686/" rel="noopener" target="_blank">invensense.tdk.com, ICM-45686</a></li>
+      <li id="q20">INAV, „INAV Wiki".  Unterstützte Fahrzeugarten von Flächenflugzeugen über
+        Multicopter bis zu Land- und Wasserfahrzeugen, Navigationsfunktionen mit
+        Wegpunktmissionen, Rückkehr zum Startpunkt sowie Positions- und Höhenhaltung, unterstützte
+        Prozessoren von STM32F405 mit 168 MHz und 1 MB Flash bis STM32H743 mit 480 MHz und 2 MB
+        Flash, Ende der F411-Unterstützung nach Version 7.1.2:
+        <a href="https://github.com/iNavFlight/inav/wiki" rel="noopener" target="_blank">github.com, INAV Wiki</a></li>
+      <li id="q21">DroneCAN, „DroneCAN".  Einordnung als das CAN-Standardprotokoll von ArduPilot
+        und PX4 für Peripheriegeräte, technische Gleichheit mit UAVCAN und Fortführung nach dem
+        Bruch der Nachfolgeversion, Beschreibungssprache für Nachrichten, dynamische Vergabe der
+        Knotenadressen:
+        <a href="https://dronecan.github.io/" rel="noopener" target="_blank">dronecan.github.io</a></li>
+      <li id="q22">SpeedyBee, „SpeedyBee F405 V4 BLS 55A 30x30 FC &amp; ESC Stack".  Prozessor
+        STM32F405, Kreisel ICM-42688-P, eingebauter Luftdrucksensor, microSD-Steckplatz für Karten
+        bis 4 Gigabyte, sechs UARTs mit fest belegtem Bluetooth- und Telemetrieanschluss,
+        Spannungsschienen 5 V/3 A, 9 V/3 A, 3,3 V/500 mA und 4,5 V/1 A, Eingangsbereich 3S bis 6S,
+        Lochbild 30,5 mal 30,5 Millimeter, Gewicht 10,5 Gramm:
+        <a href="https://www.speedybee.com/speedybee-f405-v4-bls-55a-30x30-fc-esc-stack/" rel="noopener" target="_blank">speedybee.com, F405 V4 Stack</a></li>
+      <li id="q23">EASA, „Open category (low risk) civil drones".  Unterkategorien A1, A2 und A3
+        mit den zugehörigen Geräteklassen, Massengrenzen von 250 Gramm, 4 Kilogramm und
+        25 Kilogramm, Mindestabstand von 30 Metern in A2 mit Verringerung auf 5 Meter bei
+        aktiviertem Langsamflug, 150 Meter Abstand in A3, Höhengrenze von 120 Metern über Grund,
+        Pflicht zur Fernidentifizierung mit begrenzten Ausnahmen:
+        <a href="https://easa.europa.eu/en/domains/civil-drones-rpas/open-category-civil-drones" rel="noopener" target="_blank">easa.europa.eu, Open Category</a></li>
+    </ol>
+
+<!-- historie:start -->
+    <h2>Änderungshistorie</h2>
+    <ul class="muted historie">
+      <li><strong>20.08.2026</strong> · Veröffentlichung</li>
+    </ul>
+<!-- historie:ende -->
+
+
+<!-- partner:start -->
+<!-- partner:ende -->
+
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <nav class="social" aria-label="Draco Labs in sozialen Netzwerken">
+      <a href="https://www.youtube.com/@DracoLabsGermany" rel="noopener" class="yt" aria-label="Draco Labs auf YouTube">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/draco.labs.germany" rel="noopener" class="ig" aria-label="Draco Labs auf Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c0-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 3.1A6.7 6.7 0 1 0 18.7 12 6.7 6.7 0 0 0 12 5.3Zm0 11a4.3 4.3 0 1 1 4.3-4.3 4.3 4.3 0 0 1-4.3 4.3ZM19 5a1.6 1.6 0 1 1-1.6-1.6A1.6 1.6 0 0 1 19 5Z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@dracolabsgermany" rel="noopener" class="tt" aria-label="Draco Labs auf TikTok">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16.6 2h-3.1v13.1a2.7 2.7 0 1 1-2.7-2.7c.2 0 .4 0 .6.1V9.3a6 6 0 0 0-.6 0 5.8 5.8 0 1 0 5.8 5.8V8.6a7 7 0 0 0 4.1 1.3V6.8a3.9 3.9 0 0 1-4.1-3.9V2Z"/></svg>
+      </a>
+    </nav>
+    <div class="links">
+      <a href="index.html">Startseite</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
+    </div>
+    <div>© 2026 Draco Labs Germany · Kleinunternehmer gem. § 19 UStG</div>
+    <img class="ai-label" src="assets/label-ai-modified.svg" alt="KI-Kennzeichnung: Inhalte dieser Website wurden teilweise mit KI erstellt oder bearbeitet (AI MODIFIED)">
+  </div>
+</footer>
+
+</body>
+</html>

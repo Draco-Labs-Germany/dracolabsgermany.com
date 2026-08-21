@@ -1,0 +1,759 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Das Kennzeichen entscheidet, nicht die Drohne — C5- und Remote-ID-Ratgeber | Draco Labs</title>
+<meta name="description" content="C5-Klasse und Remote-ID im Wortlaut: was Teil 16 verlangt, wann der Zusatzbausatz greift, wer senden muss und was die Norm nicht abdeckt. Jede Pflicht mit Fundstelle.">
+<meta name="keywords" content="C5 Drohne, Klasse C5 Anforderungen, Remote ID EU, direkte Fernidentifizierung, STS-01, Zusatzbausatz C3 auf C5, EN 4709-002, UAS-Betreibernummer">
+<meta name="robots" content="noindex, nofollow">
+<meta name="tdm-reservation" content="1">
+<meta name="author" content="Draco Labs Germany">
+<link rel="canonical" href="https://dracolabsgermany.com/ratgeber-c5-remote-id.html">
+
+<!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Das Kennzeichen entscheidet, nicht die Drohne — C5 und Remote-ID">
+<meta property="og:description" content="Warum C5 nur eine Tür öffnet, wieso ein C0-Gerät nichts sendet und was der Durchführungsbeschluss 2024/2103 einschränkt. Jede Pflicht mit Fundstelle.">
+<meta property="og:url" content="https://dracolabsgermany.com/ratgeber-c5-remote-id.html">
+<meta property="og:image" content="https://dracolabsgermany.com/assets/ratgeber/c5-remote-id-hero.jpg">
+<meta property="og:site_name" content="Draco Labs Germany">
+<meta property="og:locale" content="de_DE">
+
+<!-- Twitter/X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Das Kennzeichen entscheidet, nicht die Drohne — C5 und Remote-ID">
+<meta name="twitter:description" content="C5, Zusatzbausatz, STS-01 und die direkte Fernidentifizierung: Nummer für Nummer aus den Verordnungen belegt.">
+<meta name="twitter:image" content="https://dracolabsgermany.com/assets/ratgeber/c5-remote-id-hero.jpg">
+
+<link rel="icon" type="image/png" href="assets/emblem.png">
+<link rel="stylesheet" href="style.css">
+
+<!-- Strukturierte Daten für Google (Article) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Das Kennzeichen entscheidet, nicht die Drohne: C5-Klasse und Remote-ID",
+  "description": "Ratgeber zur Klasse C5 und zur direkten Fernidentifizierung: Anforderungen aus Teil 16 der Verordnung (EU) 2019/945, Zusatzbausatz aus C3, Standardszenario STS-01, Sendepflichten je Klasse, Datenfelder und Funkverfahren, Konformitätsbewertung und die eingeschränkte harmonisierte Norm.",
+  "image": "https://dracolabsgermany.com/assets/ratgeber/c5-remote-id-hero.jpg",
+  "datePublished": "2026-08-21",
+  "dateModified": "2026-08-21",
+  "author": { "@type": "Organization", "name": "Draco Labs Germany" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Draco Labs Germany",
+    "logo": { "@type": "ImageObject", "url": "https://dracolabsgermany.com/assets/logo.png" }
+  },
+  "mainEntityOfPage": "https://dracolabsgermany.com/ratgeber-c5-remote-id.html",
+  "inLanguage": "de-DE"
+}
+</script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a href="index.html"><img src="assets/emblem.png" alt="Draco Labs Emblem"></a>
+    <div class="name">Draco Labs <small>Germany</small></div>
+    <input type="checkbox" id="menu-auf" class="menu-toggle">
+    <label for="menu-auf" class="burger" aria-label="Menü öffnen und schließen">
+      <span></span><span></span><span></span>
+    </label>
+    <nav>
+      <!-- <a href="index.html#baustelle">Baustelle</a> reaktivieren, wenn die Serie kurz vor Frame-Go-live released wird -->
+      <a href="leistungen.html">Leistungen</a>
+      <a href="index.html#neuigkeiten">Neuigkeiten</a>
+      <a href="index.html#ratgeber">Ratgeber</a>
+      <a href="index.html#teilelisten">Teilelisten</a>
+      <a href="index.html#ueber">Über uns</a>
+      <a href="index.html#partner">Partner</a>
+      <a href="index.html#kontakt">Kontakt</a>
+    </nav>
+    <a class="shop-btn" href="https://shop.dracolabsgermany.com" target="_blank" rel="noopener">Shop →</a>
+  </div>
+</header>
+
+<main class="legal">
+  <div class="wrap">
+
+    <h1>Das Kennzeichen entscheidet, nicht die Drohne</h1>
+    <p class="muted" style="font-size:17px; margin-top:-4px">C5 und die direkte
+    Fernidentifizierung werden meist zusammen genannt und meinen zwei verschiedene Dinge.  Was
+    die Verordnungen wirklich verlangen, Nummer für Nummer.</p>
+    <p class="muted">Ratgeber &middot; Recht &amp; Betrieb &middot; Lesezeit ca. 19 Min &middot; Stand: August 2026</p>
+
+    <div data-nosnippet style="background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--cyan); border-radius:10px; padding:18px 20px; margin:22px 0">
+      <p style="margin:0 0 8px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; font-size:13px; color:var(--cyan)">Kurz gesagt</p>
+      <p style="margin:0"><strong>C5 ist ein Klassenkennzeichen, das der Hersteller vergibt.</strong>
+      Es öffnet genau eine Tür: das Standardszenario STS-01 in der speziellen Kategorie.  Technisch
+      ist C5 ein <strong>C3 mit vier Zusatzforderungen</strong>.  Dazu gehören ein Langsamflugmodus
+      mit höchstens 5 Metern je Sekunde und eine Vorrichtung, die den Flug beendet.  Ein C3-Gerät lässt
+      sich mit einem Zusatzbausatz nachrüsten, wenn der Hersteller des Bausatzes es freigibt und
+      die Software unangetastet bleibt.  <strong>Die Fernidentifizierung hängt am Kennzeichen,
+      nicht an der Drohne:</strong> C0 und C4 senden nichts, C1, C2, C3, C5 und C6 senden.  In der
+      speziellen Kategorie muss seit dem 1. Januar 2024 jedes einzelne Luftfahrzeug senden.  Die
+      harmonisierte Norm dazu steht seit Juli 2024 <strong>mit einer Einschränkung</strong> im
+      Amtsblatt.</p>
+    </div>
+
+    <p>Wer einen Copter selbst aufbaut, stößt früher oder später auf zwei Buchstaben-Ziffern-Paare,
+    die nach demselben Thema klingen.  Das eine ist ein Klassenkennzeichen auf dem Gerät, das
+    andere eine Nummer am Betreiber.  Beides wird regelmäßig verwechselt.  Das
+    Luftfahrt-Bundesamt weist auf seiner eigenen Seite ausdrücklich darauf hin<sup><a href="#q4">4</a></sup>.  Man solle
+    die Gerätekennzeichnung nicht mit der Betreibernummer verwechseln<sup><a href="#q4">4</a></sup>.
+    Dieser Artikel trennt beides und geht dann in die Wortlaute.</p>
+
+    <p>Zur Einordnung in unsere anderen Texte: Die Absicherungen eines Autopiloten, also
+    Rückkehrfunktion und Flugbeendigung, stehen im
+    <a href="ratgeber-autopilot.html">Autopilot-Ratgeber</a>.  Die serielle Anbindung und der
+    CAN-Bus, über die ein Fernidentifizierungsmodul angeschlossen wird, stehen im
+    <a href="ratgeber-flight-controller.html">Flight-Controller-Ratgeber</a>.  Das 2,4-Gigahertz-Band,
+    das sich Steuerung und Fernidentifizierung teilen, steht im
+    <a href="ratgeber-funk-kommunikation.html">Funk-Ratgeber</a>.</p>
+
+    <p><strong>Was dieser Artikel nicht behandelt:</strong> die offene Kategorie in ihrer ganzen
+    Breite und den Kompetenznachweis für Fernpiloten.  Ebenso wenig geografische UAS-Gebiete,
+    Versicherung und die Betriebsgenehmigung nach einer Risikobewertung.  Ebenfalls nicht behandelt: das U-space-Regelwerk
+    und die amerikanische Remote-ID-Regel der FAA.  Der Text bleibt bei zwei Dingen: dem
+    Klassenkennzeichen C5 und der direkten Fernidentifizierung.</p>
+
+    <p><strong>Hinweis:</strong> Jede Zahl und jede Pflicht in diesem Text hat eine Fußnote, die
+    auf eine nachprüfbare Quelle zeigt.  Wo wir gerechnet statt zitiert haben, steht es
+    ausdrücklich dabei.  Dieser Artikel ist keine Rechtsberatung.  Für den Fall, dass wir einen
+    Fehler gemacht haben, kontaktiert uns gerne jederzeit.</p>
+
+    <h2 id="k1">1. Wer das Kennzeichen vergibt</h2>
+    <!-- bild:start c5-remote-id-kennzeichen -->
+    <!-- bild:ende c5-remote-id-kennzeichen -->
+
+    <p>Ein Klassenkennzeichen ist kein Prüfsiegel einer Behörde.  Es ist eine Erklärung des
+    Herstellers.  Die Delegierte Verordnung (EU) 2019/945 verlangt vom Hersteller, das Erzeugnis
+    nach den Anforderungen des Anhangs zu bauen<sup><a href="#q1">1</a></sup>.  Dazu muss er die technischen Unterlagen
+    erstellen und ein Konformitätsbewertungsverfahren durchführen<sup><a href="#q1">1</a></sup>.  Erst danach
+    stellt er die EU-Konformitätserklärung aus und bringt das CE-Zeichen
+    an<sup><a href="#q1">1</a></sup>.</p>
+
+    <p>Das Luftfahrt-Bundesamt formuliert die Folge daraus knapp.  Eine C-Klasse kann man als
+    Nutzer nicht selbst vergeben<sup><a href="#q5">5</a></sup>.  Sie lässt sich auch nicht allein
+    aus der höchstzulässigen Startmasse ableiten, weil weitere technische Anforderungen dazu
+    kommen<sup><a href="#q5">5</a></sup>.  Zertifizierung und Klassifizierung kann ausschließlich
+    der Hersteller durchführen<sup><a href="#q5">5</a></sup>.</p>
+
+    <p>Umgekehrt gilt das ebenso.  Wer an einem klassifizierten Gerät etwas ändert, das die
+    wesentlichen Anforderungen der Verordnung betrifft, muss das Klassenkennzeichen
+    entfernen<sup><a href="#q4">4</a></sup>.  Das Beispiel des Amtes ist die Veränderung der
+    Flughöhenbegrenzung<sup><a href="#q4">4</a></sup>.  Danach ist ein Betrieb nur noch in der
+    speziellen Kategorie möglich, und dafür braucht es eine Betriebsgenehmigung der zuständigen
+    Behörde<sup><a href="#q4">4</a></sup>.</p>
+
+    <p>Privat hergestellte Geräte sind für den Eigengebrauch bestimmt, werden nicht in Verkehr
+    gebracht und tragen deshalb keine C-Klasse<sup><a href="#q5">5</a></sup>.  Sie dürfen in der
+    offenen Kategorie nur in A1 fliegen, wenn die Startmasse unter 250 Gramm liegt<sup><a href="#q5">5</a></sup>.  Andernfalls
+    bleibt allein die Unterkategorie A3 offen<sup><a href="#q5">5</a></sup>.  Das ist der Rahmen, in dem ein Eigenbau steht, bevor
+    irgendeine Klassenfrage überhaupt beginnt.</p>
+
+    <h2 id="k2">2. C5 im Wortlaut</h2>
+
+    <p>C5 wurde nicht mit der Ursprungsfassung eingeführt, sondern erst mit der Delegierten Verordnung
+    (EU) 2020/1058 vom 27. April 2020 nachgetragen<sup><a href="#q2">2</a></sup>.  Sie fügt dem Anhang die
+    Teile 16 und 17 an, in denen C5 und C6 stehen<sup><a href="#q2">2</a></sup>.</p>
+
+    <p>Teil 16 beginnt mit einem Verweis.  Ein UAS der Klasse C5 muss den Anforderungen von Teil 4
+    genügen<sup><a href="#q2">2</a></sup>.  Ausgenommen sind allein dessen Absätze 2 und 10 davon<sup><a href="#q2">2</a></sup>.
+    Teil 4 beschreibt die Klasse C3 der Verordnung.  Damit gelten für C5 unter anderem eine höchstzulässige Startmasse unter
+    25 Kilogramm und eine größte Abmessung unter 3 Metern<sup><a href="#q1">1</a></sup>.  Dazu kommen ausschließlich
+    elektrischer Antrieb, eine eindeutige Seriennummer nach ANSI/CTA-2063-2019 und eine direkte
+    Fernidentifizierung<sup><a href="#q1">1</a></sup>.  Ebenso: mindestens ein grünes Blinklicht
+    zur Unterscheidung von bemannten Luftfahrzeugen bei Nacht<sup><a href="#q1">1</a></sup>.</p>
+
+    <p>Die beiden Ausnahmen sind aufschlussreich.  Absatz 2 von Teil 4 ist die
+    120-Meter-Höhenbegrenzung, Absatz 10 die Geo-Sensibilisierung<sup><a href="#q1">1</a></sup>.
+    Beide entfallen für die Klasse C5.  Ist eine Geo-Sensibilisierungsfunktion vorhanden, muss sie allerdings
+    Teil 4 Absatz 10 genügen<sup><a href="#q2">2</a></sup>.</p>
+
+    <p>Dazu kommen die eigenen Forderungen aus Teil 16 des Anhangs.  Ein C5-Gerät ist kein Starrflügler,
+    sofern es nicht gefesselt ist<sup><a href="#q2">2</a></sup>.  Es liefert dem Fernpiloten im
+    Flug klare und präzise Angaben zur Höhe über der Oberfläche oder dem
+    Startpunkt<sup><a href="#q2">2</a></sup>.  Es hat einen vom Fernpiloten einstellbaren
+    Langsamflugmodus, der die Reisegeschwindigkeit auf höchstens 5 Meter je Sekunde
+    begrenzt<sup><a href="#q2">2</a></sup>.  Das sind <strong>18 Kilometer je Stunde</strong>,
+    unsere Rechnung aus der Angabe in Meter je Sekunde.</p>
+
+    <p>Die vierte Forderung ist die schwerste.  Der Fernpilot muss über Vorrichtungen verfügen,
+    den Flug zu beenden<sup><a href="#q2">2</a></sup>.  Diese müssen zuverlässig, vorhersehbar und
+    unabhängig vom automatischen Flugsteuerungs- und Flugführungssystem
+    sein<sup><a href="#q2">2</a></sup>.  Die Unabhängigkeit gilt ausdrücklich auch für die
+    Auslösung<sup><a href="#q2">2</a></sup>.  Sie müssen das Luftfahrzeug zum Sinkflug zwingen,
+    angetriebene Horizontalbewegung verhindern und die Aufprallenergie
+    verringern<sup><a href="#q2">2</a></sup>.</p>
+
+    <p>Schließlich die Verbindungsüberwachung.  Der Fernpilot muss die Qualität des Steuerungs- und
+    Kontrolllinks ununterbrochen überwachen können<sup><a href="#q2">2</a></sup>.  Er erhält eine
+    Warnung, wenn die Übertragung abzureißen oder sich zu verschlechtern droht, und eine zweite,
+    wenn die Verbindung unterbrochen ist<sup><a href="#q2">2</a></sup>.  Die Herstelleranweisungen
+    müssen die Vorrichtungen zur Flugbeendigung beschreiben<sup><a href="#q2">2</a></sup>.</p>
+
+    <p>Weil Teil 4 mit nur zwei Ausnahmen weitergilt, hängen an C5 noch drei
+    Pflichten, die leicht übersehen werden.  Der Steuerungs- und Kontrolllink muss gegen
+    unbefugten Zugang gesichert sein<sup><a href="#q1">1</a></sup>.  Bei niedrigem Ladezustand von
+    Akku oder Steuereinheit muss der Fernpilot rechtzeitig gewarnt werden, um sicher zu
+    landen<sup><a href="#q1">1</a></sup>.  Und dem Gerät liegt ein Informationsblatt der EASA über
+    die geltenden Beschränkungen bei<sup><a href="#q1">1</a></sup>.  Bei einem gefesselten Gerät
+    begrenzt Teil 4 die Leinenlänge auf unter 50 Meter und schreibt die zehnfache Gewichtskraft als
+    Mindestfestigkeit vor<sup><a href="#q1">1</a></sup>.</p>
+
+    <h2 id="k3">3. Der Zusatzbausatz: aus C3 wird C5</h2>
+
+    <p>Teil 16 Nummer 8 erlaubt einen zweiten Weg zur Klasse.  Ein C5-System kann aus einem
+    C3-System bestehen, das mit einem Zusatzbausatz zur Nachrüstung ausgestattet
+    ist<sup><a href="#q2">2</a></sup>.  In diesem Fall müssen alle Zusatzteile mit einem
+    C5-Kennzeichen gekennzeichnet werden<sup><a href="#q2">2</a></sup>.</p>
+
+    <p>Vier Bedingungen hängen daran.  Erstens muss das C3-Gerät über die notwendigen
+    Schnittstellen zu den Zusatzteilen verfügen<sup><a href="#q2">2</a></sup>.  Zweitens darf der
+    Zusatzbausatz die Software des C3-Systems nicht verändern<sup><a href="#q2">2</a></sup>.
+    Drittens muss der Bausatz so konstruiert und jedes Teil so gekennzeichnet sein, dass der Einbau
+    gelingt<sup><a href="#q2">2</a></sup>.  Maßstab ist ein Betreiber, der den mitgelieferten Anweisungen
+    folgt<sup><a href="#q2">2</a></sup>.  Viertens darf der Bausatz unabhängig vom C3-System in
+    Verkehr gebracht werden<sup><a href="#q2">2</a></sup>.</p>
+
+    <p>Wird er einzeln verkauft, gelten drei weitere Auflagen.  Er darf die Einhaltung von Teil 4
+    durch das C3-System nicht beeinflussen<sup><a href="#q2">2</a></sup>.  Er muss gewährleisten,
+    dass das nachgerüstete System allen Zusatzforderungen von Teil 16
+    genügt<sup><a href="#q2">2</a></sup>.  Und ihm müssen Herstelleranweisungen beiliegen, die eine
+    Liste aller nachrüstbaren C3-Systeme sowie Einbau- und Betriebsanweisungen
+    enthalten<sup><a href="#q2">2</a></sup>.</p>
+
+    <p>Diese Liste ist der Kern.  Der Bausatz passt nicht zu jedem C3-Gerät, sondern zu denen, die
+    sein Hersteller aufführt<sup><a href="#q2">2</a></sup>.  Das Software-Verbot schließt aus, dass
+    die Nachrüstung ein Firmware-Update ist<sup><a href="#q2">2</a></sup>.  Der Hersteller des
+    Bausatzes muss ihn zudem mit einer Typen- und einer eindeutigen Seriennummer
+    versehen<sup><a href="#q1">1</a></sup>.  Und er muss die Marktüberwachungsbehörde seines
+    Hauptgeschäftssitzes unterrichten, wenn er ein C5-System, ein C6-System oder ein Zusatzteil
+    für C5 in Verkehr bringt<sup><a href="#q1">1</a></sup>.</p>
+
+    <h2 id="k4">4. Wozu C5 überhaupt dient</h2>
+
+    <p>C5 ist keine Verbesserung von C3 für die offene Kategorie.  In der offenen Kategorie kommt
+    C5 gar nicht vor: die Unterkategorien A1, A2 und A3 nennen die Klassen C0 bis C4 sowie
+    Bestandsgeräte<sup><a href="#q3">3</a></sup>.  C5 taucht an genau einer Stelle auf, nämlich in
+    Anlage 1 der Durchführungsverordnung (EU) 2019/947, dem Standardszenario
+    STS-01<sup><a href="#q3">3</a></sup> mit seinen eigenen Bedingungen.</p>
+
+    <p>STS-01 ist Betrieb in Sichtweite über einem kontrollierten Bereich am Boden in einem
+    bewohnten Gebiet<sup><a href="#q3">3</a></sup>.  Der Betrieb ist mit einem Luftfahrzeug
+    durchzuführen, das als C5 gekennzeichnet ist und die Anforderungen von Teil 16
+    erfüllt<sup><a href="#q3">3</a></sup>.  Die direkte Fernidentifizierung muss dabei eingeschaltet und aktualisiert
+    sein<sup><a href="#q3">3</a></sup>.  Das Luftfahrt-Bundesamt nennt dieselbe Bedingung in seiner
+    Übersicht als C5 oder C3 mit entsprechendem Zusatzbausatz<sup><a href="#q7">7</a></sup>.</p>
+
+    <p>Die Bedingungen von STS-01 erklären die Technikforderungen des Anhangs.  Die Flughöhe geht
+    bis 120 Meter über dem nächstgelegenen Punkt der Erdoberfläche<sup><a href="#q3">3</a></sup>.
+    Die Bodengeschwindigkeit muss bei ungefesseltem Betrieb unter 5 Metern je Sekunde
+    liegen<sup><a href="#q3">3</a></sup>.  Genau diese Zahl steht als Langsamflugmodus im
+    Teil 16 des Anhangs<sup><a href="#q2">2</a></sup>.</p>
+
+    <p>Der kontrollierte Bereich am Boden besteht aus drei Zonen: dem fluggeografischen Bereich,
+    dem Contingency-Bereich und dem Bodensicherheitsbereich<sup><a href="#q3">3</a></sup>.  Der
+    Contingency-Bereich reicht mindestens 10 Meter über den fluggeografischen Bereich
+    hinaus<sup><a href="#q3">3</a></sup>.  Der Bodensicherheitsbereich hängt von Höhe und Masse ab:
+    bei 120 Metern Höhe sind es 25 Meter bis 10 Kilogramm Startmasse und 60 Meter
+    darüber<sup><a href="#q3">3</a></sup>.  Zwischen Flugbereich und Außenkante liegen damit im
+    ungünstigsten Fall <strong>mindestens 70 Meter</strong>, unsere Rechnung aus den beiden
+    Angaben.</p>
+
+    <p>Der Fernpilot braucht ein Zeugnis über Theoriekenntnisse und eine Akkreditierung über die
+    bestandene praktische Prüfung<sup><a href="#q3">3</a></sup>.  Die zusätzliche
+    Theorieprüfung umfasst mindestens 40 Multiple-Choice-Fragen<sup><a href="#q3">3</a></sup>.  Das
+    Zeugnis gilt fünf Jahre<sup><a href="#q3">3</a></sup>.</p>
+
+    <p>Das Gegenstück ist C6 mit dem Szenario STS-02, Betrieb außerhalb der Sichtweite in einem
+    dünn besiedelten Gebiet mit Luftraumbeobachtern<sup><a href="#q3">3</a></sup>.  C6 hat eine
+    Höchstgeschwindigkeit im Horizontalflug von 50 Metern je Sekunde<sup><a href="#q2">2</a></sup>,
+    also <strong>180 Kilometer je Stunde</strong> nach unserer Rechnung.  Ohne Luftraumbeobachter
+    darf das Luftfahrzeug höchstens 1 Kilometer vom Fernpiloten entfernt fliegen, mit Beobachtern
+    höchstens 2 Kilometer<sup><a href="#q3">3</a></sup>.</p>
+
+    <p>STS-02 stellt zusätzliche Bedingungen an Sicht und Ablauf.  Die Flugsicht im Betriebsgebiet
+    muss mehr als 5 Kilometer betragen<sup><a href="#q3">3</a></sup>.  Beim Start und beim
+    Wiederherstellen der Verbindung muss der Fernpilot Sichtkontakt zum Luftfahrzeug
+    halten<sup><a href="#q3">3</a></sup>.  Ohne Luftraumbeobachter muss das Gerät außerhalb der
+    Sichtweite einem vorab programmierten Flugweg folgen<sup><a href="#q3">3</a></sup>.  Dazu passt
+    die Technikforderung aus Teil 17: die Flugbahn muss sich programmieren lassen, und das Gerät
+    braucht eine Vorrichtung gegen das Verletzen eines programmierbaren
+    Betriebsraums<sup><a href="#q2">2</a></sup>.</p>
+
+    <h2 id="k5">5. Wer senden muss und wer nicht</h2>
+
+    <p>Hier liegt der häufigste Irrtum.  Die Pflicht zur direkten Fernidentifizierung trifft nicht
+    jede Drohne, sondern hängt am Klassenkennzeichen.  Teil 1 der Verordnung, also C0, enthält
+    keine Fernidentifizierung<sup><a href="#q1">1</a></sup>.  Teil 5, also C4, ebenfalls
+    nicht<sup><a href="#q1">1</a></sup>.  C1, C2 und C3 enthalten sie, C5 über den Verweis auf
+    Teil 4 und C6 ebenso<sup><a href="#q1">1</a></sup><sup><a href="#q2">2</a></sup>.</p>
+
+    <p>In der offenen Kategorie steht die Pflicht deshalb jeweils beim Gerät.  A1 verlangt sie für
+    C1, A2 für C2, A3 für C2 und C3, jeweils zusammen mit der
+    Geo-Sensibilisierung<sup><a href="#q3">3</a></sup>.  Für ein C0-Gerät in A1 und ein C4-Gerät in
+    A3 nennt die Verordnung keine solche Bedingung<sup><a href="#q3">3</a></sup>.</p>
+
+    <p>Bestandsgeräte sind der zweite Fall.  Nicht klassifizierte Geräte, die vor dem
+    1. Januar 2024 in Verkehr gebracht wurden, dürfen weiter betrieben werden: in A1 unter
+    250 Gramm, in A3 unter 25 Kilogramm<sup><a href="#q3">3</a></sup>.  Eine Pflicht zur
+    Fernidentifizierung nennt dieser Artikel nicht<sup><a href="#q3">3</a></sup>.  Das
+    Luftfahrt-Bundesamt beschreibt denselben Stand als weiterhin möglich, aber nur
+    eingeschränkt<sup><a href="#q5">5</a></sup>.</p>
+
+    <p>Vor diesem Stichtag galt ein eigenes Übergangsregime.  Bis zum 31. Dezember 2023 durften
+    Geräte ohne Klassenkennzeichen in der offenen Kategorie nach Masse gestaffelt betrieben
+    werden<sup><a href="#q3">3</a></sup>.  Die drei Stufen lagen bei unter 500 Gramm, unter 2 Kilogramm mit 50 Metern
+    Mindestabstand zu Menschen und unter 25 Kilogramm Startmasse<sup><a href="#q3">3</a></sup>.  Dieser Übergangszeitraum ist ausgelaufen und durch
+    Artikel 20 abgelöst worden<sup><a href="#q3">3</a></sup>.  Nationale Standardszenarien, die
+    Mitgliedstaaten bis Ende 2023 akzeptieren durften, verloren ihre Gültigkeit zum
+    1. Januar 2026<sup><a href="#q3">3</a></sup> endgültig.</p>
+
+    <p>Seit dem 1. Januar 2024 dürfen in der EU nur noch Geräte in Verkehr gebracht werden, die die
+    Anforderungen der Verordnung (EU) 2019/945 erfüllen<sup><a href="#q4">4</a></sup>.  Sie müssen unter anderem ein
+    Klassenkennzeichen von C0 bis C6, ein CE-Kennzeichen und eine Seriennummer tragen<sup><a href="#q4">4</a></sup>.
+    Restbestände ohne Klassifizierung dürfen noch verkauft werden, wenn sie vor diesem Stichtag
+    erstmalig auf dem EU-Markt bereitgestellt wurden<sup><a href="#q4">4</a></sup>.</p>
+
+    <p>Die dritte und schärfste Regel gilt in der speziellen Kategorie.  Dort muss der Betreiber
+    sicherstellen, dass jedes einzelne unbemannte Luftfahrzeug mit mindestens einem grünen
+    Blinklicht und mit einem eingeschalteten und aktuellen Fernidentifikationssystem ausgerüstet
+    ist<sup><a href="#q3">3</a></sup>.  Diese Bestimmung gilt seit dem 1. Januar
+    2024 unverändert<sup><a href="#q3">3</a></sup>.  Sie knüpft nicht an eine Klasse an, sondern an jedes
+    Fluggerät in dieser Kategorie.</p>
+
+    <h2 id="k6">6. Was gesendet wird</h2>
+
+    <p>Die Verordnung definiert die direkte Fernidentifizierung als ein System, das Informationen
+    über ein im Betrieb befindliches Luftfahrzeug lokal überträgt, sodass sie ohne physischen
+    Zugang zum Gerät abgerufen werden können<sup><a href="#q3">3</a></sup>.  Teil 4 Nummer 9
+    Buchstabe b zählt auf, was während der gesamten Flugdauer in Echtzeit und regelmäßig gesendet
+    werden muss<sup><a href="#q1">1</a></sup>.</p>
+
+    <p>Es sind sechs Angaben.  Erstens die Betreibernummer samt Überprüfungscode des
+    Mitgliedstaats<sup><a href="#q1">1</a></sup>.  Zweitens die eindeutige Seriennummer des
+    Luftfahrzeugs<sup><a href="#q1">1</a></sup>.  Drittens Zeitstempel, geografische Position und
+    Höhe über der Oberfläche oder dem Startpunkt<sup><a href="#q1">1</a></sup>.  Viertens der
+    Streckenverlauf im Uhrzeigersinn vom geografischen Norden und die Geschwindigkeit über
+    Grund<sup><a href="#q1">1</a></sup>.  Fünftens die Position des Fernpiloten oder ersatzweise
+    des Startpunkts<sup><a href="#q1">1</a></sup>.  Sechstens ein Hinweis auf den Notstatus des
+    Systems<sup><a href="#q1">1</a></sup>.</p>
+
+    <p>Zwei Randbedingungen stehen im selben Absatz.  Die Übertragung nutzt ein offenes und
+    dokumentiertes Übertragungsprotokoll<sup><a href="#q1">1</a></sup>.  Und sie muss so erfolgen,
+    dass die Daten innerhalb des Sendebereichs von vorhandenen Mobilfunkgeräten direkt empfangen
+    werden können<sup><a href="#q1">1</a></sup>.  Der zweite Punkt wird in Kapitel 10 noch
+    wichtig.</p>
+
+    <p>Neben der direkten gibt es die netzgestützte Fernidentifizierung.  Teil 4 Nummer 17 regelt
+    sie, aber nur für den Fall, dass ein Gerät damit ausgestattet
+    ist<sup><a href="#q1">1</a></sup>.  Sie sendet dieselben sechs Angaben, allerdings so, dass sie
+    über ein Netz empfangen werden können<sup><a href="#q1">1</a></sup>.  Der Unterschied ist
+    praktisch: die direkte Variante braucht weder Internetverbindung noch Server, die netzgestützte
+    beides<sup><a href="#q8">8</a></sup>.</p>
+
+    <h2 id="k7">7. Die Betreibernummer und ihr geheimer Teil</h2>
+
+    <p>Die Betreibernummer stammt aus Artikel 14 der
+    Durchführungsverordnung<sup><a href="#q3">3</a></sup>.  Betreiber registrieren sich selbst, wenn sie in der offenen Kategorie ein Gerät ab 250 Gramm
+    Startmasse betreiben<sup><a href="#q3">3</a></sup>.  Ebenso bei einem Gerät mit einem Sensor,
+    der personenbezogene Daten erfassen kann<sup><a href="#q3">3</a></sup>.  In der speziellen
+    Kategorie gilt die Pflicht bei jeder Masse<sup><a href="#q3">3</a></sup>.</p>
+
+    <p>Registriert wird im Wohnsitzstaat, bei juristischen Personen am Hauptgeschäftssitz, und
+    niemals in mehr als einem Mitgliedstaat<sup><a href="#q3">3</a></sup>.  Die Nummer ist an jedem
+    Luftfahrzeug anzubringen<sup><a href="#q3">3</a></sup>.  In Deutschland führt das
+    Luftfahrt-Bundesamt das Register und stellt die elektronische Registrierungsnummer aus, kurz
+    e-ID<sup><a href="#q6">6</a></sup>.  Ein Betreiber kann unter seiner Nummer mehrere Geräte
+    betreiben<sup><a href="#q6">6</a></sup>.  Die Gebühr beträgt 20 Euro für natürliche und
+    50 Euro für juristische Personen<sup><a href="#q6">6</a></sup>.</p>
+
+    <p>Technisch ist die Nummer zweiteilig.  Sie besteht aus einem öffentlichen Teil mit einem
+    Prüfzeichen und drei zufällig erzeugten geheimen Zeichen<sup><a href="#q8">8</a></sup>.  Beide
+    Teile stammen aus dem Registrierungssystem des Mitgliedstaats und werden beide in das System
+    hochgeladen<sup><a href="#q8">8</a></sup>.  Gesendet wird nur der öffentliche Teil samt
+    Prüfzeichen<sup><a href="#q8">8</a></sup>.</p>
+
+    <p>Der geheime Teil wird im Luftfahrzeug nicht gespeichert und nicht
+    ausgestrahlt<sup><a href="#q8">8</a></sup>.  Er dient nur der Prüfung, ob der Nutzer eine
+    gültige Nummer eingegeben hat<sup><a href="#q8">8</a></sup>.  Weil das Prüfzeichen über beide
+    Teile gerechnet wird, können Behörden mit Zugriff auf den geheimen Teil erkennen, ob die
+    gesendete Nummer zu einem registrierten Datensatz gehört<sup><a href="#q8">8</a></sup>.  Ein
+    Beobachter mit einer Empfangs-App kann das nicht, und sieht deshalb keine personenbezogenen
+    Daten<sup><a href="#q8">8</a></sup>.</p>
+
+    <p>Die Verordnung verlangt genau diese Prüfung.  Das System führt eine Konsistenzprüfung über
+    die vollständige Zeichenkette durch<sup><a href="#q1">1</a></sup>.  Bei Unstimmigkeiten sendet
+    es eine Fehlermeldung an den Betreiber<sup><a href="#q1">1</a></sup>.  Fällt die Prüfung durch,
+    unterbleibt die Aussendung von Nummer und Überprüfungscode<sup><a href="#q1">1</a></sup>.
+    Zusätzlich muss das System eine Manipulation der Funktion
+    erschweren<sup><a href="#q1">1</a></sup>.</p>
+
+    <h2 id="k8">8. Über welchen Funkweg gesendet wird</h2>
+
+    <p>Die Verordnung nennt kein Funkverfahren, sondern nur ein offenes und dokumentiertes
+    Protokoll<sup><a href="#q1">1</a></sup>.  Die europäische Norm dazu ist EN 4709-002, erarbeitet
+    vom Europäischen Komitee für Normung<sup><a href="#q9">9</a></sup>.  Sie beschreibt vier
+    Sendeverfahren, die auf Bluetooth und WLAN aufsetzen, weil nur diese in gängigen Mobiltelefonen
+    verfügbar sind<sup><a href="#q8">8</a></sup>.</p>
+
+    <p>Die vier Verfahren unterscheiden sich deutlich.  Bluetooth 4 Legacy Advertising erreicht
+    nach Angabe der Normungsgruppe etwa 250 Meter bei 10 Milliwatt
+    Sendeleistung<sup><a href="#q8">8</a></sup>.  Bluetooth 5 Long Range kommt bei derselben
+    Leistung auf etwa 1 Kilometer<sup><a href="#q8">8</a></sup>.  Wi-Fi NAN und Wi-Fi Beacon
+    erreichen bei 100 Milliwatt jeweils etwa 2 Kilometer<sup><a href="#q8">8</a></sup>.  Alle
+    Angaben gelten für ideale Bedingungen, und in der Stadt kann sich die Reichweite leicht
+    halbieren<sup><a href="#q8">8</a></sup>.</p>
+
+    <p>Für die Empfangsseite ist das Bild schiefer, als die Reichweiten vermuten lassen.  Bluetooth
+    4 Legacy empfangen alle Android- und alle iOS-Modelle<sup><a href="#q8">8</a></sup>.  Bluetooth
+    5 Long Range und Wi-Fi NAN empfangen nur ausgewählte neuere Android-Modelle und gar kein
+    iOS-Gerät<sup><a href="#q8">8</a></sup>.  Das Open-Source-Projekt OpenDroneID nennt den Grund:
+    Apple stellt keine geeigneten Schnittstellen für andere Verfahren als Bluetooth 4 Legacy
+    Advertising bereit<sup><a href="#q14">14</a></sup>.</p>
+
+    <p>Der Sendetakt ist festgelegt.  Dynamische Nachrichten mit Position und Vektor gehen
+    mindestens jede Sekunde hinaus<sup><a href="#q8">8</a></sup>.  Statische Nachrichten mit den
+    Identifikationsdaten mindestens alle drei Sekunden<sup><a href="#q8">8</a></sup>.  Statische
+    Nachrichten kommen damit <strong>dreimal seltener</strong> als dynamische, unsere Rechnung aus
+    den beiden Takten.  Die Positionsdaten dürfen zum Sendezeitpunkt nicht älter als eine Sekunde
+    sein<sup><a href="#q8">8</a></sup>.</p>
+
+    <p>Die Norm schreibt außerdem eine rundstrahlende Abstrahlung vor und verlangt, die
+    Sendeleistung so hoch wie möglich zu setzen, aber innerhalb der nationalen
+    Grenzen<sup><a href="#q8">8</a></sup>.  Weitere Hochfrequenzeigenschaften regelt sie nicht,
+    sondern verweist auf die einschlägigen Funknormen wie ETSI EN 300 328 und
+    EN 301 489<sup><a href="#q8">8</a></sup> weiter.</p>
+
+    <p>Sieben Nachrichtentypen sind definiert.  Pflicht für C1, C2, C3 und für Zusatzgeräte sind
+    Basic ID, Location/Vector, System, Operator ID und das Message
+    Pack<sup><a href="#q8">8</a></sup>.  Die Self-ID-Nachricht mit einem freien Text zum
+    Einsatzzweck ist optional<sup><a href="#q8">8</a></sup>.  Das Message Pack fasst mehrere
+    Nachrichten zusammen und wird bei Bluetooth Extended Advertising, Wi-Fi NAN und Wi-Fi Beacon
+    verwendet<sup><a href="#q8">8</a></sup>.  Grund für die Aufteilung ist die enge Größengrenze
+    eines Bluetooth-Legacy-Funkbursts<sup><a href="#q17">17</a></sup>.</p>
+
+    <p>Die europäische Norm ist bewusst nah an der amerikanischen ASTM F3411 gebaut, damit
+    Empfänger möglichst viele Quellen erkennen<sup><a href="#q8">8</a></sup>.  Die Pflichtwahl
+    unterscheidet sich aber.  In Europa sind Bluetooth 5 Long Range, Wi-Fi NAN auf 2,4 Gigahertz
+    und Wi-Fi Beacon die verpflichtenden Verfahren, Bluetooth Legacy ist
+    optional<sup><a href="#q8">8</a></sup>.  In der amerikanischen Norm ist es
+    umgekehrt<sup><a href="#q8">8</a></sup>.  Ein Sender muss dabei nur eines der
+    Pflichtverfahren beherrschen<sup><a href="#q8">8</a></sup>.  Wi-Fi Beacon kommt in der
+    amerikanischen Norm gar nicht vor, die Authentifizierungsnachricht dafür nur
+    dort<sup><a href="#q8">8</a></sup>.</p>
+
+    <h2 id="k9">9. Das Zusatzgerät und was ihm fehlt</h2>
+
+    <p>Teil 6 des Anhangs regelt ein eigenes Erzeugnis: das Zusatzgerät für die direkte
+    Fernidentifizierung<sup><a href="#q1">1</a></sup>.  Es ist kein Zubehör im umgangssprachlichen
+    Sinn, sondern ein CE-pflichtiges Produkt mit eigenen Anforderungen.  Sein Hersteller muss es
+    mit einer Typennummer und einer eindeutigen Seriennummer
+    versehen<sup><a href="#q1">1</a></sup>.</p>
+
+    <p>Die Anforderungen ähneln denen an ein eingebautes System.  Das Gerät ermöglicht das
+    Hochladen der Betreibernummer und führt dieselbe Konsistenzprüfung
+    durch<sup><a href="#q1">1</a></sup>.  Es trägt eine eigene Seriennummer nach
+    ANSI/CTA-2063-2019, lesbar am Gerät, auf der Verpackung oder in den
+    Anweisungen<sup><a href="#q1">1</a></sup>.  Es erschwert die Manipulation der
+    Funktion<sup><a href="#q1">1</a></sup>.  Und die Anweisungen nennen das Übertragungsprotokoll
+    sowie die Montage am Luftfahrzeug<sup><a href="#q1">1</a></sup>.</p>
+
+    <p>Ein Unterschied ist im Wortlaut deutlich.  Teil 6 zählt fünf Datenfelder auf, Teil 4 zählt
+    sechs<sup><a href="#q1">1</a></sup>.  Der Hinweis auf den Notstatus fehlt beim
+    Zusatzgerät<sup><a href="#q1">1</a></sup>.  Die Normungsgruppe hält denselben Punkt fest: der
+    Notstatus gilt für C1, C2 und C3 und ist für das Zusatzgerät nicht
+    gefordert<sup><a href="#q8">8</a></sup>.  Zweiter Unterschied: das Zusatzgerät sendet seine
+    eigene Seriennummer, nicht die des Luftfahrzeugs<sup><a href="#q1">1</a></sup>.</p>
+
+    <p>Wie klein solche Module bauen, zeigt ein Datenblatt.  Ein am Markt erhältliches
+    OEM-Modul misst 22,5 mal 16 mal 5 Millimeter und wiegt 1,5 Gramm mit
+    Steckern<sup><a href="#q15">15</a></sup>.  Es zieht im Mittel 3 Milliampere und höchstens
+    10 Milliampere, wird vom Flight Controller versorgt und spricht MAVLink 2 über
+    UART<sup><a href="#q15">15</a></sup>.  Als Funkverfahren nennt der Hersteller Bluetooth 4.0
+    Legacy und 5.0 Long Range mit bis zu 3 Kilometern<sup><a href="#q15">15</a></sup>.</p>
+
+    <p>Diese Reichweitenangabe liegt über der Schätzung der Normungsgruppe von etwa 1 Kilometer für
+    dasselbe Verfahren<sup><a href="#q8">8</a></sup>.  Das ist der <strong>dreifache Wert</strong>,
+    unsere Rechnung aus beiden Angaben.  Wir werten das nicht: die eine Zahl ist eine
+    Herstellerangabe, die andere eine Schätzung unter ausdrücklich idealen
+    Bedingungen<sup><a href="#q8">8</a></sup>.  Ein batteriebetriebenes Modul desselben Herstellers
+    wiegt 32 Gramm und beherrscht zusätzlich die netzgestützte
+    Variante<sup><a href="#q16">16</a></sup>.</p>
+
+    <h2 id="k10">10. Wer prüft, und die Einschränkung der Norm</h2>
+
+    <p>Artikel 13 der Verordnung (EU) 2019/945 nennt drei Wege der
+    Konformitätsbewertung<sup><a href="#q1">1</a></sup>.  Der erste ist die interne
+    Fertigungskontrolle nach Teil 7, also eine Bewertung ohne beteiligte
+    Prüfstelle<sup><a href="#q1">1</a></sup>.  Sie steht für die Teile 1, 5, 6, 16 und 17 offen,
+    also für C0, C4, das Zusatzgerät sowie C5 und C6<sup><a href="#q1">1</a></sup> gemeinsam.  Die beiden anderen
+    Wege sind die EU-Baumusterprüfung und die vollständige
+    Qualitätssicherung<sup><a href="#q1">1</a></sup>.</p>
+
+    <p>Das Luftfahrt-Bundesamt beschreibt denselben Sachverhalt in einfacher Sprache.  Bei den
+    Klassen C0, C4, C5 und C6 sowie bei Zusatzgeräten für die direkte Fernidentifizierung kann der
+    Hersteller die Zertifizierung auch selbst durchführen<sup><a href="#q4">4</a></sup>.  Im
+    Umkehrschluss bleiben C1, C2 und C3, also die Teile 2 bis 4, den beiden anderen Wegen
+    vorbehalten<sup><a href="#q1">1</a></sup>.</p>
+
+    <p>Der erste Weg hat eine Bedingung.  Er gilt nur, wenn der Hersteller für all jene
+    Anforderungen harmonisierte Normen angewandt hat, für die solche Normen vorhanden sind und
+    deren Fundstellen im Amtsblatt veröffentlicht wurden<sup><a href="#q1">1</a></sup>.  Wer einer
+    harmonisierten Norm folgt, für den gilt die Konformität mit den davon abgedeckten Anforderungen
+    als vermutet<sup><a href="#q1">1</a></sup>.</p>
+
+    <p>Genau hier steht seit dem 1. August 2024 eine Einschränkung im Amtsblatt.  Der
+    Durchführungsbeschluss (EU) 2024/2103 vom Juli 2024 veröffentlicht die Fundstelle von
+    EN 4709-002:2023 ausdrücklich <strong>mit Einschränkungen</strong><sup><a href="#q9">9</a></sup>.
+    Begründung: die Norm decke die Anforderung, dass das Signal von vorhandenen Mobilfunkgeräten
+    direkt empfangen werden kann, nicht adäquat ab<sup><a href="#q9">9</a></sup>.</p>
+
+    <p>Der Anhang des Beschlusses benennt die betroffenen Stellen einzeln.  Es sind Teil 2
+    Nummer 12 Buchstabe b, Teil 3 Nummer 14 Buchstabe b, Teil 4 Nummer 9 Buchstabe b und Teil 6
+    Nummer 3<sup><a href="#q9">9</a></sup>.  Für diese Anforderungen begründet die Norm keine
+    Vermutung der Konformität<sup><a href="#q9">9</a></sup>.  Teil 4 Nummer 9 Buchstabe b ist genau
+    die Vorschrift, die über den Verweis in Teil 16 auch für C5 gilt<sup><a href="#q2">2</a></sup>.</p>
+
+    <h2 id="k11">11. Was Open-Source-Firmware heute leistet</h2>
+
+    <p>Für einen Eigenbau ist die Frage praktisch: Kann eine offene Autopilot-Firmware das?  Die
+    Antwort ist zweigeteilt.  ArduPilot unterstützt OpenDroneID ab Version 4.2, über MAVLink zu
+    einem kompatiblen Modul an einer seriellen Schnittstelle oder an
+    DroneCAN<sup><a href="#q10">10</a></sup>.  Die MAVLink-Nachrichten dafür sind an ASTM F3411 und
+    an prEN 4709-002 ausgerichtet<sup><a href="#q17">17</a></sup>.</p>
+
+    <p>Der Manipulationsschutz ist der aufwendige Teil.  ArduPilot verlangt dafür eine eigens
+    gebaute Firmware, die die Funktion aktiviert und das Laden nicht konformer Firmware über eine
+    Bodenstation oder die üblichen Werkzeuge verhindert<sup><a href="#q10">10</a></sup>.  Technisch
+    geschieht das über eine eigene Board-Kennung für die OpenDroneID-Variante, die der Bootloader
+    gegenprüft<sup><a href="#q11">11</a></sup>.  Dazu kommen Parameter, die beim Übersetzen auf
+    schreibgeschützt gesetzt werden, damit Nutzer sie nicht mehr
+    ändern<sup><a href="#q11">11</a></sup>.</p>
+
+    <p>Das Projekt liefert auch eine Sendermodul-Firmware.  ArduRemoteID läuft auf ESP32-S3 und
+    ESP32-C3 und beherrscht alle vier Verfahren: Wi-Fi Broadcast, Wi-Fi NAN, Bluetooth 4 Legacy und
+    Bluetooth 5 Long Range<sup><a href="#q12">12</a></sup>.  Die Anbindung erfolgt über MAVLink
+    oder DroneCAN<sup><a href="#q12">12</a></sup>.  Im gesperrten Zustand lässt sich die Firmware
+    nur noch über eine gesicherte WLAN-Oberfläche mit einem Schlüsselpaar
+    aktualisieren<sup><a href="#q12">12</a></sup>.  Das Projekt hält ausdrücklich fest, dass die
+    regelkonforme Konfiguration Sache des Nutzers oder Herstellers
+    bleibt<sup><a href="#q12">12</a></sup>.</p>
+
+    <p>Zum Nachmessen gibt es offene Werkzeuge.  Die Bibliothek opendroneid-core-c kodiert und
+    dekodiert die Nachrichten nach ASTM F3411 und ASD-STAN prEN 4709-002<sup><a href="#q14">14</a></sup> beides.
+    Das Projekt verweist auf Empfänger-Apps für Android und iOS sowie auf einen
+    WireShark-Zerleger für Bluetooth- und WLAN-Pakete<sup><a href="#q14">14</a></sup>.  Für eine
+    ernsthafte Konformitätsprüfung empfiehlt es allerdings einen abgeschirmten Raum, weil sonst
+    fremde Sender stören<sup><a href="#q14">14</a></sup>.  Eine gepflegte Liste getesteter
+    Mobiltelefone gehört ebenfalls zum Projekt<sup><a href="#q14">14</a></sup>.</p>
+
+    <p>PX4 ist an dieser Stelle offener in der Selbstauskunft.  Version 1.14 sendet die Nachrichten
+    für Position und System jeweils mit 1 Hertz<sup><a href="#q13">13</a></sup>.  Die Dokumentation
+    nennt die Funktion aber experimentell und listet bekannte Lücken
+    auf<sup><a href="#q13">13</a></sup>.  Dazu gehört, dass die Seriennummer nicht im geforderten
+    Format nach ANSI/CTA-2063 gesendet wird<sup><a href="#q13">13</a></sup>.  Ebenso, dass das
+    Scharfschalten nur an einem Lebenszeichen des Moduls hängt und nicht an dessen
+    Bereitschaftsmeldung<sup><a href="#q13">13</a></sup>.</p>
+
+    <p>Das ist der ehrliche Stand.  Die Technik ist vorhanden, quelloffen und dokumentiert.  Sie
+    ersetzt aber keine Konformitätsbewertung: ein Klassenkennzeichen entsteht daraus
+    nicht<sup><a href="#q5">5</a></sup>.  Für ein privat hergestelltes Gerät ist das folgerichtig,
+    denn es wird nicht in Verkehr gebracht<sup><a href="#q5">5</a></sup>.</p>
+
+    <h2 id="k12">12. Der Weg zur Entscheidung</h2>
+
+    <p>Die Reihenfolge der Fragen ist wichtiger als jede Empfehlung.  Sie ergibt sich aus dem
+    Aufbau der beiden Verordnungen und lässt sich in fünf Schritten abarbeiten.</p>
+
+    <p><strong>Erstens: Kategorie klären.</strong>  Offen oder speziell entscheidet über fast alles
+    Weitere.  C5 gehört ausschließlich in die spezielle Kategorie, und dort in das Szenario
+    STS-01<sup><a href="#q3">3</a></sup> hinein.  Wer in der offenen Kategorie bleibt, braucht C5
+    nicht<sup><a href="#q3">3</a></sup>.</p>
+
+    <p><strong>Zweitens: Herkunft des Geräts klären.</strong>  Gekauft und klassifiziert,
+    Bestandsgerät von vor 2024 oder privat hergestellt sind drei verschiedene Rechtslagen mit drei
+    verschiedenen Grenzen<sup><a href="#q3">3</a></sup><sup><a href="#q5">5</a></sup>.  Ein
+    Eigenbau kann kein Klassenkennzeichen tragen<sup><a href="#q5">5</a></sup>.</p>
+
+    <p><strong>Drittens: Sendepflicht prüfen.</strong>  Sie folgt aus dem Kennzeichen und aus der
+    Kategorie, nicht aus dem Gewicht<sup><a href="#q1">1</a></sup><sup><a href="#q3">3</a></sup>.
+    In der speziellen Kategorie gilt sie für jedes Fluggerät<sup><a href="#q3">3</a></sup>.</p>
+
+    <p><strong>Viertens: Registrierung erledigen.</strong>  Die Betreibernummer ist Voraussetzung
+    für jedes System, weil sie hochgeladen werden muss<sup><a href="#q1">1</a></sup>.  In
+    Deutschland stellt sie das Luftfahrt-Bundesamt aus<sup><a href="#q6">6</a></sup>.</p>
+
+    <p><strong>Fünftens: Empfangsseite gegenprüfen.</strong>  Wer ein Modul einsetzt, sollte
+    kontrollieren, ob das Signal auf gängigen Telefonen ankommt.  Für Bluetooth 4 Legacy gilt das
+    breit, für die anderen drei Verfahren nur eingeschränkt<sup><a href="#q8">8</a></sup>.  Zum
+    Nachsehen gibt es freie Empfangs-Apps für Android<sup><a href="#q10">10</a></sup>.</p>
+
+    <p>Ein Rechenbeispiel mit <strong>angenommenen</strong> Zahlen zeigt, wie eng STS-01 am Boden
+    wird.  Angenommen sei ein Copter mit 12 Kilogramm Startmasse, ein fluggeografischer Bereich von
+    100 mal 100 Metern und eine Flughöhe von 120 Metern.  Dann verlangt die Tabelle einen
+    Bodensicherheitsbereich von 60 Metern, dazu kommen 10 Meter
+    Contingency-Bereich<sup><a href="#q3">3</a></sup>.  Der kontrollierte Bereich am Boden misst
+    damit <strong>240 mal 240 Meter</strong>, unsere Rechnung aus den angenommenen Maßen.  Innerhalb
+    dieser Fläche muss der Betreiber sicherstellen, dass sich keine unbeteiligten Personen
+    aufhalten<sup><a href="#q7">7</a></sup>.</p>
+
+    <p>Welche Bauteile ein Copter dafür braucht, steht in unseren Teilelisten, etwa in der
+    <a href="ratgeber-teileliste-13-build-1.html">Teileliste für den Dreizehnzöller</a>.  Wer
+    unsicher ist, in welche Kategorie ein geplanter Einsatz fällt, kann uns über
+    <a href="index.html#kontakt">unsere Kontaktseite</a> ansprechen.  Verbindliche Auskünfte zur
+    Einstufung erteilt allerdings die zuständige Behörde, nicht wir.</p>
+
+    <p class="muted" style="font-size:14px">Dieser Ratgeber ersetzt keine individuelle technische
+    Prüfung und keine Rechtsberatung.  Alle Angaben ohne Gewähr.  Wo wir gerechnet statt zitiert
+    haben, steht es ausdrücklich dabei.  Alle Quellen wurden im August 2026 abgerufen und geprüft.
+    Maßgeblich ist immer der jeweils geltende Verordnungstext.</p>
+
+    <h2>Quellenangaben</h2>
+    <ol class="muted" style="font-size:14px; line-height:1.9; padding-left:20px">
+      <li id="q1">Europäische Union, „Delegierte Verordnung (EU) 2019/945, konsolidierte Fassung
+        vom 09.08.2020".  Teil 1 (C0, ohne Fernidentifizierung), Teil 4 (C3: unter 25 kg, unter 3 m,
+        elektrischer Antrieb, Seriennummer nach ANSI/CTA-2063-2019, direkte Fernidentifizierung mit
+        sechs Datenfeldern, Geo-Sensibilisierung, grünes Blinklicht, netzgestützte Variante in
+        Nummer 17), Teil 5 (C4, ohne Fernidentifizierung), Teil 6 (Zusatzgerät mit fünf
+        Datenfeldern), Artikel 6 (Herstellerpflichten, Typen- und Seriennummer, Meldung an die
+        Marktüberwachung), Artikel 12 (Konformitätsvermutung), Artikel 13 (drei Verfahren, interne
+        Fertigungskontrolle für die Teile 1, 5, 6, 16 und 17):
+        <a href="https://eur-lex.europa.eu/legal-content/DE/TXT/HTML/?uri=CELEX:02019R0945-20200809" rel="noopener" target="_blank">eur-lex.europa.eu, 02019R0945</a></li>
+      <li id="q2">Europäische Kommission, „Delegierte Verordnung (EU) 2020/1058 vom 27. April
+        2020".  Teil 16 (C5: Verweis auf Teil 4 ohne dessen Absätze 2 und 10, kein Starrflügler,
+        Höhenanzeige, Langsamflugmodus 5 m/s, Vorrichtungen zur Flugbeendigung, Überwachung des
+        Steuerungslinks, Zusatzbausatz aus C3 mit vier Bedingungen) und Teil 17 (C6: 50 m/s,
+        programmierbarer Betriebsraum, Flugbeendigung):
+        <a href="https://eur-lex.europa.eu/legal-content/DE/TXT/HTML/?uri=CELEX:32020R1058" rel="noopener" target="_blank">eur-lex.europa.eu, 32020R1058</a></li>
+      <li id="q3">Europäische Union, „Durchführungsverordnung (EU) 2019/947, konsolidierte Fassung
+        vom 04.04.2022".  Artikel 2 Nummer 13 (Begriff der direkten Fernidentifizierung),
+        Artikel 14 (Registrierung, Schwelle 250 g, Sensor für personenbezogene Daten, spezielle
+        Kategorie bei jeder Masse, ein Mitgliedstaat, Anbringen der Nummer), Artikel 20
+        (Bestandsgeräte vor dem 01.01.2024 in A1 und A3), Artikel 23 (Geltungsbeginn von
+        UAS.SPEC.050 Nummer 1 Buchstabe l Ziffer ii am 01.01.2024), UAS.OPEN.020/030/040 (Klassen
+        je Unterkategorie), UAS.SPEC.050 (grünes Blinklicht und Fernidentifikationssystem für jedes
+        Luftfahrzeug), Anlage 1 Kapitel I (STS-01: 120 m, 5 m/s, kontrollierter Bereich, Tabelle des
+        Bodensicherheitsbereichs, C5-Pflicht, 40 Prüfungsfragen, fünf Jahre Gültigkeit) und
+        Kapitel II (STS-02: C6, 1 km ohne und 2 km mit Luftraumbeobachtern):
+        <a href="https://eur-lex.europa.eu/legal-content/DE/TXT/HTML/?uri=CELEX:02019R0947-20220404" rel="noopener" target="_blank">eur-lex.europa.eu, 02019R0947</a></li>
+      <li id="q4">Luftfahrt-Bundesamt, „C-klassifizierte UAS".  Stichtag 01.01.2024 für das
+        Inverkehrbringen, Klassenkennzeichen C0 bis C6 mit CE-Zeichen und Seriennummer,
+        Selbstzertifizierung durch den Hersteller bei C0, C4, C5, C6 und Zusatzgeräten für die
+        direkte Fernidentifizierung, Restbestände, Verwechslungshinweis Klassenkennzeichen gegen
+        Betreibernummer, Entfernen des Kennzeichens nach Änderungen und Folge für die
+        Betriebskategorie:
+        <a href="https://www.lba.de/DE/Drohnen/Marktueberwachung/C_klassifizierte_UAS/C_klassifizierte_UAS_node.html" rel="noopener" target="_blank">lba.de, C-klassifizierte UAS</a></li>
+      <li id="q5">Luftfahrt-Bundesamt, „Bestandsgeräte (ohne C-Klassifizierung) und privat
+        hergestellte UAS".  Weiterbetrieb von Bestandsgeräten mit Einschränkung, privat
+        hergestellte UAS ohne C-Klasse und nur in A1 unter 250 g oder in A3, keine Vergabe einer
+        C-Klasse durch den Nutzer, Klassifizierung ausschließlich durch den Hersteller:
+        <a href="https://www.lba.de/DE/Drohnen/Marktueberwachung/Bestands_UAS/Bestands_UAS_node.html" rel="noopener" target="_blank">lba.de, Bestands-UAS</a></li>
+      <li id="q6">Luftfahrt-Bundesamt, „UAS-Betreiberregistrierung".  Registrierungspflicht ab
+        250 g und bei Sensoren für personenbezogene Daten, elektronische Registrierungsnummer
+        (e-ID) an jedem Gerät, mehrere Geräte unter einer Nummer, Gebühren von 20 Euro für
+        natürliche und 50 Euro für juristische Personen:
+        <a href="https://www.lba.de/DE/Drohnen/UAS_Betreiberregistrierung/UAS_Betreiberregistrierung_node.html" rel="noopener" target="_blank">lba.de, UAS-Betreiberregistrierung</a></li>
+      <li id="q7">Luftfahrt-Bundesamt, „Informationen zu Standardszenarien (STS)".  Betriebserklärung
+        statt Betriebsgenehmigung, STS-01 mit C5 oder C3 plus Zusatzbausatz, kontrollierter Bereich
+        ohne unbeteiligte Personen, Betriebshandbuch nach Anlage 5, STS-02 mit C6 und
+        Luftraumbeobachter:
+        <a href="https://www.lba.de/DE/Drohnen/Standardszenario_DE_STS_FARM/Standardszenario_DE_STS_FARM_node.html" rel="noopener" target="_blank">lba.de, Standardszenarien</a></li>
+      <li id="q8">ASD-STAN, „Direct Remote ID: Introduction to the European UAS Digital Remote ID
+        Technical Standard".  Tabelle der vier Sendeverfahren mit Reichweiten von 250 m, 1 km und
+        2 km sowie 10 mW und 100 mW, Empfangsfähigkeit von Android und iOS, Halbierung der
+        Reichweite in der Stadt, Vergleich direkte gegen netzgestützte Fernidentifizierung,
+        Aufteilung der Betreibernummer in öffentlichen und geheimen Teil, sieben Nachrichtentypen
+        mit Pflichtkennzeichnung je Klasse, Notstatus nur für C1 bis C3, Sendetakte von 1 s und 3 s,
+        Rundstrahlung, Verweis auf ETSI EN 300 328 und EN 301 489:
+        <a href="https://cms.stan-shop.org/uploads/2024/01/ASD-STAN_DRI_Introduction_to_the_European_digital_RID_UAS_Standard.pdf" rel="noopener" target="_blank">stan-shop.org, DRI-Einführung (PDF)</a></li>
+      <li id="q9">Europäische Kommission, „Durchführungsbeschluss (EU) 2024/2103 vom 30. Juli
+        2024".  Veröffentlichung der Fundstelle von EN 4709-002:2023 mit Einschränkungen,
+        Begründung der nicht adäquaten Abdeckung des direkten Empfangs durch Mobilfunkgeräte,
+        Aufzählung der betroffenen Stellen Teil 2 Nummer 12 Buchstabe b, Teil 3 Nummer 14
+        Buchstabe b, Teil 4 Nummer 9 Buchstabe b und Teil 6 Nummer 3, Erarbeitung durch CEN:
+        <a href="https://eur-lex.europa.eu/legal-content/DE/TXT/HTML/?uri=OJ:L_202402103" rel="noopener" target="_blank">eur-lex.europa.eu, Beschluss 2024/2103</a></li>
+      <li id="q10">ArduPilot, „Remote ID (aka Drone ID)".  OpenDroneID-Unterstützung ab
+        Version 4.2 über MAVLink an serieller Schnittstelle oder DroneCAN, Sonderfirmware zum
+        Manipulationsschutz, die das Laden nicht konformer Firmware verhindert, Liste kompatibler
+        Module, Drone-ID-Reiter im Mission Planner, Android-Apps zum Mithören:
+        <a href="https://ardupilot.org/copter/docs/common-remoteid.html" rel="noopener" target="_blank">ardupilot.org, Remote ID</a></li>
+      <li id="q11">ArduPilot, „OpenDroneID" (Entwicklerdokumentation).  Eigene Board-Kennung für
+        die OpenDroneID-Firmware, Gegenprüfung durch den Bootloader, beim Übersetzen
+        schreibgeschützt gesetzte Parameter, Bau von Bootloader und Hauptfirmware:
+        <a href="https://ardupilot.org/dev/docs/opendroneid.html" rel="noopener" target="_blank">ardupilot.org, OpenDroneID</a></li>
+      <li id="q12">ArduPilot, „ArduRemoteID" (Projekt-Liesmich).  Sendermodul-Firmware für
+        ESP32-S3 und ESP32-C3, vier Sendeverfahren (Wi-Fi Broadcast, Wi-Fi NAN, Bluetooth 4 Legacy,
+        Bluetooth 5 Long Range), Anbindung über MAVLink oder DroneCAN, Sperrzustand mit
+        Schlüsselpaar und WLAN-Oberfläche, Verantwortung des Nutzers oder Herstellers für die
+        regelkonforme Konfiguration:
+        <a href="https://github.com/ArduPilot/ArduRemoteID" rel="noopener" target="_blank">github.com, ArduRemoteID</a></li>
+      <li id="q13">PX4, „Remote ID".  Senden von OPEN_DRONE_ID_LOCATION und
+        OPEN_DRONE_ID_SYSTEM mit je 1 Hz in Version 1.14, Einstufung als experimentell, bekannte
+        Lücken einschließlich falschen Seriennummernformats und des nur am Lebenszeichen hängenden
+        Scharfschaltens, Parameter COM_ARM_ODID:
+        <a href="https://docs.px4.io/main/en/peripherals/remote_id.html" rel="noopener" target="_blank">docs.px4.io, Remote ID</a></li>
+      <li id="q14">OpenDroneID, „opendroneid-core-c" (Projekt-Liesmich).  Bibliothek zum Kodieren
+        und Dekodieren der Nachrichten nach ASTM F3411 und ASD-STAN prEN 4709-002, Empfänger-Apps
+        für Android und iOS, fehlende iOS-Schnittstellen für andere Verfahren als Bluetooth 4
+        Legacy Advertising, Werkzeuge zur Prüfung mit WireShark:
+        <a href="https://github.com/opendroneid/opendroneid-core-c" rel="noopener" target="_blank">github.com, opendroneid-core-c</a></li>
+      <li id="q15">Dronetag, „Dronetag DRI" (Produktseite mit technischen Daten).  Abmessungen
+        22,5 mal 16 mal 5 Millimeter, Gewicht 1,5 Gramm mit Steckern, mittlerer Strom 3 mA und
+        Höchststrom 10 mA, Versorgung über den Flight Controller, Bluetooth 4.0 Legacy und 5.0 Long
+        Range mit bis zu 3 Kilometern, MAVLink 2 über UART, Betriebstemperatur von minus 40 bis
+        plus 85 Grad Celsius:
+        <a href="https://dronetag.com/products/dri" rel="noopener" target="_blank">dronetag.com, DRI</a></li>
+      <li id="q16">Dronetag, „Dronetag Mini" (Produktseite).  Gewicht 32 Gramm, Kombination aus
+        direkter und netzgestützter Fernidentifizierung, Akkulaufzeit bis 14 Stunden:
+        <a href="https://dronetag.com/products/mini" rel="noopener" target="_blank">dronetag.com, Mini</a></li>
+      <li id="q17">MAVLink, „Open Drone ID".  Ausrichtung der MAVLink-Nachrichten an ASTM F3411
+        und ASD-STAN prEN 4709-002, vier definierte Sendeverfahren, Größengrenze eines
+        Bluetooth-Legacy-Funkbursts als Grund für die Aufteilung in sechs Nachrichten und ein
+        Message Pack:
+        <a href="https://mavlink.io/en/services/opendroneid.html" rel="noopener" target="_blank">mavlink.io, Open Drone ID</a></li>
+    </ol>
+
+<!-- historie:start -->
+    <h2>Änderungshistorie</h2>
+    <ul class="muted historie">
+      <li><strong>21.08.2026</strong> &middot; Veröffentlichung</li>
+    </ul>
+<!-- historie:ende -->
+
+
+<!-- partner:start -->
+<!-- partner:ende -->
+
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <nav class="social" aria-label="Draco Labs in sozialen Netzwerken">
+      <a href="https://www.youtube.com/@DracoLabsGermany" rel="noopener" class="yt" aria-label="Draco Labs auf YouTube">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/draco.labs.germany" rel="noopener" class="ig" aria-label="Draco Labs auf Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c0-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 3.1A6.7 6.7 0 1 0 18.7 12 6.7 6.7 0 0 0 12 5.3Zm0 11a4.3 4.3 0 1 1 4.3-4.3 4.3 4.3 0 0 1-4.3 4.3ZM19 5a1.6 1.6 0 1 1-1.6-1.6A1.6 1.6 0 0 1 19 5Z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@dracolabsgermany" rel="noopener" class="tt" aria-label="Draco Labs auf TikTok">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16.6 2h-3.1v13.1a2.7 2.7 0 1 1-2.7-2.7c.2 0 .4 0 .6.1V9.3a6 6 0 0 0-.6 0 5.8 5.8 0 1 0 5.8 5.8V8.6a7 7 0 0 0 4.1 1.3V6.8a3.9 3.9 0 0 1-4.1-3.9V2Z"/></svg>
+      </a>
+    </nav>
+    <div class="links">
+      <a href="index.html">Startseite</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
+    </div>
+    <div>© 2026 Draco Labs Germany · Kleinunternehmer gem. § 19 UStG</div>
+    <img class="ai-label" src="assets/label-ai-modified.svg" alt="KI-Kennzeichnung: Inhalte dieser Website wurden teilweise mit KI erstellt oder bearbeitet (AI MODIFIED)">
+  </div>
+</footer>
+
+</body>
+</html>
