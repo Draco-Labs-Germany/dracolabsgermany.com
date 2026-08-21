@@ -21,7 +21,9 @@ hierher. Aufruf also aus `draco-labs`, nicht aus diesem Verzeichnis:
   `aktionen.html`: Inhalt, Preise und Verfall kommen aus `aktionen.py`, und die
   Preise werden bei jedem Lauf frisch beim Händler geholt — ein von Hand
   geänderter Preis wäre binnen eines Tages wieder weg und in der Zwischenzeit
-  eine Behauptung ohne Beleg.
+  eine Behauptung ohne Beleg. Wie die Seite entsteht und wann eine Kachel
+  wieder verschwindet, steht in `draco-labs/docs/ablauf-aktionen.md`;
+  gepflegt wird sie über `draco-labs/content/aktionen.json`.
 - **Commits nur als „Draco Labs Germany <info@dracolabsgermany.com>"** über den
   SSH-Alias `github-dracolabs` — nie unter dem privaten Konto.
 - **Live ist erst, was gepusht ist.** Der Push ist die letzte Stufe der
