@@ -348,23 +348,53 @@ main.legal tr:nth-child(even) { background: rgba(255, 255, 255, .025); }
 
 /* ---- Aktionen der Partner ------------------------------------------------
    Kachel je laufender Aktion auf aktionen.html; gepflegt von
-   draco-labs/tools/aktionen.py. Bewusst breiter als .produkt-karte: hier
-   traegt nicht das Bild, sondern der Text (Frist, Stand, Anzeige-Hinweis),
-   und der muss lesbar sein, bevor jemand klickt. */
-.aktion-grid { display: grid; gap: 18px; margin-top: 20px; }
+   draco-labs/tools/aktionen.py. Links das Hero (Hochformat, weil die
+   Partner-Kurzvideos 9:16 sind und nicht beschnitten werden duerfen), rechts
+   Text, Artikel und Kennzeichnung. */
+.aktion-grid { display: grid; gap: 22px; margin-top: 22px; }
 .aktion-karte {
-  display: grid; grid-template-columns: 190px 1fr; gap: 18px; align-items: start;
+  display: grid; grid-template-columns: 270px 1fr; gap: 22px; align-items: start;
   background: var(--surface); border: 1px solid var(--line); border-radius: 6px;
-  border-left: 3px solid var(--cyan); padding: 16px;
+  border-left: 3px solid var(--cyan); padding: 18px;
 }
-.aktion-karte img {
-  width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: contain;
-  border-radius: 4px; background: #fff;
+.aktion-hero video, .aktion-hero img {
+  width: 100%; height: auto; display: block; border-radius: 5px; background: #000;
 }
-.aktion-karte h3 { margin: 4px 0 8px; }
+.aktion-karte h3 { margin: 4px 0 10px; }
 .aktion-marke {
   font-weight: 700; letter-spacing: .06em; font-size: 13px;
   color: var(--cyan); text-transform: uppercase;
+}
+
+/* Artikelreihe: dieselbe Kachelform wie .produkt-karte, aber mit Preis. */
+.aktion-artikel {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px; margin: 16px 0;
+}
+.aktion-artikel-karte {
+  display: block; text-align: center; padding: 10px;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 5px;
+  transition: transform .2s, border-color .2s;
+}
+.aktion-artikel-karte:hover {
+  transform: translateY(-3px); border-color: #4a5560; text-decoration: none;
+}
+.aktion-artikel-karte img {
+  width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: contain;
+  border-radius: 4px; background: #fff;
+}
+.aktion-artikel-marke {
+  display: block; margin-top: 8px; font-weight: 700; letter-spacing: .06em;
+  font-size: 11px; color: var(--cyan); text-transform: uppercase;
+}
+.aktion-artikel-name { display: block; color: var(--ink); font-size: 13px; }
+.aktion-artikel-preis {
+  display: block; margin-top: 6px; font-size: 15px; font-weight: 700; color: var(--ink);
+}
+.aktion-artikel-preis s { font-weight: 400; font-size: 13px; color: var(--muted); margin-left: 6px; }
+.aktion-artikel-rabatt {
+  display: inline-block; margin-top: 4px; padding: 1px 7px; border-radius: 3px;
+  background: var(--cyan); color: #0b1015; font-size: 12px; font-weight: 700;
 }
 .aktion-code { font-size: 15px; }
 .aktion-frist { color: var(--muted); font-size: 13px; }
@@ -379,9 +409,12 @@ main.legal tr:nth-child(even) { background: rgba(255, 255, 255, .025); }
   text-transform: uppercase;
 }
 .aktion-mehr { font-size: 14px; }
-@media (max-width: 620px) {
+@media (max-width: 700px) {
   .aktion-karte { grid-template-columns: 1fr; }
-  .aktion-karte img { max-width: 190px; }
+  .aktion-hero { max-width: 240px; margin: 0 auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aktion-artikel-karte:hover { transform: none; }
 }
 
 /* ---- Ratgeber- & Teilelisten-Karussell -----------------------------------

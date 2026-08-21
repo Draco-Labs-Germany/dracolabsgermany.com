@@ -16,7 +16,12 @@ hierher. Aufruf also aus `draco-labs`, nicht aus diesem Verzeichnis:
 - **Nicht von Hand editieren**, was ein Werkzeug erzeugt: Kopf-Navigation,
   Footer, Social-Leiste, Partnerblock, Video-Einbettungen, Standbilder,
   Meta-Tags, `og:`-Bilder, `robots.txt` und `sitemap.xml` werden nachgezogen
-  und überschreiben Handarbeit beim nächsten Lauf.
+  und überschreiben Handarbeit beim nächsten Lauf. Dazu gehört auch der Block
+  zwischen `<!-- aktionen:start -->` und `<!-- aktionen:ende -->` in
+  `aktionen.html`: Inhalt, Preise und Verfall kommen aus `aktionen.py`, und die
+  Preise werden bei jedem Lauf frisch beim Händler geholt — ein von Hand
+  geänderter Preis wäre binnen eines Tages wieder weg und in der Zwischenzeit
+  eine Behauptung ohne Beleg.
 - **Commits nur als „Draco Labs Germany <info@dracolabsgermany.com>"** über den
   SSH-Alias `github-dracolabs` — nie unter dem privaten Konto.
 - **Live ist erst, was gepusht ist.** Der Push ist die letzte Stufe der
