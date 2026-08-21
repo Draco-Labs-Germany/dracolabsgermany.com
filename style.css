@@ -358,6 +358,9 @@ main.legal tr:nth-child(even) { background: rgba(255, 255, 255, .025); }
   border-left: 3px solid var(--cyan); padding: 18px;
 }
 .aktion-karte.ohne-hero { grid-template-columns: 1fr; }
+/* Markenzeichen statt Aufmacher: bei Partnern, die uns nur Logo und Banner
+   freigeben (Sunlu), steht das freigestellte Logo klein ueber dem Titel. */
+.aktion-partnerlogo { display: block; height: 30px; width: auto; margin-bottom: 10px; }
 .aktion-hero video, .aktion-hero img {
   width: 100%; height: auto; display: block; border-radius: 5px; background: #000;
 }
