@@ -396,6 +396,11 @@ main.legal tr:nth-child(even) { background: rgba(255, 255, 255, .025); }
   display: inline-block; margin-top: 4px; padding: 1px 7px; border-radius: 3px;
   background: var(--cyan); color: #0b1015; font-size: 12px; font-weight: 700;
 }
+/* Karte ohne Bild: bei Partnern ohne Bildfreigabe (Sunlu) traegt der Text
+   allein. Etwas mehr Luft, damit die Kachel nicht wie ein Fehler aussieht. */
+.aktion-artikel-karte.ohne-bild { padding: 16px 12px; text-align: left; }
+.aktion-artikel-karte.ohne-bild .aktion-artikel-name { min-height: 2.6em; }
+
 .aktion-code { font-size: 15px; }
 .aktion-frist { color: var(--muted); font-size: 13px; }
 .aktion-tun { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
