@@ -346,6 +346,44 @@ main.legal tr:nth-child(even) { background: rgba(255, 255, 255, .025); }
 .produkt-hinweis { color: var(--muted); font-size: 12px; margin-top: 6px; }
 @media (prefers-reduced-motion: reduce) { .produkt-karte:hover { transform: none; } }
 
+/* ---- Aktionen der Partner ------------------------------------------------
+   Kachel je laufender Aktion auf aktionen.html; gepflegt von
+   draco-labs/tools/aktionen.py. Bewusst breiter als .produkt-karte: hier
+   traegt nicht das Bild, sondern der Text (Frist, Stand, Anzeige-Hinweis),
+   und der muss lesbar sein, bevor jemand klickt. */
+.aktion-grid { display: grid; gap: 18px; margin-top: 20px; }
+.aktion-karte {
+  display: grid; grid-template-columns: 190px 1fr; gap: 18px; align-items: start;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 6px;
+  border-left: 3px solid var(--cyan); padding: 16px;
+}
+.aktion-karte img {
+  width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: contain;
+  border-radius: 4px; background: #fff;
+}
+.aktion-karte h3 { margin: 4px 0 8px; }
+.aktion-marke {
+  font-weight: 700; letter-spacing: .06em; font-size: 13px;
+  color: var(--cyan); text-transform: uppercase;
+}
+.aktion-code { font-size: 15px; }
+.aktion-frist { color: var(--muted); font-size: 13px; }
+.aktion-tun { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.aktion-btn {
+  display: inline-block; padding: 9px 16px; border-radius: 4px;
+  background: var(--cyan); color: #0b1015; font-weight: 700;
+}
+.aktion-btn:hover { text-decoration: none; filter: brightness(1.1); }
+.aktion-anzeige {
+  color: var(--muted); font-size: 12px; letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.aktion-mehr { font-size: 14px; }
+@media (max-width: 620px) {
+  .aktion-karte { grid-template-columns: 1fr; }
+  .aktion-karte img { max-width: 190px; }
+}
+
 /* ---- Ratgeber- & Teilelisten-Karussell -----------------------------------
    Horizontal scrollbare Kachelreihe (reines CSS, scroll-snap, kein JS);
    gepflegt von tools/ratgeber_karussell.py. Skaliert mit beliebig vielen
