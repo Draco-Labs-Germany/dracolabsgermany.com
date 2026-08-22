@@ -28,6 +28,26 @@ h1, h2, h3 { text-wrap: balance; }
    Abschnittsanfang verdecken und z. B. #leistungen wie #ratgeber aussehen lassen. */
 [id] { scroll-margin-top: 88px; }
 
+/* Standleiste ueber dem Kopf: wann zuletzt beim Haendler nachgefragt wurde.
+   Steht ueber dem sticky Header und scrollt bewusst weg -- sie ist eine Angabe
+   zum Stand der Seite, keine Navigation. Erzeugt von tools/aktionen.py. */
+.stand-leiste {
+  background: var(--surface); border-bottom: 1px solid var(--line);
+  font-size: .78rem; color: var(--muted); letter-spacing: .02em;
+}
+.stand-leiste .wrap {
+  display: flex; align-items: center; gap: 8px; min-height: 30px; padding: 5px 24px;
+}
+.stand-leiste time { color: var(--ink); font-variant-numeric: tabular-nums; }
+.stand-punkt {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--cyan);
+  flex: 0 0 auto;
+}
+@media (max-width: 560px) {
+  .stand-leiste { font-size: .72rem; }
+  .stand-leiste .wrap { padding: 5px 16px; }
+}
+
 /* Kopf */
 header.site {
   border-bottom: 1px solid var(--line);
