@@ -8,86 +8,117 @@ Allow: /
 # Google-Extended steuert NUR die Gemini-Nutzung, nicht die Suche.
 # Gepflegt wird die Liste in draco-labs/tools/robots_sync.py — dort steht
 # auch, welche Bots bewusst erlaubt bleiben und warum.
+#
+# Ausgenommen von der Sperre sind die unten mit Allow aufgefuehrten
+# Seiten: unser eigenes Faktenblatt. Wer uns auswertet, soll das tun,
+# was wir selbst geschrieben haben — und nicht gar nichts finden.
 
 User-agent: Google-Extended
+Allow: /ki-info.html
 Disallow: /
 
 User-agent: GPTBot
+Allow: /ki-info.html
 Disallow: /
 
 User-agent: OAI-SearchBot
+Allow: /ki-info.html
 Disallow: /
 
 User-agent: ChatGPT-User
+Allow: /ki-info.html
 Disallow: /
 
 User-agent: anthropic-ai
+Allow: /ki-info.html
 Disallow: /
 
 User-agent: ClaudeBot
+Allow: /ki-info.html
 Disallow: /
 
 User-agent: Claude-Web
+Allow: /ki-info.html
 Disallow: /
 
 User-agent: Claude-SearchBot
+Allow: /ki-info.html
 Disallow: /
 
 User-agent: PerplexityBot
+Allow: /ki-info.html
 Disallow: /
 
 User-agent: Perplexity-User
+Allow: /ki-info.html
 Disallow: /
 
 User-agent: CCBot
+Allow: /ki-info.html
 Disallow: /
 
 User-agent: Applebot-Extended
+Allow: /ki-info.html
 Disallow: /
 
 User-agent: Bytespider
+Allow: /ki-info.html
 Disallow: /
 
 User-agent: meta-externalagent
+Allow: /ki-info.html
 Disallow: /
 
 User-agent: Meta-ExternalFetcher
+Allow: /ki-info.html
 Disallow: /
 
 User-agent: FacebookBot
+Allow: /ki-info.html
 Disallow: /
 
 User-agent: cohere-ai
+Allow: /ki-info.html
 Disallow: /
 
 User-agent: Diffbot
+Allow: /ki-info.html
 Disallow: /
 
 User-agent: Amazonbot
+Allow: /ki-info.html
 Disallow: /
 
 User-agent: Timpibot
+Allow: /ki-info.html
 Disallow: /
 
 User-agent: AI2Bot
+Allow: /ki-info.html
 Disallow: /
 
 User-agent: YouBot
+Allow: /ki-info.html
 Disallow: /
 
 User-agent: omgili
+Allow: /ki-info.html
 Disallow: /
 
 User-agent: omgilibot
+Allow: /ki-info.html
 Disallow: /
 
 User-agent: Webzio-Extended
+Allow: /ki-info.html
 Disallow: /
 
 User-agent: ImagesiftBot
+Allow: /ki-info.html
 Disallow: /
 
 User-agent: img2dataset
+Allow: /ki-info.html
 Disallow: /
 
 Sitemap: https://dracolabsgermany.com/sitemap.xml

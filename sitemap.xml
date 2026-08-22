@@ -7,7 +7,7 @@
   </url>
   <url>
     <loc>https://dracolabsgermany.com/aktionen.html</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -20,6 +20,11 @@
   <url>
     <loc>https://dracolabsgermany.com/artikel-exportbeschraenkungen.html</loc>
     <lastmod>2026-08-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dracolabsgermany.com/ki-info.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
