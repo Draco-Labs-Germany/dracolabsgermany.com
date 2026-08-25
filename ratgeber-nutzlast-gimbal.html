@@ -138,7 +138,8 @@
     Steigung.  Die Prüfstandstabelle des Herstellers für genau diese Kombination bei 22,2&nbsp;V
     liest sich so:<sup><a href="#q1">1</a></sup></p>
 
-    <table>
+    <div data-nosnippet>
+<table>
     <tr><th>Gas</th><th>Schub je Motor</th><th>Strom</th><th>Leistung</th><th>Effizienz</th></tr>
     <tr><td>50 %</td><td>740 g</td><td>3,7 A</td><td>82,14 W</td><td><strong>9,01 g/W</strong></td></tr>
     <tr><td>65 %</td><td>850 g</td><td>4,8 A</td><td>106,56 W</td><td>7,98 g/W</td></tr>
@@ -146,6 +147,7 @@
     <tr><td>85 %</td><td>1.260 g</td><td>7,9 A</td><td>175,38 W</td><td>7,18 g/W</td></tr>
     <tr><td>100 %</td><td>1.450 g</td><td>9,4 A</td><td>208,68 W</td><td>6,95 g/W</td></tr>
     </table>
+</div>
 
     <p>Die entscheidende Spalte ist die rechte.  Bei halbem Gas macht dieser Motor
     9,01&nbsp;Gramm Schub aus jedem Watt, bei Vollgas nur noch 6,95&nbsp;Gramm.<sup><a href="#q1">1</a></sup>
@@ -369,12 +371,14 @@
     Horizonts) und Gier (Yaw, Drehung um die Hochachse, also die Blickrichtung).  Ihre Wirkung auf
     das Bild ist sehr unterschiedlich:</p>
 
-    <table>
+    <div data-nosnippet>
+<table>
     <tr><th>Achse</th><th>Was sie im Bild entfernt</th><th>Nachträglich korrigierbar?</th></tr>
     <tr><td><strong>Roll</strong></td><td>schiefer Horizont beim Kurvenflug</td><td>ja, aber mit Beschnitt</td></tr>
     <tr><td><strong>Nick</strong></td><td>Auf- und Abwandern des Ausschnitts beim Beschleunigen</td><td>ja, aber mit Beschnitt</td></tr>
     <tr><td><strong>Gier</strong></td><td>Wandern der Blickrichtung beim Drehen</td><td>nur eingeschränkt</td></tr>
     </table>
+</div>
 
     <p>Nick und Roll sind die beiden Achsen, die den Bildinhalt <em>innerhalb</em> der Szene
     verschieben.  Die Gierachse dagegen bestimmt, <em>wohin</em> die Kamera überhaupt schaut.  Genau
@@ -535,7 +539,8 @@
     3-Achsen-Gimbal für UAS-Einsatz als Beispiel; die Werte sind Herstellerangaben, die wir nicht
     nachgemessen haben.</p>
 
-    <table>
+    <div data-nosnippet>
+<table>
     <tr><th>Kriterium</th><th>Mechanischer Gimbal</th><th>Elektronische Stabilisierung</th></tr>
     <tr><td>Zusatzgewicht</td><td>164 g (3 Achsen, kompakt)<sup><a href="#q2">2</a></sup> bis 240 g<sup><a href="#q13">13</a></sup></td><td>keines</td></tr>
     <tr><td>Stromaufnahme</td><td>4,5–6 W im Mittel, 12 W Spitze<sup><a href="#q2">2</a></sup></td><td>keine nennenswerte</td></tr>
@@ -547,6 +552,7 @@
     <tr><td>Balance nötig</td><td>ja, bei jedem Kameratausch<sup><a href="#q9">9</a></sup></td><td>nein</td></tr>
     <tr><td>Wirkt im Livebild</td><td>ja</td><td>je nach Kamera; Nachbearbeitung erst später<sup><a href="#q17">17</a></sup></td></tr>
     </table>
+</div>
 
     <p>Die Zeile, die in der Praxis am häufigsten unterschätzt wird, ist die Bauhöhe.  Ein Gimbal
     hängt unter dem Copter und braucht Bodenfreiheit; kompakte Modelle bauen rund
@@ -885,6 +891,53 @@
 
 
 <!-- partner:start -->
+    <h2>Partner &amp; Empfehlungen</h2>
+    <p class="muted"><strong>Anzeige:</strong> Ausrüstung, die wir selbst nutzen und
+    empfehlen können.  Die folgenden Links sind Affiliate-Links; kaufst du darüber,
+    erhalten wir eine Provision, für dich ändert sich am Preis nichts.  Empfohlen
+    wird nur, was uns fachlich überzeugt.</p>
+    <div class="partner-grid">
+      <a class="partner-card" href="https://www.sunlu.com/?sca_ref=11859027.qxuEVmIDy7"
+         target="_blank" rel="sponsored noopener">
+        <img src="assets/partner/sunlu-logo.png" alt="SUNLU" width="72" height="72" loading="lazy">
+        <div>
+          <div class="partner-name">SUNLU</div>
+          <div class="partner-desc">3D-Druck-Filament (PLA, PETG, TPU), Filament-Trockner und Zubehör; damit
+          drucken wir Prototypen und Halterungen.</div>
+          <div class="partner-coupon">Gutscheincode beim Checkout: <code>dracolabs</code></div>
+        </div>
+      </a>
+      <a class="partner-card" href="https://www.fpv24.com/de/?aid=U-THvRXn"
+         target="_blank" rel="sponsored noopener">
+        <img src="assets/partner/fpv24-logo.svg" alt="FPV24" width="134" height="44" loading="lazy">
+        <div>
+          <div class="partner-name">FPV24</div>
+          <div class="partner-desc">Deutscher FPV-Fachhandel mit schnellem Versand und Support; Akkus,
+          Ladegeräte (u.&nbsp;a. ISDT) und FPV-Komponenten, die wir im Aufbau verwenden.</div>
+        </div>
+      </a>
+      <a class="partner-card" href="https://darwinfpv.com/DRACOLABSGERMANY"
+         target="_blank" rel="sponsored noopener">
+        <img src="assets/partner/darwinfpv-logo.png" alt="DarwinFPV" width="164" height="30" loading="lazy">
+        <div>
+          <div class="partner-name">DarwinFPV</div>
+          <div class="partner-desc">Hersteller von FPV-Frames, Motoren und Komponenten; unser Partner für
+          X-Class-Frames der Toruk-Serie für Long-Range-Builds.</div>
+          <div class="partner-coupon">Gutscheincode beim Checkout: <code>DRACOLABSGERMANY</code></div>
+        </div>
+      </a>
+      <a class="partner-card" href="https://www.ampow.com/DRACOLABSGERMANY"
+         target="_blank" rel="sponsored noopener">
+        <img src="assets/partner/ampow-logo.png" alt="Ampow" width="150" height="30" loading="lazy">
+        <div>
+          <div class="partner-name">Ampow</div>
+          <div class="partner-desc">Store der LiPo-Marke Ovonic; unser Partner für Flugakkus rund um FPV-
+          und Long-Range-Builds.  Die ROAM-Serie deckt mit 6S- und 8S-Packs bis
+          8.000&nbsp;mAh genau die von uns bevorzugten Klassen von 10 bis
+          15 Zoll ab.</div>
+        </div>
+      </a>
+    </div>
 <!-- partner:ende -->
 
 

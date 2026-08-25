@@ -129,13 +129,15 @@
     ein Ziel richten und die Strahlung anschließend erfassen."<sup><a href="#q1">1</a></sup>  Drei
     der vier Systeme in diesem Artikel sind passiv, eines ist aktiv.</p>
 
-    <table>
+    <div data-nosnippet>
+<table>
     <tr><th>System</th><th>Gemessene Größe</th><th>Energiequelle</th><th>Ergebnis</th></tr>
     <tr><td>RGB-Kamera</td><td>reflektiertes Sonnenlicht im sichtbaren Bereich</td><td>passiv (Sonne)</td><td>Bild, aus mehreren Bildern ein 3D-Modell</td></tr>
     <tr><td>Wärmebildkamera</td><td>Eigenstrahlung des Objekts im langwelligen Infrarot</td><td>passiv (Objekt selbst)</td><td>Bild, bei radiometrischen Geräten je Pixel eine Temperatur</td></tr>
     <tr><td>LiDAR</td><td>Laufzeit eines selbst ausgesandten Laserimpulses</td><td>aktiv (eigener Laser)</td><td>Punktwolke mit Koordinaten</td></tr>
     <tr><td>Multispektralkamera</td><td>reflektiertes Sonnenlicht in wenigen schmalen Bändern</td><td>passiv (Sonne)</td><td>Bänderstapel, daraus gerechnete Indexkarten</td></tr>
     </table>
+</div>
 
     <p>Aus dieser Einteilung folgt sofort der praktisch wichtigste Unterschied.  Weil LiDAR seine
     eigene Lichtquelle mitbringt, ist es unabhängig von der Sonne: „Diese Eigenschaft erlaubt es,
@@ -265,13 +267,15 @@
     <p>Damit lässt sich jede der vier Nutzlasten auf eine gemeinsame Skala bringen, und die
     Ergebnisse sind bemerkenswert weit auseinander:</p>
 
-    <table>
+    <div data-nosnippet>
+<table>
     <tr><th>Sensor</th><th>Flughöhe</th><th>Bodenauflösung</th><th>Quelle</th></tr>
     <tr><td>DJI Zenmuse P1, 24&nbsp;mm</td><td>100&nbsp;m</td><td>1,83&nbsp;cm/px (unsere Rechnung)</td><td>Sensordaten<sup><a href="#q6">6</a></sup></td></tr>
     <tr><td>MicaSense RedEdge-P, Multispektralband</td><td>120&nbsp;m</td><td>7,7&nbsp;cm/px</td><td>Datenblatt<sup><a href="#q24">24</a></sup></td></tr>
     <tr><td>MicaSense RedEdge-P, Panchromatisch</td><td>120&nbsp;m</td><td>3,98&nbsp;cm/px</td><td>Datenblatt<sup><a href="#q24">24</a></sup></td></tr>
     <tr><td>Wärmebildkern Boson 640, 32°</td><td>50&nbsp;m</td><td>4,48&nbsp;cm/px (unsere Rechnung)</td><td>Auflösung und Bildwinkel<sup><a href="#q9">9</a></sup></td></tr>
     </table>
+</div>
 
     <p>Die Wärmebildzeile ist gerechnet und soll offenliegen: Bei 32°&nbsp;horizontalem Bildwinkel
     deckt die Kamera aus 50&nbsp;m einen Streifen von rund 28,7&nbsp;m Breite ab; verteilt auf
@@ -564,13 +568,15 @@
     Eine dichte Punktwolke aus einer schlecht georeferenzierten Befliegung ist eine sehr präzise
     Darstellung einer falschen Geländeform.</p>
 
-    <table>
+    <div data-nosnippet>
+<table>
     <tr><th>Qualitätsstufe</th><th>Höhengenauigkeit (RMSEz)</th><th>Punktabstand</th><th>Punktdichte</th></tr>
     <tr><td>QL0</td><td>5&nbsp;cm</td><td>≤&nbsp;0,35&nbsp;m</td><td>≥&nbsp;8&nbsp;Pkt/m²</td></tr>
     <tr><td>QL1</td><td>10&nbsp;cm</td><td>≤&nbsp;0,35&nbsp;m</td><td>≥&nbsp;8&nbsp;Pkt/m²</td></tr>
     <tr><td>QL2</td><td>10&nbsp;cm</td><td>≤&nbsp;0,71&nbsp;m</td><td>≥&nbsp;2&nbsp;Pkt/m²</td></tr>
     <tr><td>QL3</td><td>20&nbsp;cm</td><td>≤&nbsp;1,41&nbsp;m</td><td>≥&nbsp;0,5&nbsp;Pkt/m²</td></tr>
     </table>
+</div>
     <p class="muted" style="font-size:14px">Qualitätsstufen nach der Lidar Base Specification des
     US Geological Survey.<sup><a href="#q22">22</a></sup></p>
 
@@ -754,7 +760,8 @@
     über den Antriebsstrang mehrfach bezahlt, und der Schwerpunkt ist meist die härtere Grenze als
     das Gewicht.  Hier die belegten Eckwerte nebeneinander:</p>
 
-    <table>
+    <div data-nosnippet>
+<table>
     <tr><th>Nutzlast</th><th>Gewicht</th><th>Leistung</th><th>Bemerkung</th></tr>
     <tr><td>Teledyne FLIR Hadron 640 (Thermal + Sicht)</td><td>56&nbsp;g<sup><a href="#q9">9</a></sup></td><td>1,8&nbsp;W<sup><a href="#q9">9</a></sup></td><td>reines Modul, ohne Gehäuse und Aufhängung</td></tr>
     <tr><td>DJI Zenmuse P1 (RGB Vollformat)</td><td>ca. 800&nbsp;g<sup><a href="#q6">6</a></sup></td><td>Herstellerangabe nicht genannt</td><td>fertige Nutzlast mit Gimbal</td></tr>
@@ -763,6 +770,7 @@
     <tr><td>DJI Zenmuse L2 (LiDAR + RGB + IMU)</td><td>905&nbsp;±&nbsp;5&nbsp;g<sup><a href="#q20">20</a></sup></td><td>Herstellerangabe nicht genannt</td><td>vollständiges System</td></tr>
     <tr><td>MicaSense RedEdge-P (Multispektral)</td><td>503,7&nbsp;g flugfertig<sup><a href="#q24">24</a></sup></td><td>5,5&nbsp;/&nbsp;7,0&nbsp;/&nbsp;10&nbsp;W<sup><a href="#q24">24</a></sup></td><td>Bereitschaft, Mittel, Spitze</td></tr>
     </table>
+</div>
 
     <p>Die Spalte „Leistung" ist überwiegend leer, und das ist eine Aussage für sich: Bei
     Komplettnutzlasten gehört die Leistungsaufnahme regelmäßig nicht zu den veröffentlichten
@@ -816,13 +824,15 @@
     Zuordnung von Frage zu Sensor, und dazu die ehrliche Einschätzung, was davon an einem
     selbstgebauten Copter unserer Klasse sinnvoll fliegt.</p>
 
-    <table>
+    <div data-nosnippet>
+<table>
     <tr><th>Die Frage lautet</th><th>Der Sensor heißt</th><th>Der Haken ist</th></tr>
     <tr><td>Wie sieht es aus, wie groß ist es, wie ist das Gelände geformt?</td><td>RGB mit RTK</td><td>braucht Textur und Tageslicht; unter Vegetation blind</td></tr>
     <tr><td>Wo ist es wärmer als anderswo?</td><td>Wärmebild, radiometrisch</td><td>der Emissionsgrad entscheidet; Messfläche mindestens 3×3 Pixel</td></tr>
     <tr><td>Wie hoch liegt der Boden unter dem Bewuchs?</td><td>LiDAR mit RTK und IMU</td><td>Genauigkeit kommt aus der Lagebestimmung, nicht aus dem Laser</td></tr>
     <tr><td>Wie geht es der Pflanze, verglichen mit letzter Woche?</td><td>Multispektral mit DLS und Panel</td><td>ohne Kalibrierung nicht vergleichbar; Flächenleistung begrenzt</td></tr>
     </table>
+</div>
 
     <p>Für einen 13-Zoll-Aufbau, wie wir ihn bauen, fällt die Antwort deutlich aus.  <strong>RGB ist
     die einzige der vier Nutzlasten, die ohne Kompromiss trägt.</strong>  Eine gute Kamera mit
@@ -940,6 +950,53 @@
 
 
 <!-- partner:start -->
+    <h2>Partner &amp; Empfehlungen</h2>
+    <p class="muted"><strong>Anzeige:</strong> Ausrüstung, die wir selbst nutzen und
+    empfehlen können.  Die folgenden Links sind Affiliate-Links; kaufst du darüber,
+    erhalten wir eine Provision, für dich ändert sich am Preis nichts.  Empfohlen
+    wird nur, was uns fachlich überzeugt.</p>
+    <div class="partner-grid">
+      <a class="partner-card" href="https://www.sunlu.com/?sca_ref=11859027.qxuEVmIDy7"
+         target="_blank" rel="sponsored noopener">
+        <img src="assets/partner/sunlu-logo.png" alt="SUNLU" width="72" height="72" loading="lazy">
+        <div>
+          <div class="partner-name">SUNLU</div>
+          <div class="partner-desc">3D-Druck-Filament (PLA, PETG, TPU), Filament-Trockner und Zubehör; damit
+          drucken wir Prototypen und Halterungen.</div>
+          <div class="partner-coupon">Gutscheincode beim Checkout: <code>dracolabs</code></div>
+        </div>
+      </a>
+      <a class="partner-card" href="https://www.fpv24.com/de/?aid=U-THvRXn"
+         target="_blank" rel="sponsored noopener">
+        <img src="assets/partner/fpv24-logo.svg" alt="FPV24" width="134" height="44" loading="lazy">
+        <div>
+          <div class="partner-name">FPV24</div>
+          <div class="partner-desc">Deutscher FPV-Fachhandel mit schnellem Versand und Support; Akkus,
+          Ladegeräte (u.&nbsp;a. ISDT) und FPV-Komponenten, die wir im Aufbau verwenden.</div>
+        </div>
+      </a>
+      <a class="partner-card" href="https://darwinfpv.com/DRACOLABSGERMANY"
+         target="_blank" rel="sponsored noopener">
+        <img src="assets/partner/darwinfpv-logo.png" alt="DarwinFPV" width="164" height="30" loading="lazy">
+        <div>
+          <div class="partner-name">DarwinFPV</div>
+          <div class="partner-desc">Hersteller von FPV-Frames, Motoren und Komponenten; unser Partner für
+          X-Class-Frames der Toruk-Serie für Long-Range-Builds.</div>
+          <div class="partner-coupon">Gutscheincode beim Checkout: <code>DRACOLABSGERMANY</code></div>
+        </div>
+      </a>
+      <a class="partner-card" href="https://www.ampow.com/DRACOLABSGERMANY"
+         target="_blank" rel="sponsored noopener">
+        <img src="assets/partner/ampow-logo.png" alt="Ampow" width="150" height="30" loading="lazy">
+        <div>
+          <div class="partner-name">Ampow</div>
+          <div class="partner-desc">Store der LiPo-Marke Ovonic; unser Partner für Flugakkus rund um FPV-
+          und Long-Range-Builds.  Die ROAM-Serie deckt mit 6S- und 8S-Packs bis
+          8.000&nbsp;mAh genau die von uns bevorzugten Klassen von 10 bis
+          15 Zoll ab.</div>
+        </div>
+      </a>
+    </div>
 <!-- partner:ende -->
 
 
