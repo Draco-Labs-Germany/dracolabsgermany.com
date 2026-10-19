@@ -1,0 +1,14 @@
+# Ein Zeilenende fuer alles: LF, im Repo und in jeder Arbeitskopie (Workstation und
+# homeserver), unabhaengig von core.autocrlf.  Vorher entschied jeder Rechner und jedes
+# Werkzeug selbst -- Python unter Windows schreibt CRLF, der Klon auf dem homeserver lag
+# als LF auf der Platte, die Workstation als CRLF, und per scp kopierte Dateien galten
+# auf der Gegenseite als geaendert (05.10.2026, Nachlauf zog nicht).  Mit eol=lf
+# normalisiert Git beim Einlesen: eine Datei, die ein Werkzeug mit CRLF schreibt, gilt
+# nur dann als geaendert, wenn sich ihr Inhalt geaendert hat.  Binaerdateien erkennt
+# text=auto selbst.
+* text=auto eol=lf
+
+# Windows-Skripte behalten CRLF (cmd.exe liest Sprungmarken in LF-Dateien falsch).
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
