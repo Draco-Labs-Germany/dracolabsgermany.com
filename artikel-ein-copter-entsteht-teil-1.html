@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ein Copter entsteht, Teil 1: Vom Entwurf zum ersten Teil | Draco Labs</title>
+<meta name="description" content="Baubericht DracoP07, Teil 1: Wie aus einem 13-Zoll-Entwurf die ersten Teile werden. Auslegung, CAD, gedruckte Probeteile, Zeitraffer und die Komponenten im Überblick.">
+<meta name="keywords" content="Baubericht Drohne, 13 Zoll Deadcat, DracoP07, T-Motor MN4012, Probedruck PETG-CF, TPU Druckteile, Arm-Eigenfrequenz">
+<!-- ENTWURF: noindex bis zur Freigabe durch den Inhaber; keine Startseiten-Kachel, kein Eintrag in sitemap.xml -->
+<meta name="robots" content="noindex, nofollow, noai, noimageai">
+<meta name="tdm-reservation" content="1">
+<meta name="author" content="Draco Labs Germany">
+<link rel="canonical" href="https://dracolabsgermany.com/artikel-ein-copter-entsteht-teil-1.html">
+
+<!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ein Copter entsteht, Teil 1: Vom Entwurf zum ersten Teil">
+<meta property="og:description" content="Baubericht DracoP07: Auslegung, CAD, gedruckte Probeteile und die Komponenten eines 13-Zoll-Copters.">
+<meta property="og:url" content="https://dracolabsgermany.com/artikel-ein-copter-entsteht-teil-1.html">
+<meta property="og:image" content="https://dracolabsgermany.com/assets/p07-teil1/p07-render-iso.jpg">
+<meta property="og:site_name" content="Draco Labs Germany">
+<meta property="og:locale" content="de_DE">
+
+<!-- Twitter/X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ein Copter entsteht, Teil 1: Vom Entwurf zum ersten Teil">
+<meta name="twitter:description" content="Baubericht DracoP07: Auslegung, CAD, gedruckte Probeteile und die Komponenten eines 13-Zoll-Copters.">
+<meta name="twitter:image" content="https://dracolabsgermany.com/assets/p07-teil1/p07-render-iso.jpg">
+
+<link rel="icon" type="image/png" href="assets/emblem.png">
+<link rel="stylesheet" href="style.css">
+
+<!-- Strukturierte Daten für Google (Article) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Ein Copter entsteht, Teil 1: Vom Entwurf zum ersten Teil",
+  "description": "Baubericht DracoP07, Teil 1: Auslegung, CAD, gedruckte Probeteile, Zeitraffer und die Komponenten eines 13-Zoll-Copters.",
+  "image": "https://dracolabsgermany.com/assets/p07-teil1/p07-render-iso.jpg",
+  "datePublished": "2026-10-25",
+  "dateModified": "2026-10-25",
+  "author": { "@type": "Organization", "name": "Draco Labs Germany" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Draco Labs Germany",
+    "logo": { "@type": "ImageObject", "url": "https://dracolabsgermany.com/assets/logo.png" }
+  },
+  "mainEntityOfPage": "https://dracolabsgermany.com/artikel-ein-copter-entsteht-teil-1.html",
+  "inLanguage": "de-DE"
+}
+</script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a href="index.html"><img src="assets/emblem.png" alt="Draco Labs Emblem"></a>
+    <div class="name">Draco Labs <small>Germany</small></div>
+    <input type="checkbox" id="menu-auf" class="menu-toggle">
+    <label for="menu-auf" class="burger" aria-label="Menü öffnen und schließen">
+      <span></span><span></span><span></span>
+    </label>
+    <nav>
+      <a href="leistungen.html">Leistungen</a>
+      <a href="index.html#neuigkeiten">Neuigkeiten</a>
+      <a href="index.html#ratgeber">Ratgeber</a>
+      <a href="index.html#teilelisten">Teilelisten</a>
+      <a href="index.html#ueber">Über uns</a>
+      <a href="aktionen.html">Aktionen</a>
+      <a href="index.html#partner">Partner</a>
+      <a href="index.html#kontakt">Kontakt</a>
+    </nav>
+    <a class="shop-btn" href="https://shop.dracolabsgermany.com" target="_blank" rel="noopener">Shop →</a>
+  </div>
+</header>
+
+<main class="legal">
+  <div class="wrap">
+
+    <h1>Ein Copter entsteht, Teil 1: Vom Entwurf zum ersten Teil</h1>
+    <p class="muted" style="font-size:17px; margin-top:-4px">Bevor ein Rahmen gefräst wird, entsteht er zweimal: einmal als Rechnung und einmal als gedrucktes Probemodell.  In dieser Serie zeigen wir, wie unser 13-Zoll-Copter DracoP07 Schritt für Schritt entsteht, mit allen Zahlen, Druckteilen und Fehlschlägen.</p>
+    <p class="muted">Neuigkeiten · Baubericht DracoP07 · Teil 1 von 3 · Lesezeit ca. 8 Min · Stand: Oktober 2026</p>
+
+    <div data-nosnippet style="background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--cyan); border-radius:10px; padding:18px 20px; margin:22px 0">
+      <p style="margin:0 0 8px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; font-size:13px; color:var(--cyan)">Kurz gesagt</p>
+      <ul style="margin:0; padding-left:20px; line-height:1.8">
+        <li>Der <strong>DracoP07</strong> ist ein 13-Zoll-Copter in Deadcat-Bauweise mit 652&nbsp;mm Radstand.  Er fliegt wahlweise mit 13- oder 14-Zoll-Propellern.</li>
+        <li>Die Auslegung rechnet mit rund <strong>3,0&nbsp;kg Abflugmasse</strong> und etwa 20 Minuten Schwebezeit mit einem Akku.  Alle Werte sind gerechnet, gemessen wird beim Erstflug.</li>
+        <li>Platten und Arme werden später aus Carbon gefräst.  Für den Probeaufbau haben wir sie vorab <strong>in PETG-CF gedruckt</strong>, um Form und Passung zu prüfen.</li>
+        <li>Teil 2 zeigt den Probeaufbau mit Löten und Verkabeln, Teil 3 den finalen Aufbau mit den gefrästen Carbonteilen.</li>
+      </ul>
+    </div>
+
+    <figure class="artikel-bild">
+      <img src="assets/p07-teil1/p07-render-iso.jpg" alt="CAD-Rendering des DracoP07: flacher Carbonrahmen mit vier Armen, Motoren und 13-Zoll-Propellern, schräg von vorn oben"
+        width="1600" height="900" loading="lazy">
+      <figcaption>So soll er aussehen: der DracoP07 im CAD-Modell, mit 13-Zoll-Propellern und den Haltern für Motoren, Arme und Antennen.</figcaption>
+    </figure>
+
+    <h2>Was wir bauen</h2>
+    <p>Der DracoP07 ist ein Copter für lange Flüge mit Kamera, kein Racer für enge Kurven.  Die Bauform heißt <strong>Deadcat</strong>: Die vorderen Arme stehen deutlich weiter auseinander als die hinteren.  So bleiben die Propeller aus dem Bild der Frontkamera, und der Rumpf kann trotzdem kompakt bleiben.  Beim P07 liegen die vorderen Motoren 560&nbsp;mm auseinander, die hinteren 500&nbsp;mm, und der Radstand von vorn links nach hinten rechts beträgt 652&nbsp;mm.</p>
+    <p>Der Rumpf besteht aus zwei Carbonplatten mit je 3&nbsp;mm Stärke, die über Abstandsbolzen verschraubt sind.  Die Arme sind Vierkantrohre aus Carbon, die in gedruckten Klemmblöcken am Rumpf sitzen.  An ihren Enden tragen sie die Motorhalter.  Alles, was weich sein darf oder muss, entsteht im 3D-Drucker aus TPU, einem gummiartigen Kunststoff: Halter für Antennen, Empfänger, GPS und Akkustecker, dazu die Landefüße.</p>
+    <p>Gefahren wird mit 13-Zoll-Propellern, für ruhige Flüge auch mit 14 Zoll.  Beide Größen passen ohne Umbau an den Rahmen, die Wahl hängt von der Flugsituation ab.  Was die Propellergröße beim Wirkungsgrad ausmacht, haben wir im <a href="ratgeber-propeller.html">Propeller-Ratgeber</a> zusammengefasst.</p>
+
+    <figure class="artikel-bild">
+      <img src="assets/p07-teil1/p07-render-oben.jpg" alt="CAD-Rendering des DracoP07 von oben: schmaler Rumpf, vordere Arme weiter gespreizt als die hinteren"
+        width="1600" height="900" loading="lazy">
+      <figcaption>Von oben sieht man die Deadcat-Form: Die vorderen Arme sind weiter gespreizt, damit die Propeller nicht ins Kamerabild ragen.  Die Nase zeigt nach oben.</figcaption>
+    </figure>
+
+    <h2>Erst die Rechnung, dann das Teil</h2>
+    <p>Bevor wir irgendetwas bestellen oder drucken, entsteht der Copter als <strong>Rechenmodell</strong>.  Darin stehen alle Bauteile mit ihrer Masse und Lage, von den Motoren bis zu Kabelbindern und Schrauben.  Aus dieser Liste folgen Abflugmasse, Schwerpunkt, Schub und Schwebezeit, und aus denselben Zahlen entsteht die Zeichnung.  Ändert sich ein Teil, wird alles neu gerechnet, damit Zeichnung und Rechnung nicht auseinanderlaufen.</p>
+    <table>
+      <tr><th>Größe</th><th>13-Zoll-Propeller</th><th>14-Zoll-Propeller</th></tr>
+      <tr><td>Abflugmasse mit einem Akku</td><td>3.043 g</td><td>3.047 g</td></tr>
+      <tr><td>Schub zu Gewicht, roh</td><td>1,91</td><td>2,57</td></tr>
+      <tr><td>Schub zu Gewicht mit 15 % Sicherheitsabschlag</td><td>1,62</td><td>2,19</td></tr>
+      <tr><td>Schwebezeit mit einem Akku</td><td>rund 20 min</td><td>rund 23 min</td></tr>
+      <tr><td>Arm-Eigenfrequenz (Frontarm)</td><td colspan="2">121 Hz bei 109 Hz Mindestwert</td></tr>
+    </table>
+    <p class="muted" style="font-size:14px">Alle Werte sind <strong>gerechnet, nicht gemessen</strong>.  Knapp die Hälfte der Masse stammt aus Datenblättern der Hersteller, der Rest ist berechnet oder geschätzt.  Gewogen und gemessen wird am fertigen Copter, das zeigen wir in Teil 3.</p>
+    <p>Zwei Zahlen verdienen einen zweiten Blick.  Das Verhältnis von Schub zu Gewicht liegt mit 13-Zoll-Propellern bei 1,91 und damit knapp unter dem Wert 2:1, den man für sicheres Fliegen als Untergrenze ansetzt.  Mit 14-Zoll-Propellern steigt es auf 2,57.  Ob die Reserve mit 13 Zoll im Wind genügt, klären erst die Flüge.</p>
+    <p>Die zweite Zahl ist die <strong>Eigenfrequenz der Arme</strong>.  Jeder Arm schwingt wie ein Lineal, das man an der Tischkante anschlägt, mit einer eigenen Frequenz.  Liegt sie zu nah an der Drehfrequenz der Propeller, schaukelt sich die Schwingung auf, und der Flugregler bekommt verrauschte Messwerte.  Im Schwebeflug drehen die Propeller rund 84-mal pro Sekunde, also mit 84&nbsp;Hz.  Wir verlangen 30 Prozent Abstand, also mindestens 109&nbsp;Hz, und gerechnet ist der Frontarm mit 121&nbsp;Hz.  Dabei setzen wir für das Carbonrohr bewusst einen niedrigen Steifigkeitswert an.  Was ein Carbonrohr steif macht, steht im <a href="ratgeber-carbon-frame.html">Ratgeber zum Carbonrahmen</a>.</p>
+
+    <h2>Wie der Rahmen schwingt</h2>
+    <p>Die Formel für einen einzelnen Arm ist nur der erste Schritt.  Im fertigen Copter hängen vier Arme an zwei Platten, und die Teile beeinflussen sich gegenseitig.  Deshalb haben wir den ganzen Rahmen in einer <strong>FEM-Simulation</strong> nachgerechnet.  Dabei wird das Modell in ein feines Netz mit rund 354.000 Knotenpunkten zerlegt, und für jeden davon wird gerechnet, wie er sich unter Last bewegt.  Heraus kommen die Eigenfrequenzen des ganzen Rahmens und die Form, in der er bei jeder davon schwingt.</p>
+    <figure class="artikel-bild">
+      <img src="assets/p07-teil1/p07-fem-spektrum.jpg" alt="Diagramm: senkrechte Linien für die Eigenfrequenzen des Rahmens bis 300 Hz, dazwischen rote Linien für die Anregung durch die Propeller"
+        width="1600" height="858" loading="lazy">
+      <figcaption>Alle Schwingungsformen des Rahmens bis 300&nbsp;Hz.  Blau sind Bewegungen der Arme, gelb der Platten, rot die Anregung durch die Propeller im Schwebeflug: ein-, zwei- und dreimal pro Umdrehung.</figcaption>
+    </figure>
+    <p>Die erste echte Schwingung liegt bei 46,5&nbsp;Hz, dabei wippen die Arme gegensinnig.  Sie liegt rund 40 Prozent unter der Drehfrequenz der Propeller im Schwebeflug und damit weit weg von der stärksten Anregung.  Ab 119&nbsp;Hz folgt eine Gruppe, in der die Arme gemeinsam auf und ab schwingen, passend zur Rechnung für den Einzelarm.  Spannend ist die Schwingung bei 158&nbsp;Hz, an der nur die beiden Vorderarme beteiligt sind.  Sie liegt sehr nah an der doppelten Drehfrequenz der Propeller, denn ein Zweiblatt-Propeller stößt den Arm bei jeder Umdrehung zweimal an.  Ob das im Flug stört, zeigt erst das Schwingungsprotokoll des Flugreglers beim Erstflug.  Im echten Rahmen sind die Schraubverbindungen außerdem etwas weicher als im Modell, die Frequenzen liegen also eher etwas tiefer.</p>
+
+    <div class="rg-karussell">
+      <figure class="artikel-bild" style="flex:0 0 auto; margin:0">
+        <img src="assets/p07-teil1/p07-fem-mode-07.jpg" alt="Schwingungsform bei 46,5 Hz: die vier Arme schwingen gegensinnig, in Draufsicht und Seitenansicht"
+          width="1600" height="858" style="width:auto; height:300px" loading="lazy">
+        <figcaption>46,5&nbsp;Hz: Die Arme wippen gegeneinander.</figcaption>
+      </figure>
+      <figure class="artikel-bild" style="flex:0 0 auto; margin:0">
+        <img src="assets/p07-teil1/p07-fem-mode-08.jpg" alt="Schwingungsform bei 119,1 Hz: die Arme schwingen gleichsinnig auf und ab"
+          width="1600" height="858" style="width:auto; height:300px" loading="lazy">
+        <figcaption>119,1&nbsp;Hz: alle Arme gleichsinnig.</figcaption>
+      </figure>
+      <figure class="artikel-bild" style="flex:0 0 auto; margin:0">
+        <img src="assets/p07-teil1/p07-fem-mode-10.jpg" alt="Schwingungsform bei 121,5 Hz: die Arme schwingen gleichsinnig, die Vorderarme am stärksten"
+          width="1600" height="858" style="width:auto; height:300px" loading="lazy">
+        <figcaption>121,5&nbsp;Hz: dieselbe Gruppe, andere Verteilung.</figcaption>
+      </figure>
+      <figure class="artikel-bild" style="flex:0 0 auto; margin:0">
+        <img src="assets/p07-teil1/p07-fem-mode-12.jpg" alt="Schwingungsform bei 158,0 Hz: nur die beiden Vorderarme schwingen, die Platte biegt sich mit"
+          width="1600" height="858" style="width:auto; height:300px" loading="lazy">
+        <figcaption>158,0&nbsp;Hz: nur die Vorderarme, nah an der doppelten Drehfrequenz.</figcaption>
+      </figure>
+      <figure class="artikel-bild" style="flex:0 0 auto; margin:0">
+        <img src="assets/p07-teil1/p07-fem-frequenzgang.jpg" alt="Kurven der Auslenkung am Motorsitz und in der Plattenmitte über der Frequenz bei einer Kraft von 1 Newton"
+          width="1600" height="858" style="width:auto; height:300px" loading="lazy">
+        <figcaption>Frequenzgang: wie stark der Rahmen auf 1&nbsp;Newton Unwucht am Motor antwortet.</figcaption>
+      </figure>
+      <figure class="artikel-bild" style="flex:0 0 auto; margin:0">
+        <img src="assets/p07-teil1/p07-fem-flugregler.jpg" alt="Kurven der Beschleunigung und Drehrate an der Aufnahme des Flugreglers über der Frequenz"
+          width="1600" height="858" style="width:auto; height:300px" loading="lazy">
+        <figcaption>Was davon am Flugregler ankommt: Beschleunigung und Drehrate je Newton.</figcaption>
+      </figure>
+      <figure class="artikel-bild" style="flex:0 0 auto; margin:0">
+        <img src="assets/p07-teil1/p07-fem-reserven.jpg" alt="Balkendiagramm der Festigkeitsreserven je Bauteil für Vollschub, seitlichen Anprall und harte Landung"
+          width="1600" height="858" style="width:auto; height:300px" loading="lazy">
+        <figcaption>Festigkeit in drei Lastfällen: Die kleinste Reserve liegt beim 18,7-Fachen.</figcaption>
+      </figure>
+      <figure class="artikel-bild" style="flex:0 0 auto; margin:0">
+        <img src="assets/p07-teil1/p07-fem-knicken.jpg" alt="Balkendiagramm des Knickfaktors eines Arms bei der Landung für drei Netzfeinheiten"
+          width="1600" height="858" style="width:auto; height:300px" loading="lazy">
+        <figcaption>Knicken bei der Landung: erst beim 514-Fachen der Last.</figcaption>
+      </figure>
+    </div>
+    <p class="muted" style="font-size:13px">Ergebnisse der FEM-Simulation, Stand September 2026, seitlich scrollen.</p>
+    <p>Neben den Schwingungen rechnet die Simulation auch die <strong>Festigkeit</strong>: Vollschub aller Motoren, ein seitlicher Anprall am Arm und eine harte Landung.  In allen drei Fällen hält jedes Bauteil mindestens das 18,7-Fache der Belastung aus, die Bohrungen selbst sind darin allerdings nicht nachgerechnet.  Bevor ein Arm bei der Landung einknickt, müsste die Last das 514-Fache betragen, er würde also lange vorher brechen.  Für den Flug zählt deshalb vor allem die Steifigkeit, nicht die Bruchgrenze.</p>
+
+    <h2>Die Teile: was gekauft wird</h2>
+    <p>Die Antriebsseite kommt fertig vom Hersteller.  Vier Motoren <strong>T-Motor MN4012-11 mit 400&nbsp;KV</strong> sitzen an den Armenden.  Der KV-Wert gibt an, wie viele Umdrehungen pro Minute der Motor je Volt Spannung macht, und 400&nbsp;KV passt zu großen Propellern an einem 6S-Akku.  Mehr dazu im <a href="ratgeber-motoren.html">Motoren-Ratgeber</a>.  Die Carbon-Propeller stammen von CF Prop, in 13 und 14 Zoll.</p>
+    <figure class="artikel-bild">
+      <img src="assets/p07-teil1/p07-motoren-mn4012.jpg" alt="Vier ausgepackte T-Motor-Motoren MN4012 mit Kabeln und Propelleradaptern, dahinter die Kartons"
+        width="1400" height="788" loading="lazy">
+      <figcaption>Vier T-Motor MN4012-11 mit 400&nbsp;KV, frisch ausgepackt, daneben die Propelleradapter.  Hintergrund per KI ausgetauscht (AI MODIFIED).</figcaption>
+    </figure>
+    <p>Gesteuert wird der Copter von einem <strong>Stack</strong> aus Flugregler und Motorregler, also zwei übereinander verschraubten Platinen.  Der Flugregler OddityRC H743 rechnet die Fluglage, der Vierfach-Motorregler OddityRC Vortex treibt die Motoren an.  Das Bild überträgt eine DJI O4 Air Unit Pro, die Steuerbefehle empfängt ein ExpressLRS-Empfänger auf 2,4&nbsp;GHz, und für die Position sorgt ein GPS-Modul von HGLRC.  Die Energie liefert ein 6S-Lithium-Polymer-Akku mit 6.500&nbsp;mAh, der allein 777&nbsp;g wiegt, also ein Viertel der Abflugmasse.  Warum der Akku beim 13-Zöller so schwer wiegt, erklärt der <a href="ratgeber-akku-13-zoll.html">Akku-Ratgeber</a>.</p>
+
+    <div class="rg-karussell">
+      <figure class="artikel-bild" style="flex:0 0 auto; margin:0">
+        <img src="assets/p07-teil1/p07-esc-fc.jpg" alt="Karton des Motorreglers OddityRC Vortex und Box des Flugreglers OddityRC H743"
+          width="787" height="1400" style="width:auto; height:360px" loading="lazy">
+        <figcaption>Flug- und Motorregler von OddityRC.</figcaption>
+      </figure>
+      <figure class="artikel-bild" style="flex:0 0 auto; margin:0">
+        <img src="assets/p07-teil1/p07-o4-air-unit.jpg" alt="DJI O4 Air Unit mit Kamera, zwei Antennen und Kabel"
+          width="787" height="1400" style="width:auto; height:360px" loading="lazy">
+        <figcaption>Videoübertragung: DJI O4 Air Unit.</figcaption>
+      </figure>
+      <figure class="artikel-bild" style="flex:0 0 auto; margin:0">
+        <img src="assets/p07-teil1/p07-akku.jpg" alt="6S-Akku Ovonic ROAM mit 6500 mAh und XT90-Stecker"
+          width="787" height="1400" style="width:auto; height:360px" loading="lazy">
+        <figcaption>Der Akku: 6S, 6.500&nbsp;mAh, 777&nbsp;g.</figcaption>
+      </figure>
+      <figure class="artikel-bild" style="flex:0 0 auto; margin:0">
+        <img src="assets/p07-teil1/p07-propeller.jpg" alt="Zwei Carbon-Propellerblätter von CF Prop neben ihrer Transporttasche"
+          width="787" height="1400" style="width:auto; height:360px" loading="lazy">
+        <figcaption>Carbon-Propeller von CF Prop.</figcaption>
+      </figure>
+    </div>
+    <p class="muted" style="font-size:13px">Hintergrund aller Fotos per KI ausgetauscht (AI MODIFIED), seitlich scrollen.</p>
+
+    <h2>Die Teile: was gedruckt wird</h2>
+    <p>Die Rumpfplatten und Arme werden später aus <strong>T700-Carbon</strong> gefräst, einem hochfesten Kohlefasergewebe.  Fräsen kostet aber Zeit und Geld, und ein Fehler in der Zeichnung fällt oft erst beim Zusammenbau auf.  Deshalb haben wir Platten und Arme vorab in <strong>PETG-CF</strong> gedruckt, einem mit Kohlefaser gefüllten Kunststoff.  Die gedruckten Teile prüfen Form, Lochbilder und Passung, nicht die Festigkeit.  Weil der Drucker nur 25&nbsp;cm Bauraum hat, sind die Platten zweigeteilt und über eine Lasche verschraubt.</p>
+    <figure class="artikel-bild">
+      <img src="assets/p07-teil1/p07-platten-petg-cf.jpg" alt="Zwei gedruckte Rumpfplatten aus PETG-CF mit Lochbildern und Aussparungen nebeneinander"
+        width="787" height="1400" style="max-width:420px" loading="lazy">
+      <figcaption>Probeplatten aus PETG-CF: Bodenplatte links, Deckplatte rechts, jede aus zwei Hälften.  Hintergrund per KI ausgetauscht (AI MODIFIED).</figcaption>
+    </figure>
+    <p>Gedruckt werden auch die Motorhalter und die Klemmblöcke der Arme, im fertigen Copter aus kohlefasergefülltem Polyamid.  Dazu kommen fast zwanzig Halter und Füße aus gelbem TPU.  Sie halten Antennen, Empfänger und GPS, dämpfen Vibrationen und geben bei einem harten Aufsetzer nach, statt zu brechen.</p>
+
+    <div class="rg-karussell">
+      <figure class="artikel-bild" style="flex:0 0 auto; margin:0">
+        <img src="assets/p07-teil1/p07-gurtklemmen-tpu.jpg" alt="Vier gelbe TPU-Klemmen für die Akkugurte"
+          width="787" height="1400" style="width:auto; height:360px" loading="lazy">
+        <figcaption>TPU-Klemmen für die Akkugurte.</figcaption>
+      </figure>
+      <figure class="artikel-bild" style="flex:0 0 auto; margin:0">
+        <img src="assets/p07-teil1/p07-heckhalter-tpu.jpg" alt="Gelber TPU-Heckhalter mit strukturierter Oberfläche und zwei Bohrungen"
+          width="787" height="1400" style="width:auto; height:360px" loading="lazy">
+        <figcaption>Heckhalter für Akkustecker und Antennen.</figcaption>
+      </figure>
+      <figure class="artikel-bild" style="flex:0 0 auto; margin:0">
+        <img src="assets/p07-teil1/p07-gps-turm-tpu.jpg" alt="Gelber TPU-Turm für das GPS-Modul"
+          width="787" height="1400" style="width:auto; height:360px" loading="lazy">
+        <figcaption>GPS-Turm aus TPU.</figcaption>
+      </figure>
+    </div>
+    <p class="muted" style="font-size:13px">Hintergrund aller Fotos per KI ausgetauscht (AI MODIFIED), seitlich scrollen.</p>
+
+    <h2>Im Zeitraffer: neun Tage am Drucker</h2>
+    <p>Vom 16. bis zum 24. Oktober lief der Drucker 24-mal an neun Tagen.  Die Kamera im Bauraum nimmt bei jeder neuen Schicht ein Bild auf.  So entsteht für jeden Druck ein Zeitraffer, in dem ein Teil Schicht für Schicht aus der Platte wächst.  Hier sind die gelben TPU-Teile in einem Zusammenschnitt, jeweils die letzten Sekunden vor dem fertigen Teil.</p>
+    <figure class="artikel-bild">
+      <video controls muted playsinline preload="metadata" poster="assets/p07-teil1/p07-zeitraffer-tpu.jpg"
+        width="960" height="540" style="display:block; width:100%; height:auto; border:1px solid var(--line); border-radius:10px">
+        <source src="assets/p07-teil1/p07-zeitraffer-tpu.mp4" type="video/mp4">
+      </video>
+      <figcaption>Elf Drucke, 55 Sekunden: die TPU-Halter des P07.  Zeitraffer der Druckerkamera, ohne Ton.</figcaption>
+    </figure>
+    <p>Nicht jeder Druck ging gut.  Am 17. Oktober geriet der Druck der langen Armrohre aus dem Tritt, und am Ende zog die Düse nur noch Fäden durch die Luft.  Übrig blieb ein Knäuel aus Kunststoff, das man in der Szene <strong>„Spaghetti"</strong> nennt.  Die nächsten Anläufe liefen sauber durch.</p>
+    <figure class="artikel-bild">
+      <video controls muted playsinline preload="metadata" poster="assets/p07-teil1/p07-zeitraffer-spaghetti.jpg"
+        width="960" height="540" style="display:block; width:100%; height:auto; border:1px solid var(--line); border-radius:10px">
+        <source src="assets/p07-teil1/p07-zeitraffer-spaghetti.mp4" type="video/mp4">
+      </video>
+      <figcaption>Druck abgebrochen: Die Armrohre enden in Spaghetti.  Der kurze Zeitraffer ist auf acht Sekunden verlangsamt.</figcaption>
+    </figure>
+
+    <h2>Alles auf dem Tisch</h2>
+    <p>Am 23. Oktober lag zum ersten Mal alles beisammen: Probeplatten, Armrohre, Klemmblöcke und Motorhalter, die gelben TPU-Teile und eine Handvoll Schrauben.  Ab hier wird geschraubt, gelötet und verkabelt.</p>
+    <figure class="artikel-bild">
+      <img src="assets/p07-teil1/p07-teile-auslage.jpg" alt="Alle Teile des Probeaufbaus ausgelegt: zwei Rumpfplatten, zwei Armrohre, gelbe TPU-Teile, graue Klemmblöcke und Motorhalter, schwarze Schrauben"
+        width="1238" height="1400" loading="lazy">
+      <figcaption>Der Probeaufbau als Bausatz: Platten und Arme aus PETG-CF, Klemmblöcke und Motorhalter, TPU-Teile und Schrauben.  Hintergrund per KI ausgetauscht (AI MODIFIED).</figcaption>
+    </figure>
+
+    <h2>Wie es weitergeht</h2>
+    <p>In <strong>Teil 2</strong> bauen wir den Probe-Copter zusammen.  Dabei löten wir den Motorregler und die Kondensatoren, verlegen die Kabel und montieren die Arme.  Und wir zeigen, warum der erste Motorhalter nicht passte und der zweite beim Festziehen riss.  In <strong>Teil 3</strong> folgt der finale Aufbau mit den gefrästen Carbonteilen und der Erstflug.  Dann zeigt sich auch, wie gut unsere Rechnung war.</p>
+
+    <p class="muted" style="margin-top:34px; font-size:14px">
+      Alle Zahlen stammen aus der Auslegung des DracoP07, Stand 25.10.2026, und aus der FEM-Simulation vom September 2026.  Sie sind gerechnet, nicht gemessen.  Die Renderings zeigen das CAD-Modell.  Bei den Fotos ist der grüne Arbeitsuntergrund per KI durch Grau ersetzt; die Aufnahmen selbst sind echt und sonst nur in Helligkeit und Farbe korrigiert.  Die Zeitraffer stammen unbearbeitet aus der Druckerkamera und sind nur geschnitten und im Tempo angepasst.
+    </p>
+
+<!-- historie:start -->
+    <h2>Änderungshistorie</h2>
+    <ul class="muted historie">
+      <li><strong>25.10.2026</strong> · Entwurf (noindex), nicht veröffentlicht</li>
+    </ul>
+<!-- historie:ende -->
+
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <nav class="social" aria-label="Draco Labs in sozialen Netzwerken">
+      <a href="https://www.youtube.com/@DracoLabsGermany" rel="noopener" class="yt" aria-label="Draco Labs auf YouTube">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/draco.labs.germany" rel="noopener" class="ig" aria-label="Draco Labs auf Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c0 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2 0-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c0-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 3.1A6.7 6.7 0 1 0 18.7 12 6.7 6.7 0 0 0 12 5.3Zm0 11a4.3 4.3 0 1 1 4.3-4.3 4.3 4.3 0 0 1-4.3 4.3ZM19 5a1.6 1.6 0 1 1-1.6-1.6A1.6 1.6 0 0 1 19 5Z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@dracolabsgermany" rel="noopener" class="tt" aria-label="Draco Labs auf TikTok">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16.6 2h-3.1v13.1a2.7 2.7 0 1 1-2.7-2.7c.2 0 .4 0 .6.1V9.3a6 6 0 0 0-.6 0 5.8 5.8 0 1 0 5.8 5.8V8.6a7 7 0 0 0 4.1 1.3V6.8a3.9 3.9 0 0 1-4.1-3.9V2Z"/></svg>
+      </a>
+    </nav>
+    <div class="links">
+      <a href="index.html">Startseite</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
+      <a href="ki-info.html">Info für KI-Systeme</a>
+    </div>
+    <div>© 2026 Draco Labs Germany · Kleinunternehmer gem. § 19 UStG</div>
+    <img class="ai-label" src="assets/label-ai-modified.svg" alt="KI-Kennzeichnung: Inhalte dieser Website wurden teilweise mit KI erstellt oder bearbeitet (AI MODIFIED)">
+  </div>
+</footer>
+
+</body>
+</html>
