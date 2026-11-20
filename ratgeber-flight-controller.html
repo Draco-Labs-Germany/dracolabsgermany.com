@@ -6,7 +6,7 @@
 <title>Achttausend Entscheidungen pro Sekunde — Flight-Controller-Ratgeber | Draco Labs</title>
 <meta name="description" content="Flight-Controller-Ratgeber für FPV-Copter: Kreisel, Loop-Rate, Filterkette, PID und Montage verständlich erklärt. Jede Zahl mit Quelle.">
 <meta name="keywords" content="Flight Controller Ratgeber, FPV Flight Controller, Gyro Rauschdichte, Betaflight Filter erklärt, RPM Filter, PID Regler Drohne, Loop Rate 8k, Blackbox, Vibration Dämpfung">
-<meta name="robots" content="noindex, nofollow, noai, noimageai">
+<meta name="robots" content="index, follow, noai, noimageai">
 <meta name="tdm-reservation" content="1">
 <meta name="author" content="Draco Labs Germany">
 <link rel="canonical" href="https://dracolabsgermany.com/ratgeber-flight-controller.html">
@@ -16,7 +16,7 @@
 <meta property="og:title" content="Achttausend Entscheidungen pro Sekunde — der Flight Controller">
 <meta property="og:description" content="Warum die Filterkette wichtiger ist als der Prozessor, was eine Loop-Rate wirklich bedeutet und warum die Montage jeden besseren Kreisel schlägt. Jede Zahl mit Quelle.">
 <meta property="og:url" content="https://dracolabsgermany.com/ratgeber-flight-controller.html">
-<meta property="og:image" content="https://dracolabsgermany.com/assets/ratgeber/flight-controller-hero.jpg">
+<meta property="og:image" content="https://dracolabsgermany.com/assets/ratgeber/flight-controller-hook.jpg">
 <meta property="og:site_name" content="Draco Labs Germany">
 <meta property="og:locale" content="de_DE">
 
@@ -24,7 +24,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Achttausend Entscheidungen pro Sekunde — der Flight Controller">
 <meta name="twitter:description" content="Kreisel, Loop-Rate, Filter, PID und Montage: den Flight Controller verstehen und auswählen. Jede Zahl mit Quelle.">
-<meta name="twitter:image" content="https://dracolabsgermany.com/assets/ratgeber/flight-controller-hero.jpg">
+<meta name="twitter:image" content="https://dracolabsgermany.com/assets/ratgeber/flight-controller-hook.jpg">
 
 <link rel="icon" type="image/png" href="assets/emblem.png">
 <link rel="stylesheet" href="style.css">
@@ -36,9 +36,9 @@
   "@type": "Article",
   "headline": "Achttausend Entscheidungen pro Sekunde: der Flight Controller",
   "description": "Flight-Controller-Ratgeber für FPV-Copter: Kreisel und Rauschdichte, Loop-Rate und Abtastung, Filterkette, PID-Regler, Anschlüsse und Montage, an Datenblättern und Firmware-Dokumentationen erklärt.",
-  "image": "https://dracolabsgermany.com/assets/ratgeber/flight-controller-hero.jpg",
-  "datePublished": "2026-08-20",
-  "dateModified": "2026-08-20",
+  "image": "https://dracolabsgermany.com/assets/ratgeber/flight-controller-hook.jpg",
+  "datePublished": "2026-11-20",
+  "dateModified": "2026-11-20",
   "author": { "@type": "Organization", "name": "Draco Labs Germany" },
   "publisher": {
     "@type": "Organization",
@@ -81,7 +81,7 @@
     <p class="muted" style="font-size:17px; margin-top:-4px">Der Flight Controller ist das
     einzige Bauteil am Copter, das nichts bewegt und trotzdem über alles entscheidet.  Was in
     dieser Platine wirklich passiert, welche Datenblattzahl zählt und welche nur gut aussieht.</p>
-    <p class="muted">Ratgeber · Elektronik &amp; Steuerung · Lesezeit ca. 24 Min · Stand: August 2026</p>
+    <p class="muted">Ratgeber · Elektronik &amp; Steuerung · Lesezeit ca. 25 Min · Stand: November 2026</p>
 
     <div data-nosnippet style="background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--cyan); border-radius:10px; padding:18px 20px; margin:22px 0">
       <p style="margin:0 0 8px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; font-size:13px; color:var(--cyan)">Kurz gesagt</p>
@@ -112,16 +112,16 @@
 
     <p><strong>Was dieser Artikel nicht behandelt:</strong> den Regler, also den ESC.  Wie er
     aus einer Gleichspannung ein Drehfeld macht, was die DShot-Protokolle unterscheidet und wie
-    die Drehzahl-Rückmeldung technisch zustande kommt, steht im
-    <a href="ratgeber-esc.html">ESC-Ratgeber</a>.  Hier geht es um die andere Hälfte derselben
+    die Drehzahl-Rückmeldung technisch zustande kommt, behandelt ein eigener
+    ESC-Ratgeber, der in Arbeit ist.  Hier geht es um die andere Hälfte derselben
     Sache: was der Flight Controller mit dieser zurückgemeldeten Drehzahl anfängt.  Ebenfalls
     nicht behandelt: alles, was ein <strong>Autopilot</strong> zusätzlich mitbringt, also
     Zustandsschätzung, Sensorredundanz, Pixhawk-Standard, Absicherungen und die EU-Regeln der
-    offenen Kategorie.  Das steht im <a href="ratgeber-autopilot.html">Autopilot-Ratgeber</a>,
+    offenen Kategorie.  Das folgt in einem eigenen Autopilot-Ratgeber,
     der genau dort ansetzt, wo dieser hier aufhört.  Und ebenfalls nicht: die Funkstrecke bis zum
     Empfänger, die im <a href="ratgeber-funk-kommunikation.html">Funk-Ratgeber</a> steht, sowie
-    die Dämpfung einer Kameranutzlast, die im
-    <a href="ratgeber-nutzlast-gimbal.html">Nutzlast-Ratgeber</a> steht.  Dieser Text ist
+    die Dämpfung einer Kameranutzlast, die ebenfalls einen eigenen Ratgeber
+    bekommt.  Dieser Text ist
     außerdem keine Abstimmungsanleitung: er erklärt, was die Regler und Filter tun, nicht in
     welcher Reihenfolge du an ihnen drehst.</p>
 
@@ -154,7 +154,7 @@
     einziger Sensor, der Kreisel, und deshalb fliegt ein Rennquad ohne GPS und ohne Höhenmesser
     prima.  Sobald der Copter selbst die Lage halten oder gar eine Position anfliegen soll, kommen
     weitere Kreise dazu, die den ersten von außen umschließen, und mit ihnen weitere Sensoren.
-    Darum geht es im <a href="ratgeber-autopilot.html">Autopilot-Ratgeber</a>; dieser Artikel
+    Darum geht es im kommenden Autopilot-Ratgeber.  Dieser Artikel
     bleibt beim innersten Kreis, denn der ist in beiden Welten derselbe.</p>
 
     <p>Merken wir uns für den ganzen Artikel: der Flight Controller ist kein Rechner, der
@@ -242,8 +242,7 @@
     aus, wandert der Nullpunkt des Kreisels also um ein Zehntel Grad je Sekunde (unsere Rechnung).
     Für einen Rennquad ist das belanglos, für einen Copter, der zwanzig Minuten lang eine
     Position halten soll, nicht.  Genau deshalb sitzen die Kreisel auf ernsthaften Autopiloten
-    auf einer beheizten Platine, was der <a href="ratgeber-autopilot.html#k6">Autopilot-Ratgeber</a>
-    im Einzelnen beschreibt.</p>
+    auf einer beheizten Platine.</p>
 
     <p>Der zweite Blick gilt der <strong>Anbindung</strong>.  Die ICM-42688-P spricht wahlweise
     über I²C mit 1&nbsp;Megahertz oder über SPI mit 24&nbsp;Megahertz<sup><a href="#q20">20</a></sup>.
@@ -263,8 +262,8 @@
     <h2 id="k4">4. Der Prozessor, mit dem geworben wird</h2>
 
     <p>Auf jeder Produktseite steht die Buchstaben-Zahlen-Kombination des Mikrocontrollers, und
-    in Foren wird über sie gestritten wie über Motorleistung.  Die drei Familien, die den Markt
-    beherrschen, unterscheiden sich in der Tat deutlich:</p>
+    in Foren wird über sie gestritten wie über Motorleistung.  Die drei klassischen Familien des
+    Chipherstellers STMicroelectronics unterscheiden sich in der Tat deutlich:</p>
 
     <div data-nosnippet>
 <table>
@@ -283,31 +282,39 @@
     F4 keine Herausforderung.  Der Prozessor wird an drei anderen Stellen knapp.</p>
 
     <p><strong>Erstens an den Filtern.</strong>  Jeder Kerbfilter kostet Rechenzeit, und moderne
-    Filterketten legen viele davon nebeneinander.  ArduPilot warnt in seiner Dokumentation
-    ausdrücklich: wer bei einem Achtkopter drei Oberwellen filtern lässt, betreibt
-    8&nbsp;×&nbsp;3&nbsp;=&nbsp;24 Kerbfilter gleichzeitig, und wer zu viele davon aktiviert,
-    hat keine Rechenzyklen mehr übrig, mit unvorhersehbaren
+    Filterketten legen viele davon nebeneinander.  ArduPilot rechnet in seiner Dokumentation
+    vor: wer bei einem Achtkopter drei Oberwellen filtern lässt, betreibt
+    8&nbsp;×&nbsp;3&nbsp;=&nbsp;24 Kerbfilter gleichzeitig.  Und es warnt ausdrücklich: wer zu
+    viele davon aktiviert, hat keine Rechenzyklen mehr übrig, mit unvorhersehbaren
     Folgen<sup><a href="#q8">8</a></sup>.  Das ist keine theoretische Warnung: die schnelle
     Ratenschleife von ArduPilot läuft laut Dokumentation auf H7-Autopiloten sauber, während
     F4-Systeme die erhöhte Last möglicherweise nicht durchhalten<sup><a href="#q14">14</a></sup>.</p>
 
     <p><strong>Zweitens am Flash-Speicher.</strong>  ArduPilot stellt in seiner Hardwareliste
     nüchtern fest, dass die meisten F4-Platinen wegen der Flash-Grenze nicht alle Funktionen
-    enthalten; wer eine bestimmte Funktion braucht, muss sich eine passgenaue Firmware bauen
+    enthalten.  Wer eine bestimmte Funktion braucht, muss sich eine passgenaue Firmware bauen
     lassen, aus der anderes entfernt wurde<sup><a href="#q15">15</a></sup>.  INAV hat die
     Konsequenz gezogen und die Unterstützung für den kleinen F411 nach Version&nbsp;7.1.2
-    beendet<sup><a href="#q23">23</a></sup>.  Der Prozessor begrenzt hier also nicht die
+    beendet<sup><a href="#q23">23</a></sup>.  Betaflight baut für ihn zwar weiter Firmware,
+    nimmt aber neue Platinen mit dem F411 wegen zu weniger Anschlüsse und zu wenig Flash nicht
+    mehr an<sup><a href="#q25">25</a></sup>.  Der Prozessor begrenzt hier also nicht die
     Geschwindigkeit, sondern den Funktionsumfang.</p>
 
+    <p>Daneben hat sich das Feld verbreitert.  Für Platinen mit vielen Anschlüssen oder mehr als
+    vier Motorausgängen empfiehlt Betaflight den H743, für kleine und günstige Platinen neben dem
+    STM32G4 auch den AT32F435 des chinesischen Herstellers Artery und den RP2350 von Raspberry
+    Pi<sup><a href="#q25">25</a></sup>.  F4 und F7 bleiben für einfache Platinen mit vier
+    Motorausgängen in Ordnung<sup><a href="#q25">25</a></sup>.</p>
+
     <p><strong>Drittens an der Zahl der Anschlüsse.</strong>  Dazu kommen wir in Kapitel&nbsp;8
-    ausführlich; sie hängt am Gehäuse des Mikrocontrollers und nicht an seinem Takt, wird aber
+    ausführlich: sie hängt am Gehäuse des Mikrocontrollers und nicht an seinem Takt, wird aber
     beim Aufrüsten am häufigsten zum tatsächlichen Grund für einen Wechsel.</p>
 
     <p>Wer über Prozessoren am Flight Controller redet, redet also meistens über die falsche
     Zahl.  Die großen Autopiloten treiben das auf die Spitze: sie stellen dem schnellen H7 einen
     zweiten, zwanzigmal langsameren Prozessor zur Seite und vertrauen ausgerechnet dem ihre
-    Sicherheit an.  Warum das kein Widerspruch ist, steht im
-    <a href="ratgeber-autopilot.html#k6">Autopilot-Ratgeber</a>.</p>
+    Sicherheit an.  Warum das kein Widerspruch ist, erklären wir im
+    Autopilot-Ratgeber.</p>
 
     <h2 id="k5">5. Loop-Rate und Abtastung</h2>
     <!-- bild:start flight-controller-looprate -->
@@ -319,10 +326,10 @@
     Zeit umgerechnet stehen dem Regler damit 125, 250 oder 500&nbsp;Mikrosekunden je Durchlauf
     zur Verfügung (unsere Rechnung).</p>
 
-    <p>Dass diese Zahl weniger sagt, als sie verspricht, zeigt ein Blick über den Zaun:
+    <p>Dass diese Zahl weniger sagt, als sie verspricht, zeigt ein Blick über den Zaun.
     ArduPilot regelt auf Pixhawk-Hardware mit einem Zwanzigstel dieser Rate, und
     Vermessungscopter fliegen damit ruhiger als die meisten Rennquads.  Wie das zusammengeht,
-    steht im <a href="ratgeber-autopilot.html#k3">Autopilot-Ratgeber</a>.  Hier genügt die
+    erklären wir im Autopilot-Ratgeber.  Hier genügt die
     Folgerung: die Loop-Rate allein sagt wenig über Flugqualität.</p>
 
     <p>Warum sie trotzdem nicht egal ist, erklärt das <strong>Abtasttheorem</strong>.  Ein
@@ -334,16 +341,16 @@
     <p>Rechnen wir das für einen realen Copter durch.  ArduPilot nennt für die Grundfrequenz der
     Motoren rund 200&nbsp;Hertz bei kleineren Coptern und rund 100&nbsp;Hertz bei größeren
     Maschinen<sup><a href="#q13">13</a></sup>.  Die störende Energie sitzt aber nicht nur auf
-    dieser Grundfrequenz, sondern auch auf ihren Vielfachen; drei Oberwellen zu filtern gilt als
+    dieser Grundfrequenz, sondern auch auf ihren Vielfachen.  Drei Oberwellen zu filtern gilt als
     üblich<sup><a href="#q8">8</a></sup>.  Bei 200&nbsp;Hertz Grundfrequenz reicht der zu
     erfassende Bereich damit bis 600&nbsp;Hertz (unsere Rechnung).  Ein 8-Kilohertz-System kann
     Frequenzen bis 4.000&nbsp;Hertz darstellen und hat damit den 6,7-fachen Spielraum (unsere
-    Rechnung).  Bequem.</p>
+    Rechnung), und das ist bequem.</p>
 
     <p>Wichtig ist dabei eine Trennung, die man von außen nicht sieht: gefiltert wird nicht
-    zwingend im Takt der Regelung.  In der Betaflight-Welt heißt das, dass der zweite
-    Gyro-Tiefpass auf der Geschwindigkeit der Gyro-Schleife arbeitet und nicht auf der der
-    PID-Schleife, und wenn man ihn bei 4&nbsp;Kilohertz PID-Rate abschaltet, springt automatisch
+    zwingend im Takt der Regelung.  In der Betaflight-Welt arbeitet der zweite
+    Gyro-Tiefpass auf der Geschwindigkeit der Gyro-Schleife und nicht auf der der
+    PID-Schleife.  Schaltet man ihn bei 4&nbsp;Kilohertz PID-Rate ab, springt automatisch
     eine einfache Zweipunkt-Mittelung ein<sup><a href="#q3">3</a></sup>.  Bei 2&nbsp;Kilohertz
     ist ein 500-Hertz-Tiefpass laut Dokumentation schlicht unverzichtbar<sup><a href="#q4">4</a></sup>.
     Wer die Loop-Rate senkt, um Rechenzeit zu sparen, muss also gleichzeitig stärker filtern und
@@ -352,7 +359,7 @@
     <p>Ein letzter, unterschätzter Punkt: die Loop-Rate muss zum Motorprotokoll passen.
     Betaflight empfiehlt DShot300 zu 4-Kilohertz-Schleifen und DShot600 zu
     8-Kilohertz-Schleifen<sup><a href="#q3">3</a></sup>, damit jeder Durchlauf seinen Befehl auch
-    los wird.  Und die Dokumentation weist auf eine Falle hin, die man nirgends sieht: ein
+    los wird.  Und die Dokumentation weist auf eine Falle hin, die man nirgends sieht.  Ein
     Fehler von einem Prozent in der Schleifenzeit versetzt die drehzahlgeführten Kerbfilter um
     ein Prozent gegen die Frequenz, die sie treffen sollen<sup><a href="#q3">3</a></sup>.  Eine
     übertaktete Platine, die nicht ganz sauber läuft, filtert also messbar daneben.</p>
@@ -381,22 +388,25 @@
 
     <p>Ein Filter arbeitet, indem er den aktuellen Messwert mit vergangenen verrechnet.  Damit
     schaut er zwangsläufig in die Vergangenheit, und sein Ausgang hinkt dem Eingang hinterher.
-    Die Betaflight-Dokumentation nennt dafür konkrete Zahlen: ein einfacher Tiefpass erster
+    Die Betaflight-Dokumentation nennt dafür konkrete Zahlen.  Ein einfacher Tiefpass erster
     Ordnung (Fachwort: PT1) verzögert bei einer Grenzfrequenz von 100&nbsp;Hertz um rund eine
     Millisekunde und dreht die Phase an der Grenzfrequenz um 45&nbsp;Grad.  Ein steilerer Filter
     zweiter Ordnung (Fachwort: Biquad) verzögert bei derselben Grenzfrequenz um rund zwei
     Millisekunden und dreht die Phase um 90&nbsp;Grad<sup><a href="#q6">6</a></sup>.  Dafür fällt
     er jenseits der Grenzfrequenz doppelt so steil ab, nämlich mit 12 statt 6&nbsp;Dezibel je
-    Oktave<sup><a href="#q6">6</a></sup>.  In neueren Versionen kommen abgestufte Varianten dazu:
+    Oktave<sup><a href="#q6">6</a></sup>.  Seit Version&nbsp;2026.6 rechnet Betaflight diesen
+    Filtertyp intern auf eine andere, sparsamere Art und nennt die Einstellung SVF statt BIQUAD.
+    Am Filterverhalten ändert das laut Projekt nichts<sup><a href="#q26">26</a></sup>.  In neueren
+    Versionen kommen abgestufte Varianten dazu:
     ein PT2 verzögert rund 60&nbsp;Prozent mehr als ein PT1, ein PT3 doppelt so
     viel<sup><a href="#q4">4</a></sup>.</p>
 
-    <p>Eine Millisekunde klingt harmlos.  Setzen wir sie ins Verhältnis.  Bei einer Loop-Rate von
-    8&nbsp;Kilohertz sind 125&nbsp;Mikrosekunden ein Durchlauf; eine Millisekunde Filterverzögerung
+    <p>Eine Millisekunde klingt harmlos, also setzen wir sie ins Verhältnis.  Bei einer Loop-Rate von
+    8&nbsp;Kilohertz sind 125&nbsp;Mikrosekunden ein Durchlauf.  Eine Millisekunde Filterverzögerung
     entspricht also acht vollständigen Durchläufen des Regelkreises (unsere Rechnung).  Der Regler
-    rechnet achtmal mit Daten, die schon veraltet sind.  Und dreht sich der Copter dabei mit
-    500&nbsp;Grad je Sekunde, einer im Kunstflug durchaus üblichen Rate, dann liegt die tatsächliche
-    Lage am Ende dieser Millisekunde ein halbes Grad neben der gemessenen (unsere Rechnung).  Beim
+    rechnet achtmal mit Daten, die schon veraltet sind.  Nehmen wir eine im Kunstflug übliche
+    Drehrate von 500&nbsp;Grad je Sekunde.  Dann liegt die tatsächliche Lage am Ende dieser
+    Millisekunde ein halbes Grad neben der gemessenen (unsere Rechnung).  Beim
     Biquad ist es ein ganzes Grad.</p>
 
     <p>Das ist der Grund, warum die Diskussion um Loop-Raten meistens am Thema vorbeigeht.  Der
@@ -424,22 +434,22 @@
     Version&nbsp;4.0 ein und empfiehlt als oberen Wert 450 bis 500&nbsp;Hertz für einen
     Fünfzöller, 600 bis 650 für kleinere und 300 bis 350 für große
     Copter<sup><a href="#q5">5</a></sup>.  In Version&nbsp;4.1 arbeitete der erste Gyro-Tiefpass
-    dynamisch zwischen 200 und 500&nbsp;Hertz, der zweite fest bei 250&nbsp;Hertz; beim D-Anteil
+    dynamisch zwischen 200 und 500&nbsp;Hertz, der zweite fest bei 250&nbsp;Hertz.  Beim D-Anteil
     waren es 70 bis 170 dynamisch und 150 fest<sup><a href="#q2">2</a></sup>.</p>
 
     <p><strong>Der dynamische Kerbfilter</strong> geht einen Schritt weiter.  Statt breit zu
     dämpfen, sucht er per Frequenzanalyse die stärkste Störung im Signal und legt eine schmale
     Kerbe genau darauf.  Betaflight erlaubt bis zu fünf solcher Kerben je Achse, wobei zwei oder
     drei in der Regel genügen<sup><a href="#q4">4</a></sup>.  Die Schmalheit der Kerbe steuert die
-    Güte&nbsp;Q; Werte um 300 bis 450 gelten für Freestyle als
+    Güte&nbsp;Q, und Werte um 300 bis 450 gelten für Freestyle als
     passend<sup><a href="#q4">4</a></sup>.  ArduPilot bietet dasselbe unter dem Namen In-Flight-FFT
     als einen von mehreren Betriebsarten seines harmonischen
     Kerbfilters<sup><a href="#q8">8</a></sup>.</p>
 
     <p><strong>Der RPM-Filter</strong> ist die sauberste Lösung, weil er nicht sucht, sondern
-    weiß.  Meldet jeder Regler die tatsächliche Drehzahl seines Motors zurück, kann der Flight
-    Controller die Kerbe ohne Umweg genau dorthin legen, wo die Störung entsteht, und sie dem
-    Gas in Echtzeit nachführen.  ArduPilot kennt dafür gleich mehrere Wege zur selben Zahl: einen
+    weiß.  Dafür meldet jeder Regler die tatsächliche Drehzahl seines Motors zurück.  Der Flight
+    Controller legt die Kerbe dann ohne Umweg genau dorthin, wo die Störung entsteht, und führt
+    sie dem Gas in Echtzeit nach.  ArduPilot kennt dafür gleich mehrere Wege zur selben Zahl: einen
     externen Drehzahlsensor, die Telemetrie des Reglers, eine Schätzung aus der Gasstellung oder
     die genannte Frequenzanalyse<sup><a href="#q8">8</a></sup><sup><a href="#q11">11</a></sup><sup><a href="#q12">12</a></sup>.</p>
 
@@ -447,7 +457,7 @@
     zurückkommt, also bidirektionales DShot und die Telemetrie des Reglers, gehört zum ESC.
     ArduPilot nennt die vier DShot-Geschwindigkeiten von 150 bis 1.200&nbsp;Kilobaud und weist
     bidirektionales DShot als Eigenschaft bestimmter Regler
-    aus<sup><a href="#q16">16</a></sup>; alles Weitere dazu steht im ESC-Ratgeber.  Uns
+    aus<sup><a href="#q16">16</a></sup>, und alles Weitere dazu gehört in den ESC-Ratgeber.  Uns
     interessiert hier nur, was der Filter mit der Zahl macht, wenn sie angekommen ist.</p>
 
     <h3>Was der Filter mit der Drehzahl macht</h3>
@@ -457,7 +467,7 @@
     Achtkopter mit drei Oberwellen ergibt 24&nbsp;Kerbfilter<sup><a href="#q8">8</a></sup>.
     Möglich sind Kerben bis zum Sechzehnfachen der Grundfrequenz, doch drei gelten als der
     sichere Bereich<sup><a href="#q8">8</a></sup>.  Die Bandbreite jeder Kerbe wird üblicherweise
-    auf die Hälfte der Mittenfrequenz gesetzt<sup><a href="#q11">11</a></sup>; verfolgt man
+    auf die Hälfte der Mittenfrequenz gesetzt<sup><a href="#q11">11</a></sup>.  Verfolgt man
     einzelne Motoren getrennt, empfiehlt ArduPilot ein Verhältnis von vier statt zwei, um die
     Phasenverschiebung zu senken<sup><a href="#q12">12</a></sup>.</p>
 
@@ -465,7 +475,7 @@
     liegt, dass die Kerbe die echte Flugbewegung mitfiltern würde.  Betaflight blendet den
     RPM-Filter deshalb erst ab 80&nbsp;Hertz ein und benutzt dafür einen Übergangsbereich von
     50&nbsp;Hertz<sup><a href="#q4">4</a></sup>.  80&nbsp;Hertz entsprechen 4.800&nbsp;Umdrehungen
-    je Minute (unsere Rechnung); ein höher angesetzter Wert von 100&nbsp;Hertz, den die
+    je Minute (unsere Rechnung).  Ein höher angesetzter Wert von 100&nbsp;Hertz, den die
     Dokumentation für leistungsstärkere Aufbauten nennt<sup><a href="#q4">4</a></sup>, entspricht
     6.000&nbsp;Umdrehungen (unsere Rechnung).  ArduPilot löst dasselbe Problem über eine untere
     Frequenzgrenze, die der Filter nicht unterschreitet<sup><a href="#q11">11</a></sup><sup><a href="#q12">12</a></sup>.</p>
@@ -476,10 +486,10 @@
     Prozent und einer Güte von 250 statt 120<sup><a href="#q2">2</a></sup><sup><a href="#q3">3</a></sup>.
     Abschalten sollte man ihn nicht.</p>
 
-    <p>Und weil das Zusammenspiel schnell unübersichtlich wird, hat ArduPilot einen Weg
-    eingebaut, die Störung überhaupt erst sichtbar zu machen: die Stapelabtastung der IMU
-    protokolliert die Sensordaten vor und nach dem Filter, sodass man im Nachhinein sieht, was
-    der Filter getroffen hat und was nicht<sup><a href="#q13">13</a></sup>.  Die Dokumentation
+    <p>Weil das Zusammenspiel schnell unübersichtlich wird, hat ArduPilot einen Weg eingebaut,
+    die Störung überhaupt erst sichtbar zu machen.  Die Stapelabtastung der IMU protokolliert die
+    Sensordaten vor und nach dem Filter.  So sieht man im Nachhinein, was der Filter getroffen
+    hat und was nicht<sup><a href="#q13">13</a></sup>.  Die Dokumentation
     zeigt als Beispiel einen Fünfzöller ohne Kerbfilter mit einer deutlichen Spitze bei
     180&nbsp;Hertz und einer kleineren zweiten Oberwelle<sup><a href="#q13">13</a></sup>.
     Filterarbeit, die auf Messung beruht statt auf Probieren, ist die einzige, die sich
@@ -498,14 +508,14 @@
 
     <p><strong>I wie integral.</strong>  Dieser Anteil summiert die Abweichung über die Zeit auf
     und arbeitet damit gegen alles, was dauerhaft schiebt: Seitenwind, eine schiefe Nutzlast,
-    ein leicht verzogener Arm.  Ist er zu klein, rutscht der Copter „wie auf Eis"; ist er zu
+    ein leicht verzogener Arm.  Ist er zu klein, rutscht der Copter „wie auf Eis".  Ist er zu
     groß, fühlt er sich steif an<sup><a href="#q1">1</a></sup>.  Ausgangswert bei Betaflight:
     45 bis 50<sup><a href="#q1">1</a></sup>.</p>
 
     <p><strong>D wie differenzierend.</strong>  Dieser Anteil reagiert nicht auf die Abweichung,
     sondern auf ihre Änderungsgeschwindigkeit, und bremst damit die Bewegung ab, bevor sie über
-    das Ziel hinausschießt.  Er ist die Dämpfung des Systems, und er ist der Grund, warum
-    Kapitel&nbsp;6 so lang ist: er verstärkt jedes Rauschen im Signal um ein Vielfaches und ist
+    das Ziel hinausschießt.  Er ist die Dämpfung des Systems und der Grund, warum
+    Kapitel&nbsp;6 so lang ist.  Er verstärkt jedes Rauschen im Signal um ein Vielfaches und ist
     der einzige Anteil, der Motoren zerstören kann<sup><a href="#q1">1</a></sup>.  Ausgangswert
     25 bis 27 für Roll und Nick, für Gier null<sup><a href="#q1">1</a></sup>.  Ein tief
     angesetzter Tiefpass auf dem D-Anteil ist nicht optional.</p>
@@ -523,21 +533,22 @@
     erste ist die gasabhängige Absenkung der Regleranteile (Fachwort: TPA), die bei Betaflight
     ab einem Gaspunkt von 25&nbsp;Prozent greift<sup><a href="#q1">1</a></sup>: bei viel Gas
     reagieren die Motoren kräftiger, also darf der Regler leiser drehen.  Der zweite ist der
-    Luftmodus (Fachwort: Airmode), der verhindert, dass der Regler bei ganz geschlossenem Gas
+    Luftmodus (Fachwort: Airmode).  Er verhindert, dass der Regler bei ganz geschlossenem Gas
     die Kontrolle verliert, indem er den Gesamtschub anhebt statt negative Motorbefehle zu
-    erlauben; PX4 weist zu Recht darauf hin, dass ein stark schwingender Copter dadurch
+    erlauben.  PX4 weist zu Recht darauf hin, dass ein stark schwingender Copter dadurch
     ungewollt steigen kann<sup><a href="#q17">17</a></sup>.</p>
 
     <h2 id="k8">8. Die Anschlüsse, an denen es wirklich klemmt</h2>
 
     <p>Beim Aufrüsten scheitert selten die Rechenleistung.  Es scheitern die Anschlüsse, und
     zwar meist die seriellen (Fachwort: UART).  Rechnen wir es an einer verbreiteten Platine
-    durch.  Der SpeedyBee F405&nbsp;V4 hat sechs UARTs, von denen einer fest für die
+    durch.  Der lange verbreitete SpeedyBee F405&nbsp;V4, den der Hersteller inzwischen nicht mehr
+    anbietet, hat sechs UARTs, von denen einer fest für die
     Bluetooth-Verbindung und einer fest für die Reglertelemetrie belegt
     ist<sup><a href="#q24">24</a></sup>.  Frei bleiben vier (unsere Rechnung).</p>
 
-    <p>Vier klingt nach genug, bis man aufzählt, was einen UART haben will: der Empfänger der
-    Funkstrecke, der Videosender für seine Fernsteuerung, ein GPS-Modul, gegebenenfalls eine
+    <p>Vier klingt nach genug, bis man aufzählt, was einen UART haben will.  Das sind der
+    Empfänger der Funkstrecke, der Videosender für seine Fernsteuerung, ein GPS-Modul, gegebenenfalls eine
     Telemetrieverbindung zum Boden, gegebenenfalls die Steuerleitung einer Kamera.  Wer alles
     davon will, ist über dem Budget, noch bevor er den ersten Sensor angeschlossen hat.  Das ist
     der häufigste reale Grund, eine Platine zu tauschen.</p>
@@ -550,8 +561,8 @@
 
     <p>Der Ausweg aus der UART-Knappheit besteht darin, die Einzelleitungen durch einen
     gemeinsamen Bus zu ersetzen, und genau das tun die großen Autopiloten mit CAN.  Auf
-    FPV-Platinen findet man das praktisch nie; wie es funktioniert und was es einspart, steht im
-    <a href="ratgeber-autopilot.html#k8">Autopilot-Ratgeber</a>.</p>
+    FPV-Platinen findet man das fast nie.  Wie es funktioniert und was es einspart, erklären
+    wir im Autopilot-Ratgeber.</p>
 
     <h3>Die Blackbox</h3>
 
@@ -566,7 +577,7 @@
     auf<sup><a href="#q24">24</a></sup>.  Bei dieser Datenrate reicht das für rund
     47&nbsp;Stunden Aufzeichnung (unsere Rechnung), also für mehr Flüge, als die Akkus eines
     Sommers hergeben.  Der Unterschied zu einer Platine mit fest verlötetem Flash-Speicher ist
-    damit nicht theoretisch: dort ist nach wenigen Minuten Schluss, und genau der Flug, in dem
+    damit nicht theoretisch.  Dort ist nach wenigen Minuten Schluss, und genau der Flug, in dem
     das Problem auftrat, ist dann nicht aufgezeichnet.</p>
 
     <p>Was in der Aufzeichnung steht, ist der Grund für den ganzen Aufwand.  Jeder Datensatz
@@ -588,8 +599,8 @@
     sauberer, und wer sie an 5&nbsp;Volt betreibt, holt sich Störungen ins Bild.</p>
 
     <p>Was diese Schienen nicht haben, ist eine Strombegrenzung je Anschluss.  Ein Kurzschluss
-    an einem Stecker nimmt hier die ganze Platine mit.  Autopiloten machen das anders, und auch
-    das steht im <a href="ratgeber-autopilot.html#k6">Autopilot-Ratgeber</a>.</p>
+    an einem Stecker nimmt hier die ganze Platine mit.  Autopiloten machen das anders: Sie
+    begrenzen den Strom je Anschlussgruppe<sup><a href="#q18">18</a></sup>.</p>
 
     <h2 id="k9">9. Einbau: wo die meisten Punkte verschenkt werden</h2>
     <!-- bild:start flight-controller-montage -->
@@ -607,13 +618,13 @@
     das 3,1&nbsp;g als obere Grenze des Unbedenklichen und 6,1&nbsp;g als Wert, bei dem es
     fast sicher schiefgeht (unsere Rechnung).  Der Abstand zur Übersteuerungsgrenze von
     16&nbsp;g aus Kapitel&nbsp;2 beträgt beim Grenzwert von 30 damit gut das Fünffache der
-    Standardabweichung (unsere Rechnung), was erklärt, warum Übersteuerungen bereits auftreten,
+    Standardabweichung (unsere Rechnung).  Das erklärt, warum Übersteuerungen bereits auftreten,
     lange bevor der Mittelwert bedenklich aussieht.</p>
 
     <p>Aufschlussreich ist, dass ArduPilot aus der Achsverteilung auf die Ursache schließt.
-    Sind X und Y gemeinsam erhöht, deutet das auf Motorlager oder eine Propellerunwucht; ist nur
-    eine der beiden Achsen erhöht, liegt es an der Befestigung des Flight Controllers; ist Z
-    erhöht, stimmt die Propellerspur oder der Motor hat Spiel in der
+    Sind X und Y gemeinsam erhöht, deutet das auf Motorlager oder eine Propellerunwucht.  Ist nur
+    eine der beiden Achsen erhöht, liegt es an der Befestigung des Flight Controllers.  Ist Z
+    erhöht, stimmt die Propellerspur nicht oder der Motor hat Spiel in der
     Höhe<sup><a href="#q9">9</a></sup>.  Damit lässt sich eine Ursache eingrenzen, ohne den
     Copter zu zerlegen.</p>
 
@@ -621,13 +632,12 @@
     Zentimetern aus Schaumstoff oder Gel an den Ecken der Platine, alternativ eine Aufhängung an
     Nylon-O-Ringen<sup><a href="#q10">10</a></sup>.  Entscheidend ist eine Aussage, die dem
     Bauchgefühl widerspricht: die Platine braucht keinen Bewegungsspielraum, der größer ist als
-    die Amplitude der Vibration, und die Aufhängung muss deshalb kurz gekoppelt bleiben, damit
+    die Amplitude der Vibration.  Die Aufhängung muss deshalb kurz gekoppelt bleiben, damit
     der Sensor nicht gegen die Zelle verkippt<sup><a href="#q10">10</a></sup>.  Weicher ist
     nicht besser.  Wer den Flight Controller in Watte packt, misst am Ende die Bewegung der
     Watte.</p>
 
-    <p>Denselben Zusammenhang beschreibt der <a href="ratgeber-nutzlast-gimbal.html">Nutzlast-
-    und Gimbal-Ratgeber</a> für die Kamera, wo er ebenso gilt und noch schwerer wiegt, weil dort
+    <p>Derselbe Zusammenhang gilt für die Kamera und wiegt dort noch schwerer, weil
     zusätzlich Masse an der Dämpfung hängt.  Und die Ursache selbst, also die Unwucht des
     Propellers und die Blattfolgefrequenz, behandelt der
     <a href="ratgeber-propeller.html">Propeller-Ratgeber</a>.  Die Reihenfolge der Arbeit ist
@@ -653,8 +663,8 @@
     ist und es um Wegpunktmissionen, Rückkehr zum Startpunkt sowie Positions- und Höhenhaltung
     ergänzt<sup><a href="#q23">23</a></sup>.  Ein Copter, der eine Nutzlast über fremdem Grund
     trägt oder eine Vermessung durchführt, heißt ArduPilot oder PX4 und braucht dann auch andere
-    Hardware; das ist das Thema des
-    <a href="ratgeber-autopilot.html">Autopilot-Ratgebers</a>.</p>
+    Hardware.  Das ist das Thema des kommenden
+    Autopilot-Ratgebers.</p>
 
     <p><strong>Zweitens die Anschlüsse.</strong>  Zählen, was einen UART braucht, und zwei
     hinzurechnen.  Diese Rechnung, nicht der Prozessortakt, entscheidet, ob die Platine in zwei
@@ -670,20 +680,23 @@
     bezahlte Reserve.</p>
 
     <p><strong>Fünftens der Kreisel.</strong>  Ehrlich gesagt: nimm, was verbaut ist.  Die
-    ICM-42688-P ist auf FPV-Platinen praktisch Standard und mit 2,8&nbsp;Millgrad je Sekunde je
-    Wurzel Hertz gut genug<sup><a href="#q20">20</a></sup>.  Der Unterschied zwischen zwei
+    ICM-42688-P ist auf FPV-Platinen praktisch Standard, Betaflight empfiehlt sie den Herstellern
+    ausdrücklich<sup><a href="#q25">25</a></sup>, und mit 2,8&nbsp;Millgrad je Sekunde je
+    Wurzel Hertz ist sie gut genug<sup><a href="#q20">20</a></sup>.  Den BMI270 empfiehlt
+    Betaflight für neue Platinen dagegen nicht mehr, weil sein Kreisel nicht kalibriert
+    ist<sup><a href="#q25">25</a></sup>.  Der Unterschied zwischen zwei
     Kreiseln verschwindet hinter dem Unterschied zwischen zwei Montagen.</p>
 
     <h3>Was das für unsere Builds heißt</h3>
 
     <p>Für den 10-Zoll-Aufbau und für Freestyle-Fünfzöller heißt diese Reihenfolge: Betaflight,
-    F4 oder F7, SD-Karte statt verlötetem Flash, genug UARTs für Empfänger und Videosender, und
-    die gesamte gesparte Zeit fließt in die Montage und in die Filterkette.  Ein teurerer Kreisel
+    F4 oder F7, SD-Karte statt verlötetem Flash, genug UARTs für Empfänger und Videosender.  Die
+    gesamte gesparte Zeit fließt in die Montage und in die Filterkette.  Ein teurerer Kreisel
     oder ein schnellerer Prozessor stünde auf dieser Liste nirgends.</p>
 
     <p>Für den 13-Zoll-Long-Range-Aufbau fällt die Antwort anders aus, weil dort GPS, Kompass und
-    Leistungsmessung dazukommen und der Copter über fremdem Grund fliegt.  Diese Rechnung führt
-    der <a href="ratgeber-autopilot.html#k11">Autopilot-Ratgeber</a> zu Ende.</p>
+    Leistungsmessung dazukommen und der Copter über fremdem Grund fliegt.  Diese Rechnung führen
+    wir im Autopilot-Ratgeber zu Ende.</p>
 
     <p>Und ein letzter Punkt, der in keiner Produktbeschreibung steht: Der Flight Controller ist
     das einzige Bauteil am Copter, das man nach dem Absturz noch befragen kann.  Wer die
@@ -694,8 +707,6 @@
     passt, sprich uns an, bevor du bestellst.</p>
 
     <p style="margin-top:14px">
-      <a href="ratgeber-autopilot.html">➜ Passend dazu: der Autopilot-Ratgeber</a><br>
-      <a href="ratgeber-esc.html">➜ Passend dazu: der ESC-Ratgeber</a><br>
       <a href="ratgeber-motoren.html">➜ Passend dazu: der Motoren-Ratgeber</a><br>
       <a href="ratgeber-propeller.html">➜ Passend dazu: der Propeller-Ratgeber</a><br>
       <a href="ratgeber-funk-kommunikation.html">➜ Passend dazu: Funk und Kommunikation</a><br>
@@ -706,7 +717,7 @@
     <p class="muted" style="margin-top:34px; font-size:14px">
       Dieser Ratgeber ersetzt keine individuelle technische Prüfung.  Alle Angaben ohne
       Gewähr.  Wo wir gerechnet statt gemessen haben, steht es ausdrücklich dabei.  Alle
-      Quellen wurden im August 2026 abgerufen und geprüft.
+      Quellen wurden im November 2026 abgerufen und geprüft.
     </p>
 
     <h2>Quellenangaben</h2>
@@ -786,7 +797,7 @@
         von rund 200 Hz bei kleinen und rund 100 Hz bei großen Coptern, Feststellung, dass
         Vibration oberhalb von 100 Hz Lage- und Positionsprobleme verursacht:
         <a href="https://ardupilot.org/copter/docs/common-imu-batchsampling.html" rel="noopener" target="_blank">ardupilot.org, IMU Batch Sampler</a></li>
-      <li id="q14">ArduPilot, „Aggressive Rate Loop Tuning".  Hauptschleife standardmäßig 400 Hz
+      <li id="q14">ArduPilot, „Aggressive Rate Loop Tuning".  Hauptschleife zum Beispiel mit 400 Hz
         entsprechend 2,5 ms, schnelle Ratenschleife bis 4 kHz in einem eigenen Programmfaden,
         Gyro-Abtastrate über INS_GYRO_RATE, Empfehlungen für Filtergrenzfrequenzen, Feststellung
         der höheren Rechenlast und dass F4-Systeme sie möglicherweise nicht durchhalten,
@@ -847,14 +858,24 @@
         STM32F405, Kreisel ICM-42688-P, eingebauter Luftdrucksensor, microSD-Steckplatz für Karten
         bis 4 Gigabyte, sechs UARTs mit fest belegtem Bluetooth- und Telemetrieanschluss,
         Spannungsschienen 5 V/3 A, 9 V/3 A, 3,3 V/500 mA und 4,5 V/1 A, Eingangsbereich 3S bis 6S,
-        Lochbild 30,5 mal 30,5 Millimeter, Gewicht 10,5 Gramm:
+        Lochbild 30,5 mal 30,5 Millimeter, Gewicht 10,5 Gramm, laut Herstellerseite im November
+        2026 nicht mehr lieferbar („Discontinued“):
         <a href="https://www.speedybee.com/speedybee-f405-v4-bls-55a-30x30-fc-esc-stack/" rel="noopener" target="_blank">speedybee.com, F405 V4 Stack</a></li>
+      <li id="q25">Betaflight, „Manufacturer Design Guidelines“.  Empfehlung der ICM-42688-P,
+        BMI270 nicht empfohlen, weil sein Kreisel nicht kalibriert ist, F411 für neue Platinen
+        nicht mehr angenommen, F4 und F7 für einfache Platinen mit vier Motorausgängen, H743 für
+        viele Anschlüsse, STM32G4, AT32F435 und RP2350 für kleine und günstige Platinen:
+        <a href="https://betaflight.com/docs/development/manufacturer/manufacturer-design-guidelines" rel="noopener" target="_blank">betaflight.com, Manufacturer Design Guidelines</a></li>
+      <li id="q26">Betaflight, „Betaflight 2026.6 Release Notes“.  Ersatz der Biquad-Filter in
+        Gyro-, PID-, RPM- und Kerbfilterpfad durch State Variable Filters (SVF), Einstellung heißt
+        SVF statt BIQUAD, Filterverhalten unverändert:
+        <a href="https://betaflight.com/docs/wiki/release/Betaflight-2026-6-Release-Notes" rel="noopener" target="_blank">betaflight.com, 2026.6 Release Notes</a></li>
     </ol>
 
 <!-- historie:start -->
     <h2>Änderungshistorie</h2>
     <ul class="muted historie">
-      <li><strong>20.08.2026</strong> · Veröffentlichung</li>
+      <li><strong>20.11.2026</strong> · Erstveröffentlichung</li>
     </ul>
 <!-- historie:ende -->
 

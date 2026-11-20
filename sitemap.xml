@@ -7,7 +7,7 @@
   </url>
   <url>
     <loc>https://dracolabsgermany.com/aktionen.html</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -48,6 +48,12 @@
   <url>
     <loc>https://dracolabsgermany.com/ratgeber-carbon-frame.html</loc>
     <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://dracolabsgermany.com/ratgeber-flight-controller.html</loc>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
