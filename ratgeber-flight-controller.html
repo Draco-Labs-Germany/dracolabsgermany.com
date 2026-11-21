@@ -38,7 +38,7 @@
   "description": "Flight-Controller-Ratgeber für FPV-Copter: Kreisel und Rauschdichte, Loop-Rate und Abtastung, Filterkette, PID-Regler, Anschlüsse und Montage, an Datenblättern und Firmware-Dokumentationen erklärt.",
   "image": "https://dracolabsgermany.com/assets/ratgeber/flight-controller-hook.jpg",
   "datePublished": "2026-11-20",
-  "dateModified": "2026-11-20",
+  "dateModified": "2026-11-21",
   "author": { "@type": "Organization", "name": "Draco Labs Germany" },
   "publisher": {
     "@type": "Organization",
@@ -136,7 +136,12 @@
 
     <h2 id="k1">1. Was ein Flight Controller wirklich tut</h2>
     <!-- bild:start flight-controller-regelkreis -->
-    <!-- bild:ende flight-controller-regelkreis -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/flight-controller-regelkreis.jpg" alt="Render: ein geschlossener Ring mit Pfeilen, an dem Steuerknüppel, Sensor, Rechner und Motor sitzen, darunter die Zeile „Ein geschlossener Kreis“"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Ohne fortlaufende Korrektur kippt ein Multicopter innerhalb eines Sekundenbruchteils.  Der Flight Controller misst, vergleicht und korrigiert in einem geschlossenen Kreis.  Standbild aus unserem Wissensvideo zum Artikel.</figcaption>
+    </figure>
+<!-- bild:ende flight-controller-regelkreis -->
 
     <p>Ein Starrflügelflugzeug kann man loslassen.  Richtig ausgelegt fliegt es geradeaus
     weiter, weil seine Form es in die Fluglage zurückzieht.  Ein Multicopter kann das nicht.
@@ -168,7 +173,12 @@
 
     <h2 id="k2">2. Der Kreisel ist das Herz</h2>
     <!-- bild:start flight-controller-imu -->
-    <!-- bild:ende flight-controller-imu -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/flight-controller-imu.jpg" alt="Render: ein Sensorbaustein auf einer Platine mit den drei Drehachsen X, Y und Z, darunter die Zeile „Trägheitsmesseinheit · IMU“"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Drehratensensor und Beschleunigungssensor für alle drei Achsen bilden zusammen die Trägheitsmesseinheit, kurz IMU.  Standbild aus unserem Wissensvideo zum Artikel.</figcaption>
+    </figure>
+<!-- bild:ende flight-controller-imu -->
 
     <p>Der Istwert im Regelkreis kommt von einem Bauteil, das kleiner ist als ein Reiskorn.  Ein
     MEMS-Kreisel (die Abkürzung steht für mikroelektromechanisches System) enthält eine winzige
@@ -322,7 +332,12 @@
 
     <h2 id="k5">5. Loop-Rate und Abtastung</h2>
     <!-- bild:start flight-controller-looprate -->
-    <!-- bild:ende flight-controller-looprate -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/flight-controller-looprate.jpg" alt="Render: eine in Segmente geteilte Scheibe mit umlaufendem Pfeil, darunter die Zeile „Loop-Rate: 8k · 4k“"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Die Loop-Rate sagt, wie oft je Sekunde der Regelkreis vollständig durchlaufen wird.  Bei 8&nbsp;Kilohertz bleiben dem Regler 125&nbsp;Mikrosekunden je Durchlauf.  Standbild aus unserem Wissensvideo zum Artikel.</figcaption>
+    </figure>
+<!-- bild:ende flight-controller-looprate -->
 
     <p>Die zweite große Werbezahl ist die Loop-Rate, meist als „8k" oder „4k" angegeben.  Sie
     sagt, wie oft je Sekunde der Regelkreis vollständig durchlaufen wird.  Betaflight bietet
@@ -370,7 +385,12 @@
 
     <h2 id="k6">6. Filter: der eigentliche Hebel</h2>
     <!-- bild:start flight-controller-filter -->
-    <!-- bild:ende flight-controller-filter -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/flight-controller-filter.jpg" alt="Render: zwei versetzte Kurvenbaender als Tiefpass, daneben die Karten „PT1 · 100 Hz“, „≈ 1 ms“ und „45° Phase“"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Jeder Filter kauft Ruhe mit Verzögerung: Ein einfacher Tiefpass bei 100&nbsp;Hertz kostet rund eine Millisekunde.  Standbild aus unserem Wissensvideo zum Artikel.</figcaption>
+    </figure>
+<!-- bild:ende flight-controller-filter -->
 
     <p>Hier liegt der Kern dieses Artikels.  Wenn du dir aus zehn Kapiteln eines merkst,
     dann dieses.</p>
@@ -608,7 +628,12 @@
 
     <h2 id="k9">9. Einbau: wo die meisten Punkte verschenkt werden</h2>
     <!-- bild:start flight-controller-montage -->
-    <!-- bild:ende flight-controller-montage -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/flight-controller-montage.jpg" alt="Render: eine bestückte Platine auf vier grauen Dämpfern über einer Kohlefaserplatte, darunter die Zeile „Die Montage“"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Wie viel sich die Platine bewegt, entscheidet die Montage.  ArduPilot empfiehlt Quadrate aus Schaumstoff oder Gel an den Ecken der Platine.  Standbild aus unserem Wissensvideo zum Artikel.</figcaption>
+    </figure>
+<!-- bild:ende flight-controller-montage -->
 
     <p>Ein Kapitel über Klebeband nach acht Kapiteln über Elektronik wirkt wie ein Abfall.  Es
     ist das Gegenteil.  Der Kreisel misst, was die Platine bewegt, und wie viel sich die Platine
@@ -890,6 +915,7 @@
 <!-- historie:start -->
     <h2>Änderungshistorie</h2>
     <ul class="muted historie">
+      <li><strong>21.11.2026</strong> · Wissensvideo-Serie ergänzt</li>
       <li><strong>20.11.2026</strong> · Verweis auf den neu erschienenen Nutzlast-Ratgeber verlinkt</li>
       <li><strong>20.11.2026</strong> · Verweise auf den neu erschienenen ESC-Ratgeber verlinkt</li>
       <li><strong>20.11.2026</strong> · Produktlinks zu passenden Flight Controllern bei FPV24 ergänzt (Anzeige)</li>
