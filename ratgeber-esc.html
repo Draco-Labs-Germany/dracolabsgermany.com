@@ -38,7 +38,7 @@
   "description": "ESC-Ratgeber für Multicopter: sechs Schaltzustände und Gegen-EMK, MOSFET-Verluste und Wärme, Kondensatoren und Spannungsspitzen, DShot und bidirektionale Drehzahl-Rückmeldung, an Datenblättern und Firmware-Dokumentationen erklärt.",
   "image": "https://dracolabsgermany.com/assets/ratgeber/esc-hook.jpg",
   "datePublished": "2026-11-20",
-  "dateModified": "2026-11-20",
+  "dateModified": "2026-11-21",
   "author": { "@type": "Organization", "name": "Draco Labs Germany" },
   "publisher": {
     "@type": "Organization",
@@ -132,7 +132,12 @@
 
     <h2 id="k1">1. Was der Regler wirklich tut</h2>
     <!-- bild:start esc-bruecke -->
-    <!-- bild:ende esc-bruecke -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/esc-bruecke.jpg" alt="Render: drei Halbbrücken aus je zwei Transistoren an den drei Motoranschlüssen"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Ein bürstenloser Motor braucht ein Drehfeld: drei Wicklungen, die nacheinander in wechselnder Richtung bestromt werden.  Standbild aus unserem Wissensvideo zum Artikel.</figcaption>
+    </figure>
+<!-- bild:ende esc-bruecke -->
 
     <p>Der deutsche Name führt in die Irre.  „Fahrtregler" klingt nach einem Bauteil, das
     Leistung wegdrosselt, so wie ein Dimmer eine Glühbirne dunkler macht.  Genau das tut er
@@ -189,7 +194,12 @@
 
     <h2 id="k2">2. Woher der Regler weiß, wo der Rotor steht</h2>
     <!-- bild:start esc-gegenemk -->
-    <!-- bild:ende esc-gegenemk -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/esc-gegenemk.jpg" alt="Render: ein Motor, daneben der Verlauf der Gegenspannung als Welle"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Ohne Hall-Sensoren erkennt der Regler die Rotorstellung an der Gegenspannung der unbestromten Phase.  Standbild aus unserem Wissensvideo zum Artikel.</figcaption>
+    </figure>
+<!-- bild:ende esc-gegenemk -->
 
     <p>Damit die sechs Schaltzustände Drehmoment erzeugen, müssen sie zur Rotorstellung passen.
     In der Industrie löst man das mit drei Hall-Sensoren im Stator, die melden, welcher Magnet
@@ -237,7 +247,12 @@
 
     <h2 id="k3">3. Block, Sinus, Feldorientierung</h2>
     <!-- bild:start esc-kurvenformen -->
-    <!-- bild:ende esc-kurvenformen -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/esc-kurvenformen.jpg" alt="Render: ein rechteckiger Stromblock neben einer Sinuskurve"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Die Blockkommutierung ist einfach und robust, aber das Drehmoment schwankt innerhalb jedes 60-Grad-Sektors.  Standbild aus unserem Wissensvideo zum Artikel.</figcaption>
+    </figure>
+<!-- bild:ende esc-kurvenformen -->
 
     <p>Die Blockkommutierung ist einfach, robust und billig zu rechnen.  Sie ist aber auch grob:
     das Drehmoment schwankt innerhalb jedes 60-Grad-Sektors, weil ein rechteckiger Stromblock
@@ -274,7 +289,12 @@
 
     <h2 id="k4">4. Die Transistoren, und wo die Wärme entsteht</h2>
     <!-- bild:start esc-verluste -->
-    <!-- bild:ende esc-verluste -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/esc-verluste.jpg" alt="Render: Leistungstransistoren auf einer Reglerplatine in Nahaufnahme"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Die Wärme eines Reglers entsteht fast vollständig in seinen sechs Transistoren.  Standbild aus unserem Wissensvideo zum Artikel.</figcaption>
+    </figure>
+<!-- bild:ende esc-verluste -->
 
     <p>Ein Regler ist ein Wärmeproblem.  Alles, was an ihm kaputtgeht, geht an zu viel Wärme
     oder zu viel Spannung kaputt, und die Wärme entsteht fast vollständig in den sechs
@@ -351,7 +371,12 @@
 
     <h2 id="k5">5. Die Amperezahl auf dem Schrumpfschlauch</h2>
     <!-- bild:start esc-ampere -->
-    <!-- bild:ende esc-ampere -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/esc-ampere.jpg" alt="Render: derselbe Transistor dreimal mit unterschiedlicher Kühlung"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Für den Dauerstrom nennt ein Datenblatt drei verschiedene Werte, alle richtig, je nach Prüfbedingung.  Standbild aus unserem Wissensvideo zum Artikel.</figcaption>
+    </figure>
+<!-- bild:ende esc-ampere -->
 
     <p>Wenn du dir aus diesem Artikel einen Absatz merkst, dann diesen.</p>
 
@@ -420,7 +445,12 @@
 
     <h2 id="k6">6. Spannung: die Zahl, bei der es kein „ungefähr" gibt</h2>
     <!-- bild:start esc-spannung -->
-    <!-- bild:ende esc-spannung -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/esc-spannung.jpg" alt="Render: Säulen für Nennspannung, volle Zellenspannung und Reserve"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Beim Strom verzeiht die Physik, bei der Spannung nicht: Eine überschrittene Sperrspannung zerstört den Transistor in Mikrosekunden.  Standbild aus unserem Wissensvideo zum Artikel.</figcaption>
+    </figure>
+<!-- bild:ende esc-spannung -->
 
     <p>Beim Strom verzeiht Physik.  Zu viel Strom bedeutet zu viel Wärme, und Wärme braucht
     Zeit, um Schaden anzurichten.  Bei der Spannung verzeiht sie nicht.  Wird die Sperrspannung
@@ -464,7 +494,12 @@
 
     <h2 id="k7">7. Der Kondensator ist kein Zubehör</h2>
     <!-- bild:start esc-kondensator -->
-    <!-- bild:ende esc-kondensator -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/esc-kondensator.jpg" alt="Render: ein Elektrolytkondensator am Akkueingang, daneben der schwankende Strom"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Der Kondensator am Akkueingang fängt den Rippelstrom ab, den das Schalten der Transistoren erzeugt.  Standbild aus unserem Wissensvideo zum Artikel.</figcaption>
+    </figure>
+<!-- bild:ende esc-kondensator -->
 
     <p>Fast jedem 4-in-1-Regler liegt ein dicker Elektrolytkondensator bei, und fast jeder
     zweite Aufbau fliegt ohne ihn, weil er unordentlich aussieht.  Die Hersteller sind an dieser
@@ -515,7 +550,12 @@
 
     <h2 id="k8">8. Die Ansteuerung: von der Pulsweite zu DShot</h2>
     <!-- bild:start esc-protokolle -->
-    <!-- bild:ende esc-protokolle -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/esc-protokolle.jpg" alt="Render: ein digitaler DShot-Rahmen aus 16 Bit"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Statt eines Pulses mit veränderlicher Länge überträgt DShot den Sollwert als digitalen Rahmen aus 16 Bit.  Standbild aus unserem Wissensvideo zum Artikel.</figcaption>
+    </figure>
+<!-- bild:ende esc-protokolle -->
 
     <p>Bis vor wenigen Jahren sprach der Flight Controller mit dem Regler wie eine
     Fernsteuerung mit einem Servo.  Ein Impuls, dessen Länge zwischen 1.000 und
@@ -577,7 +617,12 @@
 
     <h2 id="k9">9. Bidirektionales DShot: wie die Drehzahl zurückkommt</h2>
     <!-- bild:start esc-bidshot -->
-    <!-- bild:ende esc-bidshot -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/esc-bidshot.jpg" alt="Render: ein Datenrahmen, der vom Regler zur Flugsteuerung zurückläuft"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Beim bidirektionalen DShot schickt der Regler die Drehzahl auf derselben Leitung zurück.  Standbild aus unserem Wissensvideo zum Artikel.</figcaption>
+    </figure>
+<!-- bild:ende esc-bidshot -->
 
     <p>Hier liegt die Grenze zum
     <a href="ratgeber-flight-controller.html#k6">Flight-Controller-Ratgeber</a>, und hier liegt
@@ -675,7 +720,12 @@
 
     <h2 id="k10">10. Firmware: die folgenreichste Entscheidung</h2>
     <!-- bild:start esc-firmware -->
-    <!-- bild:ende esc-firmware -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/esc-firmware.jpg" alt="Render: Zeitachse mit voreilendem Schaltzeitpunkt"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Zwischen zwei Firmwareständen auf derselben Platine liegt oft mehr Unterschied als zwischen zwei Herstellern.  Standbild aus unserem Wissensvideo zum Artikel.</figcaption>
+    </figure>
+<!-- bild:ende esc-firmware -->
 
     <p>Zwischen zwei Reglern verschiedener Hersteller liegt oft weniger Unterschied als zwischen
     zwei Firmwareständen auf derselben Platine.  Die Landschaft ist überschaubar.</p>
@@ -731,7 +781,12 @@
 
     <h2 id="k11">11. Bremsen, Rückspeisung und Umkehr</h2>
     <!-- bild:start esc-bremsen -->
-    <!-- bild:ende esc-bremsen -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/esc-bremsen.jpg" alt="Render: Strom fließt beim Bremsen vom Motor zurück in Richtung Akku"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Beim Bremsen speist der Motor Energie zurück, deshalb gehört zur Spannung eine Reserve.  Standbild aus unserem Wissensvideo zum Artikel.</figcaption>
+    </figure>
+<!-- bild:ende esc-bremsen -->
 
     <p>Ein Multicopter fliegt nicht mit konstanter Drehzahl, sondern mit ständigen kleinen
     Korrekturen, und die Hälfte davon sind Bremsvorgänge.  Wie ein Regler bremst, entscheidet
@@ -776,7 +831,12 @@
 
     <h2 id="k12">12. Vier Regler oder einer mit vier Kanälen</h2>
     <!-- bild:start esc-4in1 -->
-    <!-- bild:ende esc-4in1 -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/esc-4in1.jpg" alt="Render: vier Einzelregler neben einem 4-in-1-Regler"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Im FPV-Bereich ist der 4-in-1-Regler die Norm, im industriellen Multicopter der Einzelregler am Ausleger.  Standbild aus unserem Wissensvideo zum Artikel.</figcaption>
+    </figure>
+<!-- bild:ende esc-4in1 -->
 
     <p>Im FPV-Bereich ist der 4-in-1-Regler die Norm, im industriellen Multicopter der
     Einzelregler am Ausleger.  Beides hat Gründe, und beide sind physikalisch.</p>
@@ -817,7 +877,12 @@
 
     <h2 id="k13">13. Fehlerbilder und was sie verraten</h2>
     <!-- bild:start esc-fehler -->
-    <!-- bild:ende esc-fehler -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/esc-fehler.jpg" alt="Render: ein Motor mit unregelmäßigem Drehfeld"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Stottert der Motor beim schnellen Gasgeben aus niedriger Drehzahl, hat der Regler den Synchronlauf verloren.  Standbild aus unserem Wissensvideo zum Artikel.</figcaption>
+    </figure>
+<!-- bild:ende esc-fehler -->
 
     <p><strong>Der Motor stottert oder bleibt stehen, wenn du bei niedriger Drehzahl schnell Gas
     gibst.</strong>  Das ist das Lehrbuchbild für den Verlust des Synchronlaufs.  Beide
@@ -877,7 +942,12 @@
 
     <h2 id="k14">14. Wie wir auswählen</h2>
     <!-- bild:start esc-wahltafel -->
-    <!-- bild:ende esc-wahltafel -->
+    <figure class="artikel-bild">
+      <img src="assets/ratgeber/esc-wahltafel.jpg" alt="Render: Stufen einer Entscheidungsreihenfolge"
+        width="1200" height="675" loading="lazy">
+      <figcaption>Die Reihenfolge beginnt nicht bei der Amperezahl, sondern bei der Spannung.  Standbild aus unserem Wissensvideo zum Artikel.</figcaption>
+    </figure>
+<!-- bild:ende esc-wahltafel -->
 
     <p>Aus allem oben folgt eine Reihenfolge, und sie beginnt nicht bei der Amperezahl.</p>
 
@@ -1150,6 +1220,7 @@
 <!-- historie:start -->
     <h2>Änderungshistorie</h2>
     <ul class="muted historie">
+      <li><strong>21.11.2026</strong> · Wissensvideo-Serie ergänzt</li>
       <li><strong>20.11.2026</strong> · Erstveröffentlichung</li>
     </ul>
 <!-- historie:ende -->
